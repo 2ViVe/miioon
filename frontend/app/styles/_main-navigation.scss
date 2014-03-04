@@ -1,0 +1,32 @@
+.main-navigation {
+  border-top: 5px solid $grey-light;
+  border-bottom: 1px solid $grey-light;
+
+  ul {
+    list-style: none;
+    margin: 0;
+
+
+    li {
+      float: left;
+      padding: 20px 0;
+      margin-right: 30px;
+
+      &.career-opportunity {
+        margin-right: 0;
+        padding-top: 7px;
+        padding-bottom: 0;
+
+        .button {
+          padding: 16px 12px;
+          margin-bottom: 0;
+          color: white;
+        }
+      }
+
+      a {
+        color: black;
+      }
+    }
+  }
+}
