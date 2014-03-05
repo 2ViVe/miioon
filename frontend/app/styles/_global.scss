@@ -6,6 +6,41 @@ a.button:hover {
   text-decoration: none;
 }
 
-.row {
+body {
   min-width: 1000px;
+}
+
+ul {
+  margin: 0;
+  list-style: none;
+}
+
+.separator-slash,
+.separator-vertical-line {
+  li {
+    &:first-child:before {
+      display: none;
+    }
+
+    &:before {
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+  }
+}
+
+.separator-slash {
+  li {
+    &:before {
+      content: "/";
+    }
+  }
+}
+
+.separator-vertical-line {
+  li {
+    &:before {
+      content: "|";
+    }
+  }
 }

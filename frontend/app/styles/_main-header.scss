@@ -3,12 +3,25 @@
   padding-bottom: 20px;
 
   .header-links {
-    color: $grey;
+    color: $grey-dark;
     margin-bottom: 30px;
     font-size: rem-calc(16);
+    @include clearfix;
 
-    a {
-      color: $grey;
+    li {
+      float: left;
+
+      a {
+        color: $grey-dark;
+
+        &:hover {
+          color: black;
+        }
+      }
     }
+  }
+
+  .shopping-bag {
+    font-size: rem-calc(14);
   }
 }

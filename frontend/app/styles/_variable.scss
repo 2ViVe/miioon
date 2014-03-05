@@ -1,11 +1,22 @@
-$grey-light: #D6D7D6;
-$grey: #C8C8C8;
+@import "foundation/scss/foundation/functions";
+
+$grey-lighter: #F5F5F5;
+$grey-light: #DCDCDC;
+$grey: #D6D7D6;
+$grey-dark: #C8C8C8;
+
+$base-font-size: 12px;
+$rem-base: $base-font-size;
 
 $primary-color: #4AD0FF;
+$secondary-color: #4EACDB;
+
+$h4-font-size: rem-calc(22);
+
+$anchor-font-color: black;
 
 $button-font-med: rem-calc(14);
+$button-med: rem-calc(10);
 $button-font-weight: bold;
 
-$rem-base: 14px;
-$base-font-size: 14px;
 $cursor-default-value: auto;

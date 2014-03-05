@@ -1,9 +1,11 @@
-@import "foundation/scss/foundation/functions";
+@import "compass/utilities";
 @import "variable";
 @import "icons";
 @import "global";
 @import "main-header";
 @import "main-navigation";
+@import "main-footer";
+@import "form";
 
 .browsehappy {
   margin: 0.2em 0;

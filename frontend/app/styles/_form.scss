@@ -1,0 +1,10 @@
+button,
+.button {
+  &.go:after {
+    content: "\25BA";
+    margin-left: 12px;
+    font-size: rem-calc(11);
+    position: relative;
+    bottom: 1px;
+  }
+}
