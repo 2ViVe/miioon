@@ -366,11 +366,16 @@ module.exports = function(grunt) {
     }
   });
 
-
-  grunt.registerTask('serve', function(target) {
+  function configAppBy(target) {
     if (target === 'miioon' || target === 'm') {
       grunt.config.set('yeoman.app', 'miioon');
+    } else if (target === 'tails' || target === 't') {
+      grunt.config.set('yeoman.app', 'for-tails-only');
     }
+  }
+
+  grunt.registerTask('serve', function(target) {
+    configAppBy(target);
 
     grunt.task.run([
       'clean:server',
@@ -383,17 +388,13 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('dist', function(target) {
-    if (target === 'miioon' || target === 'm') {
-      grunt.config.set('yeoman.app', 'miioon');
-    }
+    configAppBy(target);
 
     grunt.task.run(['build', 'connect:dist:keepalive']);
   });
 
   grunt.registerTask('test', function(target) {
-    if (target === 'miioon' || target === 'm') {
-      grunt.config.set('yeoman.app', 'miioon');
-    }
+    configAppBy(target);
 
     grunt.task.run([
       'clean:server',
@@ -405,9 +406,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('build', function(target) {
-    if (target === 'miioon' || target === 'm') {
-      grunt.config.set('yeoman.app', 'miioon');
-    }
+    configAppBy(target);
 
     grunt.task.run([
       'useminPrepare',
@@ -427,9 +426,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', function(target) {
-    if (target === 'miioon' || target === 'm') {
-      grunt.config.set('yeoman.app', 'miioon');
-    }
+    configAppBy(target);
 
     grunt.task.run([
       'newer:jshint',

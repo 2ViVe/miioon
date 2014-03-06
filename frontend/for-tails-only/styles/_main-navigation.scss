@@ -1,0 +1,27 @@
+.main-navigation {
+  border-top: 5px solid $grey;
+  border-bottom: 1px solid $grey;
+
+  ul {
+    li {
+      float: left;
+      padding: 20px 0;
+      margin-right: 28px;
+
+      &.career-opportunity {
+        margin-right: 0;
+        padding-top: 11px;
+        padding-bottom: 0;
+
+        .button {
+          margin-bottom: 0;
+          color: white;
+        }
+      }
+
+      a {
+        font-size: rem-calc(14);
+      }
+    }
+  }
+}

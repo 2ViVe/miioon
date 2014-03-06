@@ -1,0 +1,42 @@
+.main-footer {
+  background: $grey-lighter;
+  padding-top: 40px;
+
+  h4 {
+    margin-bottom: 20px;
+  }
+
+  .categories {
+    li {
+      margin-bottom: 10px;
+      a {
+        font-size: rem-calc(14);
+      }
+    }
+  }
+
+  .social-links {
+    padding-top: 235px;
+    padding-bottom: 45px;
+
+    li {
+      float: left;
+      margin-left: 5px;
+    }
+  }
+
+  .extra-info {
+    position: relative;
+    padding-top: 12px;
+    padding-bottom: 35px;
+    border-top: 1px solid $grey;
+
+    .extra-links {
+      float: right;
+
+      li {
+        float: left;
+      }
+    }
+  }
+}
