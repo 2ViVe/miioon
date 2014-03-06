@@ -13,7 +13,7 @@ angular.module('miioonApp', [
         controller: 'MainCtrl'
       })
       .when('/signin', {
-        templateUrl: 'scripts/signIn/view.html'
+        templateUrl: 'views/signIn.html'
       })
       .otherwise({
         redirectTo: '/'
