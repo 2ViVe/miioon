@@ -21,7 +21,7 @@ module.exports = function(grunt) {
     // Project settings
     yeoman: {
       // configurable paths
-      app: 'miioon',
+      app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
 
@@ -318,14 +318,14 @@ module.exports = function(grunt) {
 
     // Run some tasks in parallel to speed up the build process
     concurrent: {
-//      server: [
-//        'compass:server'
-//      ],
-//      test: [
-//        'compass'
-//      ],
+      server: [
+        'compass:server'
+      ],
+      test: [
+        'compass'
+      ],
       dist: [
-//        'compass:dist',
+        'compass:dist',
         'imagemin',
         'svgmin'
       ]
@@ -366,72 +366,49 @@ module.exports = function(grunt) {
     }
   });
 
-  function configAppBy(target) {
-    if (target === 'miioon' || target === 'm') {
-      grunt.config.set('yeoman.app', 'miioon');
-    } else if (target === 'tails' || target === 't') {
-      grunt.config.set('yeoman.app', 'for-tails-only');
-    }
-  }
-
   grunt.registerTask('serve', function(target) {
-    configAppBy(target);
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'connect:dist:keepalive']);
+    }
 
     grunt.task.run([
       'clean:server',
       'bowerInstall',
-      'compass:server',
+      'concurrent:server',
       'autoprefixer',
       'connect:livereload',
       'watch'
     ]);
   });
 
-  grunt.registerTask('dist', function(target) {
-    configAppBy(target);
+  grunt.registerTask('test', [
+    'clean:server',
+    'concurrent:test',
+    'autoprefixer',
+    'connect:test',
+    'karma'
+  ]);
 
-    grunt.task.run(['build', 'connect:dist:keepalive']);
-  });
+  grunt.registerTask('build', [
+    'clean:dist',
+    'bowerInstall',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'ngmin',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'rev',
+    'usemin',
+    'htmlmin'
+  ]);
 
-  grunt.registerTask('test', function(target) {
-    configAppBy(target);
-
-    grunt.task.run([
-      'clean:server',
-      'compass:test',
-      'autoprefixer',
-      'connect:test',
-      'karma'
-    ]);
-  });
-
-  grunt.registerTask('build', function(target) {
-    configAppBy(target);
-
-    grunt.task.run([
-      'useminPrepare',
-      'compass:dist',
-      'concurrent:dist',
-      'autoprefixer',
-      'concat',
-      'ngmin',
-      'copy:dist',
-      'cdnify',
-      'cssmin',
-      'uglify',
-      'rev',
-      'usemin',
-      'htmlmin'
-    ]);
-  });
-
-  grunt.registerTask('default', function(target) {
-    configAppBy(target);
-
-    grunt.task.run([
-      'newer:jshint',
-      'test',
-      'build'
-    ]);
-  });
+  grunt.registerTask('default', [
+    'newer:jshint',
+    'test',
+    'build'
+  ]);
 };
