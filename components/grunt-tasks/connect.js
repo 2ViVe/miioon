@@ -13,7 +13,26 @@ module.exports = (function() {
         base: [
           '.tmp',
           '<%= yeoman.app %>'
-        ]
+        ],
+        middleware: function(connect, options) {
+          var middlewares = [];
+          var directory = options.directory || options.base[options.base.length - 1];
+          if (!Array.isArray(options.base)) {
+            options.base = [options.base];
+          }
+          options.base.forEach(function(base) {
+            // Serve static files.
+            middlewares.push(connect.static(base));
+          });
+
+          // Setup the proxy
+          middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
+
+          // Make directory browse-able.
+          middlewares.push(connect.directory(directory));
+
+          return middlewares;
+        }
       }
     },
     test: {
@@ -30,6 +49,20 @@ module.exports = (function() {
       options: {
         base: '<%= yeoman.dist %>'
       }
+    },
+    APIServer: {
+      proxies: [
+        {
+          context: '/api',
+          host: '192.168.199.122',
+          port: 8082,
+          changeOrigin: true,
+          xforward: true,
+          rewrite: {
+            '^/api': ''
+          }
+        }
+      ]
     }
   }
 })();

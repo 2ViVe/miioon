@@ -1,7 +1,19 @@
-angular.module('2ViVe', ['ngResource'])
-  .factory('User', ['$resource', function($resource) {
-    return $resource('http://127.0.0.1:2403/users/login', null,
-      {
-        'login': { method: 'POST' }
+'use strict';
+
+angular.module('2ViVe')
+  .factory('User', ['$http', function($http) {
+    var User = function() {
+
+    };
+    User.prototype.login = function(username, password, clientId) {
+      var user = this;
+      return $http.post('/api/v2/authentications/token', {
+        user: username,
+        password: password,
+        'client-id': clientId
+      }).success(function(data) {
+        user.token = data.response['authentication-token'];
       });
+    };
+    return User;
   }]);
