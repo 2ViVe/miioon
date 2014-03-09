@@ -45,3 +45,15 @@ ul {
     }
   }
 }
+
+.large-font {
+  font-size: rem-calc(18);
+
+  b {
+    font-size: rem-calc(24);
+  }
+}
+
+.medium-font {
+  font-size: rem-calc(14);
+}

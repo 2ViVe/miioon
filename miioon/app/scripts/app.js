@@ -12,12 +12,14 @@ angular.module('miioonApp', [
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/home.html',
-        controller: 'homeController'
+        templateUrl: 'views/home.html'
       })
       .when('/signin', {
         templateUrl: 'views/signIn.html',
         controller: 'SignInController'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html'
       })
       .otherwise({
         redirectTo: '/'
