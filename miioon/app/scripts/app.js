@@ -12,8 +12,8 @@ angular.module('miioonApp', [
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/home.html',
+        controller: 'homeController'
       })
       .when('/signin', {
         templateUrl: 'views/signIn.html',
