@@ -72,6 +72,26 @@ module.exports = function(grunt) {
     karma: require('grunt-tasks/karma')
   });
 
+  grunt.registerTask('proxy', function(target) {
+    grunt.task.run('configureProxies:APIServer');
+
+    if (target === 'dist') {
+      return grunt.task.run([
+        'build',
+        'connect:dist:keepalive'
+      ]);
+    }
+
+    grunt.task.run([
+      'clean:server',
+      'bowerInstall',
+      'concurrent:server',
+      'autoprefixer',
+      'connect:livereload',
+      'watch'
+    ]);
+  });
+
   grunt.registerTask('serve', function(target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
