@@ -100,6 +100,7 @@ module.exports = function(grunt) {
     }
 
     grunt.task.run([
+      'configureProxies:local',
       'clean:server',
       'bowerInstall',
       'concurrent:server',

@@ -63,6 +63,15 @@ module.exports = (function() {
           }
         }
       ]
+    },
+    local: {
+      proxies: [
+        {
+          context: '/api',
+          host: 'localhost',
+          port: '8080'
+        }
+      ]
     }
   }
 })();
