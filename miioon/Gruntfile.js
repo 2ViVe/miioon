@@ -25,6 +25,8 @@ module.exports = function(grunt) {
       dist: 'dist'
     },
 
+    '2ViVe': grunt.file.readJSON('grunt.json'),
+
     watch: require('grunt-tasks/watch'),
     connect: require('grunt-tasks/connect'),
     jshint: require('grunt-tasks/jshint'),

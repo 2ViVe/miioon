@@ -2,9 +2,9 @@ module.exports = (function() {
   // The actual grunt server settings
   return {
     options: {
-      port: 9000,
+      port: '<%= 2ViVe.port %>' || 9000,
       // Change this to '0.0.0.0' to access the server from outside.
-      hostname: 'localhost',
+      hostname: '<%= 2ViVe.hostname %>' || 'localhost',
       livereload: 35729
     },
     livereload: {
