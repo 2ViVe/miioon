@@ -1,4 +1,5 @@
 @import "compass/utilities";
+@import "compass/css3";
 @import "variable";
 @import "icons";
 @import "global";
@@ -11,6 +12,8 @@
 @import "slider";
 @import "grid-promotions";
 @import "about/all";
+@import "taxon/all";
+@import "products";
 
 .browsehappy {
   margin: 0.2em 0;
