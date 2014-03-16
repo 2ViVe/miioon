@@ -24,6 +24,8 @@ angular.module('2ViVe')
         function updateContinueButton() {
           if (isViewedTermAndCondition && isAgreementChecked) {
             $element.find('button').removeAttr('disabled');
+          } else {
+            $element.find('button').attr('disabled', 'disabled');
           }
         }
 

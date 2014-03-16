@@ -31,7 +31,9 @@
     </div>
     <div class="small-5 end columns">
       <input required ng-model="username" type="text" name="username" id="username" placeholder="Please enter the username."/>
-      <small ng-show="submitted && step1.username.$error.required" class="error">This field is required.</small>
+      <small ng-show="submitted && step1.username.$error.required" class="error">
+        This field is required.
+      </small>
     </div>
   </div>
   <div class="row">
@@ -40,7 +42,9 @@
     </div>
     <div class="small-5 end columns">
       <input required ng-model="password" type="password" name="password" id="password"/>
-      <small ng-show="submitted && step1.password.$error.required" class="error">Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character.</small>
+      <small ng-show="submitted && step1.password.$error.required" class="error">
+        This field is required.
+      </small>
     </div>
   </div>
   <div class="row">
@@ -98,7 +102,7 @@ Independent Sales Representative Agrees to the Following:
   </div>
   <div class="row">
     <div class="columns small-9 small-offset-3">
-      <button ng-click="submitAndGoToStep(2, step1.$valid)">CONTINUE</button>
+      <button disabled ng-click="submitAndGoToStep(2, step1.$valid)">CONTINUE</button>
     </div>
   </div>
 </form>
