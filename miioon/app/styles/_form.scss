@@ -18,3 +18,29 @@ button,
     bottom: 1px;
   }
 }
+
+.required {
+  &:before {
+    content: "* ";
+    color: $primary-color;
+  }
+}
+
+form {
+  label {
+    color: $grey-dark;
+  }
+
+  .button,
+  button {
+    &[disabled],
+    &.disabled {
+      background-color: $grey-darker;
+
+      &:hover,
+      &:focus {
+        background-color: $grey-darker;
+      }
+    }
+  }
+}

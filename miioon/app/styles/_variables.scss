@@ -2,20 +2,25 @@
 
 $grey-lighter: #F5F5F5;
 $grey-light: #DCDCDC;
-$grey: #D6D7D6;
-$grey-dark: #C8C8C8;
+$grey: #C8C8C8;
+$grey-dark: #B6B6B6;
 $grey-darker: #666666;
+$grey-border: #D6D7D6;
 
 $base-font-size: 12px;
 $rem-base: $base-font-size;
+$medium-font-size: rem-calc(14);
+$large-font-size: rem-calc(18);
+$base-font-color: #222;
 
 $primary-color: #4AD0FF;
 $secondary-color: #4EACDB;
 
-$h2-font-size: rem-calc(36);
+$h2-font-size: rem-calc(26);
 $h3-font-size: rem-calc(24);
 $h4-font-size: rem-calc(22);
 $h5-font-size: rem-calc(20);
+$h6-font-size: rem-calc(18);
 
 $anchor-font-color: black;
 

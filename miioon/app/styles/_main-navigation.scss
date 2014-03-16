@@ -1,13 +1,13 @@
 .main-navigation {
-  border-top: 5px solid $grey;
-  border-bottom: 1px solid $grey;
+  border-top: 5px solid $grey-border;
+  border-bottom: 1px solid $grey-border;
 
   .sub-taxons-container {
     display: none;
     position: absolute;
     z-index: 1;
     width: 400px;
-    border: 1px solid $grey-dark;
+    border: 1px solid $grey;
     border-radius: 10px;
     background: white;
 
@@ -25,7 +25,7 @@
     }
 
     .sub-taxon-thumbnail {
-      border-left: 1px solid $grey;
+      border-left: 1px solid $grey-border;
     }
 
     .sub-taxons {
@@ -67,7 +67,7 @@
       }
 
       >a {
-        font-size: rem-calc(14);
+        font-size: $medium-font-size;
         padding: 20px 10px;
         display: block;
       }

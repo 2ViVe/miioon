@@ -15,8 +15,15 @@ angular.module('miioonApp', [
         templateUrl: 'views/home.html'
       })
       .when('/signin', {
-        templateUrl: 'views/signIn.html',
+        templateUrl: 'views/sign-in.html',
         controller: 'SignInController'
+      })
+      .when('/signup', {
+        redirectTo: '/signup/1'
+      })
+      .when('/signup/:step', {
+        templateUrl: 'views/sign-up/all.html',
+        controller: 'SignUpController'
       })
       .when('/about', {
         templateUrl: 'views/about.html'

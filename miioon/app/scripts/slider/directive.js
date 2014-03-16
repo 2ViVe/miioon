@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .directive('slider', function() {
+  .directive('slider',
+  function() {
     return {
       restrict: 'C',
       link: function(scope, element) {

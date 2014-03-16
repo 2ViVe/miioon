@@ -6,6 +6,10 @@ a.button:hover {
   text-decoration: none;
 }
 
+.primary-link {
+  color: $primary-color;
+}
+
 body {
   min-width: 1000px;
 }
@@ -46,8 +50,12 @@ ul {
   }
 }
 
+.unimportant-text {
+  color: $grey-dark;
+}
+
 .large-font {
-  font-size: rem-calc(18);
+  font-size: $large-font-size;
 
   b {
     font-size: rem-calc(24);
@@ -55,5 +63,5 @@ ul {
 }
 
 .medium-font {
-  font-size: rem-calc(14);
+  font-size: $medium-font-size;
 }
