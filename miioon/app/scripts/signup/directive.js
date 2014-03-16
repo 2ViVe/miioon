@@ -21,21 +21,19 @@ angular.module('2ViVe')
         var isAgreementChecked = false;
         var $element = angular.element(element);
 
-        function updateContinueButton() {
+        $element.find('#term-condition').on('scroll', function() {
+          if (!isViewedTermAndCondition) {
+            isViewedTermAndCondition = (this.scrollTop + this.offsetHeight) > this.scrollHeight;
+          }
+          $element.find('#is-agreed').removeAttr('disabled');
+        });
+        $element.find('#is-agreed').on('change', function() {
+          isAgreementChecked = angular.element(this).is(':checked');
           if (isViewedTermAndCondition && isAgreementChecked) {
             $element.find('button').removeAttr('disabled');
           } else {
             $element.find('button').attr('disabled', 'disabled');
           }
-        }
-
-        $element.find('#term-condition').on('scroll', function() {
-          isViewedTermAndCondition = (this.scrollTop + this.offsetHeight) > this.scrollHeight;
-          updateContinueButton();
-        });
-        $element.find('#is-agreed').on('change', function() {
-          isAgreementChecked = angular.element(this).is(':checked');
-          updateContinueButton();
         });
       }
     };
@@ -46,12 +44,9 @@ angular.module('2ViVe')
       restrict: 'A',
       require: 'ngModel',
       link: function(scope, element, attrs, ctrl) {
-        var firstPassword = attrs.equalTo;
-        angular.element(element).on('keyup', function() {
-          scope.$apply(function() {
-            var isEqual = element.val() === angular.element(firstPassword).val();
-            ctrl.$setValidity('equalTo', isEqual);
-          });
+        ctrl.$parsers.unshift(function(viewValue) {
+          ctrl.$setValidity('equalTo', element.val() === angular.element(attrs.equalTo).val());
+          return viewValue;
         });
       }
     };
