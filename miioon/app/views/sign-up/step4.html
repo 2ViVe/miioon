@@ -1,5 +1,78 @@
-<form>
+<form class="sign-up-step-4 sign-up-step" name="step4" novalidate>
   <div class="row">
-    4444
+    <h2 class="columns small-9">
+      Create a new account
+    </h2>
+    <div class="columns small-3" ng-include="'views/sign-up/steps-navigation.html'"></div>
+  </div>
+  <div class="row">
+    <h6 class="small-12 columns">
+      ORDER DETAILS AND PAYMENT
+    </h6>
+  </div>
+  <div class="row">
+    <div class="columns small-12">
+      <table class="product-table">
+        <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1002</td>
+          <td>
+            <img class="product-thumbnail" src="images/welcome-kit.png" alt="Welcome Kit"/>
+            Starter Welcome Kit
+          </td>
+          <td class="price">£98.00</td>
+          <td>
+            1
+          </td>
+          <td class="price">
+            £98.00
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="4" class="text-right">
+            Item Total
+          </td>
+          <td class="price">
+            £98.00
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-right">
+            Shipping
+          </td>
+          <td class="price">
+            £14.95
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-right">
+            VAT (20% of total)
+          </td>
+          <td class="price">
+            £19.60
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-right">
+            Order Total
+          </td>
+          <td class="price">
+            £230.55
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
   </div>
 </form>
