@@ -1,15 +1,18 @@
 'use strict';
 
 angular.module('2ViVe')
-  .directive('abide',
+  .directive('signUpStep',
   function() {
     return {
-      restrict: 'A',
+      restrict: 'C',
       link: function(scope, element) {
-        angular.element(element).foundation();
+        angular.element(element).find('button').on('click', function() {
+          angular.element(element).find('.ng-invalid:eq(0)').focus();
+        });
       }
     };
-  }).directive('signUpStep1',
+  })
+  .directive('signUpStep1',
   function() {
     return {
       restrict: 'C',
@@ -31,6 +34,22 @@ angular.module('2ViVe')
         $element.find('#is-agreed').on('change', function() {
           isAgreementChecked = angular.element(this).is(':checked');
           updateContinueButton();
+        });
+      }
+    };
+  })
+  .directive('equalTo',
+  function() {
+    return {
+      restrict: 'A',
+      require: 'ngModel',
+      link: function(scope, element, attrs, ctrl) {
+        var firstPassword = attrs.equalTo;
+        angular.element(element).on('keyup', function() {
+          scope.$apply(function() {
+            var isEqual = element.val() === angular.element(firstPassword).val();
+            ctrl.$setValidity('equalTo', isEqual);
+          });
         });
       }
     };
