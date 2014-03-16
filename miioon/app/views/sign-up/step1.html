@@ -1,4 +1,4 @@
-<form>
+<form class="sign-up-step-1" data-abide>
   <div class="row">
     <h2 class="small-12 columns">Sign up as an miioon Angel</h2>
   </div>
@@ -16,7 +16,7 @@
     <div class="small-3 columns">
       <label class="right inline" for="sponsor-id">miioon Angel Sponsor ID</label>
     </div>
-    <div class="small-3 end columns">
+    <div class="small-5 end columns">
       <input type="text" id="sponsor-id"/>
     </div>
   </div>
@@ -27,42 +27,46 @@
   </div>
   <div class="row">
     <div class="small-3 columns">
-      <label class="right inline required" for="login">Login</label>
+      <label class="right inline required" for="username">Login</label>
     </div>
-    <div class="small-3 end columns">
-      <input type="text" id="login" placeholder="Please enter the username."/>
+    <div class="small-5 end columns">
+      <input required ng-model="username" type="text" id="username" placeholder="Please enter the username."/>
+      <small class="error">This field is required.</small>
     </div>
   </div>
   <div class="row">
     <div class="small-3 columns">
       <label class="right inline required" for="password">Password</label>
     </div>
-    <div class="small-3 end columns">
-      <input type="text" id="password"/>
+    <div class="small-5 end columns">
+      <input required ng-model="password" type="password" id="password"/>
+      <small class="error">Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character.</small>
     </div>
   </div>
   <div class="row">
     <div class="small-3 columns">
       <label class="right inline required" for="password-confirmation">Password Confirmation</label>
     </div>
-    <div class="small-3 end columns">
-      <input type="text" id="password-confirmation"/>
+    <div class="small-5 end columns">
+      <input data-equalto="password" required type="password" id="password-confirmation"/>
+      <small class="error">Passwords must match.</small>
     </div>
   </div>
   <div class="row">
     <div class="small-3 columns">
       <label class="right inline required" for="email">Email</label>
     </div>
-    <div class="small-3 end columns">
-      <input type="text" id="email"/>
+    <div class="small-5 end columns">
+      <input required ng-model="email" type="email" id="email"/>
+      <small class="error">A valid email address is required.</small>
     </div>
   </div>
   <div class="row">
     <div class="small-3 columns">
       <label class="right inline required" for="country">Country</label>
     </div>
-    <div class="small-3 end columns">
-      <select id="country">
+    <div class="small-5 end columns">
+      <select required id="country">
         <option value="US">US</option>
         <option value="UK">UK</option>
       </select>
@@ -76,12 +80,14 @@ The Application & Agreement, Policies & Procedures and Compensation Plan are spe
 Independent Sales Representative Agrees to the Following:
 1) Independent Sales Representative is of legal age in the state/province or country in which he/she resides.
 2) Any Independent Sales Representative who sponsors another Independent Sales Representative or receives a Bonus or Commission on the product sales of another Independent Sales Representative must fulfill the obligation of performing a bona fide supervisory, distributing and selling function in the sale or delivery of a product or service to the ultimate consumer and in the training of those personally sponsored. Independent Sales Representative must have ongoing contact, communication and arrangement with his
+1) Independent Sales Representative is of legal age in the state/province or country in which he/she resides.
+2) Any Independent Sales Representative who sponsors another Independent Sales Representative or receives a Bonus or Commission on the product sales of another Independent Sales Representative must fulfill the obligation of performing a bona fide supervisory, distributing and selling function in the sale or delivery of a product or service to the ultimate consumer and in the training of those personally sponsored. Independent Sales Representative must have ongoing contact, communication and arrangement with his
       </textarea>
     </div>
   </div>
   <div class="row">
     <div class="columns small-9 small-offset-3">
-      <input id="is-agreed" type="checkbox"/>
+      <input required name="is-agreed" id="is-agreed" type="checkbox"/>
       <label for="is-agreed">I agree to the above Terms and Conditions.</label>
     </div>
   </div>
