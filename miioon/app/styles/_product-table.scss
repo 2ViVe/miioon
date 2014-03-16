@@ -1,0 +1,23 @@
+.product-table {
+  border-spacing: 0;
+  width: 100%;
+
+  thead,
+  tbody {
+    tr {
+      th,
+      td {
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .price {
+    color: $red;
+  }
+
+  .product-thumbnail {
+    height: 60px;
+  }
+}

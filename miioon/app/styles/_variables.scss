@@ -7,6 +7,8 @@ $grey-dark: #B6B6B6;
 $grey-darker: #666666;
 $grey-border: #D6D7D6;
 
+$red: #EB5A3C;
+
 $base-font-size: 12px;
 $rem-base: $base-font-size;
 $medium-font-size: rem-calc(14);
@@ -35,3 +37,7 @@ $header-font-family: Arial, sans-serif;
 $body-font-family: Arial, sans-serif;
 
 $list-nested-margin: 0;
+
+$table-border-size: 0;
+$table-head-font-size: rem-calc(18);
+$table-head-bg: #EEEEEE;

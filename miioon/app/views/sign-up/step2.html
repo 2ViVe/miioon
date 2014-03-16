@@ -1,5 +1,54 @@
-<form>
+<form class="sign-up-step-2 sign-up-step" name="step2" novalidate>
   <div class="row">
-    2222
+    <h2 class="columns small-9">
+      Create a new account
+    </h2>
+    <div class="columns small-3" ng-include="'views/sign-up/steps-navigation.html'"></div>
+  </div>
+  <div class="row">
+    <div class="columns small-12">
+      <table class="product-table">
+        <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Item</th>
+          <th>Qualification Volume</th>
+          <th>Commission Volume</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1002</td>
+          <td>
+            <img class="product-thumbnail" src="images/welcome-kit.png" alt="Welcome Kit"/>
+            Starter Welcome Kit
+          </td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td class="price">£98.00</td>
+          <td>
+            <input id="welcome-kit1" type="checkbox"/>
+          </td>
+        </tr>
+        <tr>
+          <td>1010</td>
+          <td>Personal Website - £15 for 3 months</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td class="price">£15.00</td>
+          <td>
+            <input id="welcome-kit2" type="checkbox"/>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns small-12">
+      <button ng-click="submitAndGoToStep(3, step2.$valid)">CONTINUE</button>
+    </div>
   </div>
 </form>

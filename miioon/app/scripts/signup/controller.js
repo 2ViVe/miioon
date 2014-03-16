@@ -10,4 +10,9 @@ angular.module('2ViVe')
           $location.path('/signup/' + stepNumber);
         }
       };
+      $scope.goToStep = function(stepNumber) {
+        if (stepNumber != $scope.stepNumber) {
+          $location.path('/signup/' + stepNumber);
+        }
+      };
     }]);
