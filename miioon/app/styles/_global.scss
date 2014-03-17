@@ -50,6 +50,10 @@ ul {
   }
 }
 
+.important-text {
+  color: $red;
+}
+
 .unimportant-text {
   color: $grey-dark;
 }
@@ -64,6 +68,10 @@ ul {
 
 .medium-font {
   font-size: $medium-font-size;
+}
+
+.base-font {
+  font-size: $base-font-size;
 }
 
 .default-cursor {

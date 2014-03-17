@@ -5,7 +5,6 @@
 
   .register-customer {
     color: $grey-dark;
-    font-size: $medium-font-size;
   }
 
   label[for=is-agreed] {
@@ -16,5 +15,13 @@
     height: auto;
     line-height: 20px;
     color: $grey-dark;
+  }
+
+  .personal-website-info {
+    padding-right: 50px;
+
+    b {
+      font-size: rem-calc(22);
+    }
   }
 }

@@ -15,6 +15,10 @@
     &.current {
       background: $primary-color;
       color: white;
+
+      &:hover {
+        background: $primary-color;
+      }
     }
 
     &:hover {
