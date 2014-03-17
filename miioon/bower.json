@@ -10,7 +10,8 @@
     "angular-sanitize": "1.2.6",
     "angular-route": "1.2.6",
     "foundation": "~5.1.1",
-    "unslider": "*"
+    "unslider": "*",
+    "angular-ui-utils": "bower"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",

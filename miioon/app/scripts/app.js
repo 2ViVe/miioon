@@ -7,7 +7,8 @@ angular.module('miioonApp', [
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    '2ViVe'
+    '2ViVe',
+    'ui.utils'
   ])
   .config(function($routeProvider) {
     $routeProvider

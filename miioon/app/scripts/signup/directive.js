@@ -50,4 +50,22 @@ angular.module('2ViVe')
         });
       }
     };
-  });
+  })
+  .directive('sponsorIdValidator', ['Registration',
+    function(Registration) {
+      return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, element, attrs, ctrl) {
+          angular.element(element).on('blur', function() {
+            Registration.validateSponsor(scope[attrs.ngModel])
+              .success(function(data) {
+                console.log(data);
+              })
+              .error(function() {
+                ctrl.$setValidity('validated', false);
+              });
+          });
+        }
+      }
+    }]);

@@ -11,7 +11,7 @@ angular.module('2ViVe')
         }
       };
       $scope.goToStep = function(stepNumber) {
-        if (stepNumber != $scope.stepNumber) {
+        if (stepNumber !== $scope.stepNumber) {
           $location.path('/signup/' + stepNumber);
         }
       };
