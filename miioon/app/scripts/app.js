@@ -20,9 +20,6 @@ angular.module('miioonApp', [
         controller: 'SignInController'
       })
       .when('/signup', {
-        redirectTo: '/signup/1'
-      })
-      .when('/signup/:stepNumber', {
         templateUrl: 'views/sign-up/all.html',
         controller: 'SignUpController'
       })

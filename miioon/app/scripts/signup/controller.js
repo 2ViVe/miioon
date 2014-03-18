@@ -1,18 +1,22 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('SignUpController', ['$scope', '$routeParams', '$location',
-    function($scope, $routeParams, $location) {
-      $scope.stepNumber = $routeParams.stepNumber;
-      $scope.submitAndGoToStep = function(stepNumber, isFormValid) {
+  .controller('SignUpController', ['$scope',
+    function($scope) {
+      $scope.currentStepNumber = 1;
+      $scope.completedStepNumber = 0;
+      $scope.nextStep = function() {
         $scope.submitted = true;
-        if (isFormValid) {
-          $location.path('/signup/' + stepNumber);
+        if (this.step.$valid) {
+          $scope.currentStepNumber++;
+          if ($scope.currentStepNumber > $scope.completedStepNumber) {
+            $scope.completedStepNumber = $scope.currentStepNumber;
+          }
         }
       };
       $scope.goToStep = function(stepNumber) {
-        if (stepNumber !== $scope.stepNumber) {
-          $location.path('/signup/' + stepNumber);
+        if (stepNumber <= $scope.completedStepNumber) {
+          $scope.currentStepNumber = stepNumber;
         }
       };
     }]);

@@ -1,4 +1,4 @@
-<form class="sign-up-step-3 sign-up-step" name="step3" novalidate>
+<form class="sign-up-step-3 sign-up-step" name="step" novalidate>
   <div class="row">
     <h2 class="columns small-9">
       Create a new account
@@ -11,7 +11,7 @@
   <div ng-include="'views/sign-up/web-address.html'"></div>
   <div class="row">
     <div class="columns small-9 small-offset-3">
-      <button ng-click="submitAndGoToStep(3, step2.$valid)">CONTINUE</button>
+      <button ng-click="nextStep()">CONTINUE</button>
     </div>
   </div>
 </form>

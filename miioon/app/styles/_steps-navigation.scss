@@ -12,6 +12,15 @@
     border: 1px solid $grey-darker;
     border-radius: 26px;
 
+    &.disabled {
+      color: $grey;
+
+      &:hover {
+        background: none;
+        cursor: default;
+      }
+    }
+
     &.current {
       background: $primary-color;
       color: white;

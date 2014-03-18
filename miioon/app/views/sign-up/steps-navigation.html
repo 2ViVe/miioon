@@ -1,6 +1,6 @@
 <ul class="steps-navigation right">
-  <li ng-click="goToStep('1')" ng-class="{current: stepNumber === '1'}">1</li>
-  <li ng-click="goToStep('2')" ng-class="{current: stepNumber === '2'}">2</li>
-  <li ng-click="goToStep('3')" ng-class="{current: stepNumber === '3'}">3</li>
-  <li ng-click="goToStep('4')" ng-class="{current: stepNumber === '4'}">4</li>
+  <li ng-repeat="number in [1, 2, 3, 4]" ng-click="goToStep(number)"
+      ng-class="{current: currentStepNumber === number, disabled: number > completedStepNumber}">
+    {{number}}
+  </li>
 </ul>
