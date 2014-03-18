@@ -19,4 +19,8 @@ angular.module('2ViVe')
           $scope.currentStepNumber = stepNumber;
         }
       };
+      $scope.moreThanOld18 = function(date) {
+        var dateOption = moment(date);
+        return dateOption.add(18, 'years').isBefore(moment());
+      };
     }]);

@@ -8,7 +8,8 @@ angular.module('miioonApp', [
     'ngSanitize',
     'ngRoute',
     '2ViVe',
-    'ui.utils'
+    'ui.utils',
+    'ngQuickDate'
   ])
   .config(function($routeProvider) {
     $routeProvider
