@@ -8,7 +8,10 @@
     <label class="right inline required" for="home-first-name">First Name</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-first-name"/>
+    <input type="text" required id="home-first-name" name="home-first-name" ng-model="homeLastName"/>
+    <small ng-show="submitted && step['home-first-name'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -16,7 +19,10 @@
     <label class="right inline required" for="home-last-name">Last Name</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-last-name"/>
+    <input type="text" required id="home-last-name" name="home-last-name" ng-model="homeLastName"/>
+    <small ng-show="submitted && step['home-last-name'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -24,7 +30,7 @@
     <label class="right inline" for="co-first-name">Coapplicant First Name</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="co-first-name"/>
+    <input type="text" id="co-first-name" name="co-first-name" ng-model="coFirstName"/>
   </div>
 </div>
 <div class="row">
@@ -32,7 +38,7 @@
     <label class="right inline" for="co-last-name">Coapplicant Last Name</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="co-last-name"/>
+    <input type="text" id="co-last-name" name="co-last-name" ng-model="coLastName"/>
   </div>
 </div>
 <div class="row">
@@ -40,7 +46,10 @@
     <label class="right inline required" for="home-address">Address</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-address"/>
+    <input required type="text" id="home-address" name="home-address" ng-model="homeAddress"/>
+    <small ng-show="submitted && step['home-address'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -48,7 +57,7 @@
     <label class="right inline" for="home-address-contd">Address (contd)</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-address-contd"/>
+    <input type="text" id="home-address-contd" name="home-address-contd" ng-model="homeAddressContd"/>
   </div>
 </div>
 <div class="row">
@@ -56,10 +65,13 @@
     <label class="right inline required" for="home-country">Country</label>
   </div>
   <div class="small-5 end columns">
-    <select id="home-country">
+    <select required id="home-country" name="home-country" ng-model="homeCountry">
       <option value="UK">UK</option>
       <option value="US">US</option>
     </select>
+    <small ng-show="submitted && step['home-country'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -67,10 +79,13 @@
     <label class="right inline required" for="home-county">County</label>
   </div>
   <div class="small-5 end columns">
-    <select id="home-county">
+    <select required id="home-county" name="home-county" ng-model="homeCounty">
       <option value="County1">County1</option>
       <option value="County2">County2</option>
     </select>
+    <small ng-show="submitted && step['home-county'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -78,7 +93,10 @@
     <label class="right inline required" for="home-city">City</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-city"/>
+    <input required type="text" id="home-city" name="home-city" ng-model="homeCity"/>
+    <small ng-show="submitted && step['home-city'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -86,7 +104,10 @@
     <label class="right inline required" for="home-post-code">Post Code</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-post-code"/>
+    <input required type="text" id="home-post-code" name="home-post-code" ng-model="homePostCode"/>
+    <small ng-show="submitted && step['home-post-code'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -94,7 +115,10 @@
     <label class="right inline required" for="home-phone">Phone</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-phone"/>
+    <input required type="text" id="home-phone" name="home-phone" ng-model="homePhone"/>
+    <small ng-show="submitted && step['home-phone'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -102,7 +126,10 @@
     <label class="right inline required" for="home-mobile">Mobile</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-mobile"/>
+    <input required type="text" id="home-mobile" name="home-mobile" ng-model="homeMobile"/>
+    <small ng-show="submitted && step['home-mobile'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -110,7 +137,7 @@
     <label class="right inline" for="home-work-number">Work Number</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-work-number"/>
+    <input type="text" id="home-work-number" name="home-work-number" ng-model="homeWorkNumber"/>
   </div>
 </div>
 <div class="row">
@@ -118,6 +145,6 @@
     <label class="right inline" for="home-fax-number">Fax Number</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-fax-number"/>
+    <input type="text" id="home-fax-number" name="home-fax-number" ng-model="homeFaxNumber"/>
   </div>
 </div>
