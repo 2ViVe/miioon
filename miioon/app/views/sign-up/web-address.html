@@ -15,7 +15,10 @@
     <label class="right inline required" for="web-first-name">First Name</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="web-first-name"/>
+    <input required type="text" id="web-first-name" name="web-first-name" ng-model="webFirstName"/>
+    <small ng-show="submitted && step['web-first-name'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -23,7 +26,10 @@
     <label class="right inline required" for="web-last-name">Last Name</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="web-last-name"/>
+    <input required type="text" id="web-last-name" name="web-last-name" ng-model="webLastName"/>
+    <small ng-show="submitted && step['web-last-name'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -31,7 +37,10 @@
     <label class="right inline required" for="web-phone">Phone</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="web-phone"/>
+    <input required type="text" id="web-phone" name="web-phone" ng-model="webPhone"/>
+    <small ng-show="submitted && step['web-phone'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -39,7 +48,10 @@
     <label class="right inline required" for="web-mobile">Mobile</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="web-mobile"/>
+    <input required type="text" id="web-mobile" name="web-mobile" ng-model="webMobile"/>
+    <small ng-show="submitted && step['web-mobile'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
 <div class="row">
@@ -47,7 +59,7 @@
     <label class="right inline" for="web-email">Email</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="web-email"/>
+    <input type="text" id="web-email" name="web-email" ng-model="webEmail"/>
   </div>
 </div>
 <div class="row">
@@ -55,6 +67,6 @@
     <label class="right inline" for="web-fax-number">Fax Number</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="web-fax-number"/>
+    <input type="text" id="web-fax-number" name="web-fax-number" ng-model="webFaxNumber"/>
   </div>
 </div>
