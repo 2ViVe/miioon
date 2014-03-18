@@ -59,8 +59,8 @@ angular.module('2ViVe')
         link: function(scope, element, attrs, ctrl) {
           angular.element(element).on('blur', function() {
             Registration.validateSponsor(scope[attrs.ngModel])
-              .success(function(data) {
-                console.log(data);
+              .success(function() {
+                ctrl.$setValidity('validated', true);
               })
               .error(function() {
                 ctrl.$setValidity('validated', false);
