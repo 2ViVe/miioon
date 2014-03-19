@@ -11,7 +11,7 @@ $grey-border: #D6D7D6;
 
 $red: #EB5A3C;
 
-$base-font-size: 12px;
+$base-font-size: 16px;
 $rem-base: $base-font-size;
 $medium-font-size: rem-calc(14);
 $large-font-size: rem-calc(18);
@@ -28,10 +28,14 @@ $h6-font-size: rem-calc(18);
 
 $anchor-font-color: black;
 
-$button-font-med: rem-calc(14);
+$button-tny: rem-calc(5);
+$button-sml: rem-calc(8);
 $button-med: rem-calc(10);
+$button-lrg: rem-calc(12);
+$button-font-med: rem-calc(14);
 $button-font-weight: bold;
 $button-function-factor: -20%;
+$button-margin-bottom:0;
 
 $cursor-default-value: auto;
 
@@ -52,6 +56,6 @@ $table-even-row-bg: white;
 	// panel style
 	$panel-bg:#fff;
 	$panel-border-size:0;
-	.panel{
-		-moz-box-shadow: 0 0 3px #ccc;-webkit-box-shadow: 0 0 3px #ccc;box-shadow: 0 0 3px #ccc;
-	}
+
+	// table style
+

@@ -1,5 +1,8 @@
 .sign-up {
-  .sign-up-form-panel{box-shadow: 0 0 0; padding:0; max-width: 600px; margin: 0 auto;}  
+
+  margin:2rem auto;
+
+  .sign-up-form-panel{box-shadow: 0 0 0; padding:0; max-width: 700px; margin: 0 auto;}  
 
   h2 {
     color: $primary-color;
@@ -12,6 +15,7 @@
     color: $primary-color;
     font-size: rem-calc(16);
     margin-top: rem-calc(10);
+    font-weight: normal;
     //margin-bottom: rem-calc(10);
     label{
       line-height: normal;
@@ -46,6 +50,22 @@
 
   form .row{
     margin-bottom: rem-calc(10);
+  }
+
+  .sign-up-pack-item{
+    .pack-img{float:left;}
+    .pack-info{
+      margin-left:60px;
+      h6{
+        color:$primary-color;
+        font-weight: normal;
+        font-size: rem-calc(16);
+      }
+    }   
+  }
+
+  .sign-up-note{
+    height:rem-calc(120);
   }
 
 }
