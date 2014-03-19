@@ -43,47 +43,47 @@
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <label class="right inline required" for="home-address">Address</label>
+    <label class="right inline required" for="home-street">Address</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="home-address" name="home-address" ng-model="homeAddress.address"/>
-    <small ng-show="submitted && form['home-address'].$error.required" class="error">
+    <input required type="text" id="home-street" name="home-street" ng-model="homeAddress.street"/>
+    <small ng-show="submitted && form['home-street'].$error.required" class="error">
       This field is required.
     </small>
   </div>
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <label class="right inline" for="home-address-contd">Address (contd)</label>
+    <label class="right inline" for="home-street-contd">Address (contd)</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-address-contd" name="home-address-contd" ng-model="homeAddress.addressContd"/>
+    <input type="text" id="home-street-contd" name="home-street-contd" ng-model="homeAddress['street-cont']"/>
   </div>
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <label class="right inline required" for="home-country">Country</label>
+    <label class="right inline required" for="home-country-id">Country</label>
   </div>
   <div class="small-5 end columns">
-    <select required id="home-country" name="home-country" ng-model="homeAddress.country">
+    <select required id="home-country-id" name="home-country-id" ng-model="homeAddress['country-id']">
       <option value="UK">UK</option>
       <option value="US">US</option>
     </select>
-    <small ng-show="submitted && form['home-country'].$error.required" class="error">
+    <small ng-show="submitted && form['home-country-id'].$error.required" class="error">
       This field is required.
     </small>
   </div>
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <label class="right inline required" for="home-county">County</label>
+    <label class="right inline required" for="home-state-id">County</label>
   </div>
   <div class="small-5 end columns">
-    <select required id="home-county" name="home-county" ng-model="homeAddress.county">
+    <select required id="home-state-id" name="home-state-id" ng-model="homeAddress.state-id">
       <option value="County1">County1</option>
       <option value="County2">County2</option>
     </select>
-    <small ng-show="submitted && form['home-county'].$error.required" class="error">
+    <small ng-show="submitted && form['home-state-id'].$error.required" class="error">
       This field is required.
     </small>
   </div>
@@ -101,11 +101,11 @@
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <label class="right inline required" for="home-post-code">Post Code</label>
+    <label class="right inline required" for="home-zip">Post Code</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="home-post-code" name="home-post-code" ng-model="homeAddress.postCode"/>
-    <small ng-show="submitted && form['home-post-code'].$error.required" class="error">
+    <input required type="text" id="home-zip" name="home-zip" ng-model="homeAddress['home-zip']"/>
+    <small ng-show="submitted && form['home-zip'].$error.required" class="error">
       This field is required.
     </small>
   </div>
