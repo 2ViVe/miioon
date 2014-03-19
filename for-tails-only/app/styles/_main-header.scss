@@ -1,8 +1,16 @@
 .main-header {
+  max-width: 100%;
   padding-top: 15px;
   padding-bottom: 20px;
+  background: #fff;
+  
+  > row{
+    position:relative;
 
-  .header-links {
+    .header-links {
+    position:absolute;
+    right:0;
+    top:0;
     color: $grey;
     margin-bottom: 30px;
     font-size: rem-calc(16);
@@ -19,6 +27,14 @@
         }
       }
     }
+  }
+
+  .header-search{
+    position:absolute;
+    right:0;
+    top:rem-calc(40);
+    width:300px;
+  }
   }
 
   .shopping-bag {
