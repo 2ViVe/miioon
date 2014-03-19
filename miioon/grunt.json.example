@@ -1,4 +1,6 @@
 {
   "port": 9000,
-  "hostname": "0.0.0.0"
+  "hostname": "0.0.0.0",
+  "APIServerIP": "192.168.199.122",
+  "APIServerPort": 8082
 }

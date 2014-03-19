@@ -54,8 +54,8 @@ module.exports = (function() {
       proxies: [
         {
           context: '/api',
-          host: '192.168.199.122',
-          port: 8082,
+          host: '<%= 2ViVe.APIServerIP %>',
+          port: '<%= 2ViVe.APIServerPort %>',
           changeOrigin: true,
           xforward: true,
           rewrite: {
