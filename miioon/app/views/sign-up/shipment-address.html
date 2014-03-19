@@ -14,8 +14,8 @@
     <label class="right inline required" for="shipment-first-name">First Name</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="shipment-first-name" name="shipment-first-name" ng-model="shipmentFirstName"/>
-    <small ng-show="submitted && step['shipment-first-name'].$error.required" class="error">
+    <input required type="text" id="shipment-first-name" name="shipment-first-name" ng-model="shipmentAddress.firstName"/>
+    <small ng-show="submitted && form['shipment-first-name'].$error.required" class="error">
       This field is required.
     </small>
   </div>
@@ -25,8 +25,8 @@
     <label class="right inline required" for="shipment-last-name">Last Name</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="shipment-last-name" name="shipment-last-name" ng-model="shipmentLastName"/>
-    <small ng-show="submitted && step['shipment-last-name'].$error.required" class="error">
+    <input required type="text" id="shipment-last-name" name="shipment-last-name" ng-model="shipmentAddress.lastName"/>
+    <small ng-show="submitted && form['shipment-last-name'].$error.required" class="error">
       This field is required.
     </small>
   </div>
@@ -36,8 +36,8 @@
     <label class="right inline required" for="shipment-address">Address</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="shipment-address" name="shipment-address" ng-model="shipmentAddress"/>
-    <small ng-show="submitted && step['shipment-address'].$error.required" class="error">
+    <input required type="text" id="shipment-address" name="shipment-address" ng-model="shipmentAddress.address"/>
+    <small ng-show="submitted && form['shipment-address'].$error.required" class="error">
       This field is required.
     </small>
   </div>
@@ -47,7 +47,7 @@
     <label class="right inline" for="shipment-address-contd">Address (contd)</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="shipment-address-contd" name="shipment-address-contd" ng-model="shipmentAddressContd"/>
+    <input type="text" id="shipment-address-contd" name="shipment-address-contd" ng-model="shipmentAddress.addressContd"/>
   </div>
 </div>
 <div class="row">
@@ -55,11 +55,11 @@
     <label class="right inline required" for="shipment-country">Country</label>
   </div>
   <div class="small-5 end columns">
-    <select required id="shipment-country" name="shipment-country" ng-model="shipmentCountry">
+    <select required id="shipment-country" name="shipment-country" ng-model="shipmentAddress.country">
       <option value="UK">UK</option>
       <option value="US">US</option>
     </select>
-    <small ng-show="submitted && step['shipment-country'].$error.required" class="error">
+    <small ng-show="submitted && form['shipment-country'].$error.required" class="error">
       This field is required.
     </small>
   </div>
@@ -69,11 +69,11 @@
     <label class="right inline required" for="shipment-county">County</label>
   </div>
   <div class="small-5 end columns">
-    <select required id="shipment-county" name="shipment-county" ng-model="shipmentCounty">
+    <select required id="shipment-county" name="shipment-county" ng-model="shipmentAddress.county">
       <option value="County1">County1</option>
       <option value="County2">County2</option>
     </select>
-    <small ng-show="submitted && step['shipment-county'].$error.required" class="error">
+    <small ng-show="submitted && form['shipment-county'].$error.required" class="error">
       This field is required.
     </small>
   </div>
@@ -83,8 +83,8 @@
     <label class="right inline required" for="shipment-city">City</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="shipment-city" name="shipment-city" ng-model="shipmentCity"/>
-    <small ng-show="submitted && step['shipment-city'].$error.required" class="error">
+    <input required type="text" id="shipment-city" name="shipment-city" ng-model="shipmentAddress.city"/>
+    <small ng-show="submitted && form['shipment-city'].$error.required" class="error">
       This field is required.
     </small>
   </div>
@@ -94,8 +94,8 @@
     <label class="right inline required" for="shipment-post-code">Post Code</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="shipment-post-code" name="shipment-post-code" ng-model="shipmentPostCode"/>
-    <small ng-show="submitted && step['shipment-post-code'].$error.required" class="error">
+    <input required type="text" id="shipment-post-code" name="shipment-post-code" ng-model="shipmentAddress.postCode"/>
+    <small ng-show="submitted && form['shipment-post-code'].$error.required" class="error">
       This field is required.
     </small>
   </div>
@@ -105,8 +105,8 @@
     <label class="right inline required" for="shipment-phone">Phone</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="shipment-phone" name="shipment-phone" ng-model="shipmentPhone"/>
-    <small ng-show="submitted && step['shipment-phone'].$error.required" class="error">
+    <input required type="text" id="shipment-phone" name="shipment-phone" ng-model="shipmentAddress.phone"/>
+    <small ng-show="submitted && form['shipment-phone'].$error.required" class="error">
       This field is required.
     </small>
   </div>

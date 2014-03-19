@@ -3,8 +3,10 @@
 angular.module('2ViVe')
   .controller('SignUpController', ['$scope',
     function($scope) {
-      $scope.currentStepNumber = 1;
+      $scope.currentStepNumber = 3;
       $scope.completedStepNumber = 0;
+      $scope.account = {};
+
       $scope.nextStep = function() {
         $scope.submitted = true;
         if (this.step.$valid) {
@@ -20,7 +22,6 @@ angular.module('2ViVe')
         }
       };
       $scope.moreThanOld18 = function(date) {
-        var dateOption = moment(date);
-        return dateOption.add(18, 'years').isBefore(moment());
+        return moment(date).add(18, 'years').isBefore(moment());
       };
     }]);

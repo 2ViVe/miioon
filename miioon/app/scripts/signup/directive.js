@@ -68,4 +68,40 @@ angular.module('2ViVe')
           });
         }
       };
+    }])
+  .directive('homeAddress', [
+    function() {
+      return {
+        restrict: 'A',
+        templateUrl: 'views/sign-up/home-address.html',
+        scope: {
+          homeAddress: '=',
+          submitted: '=',
+          form: '='
+        }
+      }
+    }])
+  .directive('webAddress', [
+    function() {
+      return {
+        restrict: 'A',
+        templateUrl: 'views/sign-up/web-address.html',
+        scope: {
+          webAddress: '=',
+          submitted: '=',
+          form: '='
+        }
+      }
+    }])
+  .directive('shipmentAddress', [
+    function() {
+      return {
+        restrict: 'A',
+        templateUrl: 'views/sign-up/shipment-address.html',
+        scope: {
+          shipmentAddress: '=',
+          submitted: '=',
+          form: '='
+        }
+      }
     }]);
