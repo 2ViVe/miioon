@@ -1,3 +1,5 @@
+
+
 a:hover {
   text-decoration: underline;
 }
@@ -6,10 +8,15 @@ a.button:hover {
   text-decoration: none;
 }
 
+.primary-link {
+  color: $primary-color;
+}
+
 body {
   min-width: 1000px;
 }
 
+ol,
 ul {
   margin: 0;
   list-style: none;
@@ -43,4 +50,32 @@ ul {
       content: "|";
     }
   }
+}
+
+.important-text {
+  color: $red;
+}
+
+.unimportant-text {
+  color: $grey-dark;
+}
+
+.large-font {
+  font-size: $large-font-size;
+
+  b {
+    font-size: rem-calc(24);
+  }
+}
+
+.medium-font {
+  font-size: $medium-font-size;
+}
+
+.base-font {
+  font-size: $base-font-size;
+}
+
+.default-cursor {
+  cursor: auto;
 }

@@ -1,0 +1,171 @@
+<form class="sign-up-step-4 sign-up-step" name="step" novalidate>
+  <div class="row">
+    <h2 class="columns small-9">
+      Create a new account
+    </h2>
+    <div class="columns small-3" ng-include="'views/sign-up/steps-navigation.html'"></div>
+  </div>
+  <div class="row title">
+    <h6 class="small-12 columns">
+      ORDER DETAILS AND PAYMENT
+    </h6>
+  </div>
+  <div class="row">
+    <div class="columns small-12">
+      <table class="product-table">
+        <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1002</td>
+          <td>
+            <img class="product-thumbnail" src="images/welcome-kit.png" alt="Welcome Kit"/>
+            Starter Welcome Kit
+          </td>
+          <td class="price">£98.00</td>
+          <td>
+            1
+          </td>
+          <td class="price">
+            £98.00
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="4" class="text-right">
+            Item Total
+          </td>
+          <td class="price">
+            £98.00
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-right">
+            Shipping
+          </td>
+          <td class="price">
+            £14.95
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-right">
+            VAT (20% of total)
+          </td>
+          <td class="price">
+            £19.60
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-right">
+            Order Total
+          </td>
+          <td class="price">
+            £230.55
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <div class="row title">
+    <h6 class="small-3 columns">
+      PERSONAL WEBSITE
+    </h6>
+  </div>
+  <div class="row">
+    <div class="columns small-9">
+      <a href="#">www.miioon.com/sites/rupertfindlay</a>
+    </div>
+    <div class="columns small-3 text-right personal-website-info">
+      <ul class="medium-font">
+        <li>First 30 Days</li>
+        <li><b class="important-text">FREE</b></li>
+        <li>£15 / <span class="important-text">3 months</span></li>
+        <li>After 30 Days</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row title">
+    <h6 class="small-3 columns">
+      PERSONAL WEBSITE
+    </h6>
+  </div>
+  <div class="row">
+    <div class="columns small-12">
+      <ul class="medium-font">
+        <li>Rupert Findlay</li>
+        <li>Upton House, Baldock Street</li>
+        <li>Royston, Hertfordshire, SG8 5AY</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row title">
+    <h6 class="small-3 columns">
+      SHIPPING METHOD
+    </h6>
+  </div>
+  <div class="row">
+    <div class="columns small-12">
+      <ul class="medium-font">
+        <li>UK Ground</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row title">
+    <h6 class="small-6 columns">
+      PAYMENT INFORMATION
+      <img src="images/cards.png" alt="Cards"/>
+    </h6>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline" for="card-number">Card Number</label>
+    </div>
+    <div class="small-5 end columns">
+      <input type="text" id="card-number"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline" for="expiration-month">Expiration</label>
+    </div>
+    <div class="small-1 columns">
+      <select id="expiration-month">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="12">12</option>
+      </select>
+    </div>
+    <div class="columns small-2 end">
+      <select id="expiration-year">
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline" for="card-code">Card Code</label>
+    </div>
+    <div class="small-3 columns">
+      <input type="text" id="card-code"/>
+    </div>
+    <div class="small-3 columns end">
+      <a class="input-description base-font" href="#">What's this?</a>
+    </div>
+  </div>
+  <div ng-include="'views/sign-up/shipment-address.html'"></div>
+  <div class="row">
+    <div class="columns small-9 small-offset-3">
+      <button ng-click="submit(step.$valid)">SUBMIT</button>
+    </div>
+  </div>
+</form>

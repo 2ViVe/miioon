@@ -1,0 +1,51 @@
+.sign-up {
+  .sign-up-form-panel{box-shadow: 0 0 0; padding:0; max-width: 600px; margin: 0 auto;}  
+
+  h2 {
+    color: $primary-color;
+    font-size: rem-calc(20);
+    font-weight: $font-weight-bold;
+    margin-top: rem-calc(30);
+    //margin-bottom: rem-calc(10);
+  }
+  h3{
+    color: $primary-color;
+    font-size: rem-calc(16);
+    margin-top: rem-calc(10);
+    //margin-bottom: rem-calc(10);
+    label{
+      line-height: normal;
+    }
+  }
+
+  .register-customer {
+    color: $grey-dark;
+  }
+
+  label[for=is-agreed] {
+    color: $base-font-color;
+  }
+
+  span.error, small.error{
+    margin-bottom: 0;
+  }
+
+  #term-condition {
+    height: auto;
+    line-height: 20px;
+    color: $grey-dark;
+  }
+
+  .personal-website-info {
+    padding-right: 50px;
+
+    b {
+      font-size: rem-calc(22);
+    }
+  }
+
+  form .row{
+    margin-bottom: rem-calc(10);
+  }
+
+}
