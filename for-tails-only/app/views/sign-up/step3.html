@@ -46,41 +46,155 @@
       </table>
     </div>
   </div>
-  <div class="row">
-    <div class='medium-4 columns'>
-      <label>Password <small class='required'>*</small></label>
-    </div>
-    <div class='medium-8 columns'>
-      <input type="password" required pattern="">
-      <small class="error hide">This information is required.</small>
+  <div class='row'>
+    <div class='medium-12 columns'>
+      <h3>Notes</h3>
     </div>
   </div>
   <div class="row">
-    <div class='medium-4 columns'>
-      <label>Password Confirmation <small class='required'>*</small></label>
-    </div>
-    <div class='medium-8 columns'>
-      <input type="password" required pattern="">
-      <small class="error hide">This information is required.</small>
-    </div>
-  </div>
-  <div class="row">
-    <div class='medium-4 columns'>
-      <label>Email <small class='required'>*</small></label>
-    </div>
-    <div class='medium-8 columns'>
-      <input type="email" required pattern="">
-      <small class="error hide">This information is required.</small>
+    <div class='medium-12 columns'>
+      <textarea placeholder="Notes (500 words or less)" class="signUpNote"></textarea>
     </div>
   </div>
   <div class='row'>
     <div class='medium-12 columns'>
-      <h3>Sponsor Information</h3>
+      <h3>Shipping Address</h3>
     </div>
   </div>
   <div class="row">
+    <div class='medium-12 columns'>
+      <ul class="vcard">
+        <li class="locality">Jackson Kho</li> 
+        <li class="locality">2222 Loma Vista Ln, Santa Clara, California, 95051</li> 
+        <li class="locality">Phone: 123-456-7890</li> 
+        <li class="locality"><a data-reveal="" data-reveal-id="popUpEditShip" class="button tiny" href="#"><i class="fa fa-pencil-square-o"></i> Edit</a></li> 
+      </ul>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='medium-12 columns'>
+      <h3>Payment Information</h3>
+    </div>
+  </div>
+  <div class='row'>
     <div class='medium-4 columns'>
-      <label>Sponsor ID <small class='required'>*</small></label>
+      <label>Payment Option <small class='required'>*</small></label>
+    </div>
+    <div class='medium-2 columns'>
+      <label class='formRadioLabel'><input type='radio' name='paymentOption' /> Credit Card</label>
+    </div>
+    <div class='medium-2 columns'>
+      <label class='formRadioLabel'><input type='radio' name='paymentOption' /> Abc</label>
+    </div>
+    <div class='medium-4 columns'>&nbsp;</div>
+  </div>
+  <div class='row'>
+    <div class='medium-4 columns'>
+      <label>Credit Card Number <small class='required'>*</small></label>
+    </div>
+    <div class='medium-4 columns'>
+      <input type='text' /> 
+      <small class="error">This information is required.</small>
+    </div>
+    <div class='medium-4 columns'><img src="img/creditCard.jpg" alt='' /></div>
+  </div>
+  <div class='row'>
+    <div class='medium-4 columns'>
+      <label>Expiration Date <small class='required'>*</small></label>
+    </div>
+    <div class='small-4 columns text-left'>
+      <select id="customDropdown1" class="medium" required="">
+        <option value="">Year</option>
+        <option value="2014">2014</option>
+        <option value="first">2013</option>
+      </select>
+      <small class="error">This information is required.</small>
+    </div>
+    <div class='small-4 columns text-left'>
+      <label class='hide'></label>
+      <select id="customDropdown2" class="medium" required="">
+        <option value="">Month</option>
+        <option value="01">01</option>
+        <option value="first">02</option>
+      </select>
+      <small class="error">This information is required.</small>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='medium-4 columns'>
+      <label>Card Code <small class='required'>*</small></label>
+    </div>
+    <div class='medium-4 columns'>
+      <input type='text' /> 
+      <small class="error signUpInputW">This information is required.</small>
+    </div>
+    <div class='medium-4 columns'>&nbsp;</div>
+  </div>
+  <div class='row'>
+    <div class='medium-12 columns'>
+      <h3>Billing Address</h3>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='medium-4 columns'>
+      <label>Address Line 1 <small class='required'>*</small></label>
+    </div>
+    <div class='medium-8 columns'>
+      <input type="text" required pattern="">
+      <small class="error">This information is required.</small>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='medium-4 columns'>
+      <label>Address Line 2</label>
+    </div>
+    <div class='medium-8 columns'>
+      <input type="text" pattern="">
+    </div>
+  </div>
+  <div class='row'>
+    <div class='medium-4 columns'>
+      <label>City <small class='required'>*</small></label>
+    </div>
+    <div class='medium-8 columns'>
+      <input type="text" required pattern="">
+      <small class="error">This information is required.</small>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='medium-4 columns'>
+      <label>Country <small class='required'>*</small></label>
+    </div>
+    <div class='medium-8 columns'>
+      <select required>
+        <option value=''>Select Country</option>
+      </select>
+      <small class="error">This information is required.</small>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='medium-4 columns'>
+      <label>State <small class='required'>*</small></label>
+    </div>
+    <div class='medium-8 columns'>
+      <select required>
+        <option value=''>Select State</option>
+      </select>
+      <small class="error">This information is required.</small>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='medium-4 columns'>
+      <label>ZIP <small class='required'>*</small></label>
+    </div>
+    <div class='medium-8 columns'>
+      <input type="text" required pattern="">
+      <small class="error">This information is required.</small>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='medium-4 columns'>
+      <label>Phone <small class='required'>*</small></label>
     </div>
     <div class='medium-8 columns'>
       <input type="text" required pattern="">
