@@ -1,28 +1,21 @@
 .main-navigation {
-  border-top: 5px solid $grey-border;
-  border-bottom: 1px solid $grey-border;
+  
+  background:#fff;
+
+  >.row{
+    border-top: 1px solid $grey-border;
+    border-bottom: 1px solid $grey-border;
+  }
 
   .sub-taxons-container {
     display: none;
     position: absolute;
     z-index: 1;
-    width: 400px;
-    border: 1px solid $grey;
-    border-radius: 10px;
-    background: white;
-
-    &:before {
-      background: $grey-lighter;
-      content: "";
-      display: block;
-      height: 15px;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-    }
-
-    .row {
-      padding: 20px 30px 50px 30px;
-    }
+    width: 110px;
+    border: 1px solid #46AAAA;
+    background: #62C8C8;
+    padding:rem-calc(5);
+    top:rem-calc(35);
 
     .sub-taxon-thumbnail {
       border-left: 1px solid $grey-border;
@@ -30,9 +23,18 @@
 
     .sub-taxons {
       li {
-        padding-bottom: 15px;
+        a{
+          display:block;
+          height: rem-calc(25);
+          line-height: rem-calc(25);
+          color:#fff;
+          font-weight: normal;
+          font-size: rem-calc(12);
+        }
       }
     }
+
+
   }
 
   .root-taxons {
@@ -46,30 +48,25 @@
         }
       }
 
-      &.career-opportunity {
-        margin-right: 0;
-
-        a {
-          padding: 15px 15px;
-          margin-top: 8px;
-        }
-
-        .button {
-          margin-bottom: 0;
-          color: white;
-        }
+      &:before{
+        content: '/';
+        color:$primary-color;
       }
 
       &:first-child {
+        &:before{
+          content:'';
+        }
         >a {
           padding-left: 0px;
         }
       }
 
       >a {
+        color:$base-font-color;
         font-size: $medium-font-size;
-        padding: 20px 10px;
-        display: block;
+        padding: 10px 10px;
+        display: inline-block;
       }
     }
   }

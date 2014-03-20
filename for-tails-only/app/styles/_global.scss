@@ -13,7 +13,7 @@ a.button:hover {
 }
 
 body {
-  min-width: 1000px;
+  min-width: 900px;
 }
 
 ol,
@@ -31,7 +31,7 @@ ul {
 
     &:before {
       margin-right: 5px;
-      margin-left: 5px;
+      margin-left: 10px;
     }
   }
 }
@@ -85,6 +85,11 @@ ul {
 }
 .cLessImportant{
   color:$grey-darker !important;
+}
+
+.tails-wrapper{
+  padding-top:0;
+  margin-bottom: 0;
 }
 
 
@@ -144,6 +149,9 @@ ul {
     border-bottom:2px solid $grey-border;
     margin-bottom: 0;
   }
+
+  // row
+  .row .row{margin:0;}
 
 
 

@@ -3,7 +3,7 @@
 $body-bg:url('../images/bg-body.jpg') transparent 0 0 repeat;
 
 $grey-lighter: #F5F5F5;
-$grey-light: #DCDCDC;
+$grey-light: #ccc;
 $grey: #C8C8C8;
 $grey-dark: #B6B6B6;
 $grey-darker: #666666;
@@ -16,6 +16,7 @@ $rem-base: $base-font-size;
 $medium-font-size: rem-calc(14);
 $large-font-size: rem-calc(18);
 $base-font-color: #333;
+$body-font-color: #333;
 
 $primary-color: #62C8C8;
 $secondary-color: #4EACDB;
@@ -26,7 +27,8 @@ $h4-font-size: rem-calc(22);
 $h5-font-size: rem-calc(20);
 $h6-font-size: rem-calc(18);
 
-$anchor-font-color: black;
+$anchor-font-color: $primary-color;
+$anchor-font-color-hover: $primary-color;
 
 $button-tny: rem-calc(5);
 $button-sml: rem-calc(8);
@@ -36,6 +38,7 @@ $button-font-med: rem-calc(14);
 $button-font-weight: bold;
 $button-function-factor: -20%;
 $button-margin-bottom:0;
+$secondary-color:#DCDCDC;
 
 $cursor-default-value: auto;
 
@@ -47,7 +50,7 @@ $list-nested-margin: 0;
 $table-border-size: 0;
 $table-head-font-size: rem-calc(18);
 $table-head-bg: #EEEEEE;
-$table-even-row-bg: white;
+$table-even-row-bg: $grey-light;
 
 // common style
 	$font-weight-bold: bold !default;
