@@ -44,7 +44,7 @@ select{
 
 form {
   label {
-    line-height: 3rem;
+    line-height: rem-calc(30);
   }
 
   .button,
