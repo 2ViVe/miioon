@@ -77,7 +77,7 @@ angular.module('2ViVe')
               'first-name': '',
               'last-name': '',
               phone: '',
-              mobile: '',
+              'mobile-phone': '',
               email: '',
               'fax-number': ''
             };
@@ -113,6 +113,7 @@ angular.module('2ViVe')
         restrict: 'A',
         templateUrl: 'views/sign-up/shipment-address.html',
         scope: {
+          homeAddressSource: '=',
           shipmentAddress: '=',
           submitted: '=',
           form: '=',
@@ -120,7 +121,17 @@ angular.module('2ViVe')
         },
         controller: function($scope) {
           if ($scope.shipmentAddress === undefined) {
-            $scope.shipmentAddress = {};
+            $scope.shipmentAddress = {
+              'first-name': '',
+              'last-name': '',
+              street: '',
+              'street-contd': '',
+              'country-id': '',
+              'state-id': '',
+              city: '',
+              zip: '',
+              phone: ''
+            };
           }
           $scope.$on('remoteValidate', function() {
             Address.validateShippingAddress($scope.shipmentAddress)
@@ -131,6 +142,20 @@ angular.module('2ViVe')
                 $scope.isShipmentAddressValidated = false;
               });
           });
+          $scope.useHomeAddress = function() {
+            if ($scope.shipmentIsUseHomeAddress) {
+              angular.forEach($scope.homeAddressSource, function(value, key) {
+                if ($scope.shipmentAddress[key] !== undefined) {
+                  $scope.shipmentAddress[key] = value;
+                }
+              });
+              console.log($scope.shipmentAddress);
+            } else {
+              angular.forEach($scope.shipmentAddress, function(value, key) {
+                $scope.shipmentAddress[key] = '';
+              });
+            }
+          }
         }
       };
     }]);

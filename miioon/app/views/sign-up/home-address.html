@@ -123,11 +123,11 @@
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <label class="right inline required" for="home-mobile">Mobile</label>
+    <label class="right inline required" for="home-mobile-phone">Mobile</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="home-mobile" name="home-mobile" ng-model="homeAddress.mobile"/>
-    <small ng-show="submitted && form['home-mobile'].$error.required" class="error">
+    <input required type="text" id="home-mobile-phone" name="home-mobile-phone" ng-model="homeAddress['mobile-phone']"/>
+    <small ng-show="submitted && form['home-mobile-phone'].$error.required" class="error">
       This field is required.
     </small>
   </div>
@@ -137,7 +137,7 @@
     <label class="right inline" for="home-work-number">Work Number</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-work-number" name="home-work-number" ng-model="homeAddress.workNumber"/>
+    <input type="text" id="home-work-number" name="home-work-number" ng-model="homeAddress['work-number']"/>
   </div>
 </div>
 <div class="row">
@@ -145,6 +145,6 @@
     <label class="right inline" for="home-fax-number">Fax Number</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="home-fax-number" name="home-fax-number" ng-model="homeAddress.faxNumber"/>
+    <input type="text" id="home-fax-number" name="home-fax-number" ng-model="homeAddress['fax-number']"/>
   </div>
 </div>
