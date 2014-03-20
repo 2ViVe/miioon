@@ -12,14 +12,6 @@ angular.module('2ViVe')
               'x-client-secret': user.clientSecret
             }
           });
-        },
-        validateHomeAddress: function(homeAddress) {
-          return $http.post('/api/v2/addresses/home/validate', homeAddress, {
-            headers: {
-              'x-client-id': user.clientId,
-              'x-client-secret': user.clientSecret
-            }
-          });
         }
       };
     }]);

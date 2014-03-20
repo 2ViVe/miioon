@@ -3,16 +3,24 @@
     <h2 class="columns small-9">
       Create a new account
     </h2>
+
     <div class="columns small-3" ng-include="'views/sign-up/steps-navigation.html'"></div>
   </div>
+
   <div ng-include="'views/sign-up/personal-information.html'"></div>
+
   <div ng-include="'views/sign-up/delivery-options.html'"></div>
-  <div data-home-address="account.homeAddress" data-submitted="submitted" data-form="step"></div>
+
+  <div data-is-home-address-validated="isHomeAddressValidated"
+    data-home-address="account.homeAddress" data-submitted="submitted" data-form="step"></div>
+
   <div data-shipment-address="account.shipmentAddress" data-submitted="submitted" data-form="step"></div>
+
   <div data-web-address="account.webAddress" data-submitted="submitted" data-form="step"></div>
+
   <div class="row">
     <div class="columns small-9 small-offset-3">
-      <button ng-click="nextStep()">CONTINUE</button>
+      <button ng-click="remoteValidate(); nextStep()">CONTINUE</button>
     </div>
   </div>
 </form>

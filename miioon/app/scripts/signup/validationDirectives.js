@@ -1,0 +1,115 @@
+'use strict';
+
+angular.module('2ViVe')
+  .directive('equalTo',
+  function() {
+    return {
+      restrict: 'A',
+      require: 'ngModel',
+      link: function(scope, element, attrs, ctrl) {
+        ctrl.$parsers.unshift(function(viewValue) {
+          ctrl.$setValidity('equalTo', element.val() === angular.element(attrs.equalTo).val());
+          return viewValue;
+        });
+      }
+    };
+  })
+  .directive('sponsorIdValidator', ['Registration',
+    function(Registration) {
+      return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, element, attrs, ctrl) {
+          angular.element(element).on('blur', function() {
+            Registration.validateSponsor(scope[attrs.ngModel])
+              .success(function() {
+                ctrl.$setValidity('validated', true);
+              })
+              .error(function() {
+                ctrl.$setValidity('validated', false);
+              });
+          });
+        }
+      };
+    }])
+  .directive('homeAddress', ['Address',
+    function(Address) {
+      return {
+        restrict: 'A',
+        templateUrl: 'views/sign-up/home-address.html',
+        scope: {
+          homeAddress: '=',
+          submitted: '=',
+          form: '=',
+          isHomeAddressValidated: '='
+        },
+        controller: function($scope) {
+          if ($scope.homeAddress === undefined) {
+            $scope.homeAddress = {};
+          }
+          $scope.$on('remoteValidate', function() {
+            Address.validateHomeAddress($scope.homeAddress)
+              .success(function(data) {
+                $scope.isHomeAddressValidated = true;
+              })
+              .error(function(data) {
+                $scope.isHomeAddressValidated = false;
+              });
+          });
+        }
+      };
+    }])
+  .directive('webAddress', ['Address',
+    function(Address) {
+      return {
+        restrict: 'A',
+        templateUrl: 'views/sign-up/web-address.html',
+        scope: {
+          webAddress: '=',
+          submitted: '=',
+          form: '=',
+          isWebAddressValidated: '='
+        },
+        controller: function($scope) {
+          if ($scope.webAddress === undefined) {
+            $scope.webAddress = {};
+          }
+          $scope.$on('remoteValidate', function() {
+            Address.validateWebAddress($scope.webAddress)
+              .success(function() {
+                $scope.isWebAddressValidated = true;
+              })
+              .error(function() {
+                $scope.isWebAddressValidated = false;
+              });
+          });
+        }
+      };
+    }])
+  .directive('shipmentAddress', ['Address',
+    function(Address) {
+      return {
+        restrict: 'A',
+        templateUrl: 'views/sign-up/shipment-address.html',
+        scope: {
+          shipmentAddress: '=',
+          submitted: '=',
+          form: '=',
+          isShipmentAddressValidated: '='
+        },
+        controller: function($scope) {
+          if ($scope.shipmentAddress === undefined) {
+            $scope.shipmentAddress = {};
+          }
+          $scope.$on('remoteValidate', function() {
+            Address.validateShippingAddress($scope.shipmentAddress)
+              .success(function() {
+                $scope.isShipmentAddressValidated = true;
+              })
+              .error(function() {
+                $scope.isShipmentAddressValidated = false;
+              });
+          });
+        }
+      };
+    }]);

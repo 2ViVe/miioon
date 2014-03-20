@@ -8,7 +8,7 @@
     <label class="right inline required" for="home-first-name">First Name</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" required id="home-first-name" name="home-first-name" ng-model="homeAddress.firstName"/>
+    <input type="text" required id="home-first-name" name="home-first-name" ng-model="homeAddress['first-name']"/>
     <small ng-show="submitted && form['home-first-name'].$error.required" class="error">
       This field is required.
     </small>
@@ -19,7 +19,7 @@
     <label class="right inline required" for="home-last-name">Last Name</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" required id="home-last-name" name="home-last-name" ng-model="homeAddress.lastName"/>
+    <input type="text" required id="home-last-name" name="home-last-name" ng-model="homeAddress['last-name']"/>
     <small ng-show="submitted && form['home-last-name'].$error.required" class="error">
       This field is required.
     </small>
@@ -79,7 +79,7 @@
     <label class="right inline required" for="home-state-id">County</label>
   </div>
   <div class="small-5 end columns">
-    <select required id="home-state-id" name="home-state-id" ng-model="homeAddress.state-id">
+    <select required id="home-state-id" name="home-state-id" ng-model="homeAddress['state-id']">
       <option value="County1">County1</option>
       <option value="County2">County2</option>
     </select>
@@ -104,7 +104,7 @@
     <label class="right inline required" for="home-zip">Post Code</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="home-zip" name="home-zip" ng-model="homeAddress['home-zip']"/>
+    <input required type="text" id="home-zip" name="home-zip" ng-model="homeAddress.zip"/>
     <small ng-show="submitted && form['home-zip'].$error.required" class="error">
       This field is required.
     </small>
