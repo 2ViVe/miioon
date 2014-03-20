@@ -47,24 +47,22 @@
       > .columns:first-child{
           padding-right:rem-calc(5);
       }
-      input[type='text']{
-        height:rem-calc(30);
-        background:$grey-light;
-        color:#fff;
-      }
       .postfix.button{
-        height:rem-calc(30);
-        color:#fff;
         margin-left: rem-calc(5);
         line-height: rem-calc(30);
-        background:$grey-light;
       }
       select{
+        padding:rem-calc(5);
+      }
+      input[type='text'],.postfix.button,select{
         height:rem-calc(30);
         background:$grey-light;
-        padding:rem-calc(5);
         color:#fff;
+        box-shadow: none;
+        border:0;
       }
+
+
     }
 
   }
