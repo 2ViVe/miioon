@@ -5,7 +5,8 @@
 
   <div class="columns small-3 end">
     <label for="web-is-use-home-address">
-      <input type="checkbox" id="web-is-use-home-address"/>
+      <input type="checkbox" id="web-is-use-home-address" ng-change="useHomeAddress()"
+        ng-model="webIsUseHomeAddress"/>
       Use home address
     </label>
   </div>
@@ -15,7 +16,7 @@
     <label class="right inline required" for="web-first-name">First Name</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="web-first-name" name="web-first-name" ng-model="webAddress.firstName"/>
+    <input required type="text" id="web-first-name" name="web-first-name" ng-model="webAddress['first-name']"/>
     <small ng-show="submitted && form['web-first-name'].$error.required" class="error">
       This field is required.
     </small>
@@ -26,7 +27,7 @@
     <label class="right inline required" for="web-last-name">Last Name</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="web-last-name" name="web-last-name" ng-model="webAddress.lastName"/>
+    <input required type="text" id="web-last-name" name="web-last-name" ng-model="webAddress['last-name']"/>
     <small ng-show="submitted && form['web-last-name'].$error.required" class="error">
       This field is required.
     </small>
@@ -67,6 +68,6 @@
     <label class="right inline" for="web-fax-number">Fax Number</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="web-fax-number" name="web-fax-number" ng-model="webAddress.faxNumber"/>
+    <input type="text" id="web-fax-number" name="web-fax-number" ng-model="webAddress['fax-number']"/>
   </div>
 </div>

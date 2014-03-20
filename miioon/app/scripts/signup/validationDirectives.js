@@ -65,6 +65,7 @@ angular.module('2ViVe')
         restrict: 'A',
         templateUrl: 'views/sign-up/web-address.html',
         scope: {
+          homeAddressSource: '=',
           webAddress: '=',
           submitted: '=',
           form: '=',
@@ -72,7 +73,14 @@ angular.module('2ViVe')
         },
         controller: function($scope) {
           if ($scope.webAddress === undefined) {
-            $scope.webAddress = {};
+            $scope.webAddress = {
+              'first-name': '',
+              'last-name': '',
+              phone: '',
+              mobile: '',
+              email: '',
+              'fax-number': ''
+            };
           }
           $scope.$on('remoteValidate', function() {
             Address.validateWebAddress($scope.webAddress)
@@ -83,6 +91,19 @@ angular.module('2ViVe')
                 $scope.isWebAddressValidated = false;
               });
           });
+          $scope.useHomeAddress = function() {
+            if ($scope.webIsUseHomeAddress) {
+              angular.forEach($scope.homeAddressSource, function(value, key) {
+                if ($scope.webAddress[key] !== undefined) {
+                  $scope.webAddress[key] = value;
+                }
+              });
+            } else {
+              angular.forEach($scope.webAddress, function(value, key) {
+                $scope.webAddress[key] = '';
+              });
+            }
+          }
         }
       };
     }])
