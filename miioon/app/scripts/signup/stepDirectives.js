@@ -56,8 +56,16 @@ angular.module('2ViVe')
       controller: function($scope) {
         $scope.shouldValidateRemotlyOnSubmit = true;
         $scope.isHomeAddressValidated = false;
+        $scope.isWebAddressValidated = false;
+        $scope.isShipmentAddressValidated = false;
         $scope.remoteValidate = function() {
           $scope.$broadcast('remoteValidate');
+          $scope.$watchCollection(
+            '[isHomeAddressValidated, isWebAddressValidated, isShipmentAddressValidated]', function() {
+              if ($scope.isHomeAddressValidated && $scope.isWebAddressValidated && $scope.isShipmentAddressValidated) {
+                $scope.isRemoteValidated = true;
+              }
+            });
         }
       }
     }
