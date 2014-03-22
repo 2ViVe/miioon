@@ -5,6 +5,14 @@ angular.module('2ViVe')
     function($http, User) {
       var user = new User();
       return {
+        getCountries: function() {
+          return $http.get('/api/v2/registrations/countries', {
+            headers: {
+              'x-client-id': user.clientId,
+              'x-client-secret': user.clientSecret
+            }
+          });
+        },
         validateSponsor: function(sponsorId) {
           return $http.get('/api/v2/registrations/sponsors/' + sponsorId, {
             headers: {
