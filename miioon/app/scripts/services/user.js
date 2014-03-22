@@ -15,7 +15,7 @@ angular.module('2ViVe')
         return $http.post('/api/v2/authentications/token', {
           user: username,
           password: password,
-          'client-id': CLIENT_ID
+          'x-client-id': CLIENT_ID
         }).success(function(data) {
           user.token = data.response['authentication-token'];
         });
