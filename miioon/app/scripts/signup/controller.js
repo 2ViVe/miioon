@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('SignUpController', ['$scope',
-    function($scope) {
-      $scope.currentStepNumber = 3;
-      $scope.completedStepNumber = 0;
+  .controller('SignUpController', ['$scope', 'Registration',
+    function($scope, Registration) {
+      $scope.currentStepNumber = 4;
+      $scope.completedStepNumber = 4;
       $scope.shouldValidateRemotlyOnSubmit = false;
       $scope.isRemoteValidated = false;
       $scope.submitted = false;
@@ -18,27 +18,39 @@ angular.module('2ViVe')
         }
       }
 
-      $scope.nextStep = function() {
+      function validateStep(step, onValidated) {
         $scope.submitted = true;
-        if (this.step.$valid) {
+        if (step.$valid) {
           if ($scope.shouldValidateRemotlyOnSubmit) {
-            var destroyIsRemoteValidatedWatch = $scope.$watch($scope.isRemoteValidated, function() {
-              if ($scope.isRemoteValidated) {
+            var destroyIsRemoteValidatedWatch = $scope.$watch('isRemoteValidated', function(isRemoteValidated) {
+              if (isRemoteValidated) {
                 destroyIsRemoteValidatedWatch();
                 $scope.isRemoteValidated = false;
-                goToNextStep();
+                onValidated();
               }
             });
           } else {
-            goToNextStep();
+            onValidated();
           }
         }
+      }
+
+      $scope.submit = function() {
+        validateStep(this.step, function() {
+          Registration.create();
+        });
       };
+
+      $scope.nextStep = function() {
+        validateStep(this.step, goToNextStep);
+      };
+
       $scope.goToStep = function(stepNumber) {
         if (stepNumber <= $scope.completedStepNumber) {
           $scope.currentStepNumber = stepNumber;
         }
       };
+
       $scope.moreThanOld18 = function(date) {
         return moment(date).add(18, 'years').isBefore(moment());
       };

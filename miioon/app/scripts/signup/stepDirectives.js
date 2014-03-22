@@ -39,7 +39,7 @@ angular.module('2ViVe')
           }
         });
       }
-    }
+    };
   })
   .directive('signUpStep2', function() {
     return {
@@ -47,7 +47,7 @@ angular.module('2ViVe')
       controller: function($scope) {
         $scope.shouldValidateRemotlyOnSubmit = false;
       }
-    }
+    };
   })
   .directive('signUpStep3',
   function() {
@@ -66,16 +66,25 @@ angular.module('2ViVe')
                 $scope.isRemoteValidated = true;
               }
             });
-        }
+        };
       }
-    }
+    };
   })
   .directive('signUpStep4',
   function() {
     return {
       restrict: 'C',
       controller: function($scope) {
-        $scope.shouldValidateRemotlyOnSubmit = false;
+        $scope.shouldValidateRemotlyOnSubmit = true;
+        $scope.isBillingAddressValidated = false;
+        $scope.remoteValidate = function() {
+          $scope.$broadcast('remoteValidate');
+          $scope.$watch('isBillingAddressValidated', function() {
+              if ($scope.isBillingAddressValidated) {
+                $scope.isRemoteValidated = true;
+              }
+            });
+        };
       }
-    }
+    };
   });

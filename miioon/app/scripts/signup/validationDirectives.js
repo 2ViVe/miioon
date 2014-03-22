@@ -49,10 +49,10 @@ angular.module('2ViVe')
           }
           $scope.$on('remoteValidate', function() {
             Address.validateHomeAddress($scope.homeAddress)
-              .success(function(data) {
+              .success(function() {
                 $scope.isHomeAddressValidated = true;
               })
-              .error(function(data) {
+              .error(function() {
                 $scope.isHomeAddressValidated = false;
               });
           });
@@ -103,7 +103,7 @@ angular.module('2ViVe')
                 $scope.webAddress[key] = '';
               });
             }
-          }
+          };
         }
       };
     }])
@@ -155,7 +155,59 @@ angular.module('2ViVe')
                 $scope.shipmentAddress[key] = '';
               });
             }
+          };
+        }
+      };
+    }])
+  .directive('billingAddress', ['Address',
+    function(Address) {
+      return {
+        restrict: 'A',
+        templateUrl: 'views/sign-up/billing-address.html',
+        scope: {
+          homeAddressSource: '=',
+          billingAddress: '=',
+          submitted: '=',
+          form: '=',
+          isBillingAddressValidated: '='
+        },
+        controller: function($scope) {
+          if ($scope.billingAddress === undefined) {
+            $scope.billingAddress = {
+              'first-name': '',
+              'last-name': '',
+              street: '',
+              'street-contd': '',
+              'country-id': '',
+              'state-id': '',
+              city: '',
+              zip: '',
+              phone: ''
+            };
           }
+          $scope.$on('remoteValidate', function() {
+            Address.validateBillingAddress($scope.billingAddress)
+              .success(function() {
+                $scope.isbillingAddressValidated = true;
+              })
+              .error(function() {
+                $scope.isbillingAddressValidated = false;
+              });
+          });
+          $scope.useHomeAddress = function() {
+            if ($scope.billingIsUseHomeAddress) {
+              angular.forEach($scope.homeAddressSource, function(value, key) {
+                if ($scope.billingAddress[key] !== undefined) {
+                  $scope.billingAddress[key] = value;
+                }
+              });
+              console.log($scope.billingAddress);
+            } else {
+              angular.forEach($scope.billingAddress, function(value, key) {
+                $scope.billingAddress[key] = '';
+              });
+            }
+          };
         }
       };
     }]);

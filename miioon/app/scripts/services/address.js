@@ -28,6 +28,14 @@ angular.module('2ViVe')
               'x-client-secret': user.clientSecret
             }
           });
+        },
+        validateBillingAddress: function(billingAddress) {
+          return $http.post('/api/v2/addresses/billing/validate', billingAddress, {
+            headers: {
+              'x-client-id': user.clientId,
+              'x-client-secret': user.clientSecret
+            }
+          });
         }
       };
     }]);
