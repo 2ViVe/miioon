@@ -13,7 +13,18 @@ angular.module('2ViVe')
             }
           });
         },
-        createAccount: function(paymentMethodId, userInfo, creditcard, homeAddress, shippingMethodId, shippingAddress, billingAddress, autoShipItems, lineItems, specialInstructions, orderNotes) {
+        validateAvailabilities: function(key, value) {
+          var params = {};
+          params[key] = value;
+          return $http.get('/api/v2/registrations/availabilities', {
+            params: params,
+            headers: {
+              'x-client-id': user.clientId,
+              'x-client-secret': user.clientSecret
+            }
+          });
+        },
+        create: function(paymentMethodId, userInfo, creditcard, homeAddress, shippingMethodId, shippingAddress, billingAddress, autoShipItems, lineItems, specialInstructions, orderNotes) {
           return $http.post('/api/v2/registrations', {
             'payment-method-id': paymentMethodId,
             'user-info': userInfo,

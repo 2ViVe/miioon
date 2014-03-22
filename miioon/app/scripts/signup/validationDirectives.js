@@ -14,14 +14,41 @@ angular.module('2ViVe')
       }
     };
   })
-  .directive('sponsorIdValidator', ['Registration',
+  .directive('availabilitiesValidator', ['Registration',
     function(Registration) {
       return {
         restrict: 'A',
         require: 'ngModel',
+        scope: {
+          ngModel: '='
+        },
         link: function(scope, element, attrs, ctrl) {
           angular.element(element).on('blur', function() {
-            Registration.validateSponsor(scope[attrs.ngModel])
+            if (scope.ngModel === undefined) {
+              return;
+            }
+            Registration.validateAvailabilities(attrs.id, scope.ngModel)
+              .success(function() {
+                ctrl.$setValidity('validated', true);
+              })
+              .error(function() {
+                ctrl.$setValidity('validated', false);
+              });
+          });
+        }
+      };
+    }])
+  .directive('sponsorValidator', ['Registration',
+    function(Registration) {
+      return {
+        restrict: 'A',
+        require: 'ngModel',
+        scope: {
+          ngModel: '='
+        },
+        link: function(scope, element, attrs, ctrl) {
+          angular.element(element).on('blur', function() {
+            Registration.validateSponsor(scope.ngModel)
               .success(function() {
                 ctrl.$setValidity('validated', true);
               })

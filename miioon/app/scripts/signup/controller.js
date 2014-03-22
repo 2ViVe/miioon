@@ -10,6 +10,7 @@ angular.module('2ViVe')
       $scope.submitted = false;
       $scope.account = {};
       $scope.payment = {};
+      $scope.userInfo = {};
 
       function goToNextStep() {
         $scope.currentStepNumber++;

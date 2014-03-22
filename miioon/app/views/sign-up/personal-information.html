@@ -9,15 +9,15 @@
   </div>
   <div class="small-9 columns">
     <datepicker id="date-of-birth" name="date-of-birth" required="true" disable-timepicker="true" date-filter="moreThanOld18"
-                init-value="1990-1-1" ng-model="dateOfBirth" class="input-description"></datepicker>
+                init-value="1990-1-1" ng-model="userInfo['birthday']" class="input-description"></datepicker>
     <span class="unimportant-text date-description">No applicants under 18 years old</span>
   </div>
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <label class="right inline" for="number-tax-id">Number / Tax ID</label>
+    <label class="right inline" for="tax-id">Number / Tax ID</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="number-tax-id"/>
+    <input type="text" id="tax-id" name="tax-id" ng-model="userInfo['tax-id']"/>
   </div>
 </div>
