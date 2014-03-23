@@ -11,7 +11,33 @@ angular.module('miioonApp', [
     'ui.utils',
     'ngQuickDate'
   ])
-  .config(function($routeProvider) {
+  .constant('apiUrl', '//199.27.105.132:10442')
+  .config(['$httpProvider', 'apiUrl', function ($httpProvider, apiUrl) {
+
+    $httpProvider.defaults.headers.post = {
+      'X-Authentication-Token': 'abc'
+    };
+
+    $httpProvider.interceptors.push(['$q', function ($q) {
+      return {
+        'request': function (config) {
+
+          if (config.url.indexOf('api')) {
+            config.url = config.url.replace('api', apiUrl);
+          }
+
+          return config || $q.when(config);
+        },
+        'response': function (msg) { // todo Just for test need to remove when deploy
+          console.group('RES');
+          console.dir(msg);
+          console.groupEnd();
+          return msg || $q.when(msg);
+        }
+      }
+    }]);
+  }])
+  .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html'
