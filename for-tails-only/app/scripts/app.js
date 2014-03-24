@@ -27,6 +27,18 @@ angular.module('miioonApp', [
         templateUrl: 'views/sign-up/all.html',
         controller: 'SignUpController'
       })
+      .when('/products/list', {
+        templateUrl: 'views/products/products-list.html',
+        //controller: 'SignUpController'
+      })
+      .when('/products/cart', {
+        templateUrl: 'views/products/products-cart.html',
+        //controller: 'SignUpController'
+      })
+      .when('/products/detail', {
+        templateUrl: 'views/products/products-detail.html',
+        //controller: 'SignUpController'
+      })
       .when('/about', {
         templateUrl: 'views/about.html'
       })

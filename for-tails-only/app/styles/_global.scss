@@ -57,7 +57,7 @@ ul {
 }
 
 .unimportant-text {
-  color: $grey-dark;
+  color: $grey-dark !important;
 }
 
 .large-font {
@@ -94,6 +94,15 @@ ul {
 
 
 // foundation style reset
+  
+  .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6{
+    color:$primary-color;
+  }
+  .panel h2{
+    font-size: rem-calc(14);
+    margin: rem-calc(20) 0;
+  }
+
   // panel style
   .panel{
     -moz-box-shadow: 0 0 3px #ccc;
