@@ -1,21 +1,15 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('User', ['$http',
-    function($http) {
-      var CLIENT_ID = 'test_client_id_1';
-      var CLIENT_SECRET = 'test_client_secret_1';
-
-      var User = function() {
-        this.clientId = CLIENT_ID;
-        this.clientSecret = CLIENT_SECRET;
-      };
+  .factory('User', ['$http', 'CLIENT_ID',
+    function($http, CLIENT_ID) {
+      var User = function() {};
       User.prototype.login = function(username, password) {
         var user = this;
         return $http.post('/api/v2/authentications/token', {
           user: username,
           password: password,
-          'x-client-id': CLIENT_ID
+          'client-id': CLIENT_ID
         }).success(function(data) {
           user.token = data.response['authentication-token'];
         });

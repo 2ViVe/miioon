@@ -1,35 +1,20 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Registration', ['$http', 'User',
-    function($http, User) {
-      var user = new User();
+  .factory('Registration', ['$http',
+    function($http) {
       return {
         getCountries: function() {
-          return $http.get('/api/v2/registrations/countries', {
-            headers: {
-              'x-client-id': user.clientId,
-              'x-client-secret': user.clientSecret
-            }
-          });
+          return $http.get('/api/v2/registrations/countries');
         },
         validateSponsor: function(sponsorId) {
-          return $http.get('/api/v2/registrations/sponsors/' + sponsorId, {
-            headers: {
-              'x-client-id': user.clientId,
-              'x-client-secret': user.clientSecret
-            }
-          });
+          return $http.get('/api/v2/registrations/sponsors/' + sponsorId);
         },
         validateAvailabilities: function(key, value) {
           var params = {};
           params[key] = value;
           return $http.get('/api/v2/registrations/availabilities', {
-            params: params,
-            headers: {
-              'x-client-id': user.clientId,
-              'x-client-secret': user.clientSecret
-            }
+            params: params
           });
         },
         create: function(paymentMethodId, userInfo, creditcard, homeAddress, shippingMethodId, shippingAddress, billingAddress, autoShipItems, lineItems, specialInstructions, orderNotes) {
@@ -45,11 +30,6 @@ angular.module('2ViVe')
             'line-items': lineItems,
             'special-instructions': specialInstructions,
             'order-notes': orderNotes
-          }, {
-            headers: {
-              'x-client-id': user.clientId,
-              'x-client-secret': user.clientSecret
-            }
           });
         }
       };

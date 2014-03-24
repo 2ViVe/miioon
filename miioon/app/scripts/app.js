@@ -11,6 +11,13 @@ angular.module('miioonApp', [
     'ui.utils',
     'ngQuickDate'
   ])
+  .constant('CLIENT_ID', 'test_client_id_1')
+  .config(['$httpProvider', 'CLIENT_ID', function($httpProvider, CLIENT_ID) {
+    $httpProvider.defaults.headers.common = {
+      'x-client-id': CLIENT_ID,
+      'x-client-secret': 'test_client_secret_1'
+    };
+  }])
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
