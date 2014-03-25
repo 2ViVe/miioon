@@ -86,6 +86,9 @@ ul {
 .cLessImportant{
   color:$grey-darker !important;
 }
+.no-columns-padding{
+  padding:0 !important;
+}
 
 .tails-wrapper{
   padding-top:0;
@@ -144,7 +147,18 @@ ul {
     tbody{
       td{
         border-bottom: 1px solid $grey-border;
+        p{
+          margin-bottom: 0;
+          font-size: rem-calc(14);
+        }
       }
+    }
+    .border-sep{
+      td{
+        border-left:1px solid $grey-border;
+        &:first-child{border-left:0;}
+      }
+      
     }
   }
 

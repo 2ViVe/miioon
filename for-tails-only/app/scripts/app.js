@@ -27,6 +27,10 @@ angular.module('miioonApp', [
         templateUrl: 'views/sign-up/all.html',
         controller: 'SignUpController'
       })
+      .when('/products/', {
+        templateUrl: 'views/products/products-index.html',
+        //controller: 'SignUpController'
+      })
       .when('/products/list', {
         templateUrl: 'views/products/products-list.html',
         //controller: 'SignUpController'
@@ -37,6 +41,14 @@ angular.module('miioonApp', [
       })
       .when('/products/detail', {
         templateUrl: 'views/products/products-detail.html',
+        //controller: 'SignUpController'
+      })
+      .when('/products/gift-detail', {
+        templateUrl: 'views/products/products-gift-detail.html',
+        //controller: 'SignUpController'
+      })
+      .when('/products/success', {
+        templateUrl: 'views/products/products-success.html',
         //controller: 'SignUpController'
       })
       .when('/about', {
