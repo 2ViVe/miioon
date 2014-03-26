@@ -74,13 +74,13 @@
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <label class="right inline required" for="country-iso">Country</label>
+    <label class="right inline required" for="country">Country</label>
   </div>
   <div class="small-5 end columns">
-    <select required name="country-iso" id="country-iso" data-registration-countries ng-model="userInfo['country-iso']"
-            ng-options="country.iso as country.name for country in countries">
+    <select required name="country" id="country" data-registration-countries ng-model="userInfo['country']"
+            ng-options="country.name for country in countries">
     </select>
-    <small ng-show="submitted && step['country-iso'].$error.required" class="error">
+    <small ng-show="submitted && step['country'].$error.required" class="error">
       This field is required.
     </small>
   </div>

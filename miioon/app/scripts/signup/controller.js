@@ -3,8 +3,8 @@
 angular.module('2ViVe')
   .controller('SignUpController', ['$scope', 'Registration',
     function($scope, Registration) {
-      $scope.currentStepNumber = 1;
-      $scope.completedStepNumber = 1;
+      $scope.currentStepNumber = 2;
+      $scope.completedStepNumber = 4;
       $scope.shouldValidateRemotlyOnSubmit = false;
       $scope.isRemoteValidated = false;
       $scope.submitted = false;
@@ -21,19 +21,21 @@ angular.module('2ViVe')
 
       function validateStep(step, onValidated) {
         $scope.submitted = true;
-        if (step.$valid) {
-          if ($scope.shouldValidateRemotlyOnSubmit) {
-            var destroyIsRemoteValidatedWatch = $scope.$watch('isRemoteValidated', function(isRemoteValidated) {
-              if (isRemoteValidated) {
-                destroyIsRemoteValidatedWatch();
-                $scope.isRemoteValidated = false;
-                onValidated();
-              }
-            });
-          } else {
-            onValidated();
-          }
+        if (step.$invalid) {
+          return false;
         }
+        if ($scope.shouldValidateRemotlyOnSubmit) {
+          var destroyIsRemoteValidatedWatch = $scope.$watch('isRemoteValidated', function(isRemoteValidated) {
+            if (isRemoteValidated) {
+              destroyIsRemoteValidatedWatch();
+              $scope.isRemoteValidated = false;
+              onValidated();
+            }
+          });
+        } else {
+          onValidated();
+        }
+        return true;
       }
 
       $scope.submit = function() {
@@ -43,7 +45,7 @@ angular.module('2ViVe')
       };
 
       $scope.nextStep = function() {
-        validateStep(this.step, goToNextStep);
+        return validateStep(this.step, goToNextStep);
       };
 
       $scope.goToStep = function(stepNumber) {
@@ -54,5 +56,9 @@ angular.module('2ViVe')
 
       $scope.moreThanOld18 = function(date) {
         return moment(date).add(18, 'years').isBefore(moment());
+      };
+
+      $scope.getProducts = function() {
+        Registration.getProducts($scope.userInfo.country.id);
       };
     }]);

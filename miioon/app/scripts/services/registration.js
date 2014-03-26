@@ -4,6 +4,17 @@ angular.module('2ViVe')
   .factory('Registration', ['$http',
     function($http) {
       return {
+        getProducts: function(countryId, roleCode) {
+          if (!roleCode) {
+            roleCode = 'D';
+          }
+          return $http.get('/api/v2/products', {
+            params: {
+              'country-id': countryId,
+              'role-code': roleCode
+            }
+          });
+        },
         getCountries: function() {
           return $http.get('/api/v2/registrations/countries');
         },

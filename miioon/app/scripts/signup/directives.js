@@ -12,12 +12,12 @@ angular.module('2ViVe')
         }
       };
     }])
-  .directive('countriesAndStates', ['Country',
-    function(Country) {
+  .directive('countriesAndStates', ['Registration',
+    function(Registration) {
       return {
         restrict: 'A',
         controller: function($scope) {
-          Country.list().success(function(countries) {
+          Registration.getCountries().success(function(countries) {
             $scope.countries = countries.response;
           });
           $scope.onCountryChanged = function(selectedCountryId) {
