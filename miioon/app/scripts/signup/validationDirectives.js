@@ -20,15 +20,15 @@ angular.module('2ViVe')
         restrict: 'A',
         require: 'ngModel',
         scope: {
-          ngModel: '=',
           key: '@availabilitiesValidator'
         },
         link: function(scope, element, attrs, ctrl) {
           angular.element(element).on('blur', function() {
-            if (scope.ngModel === undefined) {
+            var value = ctrl.$modelValue;
+            if (ctrl.$isEmpty(value)) {
               return;
             }
-            Registration.validateAvailabilities(scope.key, scope.ngModel)
+            Registration.validateAvailabilities(scope.key, value)
               .success(function() {
                 ctrl.$setValidity('validated', true);
               })
@@ -44,12 +44,13 @@ angular.module('2ViVe')
       return {
         restrict: 'A',
         require: 'ngModel',
-        scope: {
-          ngModel: '='
-        },
         link: function(scope, element, attrs, ctrl) {
           angular.element(element).on('blur', function() {
-            Registration.validateSponsor(scope.ngModel)
+            var sponsorId = ctrl.$modelValue;
+            if (ctrl.$isEmpty(sponsorId)) {
+              return;
+            }
+            Registration.validateSponsor(sponsorId)
               .success(function() {
                 ctrl.$setValidity('validated', true);
               })
