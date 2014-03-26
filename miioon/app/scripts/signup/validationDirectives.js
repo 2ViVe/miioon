@@ -20,14 +20,15 @@ angular.module('2ViVe')
         restrict: 'A',
         require: 'ngModel',
         scope: {
-          ngModel: '='
+          ngModel: '=',
+          key: '@availabilitiesValidator'
         },
         link: function(scope, element, attrs, ctrl) {
           angular.element(element).on('blur', function() {
             if (scope.ngModel === undefined) {
               return;
             }
-            Registration.validateAvailabilities(attrs.id, scope.ngModel)
+            Registration.validateAvailabilities(scope.key, scope.ngModel)
               .success(function() {
                 ctrl.$setValidity('validated', true);
               })

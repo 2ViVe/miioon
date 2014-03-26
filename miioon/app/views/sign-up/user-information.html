@@ -26,7 +26,7 @@
   </div>
   <div class="small-5 end columns">
     <input required ng-model="userInfo.login" type="text" name="login" id="login"
-           data-availabilities-validator placeholder="Please enter the username."/>
+           data-availabilities-validator="login" placeholder="Please enter the username."/>
     <small ng-show="submitted && step.login.$error.required" class="error">
       This field is required.
     </small>
@@ -63,7 +63,7 @@
   </div>
   <div class="small-5 end columns">
     <input required ng-model="userInfo.email" type="email" name="email" id="email"
-           data-availabilities-validator/>
+           data-availabilities-validator="email"/>
     <small ng-show="submitted && (step.email.$error.required || step.email.$error.email)" class="error">
       A valid email address is required.
     </small>
