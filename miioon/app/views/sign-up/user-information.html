@@ -77,8 +77,11 @@
     <label class="right inline required" for="country-iso">Country</label>
   </div>
   <div class="small-5 end columns">
-    <select required id="country-iso" data-registration-countries ng-model="userInfo['country-iso']"
+    <select required name="country-iso" id="country-iso" data-registration-countries ng-model="userInfo['country-iso']"
             ng-options="country.iso as country.name for country in countries">
     </select>
+    <small ng-show="submitted && step['country-iso'].$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 </div>
