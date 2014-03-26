@@ -63,7 +63,7 @@
     <div class="small-5 end columns">
       <select required id="shipment-country-id" name="shipment-country-id" ng-model="shipmentAddress['country-id']"
               ng-options="country.id as country.name for country in countries"
-              ng-change="onCountryChanged(homeAddress['country-id'])">
+              ng-change="onCountryChanged(shipmentAddress['country-id'])">
       </select>
       <small ng-show="submitted && form['shipment-country-id'].$error.required" class="error">
         This field is required.
