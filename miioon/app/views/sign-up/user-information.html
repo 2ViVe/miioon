@@ -51,7 +51,7 @@
     <label class="right inline required" for="password-confirmation">Password Confirmation</label>
   </div>
   <div class="small-5 end columns">
-    <input required ng-model="passwordConfirmation" ui-validate="'$value==password'" ui-validate-watch="'password'"
+    <input required ng-model="passwordConfirmation" ui-validate="'$value==userInfo.password'" ui-validate-watch="'userInfo.password'"
            type="password" name="password-confirmation" id="password-confirmation"/>
     <small ng-show="submitted && step['password-confirmation'].$error.validator" class="error">Passwords must match.
     </small>
@@ -67,7 +67,7 @@
     <small ng-show="submitted && (step.email.$error.required || step.email.$error.email)" class="error">
       A valid email address is required.
     </small>
-    <small ng-show="step['login'].$error.validated" class="error">
+    <small ng-show="step['email'].$error.validated" class="error">
       Email is not available.
     </small>
   </div>
