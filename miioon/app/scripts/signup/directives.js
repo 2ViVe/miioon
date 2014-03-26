@@ -23,7 +23,7 @@ angular.module('2ViVe')
           $scope.onCountryChanged = function(selectedCountryId) {
             angular.forEach($scope.countries, function(country) {
               if (country.id === selectedCountryId) {
-                $scope.state = country.states;
+                $scope.states = country.states;
                 return;
               }
             });
