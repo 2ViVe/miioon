@@ -68,12 +68,13 @@
       </small>
     </div>
   </div>
-  <div class="row">
+  <div class="row" ng-show="states.length > 0">
     <div class="small-3 columns">
       <label class="right inline required" for="billing-state-id">County</label>
     </div>
     <div class="small-5 end columns">
-      <select required id="billing-state-id" name="billing-state-id" ng-model="billingAddress['state-id']"
+      <select id="billing-state-id" name="billing-state-id" ng-model="billingAddress['state-id']"
+              ng-required="states.length > 0"
               ng-options="state.id as state.name for state in states">
       </select>
       <small ng-show="submitted && form['billing-state-id'].$error.required" class="error">

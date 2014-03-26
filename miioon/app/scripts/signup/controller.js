@@ -3,7 +3,7 @@
 angular.module('2ViVe')
   .controller('SignUpController', ['$scope', 'Registration',
     function($scope, Registration) {
-      $scope.currentStepNumber = 2;
+      $scope.currentStepNumber = 3;
       $scope.completedStepNumber = 4;
       $scope.shouldValidateRemotlyOnSubmit = false;
       $scope.isRemoteValidated = false;

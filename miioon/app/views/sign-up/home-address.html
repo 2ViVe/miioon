@@ -75,12 +75,13 @@
       </small>
     </div>
   </div>
-  <div class="row">
+  <div class="row" ng-show="states.length > 0">
     <div class="small-3 columns">
       <label class="right inline required" for="home-state-id">County</label>
     </div>
     <div class="small-5 end columns">
-      <select required id="home-state-id" name="home-state-id" ng-model="homeAddress['state-id']"
+      <select id="home-state-id" name="home-state-id" ng-model="homeAddress['state-id']"
+              ng-required="states.length > 0"
               ng-options="state.id as state.name for state in states">
       </select>
       <small ng-show="submitted && form['home-state-id'].$error.required" class="error">
