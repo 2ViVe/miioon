@@ -51,6 +51,10 @@ angular.module('miioonApp', [
         templateUrl: 'views/products/products-success.html',
         //controller: 'SignUpController'
       })
+      .when('/products/checkout', {
+        templateUrl: 'views/products/products-checkout.html',
+        //controller: 'SignUpController'
+      })
       .when('/about', {
         templateUrl: 'views/about.html'
       })
