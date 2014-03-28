@@ -41,7 +41,8 @@ angular.module('2ViVe')
       }
     };
   })
-  .directive('signUpStep2', function() {
+  .directive('signUpStep2',
+  function() {
     return {
       restrict: 'C',
       controller: function($scope) {

@@ -18,7 +18,7 @@ angular.module('miioonApp', [
       'x-client-secret': 'test_client_secret_1'
     };
   }])
-  .config(function($routeProvider) {
+  .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html'
@@ -40,4 +40,4 @@ angular.module('miioonApp', [
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }]);
