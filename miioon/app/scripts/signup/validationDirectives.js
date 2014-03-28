@@ -72,7 +72,7 @@ angular.module('2ViVe')
           form: '=',
           isHomeAddressValidated: '='
         },
-        controller: function($scope) {
+        controller: ["$scope", function($scope) {
           if ($scope.homeAddress === undefined) {
             $scope.homeAddress = {};
           }
@@ -85,7 +85,7 @@ angular.module('2ViVe')
                 $scope.isHomeAddressValidated = false;
               });
           });
-        }
+        }]
       };
     }])
   .directive('webAddress', ['Address',
@@ -100,7 +100,7 @@ angular.module('2ViVe')
           form: '=',
           isWebAddressValidated: '='
         },
-        controller: function($scope) {
+        controller: ["$scope", function($scope) {
           if ($scope.webAddress === undefined) {
             $scope.webAddress = {
               'first-name': '',
@@ -133,7 +133,7 @@ angular.module('2ViVe')
               });
             }
           };
-        }
+        }]
       };
     }])
   .directive('shipmentAddress', ['Address',
@@ -148,7 +148,7 @@ angular.module('2ViVe')
           form: '=',
           isShipmentAddressValidated: '='
         },
-        controller: function($scope) {
+        controller: ["$scope", function($scope) {
           if ($scope.shipmentAddress === undefined) {
             $scope.shipmentAddress = {
               'first-name': '',
@@ -185,7 +185,7 @@ angular.module('2ViVe')
               });
             }
           };
-        }
+        }]
       };
     }])
   .directive('billingAddress', ['Address',
@@ -200,7 +200,7 @@ angular.module('2ViVe')
           form: '=',
           isBillingAddressValidated: '='
         },
-        controller: function($scope) {
+        controller: ["$scope", function($scope) {
           if ($scope.billingAddress === undefined) {
             $scope.billingAddress = {
               'first-name': '',
@@ -237,6 +237,6 @@ angular.module('2ViVe')
               });
             }
           };
-        }
+        }]
       };
     }]);

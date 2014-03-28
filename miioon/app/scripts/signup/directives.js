@@ -5,18 +5,18 @@ angular.module('2ViVe')
     function(Registration) {
       return {
         restrict: 'A',
-        controller: function($scope) {
+        controller: ["$scope", function($scope) {
           Registration.getCountries().success(function(countries) {
             $scope.countries = countries.response;
           });
-        }
+        }]
       };
     }])
   .directive('countriesAndStates', ['Registration',
     function(Registration) {
       return {
         restrict: 'A',
-        controller: function($scope) {
+        controller: ["$scope", function($scope) {
           Registration.getCountries().success(function(countries) {
             $scope.countries = countries.response;
           });
@@ -28,6 +28,6 @@ angular.module('2ViVe')
               }
             });
           };
-        }
+        }]
       };
     }]);

@@ -16,9 +16,9 @@ angular.module('2ViVe')
   function() {
     return {
       restrict: 'C',
-      controller: function($scope) {
+      controller: ["$scope", function($scope) {
         $scope.shouldValidateRemotlyOnSubmit = false;
-      },
+      }],
       link: function(scope, element) {
         var isViewedTermAndCondition = false;
         var isAgreementChecked = false;
@@ -45,16 +45,16 @@ angular.module('2ViVe')
   function() {
     return {
       restrict: 'C',
-      controller: function($scope) {
+      controller: ["$scope", function($scope) {
         $scope.shouldValidateRemotlyOnSubmit = false;
-      }
+      }]
     };
   })
   .directive('signUpStep3',
   function() {
     return {
       restrict: 'C',
-      controller: function($scope) {
+      controller: ["$scope", function($scope) {
         $scope.shouldValidateRemotlyOnSubmit = true;
         $scope.isHomeAddressValidated = false;
         $scope.isWebAddressValidated = false;
@@ -68,14 +68,14 @@ angular.module('2ViVe')
               }
             });
         };
-      }
+      }]
     };
   })
   .directive('signUpStep4',
   function() {
     return {
       restrict: 'C',
-      controller: function($scope) {
+      controller: ["$scope", function($scope) {
         $scope.shouldValidateRemotlyOnSubmit = true;
         $scope.isBillingAddressValidated = false;
         $scope.remoteValidate = function() {
@@ -86,6 +86,6 @@ angular.module('2ViVe')
               }
             });
         };
-      }
+      }]
     };
   });
