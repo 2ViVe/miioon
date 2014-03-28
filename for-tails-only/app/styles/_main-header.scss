@@ -1,27 +1,71 @@
 .main-header {
+  max-width: 100%;
   padding-top: 15px;
   padding-bottom: 20px;
+  background: #fff;
+  
+  & > .row{
+    position:relative;
 
-  .header-links {
-    color: $grey-dark;
-    margin-bottom: 30px;
-    font-size: rem-calc(16);
-    @include clearfix;
+    .header-links {
+      position:absolute;
+      right:0;
+      top:0;
+      color: $grey;
+      margin-bottom: 30px;
+      font-size: rem-calc(12);
+      @include clearfix;
 
-    li {
-      float: left;
+      li {
+        float: left;
 
-      a {
-        color: $grey-dark;
+        a {
+          color: $base-font-color;
 
-        &:hover {
-          color: black;
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+      li.header-links-bowl{
+        a{
+          color:$primary-color;
         }
       }
     }
+
+
+    .header-search{
+      margin:0;
+      position:absolute;
+      right:rem-calc(5);
+      top:rem-calc(30);
+      width:350px;
+      .columns{
+        padding:0;
+      }
+      > .columns:first-child{
+          padding-right:rem-calc(5);
+      }
+      .postfix.button{
+        margin-left: rem-calc(5);
+        line-height: rem-calc(30);
+      }
+      select{
+        padding:rem-calc(5);
+      }
+      input[type='text'],.postfix.button,select{
+        height:rem-calc(30);
+        background:$grey-light;
+        color:#fff;
+        box-shadow: none;
+        border:0;
+      }
+
+
+    }
+
   }
 
-  .shopping-bag {
-    font-size: rem-calc(14);
-  }
+  
 }

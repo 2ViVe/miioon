@@ -1,12 +1,24 @@
 @import "compass/utilities";
-@import "variable";
+@import "compass/css3";
+@import "variables";
 @import "icons";
 @import "global";
 @import "main-header";
 @import "main-navigation";
 @import "main-footer";
+@import "main-container";
+@import "home";
 @import "form";
 @import "sign-in";
+@import "slider";
+@import "grid-promotions";
+@import "about/all";
+@import "taxon/all";
+@import "products";
+@import "sign-up";
+@import "product-table";
+@import "steps-navigation";
+@import "products";
 
 .browsehappy {
   margin: 0.2em 0;

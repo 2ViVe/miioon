@@ -2,6 +2,10 @@
   padding-top: 85px;
   padding-bottom: 105px;
 
+  h2 {
+    font-size: rem-calc(36);
+  }
+
   .forgot-password {
     float: right;
     margin-top: 3px;
@@ -28,7 +32,7 @@
 
   .benefits {
     list-style: disc;
-    color: $grey-dark;
+    color: $grey;
     margin: 15px 15px 25px;
   }
 }

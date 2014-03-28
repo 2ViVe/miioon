@@ -1,0 +1,99 @@
+.sign-up {
+
+  .sign-up-step-bar{
+    position:relative;
+    width:805px;
+    padding: 40px 0;
+    margin: 0 auto;
+    text-align: center;
+    .sign-up-step-text-1,.sign-up-step-text-2,.sign-up-step-text-3,.sign-up-step-text-4{
+      position:absolute;
+      top:20px;
+      font-size: rem-calc(12);
+    }
+    .sign-up-step-text-1{left:-15px;}
+    .sign-up-step-text-2{left:240px;}
+    .sign-up-step-text-3{left:490px;}
+    .sign-up-step-text-4{left:745px;}
+    .sign-up-step-mod-1,.sign-up-step-mod-2{
+      position: absolute;
+      top:72px;
+      color:#666;
+    }
+    .sign-up-step-mod-1{left:-15px;}
+    .sign-up-step-mod-2{left:250px;}
+  }
+
+  margin:2rem auto;
+
+  .sign-up-form-panel{box-shadow: 0 0 0; padding:0; margin: 0 auto;}  
+
+  h2 {
+    color: $primary-color;
+    font-size: rem-calc(20);
+    font-weight: $font-weight-bold;
+    margin-top: rem-calc(30);
+    //margin-bottom: rem-calc(10);
+  }
+  h3{
+    color: $primary-color;
+    font-size: rem-calc(16);
+    margin-top: rem-calc(10);
+    font-weight: normal;
+    //margin-bottom: rem-calc(10);
+    label{
+      line-height: normal;
+    }
+  }
+
+  .register-customer {
+    color: $grey-dark;
+  }
+
+  label[for=is-agreed] {
+    color: $base-font-color;
+  }
+
+  span.error, small.error{
+    margin-bottom: 0;
+  }
+
+  #term-condition {
+    height: auto;
+    line-height: 20px;
+    color: $grey-dark;
+  }
+
+  .personal-website-info {
+    padding-right: 50px;
+
+    b {
+      font-size: rem-calc(22);
+    }
+  }
+
+  form {
+    max-width: rem-calc(700);
+    margin: 0 auto;
+    > .row{
+      margin-bottom: rem-calc(10);
+    }
+  }
+
+  .sign-up-pack-item{
+    .pack-img{float:left;}
+    .pack-info{
+      margin-left:60px;
+      h6{
+        color:$primary-color;
+        font-weight: normal;
+        font-size: rem-calc(16);
+      }
+    }   
+  }
+
+  .sign-up-note{
+    height:rem-calc(120);
+  }
+
+}

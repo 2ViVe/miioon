@@ -1,0 +1,13 @@
+.taxon-navigation {
+  .current {
+    color: $primary-color;
+  }
+
+  .root-taxon {
+    margin: 0;
+  }
+
+  li {
+    padding-top: 15px;
+  }
+}
