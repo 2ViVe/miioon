@@ -76,14 +76,20 @@ angular.module('2ViVe')
           if ($scope.homeAddress === undefined) {
             $scope.homeAddress = {};
           }
+          var invalidFields = [];
           $scope.$on('remoteValidate', function() {
+            angular.forEach(invalidFields, function(invalidField) {
+              invalidField.$setValidity('validated', true);
+            });
+            invalidFields = [];
             Address.validateHomeAddress($scope.homeAddress)
               .success(function(data) {
                 var failures = data.response.failures;
-                if (failures) {
+                if (failures.length > 0) {
                   angular.forEach(failures, function(failiure) {
                     $scope.form['home-' + failiure.field].$setValidity('validated', false);
                     $scope.form['home-' + failiure.field].errorMessageValidated = failiure.message;
+                    invalidFields.push($scope.form['home-' + failiure.field]);
                   });
                   $scope.isHomeAddressValidated = false;
                 } else {
@@ -120,14 +126,20 @@ angular.module('2ViVe')
               'fax-number': ''
             };
           }
+          var invalidFields = [];
           $scope.$on('remoteValidate', function() {
+            angular.forEach(invalidFields, function(invalidField) {
+              invalidField.$setValidity('validated', true);
+            });
+            invalidFields = [];
             Address.validateWebAddress($scope.webAddress)
               .success(function(data) {
                 var failures = data.response.failures;
-                if (failures) {
+                if (failures.length > 0) {
                   angular.forEach(failures, function(failiure) {
                     $scope.form['web-' + failiure.field].$setValidity('validated', false);
                     $scope.form['web-' + failiure.field].errorMessageValidated = failiure.message;
+                    invalidFields.push($scope.form['web-' + failiure.field]);
                   });
                   $scope.isWebAddressValidated = false;
                 } else {
@@ -180,22 +192,28 @@ angular.module('2ViVe')
               phone: ''
             };
           }
+          var invalidFields = [];
           $scope.$on('remoteValidate', function() {
-            Address.validateShippingAddress($scope.shippingAddress)
+            angular.forEach(invalidFields, function(invalidField) {
+              invalidField.$setValidity('validated', true);
+            });
+            invalidFields = [];
+            Address.validateShippingAddress($scope.shipmentAddress)
               .success(function(data) {
                 var failures = data.response.failures;
-                if (failures) {
+                if (failures.length > 0) {
                   angular.forEach(failures, function(failiure) {
-                    $scope.form['shipping-' + failiure.field].$setValidity('validated', false);
-                    $scope.form['shipping-' + failiure.field].errorMessageValidated = failiure.message;
+                    $scope.form['shipment-' + failiure.field].$setValidity('validated', false);
+                    $scope.form['shipment-' + failiure.field].errorMessageValidated = failiure.message;
+                    invalidFields.push($scope.form['shipment-' + failiure.field]);
                   });
-                  $scope.isShippingAddressValidated = false;
+                  $scope.isShipmentAddressValidated = false;
                 } else {
-                  $scope.isShippingAddressValidated = true;
+                  $scope.isShipmentAddressValidated = true;
                 }
               })
               .error(function() {
-                $scope.isShippingAddressValidated = false;
+                $scope.isShipmentAddressValidated = false;
               });
           });
           $scope.useHomeAddress = function() {
@@ -205,7 +223,6 @@ angular.module('2ViVe')
                   $scope.shipmentAddress[key] = value;
                 }
               });
-              console.log($scope.shipmentAddress);
             } else {
               angular.forEach($scope.shipmentAddress, function(value, key) {
                 $scope.shipmentAddress[key] = '';

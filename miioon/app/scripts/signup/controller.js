@@ -14,33 +14,6 @@ angular.module('2ViVe')
       $scope.products = [];
       $scope.lineItems = [];
 
-      function goToNextStep() {
-        $scope.submitted = false;
-        $scope.currentStepNumber++;
-        if ($scope.currentStepNumber > $scope.completedStepNumber) {
-          $scope.completedStepNumber = $scope.currentStepNumber;
-        }
-      }
-
-      function validateStep(step, onValidated) {
-        $scope.submitted = true;
-        if (step.$invalid) {
-          return false;
-        }
-        if ($scope.shouldValidateRemotlyOnSubmit) {
-          var destroyIsRemoteValidatedWatch = $scope.$watch('isRemoteValidated', function(isRemoteValidated) {
-            if (isRemoteValidated) {
-              destroyIsRemoteValidatedWatch();
-              $scope.isRemoteValidated = false;
-              onValidated();
-            }
-          });
-        } else {
-          onValidated();
-        }
-        return true;
-      }
-
       $scope.registrationCountryChange = function(country) {
         Registration.getProducts(country.id)
           .success(function(data) {
@@ -59,15 +32,17 @@ angular.module('2ViVe')
         }
       };
 
-      $scope.submit = function() {
-        validateStep(this.step, function() {
-          Registration.create();
-        });
-      };
+      $scope.$on('CreateAccount', function() {
+        Registration.create();
+      });
 
-      $scope.nextStep = function() {
-        return validateStep(this.step, goToNextStep);
-      };
+      $scope.$on('NextStep', function() {
+        $scope.submitted = false;
+        $scope.currentStepNumber++;
+        if ($scope.currentStepNumber > $scope.completedStepNumber) {
+          $scope.completedStepNumber = $scope.currentStepNumber;
+        }
+      });
 
       $scope.goToStep = function(stepNumber) {
         if (stepNumber <= $scope.completedStepNumber) {

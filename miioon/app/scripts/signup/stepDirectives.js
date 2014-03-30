@@ -17,7 +17,11 @@ angular.module('2ViVe')
       return {
         restrict: 'C',
         controller: ['$scope', function($scope) {
-          $scope.shouldValidateRemotlyOnSubmit = false;
+          $scope.nextStep = function() {
+            if (this.step.$valid) {
+              $scope.$emit('NextStep');
+            }
+          };
         }],
         link: function(scope, element) {
           var isViewedTermAndCondition = false;
@@ -46,7 +50,6 @@ angular.module('2ViVe')
     return {
       restrict: 'C',
       controller: ['$scope', function($scope) {
-        $scope.shouldValidateRemotlyOnSubmit = false;
         $scope.$on('RegistrationCountryChange', function(country) {
           Registration.getProducts(country.id)
             .success(function(data) {
@@ -54,6 +57,11 @@ angular.module('2ViVe')
               console.log($scope.products);
             });
         });
+        $scope.nextStep = function() {
+          if (this.step.$valid) {
+            $scope.$emit('NextStep');
+          }
+        };
       }]
     };
   }])
@@ -62,21 +70,21 @@ angular.module('2ViVe')
     return {
       restrict: 'C',
       controller: ['$scope', function($scope) {
-        $scope.shouldValidateRemotlyOnSubmit = true;
         $scope.isHomeAddressValidated = false;
         $scope.isWebAddressValidated = false;
         $scope.isShipmentAddressValidated = false;
-        $scope.remoteValidate = function() {
-          if (this.step.$invalid) {
-            return;
+
+        $scope.nextStep = function() {
+          if ($scope.submitted || this.step.$valid) {
+            $scope.$broadcast('remoteValidate');
+            $scope.$watchCollection(
+              '[isHomeAddressValidated, isWebAddressValidated, isShipmentAddressValidated]', function() {
+                if ($scope.isHomeAddressValidated && $scope.isWebAddressValidated && $scope.isShipmentAddressValidated) {
+                  $scope.$emit('NextStep');
+                }
+              });
           }
-          $scope.$broadcast('remoteValidate');
-          $scope.$watchCollection(
-            '[isHomeAddressValidated, isWebAddressValidated, isShipmentAddressValidated]', function() {
-              if ($scope.isHomeAddressValidated && $scope.isWebAddressValidated && $scope.isShipmentAddressValidated) {
-                $scope.isRemoteValidated = true;
-              }
-            });
+          $scope.submitted = true;
         };
       }]
     };
@@ -86,13 +94,15 @@ angular.module('2ViVe')
     return {
       restrict: 'C',
       controller: ['$scope', function($scope) {
-        $scope.shouldValidateRemotlyOnSubmit = true;
         $scope.isBillingAddressValidated = false;
-        $scope.remoteValidate = function() {
+        $scope.submit = function() {
+          if (this.step.$invalid) {
+            return;
+          }
           $scope.$broadcast('remoteValidate');
           $scope.$watch('isBillingAddressValidated', function() {
             if ($scope.isBillingAddressValidated) {
-              $scope.isRemoteValidated = true;
+              $scope.$emit('CreateAccount');
             }
           });
         };
