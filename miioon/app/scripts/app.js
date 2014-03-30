@@ -18,7 +18,7 @@ angular.module('miioonApp', [
       'x-client-secret': 'test_client_secret_1'
     };
 //    TODO: Uncomment this when cross-domain is enabled.
-    $httpProvider.interceptors.push(function($q) {
+    $httpProvider.interceptors.push(['$q', function($q) {
       return {
         'request': function(config) {
           if (config.url.indexOf('/api/') === 0) {
@@ -27,7 +27,7 @@ angular.module('miioonApp', [
           return config || $q.when(config);
         }
       };
-    });
+    }]);
   }])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
