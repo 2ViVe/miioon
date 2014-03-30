@@ -22,7 +22,7 @@ angular.module('miioonApp', [
 //      return {
 //        'request': function(config) {
 //          if (config.url.indexOf('/api/') === 0) {
-//            config.url = 'http://199.27.105.132:8082' + config.url;
+//            config.url = 'http://199.27.105.132:10442' + config.url.replace('/api', '');
 //          }
 //          return config || $q.when(config);
 //        }

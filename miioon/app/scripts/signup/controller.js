@@ -3,7 +3,7 @@
 angular.module('2ViVe')
   .controller('SignUpController', ['$scope', 'Registration',
     function($scope, Registration) {
-      $scope.currentStepNumber = 3;
+      $scope.currentStepNumber = 1;
       $scope.completedStepNumber = 4;
       $scope.shouldValidateRemotlyOnSubmit = false;
       $scope.isRemoteValidated = false;
@@ -11,6 +11,8 @@ angular.module('2ViVe')
       $scope.address = {};
       $scope.payment = {};
       $scope.userInfo = {};
+      $scope.products = [];
+      $scope.lineItems = [];
 
       function goToNextStep() {
         $scope.currentStepNumber++;
@@ -37,6 +39,24 @@ angular.module('2ViVe')
         }
         return true;
       }
+
+      $scope.registrationCountryChange = function(country) {
+        Registration.getProducts(country.id)
+          .success(function(data) {
+            $scope.products = data.response.products;
+          });
+      };
+
+      $scope.addProduct = function(isAdded, product) {
+        if (isAdded) {
+          $scope.lineItems.push(product);
+        } else {
+          var index = $scope.lineItems.indexOf(product);
+          if (index > -1) {
+            $scope.lineItems.splice(index, 1);
+          }
+        }
+      };
 
       $scope.submit = function() {
         validateStep(this.step, function() {

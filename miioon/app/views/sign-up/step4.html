@@ -23,19 +23,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>1002</td>
-          <td>
-            <img class="product-thumbnail" src="images/welcome-kit.png" alt="Welcome Kit"/>
-            Starter Welcome Kit
+        <tr ng-repeat="lineItem in lineItems">
+          <td class="text-left">{{lineItem.sku}}</td>
+          <td class="text-left">
+            <img ng-src="{{lineItem.images[0]}}" alt="{{lineItem.name}}"/>
+            {{lineItem.name}}
           </td>
-          <td class="price">£98.00</td>
+          <td class="price">£{{lineItem.price}}</td>
           <td>
             1
           </td>
-          <td class="price">
-            £98.00
-          </td>
+          <td class="price">£{{lineItem.price}}</td>
         </tr>
         </tbody>
         <tfoot>

@@ -78,7 +78,7 @@
   </div>
   <div class="small-5 end columns">
     <select required name="country" id="country" data-registration-countries ng-model="userInfo['country']"
-            ng-options="country.name for country in countries">
+            ng-options="country.name for country in countries" ng-change="registrationCountryChange(userInfo['country'])">
     </select>
     <small ng-show="submitted && step['country'].$error.required" class="error">
       This field is required.

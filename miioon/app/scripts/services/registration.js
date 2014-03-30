@@ -8,7 +8,7 @@ angular.module('2ViVe')
           if (!roleCode) {
             roleCode = 'D';
           }
-          return $http.get('/api/v2/products', {
+          return $http.get('/api/v2/registrations/products', {
             params: {
               'country-id': countryId,
               'role-code': roleCode
