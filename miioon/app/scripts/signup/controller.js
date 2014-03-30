@@ -8,7 +8,7 @@ angular.module('2ViVe')
       $scope.shouldValidateRemotlyOnSubmit = false;
       $scope.isRemoteValidated = false;
       $scope.submitted = false;
-      $scope.account = {};
+      $scope.address = {};
       $scope.payment = {};
       $scope.userInfo = {};
 
