@@ -16,7 +16,7 @@ angular.module('2ViVe')
   function() {
     return {
       restrict: 'C',
-      controller: ["$scope", function($scope) {
+      controller: ['$scope', function($scope) {
         $scope.shouldValidateRemotlyOnSubmit = false;
       }],
       link: function(scope, element) {
@@ -45,7 +45,7 @@ angular.module('2ViVe')
   function() {
     return {
       restrict: 'C',
-      controller: ["$scope", function($scope) {
+      controller: ['$scope', function($scope) {
         $scope.shouldValidateRemotlyOnSubmit = false;
       }]
     };
@@ -54,7 +54,7 @@ angular.module('2ViVe')
   function() {
     return {
       restrict: 'C',
-      controller: ["$scope", function($scope) {
+      controller: ['$scope', function($scope) {
         $scope.shouldValidateRemotlyOnSubmit = true;
         $scope.isHomeAddressValidated = false;
         $scope.isWebAddressValidated = false;
@@ -75,7 +75,7 @@ angular.module('2ViVe')
   function() {
     return {
       restrict: 'C',
-      controller: ["$scope", function($scope) {
+      controller: ['$scope', function($scope) {
         $scope.shouldValidateRemotlyOnSubmit = true;
         $scope.isBillingAddressValidated = false;
         $scope.remoteValidate = function() {

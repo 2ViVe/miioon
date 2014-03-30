@@ -17,6 +17,17 @@ angular.module('miioonApp', [
       'x-client-id': CLIENT_ID,
       'x-client-secret': 'test_client_secret_1'
     };
+//    TODO: Uncomment this when cross-domain is enabled.
+//    $httpProvider.interceptors.push(function($q) {
+//      return {
+//        'request': function(config) {
+//          if (config.url.indexOf('/api/') === 0) {
+//            config.url = 'http://199.27.105.132:8082' + config.url;
+//          }
+//          return config || $q.when(config);
+//        }
+//      };
+//    });
   }])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider

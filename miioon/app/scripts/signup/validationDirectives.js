@@ -72,7 +72,7 @@ angular.module('2ViVe')
           form: '=',
           isHomeAddressValidated: '='
         },
-        controller: ["$scope", function($scope) {
+        controller: ['$scope', function($scope) {
           if ($scope.homeAddress === undefined) {
             $scope.homeAddress = {};
           }
@@ -100,7 +100,7 @@ angular.module('2ViVe')
           form: '=',
           isWebAddressValidated: '='
         },
-        controller: ["$scope", function($scope) {
+        controller: ['$scope', function($scope) {
           if ($scope.webAddress === undefined) {
             $scope.webAddress = {
               'first-name': '',
@@ -148,7 +148,7 @@ angular.module('2ViVe')
           form: '=',
           isShipmentAddressValidated: '='
         },
-        controller: ["$scope", function($scope) {
+        controller: ['$scope', function($scope) {
           if ($scope.shipmentAddress === undefined) {
             $scope.shipmentAddress = {
               'first-name': '',
@@ -200,7 +200,7 @@ angular.module('2ViVe')
           form: '=',
           isBillingAddressValidated: '='
         },
-        controller: ["$scope", function($scope) {
+        controller: ['$scope', function($scope) {
           if ($scope.billingAddress === undefined) {
             $scope.billingAddress = {
               'first-name': '',
