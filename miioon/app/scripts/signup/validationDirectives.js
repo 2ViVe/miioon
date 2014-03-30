@@ -78,8 +78,17 @@ angular.module('2ViVe')
           }
           $scope.$on('remoteValidate', function() {
             Address.validateHomeAddress($scope.homeAddress)
-              .success(function() {
-                $scope.isHomeAddressValidated = true;
+              .success(function(data) {
+                var failures = data.response.failures;
+                if (failures) {
+                  angular.forEach(failures, function(failiure) {
+                    $scope.form['home-' + failiure.field].$setValidity('validated', false);
+                    $scope.form['home-' + failiure.field].errorMessageValidated = failiure.message;
+                  });
+                  $scope.isHomeAddressValidated = false;
+                } else {
+                  $scope.isHomeAddressValidated = true;
+                }
               })
               .error(function() {
                 $scope.isHomeAddressValidated = false;
@@ -113,8 +122,17 @@ angular.module('2ViVe')
           }
           $scope.$on('remoteValidate', function() {
             Address.validateWebAddress($scope.webAddress)
-              .success(function() {
-                $scope.isWebAddressValidated = true;
+              .success(function(data) {
+                var failures = data.response.failures;
+                if (failures) {
+                  angular.forEach(failures, function(failiure) {
+                    $scope.form['web-' + failiure.field].$setValidity('validated', false);
+                    $scope.form['web-' + failiure.field].errorMessageValidated = failiure.message;
+                  });
+                  $scope.isWebAddressValidated = false;
+                } else {
+                  $scope.isWebAddressValidated = true;
+                }
               })
               .error(function() {
                 $scope.isWebAddressValidated = false;
@@ -163,12 +181,21 @@ angular.module('2ViVe')
             };
           }
           $scope.$on('remoteValidate', function() {
-            Address.validateShippingAddress($scope.shipmentAddress)
-              .success(function() {
-                $scope.isShipmentAddressValidated = true;
+            Address.validateShippingAddress($scope.shippingAddress)
+              .success(function(data) {
+                var failures = data.response.failures;
+                if (failures) {
+                  angular.forEach(failures, function(failiure) {
+                    $scope.form['shipping-' + failiure.field].$setValidity('validated', false);
+                    $scope.form['shipping-' + failiure.field].errorMessageValidated = failiure.message;
+                  });
+                  $scope.isShippingAddressValidated = false;
+                } else {
+                  $scope.isShippingAddressValidated = true;
+                }
               })
               .error(function() {
-                $scope.isShipmentAddressValidated = false;
+                $scope.isShippingAddressValidated = false;
               });
           });
           $scope.useHomeAddress = function() {
@@ -230,7 +257,6 @@ angular.module('2ViVe')
                   $scope.billingAddress[key] = value;
                 }
               });
-              console.log($scope.billingAddress);
             } else {
               angular.forEach($scope.billingAddress, function(value, key) {
                 $scope.billingAddress[key] = '';

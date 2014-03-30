@@ -12,6 +12,9 @@
     <small ng-show="submitted && form['home-first-name'].$error.required" class="error">
       This field is required.
     </small>
+    <small ng-show="submitted && form['home-first-name'].$error.validated" class="error">
+      {{form['home-first-name'].errorMessageValidated}}
+    </small>
   </div>
 </div>
 <div class="row">
@@ -23,6 +26,9 @@
     <small ng-show="submitted && form['home-last-name'].$error.required" class="error">
       This field is required.
     </small>
+    <small ng-show="submitted && form['home-last-name'].$error.validated" class="error">
+      {{form['home-last-name'].errorMessageValidated}}
+    </small>
   </div>
 </div>
 <div class="row">
@@ -30,7 +36,7 @@
     <label class="right inline" for="co-first-name">Coapplicant First Name</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="co-first-name" name="co-first-name" ng-model="coFirstName"/>
+    <input type="text" id="co-first-name" name="co-first-name" ng-model="homeAddress.coFirstName"/>
   </div>
 </div>
 <div class="row">
@@ -38,7 +44,7 @@
     <label class="right inline" for="co-last-name">Coapplicant Last Name</label>
   </div>
   <div class="small-5 end columns">
-    <input type="text" id="co-last-name" name="co-last-name" ng-model="coLastName"/>
+    <input type="text" id="co-last-name" name="co-last-name" ng-model="homeAddress.coLastName"/>
   </div>
 </div>
 <div class="row">
@@ -50,6 +56,9 @@
     <small ng-show="submitted && form['home-street'].$error.required" class="error">
       This field is required.
     </small>
+    <small ng-show="submitted && form['home-street'].$error.validated" class="error">
+      {{form['home-street'].errorMessageValidated}}
+    </small>
   </div>
 </div>
 <div class="row">
@@ -59,6 +68,9 @@
   <div class="small-5 end columns">
     <input type="text" id="home-street-contd" name="home-street-contd" ng-model="homeAddress['street-cont']"/>
   </div>
+  <small ng-show="submitted && form['home-street-contd'].$error.validated" class="error">
+    {{form['home-street-contd'].errorMessageValidated}}
+  </small>
 </div>
 <div data-countries-and-states>
   <div class="row">
@@ -72,6 +84,9 @@
       </select>
       <small ng-show="submitted && form['home-country-id'].$error.required" class="error">
         This field is required.
+      </small>
+      <small ng-show="submitted && form['home-country-id'].$error.validated" class="error">
+        {{form['home-country-id'].errorMessageValidated}}
       </small>
     </div>
   </div>
@@ -87,6 +102,9 @@
       <small ng-show="submitted && form['home-state-id'].$error.required" class="error">
         This field is required.
       </small>
+      <small ng-show="submitted && form['home-state-id'].$error.validated" class="error">
+        {{form['home-state-id'].errorMessageValidated}}
+      </small>
     </div>
   </div>
 </div>
@@ -99,6 +117,9 @@
     <small ng-show="submitted && form['home-city'].$error.required" class="error">
       This field is required.
     </small>
+    <small ng-show="submitted && form['home-city'].$error.validated" class="error">
+      {{form['home-city'].errorMessageValidated}}
+    </small>
   </div>
 </div>
 <div class="row">
@@ -109,6 +130,9 @@
     <input required type="text" id="home-zip" name="home-zip" ng-model="homeAddress.zip"/>
     <small ng-show="submitted && form['home-zip'].$error.required" class="error">
       This field is required.
+    </small>
+    <small ng-show="submitted && form['home-zip'].$error.validated" class="error">
+      {{form['home-zip'].errorMessageValidated}}
     </small>
   </div>
 </div>
@@ -121,6 +145,9 @@
     <small ng-show="submitted && form['home-phone'].$error.required" class="error">
       This field is required.
     </small>
+    <small ng-show="submitted && form['home-phone'].$error.validated" class="error">
+      {{form['home-phone'].errorMessageValidated}}
+    </small>
   </div>
 </div>
 <div class="row">
@@ -131,6 +158,9 @@
     <input required type="text" id="home-mobile-phone" name="home-mobile-phone" ng-model="homeAddress['mobile-phone']"/>
     <small ng-show="submitted && form['home-mobile-phone'].$error.required" class="error">
       This field is required.
+    </small>
+    <small ng-show="submitted && form['home-mobile-phone'].$error.validated" class="error">
+      {{form['home-mobile-phone'].errorMessageValidated}}
     </small>
   </div>
 </div>
