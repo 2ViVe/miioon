@@ -166,8 +166,8 @@ angular.module('2ViVe')
         }]
       };
     }])
-  .directive('shipmentAddress', ['Address',
-    function(Address) {
+  .directive('shipmentAddress', ['Address', 'Registration',
+    function(Address, Registration) {
       return {
         restrict: 'A',
         templateUrl: 'views/sign-up/shipment-address.html',
@@ -214,6 +214,23 @@ angular.module('2ViVe')
               })
               .error(function() {
                 $scope.isShipmentAddressValidated = false;
+              });
+          });
+          $scope.$watch('shipmentAddress["country-id"]', function(selectedCountryId) {
+            angular.forEach($scope.countries, function(country) {
+              if (country.id === selectedCountryId && country.states.length === 0) {
+                Registration.getShippingMethods(selectedCountryId)
+                  .success(function(data) {
+                    $scope.shippingMethods = data.response;
+                  });
+              }
+            });
+          });
+          $scope.$watch('shipmentAddress["state-id"]', function(selectedStateId) {
+            var selectedCountryId = $scope.shipmentAddress['country-id'];
+            Registration.getShippingMethods(selectedCountryId, selectedStateId)
+              .success(function(data) {
+                $scope.shippingMethods = data.response;
               });
           });
           $scope.useHomeAddress = function() {
