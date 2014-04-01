@@ -49,12 +49,6 @@ angular.module('2ViVe')
       return {
         restrict: 'C',
         controller: ['$scope', function($scope) {
-          $scope.$on('RegistrationCountryChange', function(country) {
-            Registration.getProducts(country.id)
-              .success(function(data) {
-                $scope.products = data.response.products;
-              });
-          });
           $scope.nextStep = function() {
             if (this.step.$valid) {
               $scope.$emit('NextStep');

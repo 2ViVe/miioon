@@ -11,27 +11,27 @@ angular.module('miioonApp', [
     'ui.utils',
     'ngQuickDate'
   ])
-  .constant('CLIENT_ID', 'test_client_id_1')
+  .constant('CLIENT_ID', 'ZlnElLNFjFt6pOBAOQpH8e')
   .config(['$httpProvider', 'CLIENT_ID',
     function($httpProvider, CLIENT_ID) {
       $httpProvider.defaults.headers.common = {
         'x-client-id': CLIENT_ID,
-        'x-client-secret': 'test_client_secret_1'
+        'x-client-secret': 'HeFsCAvsXTzpHWAqRVWCibsUYlF7gjpLRUAUw551r'
       };
 //    TODO: Uncomment this when cross-domain is enabled.
-      $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
-        if ($location.host() === '0.0.0.0') {
-          return {};
-        }
-        return {
-          'request': function(config) {
-            if (config.url.indexOf('/api/') === 0) {
-              config.url = 'http://199.27.105.132:10442' + config.url.replace('/api', '');
-            }
-            return config || $q.when(config);
-          }
-        };
-      }]);
+//      $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
+//        if ($location.host() === '0.0.0.0') {
+//          return {};
+//        }
+//        return {
+//          'request': function(config) {
+//            if (config.url.indexOf('/api/') === 0) {
+//              config.url = 'http://199.27.105.132:20442' + config.url.replace('/api', '');
+//            }
+//            return config || $q.when(config);
+//          }
+//        };
+//      }]);
     }])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
