@@ -278,14 +278,27 @@ angular.module('2ViVe')
           $scope.$on('remoteValidate', function() {
             Address.validateBillingAddress($scope.billingAddress)
               .success(function() {
-                $scope.isbillingAddressValidated = true;
+                $scope.isBillingAddressValidated = true;
               })
               .error(function() {
-                $scope.isbillingAddressValidated = false;
+                $scope.isBillingAddressValidated = false;
               });
           });
           $scope.useHomeAddress = function() {
             if ($scope.billingIsUseHomeAddress) {
+              if ($scope.billingAddress === undefined) {
+                $scope.billingAddress = {
+                  'first-name': '',
+                  'last-name': '',
+                  street: '',
+                  'street-contd': '',
+                  'country-id': '',
+                  'state-id': '',
+                  city: '',
+                  zip: '',
+                  phone: ''
+                };
+              }
               angular.forEach($scope.homeAddressSource, function(value, key) {
                 if ($scope.billingAddress[key] !== undefined) {
                   $scope.billingAddress[key] = value;

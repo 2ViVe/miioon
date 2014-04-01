@@ -3,6 +3,7 @@
     <h2 class="columns small-9">
       Create a new account
     </h2>
+
     <div class="columns small-3" ng-include="'views/sign-up/steps-navigation.html'"></div>
   </div>
   <div class="row title">
@@ -93,7 +94,9 @@
       <ul class="medium-font">
         <li>{{payment['shipping-address']['first-name']}} {{payment['shipping-address']['last-name']}}</li>
         <li>{{payment['shipping-address']['street']}}</li>
-        <li>{{payment['shipping-address']['city']}}, {{payment['shipping-address']['state']}}, {{payment['shipping-address']['country']}}, {{payment['shipping-address']['zip']}}</li>
+        <li>{{payment['shipping-address']['city']}}, {{payment['shipping-address']['state']}},
+          {{payment['shipping-address']['country']}}, {{payment['shipping-address']['zip']}}
+        </li>
       </ul>
     </div>
   </div>
@@ -105,7 +108,7 @@
   <div class="row">
     <div class="columns small-12">
       <ul class="medium-font">
-        <li>{{payment['shipment-address']['shipping-method-id']}}</li>
+        <li>{{payment['shipping-method']}}</li>
       </ul>
     </div>
   </div>
@@ -116,13 +119,14 @@
   </div>
   <div class="row" ng-repeat="availablePaymentMethod in payment['available-payment-methods']">
     <div class="small-3 columns">
-      <label class="right inline" for="payment-method-{{availablePaymentMethod.id}}">
+      <label class="right" for="payment-method-{{availablePaymentMethod.id}}">
         {{availablePaymentMethod.name}}
       </label>
     </div>
     <div class="small-9 columns">
       <input ng-model="payment['payment-method-id']" ng-value="availablePaymentMethod.id" type="radio"
-             name="payment-method" id="payment-method-{{availablePaymentMethod.id}}" ng-change="paymentMethodChange(availablePaymentMethod.id)"/>
+             name="payment-method" id="payment-method-{{availablePaymentMethod.id}}"
+             ng-change="paymentMethodChange(availablePaymentMethod.id)"/>
     </div>
   </div>
   <div ng-show="payment['is-creditcard']">
@@ -169,9 +173,11 @@
         <a class="input-description base-font" href="#">What's this?</a>
       </div>
     </div>
-    <div data-is-billing-address-validated="isBillingAddressValidated" data-home-address-source="address.homeAddress"
-         data-billing-address="payment.billingAddress" data-submitted="submitted" data-form="step"></div>
   </div>
+
+  <div data-is-billing-address-validated="isBillingAddressValidated" data-home-address-source="address.homeAddress"
+       data-billing-address="payment.billingAddress" data-submitted="submitted" data-form="step"></div>
+
   <div class="row">
     <div class="columns small-9 small-offset-3">
       <button ng-click="submit()">SUBMIT</button>

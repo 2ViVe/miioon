@@ -44,19 +44,18 @@ angular.module('2ViVe')
       }
     };
   }])
-  .directive('signUpStep2', ['Registration',
-    function(Registration) {
-      return {
-        restrict: 'C',
-        controller: ['$scope', function($scope) {
-          $scope.nextStep = function() {
-            if (this.step.$valid) {
-              $scope.$emit('NextStep');
-            }
-          };
-        }]
-      };
-    }])
+  .directive('signUpStep2', [function() {
+    return {
+      restrict: 'C',
+      controller: ['$scope', function($scope) {
+        $scope.nextStep = function() {
+          if (this.step.$valid) {
+            $scope.$emit('NextStep');
+          }
+        };
+      }]
+    };
+  }])
   .directive('signUpStep3', [function() {
     return {
       restrict: 'C',
