@@ -86,6 +86,7 @@ angular.module('2ViVe')
       controller: ['$scope', function($scope) {
         $scope.isBillingAddressValidated = false;
         $scope.submit = function() {
+          $scope.$emit('CreateAccount');//TODO: only for demo
           if (this.step.$invalid) {
             return;
           }

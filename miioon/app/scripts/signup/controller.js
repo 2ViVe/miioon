@@ -3,8 +3,8 @@
 angular.module('2ViVe')
   .controller('SignUpController', ['$scope', 'Registration',
     function($scope, Registration) {
-      $scope.currentStepNumber = 5;
-      $scope.completedStepNumber = 4;
+      $scope.currentStepNumber = 1;
+      $scope.completedStepNumber = 1;
       $scope.shouldValidateRemotlyOnSubmit = false;
       $scope.isRemoteValidated = false;
       $scope.submitted = false;
@@ -39,6 +39,7 @@ angular.module('2ViVe')
       };
 
       $scope.$on('CreateAccount', function() {
+        $scope.currentStepNumber++;//TODO: only for demo
         Registration.create(
           $scope.payment['payment-method-id'],
           $scope.userInfo,

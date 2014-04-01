@@ -58,7 +58,7 @@ angular.module('2ViVe')
         create: function(paymentMethodId, userInfo, creditcard, homeAddress, shippingMethodId, shippingAddress, billingAddress, autoShipItems, lineItems, specialInstructions, orderNotes) {
           userInfo.sponsor = '136301';
           userInfo['role-code'] = 'D';
-          
+
           return $http.post('/api/v2/registrations', {
             'payment-method-id': paymentMethodId,
             'user-info': userInfo,
