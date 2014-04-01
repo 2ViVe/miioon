@@ -91,9 +91,9 @@
   <div class="row">
     <div class="columns small-12">
       <ul class="medium-font">
-        <li>{{address.shipmentAddress['first-name']}} {{address.shipmentAddress['last-name']}}</li>
-        <li>{{address.shipmentAddress['street']}}</li>
-        <li>{{address.shipmentAddress['city']}}, {{address.shipmentAddress['state']}}, {{address.shipmentAddress['zip']}}</li>
+        <li>{{payment['shipping-address']['first-name']}} {{payment['shipping-address']['last-name']}}</li>
+        <li>{{payment['shipping-address']['street']}}</li>
+        <li>{{payment['shipping-address']['city']}}, {{payment['shipping-address']['state']}}, {{payment['shipping-address']['country']}}, {{payment['shipping-address']['zip']}}</li>
       </ul>
     </div>
   </div>
@@ -105,55 +105,73 @@
   <div class="row">
     <div class="columns small-12">
       <ul class="medium-font">
-        <li>{{shipmentAddress['shipping-method-id']}}</li>
+        <li>{{payment['shipment-address']['shipping-method-id']}}</li>
       </ul>
     </div>
   </div>
   <div class="row title">
     <h6 class="small-6 columns">
-      PAYMENT INFORMATION
-      <img src="images/cards.png" alt="Cards"/>
+      PAYMENT METHOD
     </h6>
   </div>
-  <div class="row">
+  <div class="row" ng-repeat="availablePaymentMethod in payment['available-payment-methods']">
     <div class="small-3 columns">
-      <label class="right inline" for="card-number">Card Number</label>
+      <label class="right inline" for="payment-method-{{availablePaymentMethod.id}}">
+        {{availablePaymentMethod.name}}
+      </label>
     </div>
-    <div class="small-5 end columns">
-      <input type="text" id="card-number"/>
+    <div class="small-9 columns">
+      <input ng-model="payment['payment-method-id']" ng-value="availablePaymentMethod.id" type="radio"
+             name="payment-method" id="payment-method-{{availablePaymentMethod.id}}" ng-change="paymentMethodChange(availablePaymentMethod.id)"/>
     </div>
   </div>
-  <div class="row">
-    <div class="small-3 columns">
-      <label class="right inline" for="expiration-month">Expiration</label>
+  <div ng-show="payment['is-creditcard']">
+    <div class="row title">
+      <h6 class="small-6 columns">
+        PAYMENT INFORMATION
+        <img src="images/cards.png" alt="Cards"/>
+      </h6>
     </div>
-    <div class="small-1 columns">
-      <select id="expiration-month">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="12">12</option>
-      </select>
+    <div class="row">
+      <div class="small-3 columns">
+        <label class="right inline" for="card-number">Card Number</label>
+      </div>
+      <div class="small-5 end columns">
+        <input type="text" id="card-number"/>
+      </div>
     </div>
-    <div class="columns small-2 end">
-      <select id="expiration-year">
-        <option value="2014">2014</option>
-        <option value="2015">2015</option>
-      </select>
+    <div class="row">
+      <div class="small-3 columns">
+        <label class="right inline" for="expiration-month">Expiration</label>
+      </div>
+      <div class="small-1 columns">
+        <select id="expiration-month">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="12">12</option>
+        </select>
+      </div>
+      <div class="columns small-2 end">
+        <select id="expiration-year">
+          <option value="2014">2014</option>
+          <option value="2015">2015</option>
+        </select>
+      </div>
     </div>
+    <div class="row">
+      <div class="small-3 columns">
+        <label class="right inline" for="card-code">Card Code</label>
+      </div>
+      <div class="small-3 columns">
+        <input type="text" id="card-code"/>
+      </div>
+      <div class="small-3 columns end">
+        <a class="input-description base-font" href="#">What's this?</a>
+      </div>
+    </div>
+    <div data-is-billing-address-validated="isBillingAddressValidated" data-home-address-source="address.homeAddress"
+         data-billing-address="payment.billingAddress" data-submitted="submitted" data-form="step"></div>
   </div>
-  <div class="row">
-    <div class="small-3 columns">
-      <label class="right inline" for="card-code">Card Code</label>
-    </div>
-    <div class="small-3 columns">
-      <input type="text" id="card-code"/>
-    </div>
-    <div class="small-3 columns end">
-      <a class="input-description base-font" href="#">What's this?</a>
-    </div>
-  </div>
-  <div data-is-billing-address-validated="isBillingAddressValidated" data-home-address-source="address.homeAddress"
-       data-billing-address="payment.billingAddress" data-submitted="submitted" data-form="step"></div>
   <div class="row">
     <div class="columns small-9 small-offset-3">
       <button ng-click="submit()">SUBMIT</button>

@@ -46,6 +46,12 @@ angular.module('2ViVe')
           Registration.orderSummary($scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress, $scope.lineItems)
             .success(function(data) {
               $scope.payment = data.response;
+              angular.forEach($scope.payment['available-shipping-methods'], function(availableShippingMethod) {
+                if (availableShippingMethod.id === $scope.payment['shipping-method-id']) {
+                  $scope.payment['shipping-method'] = availableShippingMethod.name;
+                  return;
+                }
+              });
             });
         }
       });
@@ -62,5 +68,14 @@ angular.module('2ViVe')
 
       $scope.getProducts = function() {
         Registration.getProducts($scope.userInfo.country.id);
+      };
+
+      $scope.paymentMethodChange = function(paymentMethodId) {
+        angular.forEach($scope.payment['available-payment-methods'], function(availablePaymentMethod) {
+          if (availablePaymentMethod.id === paymentMethodId) {
+            $scope.payment['is-creditcard'] = availablePaymentMethod['is-creditcard'];
+            return;
+          }
+        });
       };
     }]);
