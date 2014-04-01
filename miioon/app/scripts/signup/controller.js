@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('SignUpController', ['$scope', 'Registration',
-    function($scope, Registration) {
+  .controller('SignUpController', ['$scope', 'Registration', '$window',
+    function($scope, Registration, $window) {
       $scope.currentStepNumber = 1;
       $scope.completedStepNumber = 1;
       $scope.shouldValidateRemotlyOnSubmit = false;
@@ -39,6 +39,7 @@ angular.module('2ViVe')
       };
 
       $scope.$on('CreateAccount', function() {
+        $window.scrollTo(0, 0);
         $scope.currentStepNumber++;//TODO: only for demo
         Registration.create(
           $scope.payment['payment-method-id'],
@@ -56,6 +57,7 @@ angular.module('2ViVe')
       });
 
       $scope.$on('NextStep', function() {
+        $window.scrollTo(0, 0);
         $scope.submitted = false;
         $scope.currentStepNumber++;
         if ($scope.currentStepNumber > $scope.completedStepNumber) {
