@@ -56,18 +56,21 @@ angular.module('2ViVe')
           });
         },
         create: function(paymentMethodId, userInfo, creditcard, homeAddress, shippingMethodId, shippingAddress, billingAddress, autoShipItems, lineItems, specialInstructions, orderNotes) {
+          userInfo.sponsor = '136301';
+          userInfo['role-code'] = 'D';
+          
           return $http.post('/api/v2/registrations', {
             'payment-method-id': paymentMethodId,
             'user-info': userInfo,
-            'creditcard': creditcard,
+            //'creditcard': creditcard,
             'home-address': homeAddress,
             'shipping-method-id': shippingMethodId,
             'shipping-address': shippingAddress,
             'billing-address': billingAddress,
-            'autoship-items': autoShipItems,
-            'line-items': lineItems,
-            'special-instructions': specialInstructions,
-            'order-notes': orderNotes
+            //'autoship-items': autoShipItems,
+            'line-items': lineItems
+            //'special-instructions': specialInstructions,
+            //'order-notes': orderNotes
           });
         }
       };

@@ -3,7 +3,7 @@
 angular.module('2ViVe')
   .controller('SignUpController', ['$scope', 'Registration',
     function($scope, Registration) {
-      $scope.currentStepNumber = 3;
+      $scope.currentStepNumber = 5;
       $scope.completedStepNumber = 4;
       $scope.shouldValidateRemotlyOnSubmit = false;
       $scope.isRemoteValidated = false;
@@ -39,7 +39,19 @@ angular.module('2ViVe')
       };
 
       $scope.$on('CreateAccount', function() {
-        Registration.create();
+        Registration.create(
+          $scope.payment['payment-method-id'],
+          $scope.userInfo,
+          null,
+          $scope.address.homeAddress,
+          $scope.address.shipmentAddress['shipping-method-id'],
+          $scope.address.shipmentAddress,
+          $scope.payment.billingAddress,
+          null,
+          $scope.payment['line-items']
+        ).success(function() {
+            $scope.currentStepNumber++;
+          });
       });
 
       $scope.$on('NextStep', function() {
