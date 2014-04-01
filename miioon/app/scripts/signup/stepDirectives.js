@@ -12,61 +12,58 @@ angular.module('2ViVe')
       }
     };
   })
-  .directive('signUpStep1', ['Registration',
-    function() {
-      return {
-        restrict: 'C',
-        controller: ['$scope', function($scope) {
-          $scope.nextStep = function() {
-            if (this.step.$valid) {
-              $scope.$emit('NextStep');
-            }
-          };
-        }],
-        link: function(scope, element) {
-          var isViewedTermAndCondition = false;
-          var isAgreementChecked = false;
-          var $element = angular.element(element);
-
-          $element.find('#term-condition').on('scroll', function() {
-            if (!isViewedTermAndCondition) {
-              isViewedTermAndCondition = (this.scrollTop + this.offsetHeight) > this.scrollHeight;
-            }
-            $element.find('#is-agreed').removeAttr('disabled');
-          });
-          $element.find('#is-agreed').on('change', function() {
-            isAgreementChecked = angular.element(this).is(':checked');
-            if (isViewedTermAndCondition && isAgreementChecked) {
-              $element.find('button').removeAttr('disabled');
-            } else {
-              $element.find('button').attr('disabled', 'disabled');
-            }
-          });
-        }
-      };
-    }])
-  .directive('signUpStep2', ['Registration',
-  function(Registration) {
+  .directive('signUpStep1', [function() {
     return {
       restrict: 'C',
       controller: ['$scope', function($scope) {
-        $scope.$on('RegistrationCountryChange', function(country) {
-          Registration.getProducts(country.id)
-            .success(function(data) {
-              $scope.products = data.response.products;
-              console.log($scope.products);
-            });
-        });
         $scope.nextStep = function() {
           if (this.step.$valid) {
             $scope.$emit('NextStep');
           }
         };
-      }]
+      }],
+      link: function(scope, element) {
+        var isViewedTermAndCondition = false;
+        var isAgreementChecked = false;
+        var $element = angular.element(element);
+
+        $element.find('#term-condition').on('scroll', function() {
+          if (!isViewedTermAndCondition) {
+            isViewedTermAndCondition = (this.scrollTop + this.offsetHeight) > this.scrollHeight;
+          }
+          $element.find('#is-agreed').removeAttr('disabled');
+        });
+        $element.find('#is-agreed').on('change', function() {
+          isAgreementChecked = angular.element(this).is(':checked');
+          if (isViewedTermAndCondition && isAgreementChecked) {
+            $element.find('button').removeAttr('disabled');
+          } else {
+            $element.find('button').attr('disabled', 'disabled');
+          }
+        });
+      }
     };
   }])
-  .directive('signUpStep3',
-  function() {
+  .directive('signUpStep2', ['Registration',
+    function(Registration) {
+      return {
+        restrict: 'C',
+        controller: ['$scope', function($scope) {
+          $scope.$on('RegistrationCountryChange', function(country) {
+            Registration.getProducts(country.id)
+              .success(function(data) {
+                $scope.products = data.response.products;
+              });
+          });
+          $scope.nextStep = function() {
+            if (this.step.$valid) {
+              $scope.$emit('NextStep');
+            }
+          };
+        }]
+      };
+    }])
+  .directive('signUpStep3', [function() {
     return {
       restrict: 'C',
       controller: ['$scope', function($scope) {
@@ -88,7 +85,7 @@ angular.module('2ViVe')
         };
       }]
     };
-  })
+  }])
   .directive('signUpStep4',
   function() {
     return {

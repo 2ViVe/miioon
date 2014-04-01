@@ -42,6 +42,12 @@ angular.module('2ViVe')
         if ($scope.currentStepNumber > $scope.completedStepNumber) {
           $scope.completedStepNumber = $scope.currentStepNumber;
         }
+        if ($scope.currentStepNumber === 4) {
+          Registration.orderSummary($scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress, $scope.lineItems)
+            .success(function(data) {
+              $scope.payment = data.response;
+            });
+        }
       });
 
       $scope.goToStep = function(stepNumber) {

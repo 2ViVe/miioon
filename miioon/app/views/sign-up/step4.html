@@ -23,17 +23,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="lineItem in lineItems">
+        <tr ng-repeat="lineItem in payment['line-items']">
           <td class="text-left">{{lineItem.sku}}</td>
           <td class="text-left">
-            <img ng-src="{{lineItem.images[0]}}" alt="{{lineItem.name}}"/>
-            {{lineItem.name}}
+            <img ng-src="{{lineItem['image-url']}}" alt="{{lineItem['product-name']}}"/>
+            {{lineItem['product-name']}}
           </td>
           <td class="price">£{{lineItem.price}}</td>
           <td>
-            1
+            {{lineItem.quantity}}
           </td>
-          <td class="price">£{{lineItem.price}}</td>
+          <td class="price">£{{lineItem.price * lineItem.quantity}}</td>
         </tr>
         </tbody>
         <tfoot>
@@ -42,23 +42,15 @@
             Item Total
           </td>
           <td class="price">
-            £98.00
+            £{{payment['item-total']}}
           </td>
         </tr>
-        <tr>
+        <tr ng-repeat="adjustment in payment.adjustments">
           <td colspan="4" class="text-right">
-            Shipping
+            {{adjustment.label}}
           </td>
           <td class="price">
-            £14.95
-          </td>
-        </tr>
-        <tr>
-          <td colspan="4" class="text-right">
-            VAT (20% of total)
-          </td>
-          <td class="price">
-            £19.60
+            £{{adjustment.amount}}
           </td>
         </tr>
         <tr>
@@ -66,7 +58,7 @@
             Order Total
           </td>
           <td class="price">
-            £230.55
+            £{{payment.total}}
           </td>
         </tr>
         </tfoot>
@@ -80,7 +72,7 @@
   </div>
   <div class="row">
     <div class="columns small-9">
-      <a href="#">www.miioon.com/sites/rupertfindlay</a>
+      <a href="#">www.miioon.com/sites/{{userInfo.login}}</a>
     </div>
     <div class="columns small-3 text-right personal-website-info">
       <ul class="medium-font">
@@ -93,15 +85,15 @@
   </div>
   <div class="row title">
     <h6 class="small-3 columns">
-      PERSONAL WEBSITE
+      SHIPPING ADDRESS
     </h6>
   </div>
   <div class="row">
     <div class="columns small-12">
       <ul class="medium-font">
-        <li>Rupert Findlay</li>
-        <li>Upton House, Baldock Street</li>
-        <li>Royston, Hertfordshire, SG8 5AY</li>
+        <li>{{address.shipmentAddress['first-name']}} {{address.shipmentAddress['last-name']}}</li>
+        <li>{{address.shipmentAddress['street']}}</li>
+        <li>{{address.shipmentAddress['city']}}, {{address.shipmentAddress['state']}}, {{address.shipmentAddress['zip']}}</li>
       </ul>
     </div>
   </div>
@@ -113,7 +105,7 @@
   <div class="row">
     <div class="columns small-12">
       <ul class="medium-font">
-        <li>UK Ground</li>
+        <li>{{shipmentAddress['shipping-method-id']}}</li>
       </ul>
     </div>
   </div>
