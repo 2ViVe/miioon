@@ -13,7 +13,7 @@ angular.module('2ViVe')
       $scope.userInfo = {};
       $scope.products = [];
       $scope.lineItems = [];
-      
+
 
       $scope.registrationCountryChange = function(country) {
         Registration.getProducts(country.id)
@@ -53,7 +53,7 @@ angular.module('2ViVe')
           null,
           $scope.payment['line-items']
         ).success(function() {
-            $scope.currentStepNumber++;
+//            $scope.currentStepNumber++;
           });
       });
 
