@@ -13,6 +13,7 @@ angular.module('2ViVe')
       $scope.userInfo = {};
       $scope.products = [];
       $scope.lineItems = [];
+      
 
       $scope.registrationCountryChange = function(country) {
         Registration.getProducts(country.id)
