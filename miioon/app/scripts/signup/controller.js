@@ -18,13 +18,7 @@ angular.module('2ViVe')
       $scope.registrationCountryChange = function(country) {
         Registration.getProducts(country.id)
           .success(function(data) {
-            var products = [];
-            angular.forEach(data.response.products, function(product) {
-              if (product['taxon-id'] === 1) {
-                products.push(product);
-              }
-            });
-            $scope.products = products;
+            $scope.products = data.response.products;
           });
       };
 
