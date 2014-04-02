@@ -17,6 +17,7 @@ angular.module('2ViVe')
       restrict: 'C',
       controller: ['$scope', function($scope) {
         $scope.nextStep = function() {
+          $scope.submitted = true;
           if (this.step.$valid) {
             $scope.$emit('NextStep');
           }
