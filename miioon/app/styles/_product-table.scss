@@ -29,6 +29,13 @@
     }
   }
 
+  .quantity input {
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: right;
+  }
+
   .price {
     color: $red;
     font-weight: bold;

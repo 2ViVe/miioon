@@ -18,19 +18,20 @@ angular.module('2ViVe')
       $scope.registrationCountryChange = function(country) {
         Registration.getProducts(country.id)
           .success(function(data) {
-            $scope.products = data.response.products;
+            var products = data.response.products;
+            var entryProductIndex;
+            angular.forEach(products, function(product, index) {
+              if (product['taxon-id'] === 1) {
+                product.quantity = 1;
+                entryProductIndex = index;
+              } else {
+                product.quantity = 0;
+              }
+            });
+            var entryProduct = products.splice(entryProductIndex, 1)[0];
+            products.unshift(entryProduct);
+            $scope.products = products;
           });
-      };
-
-      $scope.addProduct = function(isAdded, product) {
-        if (isAdded) {
-          $scope.lineItems.push(product);
-        } else {
-          var index = $scope.lineItems.indexOf(product);
-          if (index > -1) {
-            $scope.lineItems.splice(index, 1);
-          }
-        }
       };
 
       $scope.$on('CreateAccount', function() {
