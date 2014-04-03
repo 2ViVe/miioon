@@ -96,4 +96,16 @@
     height:rem-calc(120);
   }
 
+  .accountTypeRadio{
+    input{float:left; margin-top: 5px;}
+    h6{
+      margin-left: 25px; font-size: 1.2rem; margin-bottom:3px;
+      a{
+        color:$grey;
+        margin-left: rem-calc(20);
+      }
+    }
+    p{color:#9E9A99; margin-left: 25px;}
+  }
+
 }
