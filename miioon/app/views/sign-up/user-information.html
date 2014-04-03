@@ -7,12 +7,15 @@
   <div class="small-3 columns">
     <label class="right inline" for="sponsor">miioon Angel Sponsor ID</label>
   </div>
-  <div class="small-5 end columns">
+  <div class="small-5 columns">
     <input type="text" ng-model="userInfo['sponsor']" data-sponsor-validator
            id="sponsor" name="sponsor"/>
     <small ng-show="step['sponsor'].$error.validated" class="error">
-      Sponsor ID is not validated.
+      {{step['sponsor'].errorMessageValidated}}
     </small>
+  </div>
+  <div class="small-4 columns input-description unimportant-text" ng-show="step['sponsor'].name">
+    Sponsor Name: {{step['sponsor'].name}}
   </div>
 </div>
 <div class="row">

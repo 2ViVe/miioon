@@ -51,10 +51,12 @@ angular.module('2ViVe')
               return;
             }
             Registration.validateSponsor(sponsorId)
-              .success(function() {
+              .success(function(data) {
+                scope.step[ctrl.$name].name = data.response.name;
                 ctrl.$setValidity('validated', true);
               })
-              .error(function() {
+              .error(function(data) {
+                scope.step[ctrl.$name].errorMessageValidated = data.meta.error.message;
                 ctrl.$setValidity('validated', false);
               });
           });
