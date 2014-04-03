@@ -60,7 +60,7 @@
     </div>
     <div class="small-5 end columns">
       <select required id="billing-country-id" name="billing-country-id" ng-model="billingAddress['country-id']"
-              ng-options="country.id as country.name for country in countries"
+              ng-options="country.id as country.name for country in countries | orderBy:'name'"
               ng-change="onCountryChanged(billingAddress['country-id'])">
       </select>
       <small ng-show="submitted && form['billing-country-id'].$error.required" class="error">
@@ -75,7 +75,7 @@
     <div class="small-5 end columns">
       <select id="billing-state-id" name="billing-state-id" ng-model="billingAddress['state-id']"
               ng-required="states.length > 0"
-              ng-options="state.id as state.name for state in states">
+              ng-options="state.id as state.name for state in states | orderBy:'name'">
       </select>
       <small ng-show="submitted && form['billing-state-id'].$error.required" class="error">
         This field is required.
