@@ -5,11 +5,14 @@
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <label class="right inline" for="sponsor">miioon Angel Sponsor ID</label>
+    <label class="right inline required" for="sponsor">miioon Angel Sponsor ID</label>
   </div>
   <div class="small-5 columns">
-    <input type="text" ng-required ng-model="userInfo['sponsor']" data-sponsor-validator
+    <input type="text" required ng-model="userInfo['sponsor']" data-sponsor-validator
            id="sponsor" name="sponsor"/>
+    <small ng-show="submitted && step.sponsor.$error.required" class="error">
+      This field is required.
+    </small>
     <small ng-show="step['sponsor'].$error.validated" class="error">
       {{step['sponsor'].errorMessageValidated}}
     </small>

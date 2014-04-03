@@ -29,8 +29,8 @@ angular.module('2ViVe')
               return;
             }
             Registration.validateAvailabilities(scope.key, value)
-              .success(function() {
-                ctrl.$setValidity('validated', true);
+              .success(function(data) {
+                ctrl.$setValidity('validated', data.response.available);
               })
               .error(function() {
                 ctrl.$setValidity('validated', false);

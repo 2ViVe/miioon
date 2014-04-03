@@ -3,6 +3,16 @@
     color: $primary-color;
   }
 
+  .sign-up-success {
+    p {
+      font-size: $medium-font-size;
+    }
+
+    .title {
+      margin-top: 20px;
+    }
+  }
+
   .register-customer {
     color: $grey-dark;
   }

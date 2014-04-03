@@ -36,7 +36,6 @@ angular.module('2ViVe')
 
       $scope.$on('CreateAccount', function() {
         $window.scrollTo(0, 0);
-        $scope.currentStepNumber++;//TODO: only for demo
         Registration.create(
           $scope.payment['payment-method-id'],
           $scope.userInfo,
@@ -47,8 +46,9 @@ angular.module('2ViVe')
           $scope.payment.billingAddress,
           null,
           $scope.payment['line-items']
-        ).success(function() {
-//            $scope.currentStepNumber++;
+        ).success(function(data) {
+            $scope.currentStepNumber++;
+            $scope.successInfo = data.response;
           });
       });
 
@@ -91,6 +91,7 @@ angular.module('2ViVe')
         angular.forEach($scope.payment['available-payment-methods'], function(availablePaymentMethod) {
           if (availablePaymentMethod.id === paymentMethodId) {
             $scope.payment['is-creditcard'] = availablePaymentMethod['is-creditcard'];
+            $scope.payment['paymend-method'] = availablePaymentMethod.name;
             return;
           }
         });
