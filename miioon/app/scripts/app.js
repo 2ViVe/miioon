@@ -52,6 +52,9 @@ angular.module('miioonApp', [
       .when('/taxon/:taxonId', {
         templateUrl: 'views/taxon.html'
       })
+      .when('/host', {
+        templateUrl: 'views/host.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
