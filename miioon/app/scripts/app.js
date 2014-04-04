@@ -55,6 +55,9 @@ angular.module('miioonApp', [
       .when('/host', {
         templateUrl: 'views/host.html'
       })
+      .when('/press', {
+        templateUrl: 'views/press.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
