@@ -58,6 +58,12 @@ angular.module('miioonApp', [
       .when('/press', {
         templateUrl: 'views/press.html'
       })
+      .when('/career', {
+        templateUrl: 'views/career.html'
+      })
+      .when('/gift/gift-card', {
+        templateUrl: 'views/gift/gift-card.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
