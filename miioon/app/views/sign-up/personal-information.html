@@ -7,10 +7,11 @@
   <div class="small-3 columns">
     <label class="right inline required">Date of birth</label>
   </div>
-  <div class="small-9 columns">
-    <datepicker id="date-of-birth" name="date-of-birth" required="true" disable-timepicker="true" date-filter="moreThanOld18"
-                init-value="1990-1-1" ng-model="userInfo['birthday']" class="input-description"></datepicker>
-    <span class="unimportant-text date-description">No applicants under 18 years old</span>
+  <div class="small-2 columns">
+    <input type="text" class="date-picker" readonly ng-model="userInfo['birthday']" required/>
+  </div>
+  <div class="columns small-7">
+    <span class="unimportant-text input-description">No applicants under 18 years old</span>
   </div>
 </div>
 <div class="row">

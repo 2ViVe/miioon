@@ -8,8 +8,7 @@ angular.module('miioonApp', [
     'ngSanitize',
     'ngRoute',
     '2ViVe',
-    'ui.utils',
-    'ngQuickDate'
+    'ui.utils'
   ])
   .constant('CLIENT_ID', 'ZlnElLNFjFt6pOBAOQpH8e')
   .config(['$httpProvider', 'CLIENT_ID',

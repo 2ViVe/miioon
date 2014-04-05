@@ -79,10 +79,6 @@ angular.module('2ViVe')
         }
       };
 
-      $scope.moreThanOld18 = function(date) {
-        return moment(date).add(18, 'years').isBefore(moment());
-      };
-
       $scope.getProducts = function() {
         Registration.getProducts($scope.userInfo.country.id);
       };
