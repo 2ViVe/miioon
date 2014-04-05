@@ -62,7 +62,7 @@ angular.module('2ViVe')
           return $http.post('/api/v2/registrations', {
             'payment-method-id': paymentMethodId,
             'user-info': userInfo,
-            //'creditcard': creditcard,
+            'creditcard': creditcard,
             'home-address': homeAddress,
             'shipping-method-id': shippingMethodId,
             'shipping-address': shippingAddress,

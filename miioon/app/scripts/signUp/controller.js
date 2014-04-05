@@ -13,7 +13,7 @@ angular.module('2ViVe')
       $scope.userInfo = {};
       $scope.products = [];
       $scope.lineItems = [];
-
+      $scope.creditcard = {};
 
       $scope.registrationCountryChange = function(country) {
         Registration.getProducts(country.id)
@@ -39,7 +39,7 @@ angular.module('2ViVe')
         Registration.create(
           $scope.payment['payment-method-id'],
           $scope.userInfo,
-          null,
+          $scope.creditcard,
           $scope.address.homeAddress,
           $scope.address.shipmentAddress['shipping-method-id'],
           $scope.address.shipmentAddress,

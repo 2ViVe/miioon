@@ -95,6 +95,7 @@ angular.module('2ViVe')
       controller: ['$scope', function($scope) {
         $scope.isBillingAddressValidated = false;
         $scope.submit = function() {
+          $scope.submitted = true;
           if (this.step.$invalid) {
             return;
           }
