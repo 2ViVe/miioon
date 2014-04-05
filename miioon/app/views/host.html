@@ -1,6 +1,7 @@
 <div class="row host-container">
+  <h1>{{hahaha}}</h1>
   <div class="columns medium-9">
-    <div class='blue-border-panel bottom-arrow text-center' id='host-1'>
+    <div class='blue-border-panel bottom-arrow text-center' id='host-1' name='host-1'>
       <h2 class='primary-color'>HOST <strong>A MIION MEET</strong></h2>
       <p class='large-font grey-darker-color'><strong>Friends will thank you for making their present buying for all those birthday parties easier<strong> and we’ll thank you with a useful & exclusive hostess gift.</p>
       <p><a href='#' class='button small'>CONNECT WITH AN MIIOON ANGEL</a></p>
@@ -19,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class='grey-border-panel bottom-arrow text-center' id='host-2'>
+    <div class='grey-border-panel bottom-arrow text-center' id='host-2' name='host-2'>
       <h2 class='primary-color'>ARE YOU AN <strong>ORGANISATION OR CHARITY?</strong></h2>
       <p class='large-font grey-darker-color'><strong class='grey-color'>Fundraising via miioon will help you raise money for schools, clubs and charities<strong> <strong class='primary-color'>through the sale of fabulous gift cards</strong> that empower children to design their own T-shirts, Swoopercapes, the infamous Ruckjack®, Bags, hoodies and more.</p>
       <div>
@@ -27,16 +28,16 @@
           <h2><strong class='primary-color'>Receive 20% cash back</strong><br/><small><strong>for schools, clubs and charities Get in touch for more details.</strong></small></h2>
       </div>
     </div>
-    <div class='blue-border-panel bottom-arrow text-center' id='host-4'>
+    <div class='blue-border-panel bottom-arrow text-center' id='host-4' name='host-4'>
       <h2 class='primary-color'><strong>FAQ'S</strong></h2>
     </div>
   </div>
   <div class='columns medium-3'>
     <ul class='blue-block-navigation text-right'>
-      <li><a href='#host-1' class='active'>HOST A MIIOON MEET</a></li>
-      <li><a href='#host-2'>ORGANISATIONS WANTING TO HOST</a></li>
+      <li><a class='active' ng-click="scrollTo('host-1')">HOST A MIIOON MEET</a></li>
+      <li><a ng-click="scrollTo('host-2')">ORGANISATIONS WANTING TO HOST</a></li>
       <!--<li><a href='#host-3'>REWARDS</a></li>-->
-      <li><a href='#host-4'>FAQS</a></li>
+      <li><a ng-click="scrollTo('host-4')">FAQS</a></li>
     </ul>
   </div>
 </div>

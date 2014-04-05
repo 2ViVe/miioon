@@ -53,7 +53,8 @@ angular.module('miioonApp', [
         templateUrl: 'views/taxon.html'
       })
       .when('/host', {
-        templateUrl: 'views/host.html'
+        templateUrl: 'views/host.html',
+        controller: 'HostController'
       })
       .when('/press', {
         templateUrl: 'views/press.html'
