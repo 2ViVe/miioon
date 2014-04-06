@@ -1,53 +1,29 @@
 <nav class="main-navigation">
   <div class="row">
-    <ul class="small-12 columns root-taxons">
+    <ul class="small-12 columns root-taxons" ng-controller="MainNavigationController">
       <li>
         <a href="/#/about">ABOUT US</a>
       </li>
       <li>
         <a href="#">BRANDS</a>
       </li>
-      <li>
-        <a href="#">GIFT CARD</a>
-      </li>
-      <li>
-        <a href="#">CLOTHING</a>
-        <div class="sub-taxons-container">
+      <li ng-repeat="taxon in taxons">
+        <a href="/#/taxon/{{taxon.id}}">{{taxon.name}}</a>
+        <div class="sub-taxons-container" ng-if="taxon['sub-taxons']">
           <div class="row">
             <ul class="sub-taxons columns small-6">
-              <li>
-                <a href="#">RUCKJACK GIRLS</a>
-              </li>
-              <li>
-                <a href="#">RUCKJACK GIRLS</a>
-              </li>
-              <li>
-                <a href="#">RUCKJACK GIRLS</a>
-              </li>
-              <li>
-                <a href="#">RUCKJACK GIRLS</a>
-              </li>
-              <li>
-                <a href="#">RUCKJACK GIRLS</a>
+              <li ng-repeat="subTaxon in taxon['sub-taxons']">
+                <a href="/#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">{{subTaxon.name}}</a>
               </li>
             </ul>
-            <div class="sub-taxon-thumbnail columns small-6 text-center" data-equalizer-watch>
+            <div class="sub-taxon-thumbnail columns small-6 text-center">
               <img src="images/taxon-thumbnail-clothing.png" alt="Clothing"/>
             </div>
           </div>
         </div>
       </li>
       <li>
-        <a href="#">BAGS</a>
-      </li>
-      <li>
-        <a href="#">ACCESSORIES</a>
-      </li>
-      <li>
         <a href="/#/press">PRESS</a>
-      </li>
-      <li>
-        <a href="#">LOOK BOOK</a>
       </li>
       <li class="career-opportunity right">
         <a class="button" href="/#/career">CAREER OPPORTUNITY</a>

@@ -2,6 +2,10 @@
   border-top: 5px solid $grey-border;
   border-bottom: 1px solid $grey-border;
 
+  a {
+    text-transform: uppercase;
+  }
+
   .sub-taxons-container {
     display: none;
     position: absolute;
@@ -68,7 +72,7 @@
 
       >a {
         font-size: $medium-font-size;
-        padding: 20px 10px;
+        padding: 20px 6px;
         display: block;
       }
     }

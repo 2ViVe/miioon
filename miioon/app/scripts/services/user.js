@@ -14,5 +14,8 @@ angular.module('2ViVe')
           user.token = data.response['authentication-token'];
         });
       };
+      User.instance = function() {
+        return this;
+      };
       return User;
     }]);

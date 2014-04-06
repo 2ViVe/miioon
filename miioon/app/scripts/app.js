@@ -17,20 +17,6 @@ angular.module('miioonApp', [
         'x-client-id': CLIENT_ID,
         'x-client-secret': 'HeFsCAvsXTzpHWAqRVWCibsUYlF7gjpLRUAUw551r'
       };
-//    TODO: Uncomment this when cross-domain is enabled.
-//      $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
-//        if ($location.host() === '0.0.0.0') {
-//          return {};
-//        }
-//        return {
-//          'request': function(config) {
-//            if (config.url.indexOf('/api/') === 0) {
-//              config.url = 'http://199.27.105.132:20442' + config.url.replace('/api', '');
-//            }
-//            return config || $q.when(config);
-//          }
-//        };
-//      }]);
     }])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
@@ -47,6 +33,9 @@ angular.module('miioonApp', [
       })
       .when('/about', {
         templateUrl: 'views/about.html'
+      })
+      .when('/taxon/4', {
+        templateUrl: 'views/gift/gift-card.html'
       })
       .when('/taxon/:taxonId', {
         templateUrl: 'views/taxon.html'
