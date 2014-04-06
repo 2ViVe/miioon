@@ -13,7 +13,8 @@
     "unslider": "*",
     "angular-ui-utils": "bower",
     "momentjs": "~2.5.1",
-    "pikaday": "~1.2.0"
+    "pikaday": "~1.2.0",
+    "angular-mm-foundation": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",

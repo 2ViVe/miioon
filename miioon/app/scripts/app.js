@@ -8,7 +8,8 @@ angular.module('miioonApp', [
     'ngSanitize',
     'ngRoute',
     '2ViVe',
-    'ui.utils'
+    'ui.utils',
+    'mm.foundation.tabs'
   ])
   .constant('CLIENT_ID', 'ZlnElLNFjFt6pOBAOQpH8e')
   .config(['$httpProvider', 'CLIENT_ID',
@@ -40,6 +41,10 @@ angular.module('miioonApp', [
       .when('/taxon/:taxonId', {
         templateUrl: 'views/taxon.html',
         controller: 'TaxonController'
+      })
+      .when('/product/:productId', {
+        templateUrl: 'views/product-detail.html',
+        controller: 'ProductController'
       })
       .when('/taxon/:taxonId/sub-taxon/:subTaxonId', {
         templateUrl: 'views/taxon.html',

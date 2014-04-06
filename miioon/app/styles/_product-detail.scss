@@ -1,0 +1,48 @@
+.product-detail {
+  margin-bottom: 20px;
+
+  .info-panel {
+    border-bottom: 1px dashed $grey-border;
+    padding: 25px 0;
+
+    &.first {
+      padding-top: 0;
+    }
+
+    &.last {
+      border-bottom: 0;
+    }
+
+    .info-panel-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: $medium-font-size;
+    }
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  .name {
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  .price {
+    margin-top: 20px;
+  }
+
+  .quantity {
+    input {
+      width: 60px;
+      margin-bottom: 0;
+    }
+  }
+
+  .shopping {
+    button {
+      margin-right: 20px;
+    }
+  }
+}

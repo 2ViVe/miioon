@@ -1,0 +1,51 @@
+<div class='row'>
+  <div class='small-12 columns'>
+    <ul class="breadcrumbs">
+      <li><a href="#">&gt; CLOTHING</a></li>
+      <li><a href="#">T-SHIRTS</a></li>
+      <li class="current">GIFT CERTIFICATE</li>
+    </ul>
+  </div>
+</div>
+<div class='row product-detail'>
+  <div class='medium-5 columns'>
+    <div>
+      <img src='images/product-detail.png' alt='Product'/>
+    </div>
+  </div>
+  <div class='medium-7 columns'>
+    <div class="row">
+      <div class="columns medium-8">
+        <div class="info-panel first">
+          <h2 class="name">grey animaru t-shirt</h2>
+          <div>
+            Item Code: 01915-scint-p-g
+          </div>
+          <h2 class='price'>
+            £20
+          </h2>
+        </div>
+
+        <div class='quantity info-panel'>
+          <div class="info-panel-title">Quantity:</div>
+          <input type="number" min="1"/>
+        </div>
+
+        <div class='shopping info-panel last'>
+          <button class='button tertiary'>PURCHASE</button>
+          <button class='button'>ADD TO CART</button>
+        </div>
+      </div>
+      <div class="columns medium-4">
+        <a href="#">
+          <img src="images/design.png" alt="Design Your Own"/>
+        </a>
+      </div>
+    </div>
+    <div class="tabs" data-tabset>
+      <div data-tab ng-repeat="tab in tabs" data-heading="{{tab.title}}" data-active="tab.active">
+        {{tab.content}}
+      </div>
+    </div>
+  </div>
+</div>
