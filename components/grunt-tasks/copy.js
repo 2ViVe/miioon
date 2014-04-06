@@ -13,6 +13,7 @@ module.exports = (function() {
             '.htaccess',
             '*.html',
             'views/{,*/}*.html',
+            'template/{,*/}*.html',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
             'fonts/*'

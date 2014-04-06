@@ -1,0 +1,23 @@
+.tabs {
+  dd {
+    border: 1px solid $grey-border;
+    margin-right: 12px;
+    margin-bottom: -1px;
+
+    &.active {
+      border-bottom: #FFF 1px solid;
+    }
+
+    a {
+      padding: 16px;
+    }
+  }
+}
+
+.tabs-content {
+  border: 1px solid $grey-border;
+
+  .content {
+    padding: 32px 16px;
+  }
+}
