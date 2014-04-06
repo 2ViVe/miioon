@@ -8,7 +8,9 @@
         <a href="#">BRANDS</a>
       </li>
       <li ng-repeat="taxon in taxons">
-        <a href="/#/taxon/{{taxon.id}}">{{taxon.name}}</a>
+        <a href="/#/taxon/{{taxon.id}}{{taxon['sub-taxons'].length > 0 && '/sub-taxon/' + taxon['sub-taxons'][0].id || ''}}">
+          {{taxon.name}}
+        </a>
         <div class="sub-taxons-container" ng-if="taxon['sub-taxons']">
           <div class="row">
             <ul class="sub-taxons columns small-6">

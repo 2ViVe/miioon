@@ -1,14 +1,13 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Product', ['$http', 'User',
-    function($http, User) {
-      var user = User.instance();
+  .factory('Product', ['$http',
+    function($http) {
       return {
-        taxons: function() {
-          return $http.get('/api/v2/taxons', {
+        getByTaxon: function(taxonId) {
+          return $http.get('/api/v2/products/taxons/' + taxonId, {
             headers: {
-              'X-Authentication-Token': 'MTAxMjAxOjo0MDcyMzo6cHJlbWl1bTo6OjoxMzk2Nzc1MDczMTM4OjpabG5FbExORmpGdDZwT0JBT1FwSDhlOjpLMWZYRDZoSDhZRlo1Vi82d2NnZFdHeHd6T0kwVHBOT3NyVktQWTUyQXZNPQ=='
+              'X-Authentication-Token': 'MTAwODEwMTo6NDQ5ODM6OnRlc3QxMjM6Ojo6MTM5Njc4OTg0NDYyNjo6WmxuRWxMTkZqRnQ2cE9CQU9RcEg4ZTo6RUNFamdIMThsODNaNTVCOFBFL2lteE5uUXNqZFVueVQ2VzA0MHdsN1FLbz0='
             }
           });
         }

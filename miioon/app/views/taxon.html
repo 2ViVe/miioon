@@ -7,166 +7,35 @@
 <div class="row">
   <div class="columns small-2 taxon-navigation">
     <h5 class="root-taxon">
-      CLOTHING
+      {{taxon.name}}
     </h5>
     <ul>
-      <li>
-        <span class="current">
-          RUCKJACK GIRLS
+      <li ng-repeat="subTaxon in taxon['sub-taxons']">
+        <span class="current" ng-if="subTaxon.id === subTaxonId">
+          {{subTaxon.name}}
         </span>
-      </li>
-      <li>
-        <a href="#">RUCKJACK BOYS</a>
-      </li>
-      <li>
-        <a href="#">RUCKJACK BOYS</a>
-      </li>
-      <li>
-        <a href="#">RUCKJACK BOYS</a>
-      </li>
-      <li>
-        <a href="#">RUCKJACK BOYS</a>
-      </li>
-      <li>
-        <a href="#">RUCKJACK BOYS</a>
+        <a ng-if="subTaxon.id !== subTaxonId" href="/#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">
+          {{subTaxon.name}}
+        </a>
       </li>
     </ul>
   </div>
   <div class="columns small-10 products">
     <ul class="small-block-grid-4">
-      <li>
+      <li ng-repeat="product in products">
         <div class="product-view">
-          <img src="images/product1.png" alt="product"/>
+          <img src="{{product.images[0]}}" alt="{{product.name}}"/>
+
           <div class="view-detail">
-            <a href="#">VIEW DETAIL</a>
+            <a href="/#/product/{{product.id}}">VIEW DETAIL</a>
           </div>
           <a class="add-to-cart" href="#">ADD TO CART</a>
         </div>
         <div class="product-name">
-          White Animaru Ruckjack
+          {{product.name}}
         </div>
         <div class="product-price">
-          £40.00
-        </div>
-      </li>
-      <li>
-        <div class="product-view">
-          <img src="images/product.png" alt="product"/>
-          <div class="view-detail">
-            <a href="#">VIEW DETAIL</a>
-          </div>
-          <a class="add-to-cart" href="#">ADD TO CART</a>
-        </div>
-        <div class="product-name">
-          White Animaru Ruckjack
-        </div>
-        <div class="product-price">
-          £40.00
-        </div>
-      </li>
-      <li>
-        <div class="product-view">
-          <img src="images/product.png" alt="product"/>
-          <div class="view-detail">
-            <a href="#">VIEW DETAIL</a>
-          </div>
-          <a class="add-to-cart" href="#">ADD TO CART</a>
-        </div>
-        <div class="product-name">
-          White Animaru Ruckjack
-        </div>
-        <div class="product-price">
-          £40.00
-        </div>
-      </li>
-      <li>
-        <div class="product-view">
-          <img src="images/product.png" alt="product"/>
-          <div class="view-detail">
-            <a href="#">VIEW DETAIL</a>
-          </div>
-          <a class="add-to-cart" href="#">ADD TO CART</a>
-        </div>
-        <div class="product-name">
-          White Animaru Ruckjack
-        </div>
-        <div class="product-price">
-          £40.00
-        </div>
-      </li>
-      <li>
-        <div class="product-view">
-          <img src="images/product.png" alt="product"/>
-          <div class="view-detail">
-            <a href="#">VIEW DETAIL</a>
-          </div>
-          <a class="add-to-cart" href="#">ADD TO CART</a>
-        </div>
-        <div class="product-name">
-          White Animaru Ruckjack
-        </div>
-        <div class="product-price">
-          £40.00
-        </div>
-      </li>
-      <li>
-        <div class="product-view">
-          <img src="images/product.png" alt="product"/>
-          <div class="view-detail">
-            <a href="#">VIEW DETAIL</a>
-          </div>
-          <a class="add-to-cart" href="#">ADD TO CART</a>
-        </div>
-        <div class="product-name">
-          White Animaru Ruckjack
-        </div>
-        <div class="product-price">
-          £40.00
-        </div>
-      </li>
-      <li>
-        <div class="product-view">
-          <img src="images/product.png" alt="product"/>
-          <div class="view-detail">
-            <a href="#">VIEW DETAIL</a>
-          </div>
-          <a class="add-to-cart" href="#">ADD TO CART</a>
-        </div>
-        <div class="product-name">
-          White Animaru Ruckjack
-        </div>
-        <div class="product-price">
-          £40.00
-        </div>
-      </li>
-      <li>
-        <div class="product-view">
-          <img src="images/product.png" alt="product"/>
-          <div class="view-detail">
-            <a href="#">VIEW DETAIL</a>
-          </div>
-          <a class="add-to-cart" href="#">ADD TO CART</a>
-        </div>
-        <div class="product-name">
-          White Animaru Ruckjack
-        </div>
-        <div class="product-price">
-          £40.00
-        </div>
-      </li>
-      <li>
-        <div class="product-view">
-          <img src="images/product.png" alt="product"/>
-          <div class="view-detail">
-            <a href="#">VIEW DETAIL</a>
-          </div>
-          <a class="add-to-cart" href="#">ADD TO CART</a>
-        </div>
-        <div class="product-name">
-          White Animaru Ruckjack
-        </div>
-        <div class="product-price">
-          £40.00
+          £{{product.price}}
         </div>
       </li>
     </ul>
