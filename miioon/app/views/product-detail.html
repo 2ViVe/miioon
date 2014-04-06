@@ -10,19 +10,19 @@
 <div class='row product-detail'>
   <div class='medium-5 columns'>
     <div>
-      <img src='images/product-detail.png' alt='Product'/>
+      <img src='{{product.images[0]}}' alt='{{product.name}}'/>
     </div>
   </div>
   <div class='medium-7 columns'>
     <div class="row">
       <div class="columns medium-8">
         <div class="info-panel first">
-          <h2 class="name">grey animaru t-shirt</h2>
+          <h2 class="name">{{product.name}}</h2>
           <div>
-            Item Code: 01915-scint-p-g
+            Item Code: {{product.sku}}
           </div>
           <h2 class='price'>
-            £20
+            £{{product.price}}
           </h2>
         </div>
 
