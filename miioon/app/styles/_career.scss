@@ -1,3 +1,192 @@
 .career-container {
+
+  .career-bt-red{
+  	background:#e7593d;
+  }
+
+  .career-1{
+  	position: relative;
+  	background: url('../images/career/career-1-2.jpg') 0 0 no-repeat;
+	height:450px;
+	margin-bottom:rem-calc(30);
+	min-width:rem-calc(720);
+  	h2{
+  		position: absolute;
+  		width: rem-calc(340);
+  		top:rem-calc(140);
+  		left:rem-calc(5);
+  		text-align: center;
+  		font-weight: bold;
+  		line-height: normal;
+  		color: $primary-color;
+  	}
+  	h3{
+  		position: absolute;
+  		width: rem-calc(340);
+  		top:rem-calc(220);
+  		left:rem-calc(5);
+  		text-align: center;
+  		font-size: rem-calc(18);
+  		font-weight: bold;
+  		line-height: normal;
+  	}
+  	label{
+  		position: absolute;
+  		width: rem-calc(280);
+  		top:rem-calc(290);
+  		left:rem-calc(45);
+  		line-height: normal;
+  		input{margin-bottom:0;}
+  	}
+  	.button{
+  		position: absolute;
+  		top:rem-calc(350);
+  		left:rem-calc(100);
+  	}
+  	.career-1-monster{
+  		position: absolute;
+  		bottom: rem-calc(-10);
+  		left: rem-calc(-30);
+  	}
+  }
   
+  .career-2{
+  	position: relative;
+	background:#4facdb;
+	color:#fff;
+	padding: rem-calc(50) rem-calc(30) rem-calc(30) rem-calc(30);
+	margin-bottom:rem-calc(30);
+	min-width:rem-calc(720);
+	&.bottom-arrow:before{
+		display: none;
+	}
+	&.bottom-arrow:after{
+		top:0;
+	}
+	h2{
+		color:#fff;
+	}
+	h3{
+		color:#fff;
+		font-size: rem-calc(18);
+	}
+	.career-2-p1{
+		font-style:italic;
+	}
+	.career-2-p2{
+		background: url('../images/career/career-2-1.png') 0 0 no-repeat;
+		padding-left: rem-calc(200);
+		line-height: 1.3;
+		height: rem-calc(160);
+		padding-top:rem-calc(20);
+		span{
+			background:#fff;
+			color: $primary-color;
+		}
+	}
+	.career-2-p3{
+		background: url('../images/career/career-2-2.png') right 0 no-repeat;
+		padding-right: rem-calc(200);
+		line-height: 1.3;
+		text-align: right;
+		min-height: rem-calc(160);
+		margin-bottom: rem-calc(20);
+		a{
+			text-decoration: underline;
+			color:#fff;
+		}
+	}
+	.career-2-p4{
+		background: url('../images/career/career-2-3.png') 0 0 no-repeat;
+		padding-left: rem-calc(200);
+		line-height: 1.3;
+		min-height: rem-calc(160);
+		margin-bottom: rem-calc(20);
+	}
+  }
+
+  .career-3{
+  	position: relative;
+  	background: url('../images/career/career-3-1.jpg') 0 0 no-repeat;
+	height:rem-calc(1265);
+	min-width:rem-calc(720);
+	margin-bottom:rem-calc(30);
+	&.bottom-arrow:before{
+		display: none;
+	}
+	&.bottom-arrow:after{
+		top:0;
+	}
+	.career-3-bt{
+		position: absolute;
+		bottom:rem-calc(105);
+		left:rem-calc(280);
+	}
+  }
+
+  .career-4{
+  	position: relative;
+	min-width:rem-calc(720);
+	margin-bottom:rem-calc(30);
+	color:$grey-dark;
+	border:2px solid $grey-darker;
+	padding-top: rem-calc(30);
+	&.bottom-arrow:before{
+		top:0;
+	}
+	&.bottom-arrow:after{
+		top:-2px;
+	}
+	h2{
+		color:$grey-dark;
+	}
+	.career-4-p1{
+		text-align: center;
+		padding:rem-calc(10) rem-calc(30);
+	}
+	.career-4-p3{
+		color: $primary-color;
+		margin: rem-calc(20);
+	}
+  }
+
+  .career-5{
+  	background:#e7593d;
+  	color:#fff;
+  	padding: rem-calc(50) rem-calc(30) rem-calc(10) rem-calc(30);
+  	&.bottom-arrow:before{
+		display: none;
+	}
+	&.bottom-arrow:after{
+		top:0;
+	}
+	h2{
+		color:#fff;
+	}
+	h3{
+		color:#fff;
+		font-size: rem-calc(18);
+	}
+	.career-5-p2{
+		margin-bottom:rem-calc(30);
+		padding-left: rem-calc(43);
+		background:url(../images/career/career-5-step-1.png) 0 0 no-repeat;
+	}
+	.career-5-p3{
+		margin-bottom:rem-calc(30);
+		padding-left: rem-calc(43);
+		background:url(../images/career/career-5-step-2.png) 0 0 no-repeat;
+	}
+	.career-5-p4{
+		margin-bottom:rem-calc(30);
+		padding-left: rem-calc(43);
+		background:url(../images/career/career-5-step-3.png) 0 0 no-repeat;
+	}
+	.career-5-p5{
+		margin-bottom:rem-calc(30);
+		padding-left: rem-calc(43);
+		background:url(../images/career/career-5-step-4.png) 0 0 no-repeat;
+	}
+  }
+
 }
