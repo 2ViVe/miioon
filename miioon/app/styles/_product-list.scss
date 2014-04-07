@@ -1,14 +1,14 @@
-.products {
-  .product-price,
-  .product-name {
+.product-list {
+  .price,
+  .name {
     text-align: center;
   }
 
-  .product-price {
+  .price {
     font-size: rem-calc(16);
   }
 
-  .product-name {
+  .name {
     padding: 10px 30px 0;
   }
 
@@ -16,7 +16,7 @@
     border-top: 1px solid $grey-border;
   }
 
-  .product-view {
+  .view {
     position: relative;
 
     .view-detail,

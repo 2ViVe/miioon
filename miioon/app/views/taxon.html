@@ -20,10 +20,10 @@
       </li>
     </ul>
   </div>
-  <div class="columns small-10 products">
+  <div class="columns small-10 product-list">
     <ul class="small-block-grid-4">
       <li ng-repeat="product in products">
-        <div class="product-view">
+        <div class="view">
           <img src="{{product.images[0]}}" alt="{{product.name}}"/>
 
           <div class="view-detail">
@@ -31,10 +31,10 @@
           </div>
           <a class="add-to-cart" href="#">ADD TO CART</a>
         </div>
-        <div class="product-name">
+        <div class="name">
           {{product.name}}
         </div>
-        <div class="product-price">
+        <div class="price">
           £{{product.price}}
         </div>
       </li>
