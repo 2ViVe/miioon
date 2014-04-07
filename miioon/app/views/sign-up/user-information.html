@@ -31,13 +31,16 @@
     <label class="right inline required" for="login">Login</label>
   </div>
   <div class="small-5 end columns">
-    <input required ng-model="userInfo.login" type="text" name="login" id="login"
+    <input required ng-model="userInfo.login" type="text" name="login" id="login" ng-pattern="/(?!^\d+$)^.+$/"
            data-availabilities-validator="login" placeholder="Please enter the username."/>
     <small ng-show="submitted && step.login.$error.required" class="error">
       This field is required.
     </small>
     <small ng-show="step['login'].$error.validated" class="error">
-      User name is not available.
+      Username is not available.
+    </small>
+    <small ng-show="step['login'].$error.pattern" class="error">
+      Username can't be all numbers.
     </small>
   </div>
 </div>
@@ -46,9 +49,12 @@
     <label class="right inline required" for="password">Password</label>
   </div>
   <div class="small-5 end columns">
-    <input required ng-model="userInfo.password" type="password" name="password" id="password"/>
+    <input required ng-model="userInfo.password" type="password" name="password" id="password" ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/"/>
     <small ng-show="submitted && step.password.$error.required" class="error">
       This field is required.
+    </small>
+    <small ng-show="step['password'].$error.pattern" class="error">
+      Password should include at least one number, one uppercase, one lowercase and more than 6 characters.
     </small>
   </div>
 </div>
