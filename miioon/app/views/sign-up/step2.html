@@ -29,8 +29,7 @@
           <td>{{product.variants[0].commissions[0].volume}}</td>
           <td class="price">£{{product.price}}</td>
           <td class="quantity">
-            <input ng-if="product['taxon-id'] === 1" type="checkbox" checked disabled />
-            <input type="number" ng-if="product['taxon-id'] !== 1" ng-model="product.quantity"/>
+            <input type="checkbox" checked disabled />
           </td>
         </tr>
         </tbody>

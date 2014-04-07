@@ -21,12 +21,7 @@ angular.module('2ViVe')
             var products = data.response.products;
             var entryProductIndex;
             angular.forEach(products, function(product, index) {
-              if (product['taxon-id'] === 1) {
-                product.quantity = 1;
-                entryProductIndex = index;
-              } else {
-                product.quantity = 0;
-              }
+              product.quantity = 1;
             });
             var entryProduct = products.splice(entryProductIndex, 1)[0];
             products.unshift(entryProduct);
@@ -37,16 +32,16 @@ angular.module('2ViVe')
       $scope.$on('CreateAccount', function() {
         $window.scrollTo(0, 0);
         Registration.create(
-          $scope.payment['payment-method-id'],
-          $scope.userInfo,
-          $scope.creditcard,
-          $scope.address.homeAddress,
-          $scope.address.shipmentAddress['shipping-method-id'],
-          $scope.address.shipmentAddress,
-          $scope.payment.billingAddress,
-          null,
-          $scope.payment['line-items']
-        ).success(function(data) {
+            $scope.payment['payment-method-id'],
+            $scope.userInfo,
+            $scope.creditcard,
+            $scope.address.homeAddress,
+            $scope.address.shipmentAddress['shipping-method-id'],
+            $scope.address.shipmentAddress,
+            $scope.payment.billingAddress,
+            null,
+            $scope.payment['line-items']
+          ).success(function(data) {
             $scope.currentStepNumber++;
             $scope.successInfo = data.response;
           });
