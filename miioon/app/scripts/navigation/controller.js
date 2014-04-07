@@ -7,4 +7,8 @@ angular.module('2ViVe')
       taxons.get().success(function(data) {
         $scope.taxons = data.response;
       });
+
+      $scope.frontendTaxons = function(taxon) {
+        return taxon.position > 0;
+      };
     }]);
