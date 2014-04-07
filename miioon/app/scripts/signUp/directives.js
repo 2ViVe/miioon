@@ -46,7 +46,7 @@ angular.module('2ViVe')
           $scope.expirationMonths.push(month);
         }
       }]
-    }
+    };
   })
   .directive('datePicker', function() {
     return {
@@ -63,5 +63,5 @@ angular.module('2ViVe')
           maxDate: maxDate.toDate()
         });
       }
-    }
+    };
   });

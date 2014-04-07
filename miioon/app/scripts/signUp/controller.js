@@ -20,7 +20,7 @@ angular.module('2ViVe')
           .success(function(data) {
             var products = data.response.products;
             var entryProductIndex;
-            angular.forEach(products, function(product, index) {
+            angular.forEach(products, function(product) {
               product.quantity = 1;
             });
             var entryProduct = products.splice(entryProductIndex, 1)[0];
