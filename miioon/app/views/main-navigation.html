@@ -7,6 +7,9 @@
       <li>
         <a href="/#/brand">BRANDS</a>
       </li>
+      <li>
+        <a href="/#/gift/gift-card">gift card</a>
+      </li>
       <li ng-repeat="taxon in taxons | orderBy: position">
         <a href="/#/taxon/{{taxon.id}}{{taxon['sub-taxons'].length > 0 && '/sub-taxon/' + taxon['sub-taxons'][0].id || ''}}">
           {{taxon.name}}
@@ -26,6 +29,9 @@
       </li>
       <li>
         <a href="/#/press">PRESS</a>
+      </li>
+      <li>
+        <a href="/#/">look book</a>
       </li>
       <li class="career-opportunity right">
         <a class="button" href="/#/career">CAREER OPPORTUNITY</a>
