@@ -154,6 +154,7 @@
   	background:#e7593d;
   	color:#fff;
   	padding: rem-calc(50) rem-calc(30) rem-calc(10) rem-calc(30);
+  	margin-bottom:rem-calc(30);
   	&.bottom-arrow:before{
 		display: none;
 	}
@@ -186,6 +187,89 @@
 		margin-bottom:rem-calc(30);
 		padding-left: rem-calc(43);
 		background:url(../images/career/career-5-step-4.png) 0 0 no-repeat;
+	}
+  }
+
+  .career-6{
+	min-width:rem-calc(720);
+	margin-bottom:rem-calc(30);
+	h2{
+		color:$primary-color;
+	}
+	.career-6-p1{
+		position: relative;
+		color:$primary-color;
+		border:3px solid #d3e2f2;
+		border-radius: 10px;
+		padding:rem-calc(20);
+		margin-bottom:rem-calc(30);
+		h3{
+			color:$primary-color;
+		}
+		ul{
+			li{
+				color:#b2d78a;
+			}
+		}
+		.career-6-p1-monster{
+			position: absolute;
+			top:-58px;
+			right:0;
+		}
+	}
+	.career-6-p2{
+		position: relative;
+		color:$primary-color;
+		border:3px solid #d3e2f2;
+		border-radius: 10px;
+		padding:rem-calc(20);
+		margin-bottom:rem-calc(80);
+		h3{
+			color:$primary-color;
+		}
+		ul{
+			li{
+				color:#b2d78a;
+				margin-bottom: rem-calc(10);
+				strong{
+					color:$primary-color;
+				}
+			}
+		}
+		.career-6-p2-monster{
+			position: absolute;
+			bottom:-75px;
+			right:0;
+		}
+	}
+	.career-6-p3{
+		position: relative;
+		color:$primary-color;
+		border:3px solid #d3e2f2;
+		border-radius: 10px;
+		padding:rem-calc(20);
+		margin-bottom:rem-calc(60);
+		height: 230px;
+		h3{
+			color:$primary-color;
+		}
+		.career-6-p3-1{
+			position: absolute;
+			top: 60px;
+			left:20px;
+			color:#b2d78a;
+		}
+		.career-6-p3-2{
+			position: absolute;
+			top: 120px;
+			right:30px;
+			width:200px;
+		}
+		.career-6-p3-monster{
+			position: absolute;
+			bottom:-64px;
+			left:10px;
+		}
 	}
   }
 
