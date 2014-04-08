@@ -7,7 +7,7 @@
       <li>
         <a href="/#/press">BRANDS</a>
       </li>
-      <li ng-repeat="taxon in taxons | filter: frontendTaxons | orderBy: position">
+      <li ng-repeat="taxon in taxons | orderBy: position">
         <a href="/#/taxon/{{taxon.id}}{{taxon['sub-taxons'].length > 0 && '/sub-taxon/' + taxon['sub-taxons'][0].id || ''}}">
           {{taxon.name}}
         </a>

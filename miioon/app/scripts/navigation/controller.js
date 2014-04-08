@@ -3,12 +3,10 @@
 angular.module('2ViVe')
   .controller('MainNavigationController', ['$scope', 'Taxons',
     function($scope, Taxons) {
-      var taxons = new Taxons();
-      taxons.get().success(function(data) {
-        $scope.taxons = data.response;
+      $scope.taxons = Taxons.getByPositionMoreThan(0);
+      $scope.$watch(function() {
+        return Taxons.data;
+      }, function() {
+        $scope.taxons = Taxons.getByPositionMoreThan(0);
       });
-
-      $scope.frontendTaxons = function(taxon) {
-        return taxon.position > 0;
-      };
     }]);
