@@ -19,33 +19,22 @@
   .view {
     position: relative;
 
-    .view-detail,
-    .add-to-cart {
+    &:hover {
+      background: $grey-lighter;
+
+      .view-detail {
+        display: block;
+      }
+    }
+
+    .view-detail {
+      top: 50%;
+      margin-top: -17px;
       position: absolute;
       right: 0;
       left: 0;
       text-align: center;
       display: none;
-    }
-
-    &:hover {
-      background: $grey-lighter;
-
-      .view-detail,
-      .add-to-cart {
-        display: block;
-      }
-    }
-
-    .add-to-cart {
-      color: white;
-      background: $primary-color;
-      padding: 12px 0;
-      top: 75%;
-    }
-
-    .view-detail {
-      top: 40%;
 
       a {
         background: black;
