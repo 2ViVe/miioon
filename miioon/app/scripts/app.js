@@ -57,6 +57,9 @@ angular.module('miioonApp', [
       .when('/press', {
         templateUrl: 'views/press.html'
       })
+      .when('/brand', {
+        templateUrl: 'views/brand.html'
+      })
       .when('/career', {
         templateUrl: 'views/career.html',
         controller: 'CareerController'
