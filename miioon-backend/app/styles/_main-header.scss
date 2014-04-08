@@ -1,0 +1,27 @@
+.main-header {
+  padding-top: 15px;
+  padding-bottom: 20px;
+
+  .header-links {
+    color: $grey;
+    margin-bottom: 30px;
+    font-size: rem-calc(16);
+    @include clearfix;
+
+    li {
+      float: left;
+
+      a {
+        color: $grey;
+
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+
+  .shopping-bag {
+    font-size: $medium-font-size;
+  }
+}
