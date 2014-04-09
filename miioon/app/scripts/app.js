@@ -65,7 +65,11 @@ angular.module('miioonApp', [
         controller: 'CareerController'
       })
       .when('/gift/gift-card', {
-        templateUrl: 'views/gift/gift-card.html'
+        templateUrl: 'views/gift/gift-card.html',
+        controller: 'GiftController'
+      })
+      .when('/gift/checkout', {
+        templateUrl: 'views/gift/gift-checkout.html',
       })
       .otherwise({
         redirectTo: '/'

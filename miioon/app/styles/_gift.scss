@@ -131,4 +131,143 @@
       }
     }
   }
+
+  //style for gift checkout
+
+  h2{
+    
+  }
+
+  h3{
+    font-size: rem-calc(18);
+    color:$primary-color;
+  }
+  h4{
+    font-size: rem-calc(16);
+    color:$grey-dark;
+  }
+
+  .ng-invalid{margin-bottom:0;}
+
+  .alert-box.error{
+    background-color:#FBE9E7;
+    border-color:#EAC4BF;
+    color:$grey-darker;
+  }
+
+  // table style
+  table{
+    thead{
+      background:none;
+      tr{
+        th{
+          border-bottom: 2px solid $grey-border;
+          font-weight: normal;
+          font-size:rem-calc(14);
+        }
+      }
+    }
+    tfoot{
+      .check-out-foot{
+          margin: rem-calc(16) 0 rem-calc(16) 0;
+          p{
+            margin-bottom: 0;
+            color:#9E9A99;
+            font-weight: normal;
+            line-height:rem-calc(30);
+            font-size: rem-calc(14);
+          }
+          strong.price-total{
+              display:block;
+              line-height:rem-calc(30); 
+              font-size:rem-calc(16);
+              border-top: 1px $grey-border dashed;
+              margin-top: rem-calc(15);
+              padding-top:rem-calc(15);
+          }
+      }
+    }
+    tbody{
+      tr{
+        &:nth-of-type(2n){
+          background:none;
+        }
+        td{
+          border-bottom: 1px solid $grey-border;
+          p{
+            margin-bottom: 0;
+            font-size: rem-calc(14);
+          }
+        }
+      }
+    }
+    .border-sep{
+      td{
+        border-left:1px solid $grey-border;
+        &:first-child{border-left:0;}
+      }
+      
+    }
+  }
+
+  //tabs
+  .tabs dd{
+    font-weight: bold;
+    a{
+      padding:rem-calc(10) rem-calc(16);
+      &:hover{
+        text-decoration: none;
+      }
+    }
+    &.active{
+      a{
+        color:$primary-color;
+      }
+    }
+  }
+
+
+  //private style
+
+  .gift-checkout-table{
+    td{
+      vertical-align: top;
+      border-bottom:1px solid $grey-border;
+    }
+    .gift-checkout-table-img{
+      width:rem-calc(90);
+      text-align: center;
+      img{
+        border:1px solid $grey-border;
+      }
+    }
+    .gift-checkout-table-item{
+      .gift-info{
+        .gift-name{
+          font-size: rem-calc(14);
+          margin-bottom: 6px;
+        }
+        .gift-id{
+          color:$grey-dark;
+          margin-bottom: 6px;
+          font-size: rem-calc(12);
+          line-height: 1;
+        }
+        .gift-size{
+          margin-bottom: 6px;
+          font-size: rem-calc(12);
+          line-height: 1;
+          color: $grey;
+        }
+        .gift-option{
+          color:$grey-darker;
+          margin-bottom: 6px;
+          font-size: rem-calc(12);
+          line-height: 1;
+        }
+      }
+    }
+  }
+
+
 }
