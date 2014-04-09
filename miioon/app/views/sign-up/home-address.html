@@ -152,13 +152,10 @@
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <label class="right inline required" for="home-mobile-phone">Mobile</label>
+    <label class="right inline" for="home-mobile-phone">Mobile</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="home-mobile-phone" name="home-mobile-phone" ng-model="homeAddress['mobile-phone']"/>
-    <small ng-show="submitted && form['home-mobile-phone'].$error.required" class="error">
-      This field is required.
-    </small>
+    <input type="text" id="home-mobile-phone" name="home-mobile-phone" ng-model="homeAddress['mobile-phone']"/>
     <small ng-show="submitted && form['home-mobile-phone'].$error.validated" class="error">
       {{form['home-mobile-phone'].errorMessageValidated}}
     </small>

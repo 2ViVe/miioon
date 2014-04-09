@@ -55,13 +55,10 @@
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <label class="right inline required" for="web-mobile-phone">Mobile</label>
+    <label class="right inline" for="web-mobile-phone">Mobile</label>
   </div>
   <div class="small-5 end columns">
-    <input required type="text" id="web-mobile-phone" name="web-mobile-phone" ng-model="webAddress['mobile-phone']"/>
-    <small ng-show="submitted && form['web-mobile-phone'].$error.required" class="error">
-      This field is required.
-    </small>
+    <input type="text" id="web-mobile-phone" name="web-mobile-phone" ng-model="webAddress['mobile-phone']"/>
     <small ng-show="submitted && form['web-mobile-phone'].$error.validated" class="error">
       {{form['web-mobile-phone'].errorMessageValidated}}
     </small>
