@@ -3,8 +3,9 @@
 angular.module('2ViVe')
   .controller('GiftController', ['$scope',
     function($scope) {
+      $scope.amount = '￡12.50 - ￡40.00';
+
       // images switching
-  
       $scope.giftImagesBig='images/gift/gift-img-big-1.jpg';
       $scope.giftImagesIndex = '1';
       $scope.switchGiftImages = function(target){

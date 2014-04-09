@@ -19,12 +19,15 @@
     <div class='medium-6 columns gift-detail-info'>
       <h2>Gift Certificate</h2>
       <strong class='gift-detail-price'>
-        ￡12.50 - ￡40.00
+        {{amount}}
       </strong>
       <div class='gift-detail-quantity'>
         <h6>Amount:</h6>
-        <select style='width:250px;'>
-          <option>Choose an Amount...</option>
+        <select style='width:250px;' ng-model='amount'>
+          <option value='￡12.50 - ￡40.00' selected>Choose an Amount...</option>
+          <option value='￡12.50'>￡12.50</option>
+          <option value='￡20.00'>￡20.00</option>
+          <option value='￡40.00'>￡40.00</option>
         </select>
       </div>
       <div class='gift-detail-designList'>
