@@ -11,7 +11,7 @@
     <!-- gift-detail-photo start -->
     <div class='medium-6 columns gift-detail-photo'>
       <div>
-        <img src='images/gift/gift-img-big-1.jpg' alt='Gift Design' />
+        <img ng-src={{giftImagesBig}} alt='Gift Design' />
       </div>
     </div>
     <!-- gift-detail-photo end -->
@@ -30,8 +30,10 @@
       <div class='gift-detail-designList'>
         <h6>Design:</h6>
         <ul class='clearfix'>
-          <li><a href="#"><img src='images/gift/gift-img-small-1.jpg' alt='Gift Design' /></a></li>
-          <li><a class="current" href="#"><img src='images/gift/gift-img-small-2.jpg' alt='Gift Design' /></a></li>
+          
+          <li><a data='1' ng-class='{current: giftImagesIndex == 1}' ng-click="switchGiftImages($event.target)"><img src='images/gift/gift-img-small-1.jpg' alt='Gift Design' data='1' /></a></li>
+          <li><a data='2' ng-class='{current: giftImagesIndex == 2}' ng-click="switchGiftImages($event.target)"><img src='images/gift/gift-img-small-2.jpg' alt='Gift Design' data='2' /></a></li>
+
         </ul>
       </div>
       <div class='gift-detail-detailList'>
@@ -43,7 +45,7 @@
           </div>
         </div>
 
-        <script type="text/ng-template" id="email.html">
+        <script type="text/ng-template" id="post.html">
           <form>
             <div class="row">
               <div class="large-6 columns">
@@ -83,7 +85,7 @@
           </form>
         </script>
         
-        <script type="text/ng-template" id="post.html">
+        <script type="text/ng-template" id="email.html">
           <form>
             <div class="row">
               <div class="large-12 columns">
@@ -113,75 +115,7 @@
             </div>
           </form>
         </script>
-        
-        <!--
-        <form>
-          <div class="row">
-            <div class="large-6 columns">
-              <label>Recipients name:
-                <input type="text" placeholder="" />
-              </label>
-            </div>
-            <div class="large-6 columns">
-              <label>From:
-                <input type="text" placeholder="" />
-              </label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Recipients address:
-                <input type="text" placeholder="" />
-                <input type="text" placeholder="" />
-                <input type="text" placeholder="" />
-              </label>
-            </div>
-          </div>
-          <div class='row'>
-            <div class="large-6 columns">
-              <label>Post code:
-                <input type="text" placeholder="" />
-              </label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Messages
-                <textarea placeholder=""></textarea>
-              </label>
-            </div>
-          </div>
-        </form>
 
-        <form>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Recipients e-mail:
-                <input type="text" placeholder="" />
-              </label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-6 columns">
-              <label>To:
-                <input type="text" placeholder="" />
-              </label>
-            </div>
-            <div class="large-6 columns">
-              <label>From:
-                <input type="text" placeholder="" />
-              </label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <label>Messages
-                <textarea placeholder=""></textarea>
-              </label>
-            </div>
-          </div>
-        </form>
-        -->
       </div>
       <div class='gift-detail-ctrBt'>
         <a href='#' class='button small'>PURCHASE</a>
