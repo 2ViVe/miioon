@@ -35,9 +35,6 @@ angular.module('miioonApp', [
       .when('/about', {
         templateUrl: 'views/about.html'
       })
-      .when('/taxon/4', {
-        templateUrl: 'views/gift/gift-card.html'
-      })
       .when('/taxon/:taxonId', {
         templateUrl: 'views/taxon.html',
         controller: 'TaxonController'

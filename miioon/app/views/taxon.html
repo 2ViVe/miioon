@@ -1,6 +1,6 @@
 <div class="row taxon-banner">
   <div class="columns small-12">
-    <img src="images/banner_rj.png" alt="RuckJack Girls"/>
+    <img ng-src="{{currentSubTaxon.image}}" alt="RuckJack Girls"/>
   </div>
 </div>
 
@@ -11,10 +11,10 @@
     </h5>
     <ul>
       <li ng-repeat="subTaxon in taxon['sub-taxons']">
-        <span class="current" ng-if="subTaxon.id === subTaxonId">
+        <span class="current" ng-if="subTaxon.id === currentSubTaxon.id">
           {{subTaxon.name}}
         </span>
-        <a ng-if="subTaxon.id !== subTaxonId" href="/#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">
+        <a ng-if="subTaxon.id !== currentSubTaxon.id" href="/#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">
           {{subTaxon.name}}
         </a>
       </li>
