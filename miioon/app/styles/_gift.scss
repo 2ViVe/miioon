@@ -1,29 +1,49 @@
 .gift {
+
+  .info-panel {
+    border-bottom: 1px dashed $grey-border;
+    padding: 25px 0;
+
+    &.first {
+      padding-top: 0;
+    }
+
+    &.last {
+      border-bottom: 0;
+    }
+    .tabs-content{
+        margin-bottom: 0;
+    }
+
+    .info-panel-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: $medium-font-size;
+    }
+
+  }
+
+    .info-panel-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: $medium-font-size;
+    }
+
   .gift-detail-info {
     margin-bottom: rem-calc(20);
-    h6 {
-      font-size: rem-calc(12);
-      margin-bottom: rem-calc(5);
-      font-weight: bold;
-    }
     .gift-detail-price {
       display: block;
       font-size: rem-calc(22);
-      margin: rem-calc(25) 0;
-      //color: $primary-color;
     }
     .gift-detail-quantity {
-      margin-bottom: rem-calc(15);
       select, input {
         width: rem-calc(80);
         margin-bottom: 0;
       }
-      padding: rem-calc(20) 0;
       border-top: 1px dashed $grey-border;
       border-bottom: 1px dashed $grey-border;
     }
     .gift-detail-sizeList {
-      margin-bottom: rem-calc(15);
       ul {
         li {
           float: left;
@@ -52,29 +72,8 @@
         }
       }
     }
-    .gift-detail-colorList {
-      margin-bottom: rem-calc(15);
-      ul {
-        li {
-          margin-right: rem-calc(10);
-          float: left;
-          a {
-            display: block;
-            width: rem-calc(30);
-            height: rem-calc(30);
-            &:hover {
-              border: 1px solid $grey-darker;
-              text-decoration: none;
-            }
-            &.current {
-              border: 1px solid $grey-darker;
-            }
-          }
-        }
-      }
-    }
+
     .gift-detail-designList {
-      margin-bottom: rem-calc(25);
       ul {
         li {
           float: left;
@@ -97,7 +96,6 @@
       }
     }
     .gift-detail-ctrBt {
-      margin-bottom: rem-calc(15);
     }
     .gift-detail-tabs {
       dd {
