@@ -52,7 +52,8 @@ angular.module('miioonApp', [
         controller: 'HostController'
       })
       .when('/press', {
-        templateUrl: 'views/press.html'
+        templateUrl: 'views/press.html',
+        controller: 'PressController'
       })
       .when('/brand', {
         templateUrl: 'views/brand.html'

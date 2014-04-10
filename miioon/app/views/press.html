@@ -8,21 +8,25 @@
 </div>
 <div class='row press-container'>
   <div class='columns medium-4 text-center'>
-    <a href='#' title='Magazine - Moshi Monster Swoopercape Competition!'><img src="images/press/press-1.jpg" alt="Magazine - Moshi Monster Swoopercape Competition!" /></a>
+    <a href data='1' ng-click='showPopup($event.target)' title='Magazine - Moshi Monster Swoopercape Competition!'><img data='1' src="images/press/press-1.jpg" alt="Magazine - Moshi Monster Swoopercape Competition!" /></a>
   </div>
   <div class='columns medium-4 text-center'>
-    <a href='#' title="Moshi Monster Magazine December's issue"><img src="images/press/press-2.jpg" alt="Moshi Monster Magazine December's issue" /></a>
+    <a href data='2' ng-click='showPopup($event.target)' title="Moshi Monster Magazine December's issue"><img data='2' src="images/press/press-2.jpg" alt="Moshi Monster Magazine December's issue" /></a>
   </div>
   <div class='columns medium-4 text-center'>
-    <a href='#' title='Cambridge News'><img src="images/press/press-3.jpg" alt="Cambridge News" /></a>
+    <a href data='3' ng-click='showPopup($event.target)' title='Cambridge News'><img data='3' src="images/press/press-3.jpg" alt="Cambridge News" /></a>
   </div>
   <div class='columns medium-4 text-center'>
-    <a href='#' title='TV advert that is shown on Nickelodean'><img src="images/press/press-4.jpg" alt="TV advert that is shown on Nickelodean" /></a>
+    <a href data='4' ng-click='showPopup($event.target)' title='TV advert that is shown on Nickelodean'><img data='4' src="images/press/press-4.jpg" alt="TV advert that is shown on Nickelodean" /></a>
   </div>
   <div class='columns medium-4 text-center'>
-    <a href='#' title='SEW magazine'><img src="images/press/press-5.jpg" alt="SEW magazine" /></a>
+    <a href data='5' ng-click='showPopup($event.target)' title='SEW magazine'><img data='5' src="images/press/press-5.jpg" alt="SEW magazine" /></a>
   </div>
   <div class='columns medium-4 text-center'>
-    <a href='#' title='Practical Parenting Magazine'><img src="images/press/press-6.jpg" alt="Practical Parenting Magazine" /></a>
+    <a href data='6' ng-click='showPopup($event.target)' title='Practical Parenting Magazine'><img data='6' src="images/press/press-6.jpg" alt="Practical Parenting Magazine" /></a>
   </div>
+  
+  <div id="myModal" class="reveal-modal small" ng-hide="isPopupHide"><p class="lead text-center"><img ng-src={{pressImagesBig}} /></p> <a class="close-reveal-modal" ng-click='hidePopup()'>&#215;</a> </div>
+  <div class="reveal-modal-bg" ng-hide="isPopupHide" ng-click='hidePopup()'></div>
+
 </div>
