@@ -4,11 +4,23 @@ button,
 .button {
   min-width: 150px;
 
+  &.right {
+    margin-left: 15px;
+  }
+
   &.tertiary {
     background-color: $grey-darker;
 
     &:hover {
       background-color: scale-color($grey-darker, $lightness: $button-function-factor);
+    }
+  }
+
+  &.attenuate {
+    background-color: $grey-light;
+
+    &:hover {
+      background-color: scale-color($grey-light, $lightness: $button-function-factor);
     }
   }
 
