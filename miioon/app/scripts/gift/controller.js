@@ -3,7 +3,6 @@
 angular.module('2ViVe')
   .controller('GiftController', ['$scope',
     function($scope) {
-      //$scope.amount = '￡12.50 - ￡40.00';
 
       // images switching
       $scope.giftImagesBig='images/gift/gift-img-big-1.jpg';
@@ -16,15 +15,14 @@ angular.module('2ViVe')
       //tabs
       $scope.tabs = [{
         'title': 'EMAIL',
-        //'content': 'email.html'
-        url: "email.html"
+        url: 'views/gift/email.html'
         }, {
           'title': 'POST',
-          //'content': 'post.html'
-          url: 'post.html'
+          url: 'views/gift/post.html'
         }];
-      }]
-    );
+      }
+    ]
+  );
 
 
 

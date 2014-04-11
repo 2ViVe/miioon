@@ -18,11 +18,11 @@
     <!-- gift-detail-info start -->
     <div class='medium-6 columns gift-detail-info'>
       <h2>Gift Certificate</h2>
-      <strong class='gift-detail-price'>
+      <strong class='gift-detail-price info-panel'>
         {{amount === 0 ? '￡12.50 - ￡40.00' : '￡' + amount}}
       </strong>
-      <div class='gift-detail-quantity'>
-        <h6>Amount:</h6>
+      <div class='gift-detail-quantity info-panel'>
+        <h6 class='info-panel-title'>Amount:</h6>
         <select style='width:250px;' ng-model="amount" ng-init="amount=0">
           <option value='0'>Choose an Amount...</option>
           <option value='12.50'>￡12.50</option>
@@ -30,8 +30,8 @@
           <option value='40.00'>￡40.00</option>
         </select>
       </div>
-      <div class='gift-detail-designList'>
-        <h6>Design:</h6>
+      <div class='gift-detail-designList info-panel'>
+        <h6 class='info-panel-title'>Design:</h6>
         <ul class='clearfix'>
           
           <li><a data='1' ng-class='{current: giftImagesIndex == 1}' ng-click="switchGiftImages($event.target)"><img src='images/gift/gift-img-small-1.jpg' alt='Gift Design' data='1' /></a></li>
@@ -39,8 +39,8 @@
 
         </ul>
       </div>
-      <div class='gift-detail-detailList'>
-        <h6>Delivery Details:</h6>
+      <div class='gift-detail-detailList info-panel'>
+        <h6 class='info-panel-title'>Delivery Details:</h6>
         
         <div class="tabs" data-tabset>
           <div data-tab ng-repeat="tab in tabs" data-heading="{{tab.title}}" data-active="tab.active">
@@ -48,79 +48,8 @@
           </div>
         </div>
 
-        <script type="text/ng-template" id="post.html">
-          <form>
-            <div class="row">
-              <div class="large-6 columns">
-                <label>Recipients name:
-                  <input type="text" placeholder="" />
-                </label>
-              </div>
-              <div class="large-6 columns">
-                <label>From:
-                  <input type="text" placeholder="" />
-                </label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="large-12 columns">
-                <label>Recipients address:
-                  <input type="text" placeholder="" />
-                  <input type="text" placeholder="" />
-                  <input type="text" placeholder="" />
-                </label>
-              </div>
-            </div>
-            <div class='row'>
-              <div class="large-6 columns">
-                <label>Post code:
-                  <input type="text" placeholder="" />
-                </label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="large-12 columns">
-                <label>Messages
-                  <textarea placeholder=""></textarea>
-                </label>
-              </div>
-            </div>
-          </form>
-        </script>
-        
-        <script type="text/ng-template" id="email.html">
-          <form>
-            <div class="row">
-              <div class="large-12 columns">
-                <label>Recipients e-mail:
-                  <input type="text" placeholder="" />
-                </label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="large-6 columns">
-                <label>To:
-                  <input type="text" placeholder="" />
-                </label>
-              </div>
-              <div class="large-6 columns">
-                <label>From:
-                  <input type="text" placeholder="" />
-                </label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="large-12 columns">
-                <label>Messages
-                  <textarea placeholder=""></textarea>
-                </label>
-              </div>
-            </div>
-          </form>
-        </script>
-
       </div>
-      <div class='gift-detail-ctrBt'>
+      <div class='gift-detail-ctrBt info-panel last'>
         <a href='#' class='button small'>PURCHASE</a>
       </div>
       <div class='gift-detail-share text-right'>
