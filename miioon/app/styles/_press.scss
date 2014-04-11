@@ -17,4 +17,25 @@
   .reveal-modal-bg{
   	display: block;
   }
+  .press-items{
+    border:1px solid $grey-border;
+    border-radius:rem-calc(10);
+    box-shadow: 2px 2px 2px $grey-dark;
+    height: 400px;
+    .press-items-img{
+      display: block;
+      height: 330px;
+      overflow: hidden;
+      border-bottom:1px solid $grey-border;
+      img{
+        height:328px;
+        border-radius:rem-calc(10) rem-calc(10) 0 0;
+      }
+    }
+    p{
+      font-size: $medium-font-size;
+      margin:rem-calc(10);
+      text-align: left;
+    }
+  }
 }

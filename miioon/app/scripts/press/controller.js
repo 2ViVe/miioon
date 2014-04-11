@@ -9,7 +9,7 @@ angular.module('2ViVe')
 
       $scope.showPopup = function(target){
         $scope.pressImagesIndex = target.getAttribute('data');
-        $scope.pressImagesBig = 'images/press/press-' + $scope.pressImagesIndex + '.jpg';
+        $scope.pressImagesBig = 'images/press/press-big-' + $scope.pressImagesIndex + '.jpg';
         $scope.isPopupHide=0;
       }
 
