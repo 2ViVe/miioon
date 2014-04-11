@@ -21,9 +21,9 @@ angular.module('2ViVe')
             var products = data.response.products;
             var entryProductIndex;
             angular.forEach(products, function(product) {
-                if (product['variant-id']) {
-                    product.quantity = 1;
-                }
+              if (product['variant-id']) {
+                product.quantity = 1;
+              }
             });
             var entryProduct = products.splice(entryProductIndex, 1)[0];
             products.unshift(entryProduct);
