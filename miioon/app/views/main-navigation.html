@@ -14,7 +14,7 @@
         <a href="/#/taxon/{{taxon.id}}{{taxon['sub-taxons'].length > 0 && '/sub-taxon/' + taxon['sub-taxons'][0].id || ''}}">
           {{taxon.name}}
         </a>
-        <div class="sub-taxons-container" ng-if="taxon['sub-taxons']">
+        <div class="sub-taxons-container" ng-if="taxon.id === 5">
           <div class="row">
             <ul class="sub-taxons columns small-6">
               <li ng-repeat="subTaxon in taxon['sub-taxons']">
