@@ -1,0 +1,26 @@
+.text-content {
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  ol {
+    margin-left: 20px;
+    list-style-type: disc;
+
+    li {
+      margin-bottom: 20px;
+    }
+
+    ol {
+      li {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  ol,
+  p {
+    font-size: $large-font-size;
+  }
+}

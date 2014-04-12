@@ -73,6 +73,9 @@ angular.module('miioonApp', [
       .when('/shopping', {
         templateUrl: 'views/shopping.html'
       })
+      .when('/t-c', {
+        templateUrl: 'views/t-c.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
