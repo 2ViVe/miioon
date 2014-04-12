@@ -9,7 +9,8 @@ angular.module('miioonApp', [
     'ngRoute',
     '2ViVe',
     'ui.utils',
-    'mm.foundation.tabs'
+    'mm.foundation.tabs',
+    'duScroll'
   ])
   .constant('CLIENT_ID', 'ZlnElLNFjFt6pOBAOQpH8e')
   .config(['$httpProvider', 'CLIENT_ID',
@@ -49,7 +50,7 @@ angular.module('miioonApp', [
       })
       .when('/host', {
         templateUrl: 'views/host.html',
-        controller: 'HostController'
+        //controller: 'HostController'
       })
       .when('/press', {
         templateUrl: 'views/press.html',
