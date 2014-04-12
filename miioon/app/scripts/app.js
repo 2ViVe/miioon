@@ -49,7 +49,7 @@ angular.module('miioonApp', [
         controller: 'TaxonController'
       })
       .when('/host', {
-        templateUrl: 'views/host.html',
+        templateUrl: 'views/host.html'
         //controller: 'HostController'
       })
       .when('/press', {
@@ -60,7 +60,7 @@ angular.module('miioonApp', [
         templateUrl: 'views/brand.html'
       })
       .when('/career', {
-        templateUrl: 'views/career.html',
+        templateUrl: 'views/career.html'
         //controller: 'CareerController'
       })
       .when('/gift/gift-card', {
@@ -75,6 +75,9 @@ angular.module('miioonApp', [
       })
       .when('/t-c', {
         templateUrl: 'views/t-c.html'
+      })
+      .when('/printing', {
+        templateUrl: 'views/printing.html'
       })
       .otherwise({
         redirectTo: '/'
