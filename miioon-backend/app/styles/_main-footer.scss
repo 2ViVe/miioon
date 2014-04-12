@@ -15,8 +15,12 @@
     }
   }
 
+  .sign-up-form{
+    max-width: rem-calc(400);
+  }
+
   .social-links {
-    padding-top: 235px;
+    padding-top: 50px;
     padding-bottom: 45px;
 
     li {

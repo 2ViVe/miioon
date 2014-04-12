@@ -25,14 +25,15 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div class='miioon-backend-wrapper'>
+        <div ng-include="'views/main-header.html'"></div>
+        <div ng-include="'views/main-navigation.html'"></div>
 
-    <div ng-include="'views/main-header.html'"></div>
-    <div ng-include="'views/main-navigation.html'"></div>
+        <!-- Add your site or application content here -->
+        <div class="main-container" ng-view=""></div>
 
-    <!-- Add your site or application content here -->
-    <div class="main-container" ng-view=""></div>
-
-    <div ng-include="'views/main-footer.html'"></div>
+        <div ng-include="'views/main-footer.html'"></div>
+    </div>
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -50,11 +51,13 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/fastclick/lib/fastclick.js"></script>
     <script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
     <script src="bower_components/foundation/js/foundation.js"></script>
     <script src="bower_components/unslider/src/unslider.min.js"></script>
     <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
     <script src="bower_components/momentjs/moment.js"></script>
     <script src="bower_components/pikaday/pikaday.js"></script>
+    <script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
