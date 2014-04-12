@@ -61,7 +61,7 @@ angular.module('miioonApp', [
       })
       .when('/career', {
         templateUrl: 'views/career.html',
-        controller: 'CareerController'
+        //controller: 'CareerController'
       })
       .when('/gift/gift-card', {
         templateUrl: 'views/gift/gift-card.html',
