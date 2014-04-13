@@ -11,7 +11,7 @@
         <a href="/#/gift/gift-card">gift card</a>
       </li>
       <li ng-repeat="taxon in taxons | orderBy: position">
-        <a href="/#/taxon/{{taxon.id}}{{taxon['sub-taxons'].length > 0 && '/sub-taxon/' + taxon['sub-taxons'][0].id || ''}}">
+        <a href="{{taxon | taxonLink}}">
           {{taxon.name}}
         </a>
         <div class="sub-taxons-container" ng-if="taxon.id === 5">
