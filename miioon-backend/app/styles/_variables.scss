@@ -1,4 +1,5 @@
 @import "foundation/scss/foundation/functions";
+$fa-font-path: "/bower_components/fontawesome/fonts";
 
 $body-bg:url('../images/body-bg.jpg') transparent 0 0 repeat;
 
@@ -10,12 +11,14 @@ $grey: #ccc;
 $grey-dark: #999;
 $grey-darker: #666666;
 $grey-border: #b7b7b7;
+$border-radius: rem-calc(5);
 
 $red: #EB5A3C;
 $pink: #f297a3;
 
 $base-font-size: 16px;
 $rem-base: $base-font-size;
+$small-font-size: rem-calc(12);
 $medium-font-size: rem-calc(14);
 $large-font-size: rem-calc(18);
 $base-font-color: #8c8c8c;
@@ -24,11 +27,11 @@ $body-font-color: #8c8c8c;
 $primary-color: #05bab1;
 $secondary-color: #4EACDB;
 
-$h2-font-size: rem-calc(26);
-$h3-font-size: rem-calc(24);
-$h4-font-size: rem-calc(22);
-$h5-font-size: rem-calc(20);
-$h6-font-size: rem-calc(18);
+$h2-font-size: rem-calc(24);
+$h3-font-size: rem-calc(22);
+$h4-font-size: rem-calc(18);
+$h5-font-size: rem-calc(16);
+$h6-font-size: rem-calc(14);
 
 $anchor-font-color: $primary-color;
 $anchor-font-color-hover: $primary-color;
@@ -55,6 +58,8 @@ $table-head-font-size: rem-calc(18);
 $table-head-bg: #EEEEEE;
 $table-even-row-bg: $grey-light;
 
+$base-margin-top: rem-calc(10);
+
 // common style
 $font-weight-bold: bold !default;
 
@@ -64,5 +69,12 @@ $font-weight-bold: bold !default;
 	$panel-border-size:0;
 
 	// table style
+
+	//pagination
+	$pagination-link-active-bg: none;
+	$pagination-link-current-background: none;
+	$pagination-link-current-active-bg: none;
+	$pagination-link-current-font-color: $primary-color;
+	$pagination-link-pad: rem-calc(1 3 1);
 
 
