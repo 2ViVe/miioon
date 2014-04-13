@@ -1,9 +1,9 @@
 <div class='row'>
   <div class='small-12 columns'>
     <ul class="breadcrumbs">
-      <li><a href="#">&gt; CLOTHING</a></li>
-      <li><a href="#">T-SHIRTS</a></li>
-      <li class="current">GIFT CERTIFICATE</li>
+      <li><a ng-href="/#/taxon/{{taxon.id}}{{taxon['sub-taxons'].length > 0 && '/sub-taxon/' + taxon['sub-taxons'][0].id || ''}}">&gt; {{taxon.name}}</a></li>
+      <li ng-if="subTaxon"><a ng-href="/#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">{{subTaxon.name}}</a></li>
+      <li class="current">{{product.name}}</li>
     </ul>
   </div>
 </div>

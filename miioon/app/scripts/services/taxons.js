@@ -32,7 +32,18 @@ angular.module('2ViVe')
           });
           return results;
         },
-        getSubTaxonById: function(taxon, subTaxonId) {
+        getSubTaxonById: function(subTaxonId) {
+          var result = null;
+          angular.forEach(Taxons.data, function(taxon) {
+            var subTaxon = Taxons.getSubTaxonByIdAndTaxon(subTaxonId, taxon);
+            if (subTaxon !== null) {
+              result = subTaxon;
+              return;
+            }
+          });
+          return result;
+        },
+        getSubTaxonByIdAndTaxon: function(subTaxonId, taxon) {
           var result = null;
           if (taxon === null) {
             return result;

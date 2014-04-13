@@ -10,7 +10,7 @@ angular.module('2ViVe')
         return Taxons.data;
       }, function() {
         $scope.taxon = Taxons.getById(taxonId);
-        $scope.currentSubTaxon = Taxons.getSubTaxonById($scope.taxon, subTaxonId);
+        $scope.currentSubTaxon = Taxons.getSubTaxonByIdAndTaxon(subTaxonId, $scope.taxon);
 
         if ($scope.currentSubTaxon === null) {
           Product.getByTaxon(taxonId).success(function(data) {
