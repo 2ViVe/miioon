@@ -4,6 +4,7 @@
 
   h4 {
     margin-bottom: 20px;
+    color: $pink;
   }
 
   .categories {
@@ -11,6 +12,7 @@
       margin-bottom: 10px;
       a {
         font-size: $medium-font-size;
+        color:#333;
       }
     }
   }
@@ -34,12 +36,17 @@
     padding-top: 12px;
     padding-bottom: 35px;
     border-top: 1px solid $grey-border;
+    color:#333;
 
     .extra-links {
       float: right;
 
       li {
         float: left;
+        font-size: $small-font-size;
+        a{
+          color:#333;
+        }
       }
     }
   }
