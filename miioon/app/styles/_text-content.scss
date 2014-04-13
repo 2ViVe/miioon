@@ -1,0 +1,34 @@
+.text-content {
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .long-order-list {
+    margin-bottom: 0;
+
+    > li {
+      margin-bottom: 20px;
+    }
+  }
+
+  ul,
+  ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    list-style-type: disc;
+
+    ul,
+    ol {
+      li {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  ul,
+  ol,
+  p {
+    font-size: $large-font-size;
+  }
+}
