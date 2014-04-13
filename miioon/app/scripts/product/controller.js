@@ -20,6 +20,15 @@ angular.module('2ViVe')
           }
         });
       });
+
+      $scope.changeSize = function(size) {
+        $scope.selectedSize = size;
+      };
+
+      $scope.changeColor = function(color) {
+        $scope.selectedColor = color;
+      };
+
       $scope.tabs = [
         {
           'title': 'Product Description',
