@@ -6,7 +6,7 @@ angular.module('2ViVe')
       var user = new User();
 
       $scope.signIn = function() {
-        user.login($scope.username, $scope.password, 'test_client_id_1')
+        user.login($scope.username, $scope.password)
           .success(function() {
             $location.path('/');
           }).error(function(data) {
