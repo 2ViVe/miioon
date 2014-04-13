@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('TaxonController', ['$scope', 'Product', '$routeParams', 'Taxons',
-    function($scope, Product, $routeParams, Taxons) {
+  .controller('TaxonController', ['$scope', 'Products', '$routeParams', 'Taxons',
+    function($scope, Products, $routeParams, Taxons) {
       var taxonId = Number($routeParams.taxonId);
       var subTaxonId = Number($routeParams.subTaxonId);
 
@@ -13,11 +13,11 @@ angular.module('2ViVe')
         $scope.currentSubTaxon = Taxons.getSubTaxonByIdAndTaxon(subTaxonId, $scope.taxon);
 
         if ($scope.currentSubTaxon === null) {
-          Product.getByTaxon(taxonId).success(function(data) {
+          Products.getByTaxon(taxonId).success(function(data) {
             $scope.products = data.response.products;
           });
         } else {
-          Product.getByTaxon(subTaxonId).success(function(data) {
+          Products.getByTaxon(subTaxonId).success(function(data) {
             $scope.products = data.response.products;
           });
         }

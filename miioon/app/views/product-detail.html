@@ -26,6 +26,24 @@
           </h2>
         </div>
 
+        <div class='info-panel'>
+          <div class="info-panel-title">Size:</div>
+          <ul>
+            <li ng-repeat="size in sizes">
+              {{size}}
+            </li>
+          </ul>
+        </div>
+
+        <div class='info-panel'>
+          <div class="info-panel-title">Color:</div>
+          <ul>
+            <li ng-repeat="color in colors">
+              {{color}}
+            </li>
+          </ul>
+        </div>
+
         <div class='quantity info-panel'>
           <div class="info-panel-title">Quantity:</div>
           <input type="number" min="1"/>
