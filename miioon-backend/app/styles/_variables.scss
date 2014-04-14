@@ -25,7 +25,7 @@ $base-font-color: #8c8c8c;
 $body-font-color: #8c8c8c;
 
 $primary-color: #05bab1;
-$secondary-color: #4EACDB;
+$secondary-color: #b9b9b9;
 
 $h2-font-size: rem-calc(24);
 $h3-font-size: rem-calc(22);
@@ -44,7 +44,7 @@ $button-font-med: rem-calc(14);
 $button-font-weight: bold;
 $button-function-factor: -20%;
 $button-margin-bottom:0;
-$secondary-color:#DCDCDC;
+$button-font-color-alt:#fff;
 
 $cursor-default-value: auto;
 
@@ -76,5 +76,8 @@ $font-weight-bold: bold !default;
 	$pagination-link-current-active-bg: none;
 	$pagination-link-current-font-color: $primary-color;
 	$pagination-link-pad: rem-calc(1 3 1);
+
+	//form
+	$form-spacing: rem-calc(14);
 
 
