@@ -8,6 +8,12 @@ angular.module('2ViVe')
         $scope.product = product.data;
         $scope.colors = product.colors;
         $scope.sizes = product.sizes;
+        $scope.selectedColor = product.colors[0];
+        $scope.selectedSize = product.sizes[0];
+        $scope.variant = product.getVariantByOptions({
+          'Color': $scope.selectedColor,
+          'Size': $scope.selectedSize
+        });
 
         $scope.$watch(function() {
           return Taxons.data;
@@ -23,10 +29,18 @@ angular.module('2ViVe')
 
       $scope.changeSize = function(size) {
         $scope.selectedSize = size;
+        $scope.variant = product.getVariantByOptions({
+          'Color': $scope.selectedColor,
+          'Size': $scope.selectedSize
+        });
       };
 
       $scope.changeColor = function(color) {
         $scope.selectedColor = color;
+        $scope.variant = product.getVariantByOptions({
+          'Color': $scope.selectedColor,
+          'Size': $scope.selectedSize
+        });
       };
 
       $scope.tabs = [
