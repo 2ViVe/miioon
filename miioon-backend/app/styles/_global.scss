@@ -96,7 +96,7 @@ ul {
 .cLessImportant{
   color:$grey-darker !important;
 }
-.no-columns-padding{
+.no-columns-padding-left{
   padding-left:0 !important;
 }
 .no-columns-padding-right{
@@ -108,13 +108,6 @@ ul {
   padding:rem-calc(20) 0 0 0;
   max-width:rem-calc(990);
   margin: 0 auto;
-}
-
-.columns-first{
-  padding-left:0 !important;
-}
-.columns-last{
-  padding-right:0 !important;
 }
 
 .separator-line{
