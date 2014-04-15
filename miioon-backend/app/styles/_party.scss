@@ -1,5 +1,36 @@
+$party-panel-list-bg:#f6f8fa;
+
+
 .party-container {
   .party-topbar{
-    
+
+  }
+  .party-panel{
+  	border:1px solid $grey-border;
+  	padding:rem-calc(3);
+  	margin-bottom: rem-calc(15);
+  	h3{
+      font-size: $medium-font-size;
+  		background:$primary-color;
+  		color:#fff;
+  		height:rem-calc(46);
+  		line-height:rem-calc(46);
+  		margin:0;
+  		small{
+  			color:#fff;
+  		}
+  	}
+  	.party-panel-list{
+  		li{
+  			background:$party-panel-list-bg;
+  			margin:rem-calc(2 2 0 2);
+  			padding:5px;
+  			font-size: $small-font-size;
+  			a{
+  				color:$grey-dark;
+  				text-decoration: none;
+  			}
+  		}
+  	}
   }
 }
