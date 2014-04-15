@@ -39,5 +39,22 @@ angular.module('2ViVe')
           });
         });
       };
+      Product.prototype.getVariantByOptions = function(options) {
+        var result = null;
+        var product = this;
+        angular.forEach(product.data.variants, function(variant) {
+          var isThisVariant = true;
+          angular.forEach(variant.options, function(option) {
+            if (options[option.type] !== option.name) {
+              isThisVariant = false;
+            }
+          });
+          if (isThisVariant) {
+            result = variant;
+            return;
+          }
+        });
+        return result;
+      };
       return Product;
     }]);
