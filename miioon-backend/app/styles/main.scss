@@ -1,6 +1,7 @@
 @import "compass/utilities";
 @import "compass/css3";
 @import "variables";
+@import "icons";
 @import "main-navigation";
 @import "main-footer";
 @import "main-container";
@@ -8,6 +9,7 @@
 @import "global";
 @import "home";
 @import "party";
+@import "foundation-reset";
 
 .browsehappy {
   margin: 0.2em 0;

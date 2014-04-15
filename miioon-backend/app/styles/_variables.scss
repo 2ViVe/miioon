@@ -58,26 +58,27 @@ $table-head-font-size: rem-calc(18);
 $table-head-bg: #EEEEEE;
 $table-even-row-bg: $grey-light;
 
-$base-margin-top: rem-calc(10);
+$base-margin-top: rem-calc(20);
+$base-margin-bottom: rem-calc(20);
 
 // common style
 $font-weight-bold: bold !default;
 
 // foundation style reset
-	// panel style
-	$panel-bg:#fff;
-	$panel-border-size:0;
+  // panel style
+  $panel-bg:#fff;
+  $panel-border-size:0;
 
-	// table style
+  // table style
 
-	//pagination
-	$pagination-link-active-bg: none;
-	$pagination-link-current-background: none;
-	$pagination-link-current-active-bg: none;
-	$pagination-link-current-font-color: $primary-color;
-	$pagination-link-pad: rem-calc(1 3 1);
+  //pagination
+  $pagination-link-active-bg: none;
+  $pagination-link-current-background: none;
+  $pagination-link-current-active-bg: none;
+  $pagination-link-current-font-color: $primary-color;
+  $pagination-link-pad: rem-calc(1 3 1);
 
-	//form
-	$form-spacing: rem-calc(14);
+  //form
+  $form-spacing: rem-calc(14);
 
 
