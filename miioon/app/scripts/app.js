@@ -12,14 +12,6 @@ angular.module('miioonApp', [
     'mm.foundation.tabs',
     'duScroll'
   ])
-  .constant('CLIENT_ID', 'ZlnElLNFjFt6pOBAOQpH8e')
-  .config(['$httpProvider', 'CLIENT_ID',
-    function($httpProvider, CLIENT_ID) {
-      $httpProvider.defaults.headers.common = {
-        'x-client-id': CLIENT_ID,
-        'x-client-secret': 'HeFsCAvsXTzpHWAqRVWCibsUYlF7gjpLRUAUw551r'
-      };
-    }])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
