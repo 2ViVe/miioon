@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('User', ['$http', 'CLIENT_ID',
-    function($http, CLIENT_ID) {
-      var token = 'MTAwODEwMTo6NDQ5ODM6OnRlc3QxMjM6Ojo6MTM5NzY1NTg1MTgwMDo6WmxuRWxMTkZqRnQ2cE9CQU9RcEg4ZTo6TXR3Tm04QWwxRk5Mb1RjeVdSU3p4dVQyc0JsTnVGdzdOV3BSWEVDZW04VT0=';
+  .factory('User', ['$http', 'CLIENT_ID', '$cookies',
+    function($http, CLIENT_ID, $cookies) {
+      var token = 'MTAwODEwMTo6NDQ5ODM6OnRlc3QxMjM6Ojo6MTM5NzY2OTIzMzQxODo6WmxuRWxMTkZqRnQ2cE9CQU9RcEg4ZTo6R09MZEIxWEhTN0w4NGNON1o1Mjc3aU8vQ2pqc29PTEtMSHJ2RjNHZHJ6MD0=';
       return {
         login: function(username, password) {
           return $http.post('/api/v2/authentications/token', {
@@ -14,8 +14,17 @@ angular.module('2ViVe')
             token = data.response['authentication-token'];
           });
         },
+        forget: function() {
+          $cookies.token = '';
+        },
+        remember: function() {
+          $cookies.token = token;
+        },
         getToken: function() {
-          return token;
+          return $cookies.token ? $cookies.token : token;
+        },
+        isRememberedLogin: function() {
+          return $cookies.token;
         }
       };
     }]);
