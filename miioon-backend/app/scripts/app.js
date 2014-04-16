@@ -33,6 +33,12 @@ angular.module('miioon-backend', [
       .when('/party/manage-guests', {
         templateUrl: 'views/party/manage-guests.html'
       })
+      .when('/party/party-customers', {
+        templateUrl: 'views/party/party-customers.html'
+      })
+      .when('/party/party-email-selected', {
+        templateUrl: 'views/party/party-email-selected.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
