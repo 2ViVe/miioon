@@ -27,6 +27,12 @@ angular.module('miioon-backend', [
       .when('/party/my-party', {
         templateUrl: 'views/party/my-party.html'
       })
+      .when('/party/none-party', {
+        templateUrl: 'views/party/none-party.html'
+      })
+      .when('/party/manage-guests', {
+        templateUrl: 'views/party/manage-guests.html'
+      })
       .otherwise({
         redirectTo: '/'
       });

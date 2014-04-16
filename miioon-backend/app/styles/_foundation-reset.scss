@@ -15,10 +15,10 @@
   table{
     border:1px solid $grey-border;
     thead{
-      background:none;
+      background:$primary-color;
       tr{
         th{
-          border-bottom: 2px solid $grey-border;
+          color:#fff;
           font-weight: normal;
           font-size:$medium-font-size;
         }
@@ -51,6 +51,7 @@
         }
         td{
           border-bottom: 1px solid $grey-border;
+          color:$grey-darker;
           p{
             margin-bottom: 0;
             font-size: $medium-font-size;

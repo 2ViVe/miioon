@@ -138,6 +138,43 @@ $party-panel-list-bg:#f6f8fa;
     }
   }
 
+  .party-none-step{
+    li{
+      b{
+        display: inline-block;
+        width:rem-calc(30);
+        height: rem-calc(30);
+        background:$primary-color;
+        text-align: center;
+        color: #fff;
+        font-size: $large-font-size;
+        border-radius: 50%;
+        margin-right: 10px;
+        vertical-align: top;
+      }
+      p{
+        display: inline-block;
+        font-size: $small-font-size;
+        color: $grey-dark;
+        line-height:1.5;
+        a{
+          text-decoration: underline;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  h3{
+    small.right{
+      margin-top:rem-calc(15);
+      a{
+        color: $grey-dark;
+        text-decoration: underline;
+      }
+    }
+  }
+
   .dorpMenu{
     .dropMenu-con{
       text-align: center;
