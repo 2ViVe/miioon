@@ -67,6 +67,5 @@ angular.module('2ViVe')
           return result;
         }
       };
-      Taxons.fetch();
       return Taxons;
     }]);
