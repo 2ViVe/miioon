@@ -4,7 +4,7 @@ angular.module('2ViVe')
   .factory('User', ['$http', 'CLIENT_ID', '$cookies',
     function($http, CLIENT_ID, $cookies) {
       var token = 'MTAwODEwMTo6NDQ5ODM6OnRlc3QxMjM6Ojo6MTM5NzY2OTIzMzQxODo6WmxuRWxMTkZqRnQ2cE9CQU9RcEg4ZTo6R09MZEIxWEhTN0w4NGNON1o1Mjc3aU8vQ2pqc29PTEtMSHJ2RjNHZHJ6MD0=';
-      return {
+      var User = {
         login: function(username, password) {
           return $http.post('/api/v2/authentications/token', {
             user: username,
@@ -13,6 +13,9 @@ angular.module('2ViVe')
           }).success(function(data) {
             token = data.response['authentication-token'];
           });
+        },
+        logout: function() {
+          User.forget();
         },
         forget: function() {
           $cookies.token = '';
@@ -27,4 +30,5 @@ angular.module('2ViVe')
           return $cookies.token;
         }
       };
+      return User;
     }]);
