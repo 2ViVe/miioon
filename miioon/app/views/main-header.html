@@ -1,31 +1,53 @@
-<header class="main-header row">
-  <div class="small-3 columns">
-    <ul class="header-links separator-slash">
-      <li>
-        <a href="/#/signin">Sign In</a>
-      </li>
-      <li>
-        <a href="/#/gift/gift-card">Gift</a>
-      </li>
-      <li>
-        <a href="/#/host">Host</a>
-      </li>
-    </ul>
-    <a href="#">
-      <img src="images/kids-link.gif" alt="Kids this way"/>
-    </a>
+<header class="main-header row" ng-controller="HeaderController">
+  <div class="row">
+    <div class="columns medium-9">
+      <ul class="header-links separator-slash" ng-if="!profile.isLogin">
+        <li>
+          <a href="/#/signin">Sign In</a>
+        </li>
+        <li>
+          <a href="/#/gift/gift-card">Gift</a>
+        </li>
+        <li>
+          <a href="/#/host">Host</a>
+        </li>
+      </ul>
+      <ul class="header-links separator-slash" ng-if="profile.isLogin">
+        <li>
+          Welcome {{profile.data.name}}
+        </li>
+        <li>
+          <a href="/#/gift/gift-card">Gift</a>
+        </li>
+        <li>
+          <a href="/#/host">Host</a>
+        </li>
+        <li>
+          <a href="/back-office">BackOffice</a>
+        </li>
+        <li>
+          <a href="/#/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <div class="columns medium-3">
+      <div class="shopping-bag right">
+        <i class="icons-shopping-bag"></i>
+        Shopping Bag (0 items)
+      </div>
+    </div>
   </div>
+  <div class="row">
+    <div class="medium-3 columns">
+      <a href="#">
+        <img src="images/kids-link.gif" alt="Kids this way"/>
+      </a>
+    </div>
 
-  <div class="small-6 columns text-center">
-    <a href="/#/">
-      <img alt="Miioon" src="images/logo.png">
-    </a>
-  </div>
-
-  <div class="small-3 columns">
-    <div class="shopping-bag right">
-      <i class="icons-shopping-bag"></i>
-      Shopping Bag (0 items)
+    <div class="medium-6 end columns text-center">
+      <a href="/#/" class="logo">
+        <img alt="Miioon" src="images/logo.png">
+      </a>
     </div>
   </div>
 </header>

@@ -1,10 +1,14 @@
 .main-header {
-  padding-top: 15px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+
+  .logo {
+    position: relative;
+    bottom: 20px;
+  }
 
   .header-links {
     color: $grey;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-size: rem-calc(16);
     @include clearfix;
 
