@@ -67,6 +67,10 @@ $party-panel-list-bg:#f6f8fa;
     &.row{margin-bottom: $base-margin-bottom;}
     .party-goal-invited,.party-goal-attending,.party-goal-orders,.party-goal-earnings{
       text-align: center;
+      p{
+        width:rem-calc(120);
+        height:rem-calc(120);
+      }
     }
     .party-goal-invited{
       h5{
