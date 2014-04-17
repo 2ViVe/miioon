@@ -12,8 +12,11 @@ angular.module('miioonApp')
   .run(['User', 'Profile', 'Taxons', 'Shopping',
     function(User, Profile, Taxons, Shopping) {
       if (User.isRememberedLogin()) {
-        Profile.fetch();
+        Profile.fetch().success(function() {
+          Shopping.fetchForUser();
+        });
+      } else {
+        Shopping.fetchForVisitor();
       }
-      Shopping.fetch();
       Taxons.fetch();
     }]);

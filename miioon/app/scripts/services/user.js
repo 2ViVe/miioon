@@ -12,6 +12,7 @@ angular.module('2ViVe')
             'client-id': CLIENT_ID
           }).success(function(data) {
             token = data.response['authentication-token'];
+            $cookies.visitorId = '';
           });
         },
         logout: function() {

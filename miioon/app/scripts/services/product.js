@@ -11,7 +11,7 @@ angular.module('2ViVe')
             }
           });
         }
-      }
+      };
     }])
   .factory('Product', ['$http', 'User',
     function($http, User) {
