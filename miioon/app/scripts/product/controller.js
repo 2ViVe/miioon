@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('ProductController', ['$scope', 'Product', '$routeParams', 'Taxons',
-    function($scope, Product, $routeParams, Taxons) {
+  .controller('ProductController', ['$scope', 'Product', '$routeParams', 'Taxons', 'Shopping',
+    function($scope, Product, $routeParams, Taxons, Shopping) {
       var updateVariant = function() {
         $scope.variant = product.getVariantByOptions({
           'Color': $scope.selectedColor,
@@ -40,6 +40,11 @@ angular.module('2ViVe')
         $scope.selectedColor = color;
         updateVariant();
       };
+
+      $scope.addToCart = function() {
+        Shopping.add($scope.variant, $scope.quantity);
+      };
+
 
       $scope.tabs = [
         {

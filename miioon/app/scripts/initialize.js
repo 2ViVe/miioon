@@ -9,9 +9,11 @@ angular.module('miioonApp')
         'x-client-secret': 'HeFsCAvsXTzpHWAqRVWCibsUYlF7gjpLRUAUw551r'
       };
     }])
-  .run(['User', 'Profile', 'Taxons', function(User, Profile, Taxons) {
-    if (User.isRememberedLogin()) {
-      Profile.fetch();
-    }
-    Taxons.fetch();
-  }]);
+  .run(['User', 'Profile', 'Taxons', 'Shopping',
+    function(User, Profile, Taxons, Shopping) {
+      if (User.isRememberedLogin()) {
+        Profile.fetch();
+      }
+      Shopping.fetch();
+      Taxons.fetch();
+    }]);
