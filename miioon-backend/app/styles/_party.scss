@@ -9,6 +9,10 @@ $party-panel-list-bg:#f6f8fa;
   	border:1px solid $grey-border;
   	padding:rem-calc(3);
   	margin-bottom: $base-margin-bottom;
+    @include clearfix;
+    .pagination{
+      margin:rem-calc(10);
+    }
   	h3{
       font-size: $medium-font-size;
   		background:$primary-color;
@@ -16,6 +20,11 @@ $party-panel-list-bg:#f6f8fa;
   		height:rem-calc(50);
   		line-height:rem-calc(46);
   		margin:0;
+      padding:0 $panel-padding;
+      .fa.right{
+        font-size: $large-font-size;
+        margin-top: rem-calc(15);
+      }
   		small{
   			color:#fff;
   		}
@@ -32,6 +41,53 @@ $party-panel-list-bg:#f6f8fa;
   			}
   		}
   	}
+    .party-panel-con-bar{
+      background:$party-panel-list-bg;
+      padding:rem-calc(10) $panel-padding;
+      span.right{
+        font-size: $medium-font-size;
+        margin-top: rem-calc(5);
+      }
+    }
+  }
+  .party-user-table{
+      margin-bottom:0;
+      border:0;
+      tr{
+        &:last-child{
+          td{
+            border-bottom:0;
+          }
+        }
+      }
+      th{
+        background:$party-panel-list-bg;
+        font-size: $small-font-size;
+        color: $grey-dark;
+      }
+      .party-user-table-img{
+        float: left;
+      }
+      .party-user-table-info{
+        margin-left:rem-calc(60);
+        h4{
+          font-size: $small-font-size;
+          color:$grey-dark;
+          small{
+            font-size: 80%;
+          }
+        }
+      }
+      .party-user-table-num{
+            display: block;
+            width:rem-calc(20);
+            height: rem-calc(20);
+            line-height: rem-calc(20);
+            background:$primary-color;
+            color: #fff;
+            text-align: center;
+            border-radius:50%;
+      }
   }
   .party-title{
     min-height: rem-calc(40);
@@ -96,7 +152,7 @@ $party-panel-list-bg:#f6f8fa;
   .party-price{
       color:$primary-color;
       font-size: $large-font-size;
-      &.row{margin:rem-calc(20 10);}
+      padding:$panel-padding;
       li{
         border-left: 1px solid $grey-border;
         height: rem-calc(90);
@@ -114,7 +170,7 @@ $party-panel-list-bg:#f6f8fa;
   }
 
   .party-rsvps{
-    padding:rem-calc(15 0);
+    padding:$panel-padding;
     h4{
       height: rem-calc(20);
       line-height: rem-calc(20);
@@ -196,6 +252,22 @@ $party-panel-list-bg:#f6f8fa;
         color:#fff;
         text-decoration: underline;
         font-size: $small-font-size;
+      }
+      .party-email-banner-button{
+        text-align: center;
+        margin-top: rem-calc(20);
+        margin-bottom: rem-calc(5);
+        .button{
+          color:$primary-color;
+          background:#fff;
+          border-bottom:3px solid #5ca6af;
+          border-radius:rem-calc(5);
+          margin-left:rem-calc(10);
+          margin-right:rem-calc(10);
+        }
+        a.button{
+          text-decoration: none;
+        }
       }
     }
   }
