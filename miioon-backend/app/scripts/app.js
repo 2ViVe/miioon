@@ -42,6 +42,15 @@ angular.module('miioon-backend', [
       .when('/party/party-email-view-invitation', {
         templateUrl: 'views/party/party-email-view-invitation.html'
       })
+      .when('/party/rsvps', {
+        templateUrl: 'views/party/rsvps.html'
+      })
+      .when('/party/party-orders', {
+        templateUrl: 'views/party/party-orders.html'
+      })
+      .when('/party/start-shopping', {
+        templateUrl: 'views/party/start-shopping.html'
+      })
       .otherwise({
         redirectTo: '/'
       });

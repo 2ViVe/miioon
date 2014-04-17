@@ -109,7 +109,7 @@ ul {
 
 .separator-line{
   font-size: 0;
-  border-bottom:1px solid $grey-border;
+  border-bottom:1px dashed $grey-border;
   margin: rem-calc(25) 0;
   padding:0;
   display: block;
