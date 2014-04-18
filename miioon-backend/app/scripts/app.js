@@ -54,6 +54,9 @@ angular.module('miioon-backend', [
       .when('/party/party-create', {
         templateUrl: 'views/party/party-create.html'
       })
+      .when('/party/party-invite-guests', {
+        templateUrl: 'views/party/party-invite-guests.html'
+      })
       .otherwise({
         redirectTo: '/'
       });

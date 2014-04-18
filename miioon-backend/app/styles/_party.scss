@@ -356,6 +356,54 @@ $party-panel-list-bg:#f6f8fa;
     }
   }
 
+  .party-invite-info{
+    padding:$panel-padding;
+    p{
+      font-size: $small-font-size;
+      color: $grey-dark;
+      a{
+        color: $grey-darker;
+        text-decoration: underline;
+      }
+    }
+    .party-invite-goal{
+      text-align: center;
+      margin-top: $base-margin-top;
+      p{
+        margin:0 auto;
+        width:165px;
+        height:165px;
+        color:#fff;
+        padding-top:rem-calc(55);
+        strong{
+          font-size: rem-calc(34);
+          line-height: 1;
+        }
+        span{
+          //font-size: $small-font-size;
+        }
+      }
+      h5{
+        color: $pink;
+        margin-top: $base-margin-top;
+      }
+    }
+  }
+  .party-invite-form{
+    label{
+      small{
+        color:$red;
+      }
+      h5{
+        display: inline-block;
+        margin-bottom:rem-calc(10);
+      }
+    }
+    textarea{
+      height: rem-calc(100);
+    }
+  }
+
   .dorpMenu{
     .dropMenu-con{
       text-align: center;
