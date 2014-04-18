@@ -345,6 +345,17 @@ $party-panel-list-bg:#f6f8fa;
     }
   }
 
+  .party-create-form{
+    max-width: rem-calc(600);
+    margin: 0 auto;
+    label{
+      text-align:right;
+      small{
+        color:$red;
+      }
+    }
+  }
+
   .dorpMenu{
     .dropMenu-con{
       text-align: center;
