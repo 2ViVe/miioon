@@ -25,7 +25,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="variant in variants.data">
+      <tr ng-repeat="variant in variants.data | orderBy: id">
         <td class="cart-item text-left">
           <img src="{{variant.images[0]}}" alt="{{variant.name}}"/>
           <div class="product-name">
@@ -34,7 +34,7 @@
           <div class="product-sku">
             SKU: {{variant.sku}}
           </div>
-          <a class="primary-color small-font">x Remove</a>
+          <a ng-click="remove(variant)" class="primary-color small-font">x Remove</a>
         </td>
         <td class="quantity">
           <input type="number" ng-model="shopping.getByItemId(variant['id']).quantity"/> <br/>

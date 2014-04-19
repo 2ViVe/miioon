@@ -21,6 +21,16 @@ angular.module('2ViVe')
           });
           return itemIds;
         },
+        removeItem: function(variantId) {
+          var itemIndex;
+          angular.forEach(Shopping.items, function(item, index) {
+            if (item['variant-id'] === variantId) {
+              itemIndex = index;
+            }
+          });
+          Shopping.items.splice(itemIndex, 1);
+          return Shopping.update();
+        },
         update: function() {
           if (Profile.isLogin) {
             return $http.put('/api/v2/shopping-carts/users/' + Profile.data['user-id'] + '/line-items', Shopping.items);

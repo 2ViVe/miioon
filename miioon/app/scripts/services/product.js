@@ -13,10 +13,21 @@ angular.module('2ViVe')
     function($http) {
       var Variants = {
         data: [],
+        remove: function(variantId) {
+          var itemIndex;
+          angular.forEach(Variants.data, function(variant, index) {
+            if (variant.id === variantId) {
+              itemIndex = index;
+              return;
+            }
+          });
+          Variants.data.splice(itemIndex, 1);
+        },
         getByIds: function(ids) {
           Variants.data = [];
           angular.forEach(ids, function(id) {
             Variants.getById(id).success(function(data) {
+              data.response.id = id; //TODO: need to be removed when the API is fixed
               Variants.data.push(data.response);
             });
           });

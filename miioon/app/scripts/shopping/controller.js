@@ -7,6 +7,11 @@ angular.module('2ViVe')
       $scope.update = function() {
         Shopping.update();
       };
+      $scope.remove = function(variant) {
+        Shopping.removeItem(variant.id).success(function() {
+          Variants.remove(variant.id);
+        });
+      };
       $scope.$watch(function() {
         return Shopping.items;
       }, function() {
