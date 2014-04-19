@@ -1,24 +1,21 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Taxons', ['$http', 'User',
-    function($http, User) {
+  .factory('Taxons', ['$http',
+    function($http) {
       var Taxons = {
         fetch: function() {
-          return $http.get('/api/v2/taxons', {
-            headers: {
-              'X-Authentication-Token': User.getToken()
-            }
-          }).success(function(data) {
-            var taxons = data.response;
-            angular.forEach(taxons, function(taxon) {
-              taxon.image = 'images/taxon/banner-' + taxon.id + '.png';
-              angular.forEach(taxon['sub-taxons'], function(subTaxon) {
-                subTaxon.image = 'images/taxon/banner-' + taxon.id + '-' + subTaxon.id + '.png';
+          return $http.get('/api/v2/taxons')
+            .success(function(data) {
+              var taxons = data.response;
+              angular.forEach(taxons, function(taxon) {
+                taxon.image = 'images/taxon/banner-' + taxon.id + '.png';
+                angular.forEach(taxon['sub-taxons'], function(subTaxon) {
+                  subTaxon.image = 'images/taxon/banner-' + taxon.id + '-' + subTaxon.id + '.png';
+                });
               });
+              Taxons.data = data.response;
             });
-            Taxons.data = data.response;
-          });
         },
         data: [],
 

@@ -24,9 +24,6 @@ angular.module('2ViVe')
         remember: function() {
           LocalStorage.saveToken(token);
         },
-        getToken: function() {
-          return LocalStorage.getToken();
-        },
         isRememberedLogin: function() {
           return LocalStorage.isTokenSaved();
         }
