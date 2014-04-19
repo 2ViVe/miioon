@@ -37,14 +37,14 @@
           <a ng-click="remove(variant)" class="primary-color small-font">x Remove</a>
         </td>
         <td class="quantity">
-          <input type="number" ng-model="shopping.getByItemId(variant['id']).quantity"/> <br/>
+          <input type="number" ng-model="shopping.getByItemId(variant.id).quantity"/> <br/>
           <a ng-click="update()">Update</a>
         </td>
         <td>
           £{{variant.price}}
         </td>
         <td>
-          £???
+          £{{variant.price * shopping.getByItemId(variant['id']).quantity}}
         </td>
       </tr>
       </tbody>
@@ -54,7 +54,7 @@
           Grand Total:
         </td>
         <td class="primary-color">
-          £58.00
+          £{{GrandTotal()}}
         </td>
       </tr>
       </tfoot>
