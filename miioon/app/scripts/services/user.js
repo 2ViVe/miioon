@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('User', ['$http', 'CLIENT_ID', '$cookies',
-    function($http, CLIENT_ID, $cookies) {
+  .factory('User', ['$http', 'CLIENT_ID', 'LocalStorage',
+    function($http, CLIENT_ID, LocalStorage) {
       var token = 'MTAwODEwMTo6NDQ5ODM6OnRlc3QxMjM6Ojo6MTM5NzY2OTIzMzQxODo6WmxuRWxMTkZqRnQ2cE9CQU9RcEg4ZTo6R09MZEIxWEhTN0w4NGNON1o1Mjc3aU8vQ2pqc29PTEtMSHJ2RjNHZHJ6MD0=';
       var User = {
         login: function(username, password) {
@@ -11,24 +11,24 @@ angular.module('2ViVe')
             password: password,
             'client-id': CLIENT_ID
           }).success(function(data) {
-            token = data.response['authentication-token'];
-            $cookies.visitorId = '';
+            LocalStorage.setToken(data.response['authentication-token']);
+            LocalStorage.removeVisitorId();
           });
         },
         logout: function() {
-          User.forget();
+          LocalStorage.removeToken();
         },
         forget: function() {
-          $cookies.token = '';
+          LocalStorage.removeToken();
         },
         remember: function() {
-          $cookies.token = token;
+          LocalStorage.saveToken(token);
         },
         getToken: function() {
-          return $cookies.token ? $cookies.token : token;
+          return LocalStorage.getToken();
         },
         isRememberedLogin: function() {
-          return $cookies.token;
+          return LocalStorage.isTokenSaved();
         }
       };
       return User;

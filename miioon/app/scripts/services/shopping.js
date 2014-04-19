@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Shopping', ['$http', '$cookies', 'UUID', 'Profile',
-    function($http, $cookies, UUID, Profile) {
+  .factory('Shopping', ['$http', 'LocalStorage', 'Profile',
+    function($http, LocalStorage, Profile) {
       var Shopping = {
         add: function(variant, quantity) {
           if (Profile.isLogin) {
@@ -16,7 +16,7 @@ angular.module('2ViVe')
                 Shopping.items = data.response;
               });
           }
-          return $http.post('/api/v2/shopping-carts/visitors/' + $cookies.visitorId + '/line-items', [
+          return $http.post('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', [
               {
                 'variant-id': variant.id,
                 'quantity': quantity
@@ -33,15 +33,14 @@ angular.module('2ViVe')
             });
         },
         fetchForVisitor: function() {
-          if ($cookies.visitorId) {
-            return $http.get('/api/v2/shopping-carts/visitors/' + $cookies.visitorId)
+          if (LocalStorage.isVisitorIdSaved()) {
+            return $http.get('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId())
               .success(function(data) {
                 Shopping.items = data.response['line-items'];
               });
           } else {
-            $cookies.visitorId = UUID.generate();
             return $http.post('/api/v2/shopping-carts/visitors', {
-              'id': $cookies.visitorId
+              'id': LocalStorage.createVisitorId()
             });
           }
         }
