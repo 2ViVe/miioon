@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Profile', ['$http', 'User',
-    function($http, User) {
+  .factory('Profile', ['$http',
+    function($http) {
       var Profile = {
         isLogin: false,
         fetch: function() {

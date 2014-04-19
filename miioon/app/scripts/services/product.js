@@ -37,7 +37,7 @@ angular.module('2ViVe')
         }
       };
       return Variants;
-  }])
+    }])
   .factory('Product', ['$http',
     function($http) {
       var ATTRIBUTE_KEY = {

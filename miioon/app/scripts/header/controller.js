@@ -9,5 +9,5 @@ angular.module('2ViVe')
       $scope.logout = function() {
         User.logout();
         $window.location.href = '/';
-      }
-  }]);
+      };
+    }]);
