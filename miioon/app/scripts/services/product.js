@@ -14,6 +14,7 @@ angular.module('2ViVe')
       var Variants = {
         data: [],
         getByIds: function(ids) {
+          Variants.data = [];
           angular.forEach(ids, function(id) {
             Variants.getById(id).success(function(data) {
               Variants.data.push(data.response);

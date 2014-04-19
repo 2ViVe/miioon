@@ -34,11 +34,11 @@
           <div class="product-sku">
             SKU: {{variant.sku}}
           </div>
-          <a href="#" class="primary-color small-font">x Remove</a>
+          <a class="primary-color small-font">x Remove</a>
         </td>
         <td class="quantity">
-          <input type="number"/> <br/>
-          <a href="#">Update</a>
+          <input type="number" ng-model="shopping.getByItemId(variant['id']).quantity"/> <br/>
+          <a ng-click="update()">Update</a>
         </td>
         <td>
           £{{variant.price}}

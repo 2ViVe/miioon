@@ -4,6 +4,7 @@ angular.module('2ViVe')
   .factory('Taxons', ['$http',
     function($http) {
       var Taxons = {
+        data: [],
         fetch: function() {
           return $http.get('/api/v2/taxons')
             .success(function(data) {
