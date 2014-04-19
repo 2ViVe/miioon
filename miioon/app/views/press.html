@@ -39,11 +39,17 @@
   </div>
   <div class='columns medium-4 text-center'>
     <div class='press-items'>
-      <a href data='6' ng-click='showPopup($event.target)' title='Practical Parenting Magazine' class='press-items-img'><img data='6' src="images/press/press-6.jpg" alt="Practical Parenting Magazine" /></a>
+      <a href data='6' ng-click='showPopup($event.target)' title='Practical Parenting Magazine' class='press-items-img'>
+        <img data='6' src="images/press/press-6.jpg" alt="Practical Parenting Magazine" />
+      </a>
       <p>Practical Parenting Magazine</p>
+    </div>
   </div>
-  
-  <div id="myModal" class="reveal-modal small" ng-hide="isPopupHide"><p class="lead text-center"><img ng-src={{pressImagesBig}} /></p> <a class="close-reveal-modal" ng-click='hidePopup()'>&#215;</a> </div>
+
+  <div id="myModal" class="reveal-modal small" ng-hide="isPopupHide">
+    <p class="lead text-center"><img ng-src=images/press/press-big-{{pressImagesIndex}}.jpg /></p>
+    <a class="close-reveal-modal" ng-click='hidePopup()'>&#215;</a>
+  </div>
   <div class="reveal-modal-bg" ng-hide="isPopupHide" ng-click='hidePopup()'></div>
 
 </div>
