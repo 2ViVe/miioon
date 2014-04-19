@@ -9,6 +9,23 @@ angular.module('2ViVe')
         }
       };
     }])
+  .factory('Variants', ['$http',
+    function($http) {
+      var Variants = {
+        data: [],
+        getByIds: function(ids) {
+          angular.forEach(ids, function(id) {
+            Variants.getById(id).success(function(data) {
+              Variants.data.push(data.response);
+            });
+          });
+        },
+        getById: function(id) {
+          return $http.get('/api/v2/variants/' + id);
+        }
+      };
+      return Variants;
+  }])
   .factory('Product', ['$http',
     function($http) {
       var ATTRIBUTE_KEY = {

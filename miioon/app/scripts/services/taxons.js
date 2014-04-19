@@ -17,8 +17,6 @@ angular.module('2ViVe')
               Taxons.data = data.response;
             });
         },
-        data: [],
-
         getByPositionMoreThan: function(position) {
           var results = [];
           angular.forEach(Taxons.data, function(taxon) {

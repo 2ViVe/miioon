@@ -25,14 +25,14 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
+      <tr ng-repeat="variant in variants.data">
         <td class="cart-item text-left">
-          <img src="images/shopping-product.png" alt="Product"/>
+          <img src="{{variant.images[0]}}" alt="{{variant.name}}"/>
           <div class="product-name">
-            Navy Blue Animaru Ruckjack
+            {{variant.name}}
           </div>
           <div class="product-sku">
-            SKU: Oct6706-Animaru-Blue-RJ
+            SKU: {{variant.sku}}
           </div>
           <a href="#" class="primary-color small-font">x Remove</a>
         </td>
@@ -41,32 +41,10 @@
           <a href="#">Update</a>
         </td>
         <td>
-          £29.00
+          £{{variant.price}}
         </td>
         <td>
-          £29.00
-        </td>
-      </tr>
-      <tr>
-        <td class="cart-item text-left">
-          <img src="images/shopping-product.png" alt="Product"/>
-          <div class="product-name">
-            Navy Blue Animaru Ruckjack
-          </div>
-          <div class="product-sku">
-            SKU: Oct6706-Animaru-Blue-RJ
-          </div>
-          <a href="#" class="primary-color small-font">x Remove</a>
-        </td>
-        <td class="quantity">
-          <input type="number"/> <br/>
-          <a href="#">Update</a>
-        </td>
-        <td>
-          £29.00
-        </td>
-        <td>
-          £29.00
+          £???
         </td>
       </tr>
       </tbody>

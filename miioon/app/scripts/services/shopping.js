@@ -4,6 +4,13 @@ angular.module('2ViVe')
   .factory('Shopping', ['$http', 'LocalStorage', 'Profile',
     function($http, LocalStorage, Profile) {
       var Shopping = {
+        getItemIds: function() {
+          var itemIds = [];
+          angular.forEach(Shopping.items, function(item) {
+            itemIds.push(item['variant-id']);
+          });
+          return itemIds;
+        },
         add: function(variant, quantity) {
           if (Profile.isLogin) {
             return $http.post('/api/v2/shopping-carts/users/' + Profile.data['user-id'] + '/line-items', [
