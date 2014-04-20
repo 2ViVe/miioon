@@ -21,17 +21,17 @@ $rem-base: $base-font-size;
 $small-font-size: rem-calc(12);
 $medium-font-size: rem-calc(14);
 $large-font-size: rem-calc(18);
-$base-font-color: #8c8c8c;
-$body-font-color: #8c8c8c;
+$base-font-color: #8C8C8C;
 
-$primary-color: #05bab1;
-$secondary-color: #b9b9b9;
+$primary-color: #05BAB1;
+$secondary-color: #B9B9B9;
 
 $h2-font-size: rem-calc(24);
 $h3-font-size: rem-calc(22);
 $h4-font-size: rem-calc(18);
 $h5-font-size: rem-calc(16);
 $h6-font-size: rem-calc(14);
+$header-font-color: $primary-color;
 
 $anchor-font-color: $primary-color;
 $anchor-font-color-hover: $primary-color;

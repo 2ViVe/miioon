@@ -39,6 +39,9 @@ angular.module('miioonApp')
       .when('/party/party-invite-guests', {
         templateUrl: 'views/party/party-invite-guests.html'
       })
+      .when('/checkout', {
+        templateUrl: 'views/checkout.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
