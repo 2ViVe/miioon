@@ -19,11 +19,11 @@ angular.module('2ViVe')
         });
         return total;
       };
+      $scope.variants = Variants;
       $scope.$watch(function() {
         return Shopping.items;
       }, function() {
         Variants.getByIds(Shopping.getItemIds());
-        $scope.variants = Variants;
       });
     }
   ]);
