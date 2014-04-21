@@ -33,13 +33,13 @@ angular.module('2ViVe')
         },
         update: function() {
           if (Profile.isLogin) {
-            return $http.put('/api/v2/shopping-carts/users/' + Profile.data['user-id'] + '/line-items', Shopping.items);
+            return $http.put('/api/v2/shopping-carts/users/line-items', Shopping.items);
           }
           return $http.put('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', Shopping.items);
         },
         add: function(variant, quantity) {
           if (Profile.isLogin) {
-            return $http.post('/api/v2/shopping-carts/users/' + Profile.data['user-id'] + '/line-items', [
+            return $http.post('/api/v2/shopping-carts/users/line-items', [
               {
                 'variant-id': variant.id,
                 'quantity': quantity
@@ -60,7 +60,7 @@ angular.module('2ViVe')
             });
         },
         fetchForUser: function() {
-          return $http.get('/api/v2/shopping-carts/users/' + Profile.data['user-id'])
+          return $http.get('/api/v2/shopping-carts/users')
             .success(function(data) {
               Shopping.items = data.response['line-items'];
             });
