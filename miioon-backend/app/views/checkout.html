@@ -116,7 +116,8 @@
               {{variant.sku}}
             </div>
             <div class="unimportant-text">
-              Size: xx Color: xxx
+              Size: {{variant.options | byOptionType: 'Size'}}
+              Color: {{variant.options | byOptionType: 'Color'}}
             </div>
             <div>
               Quantity: {{shopping.getByItemId(variant.id).quantity}}
