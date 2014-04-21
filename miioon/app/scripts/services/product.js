@@ -18,19 +18,19 @@ angular.module('2ViVe')
           angular.forEach(Variants.data, function(variant, index) {
             if (variant.id === variantId) {
               itemIndex = index;
-              return;
+              return null;
             }
           });
           Variants.data.splice(itemIndex, 1);
         },
         getByIds: function(ids) {
-          Variants.data = [];
-          angular.forEach(ids, function(id) {
-            Variants.getById(id).success(function(data) {
-              data.response.id = id; //TODO: need to be removed when the API is fixed
-              Variants.data.push(data.response);
+          if (ids.length === 0) {
+            return null;
+          }
+          return $http.get('/api/v2/variants?id=' + ids.join(','))
+            .success(function(data) {
+              Variants.data = data.response;
             });
-          });
         },
         getById: function(id) {
           return $http.get('/api/v2/variants/' + id);
@@ -73,7 +73,7 @@ angular.module('2ViVe')
           });
           if (isThisVariant) {
             result = variant;
-            return;
+            return null;
           }
         });
         return result;
