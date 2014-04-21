@@ -103,49 +103,26 @@
 
     <div class="shopping-cart-small">
       <ul class="medium-font">
-        <li class="row">
+        <li class="row" ng-repeat="variant in variants.data | orderBy: id">
           <div class="columns medium-3 ">
             <img class="thumbnail" src="images/shopping-cart-placeholder.png" alt="Product"/>
           </div>
           <div class="columns medium-9">
             <a class="primary-color">
-              adfafd
+              {{variant.name}}
             </a>
 
             <div class="unimportant-text">
-              123123213
+              {{variant.sku}}
             </div>
             <div class="unimportant-text">
               Size: xx Color: xxx
             </div>
             <div>
-              Quantity: 1
+              Quantity: {{shopping.getByItemId(variant.id).quantity}}
             </div>
             <div>
-              £150.00
-            </div>
-          </div>
-        </li>
-        <li class="row">
-          <div class="columns medium-3">
-            <img class="thumbnail" src="images/shopping-cart-placeholder.png" alt="Product"/>
-          </div>
-          <div class="columns medium-9">
-            <a class="primary-color">
-              adfafd
-            </a>
-
-            <div class="unimportant-text">
-              123123213
-            </div>
-            <div class="unimportant-text">
-              Size: xx Color: xxx
-            </div>
-            <div>
-              Quantity: 1
-            </div>
-            <div>
-              £150.00
+              £{{shopping.getByItemId(variant.id).quantity * variant.price}}
             </div>
           </div>
         </li>
@@ -153,7 +130,7 @@
       <div class="summary clearfix">
         <dl class="medium-font clearfix unimportant-text">
           <dt class="columns medium-9">Updated SubTotal</dt>
-          <dd class="columns medium-3 text-right">£222.00</dd>
+          <dd class="columns medium-3 text-right">£{{GrandTotal()}}</dd>
           <dt class="columns medium-9">Shipping And Handling</dt>
           <dd class="columns medium-3 text-right">£22.00</dd>
           <dt class="columns medium-9">Tax</dt>

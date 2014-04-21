@@ -41,7 +41,8 @@ angular.module('miioonApp')
         templateUrl: 'views/party/party-invite-guests.html'
       })
       .when('/checkout', {
-        templateUrl: 'views/checkout.html'
+        templateUrl: 'views/checkout.html',
+        controller: 'CheckoutController'
       })
       .otherwise({
         redirectTo: '/'
