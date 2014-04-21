@@ -6,14 +6,9 @@ angular.module('miioonApp')
     function($httpProvider) {
       $httpProvider.interceptors.push('HttpInterceptor');
     }])
-  .run(['User', 'Profile', 'Taxons', 'Shopping',
-    function(User, Profile, Taxons, Shopping) {
-      if (User.isRememberedLogin()) {
-        Profile.fetch().success(function() {
-          Shopping.fetchForUser();
-        });
-      } else {
-        Shopping.fetchForVisitor();
-      }
-      Taxons.fetch();
+  .run(['User', 'Profile', 'Shopping',
+    function(User, Profile, Shopping) {
+      Profile.fetch().success(function() {
+        Shopping.fetchForUser();
+      });
     }]);
