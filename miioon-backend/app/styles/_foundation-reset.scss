@@ -112,3 +112,18 @@
   .row.collapse > .column, .row.collapse > .columns{
     padding-right:2px;
   }
+
+  //dropdown
+  .f-dropdown{
+    &:after,&:before{
+      display:none;
+    }
+    li{
+      border-bottom:1px solid $grey-border;
+      &:last-child{
+        border:none;
+      }
+    }
+  }
+
+

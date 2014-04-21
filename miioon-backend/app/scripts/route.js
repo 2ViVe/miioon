@@ -7,7 +7,8 @@ angular.module('miioonApp')
         templateUrl: 'views/home.html'
       })
       .when('/party/my-party', {
-        templateUrl: 'views/party/my-party.html'
+        templateUrl: 'views/party/my-party.html',
+        controller: 'MyPartyController'
       })
       .when('/party/none-party', {
         templateUrl: 'views/party/none-party.html'

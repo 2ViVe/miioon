@@ -3,11 +3,25 @@
         <div class='small-12 medium-4 columns'>
         	<div class='row collapse'>
 	            <div class='small-10 columns'>
-	              <input type='text' placeholder='Search Meets by Hostess Name' class='secondary-item no-margin-bottom' />
+	              <input type='text' placeholder='Search Meets by Hostess Name' class='secondary-item no-margin-bottom' dropdown-toggle="#drop-menu-search" />
 	            </div>
 	            <div class='small-2 columns'>
 	              <a href='#' class='postfix button secondary'><i class="fa fa-search"></i></a>
 	            </div>
+              <!--
+              <ul id="drop-menu-search" class="f-dropdown">
+                <li ng-repeat="choice in searchItems">
+                  <a>{{choice}}</a>
+                </li>
+              </ul>
+              -->
+              <ul id="drop-menu-search" class='f-dropdown party-panel-list'>
+                <li ng-repeat="choice in searchItems">
+                  <i class="fa fa-caret-right primary-color"></i>
+                  <a href='#'>{{choice.name}}</a>
+                  <span href='#' class='label secondary right'>{{choice.date}}</span>
+                </li>
+              </ul>
 	        </div>
         </div>
         <div class='small-12 medium-8 columns text-right'>
@@ -37,13 +51,18 @@
               <div class='columns small-12'>
                 <div class='party-title'>
                   <h4 class='left'><i class="fa fa-user"></i> Shelly Olson's Meet </h4>
-                  <div class='row collapse left dorpMenu'>
+                  <div class='row collapse left dorp-menu' dropdown-toggle="#drop-menu-action">
                       <div class='small-10 columns'>
                         <input type='text' value='Actions' class='secondary-item no-margin-bottom dropMenu-con' disabled />
                       </div>
                       <div class='small-2 columns'>
-                        <a href='#' class='postfix button secondary'><i class="fa fa-arrow-down"></i></a>
+                        <a class='postfix button secondary'><i class="fa fa-arrow-down"></i></a>
                       </div>
+                      <ul id="drop-menu-action" class="f-dropdown">
+                        <li ng-repeat="choice in actionItems">
+                          <a>{{choice}}</a>
+                        </li>
+                      </ul>
                   </div>
                 </div>
                 <ul class='party-info'>
@@ -62,15 +81,15 @@
               </div>
               <div class='small-3 columns party-goal-attending'>
                 <p class='icons-green-circle'><strong>182</strong><br/><span>GOAL:40</span></p>
-                <h5>INVITED</h5>
+                <h5>ATTENDING</h5>
               </div>
               <div class='small-3 columns party-goal-orders'>
                 <p class='icons-red-circle'><strong>182</strong><br/><span>GOAL:40</span></p>
-                <h5>INVITED</h5>
+                <h5>ORDERS</h5>
               </div>
               <div class='small-3 columns party-goal-earnings'>
                 <p class='icons-pink-circle'><strong>182</strong><br/><span>GOAL:40</span></p>
-                <h5>INVITED</h5>
+                <h5>EARNINGS</h5>
               </div>
             </div>
             <div class='row'>

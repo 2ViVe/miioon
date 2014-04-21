@@ -9,5 +9,7 @@ angular.module('miioonApp', [
   'ngRoute',
   '2ViVe',
   'ui.utils',
-  'mm.foundation.tabs'
+  'mm.foundation.tabs',
+  'mm.foundation.position',
+  'mm.foundation.dropdownToggle'
 ]);

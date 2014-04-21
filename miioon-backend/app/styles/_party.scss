@@ -29,18 +29,6 @@ $party-panel-list-bg:#f6f8fa;
   			color:#fff;
   		}
   	}
-  	.party-panel-list{
-  		li{
-  			background:$party-panel-list-bg;
-  			margin:rem-calc(2 2 0 2);
-  			padding:5px;
-  			font-size: $small-font-size;
-  			a{
-  				color:$grey-dark;
-  				text-decoration: none;
-  			}
-  		}
-  	}
     .party-panel-con-bar{
       background:$party-panel-list-bg;
       padding:rem-calc(10) $panel-padding;
@@ -49,6 +37,27 @@ $party-panel-list-bg:#f6f8fa;
         margin-top: rem-calc(5);
       }
     }
+  }
+  .party-panel-list{
+      li{
+        background:$party-panel-list-bg;
+        margin:rem-calc(2 2 0 2);
+        padding:5px;
+        font-size: $small-font-size;
+        a{
+          color:$grey-dark;
+          text-decoration: none;
+        }
+      }
+      &.f-dropdown{
+        max-width: rem-calc(240);
+        a{
+          display: inline;
+        }
+        li{
+          border-bottom:0;
+        }
+      }
   }
   .party-user-table{
       margin-bottom:0;
@@ -187,8 +196,13 @@ $party-panel-list-bg:#f6f8fa;
     .party-goal-invited,.party-goal-attending,.party-goal-orders,.party-goal-earnings{
       text-align: center;
       p{
-        width:rem-calc(120);
-        height:rem-calc(120);
+        width:120px;
+        height:120px;
+        color: #fff;
+        padding-top:30px;
+        strong{
+          font-size: $large-font-size;
+        }
       }
     }
     .party-goal-invited{
