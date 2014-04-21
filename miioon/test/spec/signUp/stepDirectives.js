@@ -35,8 +35,7 @@ describe('Signup Directives', function () {
           '2) Any Independent Sales Representative who sponsors another Independent Sales Representative or receives a Bonus or Commission on the product sales of another Independent Sales Representative must fulfill the obligation of performing a bona fide supervisory, distributing and selling function in the sale or delivery of a product or service to the ultimate consumer and in the training of those personally sponsored. Independent Sales Representative must have ongoing contact, communication and arrangement with his' +
           '</textarea>' +
           '<button id="is-agreed" disabled="disabled">agree</button>' +
-        '</div>'
-        , $scope);
+        '</div>', $scope);
 
       var $termsTextArea = el.find('#term-condition');
 
@@ -44,9 +43,7 @@ describe('Signup Directives', function () {
       $termsTextArea.trigger('scroll');
 
       expect(!!el.find('#is-agreed').attr('disabled')).toBeFalsy();
-    })
+    });
 
   });
-
-
 });
