@@ -75,8 +75,8 @@ angular.module('miioonApp', [
         templateUrl: 'views/printing.html'
       })
       .when('/checkout', {
-        templateUrl: 'views/checkout.html'
-//        controller: 'CheckoutController'
+        templateUrl: 'views/checkout.html',
+        controller: 'CheckoutController'
       })
       .otherwise({
         redirectTo: '/'

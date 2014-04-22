@@ -103,27 +103,23 @@
 
     <div class="shopping-cart-small">
       <ul class="medium-font">
-        <li class="row" ng-repeat="variant in variants.data | orderBy: id">
+        <li class="row" ng-repeat="lineItem in order.data['line-items']">
           <div class="columns medium-3 ">
-            <img class="thumbnail" src="images/shopping-cart-placeholder.png" alt="Product"/>
+            <img class="thumbnail" src="{{lineItem['image-url']}}" alt="Product"/>
           </div>
           <div class="columns medium-9">
-            <a class="primary-color">
-              {{variant.name}}
+            <a class="primary-color" href="/#/product/{{lineItem['product-id']}}">
+              {{lineItem['product-name']}}
             </a>
 
             <div class="unimportant-text">
-              {{variant.sku}}
-            </div>
-            <div class="unimportant-text">
-              Size: {{variant.options | byOptionType: 'Size'}}
-              Color: {{variant.options | byOptionType: 'Color'}}
+              {{lineItem.sku}}
             </div>
             <div>
-              Quantity: {{shopping.getByItemId(variant.id).quantity}}
+              Quantity: {{lineItem.quantity}}
             </div>
             <div>
-              £{{shopping.getByItemId(variant.id).quantity * variant.price}}
+              £{{lineItem.quantity * lineItem.price}}
             </div>
           </div>
         </li>
@@ -131,22 +127,17 @@
       <div class="summary clearfix">
         <dl class="medium-font clearfix unimportant-text">
           <dt class="columns medium-9">Updated SubTotal</dt>
-          <dd class="columns medium-3 text-right">£{{GrandTotal()}}</dd>
+          <dd class="columns medium-3 text-right">£{{order.data['item-total']}}</dd>
           <dt class="columns medium-9">Shipping And Handling</dt>
-          <dd class="columns medium-3 text-right">£22.00</dd>
-          <dt class="columns medium-9">Tax</dt>
-          <dd class="columns medium-3 text-right">£2.00</dd>
+          <dd class="columns medium-3 text-right">£{{order.data['adjustment-total']}}</dd>
         </dl>
         <div class="columns medium-12">
           <hr/>
         </div>
         <dl class="total medium-font clearfix">
           <dt class="columns medium-9">Total Price</dt>
-          <dd class="columns medium-3 text-right">£300.00</dd>
+          <dd class="columns medium-3 text-right">£{{order.data.total}}</dd>
         </dl>
-        <div class="columns medium-12 medium-font">
-          <i>You saved £1.0 asdfas adsf asdf asdf as fs</i>
-        </div>
       </div>
       <button class="place-order small">PLACE ORDER</button>
     </div>
