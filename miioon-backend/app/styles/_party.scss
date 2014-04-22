@@ -59,6 +59,8 @@ $party-panel-list-bg:#f6f8fa;
         }
       }
   }
+
+
   .party-user-table{
       margin-bottom:0;
       border:0;
@@ -84,6 +86,7 @@ $party-panel-list-bg:#f6f8fa;
           color:$grey-dark;
           small{
             font-size: 80%;
+            color:$grey-darker;
           }
         }
       }
@@ -417,6 +420,56 @@ $party-panel-list-bg:#f6f8fa;
       height: rem-calc(100);
     }
   }
+
+  .order-details-pop{
+    display:block;
+    visibility:visible;
+    position: fixed;
+    top:50px;
+  }
+  .order-details-pop-bg{
+    display:block;
+  }
+
+  .order-details-pop{
+    .order-details-table{
+      border:0;
+      thead{
+        background:none;
+        tr{
+          th{
+            border-bottom:1px solid $grey-border;
+            color:$grey-darker;
+          }
+        }
+      }
+      tbody{
+        tr{
+          td{
+            border-right:1px solid $grey-border;
+            &:last-child{
+              border-right:0;
+            }
+          }
+        }
+        tr:nth-of-type(2n){
+          background:none;
+        }
+      }
+    }
+    .party-user-table{
+      thead{
+        tr{
+          th{
+            color:#fff;
+            background:$primary-color;
+          }
+        }
+      }
+    }
+  }
+
+
 
   .dorpMenu{
     .dropMenu-con{

@@ -22,6 +22,7 @@
             </div>
           </div>
     </div>
+  <div ng-show="selected">Selection from a modal: {{ selected }}</div>
     <div class='row'>
     	<div class='columns small-12'>
         <table width='100%'>
@@ -36,7 +37,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><a href='#'>6692688</a></td>
+                  <td><a ng-click='showPopup()'>6692688</a></td>
                   <td>03/11/2013</td>
                   <td>$110.90</td>
                   <td>Jackson Ng</td>
@@ -123,6 +124,97 @@
               <li><a href="">03</a></li>
               <li class="arrow"><a href="">Next <i class="fa fa-caret-right"></i></a></li>
         </ul>
+        <div class="reveal-modal medium order-details-pop" ng-hide="isPopupHide">
+          <div class='order-details-con'>
+            <h3>Order #201944010 Details</h3>
+            <table class='order-details-table' cellspacing='0'>
+              <thead>
+                <tr>
+                  <th><strong class='primary-color'>Order ID: 201944010</strong></th>
+                  <th>Status: <span class='primary-color'>Shipped</span><a href='#' class='button tiny right'>PRINT</a></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Date: <span class='unimportant-text'>08/12/2013 16:13:56</span>
+                    <br/>
+                    Customer: <span class='unimportant-text'>JacksonKu</span>
+                    <br/>
+                    Type: <span class='unimportant-text'>Renewal Fees</span>
+                  </td>
+                  <td>
+                    Shipping Method: <span class='unimportant-text'>Mexico Shipping</span>
+                    <br/>
+                    Payment Date: <span class='unimportant-text'>08/12/2013 16:13:56</span>
+                    <br/>
+                    Payment Method: <span class='unimportant-text'>Credit Card (US)</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Ship To: <span class='unimportant-text'><strong>Jackson Kho</strong><br/>222 Loma Vista Ln, Santa Clara, California, 95051</span>
+                    <br/>
+                    Phone: <span class='unimportant-text'>621-32-0500</span>
+                  </td>
+                  <td>
+                    Bill To: <span class='unimportant-text'><strong>Jackson Kho</strong><br/>222 Loma Vista Ln, Santa Clara, California, 95051</span>
+                    <br/>
+                    Phone: <span class='unimportant-text'>621-32-0500</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table width='100%' class='party-user-table'>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th width='50'>Quantity</th>
+                  <th width='80'>Retail Price</th>
+                  <th width='50'>PCV</th>
+                  <th width='80'>Your Price</th>
+                  <th width='80'>Total Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td>
+                      <img class='party-user-table-img' src='/images/party/party-user-1.jpg' alt='[User Name]' />
+                      <div class='party-user-table-info'>
+                        <h4>
+                          <strong>Shelly olson</strong>
+                          <br/>
+                          <small>sjbolson13@gmail.com</small>
+                        </h4>
+                      </div>
+                    </td>
+                    <td>1</td>
+                    <td><span class='primary-color'>$22.00</span></td>
+                    <td>0.00</td>
+                    <td><span class='primary-color'>$22.00</span></td>
+                    <td><span class='primary-color'>$22.00</span></td>
+                  </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th colspan="6">
+                    <div class='row'>
+                      <div class='small-12 columns text-right check-out-foot'>
+                        <p>Updated Subtotal: $22.00 </p>
+                        <p>Shipping And Handling: $8.00 </p>
+                        <p>Tax: $1.68 </p>
+                        <strong class='price-total'>Total Price: $15.00 </strong>
+                        <p>You sve $0.00 and earn 0.00 PCV on this order.</p>
+                      </div>
+                    </div>
+                  </th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <a class="close-reveal-modal" ng-click='hidePopup()'>&#215;</a>
+        </div>
+        <div class="reveal-modal-bg order-details-pop-bg" ng-hide="isPopupHide" ng-click='hidePopup()'></div>
     	</div>
     </div>
 </div>

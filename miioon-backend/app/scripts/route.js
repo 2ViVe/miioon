@@ -14,7 +14,8 @@ angular.module('miioonApp')
         templateUrl: 'views/party/none-party.html'
       })
       .when('/party/manage-guests', {
-        templateUrl: 'views/party/manage-guests.html'
+        templateUrl: 'views/party/manage-guests.html',
+        controller: 'ManageGuestController'
       })
       .when('/party/party-customers', {
         templateUrl: 'views/party/party-customers.html'
@@ -29,7 +30,8 @@ angular.module('miioonApp')
         templateUrl: 'views/party/rsvps.html'
       })
       .when('/party/party-orders', {
-        templateUrl: 'views/party/party-orders.html'
+        templateUrl: 'views/party/party-orders.html',
+        controller: 'PartyOrdersController'
       })
       .when('/party/start-shopping', {
         templateUrl: 'views/party/start-shopping.html'

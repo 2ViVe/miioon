@@ -21,11 +21,11 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Jackson Ng</td>
-                  <td>jackson.ng@abouts.com</td>
+                  <td><input type='text' value='Jackson Ng' /></td>
+                  <td><input type='text' value='jackson.ng@abouts.com' /></td>
                   <td>Yes</td>
                   <td>
-                    <a href='#' class="tiny button">Edit</a> <a href='#' class="tiny secondary button">Remove</a>
+                    <a href='#' class="tiny button">Save</a>
                   </td>
                 </tr>
                 <tr class='odd'>
@@ -40,35 +40,17 @@
                   <td>Yes</td>
                   <td><a href='#' class="tiny button">Edit</a> <a href='#' class="tiny secondary button">Remove</a></td>
                 </tr>
-                <tr class='odd'>
-                  <td>Jackson Ng</td>
-                  <td>jackson.ng@abouts.com</td>
-                  <td>Yes</td>
-                  <td><a href='#' class="tiny button">Edit</a> <a href='#' class="tiny secondary button">Remove</a></td>
-                </tr>
-                <tr>
-                  <td>Jackson Ng</td>
-                  <td>jackson.ng@abouts.com</td>
-                  <td>Yes</td>
-                  <td><a href='#' class="tiny button">Edit</a> <a href='#' class="tiny secondary button">Remove</a></td>
-                </tr>
-                <tr class='odd'>
-                  <td>Jackson Ng</td>
-                  <td>jackson.ng@abouts.com</td>
-                  <td>Yes</td>
-                  <td><a href='#' class="tiny button">Edit</a> <a href='#' class="tiny secondary button">Remove</a></td>
-                </tr>
-                <tr>
-                  <td>Jackson Ng</td>
-                  <td>jackson.ng@abouts.com</td>
-                  <td>Yes</td>
-                  <td><a href='#' class="tiny button">Edit</a> <a href='#' class="tiny secondary button">Remove</a></td>
-                </tr>
-                <tr class='odd'>
-                  <td>Jackson Ng</td>
-                  <td>jackson.ng@abouts.com</td>
-                  <td>Yes</td>
-                  <td><a href='#' class="tiny button">Edit</a> <a href='#' class="tiny secondary button">Remove</a></td>
+                <tr class='odd' ng-repeat='items in guestItems'>
+                  <td ng-show='guestSaved'>{{items.name}}</td>
+                  <td ng-show='guestSaved'>{{items.email}}</td>
+                  <td ng-show='guestSaved'>{{items.rsvp}}</td>
+                  <td ng-show='guestSaved'>
+                    <a href='#' class="tiny button">Edit</a> <a href='#' class="tiny secondary button">Remove</a>
+                  </td>
+                  <td ng-hide='guestSaved'><input type='text' value='Jackson Ng' /></td>
+                  <td ng-hide='guestSaved'><input type='text' value='jackson.ng@abouts.com' /></td>
+                  <td ng-hide='guestSaved'>{{items.rsvp}}</td>
+                  <td ng-hide='guestSaved'><a href='#' class="tiny button">Save</a></td>
                 </tr>
                 <tr class='last-tr'>
                   <td>Jackson Ng</td>

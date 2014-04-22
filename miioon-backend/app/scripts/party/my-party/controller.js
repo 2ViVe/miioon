@@ -3,8 +3,6 @@
 angular.module('2ViVe')
   .controller('MyPartyController', ['$scope',
     function($scope) {
-        $scope.haha = "Yes";
-
         $scope.actionItems = [
           "Invite Guests",
           "Personalize & Settings",
