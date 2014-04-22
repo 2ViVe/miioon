@@ -100,9 +100,20 @@
       </h5>
 
       <p class="medium-font">
-        adfasdf <br/>
-        adfadsf <br/>
-        asdfasdf
+        {{order.data['billing-address']['first-name']}}
+        {{order.data['billing-address']['m']}}
+        {{order.data['billing-address']['last-name']}}
+        <br/>
+
+        {{order.data['billing-address']['street-cont']}}
+        {{order.data['billing-address']['street']}},
+        {{order.data['billing-address']['city']}},
+        {{order.data['billing-address']['state']}},
+        {{order.data['billing-address']['country']}},
+        {{order.data['billing-address']['zip']}}
+        <br/>
+
+        Phone: {{order.data['billing-address']['phone']}}
       </p>
       <button>Edit</button>
     </div>
