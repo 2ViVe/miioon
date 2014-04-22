@@ -12,10 +12,15 @@ angular.module('2ViVe')
         }
         Order.checkout(Shopping.items)
           .success(function() {
-            $scope.selectedShippingMethod = Order.data['shipping-method-id'];
+            $scope.selectedShippingMethodId = Order.data['shipping-method-id'];
+            $scope.selectedPaymentMethod = {};
             $scope.order = Order;
           });
       });
+
+      $scope.placeOrder = function() {
+        Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethodId);
+      };
     }
   ]
 );
