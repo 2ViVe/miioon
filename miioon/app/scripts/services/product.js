@@ -5,7 +5,8 @@ angular.module('2ViVe')
     function($http) {
       return {
         getByTaxon: function(taxonId) {
-          return $http.get('/api/v2/products/taxons/' + taxonId);
+          //TODO: need to remove role code and country id when API is modified
+          return $http.get('/api/v2/products/taxons/' + taxonId + '?role-code=R&country-id=1213');
         }
       };
     }])
@@ -49,7 +50,8 @@ angular.module('2ViVe')
         var product = this;
         product.colors = [];
         product.sizes = [];
-        product.fetch = $http.get('/api/v2/products/' + id)
+        //TODO: need to remove role code when API is modified
+        product.fetch = $http.get('/api/v2/products/' + id + '?role-code=R')
           .success(function(data) {
             product.data = data.response;
             angular.forEach(product.data.variants, function(variant) {
