@@ -1,2 +1,12 @@
 angular.module('2ViVe')
-  .controller('RetailSignUpController', angular.noop);
+  .controller('RetailSignUpController', [
+    '$scope',
+    'Registration',
+    function($scope, Registration) {
+
+      var self = $scope;
+
+      self.countries = Registration.countries();
+
+    }
+  ]);

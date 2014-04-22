@@ -246,7 +246,12 @@
       <label class="right inline required" for="country">Country</label>
     </div>
     <div class="small-5 end columns">
-      <select required name="country" id="country">
+      <select required
+              name="country"
+              id="country"
+              ng-model="country"
+              ng-options="country.name for country in countries | orderBy:'name'"
+              >
       </select>
     </div>
   </div>
@@ -257,7 +262,12 @@
       <label class="right inline required" for="state">State</label>
     </div>
     <div class="small-5 end columns">
-      <select required name="state" id="state">
+      <select required
+              name="state"
+              id="state"
+              ng-model="state"
+              ng-options="state.name for state in country.states | orderBy:'name'"
+              >
       </select>
     </div>
   </div>
