@@ -60,10 +60,10 @@
         Payment Method
       </div>
       <div>
-        <input type="radio" name="shipping-method" id="payment-method-1"/>
-        <label for="payment-method-1">US Ground</label>
-        <input type="radio" name="shipping-method" id="payment-method-2"/>
-        <label for="payment-method-2">ABC</label>
+        <input ng-repeat-start="paymentMethod in order.data['available-payment-methods']"
+               type="radio" name="payment-method" id="shipping-method-{{paymentMethod.id}}"
+               ng-model="$parent.selectedPaymentMethod" ng-value="{{paymentMethod.id}}"/>
+        <label ng-repeat-end for="shipping-method-{{paymentMethod.id}}">{{paymentMethod.name}}</label>
       </div>
       <div class="row">
         <div class="columns medium-12">
