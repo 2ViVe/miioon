@@ -34,9 +34,20 @@
         Ship To
       </div>
       <p class="medium-font">
-        asdfasdf <br/>
-        asdfasdf <br/>
-        asfasdfd
+        {{order.data['shipping-address']['first-name']}}
+        {{order.data['shipping-address']['m']}}
+        {{order.data['shipping-address']['last-name']}}
+        <br/>
+
+        {{order.data['shipping-address']['street-cont']}}
+        {{order.data['shipping-address']['street']}},
+        {{order.data['shipping-address']['city']}},
+        {{order.data['shipping-address']['state']}},
+        {{order.data['shipping-address']['country']}},
+        {{order.data['shipping-address']['zip']}}
+        <br/>
+
+        Phone: {{order.data['shipping-address']['phone']}}
       </p>
       <button>Edit</button>
     </div>
