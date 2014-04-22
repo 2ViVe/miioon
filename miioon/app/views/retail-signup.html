@@ -30,8 +30,15 @@
     </div>
 
     <div class="small-5 columns">
-      <input type="text" required
-             id="sponsor" name="sponsor"/>
+      <input type="text" data-sponsor-validator
+             required
+             id="sponsor" name="sponsor"
+             ng-model="sponsor"
+             />
+
+      <small ng-show="step['sponsor'].$error.validated" class="error">
+        {{step['sponsor'].errorMessageValidated}}
+      </small>
     </div>
 
     <div class="small-4 columns input-description unimportant-text" ng-show="false">
@@ -49,7 +56,15 @@
 
     <div class="small-5 columns">
       <input type="text" required
-             id="login" name="login"/>
+             id="login" name="login"
+             ng-pattern="/(?!^\d+$)^.+$/"
+             data-availabilities-validator="login"
+             ng-model="login"
+             />
+
+      <small ng-show="submitted && step.login.$error.required" class="error">
+        This field is required.
+      </small>
     </div>
 
     <div class="small-4 columns input-description unimportant-text" ng-show="false">
@@ -68,11 +83,20 @@
 
     <div class="small-5 columns">
       <input type="email" required
-             id="email" name="email"/>
+             id="email" name="email"
+             ng-model="email"
+             data-availabilities-validator="email"
+             />
+
+      <small ng-show="submitted && (step.email.$error.required || step.email.$error.email)" class="error">
+        A valid email address is required.
+      </small>
+      <small ng-show="step['email'].$error.validated" class="error">
+        Email is not available.
+      </small>
     </div>
 
     <div class="small-4 columns input-description unimportant-text" ng-show="false">
-      Sponsor Name:
     </div>
 
   </div>
@@ -86,11 +110,18 @@
 
     <div class="small-5 columns">
       <input type="password" required
-             id="password" name="password"/>
+             id="password" name="password"
+             ng-model="password"
+             ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/" />
+      <small ng-show="submitted && step.password.$error.required" class="error">
+        This field is required.
+      </small>
+      <small ng-show="step['password'].$error.pattern" class="error">
+        Password should include at least one number, one uppercase, one lowercase and more than 6 characters.
+      </small>
     </div>
 
     <div class="small-4 columns input-description unimportant-text" ng-show="false">
-      Sponsor Name:
     </div>
 
   </div>
@@ -105,11 +136,16 @@
 
     <div class="small-5 columns">
       <input type="password" required
-             id="confirm-password" name="password"/>
+             id="confirm-password" name="password"
+             ng-model="passwordConfirmation"
+             ui-validate="'$value==password'"
+             ui-validate-watch="'password'"
+             />
+      <small ng-show="submitted && step['password-confirmation'].$error.validator" class="error">Passwords must match.
+      </small>
     </div>
 
     <div class="small-4 columns input-description unimportant-text" ng-show="false">
-      Sponsor Name:
     </div>
 
   </div>
@@ -287,7 +323,6 @@
     <div class="small-4 columns input-description unimportant-text" ng-show="false">
       Sponsor Name:
     </div>
-
   </div>
 
 

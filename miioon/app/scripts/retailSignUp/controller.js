@@ -7,6 +7,5 @@ angular.module('2ViVe')
       var self = $scope;
 
       self.countries = Registration.countries();
-
     }
   ]);
