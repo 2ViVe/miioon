@@ -264,14 +264,22 @@
 
   <!-- Zip/Post code -->
   <div class="row">
+
     <div class="small-3 columns">
-      <label class="right inline required" for="postcode">Zip/Postcode</label>
+      <label class="right inline required" for="post-code">Zip/Post code</label>
     </div>
-    <div class="small-5 end columns">
-      <select required name="postcode" id="postcode">
-      </select>
+
+    <div class="small-5 columns">
+      <input type="text" required
+             id="post-code" name="address-line-2"/>
     </div>
+
+    <div class="small-4 columns input-description unimportant-text" ng-show="false">
+      Sponsor Name:
+    </div>
+
   </div>
+
 
   <div class="row">
     <div class="columns small-9 small-offset-3">
