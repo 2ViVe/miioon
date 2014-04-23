@@ -32,6 +32,15 @@ angular.module('2ViVe')
         },
         removeToken: function() {
           $cookies.token = '';
+        },
+        setPathAfterLogin: function(path) {
+          $cookies.pathAfterLogin = path;
+        },
+        getPathAfterLogin: function() {
+          return $cookies.pathAfterLogin ? $cookies.pathAfterLogin : '/';
+        },
+        removePathAfterLogin: function() {
+          $cookies.pathAfterLogin = '';
         }
       };
     }]);

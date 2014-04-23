@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('SignInController', ['$scope', '$location', 'User', 'Taxons', 'Shopping',
-    function($scope, $location, User, Taxons, Shopping) {
+  .controller('SignInController', ['$scope', '$location', 'User', 'Taxons', 'Shopping', 'LocalStorage',
+    function($scope, $location, User, Taxons, Shopping, LocalStorage) {
       $scope.isRemember = false;
 
       $scope.signIn = function() {
@@ -18,7 +18,8 @@ angular.module('2ViVe')
             });
             Taxons.fetch();
 
-            $location.path('/');
+            $location.path(LocalStorage.getPathAfterLogin());
+            LocalStorage.removePathAfterLogin();
           });
       };
     }]);

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Shopping', ['$http', 'LocalStorage', 'User',
-    function($http, LocalStorage, User) {
+  .factory('Shopping', ['$http', 'LocalStorage', 'User', '$location',
+    function($http, LocalStorage, User, $location) {
       var Shopping = {
         getByItemId: function(id) {
           var result;
@@ -13,6 +13,14 @@ angular.module('2ViVe')
             }
           });
           return result;
+        },
+        checkout: function() {
+          if (User.isLogin) {
+            $location.path('/checkout');
+          } else {
+            LocalStorage.setPathAfterLogin('/checkout');
+            $location.path('/signin');
+          }
         },
         getItemIds: function() {
           var itemIds = [];

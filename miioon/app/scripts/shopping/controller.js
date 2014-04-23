@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('ShoppingController', ['$scope', 'Shopping', 'Variants', 'User', '$location',
-    function($scope, Shopping, Variants, User, $location) {
+  .controller('ShoppingController', ['$scope', 'Shopping', 'Variants',
+    function($scope, Shopping, Variants) {
       $scope.shopping = Shopping;
       $scope.variants = Variants;
 
@@ -31,11 +31,7 @@ angular.module('2ViVe')
       });
 
       $scope.checkout = function() {
-        if (User.isLogin) {
-          $location.path('/checkout');
-        } else {
-          $location.path('/signin');
-        }
+        Shopping.checkout();
       };
     }
   ]);

@@ -45,6 +45,12 @@ angular.module('2ViVe')
         Shopping.add($scope.variant, $scope.quantity);
       };
 
+      $scope.purchase = function() {
+        Shopping.add($scope.variant, $scope.quantity)
+          .success(function() {
+            Shopping.checkout();
+          });
+      };
 
       $scope.tabs = [
         {
