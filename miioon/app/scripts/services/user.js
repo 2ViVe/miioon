@@ -5,6 +5,7 @@ angular.module('2ViVe')
     function($http, CLIENT_ID, LocalStorage) {
       var token;
       var User = {
+        isLogin: false,
         login: function(username, password) {
           return $http.post('/api/v2/authentications/token', {
             user: username,
@@ -14,6 +15,7 @@ angular.module('2ViVe')
             token = data.response['authentication-token'];
             LocalStorage.setToken(token);
             LocalStorage.removeVisitorId();
+            User.isLogin = true;
           });
         },
         logout: function() {
@@ -27,6 +29,12 @@ angular.module('2ViVe')
         },
         isRememberedLogin: function() {
           return LocalStorage.isTokenSaved();
+        },
+        fetch: function() {
+          return $http.get('/api/v2/profile')
+            .success(function(data) {
+              User.data = data.response;
+            });
         }
       };
       return User;

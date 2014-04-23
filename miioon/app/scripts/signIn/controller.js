@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('SignInController', ['$scope', 'User', '$location', 'Profile', 'Taxons', 'Shopping',
-    function($scope, User, $location, Profile, Taxons, Shopping) {
+  .controller('SignInController', ['$scope', '$location', 'User', 'Taxons', 'Shopping',
+    function($scope, $location, User, Taxons, Shopping) {
       $scope.isRemember = false;
 
       $scope.signIn = function() {
@@ -13,7 +13,7 @@ angular.module('2ViVe')
             } else {
               User.forget();
             }
-            Profile.fetch().success(function() {
+            User.fetch().success(function() {
               Shopping.fetchForUser();
             });
             Taxons.fetch();

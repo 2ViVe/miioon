@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('HeaderController', ['$scope', 'Profile', 'User', '$window', 'Shopping',
-    function($scope, Profile, User, $window, Shopping) {
-      $scope.profile = Profile;
+  .controller('HeaderController', ['$scope', 'User', '$window', 'Shopping',
+    function($scope, User, $window, Shopping) {
+      $scope.profile = User;
       $scope.shopping = Shopping;
 
       $scope.logout = function() {

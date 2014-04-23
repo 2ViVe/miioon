@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Shopping', ['$http', 'LocalStorage', 'Profile',
-    function($http, LocalStorage, Profile) {
+  .factory('Shopping', ['$http', 'LocalStorage', 'User',
+    function($http, LocalStorage, User) {
       var Shopping = {
         getByItemId: function(id) {
           var result;
@@ -32,13 +32,13 @@ angular.module('2ViVe')
           return Shopping.update();
         },
         update: function() {
-          if (Profile.isLogin) {
+          if (User.isLogin) {
             return $http.put('/api/v2/shopping-carts/users/line-items', Shopping.items);
           }
           return $http.put('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', Shopping.items);
         },
         add: function(variant, quantity) {
-          if (Profile.isLogin) {
+          if (User.isLogin) {
             return $http.post('/api/v2/shopping-carts/users/line-items', [
               {
                 'variant-id': variant.id,
