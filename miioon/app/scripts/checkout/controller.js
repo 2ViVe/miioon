@@ -1,8 +1,12 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('CheckoutController', ['$scope', 'Order', 'Shopping',
-    function($scope, Order, Shopping) {
+  .controller('CheckoutController', ['$scope', 'Order', 'Shopping', 'User', '$location', 'LocalStorage',
+    function($scope, Order, Shopping, User, $location, LocalStorage) {
+      if (!User.isLogin) {
+        LocalStorage.setPathAfterLogin('/checkout');
+        $location.path('/signin');
+      }
 
       $scope.$watch(function() {
         return Shopping.items;
