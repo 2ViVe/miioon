@@ -1,17 +1,21 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('ShoppingController', ['$scope', 'Shopping', 'Variants',
-    function($scope, Shopping, Variants) {
+  .controller('ShoppingController', ['$scope', 'Shopping', 'Variants', 'Profile', '$location',
+    function($scope, Shopping, Variants, Profile, $location) {
       $scope.shopping = Shopping;
+      $scope.variants = Variants;
+
       $scope.update = function() {
         Shopping.update();
       };
+
       $scope.remove = function(variant) {
         Shopping.removeItem(variant.id).success(function() {
           Variants.remove(variant.id);
         });
       };
+
       $scope.GrandTotal = function() {
         var total = 0;
         angular.forEach(Variants.data, function(variant) {
@@ -19,11 +23,19 @@ angular.module('2ViVe')
         });
         return parseInt(total * 100) / 100;
       };
-      $scope.variants = Variants;
+
       $scope.$watch(function() {
         return Shopping.items;
       }, function() {
         Variants.getByIds(Shopping.getItemIds());
       });
+
+      $scope.checkout = function() {
+        if (Profile.isLogin) {
+          $location.path('/checkout');
+        } else {
+          $location.path('/signin');
+        }
+      };
     }
   ]);
