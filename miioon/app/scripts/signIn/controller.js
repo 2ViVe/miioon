@@ -6,6 +6,8 @@ angular.module('2ViVe')
       $scope.isRemember = false;
 
       $scope.signIn = function() {
+        var isAlreadyLogin = User.isLogin;
+
         User.login($scope.username, $scope.password)
           .success(function() {
             if ($scope.isRemember) {
@@ -14,7 +16,11 @@ angular.module('2ViVe')
               User.forget();
             }
             User.fetch().success(function() {
-              Shopping.fetchForUser();
+              if (!isAlreadyLogin && Shopping.items) {
+                Shopping.mergeItems();
+              } else {
+                Shopping.fetchForUser();
+              }
             });
             Taxons.fetch();
 
