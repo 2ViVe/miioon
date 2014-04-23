@@ -8,8 +8,10 @@ angular.module('2ViVe')
       $scope.countries = Registration.countries();
 
       $scope.register = function() {
-        $scope.submitted = true;
-        console.log('yes');
+        $scope.retailSignupForm = $scope.retailSignupForm || {};
+        if ($scope.retailSignupForm.$valid) {
+          Registration.createRetail();
+        }
       };
     }
   ]);

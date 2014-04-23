@@ -76,6 +76,15 @@ angular.module('2ViVe')
         });
       }
 
+      function createRetail(sponsor, login, password, email,  shippingAddress) {
+        return $http.post('/v2/registrations/retail-customers', {
+          sponsor: sponsor,
+          login: login,
+          password: password,
+          email: email,
+          'shipping-address': shippingAddress
+        });
+      }
 
       function validateAvailabilities(key, value) {
         var params = {};
@@ -100,6 +109,7 @@ angular.module('2ViVe')
         countries: fetchCountries,
         validateAvailabilities: validateAvailabilities,
         create: create,
+        createRetail: createRetail,
         validateSponsor: validateSponsor,
         getCountries: getCountries
       };
