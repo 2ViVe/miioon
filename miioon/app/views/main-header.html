@@ -1,7 +1,7 @@
 <header class="main-header row" ng-controller="HeaderController">
   <div class="row">
     <div class="columns medium-9">
-      <ul class="header-links separator-slash" ng-if="!profile.isLogin">
+      <ul class="header-links separator-slash" ng-if="!user.isLogin">
         <li>
           <a href="/#/signin">Sign In</a>
         </li>
@@ -12,9 +12,9 @@
           <a href="/#/host">Host</a>
         </li>
       </ul>
-      <ul class="header-links separator-slash" ng-if="profile.isLogin">
+      <ul class="header-links separator-slash" ng-if="user.isLogin">
         <li>
-          Welcome {{profile.data.name}}
+          Welcome {{user.data.name}}
         </li>
         <li>
           <a href="/#/gift/gift-card">Gift</a>
