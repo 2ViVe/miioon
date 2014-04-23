@@ -7,11 +7,12 @@ angular.module('2ViVe')
 
       function fetchCountries() {
         if (!countries.length) {
-          $http.get('/api/v2/registrations/countries').success(function(ctx) {
-            angular.forEach(ctx.response, function(country, idx) {
-              countries[idx] = country;
+          $http.get('/api/v2/registrations/countries')
+            .success(function(ctx) {
+              angular.forEach(ctx.response, function(country, idx) {
+                countries[idx] = country;
+              });
             });
-          });
         }
         return countries;
       }

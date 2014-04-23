@@ -6,7 +6,12 @@ angular.module('2ViVe')
       return {
         getByTaxon: function(taxonId) {
           //TODO: need to remove role code and country id when API is modified
-          return $http.get('/api/v2/products/taxons/' + taxonId + '?role-code=R&country-id=1213');
+          return $http.get('/api/v2/products/taxons/' + taxonId, {
+            params: {
+              'role-code': 'R',
+              'country-id': '1213'
+            }
+          });
         }
       };
     }])
@@ -28,10 +33,14 @@ angular.module('2ViVe')
           if (ids.length === 0) {
             return null;
           }
-          return $http.get('/api/v2/variants?id=' + ids.join(','))
-            .success(function(data) {
-              Variants.data = data.response;
-            });
+          return $http.get('/api/v2/variants', {
+            params: {
+              'role-code': 'R',
+              'id': ids.join(',')
+            }
+          }).success(function(data) {
+            Variants.data = data.response;
+          });
         },
         getById: function(id) {
           return $http.get('/api/v2/variants/' + id);
@@ -51,17 +60,20 @@ angular.module('2ViVe')
         product.colors = [];
         product.sizes = [];
         //TODO: need to remove role code when API is modified
-        product.fetch = $http.get('/api/v2/products/' + id + '?role-code=R')
-          .success(function(data) {
-            product.data = data.response;
-            angular.forEach(product.data.variants, function(variant) {
-              angular.forEach(variant.options, function(option) {
-                if (product[ATTRIBUTE_KEY[option.type]].indexOf(option.name) < 0) {
-                  product[ATTRIBUTE_KEY[option.type]].push(option.name);
-                }
-              });
+        product.fetch = $http.get('/api/v2/products/' + id, {
+          params: {
+            'role-code': 'R'
+          }
+        }).success(function(data) {
+          product.data = data.response;
+          angular.forEach(product.data.variants, function(variant) {
+            angular.forEach(variant.options, function(option) {
+              if (product[ATTRIBUTE_KEY[option.type]].indexOf(option.name) < 0) {
+                product[ATTRIBUTE_KEY[option.type]].push(option.name);
+              }
             });
           });
+        });
       };
       Product.prototype.getVariantByOptions = function(options) {
         var result = null;
