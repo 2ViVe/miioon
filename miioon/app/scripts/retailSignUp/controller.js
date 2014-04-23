@@ -6,5 +6,10 @@ angular.module('2ViVe')
     'Registration',
     function($scope, Registration) {
       $scope.countries = Registration.countries();
+
+      $scope.register = function() {
+        $scope.submitted = true;
+        console.log('yes');
+      };
     }
   ]);

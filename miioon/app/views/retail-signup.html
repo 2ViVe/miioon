@@ -1,4 +1,4 @@
-<form class="sign-up" name="step" novalidate>
+<form class="sign-up" name="step" novalidate ng-submit="register()">
   <div class="row">
     <h2 class="columns small-9">
       CREATE A CUSTOMER ACCOUNT
@@ -29,7 +29,7 @@
       <label class="right inline" for="sponsor">Sponsor ID</label>
     </div>
 
-    <div class="small-5 columns">
+    <div class="small-5 end columns">
       <input type="text" data-sponsor-validator
              required
              id="sponsor" name="sponsor"
@@ -54,7 +54,7 @@
       <label class="right inline required" for="login">Login</label>
     </div>
 
-    <div class="small-5 columns">
+    <div class="small-5 end columns">
       <input type="text" required
              id="login" name="login"
              ng-pattern="/(?!^\d+$)^.+$/"
@@ -66,11 +66,6 @@
         This field is required.
       </small>
     </div>
-
-    <div class="small-4 columns input-description unimportant-text" ng-show="false">
-      Sponsor Name:
-    </div>
-
   </div>
 
 
@@ -81,7 +76,7 @@
       <label class="right inline required" for="email">Email Address</label>
     </div>
 
-    <div class="small-5 columns">
+    <div class="small-5 end columns">
       <input type="email" required
              id="email" name="email"
              ng-model="email"
@@ -96,9 +91,6 @@
       </small>
     </div>
 
-    <div class="small-4 columns input-description unimportant-text" ng-show="false">
-    </div>
-
   </div>
 
   <!-- Password -->
@@ -108,7 +100,7 @@
       <label class="right inline required" for="password">Password</label>
     </div>
 
-    <div class="small-5 columns">
+    <div class="small-5 end columns">
       <input type="password" required
              id="password" name="password"
              ng-model="password"
@@ -120,10 +112,6 @@
         Password should include at least one number, one uppercase, one lowercase and more than 6 characters.
       </small>
     </div>
-
-    <div class="small-4 columns input-description unimportant-text" ng-show="false">
-    </div>
-
   </div>
 
 
@@ -134,7 +122,7 @@
       <label class="right inline required" for="confirm-password">Confirm Password</label>
     </div>
 
-    <div class="small-5 columns">
+    <div class="small-5 end columns">
       <input type="password" required
              id="confirm-password" name="password"
              ng-model="passwordConfirmation"
@@ -144,10 +132,6 @@
       <small ng-show="submitted && step['password-confirmation'].$error.validator" class="error">Passwords must match.
       </small>
     </div>
-
-    <div class="small-4 columns input-description unimportant-text" ng-show="false">
-    </div>
-
   </div>
 
 
@@ -171,15 +155,19 @@
       <label class="right inline required" for="first-name">First Name</label>
     </div>
 
-    <div class="small-5 columns">
+    <div class="small-5 end columns">
       <input type="text" required
-             id="first-name" name="first-name"/>
-    </div>
+             id="first-name" name="first-name"
+             ng-model="firstName"
+             />
 
-    <div class="small-4 columns input-description unimportant-text" ng-show="false">
-      Sponsor Name:
+      <small ng-show="submitted && form['first-name'].$error.required" class="error">
+        This field is required.
+      </small>
+      <small ng-show="submitted && form['first-name'].$error.validated" class="error">
+        {{ form['first-name'].errorMessageValidated }}
+      </small>
     </div>
-
   </div>
 
 
@@ -190,15 +178,21 @@
       <label class="right inline required" for="last-name">Last Name</label>
     </div>
 
-    <div class="small-5 columns">
+    <div class="small-5 end columns">
       <input type="text" required
-             id="last-name" name="last-name"/>
-    </div>
+             id="last-name" name="last-name"
+             ng-model="lastName"
+             />
 
-    <div class="small-4 columns input-description unimportant-text" ng-show="false">
-      Sponsor Name:
-    </div>
+      <small ng-show="submitted && form['last-name'].$error.required" class="error">
+        This field is required.
+      </small>
 
+      <small ng-show="submitted && form['last-name'].$error.validated" class="error">
+        {{ form['last-name'].errorMessageValidated }}
+      </small>
+
+    </div>
   </div>
 
   <!-- Phone Number -->
@@ -208,15 +202,20 @@
       <label class="right inline required" for="phone-number">Phone Number</label>
     </div>
 
-    <div class="small-5 columns">
+    <div class="small-5 end columns">
       <input type="text" required
-             id="phone-number" name="phone-number"/>
-    </div>
+             id="phone-number" name="phone-number"
+             ng-model="phoneNumber"/>
 
-    <div class="small-4 columns input-description unimportant-text" ng-show="false">
-      Sponsor Name:
-    </div>
 
+      <small ng-show="submitted && form['phone-number'].$error.required" class="error">
+        This field is required.
+      </small>
+      <small ng-show="submitted && form['phone-number'].$error.validated" class="error">
+        {{form['phone-number'].errorMessageValidated}}
+      </small>
+
+    </div>
   </div>
 
 
@@ -227,13 +226,14 @@
       <label class="right inline required" for="address-line-1">Address Line 1</label>
     </div>
 
-    <div class="small-5 columns">
+    <div class="small-5 end columns">
       <input type="text" required
-             id="address-line-1" name="address-line-1"/>
-    </div>
+             id="address-line-1" name="address-line-1"
+             ng-model="firstAddressLine"/>
 
-    <div class="small-4 columns input-description unimportant-text" ng-show="false">
-      Sponsor Name:
+      <small ng-show="submitted && form['address-line-1'].$error.required" class="error">
+        This field is required.
+      </small>
     </div>
 
   </div>
@@ -246,15 +246,14 @@
       <label class="right inline required" for="address-line-2">Address Line 2</label>
     </div>
 
-    <div class="small-5 columns">
+    <div class="small-5 end columns">
       <input type="text" required
-             id="address-line-2" name="address-line-2"/>
+             id="address-line-2" name="address-line-2"
+             ng-model="secondAddressLine"/>
+      <small ng-show="submitted && form['address-line-2'].$error.required" class="error">
+        This field is required.
+      </small>
     </div>
-
-    <div class="small-4 columns input-description unimportant-text" ng-show="false">
-      Sponsor Name:
-    </div>
-
   </div>
 
 
@@ -265,15 +264,13 @@
       <label class="right inline required" for="city">Suburb/City</label>
     </div>
 
-    <div class="small-5 columns">
+    <div class="small-5 end columns">
       <input type="text" required
              id="city" name="city"/>
+      <small ng-show="submitted && form['city'].$error.required" class="error">
+        This field is required.
+      </small>
     </div>
-
-    <div class="small-4 columns input-description unimportant-text" ng-show="false">
-      Sponsor Name:
-    </div>
-
   </div>
 
   <!-- Country -->
@@ -289,6 +286,9 @@
               ng-options="country.name for country in countries | orderBy:'name'"
               >
       </select>
+      <small ng-show="submitted && form['country'].$error.required" class="error">
+        This field is required.
+      </small>
     </div>
   </div>
 
@@ -305,6 +305,9 @@
               ng-options="state.name for state in country.states | orderBy:'name'"
               >
       </select>
+      <small ng-show="submitted && form['state'].$error.required" class="error">
+        This field is required.
+      </small>
     </div>
   </div>
 
@@ -312,23 +315,27 @@
   <div class="row">
 
     <div class="small-3 columns">
-      <label class="right inline required" for="post-code">Zip/Post code</label>
+      <label class="right inline required" for="zip">Zip/Post code</label>
     </div>
 
-    <div class="small-5 columns">
+    <div class="small-5 end columns">
       <input type="text" required
-             id="post-code" name="address-line-2"/>
+             id="zip" name="zip"
+             ng-model="zip"/>
+
+      <small ng-show="submitted && form['zip'].$error.required" class="error">
+        This field is required.
+      </small>
     </div>
 
     <div class="small-4 columns input-description unimportant-text" ng-show="false">
-      Sponsor Name:
     </div>
   </div>
 
 
   <div class="row">
     <div class="columns small-9 small-offset-3">
-      <button>CREATE MY ACCOUNT</button>
+      <button type="submit">CREATE MY ACCOUNT</button>
     </div>
   </div>
 </form>
