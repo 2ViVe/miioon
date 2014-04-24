@@ -27,8 +27,10 @@ angular.module('2ViVe')
       $scope.editShippingAddress = function() {
         $modal.open({
           templateUrl: 'views/checkout/shipping-address.html',
-          controller: 'ShippingController'
-        });
+          controller: 'ShippingModalController'
+        }).result.then(function(shippingAddress) {
+            $scope.order.data['shipping-address'] = shippingAddress;
+          });
       };
 
       $scope.placeOrder = function() {
