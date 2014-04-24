@@ -1,0 +1,150 @@
+<div class="row title">
+  <h6 class="small-3 text-right columns">
+    SHIPPING ADDRESS
+  </h6>
+</div>
+<div class="row">
+  <div class="small-3 columns">
+    <label class="right inline required" for="shipment-first-name">First Name</label>
+  </div>
+  <div class="small-5 end columns">
+    <input required type="text" id="shipment-first-name" name="shipment-first-name"
+           ng-model="shipmentAddress['first-name']"/>
+    <small ng-show="submitted && form['shipment-first-name'].$error.required" class="error">
+      This field is required.
+    </small>
+    <small ng-show="submitted && form['shipment-first-name'].$error.validated" class="error">
+      {{form['shipment-first-name'].errorMessageValidated}}
+    </small>
+  </div>
+</div>
+<div class="row">
+  <div class="small-3 columns">
+    <label class="right inline required" for="shipment-last-name">Last Name</label>
+  </div>
+  <div class="small-5 end columns">
+    <input required type="text" id="shipment-last-name" name="shipment-last-name"
+           ng-model="shipmentAddress['last-name']"/>
+    <small ng-show="submitted && form['shipment-last-name'].$error.required" class="error">
+      This field is required.
+    </small>
+    <small ng-show="submitted && form['shipment-last-name'].$error.validated" class="error">
+      {{form['shipment-last-name'].errorMessageValidated}}
+    </small>
+  </div>
+</div>
+<div class="row">
+  <div class="small-3 columns">
+    <label class="right inline required" for="shipment-street">Address</label>
+  </div>
+  <div class="small-5 end columns">
+    <input required type="text" id="shipment-street" name="shipment-street" ng-model="shipmentAddress.street"/>
+    <small ng-show="submitted && form['shipment-street'].$error.required" class="error">
+      This field is required.
+    </small>
+    <small ng-show="submitted && form['shipment-street'].$error.validated" class="error">
+      {{form['shipment-street'].errorMessageValidated}}
+    </small>
+  </div>
+</div>
+<div class="row">
+  <div class="small-3 columns">
+    <label class="right inline" for="shipment-street-contd">Address (contd)</label>
+  </div>
+  <div class="small-5 end columns">
+    <input type="text" id="shipment-street-contd" name="shipment-street-contd"
+           ng-model="shipmentAddress['street-contd']"/>
+  </div>
+</div>
+<div data-countries-and-states>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline required" for="shipment-country-id">Country</label>
+    </div>
+    <div class="small-5 end columns">
+      <select required id="shipment-country-id" name="shipment-country-id" ng-model="shipmentAddress['country-id']"
+              ng-options="country.id as country.name for country in countries | orderBy:'name'"
+              ng-change="onCountryChanged(shipmentAddress['country-id'])">
+      </select>
+      <small ng-show="submitted && form['shipment-country-id'].$error.required" class="error">
+        This field is required.
+      </small>
+    </div>
+  </div>
+  <div class="row" ng-show="states.length > 0">
+    <div class="small-3 columns">
+      <label class="right inline required" for="shipment-state-id">County</label>
+    </div>
+    <div class="small-5 end columns">
+      <select id="shipment-state-id" name="shipment-state-id" ng-model="shipmentAddress['state-id']"
+              ng-required="states.length > 0"
+              ng-options="state.id as state.name for state in states | orderBy:'name'">
+      </select>
+      <small ng-show="submitted && form['shipment-state-id'].$error.required" class="error">
+        This field is required.
+      </small>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="small-3 columns">
+    <label class="right inline required" for="shipment-city">City</label>
+  </div>
+  <div class="small-5 end columns">
+    <input required type="text" id="shipment-city" name="shipment-city" ng-model="shipmentAddress.city"/>
+    <small ng-show="submitted && form['shipment-city'].$error.required" class="error">
+      This field is required.
+    </small>
+    <small ng-show="submitted && form['shipment-city'].$error.validated" class="error">
+      {{form['shipment-city'].errorMessageValidated}}
+    </small>
+  </div>
+</div>
+<div class="row">
+  <div class="small-3 columns">
+    <label class="right inline required" for="shipment-zip">Post Code</label>
+  </div>
+  <div class="small-5 end columns">
+    <input required type="text" id="shipment-zip" name="shipment-zip" ng-model="shipmentAddress.zip"/>
+    <small ng-show="submitted && form['shipment-zip'].$error.required" class="error">
+      This field is required.
+    </small>
+    <small ng-show="submitted && form['shipment-zip'].$error.validated" class="error">
+      {{form['shipment-zip'].errorMessageValidated}}
+    </small>
+  </div>
+</div>
+<div class="row">
+  <div class="small-3 columns">
+    <label class="right inline required" for="shipment-phone">Phone</label>
+  </div>
+  <div class="small-5 end columns">
+    <input required type="text" id="shipment-phone" name="shipment-phone" ng-model="shipmentAddress.phone"/>
+    <small ng-show="submitted && form['shipment-phone'].$error.required" class="error">
+      This field is required.
+    </small>
+    <small ng-show="submitted && form['shipment-phone'].$error.validated" class="error">
+      {{form['shipment-phone'].errorMessageValidated}}
+    </small>
+  </div>
+</div>
+<div class="row title">
+  <h6 class="small-3 text-right columns">
+    DELIVERY OPTIONS
+  </h6>
+</div>
+<div class="row" ng-repeat="shippingMethod in shippingMethods">
+  <div class="small-9 small-offset-3 columns">
+    <label class="inline">
+      <input ng-model="shipmentAddress['shipping-method-id']" type="radio" name="shipping-method"
+             ng-value="shippingMethod.id" id="shipping-method-{{shippingMethod.id}}"/>
+      {{shippingMethod.name}}
+    </label>
+  </div>
+</div>
+<div class="row">
+  <div class="columns medium-12">
+    <button>Submit</button>
+  </div>
+</div>
+<a class="close-reveal-modal" ng-click="cancel()">&#215;</a>

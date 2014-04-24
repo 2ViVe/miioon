@@ -10,6 +10,7 @@ angular.module('miioonApp', [
   '2ViVe',
   'ui.utils',
   'mm.foundation.tabs',
+  'mm.foundation.modal',
   'duScroll'
 ])
   .config(['$routeProvider', function($routeProvider) {

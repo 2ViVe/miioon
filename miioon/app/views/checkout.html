@@ -48,7 +48,7 @@
 
         Phone: {{order.data['shipping-address']['phone']}}
       </p>
-      <button>Edit</button>
+      <button ng-show="order.data['shipping-address-changeable']" ng-click="editShippingAddress()">Edit</button>
     </div>
     <div class="info-panel">
       <h5>

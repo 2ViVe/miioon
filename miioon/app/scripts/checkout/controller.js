@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('CheckoutController', ['$scope', 'Order', 'Shopping', 'User', '$location', 'LocalStorage',
-    function($scope, Order, Shopping, User, $location, LocalStorage) {
+  .controller('CheckoutController', ['$scope', 'Order', 'Shopping', 'User', '$location', 'LocalStorage', '$modal',
+    function($scope, Order, Shopping, User, $location, LocalStorage, $modal) {
       $scope.creditCard = {};
 
       if (!User.isLogin) {
@@ -24,6 +24,12 @@ angular.module('2ViVe')
           });
       });
 
+      $scope.editShippingAddress = function() {
+        $modal.open({
+          templateUrl: 'views/checkout/shipping-address.html',
+          controller: 'ShippingController'
+        });
+      };
 
       $scope.placeOrder = function() {
         if ($scope.selectedPaymentMethod['is-creditcard']) {
