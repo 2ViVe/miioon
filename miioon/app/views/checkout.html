@@ -64,36 +64,58 @@
                ng-model="$parent.selectedPaymentMethod" ng-value="{{paymentMethod}}"/>
         <label ng-repeat-end for="shipping-method-{{paymentMethod.id}}">{{paymentMethod.name}}</label>
       </div>
-      <div ng-show="selectedPaymentMethod['is-creditcard']">
+      <form name="creditCardForm" ng-show="selectedPaymentMethod['is-creditcard']">
         <div class="row">
           <div class="columns medium-12">
-            <label for="card-number" class="required">Card Number</label>
+            <label for="number" class="required">Card Number</label>
           </div>
           <div class="columns medium-8">
-            <input type="text" id="card-number"/>
+            <input ng-required="selectedPaymentMethod['is-creditcard']" type="text" ng-model="creditCard.number"
+                   id="number" name="number"/>
+            <small ng-show="submitted && creditCardForm.number.$error.required" class="error">
+              This field is required.
+            </small>
           </div>
           <div class="columns medium-4">
             <img src="images/cards.png" alt="Cards"/>
           </div>
         </div>
-        <div class="row">
+        <div class="row credit-card-expiration">
           <div class="columns medium-8">
             <label for="expiration-month" class="required">Expiration</label>
           </div>
           <div class="columns medium-4">
-            <label for="card-code" class="required">Card Code</label>
+            <label for="cvv" class="required">Card Code</label>
           </div>
           <div class="columns medium-4">
-            <select name="expiration-month" id="expiration-month"></select>
+            <select id="expiration-month" name="expiration-month" ng-required="selectedPaymentMethod['is-creditcard']"
+                    ng-model="creditCard['expiration-month']"
+                    ng-options="month for month in expirationMonths">
+              <option value="">Month</option>
+            </select>
+            <small ng-show="submitted && creditCardForm['expiration-month'].$error.required" class="error">
+              This field is required.
+            </small>
           </div>
           <div class="columns medium-4">
-            <select name="expiration-year" id="expiration-year"></select>
+            <select id="expiration-year" name="expiration-year" ng-required="selectedPaymentMethod['is-creditcard']"
+                    ng-model="creditCard['expiration-year']"
+                    ng-options="year for year in expirationYears">
+              <option value="">Year</option>
+            </select>
+            <small ng-show="submitted && creditCardForm['expiration-year'].$error.required" class="error">
+              This field is required.
+            </small>
           </div>
           <div class="columns medium-4">
-            <input type="text" id="card-code"/>
+            <input type="text" id="cvv" name="cvv" ng-required="selectedPaymentMethod['is-creditcard']"
+                   ng-model="creditCard['cvv']"/>
+            <small ng-show="submitted && creditCardForm.cvv.$error.required" class="error">
+              This field is required.
+            </small>
           </div>
         </div>
-      </div>
+      </form>
     </div>
     <div class="info-panel last">
       <h5>

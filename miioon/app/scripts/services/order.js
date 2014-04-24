@@ -12,10 +12,11 @@ angular.module('2ViVe')
             Order.data = data.response;
           });
         },
-        create: function(paymentMethodId, shippingMethodId) {
+        create: function(paymentMethodId, shippingMethodId, creditCard) {
           return $http.post('/api/v2/orders', {
             'payment-method-id': paymentMethodId,
             'shipping-method-id': shippingMethodId,
+            'creditcard': creditCard,
             'shipping-address': Order.data['shipping-address'],
             'billing-address': Order.data['billing-address'],
             'line-items': Order.data['line-items']

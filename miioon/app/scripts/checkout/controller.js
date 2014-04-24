@@ -3,6 +3,8 @@
 angular.module('2ViVe')
   .controller('CheckoutController', ['$scope', 'Order', 'Shopping', 'User', '$location', 'LocalStorage',
     function($scope, Order, Shopping, User, $location, LocalStorage) {
+      $scope.creditCard = {};
+
       if (!User.isLogin) {
         LocalStorage.setPathAfterLogin('/checkout');
         $location.path('/signin');
@@ -22,8 +24,16 @@ angular.module('2ViVe')
           });
       });
 
+
       $scope.placeOrder = function() {
-        Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethodId);
+        if ($scope.selectedPaymentMethod['is-creditcard']) {
+          $scope.submitted = true;
+          if ($scope.creditCardForm.$valid) {
+            Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethodId, $scope.creditCard);
+          }
+        } else {
+          Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethodId);
+        }
       };
     }
   ]
