@@ -8,12 +8,17 @@
     <label class="right inline required" for="sponsor">miioon Angel Sponsor ID</label>
   </div>
   <div class="small-5 columns">
-    <input type="text" required ng-model="userInfo['sponsor']" data-sponsor-validator
-           id="sponsor" name="sponsor"/>
+    <input type="text" required
+           id="sponsor" name="sponsor"
+           ng-model="userInfo['sponsor']"
+           ngModelOptions="{ updateOn: 'blur' }"
+           data-sponsor-validator
+           data-sponsor-validator-error-msg="step['sponsor'].errorMessageValidated"
+           data-sponsor-name="step['sponsor'].name" />
     <small ng-show="submitted && step.sponsor.$error.required" class="error">
       This field is required.
     </small>
-    <small ng-show="step['sponsor'].$error.validated" class="error">
+    <small ng-show="step.sponsor.$error.sponsorError" class="error">
       {{step['sponsor'].errorMessageValidated}}
     </small>
   </div>
