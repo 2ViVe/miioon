@@ -5,7 +5,7 @@ module.exports = (function() {
       files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
       tasks: ['newer:jshint:all'],
       options: {
-        livereload: true
+        livereload: '<%= 2ViVe.livereload %>'
       }
     },
     jsTest: {

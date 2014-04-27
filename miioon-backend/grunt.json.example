@@ -1,6 +1,8 @@
 {
-  "port": 9000,
+  "port": 33442,
   "hostname": "0.0.0.0",
   "APIServerIP": "199.27.105.132",
-  "APIServerPort": 20442
+  "APIServerPort": 20442,
+  "protocol": "https",
+  "livereload": "35731"
 }

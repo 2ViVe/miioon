@@ -5,7 +5,8 @@ module.exports = (function() {
       port: '<%= 2ViVe.port %>' || 9000,
       // Change this to '0.0.0.0' to access the server from outside.
       hostname: '<%= 2ViVe.hostname %>' || 'localhost',
-      livereload: 35729
+      livereload: '<%= 2ViVe.livereload %>' || 35729,
+      protocol: '<%= 2ViVe.protocol %>' || 'http'
     },
     livereload: {
       options: {
