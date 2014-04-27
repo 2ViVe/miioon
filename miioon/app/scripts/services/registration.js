@@ -78,7 +78,7 @@ angular.module('2ViVe')
       }
 
       function createRetail(sponsor, login, password, email,  shippingAddress) {
-        return $http.post('/v2/registrations/retail-customers', {
+        return $http.post('/api/v2/registrations/retail-customers', {
           sponsor: sponsor,
           login: login,
           password: password,

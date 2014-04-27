@@ -77,8 +77,8 @@ describe('RetailSignUpCtrl', function() {
       var shippingAddr = {
         'first-name': scope.firstName,
         'last-name': scope.lastName,
-        'stree': scope.firstAddressLine,
-        'stree-cont': scope.secondAddressLine,
+        'street': scope.firstAddressLine,
+        'street-cont': scope.secondAddressLine,
         'city': scope.city,
         'zip': scope.zip,
         'state-id': scope.state.id,
