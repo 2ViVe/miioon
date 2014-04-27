@@ -97,6 +97,14 @@ module.exports = function(grunt) {
   grunt.registerTask('serve', function(target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
+    } else if (target === 'static') {
+      return grunt.task.run([
+        'clean:server',
+        'bowerInstall',
+        'concurrent:server',
+        'autoprefixer',
+        'watch'
+      ]);
     }
 
     grunt.task.run([
