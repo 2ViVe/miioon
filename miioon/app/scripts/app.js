@@ -13,31 +13,11 @@ angular.module('miioonApp', [
   'mm.foundation.tabs',
   'mm.foundation.modal',
   'duScroll'
-]).run(['$rootScope', 'cfpLoadingBar', '$window', '$location',
-  function($rootScope, cfpLoadingBar, $window, $location) {
-    var securePaths = ['/signup', '/signin', '/checkout'];
-
+]).run(['$rootScope', 'cfpLoadingBar', 'UrlHandler',
+  function($rootScope, cfpLoadingBar, UrlHandler) {
     $rootScope.$on('$routeChangeStart', function() {
       cfpLoadingBar.start();
-
-      var targetPath = $location.path();
-      var targetProtocol = $location.protocol();
-      var targetUrl = $location.absUrl();
-      var targetPort = $location.port();
-
-      if (targetProtocol === 'http' && securePaths.indexOf(targetPath) >= 0) {
-        targetUrl = targetUrl.replace('http://', 'https://');
-        if (targetPort === 11442) {
-          targetUrl = targetUrl.replace(':11442', ':22442');
-        }
-        $window.location.href = targetUrl;
-      } else if (targetProtocol === 'https' && securePaths.indexOf(targetPath) < 0) {
-        targetUrl = targetUrl.replace('https://', 'http://');
-        if (targetPort === 22442) {
-          targetUrl = targetUrl.replace(':22442', ':11442');
-        }
-        $window.location.href = targetUrl;
-      }
+      UrlHandler.handleSecurityPath();
     });
 
     $rootScope.$on('$routeChangeError', function() {
