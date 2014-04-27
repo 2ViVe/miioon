@@ -10,7 +10,8 @@ angular.module('2ViVe')
     'Shopping',
     'Taxons',
     'LocalStorage',
-    function($scope, $location, Registration, Address, User, Shopping, Taxons, LocalStorage) {
+    'ngProgress',
+    function($scope, $location, Registration, Address, User, Shopping, Taxons, LocalStorage, ngProgress) {
       $scope.countries = Registration.countries();
       $scope.$errorMessages = {};
       $scope.country = {};
@@ -35,17 +36,21 @@ angular.module('2ViVe')
         $scope.submitted = true;
 
         if ($scope.retailSignupForm.$valid) {
+          ngProgress.start();
+          ngProgress.stop(30);
           Address
             .validateShippingAddressNew(getShippingAddress())
             .then(createUser)
             .then(login)
             .catch(function(failures) {
               $scope.$shippingAddressErrors = failures;
+              ngProgress.complete();
             });
         }
       };
 
       function createUser() {
+        ngProgress.set(60);
         return Registration.createRetail(
           $scope.sponsorId,
           $scope.login,
@@ -56,13 +61,13 @@ angular.module('2ViVe')
       }
 
       function redirectBack() {
-        User.forget();
         User.fetch().success(function() {
           if (Shopping.items) {
             Shopping.mergeItems();
           } else {
             Shopping.fetchForUser();
           }
+          ngProgress.complete();
         });
         Taxons.fetch();
 
