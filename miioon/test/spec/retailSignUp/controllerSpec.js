@@ -9,10 +9,13 @@ describe('RetailSignUpCtrl', function() {
 
   beforeEach(module('2ViVe'));
 
-  beforeEach(inject(function($rootScope, $controller, Registration, Address, $q) {
+  beforeEach(inject(function($controller, $rootScope, $location, Registration, Address, $q) {
+    var User = {};
+    User.login = jasmine.createSpy().andReturn({ success: function() {} });
     scope = $rootScope.$new();
     Reg = Registration;
     deferred = $q.defer();
+
 
     spyOn(Reg, 'createRetail');
     spyOn(Reg, 'countries').andReturn([ { id: 123, states: [ { id: 123 } ] } ]);
@@ -20,8 +23,13 @@ describe('RetailSignUpCtrl', function() {
 
     $controller('RetailSignUpController', {
       $scope: scope,
+      $location: $location,
       Registration: Reg,
-      Address: Address
+      Address: Address,
+      User: User,
+      Taxons: {},
+      Shopping: {},
+      LocalStorage: {}
     });
 
     basicInfo(scope);
@@ -82,7 +90,7 @@ describe('RetailSignUpCtrl', function() {
         'city': scope.city,
         'zip': scope.zip,
         'state-id': scope.state.id,
-        'country-id': scope.city.id,
+        'country-id': scope.country.id,
         'phone': scope.phoneNumber
       };
 
