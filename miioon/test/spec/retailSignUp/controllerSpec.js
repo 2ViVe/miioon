@@ -4,19 +4,24 @@ describe('RetailSignUpCtrl', function() {
 
   var scope,
       Reg,
+      deferred,
       when = describe;
 
   beforeEach(module('2ViVe'));
 
-  beforeEach(inject(function($rootScope, $controller, Registration) {
+  beforeEach(inject(function($rootScope, $controller, Registration, Address, $q) {
     scope = $rootScope.$new();
     Reg = Registration;
+    deferred = $q.defer();
 
-    sinon.stub(Reg, 'createRetail');
+    spyOn(Reg, 'createRetail');
+    spyOn(Reg, 'countries').andReturn([ { id: 123, states: [ { id: 123 } ] } ]);
+    spyOn(Address, 'validateShippingAddressNew').andReturn(deferred.promise);
 
     $controller('RetailSignUpController', {
       $scope: scope,
-      Registration: Registration
+      Registration: Reg,
+      Address: Address
     });
 
     basicInfo(scope);
@@ -24,21 +29,18 @@ describe('RetailSignUpCtrl', function() {
 
   }));
 
-  afterEach(function() {
-    Reg.createRetail.restore();
-  });
-
-
   when('register a new retail user', function() {
 
-    beforeEach(function() {
+    beforeEach(inject(function($rootScope) {
       scope.retailSignupForm = scope.retailSignupForm || {};
       scope.retailSignupForm.$valid = true;
-    });
-
-    it('should create a retail user', function() {
       scope.register();
-      expect(Reg.createRetail.called).toBeTruthy();
+      deferred.resolve([]);
+      $rootScope.$apply();
+    }));
+
+    it('should try to create a retail user', function() {
+      expect(Reg.createRetail).toHaveBeenCalled();
     });
 
   });
@@ -52,40 +54,27 @@ describe('RetailSignUpCtrl', function() {
 
     it('should not create a retail user', function() {
       scope.register();
-      expect(Reg.createRetail.called).toBeFalsy();
+      expect(Reg.createRetail).not.toHaveBeenCalled();
     });
 
   });
 
 
   when('already fullfill the valid data', function() {
-    beforeEach(function() {
+    beforeEach(inject(function($rootScope) {
       scope.retailSignupForm = scope.retailSignupForm || {};
       scope.retailSignupForm.$valid = true;
-    });
+      scope.register();
+      deferred.resolve([]);
+      $rootScope.$apply();
+    }));
 
     beforeEach(function() {
       scope.register();
     });
 
-    it('should use the sponsor data to fill the form', function() {
-      expect(Reg.createRetail.args[0][0]).toBe(scope.sponsor);
-    });
-
-    it('should use the login data to fill the form', function() {
-      expect(Reg.createRetail.args[0][1]).toBe(scope.login);
-    });
-
-    it('should use the password data to fill the form', function() {
-      expect(Reg.createRetail.args[0][2]).toBe(scope.password);
-    });
-
-    it('should use the email data to fill the form', function() {
-      expect(Reg.createRetail.args[0][3]).toBe(scope.email);
-    });
-
-    it('should use the shipping address data to fill the form', function() {
-      expect(Reg.createRetail.args[0][4]).toEqual({
+    it('should use the datas to fill the form', function() {
+      var shippingAddr = {
         'first-name': scope.firstName,
         'last-name': scope.lastName,
         'stree': scope.firstAddressLine,
@@ -95,9 +84,10 @@ describe('RetailSignUpCtrl', function() {
         'state-id': scope.state.id,
         'country-id': scope.city.id,
         'phone': scope.phoneNumber
-      });
-    });
+      };
 
+      expect(Reg.createRetail).toHaveBeenCalledWith(scope.sponserId, scope.login, scope.password, scope.email, shippingAddr);
+    });
   });
 
 

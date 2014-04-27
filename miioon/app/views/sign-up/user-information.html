@@ -41,7 +41,7 @@
     <small ng-show="submitted && step.login.$error.required" class="error">
       This field is required.
     </small>
-    <small ng-show="step['login'].$error.validated" class="error">
+    <small ng-show="step['login'].$error.available" class="error">
       Username is not available.
     </small>
     <small ng-show="step['login'].$error.pattern" class="error">

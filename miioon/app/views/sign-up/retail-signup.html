@@ -30,19 +30,22 @@
     </div>
 
     <div class="small-5 end columns">
-      <input type="text" data-sponsor-validator
-             required
+      <input type="text"
              id="sponsor" name="sponsor"
-             ng-model="sponsor"
+             ng-model="sponsorId"
+             required
+             data-sponsor-validator
+             data-sponsor-name="sponsorName"
+             data-sponsor-validator-error-msg="$errorMessages['sponsor']"
              />
 
-      <small ng-show="step['sponsor'].$error.validated" class="error">
-        {{step['sponsor'].errorMessageValidated}}
+      <small ng-show="retailSignupForm.sponsor.$error.sponsorError" class="error">
+        {{ $errorMessages.sponsor }}
       </small>
     </div>
 
-    <div class="small-4 columns input-description unimportant-text" ng-show="false">
-      Sponsor Name:
+    <div class="small-4 columns input-description unimportant-text" ng-show="sponsorName">
+      Sponsor Name: {{ sponsorName }}
     </div>
 
   </div>
@@ -62,8 +65,14 @@
              ng-model="login"
              />
 
-      <small ng-show="submitted && step.login.$error.required" class="error">
+      <small ng-show="retailSignupForm.login.$error.available">
+        Login is not available.
+      </small>
+      <small ng-show="submitted && retailSignupForm.login.$error.required" class="error">
         This field is required.
+      </small>
+      <small ng-show="retailSignupForm.login.$error.pattern" class="error">
+        Username can't be all numbers.
       </small>
     </div>
   </div>
@@ -83,11 +92,11 @@
              data-availabilities-validator="email"
              />
 
-      <small ng-show="submitted && (step.email.$error.required || step.email.$error.email)" class="error">
-        A valid email address is required.
+      <small ng-show="retailSignupForm.email.$error.available" class="error">
+        Email is not available
       </small>
-      <small ng-show="step['email'].$error.validated" class="error">
-        Email is not available.
+      <small ng-show="submitted && (retailSignupForm.email.$error.required || retailSignupForm.email.$error.email)" class="error">
+        A valid email address is required.
       </small>
     </div>
 
@@ -105,10 +114,10 @@
              id="password" name="password"
              ng-model="password"
              ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/" />
-      <small ng-show="submitted && step.password.$error.required" class="error">
+      <small ng-show="submitted && retailSignupForm.password.$error.required" class="error">
         This field is required.
       </small>
-      <small ng-show="step['password'].$error.pattern" class="error">
+      <small ng-show="retailSignupForm.password.$error.pattern" class="error">
         Password should include at least one number, one uppercase, one lowercase and more than 6 characters.
       </small>
     </div>
@@ -124,12 +133,13 @@
 
     <div class="small-5 end columns">
       <input type="password" required
-             id="confirm-password" name="password"
+             id="confirm-password" name="passwordConfirmation"
              ng-model="passwordConfirmation"
              ui-validate="'$value==password'"
              ui-validate-watch="'password'"
              />
-      <small ng-show="submitted && step['password-confirmation'].$error.validator" class="error">Passwords must match.
+      <small ng-show="submitted && retailSignupForm.passwordConfirmation.$error.validator" class="error">
+        Passwords must match.
       </small>
     </div>
   </div>
@@ -165,7 +175,7 @@
         This field is required.
       </small>
       <small ng-show="submitted && form['first-name'].$error.validated" class="error">
-        {{ form['first-name'].errorMessageValidated }}
+        {{ retailSignupForm['first-name'].errorMessageValidated }}
       </small>
     </div>
   </div>

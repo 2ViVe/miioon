@@ -30,10 +30,10 @@ angular.module('2ViVe')
             }
             Registration.validateAvailabilities(scope.key, value)
               .success(function(data) {
-                ctrl.$setValidity('validated', data.response.available);
+                ctrl.$setValidity('available', data.response.available);
               })
               .error(function() {
-                ctrl.$setValidity('validated', false);
+                ctrl.$setValidity('available', false);
               });
           });
         }
