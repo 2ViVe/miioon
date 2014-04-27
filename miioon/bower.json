@@ -24,5 +24,8 @@
     "angular-mocks": "1.2.6",
     "angular-scenario": "1.2.6",
     "sinonjs": "*"
+  },
+  "resolutions": {
+    "angular": "1.2.6"
   }
 }
