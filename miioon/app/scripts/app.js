@@ -7,23 +7,23 @@ angular.module('miioonApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ngProgress',
+  'chieffancypants.loadingBar',
   '2ViVe',
   'ui.utils',
   'mm.foundation.tabs',
   'mm.foundation.modal',
   'duScroll'
-]).run(['$rootScope' , 'ngProgress', function($rootScope, ngProgress) {
+]).run(['$rootScope', 'cfpLoadingBar', function($rootScope, cfpLoadingBar) {
   $rootScope.$on('$routeChangeStart', function() {
-    ngProgress.start();
-  });
-
-  $rootScope.$on('$routeChangeSuccess', function() {
-    ngProgress.complete();
+    cfpLoadingBar.start();
   });
 
   $rootScope.$on('$routeChangeError', function() {
-    ngProgress.complete();
+    cfpLoadingBar.complete();
+  });
+
+  $rootScope.$on('$viewContentLoaded', function() {
+    cfpLoadingBar.complete();
   });
 
 }]);
