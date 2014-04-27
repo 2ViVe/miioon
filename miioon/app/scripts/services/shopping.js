@@ -12,18 +12,13 @@ angular.module('2ViVe')
           angular.forEach(Shopping.items, function(item) {
             if (item['variant-id'] === id) {
               result = item;
-              return;
+              return null;
             }
           });
           return result;
         },
         checkout: function() {
-          if (User.isLogin) {
-            $location.path('/checkout');
-          } else {
-            LocalStorage.setPathAfterLogin('/checkout');
-            $location.path('/signin');
-          }
+          $location.path('/checkout');
         },
         getItemIds: function() {
           var itemIds = [];

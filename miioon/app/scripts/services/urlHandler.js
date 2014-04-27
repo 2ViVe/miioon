@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('UrlHandler', ['$window', '$location',
-    function($window, $location) {
+  .factory('UrlHandler', ['$window', '$location', 'LocalStorage',
+    function($window, $location, LocalStorage) {
       var PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE = 11442;
       var PORT_FOR_SECURE_RETAIL_DEMO_SITE = 22442;
       var PORT_FOR_BACK_OFFICE_DEMO_SITE = 33442;
@@ -44,6 +44,11 @@ angular.module('2ViVe')
                   ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE);
             }
             $window.location.href = targetUrl;
+          }
+        },
+        savePathBeforeSignIn: function(nextPath, currentPath) {
+          if (nextPath === '/signin') {
+            LocalStorage.setPathAfterLogin(currentPath);
           }
         }
       };

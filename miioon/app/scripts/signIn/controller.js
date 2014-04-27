@@ -3,6 +3,11 @@
 angular.module('2ViVe')
   .controller('SignInController', ['$scope', '$location', 'User', 'Taxons', 'Shopping', 'LocalStorage',
     function($scope, $location, User, Taxons, Shopping, LocalStorage) {
+      var goToPreviousPath = function() {
+        $location.path(LocalStorage.getPathAfterLogin());
+        LocalStorage.removePathAfterLogin();
+      };
+
       $scope.isRemember = false;
 
       $scope.signIn = function() {
@@ -19,15 +24,11 @@ angular.module('2ViVe')
 //            }
             User.fetch().success(function() {
               if (!isAlreadyLogin && Shopping.items) {
-                Shopping.mergeItems();
+                Shopping.mergeItems().success(goToPreviousPath);
               } else {
-                Shopping.fetchForUser();
+                Shopping.fetchForUser().success(goToPreviousPath);
               }
             });
-            Taxons.fetch();
-
-            $location.path(LocalStorage.getPathAfterLogin());
-            LocalStorage.removePathAfterLogin();
           });
       };
     }]);

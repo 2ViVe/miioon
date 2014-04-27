@@ -6,7 +6,6 @@ angular.module('2ViVe')
       $scope.creditCard = {};
 
       if (!User.isLogin) {
-        LocalStorage.setPathAfterLogin('/checkout');
         $location.path('/signin');
       }
 
