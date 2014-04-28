@@ -11,7 +11,7 @@
     <!-- gift-detail-photo start -->
     <div class='medium-6 columns gift-detail-photo'>
       <div>
-        <img ng-src={{giftImagesBig}} alt='Gift Design' />
+        <img src='images/gift/gift-img-big-3.jpg' alt='Gift Design' />
       </div>
     </div>
     <!-- gift-detail-photo end -->
@@ -19,7 +19,7 @@
     <div class='medium-6 columns gift-detail-info'>
       <h2>Gift Certificate</h2>
       <strong class='gift-detail-price info-panel'>
-        {{amount === 0 ? '￡12.50 - ￡40.00' : '￡' + amount}}
+        {{amount === 0 ? '￡12.50 - ￡100.00' : '￡' + amount}}
       </strong>
       <div class='gift-detail-quantity info-panel'>
         <h6 class='info-panel-title'>Amount:</h6>
@@ -28,20 +28,12 @@
           <option value='12.50'>￡12.50</option>
           <option value='20.00'>￡20.00</option>
           <option value='40.00'>￡40.00</option>
+          <option value='40.00'>￡100.00</option>
         </select>
-      </div>
-      <div class='gift-detail-designList info-panel'>
-        <h6 class='info-panel-title'>Design:</h6>
-        <ul class='clearfix'>
-          
-          <li><a data='1' ng-class='{current: giftImagesIndex == 1}' ng-click="switchGiftImages($event.target)"><img src='images/gift/gift-img-small-1.jpg' alt='Gift Design' data='1' /></a></li>
-          <li><a data='2' ng-class='{current: giftImagesIndex == 2}' ng-click="switchGiftImages($event.target)"><img src='images/gift/gift-img-small-2.jpg' alt='Gift Design' data='2' /></a></li>
-
-        </ul>
       </div>
       <div class='gift-detail-detailList info-panel'>
         <h6 class='info-panel-title'>Delivery Details:</h6>
-        
+
         <div class="tabs" data-tabset>
           <div data-tab ng-repeat="tab in tabs" data-heading="{{tab.title}}" data-active="tab.active">
             <div ng-include="tab.url"></div>

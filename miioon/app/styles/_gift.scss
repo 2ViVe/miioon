@@ -23,6 +23,12 @@
 
   }
 
+  .gift-detail-photo{
+    img{
+      border:1px solid $grey-border;
+    }
+  }
+
     .info-panel-title {
       font-weight: bold;
       margin-bottom: 10px;
@@ -133,7 +139,7 @@
   //style for gift checkout
 
   h2{
-    
+
   }
 
   h3{
@@ -177,7 +183,7 @@
           }
           strong.price-total{
               display:block;
-              line-height:rem-calc(30); 
+              line-height:rem-calc(30);
               font-size:rem-calc(16);
               border-top: 1px $grey-border dashed;
               margin-top: rem-calc(15);
@@ -204,7 +210,7 @@
         border-left:1px solid $grey-border;
         &:first-child{border-left:0;}
       }
-      
+
     }
   }
 
