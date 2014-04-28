@@ -6,6 +6,10 @@ angular.module('miioonApp')
       .when('/', {
         templateUrl: 'views/home.html'
       })
+      .when('/account', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileController'
+      })
       .when('/party/my-party', {
         templateUrl: 'views/party/my-party.html',
         controller: 'MyPartyController'
