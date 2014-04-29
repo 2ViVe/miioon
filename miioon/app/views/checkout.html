@@ -56,13 +56,13 @@
         PAYMENT INFO
       </h5>
 
-      <div class="sub-title">
+      <div class="sub-title" ng-hide="order.data['available-payment-methods'].length === 1">
         Payment Method
       </div>
-      <div>
+      <div ng-hide="order.data['available-payment-methods'].length === 1">
         <input ng-repeat-start="paymentMethod in order.data['available-payment-methods']"
                type="radio" name="payment-method" id="shipping-method-{{paymentMethod.id}}"
-               ng-model="$parent.selectedPaymentMethod" ng-value="{{paymentMethod}}"/>
+               ng-model="$parent.selectedPaymentMethod" ng-value="paymentMethod"/>
         <label ng-repeat-end for="shipping-method-{{paymentMethod.id}}">{{paymentMethod.name}}</label>
       </div>
       <form name="creditCardForm" ng-show="selectedPaymentMethod['is-creditcard']">
