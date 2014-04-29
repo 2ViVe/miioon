@@ -185,7 +185,7 @@
           <dd class="columns medium-3 text-right">£{{order.data.total | price}}</dd>
         </dl>
       </div>
-      <button class="place-order small" ng-click="placeOrder()">PLACE ORDER</button>
+      <button class="place-order small" ng-disabled="placingOrder" ng-click="placeOrder()">PLACE ORDER</button>
     </div>
   </div>
 </div>

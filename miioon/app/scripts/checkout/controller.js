@@ -4,6 +4,7 @@ angular.module('2ViVe')
   .controller('CheckoutController', ['$scope', 'Order', 'Shopping', 'User', '$location', 'LocalStorage', '$modal',
     function($scope, Order, Shopping, User, $location, LocalStorage, $modal) {
       $scope.creditCard = {};
+      $scope.placingOrder = false;
 
       if (!User.isLogin) {
         $location.path('/signin');
@@ -46,13 +47,22 @@ angular.module('2ViVe')
       };
 
       $scope.placeOrder = function() {
+        $scope.placingOrder = true;
         if ($scope.selectedPaymentMethod['is-creditcard']) {
           $scope.submitted = true;
           if ($scope.creditCardForm.$valid) {
-            Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethodId, $scope.creditCard);
+            Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethodId, $scope.creditCard)
+              .success(function() {
+                $scope.placingOrder = false;
+              });
+          } else {
+            $scope.placingOrder = false;
           }
         } else {
-          Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethodId);
+          Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethodId)
+            .success(function() {
+              $scope.placingOrder = false;
+            });
         }
       };
     }
