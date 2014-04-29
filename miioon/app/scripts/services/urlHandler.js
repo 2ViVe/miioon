@@ -6,6 +6,7 @@ angular.module('2ViVe')
       var PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE = 11442;
       var PORT_FOR_SECURE_RETAIL_DEMO_SITE = 22442;
       var PORT_FOR_BACK_OFFICE_DEMO_SITE = 33442;
+      var SECURE_PATHS = ['/signup', '/signin', '/checkout'];
 
       return {
         backOfficeUrl: function() {
@@ -23,31 +24,32 @@ angular.module('2ViVe')
             url.replace('www.miioon', 'back-office.miioon') :
             url.replace('miioon', 'back-office.miioon');
         },
-        handleSecurityPath: function() {
-          var securePaths = ['/signup', '/signin', '/checkout'];
-          var targetPath = $location.path();
-          var targetProtocol = $location.protocol();
-          var targetUrl = $location.absUrl();
-          var targetPort = $location.port();
+        handleSecurityPath: function(stopLocationChange) {
+          var path = $location.path();
+          var protocol = $location.protocol();
+          var url = $location.absUrl();
+          var port = $location.port();
 
-          if (targetProtocol === 'http' && securePaths.indexOf(targetPath) >= 0) {
-            targetUrl = targetUrl.replace('http://', 'https://');
-            if (targetPort === PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE) {
-              targetUrl = targetUrl.replace(':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE,
+          if (protocol === 'http' && SECURE_PATHS.indexOf(path) >= 0) {
+            url = url.replace('http://', 'https://');
+            if (port === PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE) {
+              url = url.replace(':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE,
                   ':' + PORT_FOR_SECURE_RETAIL_DEMO_SITE);
             }
-            $window.location.href = targetUrl;
-          } else if (targetProtocol === 'https' && securePaths.indexOf(targetPath) < 0) {
-            targetUrl = targetUrl.replace('https://', 'http://');
-            if (targetPort === PORT_FOR_SECURE_RETAIL_DEMO_SITE) {
-              targetUrl = targetUrl.replace(':' + PORT_FOR_SECURE_RETAIL_DEMO_SITE,
+            stopLocationChange();
+            $window.location.href = url;
+          } else if (protocol === 'https' && SECURE_PATHS.indexOf(path) < 0) {
+            url = url.replace('https://', 'http://');
+            if (port === PORT_FOR_SECURE_RETAIL_DEMO_SITE) {
+              url = url.replace(':' + PORT_FOR_SECURE_RETAIL_DEMO_SITE,
                   ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE);
             }
-            $window.location.href = targetUrl;
+            stopLocationChange();
+            $window.location.href = url;
           }
         },
         savePathBeforeSignIn: function(nextPath, currentPath) {
-          if (nextPath === '/signin') {
+          if (nextPath === '/signin' && currentPath !== '/signin') {
             LocalStorage.setPathAfterLogin(currentPath);
           }
         }
