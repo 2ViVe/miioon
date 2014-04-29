@@ -32,6 +32,10 @@ angular.module('2ViVe')
           });
       };
 
+      $scope.changeShippingMethod = function() {
+        Order.adjustments($scope.selectedShippingMethodId);
+      };
+
       $scope.placeOrder = function() {
         if ($scope.selectedPaymentMethod['is-creditcard']) {
           $scope.submitted = true;

@@ -12,6 +12,16 @@ angular.module('2ViVe')
             Order.data = data.response;
           });
         },
+        adjustments: function(shippingMethodId) {
+          return $http.post('/api/v2/orders/adjustments', {
+            'shipping-method-id': shippingMethodId,
+            'line-items': Order.data['line-items'],
+            'shipping-address': Order.data['shipping-address'],
+            'billing-address': Order.data['billing-address']
+          }).success(function(data) {
+            Order.data.adjustments = data.response;
+          });
+        },
         create: function(paymentMethodId, shippingMethodId, creditCard) {
           return $http.post('/api/v2/orders', {
             'payment-method-id': paymentMethodId,
