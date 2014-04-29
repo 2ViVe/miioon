@@ -41,6 +41,15 @@ angular.module('2ViVe')
         },
         removePathAfterLogin: function() {
           $cookies.pathAfterLogin = '';
+        },
+        setPathToContinueShopping: function(path) {
+          $cookies.pathToContinueShopping = path;
+        },
+        getPathToContinueShopping: function() {
+          return $cookies.pathToContinueShopping ? $cookies.pathToContinueShopping : '/';
+        },
+        removePathToContinueShopping: function() {
+          $cookies.pathToContinueShopping = '';
         }
       };
     }]);

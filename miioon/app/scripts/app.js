@@ -22,7 +22,7 @@ angular.module('miioonApp', [
     $rootScope.$on('$locationChangeStart', function(event, nextUrl, currentUrl) {
       var nextPath = nextUrl.split('#')[1];
       var currentPath = currentUrl.split('#')[1];
-      UrlHandler.savePathBeforeSignIn(nextPath, currentPath);
+      UrlHandler.savePath(nextPath, currentPath);
       UrlHandler.handleSecurityPath(function() {
         event.preventDefault();
       });

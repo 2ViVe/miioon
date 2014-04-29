@@ -48,9 +48,11 @@ angular.module('2ViVe')
             $window.location.href = url;
           }
         },
-        savePathBeforeSignIn: function(nextPath, currentPath) {
+        savePath: function(nextPath, currentPath) {
           if (nextPath === '/signin' && currentPath !== '/signin') {
             LocalStorage.setPathAfterLogin(currentPath);
+          } else if (nextPath === '/shopping' && currentPath !== '/shopping') {
+            LocalStorage.setPathToContinueShopping(currentPath);
           }
         }
       };

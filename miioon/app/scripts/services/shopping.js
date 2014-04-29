@@ -20,6 +20,11 @@ angular.module('2ViVe')
         checkout: function() {
           $location.path('/checkout');
         },
+        continueShopping: function() {
+          var path = LocalStorage.getPathToContinueShopping();
+          LocalStorage.removePathToContinueShopping();
+          $location.path(path);
+        },
         getItemIds: function() {
           var itemIds = [];
           angular.forEach(Shopping.items, function(item) {
