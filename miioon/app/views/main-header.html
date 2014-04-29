@@ -1,6 +1,6 @@
 <header class="main-header row" ng-controller="HeaderController">
   <div class="row">
-    <div class="columns medium-9">
+    <div class="columns medium-9 small-7">
       <ul class="header-links separator-slash" ng-if="!user.isLogin">
         <li>
           <a href="/#/signin">Sign In</a>
@@ -30,7 +30,7 @@
         </li>
       </ul>
     </div>
-    <div class="columns medium-3">
+    <div class="columns medium-3 small-5">
       <div class="shopping-bag right">
         <i class="icons-shopping-bag"></i>
         <a href="/#/shopping">
@@ -40,13 +40,17 @@
     </div>
   </div>
   <div class="row">
-    <div class="medium-3 columns">
+    <div class="medium-3 show-for-medium-up columns">
       <a href="#">
         <img src="images/kids-link.gif" alt="Kids this way"/>
       </a>
     </div>
-
-    <div class="medium-6 end columns text-center">
+    <div class="medium-9 show-for-medium-up end columns">
+      <a href="/#/" class="logo">
+        <img alt="Miioon" src="images/logo.png">
+      </a>
+    </div>
+    <div class="small-12 show-for-small-only end columns text-center">
       <a href="/#/" class="logo">
         <img alt="Miioon" src="images/logo.png">
       </a>

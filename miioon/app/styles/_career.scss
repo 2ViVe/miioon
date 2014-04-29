@@ -6,57 +6,66 @@
 
   .career-1{
   	position: relative;
-  	background: image-url('career/career-1-2.jpg') 0 0 no-repeat;
-	height:450px;
+  	//background: image-url('career/career-1-2.jpg') 0 0 no-repeat;
+	//height:450px;
 	margin-bottom:rem-calc(30);
-	min-width:rem-calc(720);
+	//min-width:rem-calc(720);
+    .career-1-bg{
+    }
   	h2{
   		position: absolute;
-  		width: rem-calc(340);
-  		top:rem-calc(140);
-  		left:rem-calc(5);
+  		width:48%;
+  		top:32%;
+  		left:1%;
+      font-size:180%;
   		text-align: center;
   		font-weight: bold;
   		line-height: normal;
   		color: $primary-color;
+      z-index: 2;
   	}
   	h3{
   		position: absolute;
-  		width: rem-calc(340);
-  		top:rem-calc(220);
-  		left:rem-calc(5);
+  		width:48%;
+      top:50%;
+      left:1%;
   		text-align: center;
-  		font-size: rem-calc(18);
+  		font-size: 120%;
   		font-weight: bold;
   		line-height: normal;
+      z-index: 2;
   	}
   	label{
   		position: absolute;
-  		width: rem-calc(280);
-  		top:rem-calc(290);
-  		left:rem-calc(45);
+  		width:40%;
+      top:63%;
+      left:6%;
+      font-size: 100%;
   		line-height: normal;
   		input{margin-bottom:0;}
+      z-index: 2;
   	}
   	.button{
   		position: absolute;
-  		top:rem-calc(350);
-  		left:rem-calc(100);
+      top:78%;
+      left:15%;
+      z-index: 2;
   	}
   	.career-1-monster{
   		position: absolute;
   		bottom: rem-calc(-10);
   		left: rem-calc(-30);
+      z-index: 2;
   	}
   }
-  
+
   .career-2{
   	position: relative;
 	background:#4facdb;
 	color:#fff;
 	padding: rem-calc(50) rem-calc(30) rem-calc(30) rem-calc(30);
 	margin-bottom:rem-calc(30);
-	min-width:rem-calc(720);
+	//min-width:rem-calc(720);
 	&.bottom-arrow:before{
 		display: none;
 	}
@@ -107,9 +116,9 @@
 
   .career-3{
   	position: relative;
-  	background:image-url('career/career-3-1.jpg') 0 0 no-repeat;
-	height:rem-calc(1265);
-	min-width:rem-calc(720);
+  	//background:image-url('career/career-3-1.jpg') 0 0 no-repeat;
+	//height:rem-calc(1265);
+	//min-width:rem-calc(720);
 	margin-bottom:rem-calc(30);
 	&.bottom-arrow:before{
 		display: none;
@@ -119,14 +128,15 @@
 	}
 	.career-3-bt{
 		position: absolute;
-		bottom:rem-calc(105);
-		left:rem-calc(280);
+		bottom:7%;
+		left:43%;
+    z-index: 2;
 	}
   }
 
   .career-4{
   	position: relative;
-	min-width:rem-calc(720);
+	//min-width:rem-calc(720);
 	margin-bottom:rem-calc(30);
 	color:$grey-dark;
 	border:2px solid $grey-darker;
@@ -191,7 +201,7 @@
   }
 
   .career-6{
-	min-width:rem-calc(720);
+	//min-width:rem-calc(720);
 	margin-bottom:rem-calc(30);
 	h2{
 		color:$primary-color;
@@ -267,7 +277,7 @@
 		}
 		.career-6-p3-monster{
 			position: absolute;
-			bottom:-64px;
+			bottom:-63px;
 			left:10px;
 		}
 	}

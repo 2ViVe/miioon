@@ -26,7 +26,7 @@
     bottom:-20px;
     z-index: 8;
     content:'';
-    width: 0; 
+    width: 0;
     height: 0;
     margin-left:-10px;
     border-left: 20px solid transparent;
@@ -40,12 +40,12 @@
     z-index: 9;
     content:'';
     margin-left:-8px;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 18px solid transparent;
     border-right: 18px solid transparent;
     border-top: 18px solid #fff;
-  } 
+  }
 }
 
 .blue-block-navigation{
@@ -60,6 +60,19 @@
         background: $primary-color;
         text-decoration: none;
       }
+    }
+  }
+  &.blue-horizontal-navigation{
+    width:100%;
+    background:#fff;
+    margin-top: -10px;
+    padding-top:10px;
+    border-bottom:1px solid $grey-border;
+    @include clearfix;
+    z-index: 999;
+    li{
+      float:left;
+      margin-right: rem-calc(10);
     }
   }
 }
