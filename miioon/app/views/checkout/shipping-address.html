@@ -137,20 +137,6 @@
       </small>
     </div>
   </div>
-  <div class="row title">
-    <h6 class="small-3 text-right columns">
-      DELIVERY OPTIONS
-    </h6>
-  </div>
-  <div class="row" ng-repeat="shippingMethod in shippingMethods">
-    <div class="small-9 small-offset-3 columns">
-      <label class="inline">
-        <input ng-model="shippingAddress['shipping-method-id']" type="radio" name="shipping-method"
-               ng-value="shippingMethod.id" id="shipping-method-{{shippingMethod.id}}"/>
-        {{shippingMethod.name}}
-      </label>
-    </div>
-  </div>
   <div class="row">
     <div class="columns medium-12">
       <button ng-click="submit()">Submit</button>

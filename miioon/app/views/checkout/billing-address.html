@@ -1,0 +1,120 @@
+<form novalidate name="form">
+  <div class="row title">
+    <h6 class="small-3 text-right columns">
+      Billing ADDRESS
+    </h6>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline required" for="billing-first-name">First Name</label>
+    </div>
+    <div class="small-5 end columns">
+      <input required type="text" id="billing-first-name" name="billing-first-name"
+             ng-model="billingAddress['first-name']"/>
+      <small ng-show="submitted && form['billing-first-name'].$error.required" class="error">
+        This field is required.
+      </small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline required" for="billing-last-name">Last Name</label>
+    </div>
+    <div class="small-5 end columns">
+      <input required type="text" id="billing-last-name" name="billing-last-name"
+             ng-model="billingAddress['last-name']"/>
+      <small ng-show="submitted && form['billing-last-name'].$error.required" class="error">
+        This field is required.
+      </small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline required" for="billing-street">Address</label>
+    </div>
+    <div class="small-5 end columns">
+      <input required type="text" id="billing-street" name="billing-street" ng-model="billingAddress.street"/>
+      <small ng-show="submitted && form['billing-street'].$error.required" class="error">
+        This field is required.
+      </small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline" for="billing-street-contd">Address (contd)</label>
+    </div>
+    <div class="small-5 end columns">
+      <input type="text" id="billing-street-contd" name="billing-street-contd"
+             ng-model="billingAddress['street-contd']"/>
+    </div>
+  </div>
+  <div data-countries-and-states>
+    <div class="row">
+      <div class="small-3 columns">
+        <label class="right inline required" for="billing-country-id">Country</label>
+      </div>
+      <div class="small-5 end columns">
+        <select required id="billing-country-id" name="billing-country-id" ng-model="billingAddress.country"
+                ng-options="country.name for country in countries | orderBy:'name'"
+                ng-change="onCountryChanged(billingAddress.country.id)">
+        </select>
+        <small ng-show="submitted && form['billing-country-id'].$error.required" class="error">
+          This field is required.
+        </small>
+      </div>
+    </div>
+    <div class="row" ng-show="states.length > 0">
+      <div class="small-3 columns">
+        <label class="right inline required" for="billing-state-id">County</label>
+      </div>
+      <div class="small-5 end columns">
+        <select id="billing-state-id" name="billing-state-id" ng-model="billingAddress.state"
+                ng-required="states.length > 0"
+                ng-options="state.name for state in states | orderBy:'name'">
+        </select>
+        <small ng-show="submitted && form['billing-state-id'].$error.required" class="error">
+          This field is required.
+        </small>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline required" for="billing-city">City</label>
+    </div>
+    <div class="small-5 end columns">
+      <input required type="text" id="billing-city" name="billing-city" ng-model="billingAddress.city"/>
+      <small ng-show="submitted && form['billing-city'].$error.required" class="error">
+        This field is required.
+      </small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline required" for="billing-zip">Post Code</label>
+    </div>
+    <div class="small-5 end columns">
+      <input required type="text" id="billing-zip" name="billing-zip" ng-model="billingAddress.zip"/>
+      <small ng-show="submitted && form['billing-zip'].$error.required" class="error">
+        This field is required.
+      </small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline required" for="billing-phone">Phone</label>
+    </div>
+    <div class="small-5 end columns">
+      <input required type="text" id="billing-phone" name="billing-phone" ng-model="billingAddress.phone"/>
+      <small ng-show="submitted && form['billing-phone'].$error.required" class="error">
+        This field is required.
+      </small>
+    </div>
+    <div class="row">
+      <div class="columns medium-12">
+        <button ng-click="submit()">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
+<a class="close-reveal-modal" ng-click="cancel()">&#215;</a>

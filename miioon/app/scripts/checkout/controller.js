@@ -32,6 +32,15 @@ angular.module('2ViVe')
           });
       };
 
+      $scope.editBillingAddress = function() {
+        $modal.open({
+          templateUrl: 'views/checkout/billing-address.html',
+          controller: 'BillingModalController'
+        }).result.then(function(BillingAddress) {
+            $scope.order.data['billing-address'] = BillingAddress;
+          });
+      };
+
       $scope.changeShippingMethod = function() {
         Order.adjustments($scope.selectedShippingMethodId);
       };
