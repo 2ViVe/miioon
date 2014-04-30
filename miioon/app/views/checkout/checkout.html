@@ -26,8 +26,8 @@
       <div>
         <input ng-repeat-start="shippingMethod in order.data['available-shipping-methods']"
                type="radio" name="shipping-method" id="shipping-method-{{shippingMethod.id}}"
-               ng-model="$parent.selectedShippingMethodId" ng-value="{{shippingMethod.id}}"
-               ng-change="changeShippingMethod()"/>
+               ng-model="$parent.selectedShippingMethod" ng-value="shippingMethod"
+               ng-change="changeShippingMethod($parent.selectedShippingMethod)"/>
         <label ng-repeat-end for="shipping-method-{{shippingMethod.id}}">{{shippingMethod.name}}</label>
       </div>
       <div class="sub-title">

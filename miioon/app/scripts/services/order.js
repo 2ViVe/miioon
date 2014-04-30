@@ -5,6 +5,16 @@ angular.module('2ViVe')
     function($http) {
       var Order = {
         data: {},
+        currentShippingMethod: function() {
+          var currentShippingMethod = null;
+          angular.forEach(Order.data['available-shipping-methods'], function(shippingMethod) {
+            if(shippingMethod.id === Order.data['shipping-method-id']) {
+              currentShippingMethod = shippingMethod;
+              return null;
+            }
+          });
+          return currentShippingMethod;
+        },
         checkout: function(lineItems) {
           return $http.post('/api/v2/orders/checkout', {
             'line-items': lineItems

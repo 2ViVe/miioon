@@ -10,16 +10,16 @@
 </div>
 <div class="row">
   <p class="columns small-5">
-    Order ID: {{successInfo['order-id']}}
+    Status: <span class="important-text">{{successInfo['state']}}</span>
   </p>
 
   <p class="columns small-5 end">
-    Status: <span class="important-text">{{successInfo['state']}}</span>
+    Payment Total: {{successInfo['payment-total']}}
   </p>
 </div>
 <div class="row">
   <p class="columns small-5">
-    Order Date: {{successInfo['order-date']}}
+    Order Number: {{successInfo['order-number']}}
   </p>
 
   <p class="columns small-5 end">
@@ -28,11 +28,16 @@
 </div>
 <div class="row">
   <p class="columns small-5">
-    Shipping Method: {{payment['shipping-method']}}
+    Order Date: {{successInfo['order-date']}}
   </p>
 
   <p class="columns small-5 end">
     Payment Method: {{selectedPaymentMethod.name}}
+  </p>
+</div>
+<div class="row">
+  <p class="columns small-5 end">
+    Shipping Method: {{selectedShippingMethod.name}}
   </p>
 </div>
 <div class="row title">

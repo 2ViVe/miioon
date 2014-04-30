@@ -19,7 +19,7 @@ angular.module('2ViVe')
         }
         Order.checkout(Shopping.items)
           .success(function() {
-            $scope.selectedShippingMethodId = Order.data['shipping-method-id'];
+            $scope.selectedShippingMethod = Order.currentShippingMethod();
             $scope.selectedPaymentMethod = Order.data['available-payment-methods'][0];
             $scope.order = Order;
           });
@@ -43,8 +43,8 @@ angular.module('2ViVe')
           });
       };
 
-      $scope.changeShippingMethod = function() {
-        Order.adjustments($scope.selectedShippingMethodId);
+      $scope.changeShippingMethod = function(selectedShippingMethod) {
+        Order.adjustments(selectedShippingMethod.id);
       };
 
       $scope.placeOrder = function() {
@@ -56,7 +56,7 @@ angular.module('2ViVe')
           return;
         }
 
-        Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethodId, $scope.creditCard)
+        Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethod.id, $scope.creditCard)
           .success(function(data) {
             $scope.isSucceed = true;
             $scope.successInfo = data.response;
