@@ -11,5 +11,9 @@ angular.module('miioonApp')
       $scope.editingPassword = !$scope.editingPassword;
     };
 
+    $scope.savePersonalInfo = function() {
+      $scope.editingPersonalInfo = !$scope.editingPersonalInfo;
+    };
+
 
   }]);
