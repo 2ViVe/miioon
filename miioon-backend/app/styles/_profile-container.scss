@@ -1,0 +1,24 @@
+.profile-container {
+
+  .panel {
+    margin-bottom: 0px;
+    padding-top: 0px;
+    .row {
+      margin-bottom: 10px;
+    }
+  }
+
+  .row header.row {
+    margin-bottom: 20px;
+    h3, div {
+      height: 30px;
+      line-height: 30px;
+    }
+    a {
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+  
+}

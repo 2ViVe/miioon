@@ -1,189 +1,260 @@
 <div class='profile-container'>
 
-  <div class="row">
+  <div class="row panel">
 
     <!-- user name/email panel -->
     <div class="small-10 small-offset-1">
-      <div class="row">
+      <header class="row">
         <h3 class="small-7 columns primary-color">Account Infomation</h3>
-        <a class="small-3 end columns primary-color text-right" href="#">Edit</a>
+        <div class="small-3 end columns primary-color text-right"><a ng-click="editingAccount = !editingAccount">Edit</a></div>
+      </header>
+
+      <div ng-if="!editingAccount">
+        <div class="row">
+          <div class="small-3 columns inline">User Name</div>
+          <div class="small-3 end columns">{{ username }}</div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">Email</div>
+          <div class="small-3 end columns">{{ email }}</div>
+        </div>
       </div>
 
-      <div class="row">
-        <div class="small-2 columns">User Name</div>
-        <div class="small-3 end columns">miionuser</div>
-      </div>
+      <form ng-if="editingAccount" ng-submit="saveAccountInfo()">
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="userName" class="inline">User Name:</label>
+          </div>
+          <div class="small-5 end columns">
+            <input type="text" id="userName" name="userName" ng-model="username" placeholder="please input your username">
+          </div>
+        </div>
 
-      <div class="row">
-        <div class="small-2 columns">Email</div>
-        <div class="small-3 end columns">some_email@miion.com</div>
-      </div>
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="email" class="inline">Email:</label>
+          </div>
+          <div class="small-5 end columns">
+            <input type="text" id="email" name="email" ng-model="email" placeholder="please input your email">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-5 end columns small-offset-3">
+            <button class="btn-block" type="submit">Save</button>
+          </div>
+        </div>
+
+      </form>
     </div>
+
+
 
   </div>
 
-  <div class="row">
+  <div class="row panel">
     <!-- password panel -->
     <div class="small-10 small-offset-1">
-      <div class="row">
+      <header class="row">
         <h3 class="small-7 columns primary-color">Password</h3>
-        <a class="small-3 end columns primary-color text-right" href="#">Change Password</a>
-      </div>
+        <div class="small-3 end columns primary-color text-right"><a ng-click="editingPassword = !editingPassword">Change Password</a></div>
+      </header>
 
-      <div class="row">
-        <div class="small-2 columns">Password</div>
+      <div ng-if="!editingPassword" class="row">
+        <div class="small-3 columns">Password</div>
         <div class="small-3 end columns">*****</div>
       </div>
+
+      <form ng-if="editingPassword" ng-submit="savePassword()">
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="oldPassword" class="inline">Old Password:</label>
+          </div>
+          <div class="small-5 end columns">
+            <input type="text" id="oldPassword" name="oldPassword" ng-model="oldPassword" placeholder="your old password">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="newPassword" class="inline">New Password:</label>
+          </div>
+          <div class="small-5 end columns">
+            <input type="text" id="newPassword" name="newPassword" ng-model="newPassword" placeholder="your new password">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="confirmationPassword" class="inline">Confirmation:</label>
+          </div>
+          <div class="small-5 end columns">
+            <input type="text" id="confirmationPassword" name="confirmationPassword" ng-model="confirmationPassword" placeholder="your new password again">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-5 end columns small-offset-3">
+            <button class="btn-block" type="submit">Save</button>
+          </div>
+        </div>
+
+      </form>
     </div>
+
+
   </div>
 
-  <div class="row">
+  <div class="row panel">
     <!-- Personal Information -->
     <div class="small-10 small-offset-1">
-      <div class="row">
+      <header class="row">
         <h3 class="small-7 columns primary-color">Personal Information</h3>
-        <a class="small-3 end columns primary-color text-right" href="#">Edit</a>
-      </div>
+        <div class="small-3 end columns primary-color text-right">
+          <a href="#/edit">Edit</a>
+        </div>
+      </header>
 
       <div class="row">
-        <div class="small-2 columns">Date Of Birth</div>
+        <div class="small-3 columns">Date Of Birth</div>
         <div class="small-3 end columns">MM-DD-YYYY</div>
       </div>
       <div class="row">
-        <div class="small-2 columns">SSN</div>
+        <div class="small-3 columns">SSN</div>
         <div class="small-3 end columns">XXX-XXXX-1234</div>
       </div>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row panel">
     <!-- Home Address -->
     <div class="small-10 small-offset-1">
-      <div class="row">
+      <header class="row">
         <h3 class="small-7 columns primary-color">Password</h3>
-        <a class="small-3 end columns primary-color text-right" href="#">Change Password</a>
-      </div>
+        <div class="small-3 end columns primary-color text-right"><a href="#">Change Password</a></div>
+      </header>
 
       <div class="row">
-        <div class="small-2 columns">Name</div>
+        <div class="small-3 columns">Name</div>
         <div class="small-3 end columns">AJ Telecent</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Address Line 1</div>
+        <div class="small-3 columns">Address Line 1</div>
         <div class="small-3 end columns">1 New Orchard Road</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">City</div>
+        <div class="small-3 columns">City</div>
         <div class="small-3 end columns">Armonk</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Zip</div>
+        <div class="small-3 columns">Zip</div>
         <div class="small-3 end columns">10504</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Country</div>
+        <div class="small-3 columns">Country</div>
         <div class="small-3 end columns">US</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">State</div>
+        <div class="small-3 columns">State</div>
         <div class="small-3 end columns">New York</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Home Phone</div>
+        <div class="small-3 columns">Home Phone</div>
         <div class="small-3 end columns">914-499-1900</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Mobile Phone</div>
+        <div class="small-3 columns">Mobile Phone</div>
         <div class="small-3 end columns">914-499-1900</div>
       </div>
     </div>
 
   </div>
 
-  <div class="row">
+  <div class="row panel">
     <!-- Shipment Address -->
     <div class="small-10 small-offset-1">
-      <div class="row">
+      <header class="row">
         <h3 class="small-7 columns primary-color">Shipment Address</h3>
-        <a class="small-3 end columns primary-color text-right" href="#">edit</a>
-      </div>
+        <div class="small-3 end columns primary-color text-right"><a href="#">edit</a></div>
+      </header>
 
 
       <div class="row">
-        <div class="small-2 columns">Name</div>
+        <div class="small-3 columns">Name</div>
         <div class="small-3 end columns">AJ Tel</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Address Line</div>
+        <div class="small-3 columns">Address Line</div>
         <div class="small-3 end columns">1 New Orchard Road</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">City</div>
+        <div class="small-3 columns">City</div>
         <div class="small-3 end columns">Armonk</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Zip</div>
+        <div class="small-3 columns">Zip</div>
         <div class="small-3 end columns">10504</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">State</div>
+        <div class="small-3 columns">State</div>
         <div class="small-3 end columns">New York</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Home Phone</div>
+        <div class="small-3 columns">Home Phone</div>
         <div class="small-3 end columns">914-499-1900</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Mobile Phone</div>
+        <div class="small-3 columns">Mobile Phone</div>
         <div class="small-3 end columns">914-499-1900</div>
       </div>
 
     </div>
   </div>
 
-  <div class="row">
+  <div class="row panel">
     <!-- WebAddress -->
     <div class="small-10 small-offset-1">
-      <div class="row">
+      <header class="row">
         <h3 class="small-7 columns primary-color">WebAddress</h3>
-        <a class="small-3 end columns primary-color text-right" href="#">edit</a>
-      </div>
+        <div class="small-3 end columns primary-color text-right"><a href="#">edit</a></div>
+      </header>
 
       <div class="row">
-        <div class="small-2 columns">Name</div>
+        <div class="small-3 columns">Name</div>
         <div class="small-3 end columns">AJ Telecent</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Address Line 1</div>
+        <div class="small-3 columns">Address Line 1</div>
         <div class="small-3 end columns">1 New Orchard Road</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Home Phone</div>
+        <div class="small-3 columns">Home Phone</div>
         <div class="small-3 end columns">914-499-1900</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Mobile Phone</div>
+        <div class="small-3 columns">Mobile Phone</div>
         <div class="small-3 end columns">914-499-1900</div>
       </div>
 
       <div class="row">
-        <div class="small-2 columns">Email</div>
+        <div class="small-3 columns">Email</div>
         <div class="small-3 end columns">abc@abovegem.com</div>
       </div>
 
