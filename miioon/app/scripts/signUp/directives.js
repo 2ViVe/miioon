@@ -1,25 +1,18 @@
 'use strict';
 
 angular.module('2ViVe')
-  .directive('registrationCountries', ['Registration',
-    function(Registration) {
+  .directive('registrationCountries', [
+    function() {
       return {
-        restrict: 'A',
-        controller: ['$scope', function($scope) {
-          Registration.getCountries().success(function(countries) {
-            $scope.countries = countries.response;
-          });
-        }]
+        restrict: 'A'
       };
-    }])
+   }])
   .directive('countriesAndStates', ['Registration',
     function(Registration) {
       return {
         restrict: 'A',
-        controller: ['$scope', function($scope) {
-          Registration.getCountries().success(function(countries) {
-            $scope.countries = countries.response;
-          });
+        controller: ['$scope', function($scope, countries) {
+          $scope.countries = countries.data.response;
           $scope.onCountryChanged = function(selectedCountryId) {
             angular.forEach($scope.countries, function(country) {
               if (country.id === selectedCountryId) {

@@ -94,7 +94,11 @@
     <label class="right inline required" for="country">Country</label>
   </div>
   <div class="small-5 end columns">
-    <select required name="country" id="country" data-registration-countries ng-model="userInfo['country']"
+    <select required name="country"
+            id="country"
+            data-registration-countries
+            ng-model="userInfo['country']"
+            ng-init="userInfo['country'] = countries[0]"
             ng-options="country.name for country in countries" ng-change="registrationCountryChange(userInfo['country'])">
     </select>
     <small ng-show="submitted && step['country'].$error.required" class="error">
