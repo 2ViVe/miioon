@@ -6,6 +6,7 @@ angular.module('2ViVe')
       $scope.creditCard = {};
       $scope.placingOrder = false;
       $scope.isSucceed = false;
+      $scope.isFailed = false;
 
       if (!User.isLogin) {
         $location.path('/signin');
@@ -58,9 +59,14 @@ angular.module('2ViVe')
 
         Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethod.id, $scope.creditCard)
           .success(function(data) {
+            $scope.placingOrder = false;
+
+            if (data.response['payment-state'] === 'failed') {
+              $scope.isFailed = true;
+              return;
+            }
             $scope.isSucceed = true;
             $scope.successInfo = data.response;
-            $scope.placingOrder = false;
           });
       };
     }
