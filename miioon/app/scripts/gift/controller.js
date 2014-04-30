@@ -1,8 +1,16 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('GiftController', ['$scope',
-    function($scope) {
+  .controller('GiftController', ['$scope', '$modal',
+    function($scope,$modal) {
+
+      //modal
+      $scope.preview = function(){
+        $modal.open({
+          templateUrl: 'views/gift/gift-preview.html',
+          controller: 'GiftModalController'
+        });
+      };
 
 
       //tabs
