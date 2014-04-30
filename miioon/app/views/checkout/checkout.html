@@ -173,7 +173,7 @@
       <div class="summary clearfix">
         <dl class="medium-font clearfix unimportant-text">
           <dt class="columns medium-9">Updated SubTotal</dt>
-          <dd class="columns medium-3 text-right">£{{order.data['item-total']}}</dd>
+          <dd class="columns medium-3 text-right">£{{order.data['item-total'] | price}}</dd>
           <dt class="columns medium-9" ng-repeat-start="adjustment in order.data.adjustments">{{adjustment.label}}</dt>
           <dd class="columns medium-3 text-right" ng-repeat-end>£{{adjustment.amount | price}}</dd>
         </dl>

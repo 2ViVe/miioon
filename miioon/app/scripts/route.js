@@ -69,7 +69,7 @@ angular.module('miioonApp')
         templateUrl: 'views/printing.html'
       })
       .when('/checkout', {
-        templateUrl: 'views/checkout.html',
+        templateUrl: 'views/checkout/all.html',
         controller: 'CheckoutController'
       })
       .otherwise({
