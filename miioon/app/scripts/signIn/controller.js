@@ -13,15 +13,8 @@ angular.module('2ViVe')
       $scope.signIn = function() {
         var isAlreadyLogin = User.isLogin;
 
-        User.login($scope.username, $scope.password)
+        User.login($scope.username, $scope.password, $scope.isRemember)
           .success(function() {
-            //TODO: use session to identify user when node.js is ready
-            User.remember();
-//            if ($scope.isRemember) {
-//              User.remember();
-//            } else {
-//              User.forget();
-//            }
             User.fetch().success(function() {
               if (!isAlreadyLogin && Shopping.items) {
                 Shopping.mergeItems().success(goToPreviousPath);

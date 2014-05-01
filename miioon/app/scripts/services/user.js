@@ -1,19 +1,17 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('User', ['$http', 'CLIENT_ID', 'LocalStorage',
-    function($http, CLIENT_ID, LocalStorage) {
-      var token;
+  .factory('User', ['$http', 'LocalStorage',
+    function($http, LocalStorage) {
       var User = {
         isLogin: false,
-        login: function(username, password) {
-          return $http.post('/api/v2/authentications/token', {
+        login: function(username, password, isRemember) {
+          return $http.post('/authentication/token', {
             user: username,
             password: password,
-            'client-id': CLIENT_ID
-          }).success(function(data) {
-            token = data.response['authentication-token'];
-            LocalStorage.setToken(token);
+            'client-id': 'ZlnElLNFjFt6pOBAOQpH8e',
+            'remember-me': isRemember
+          }).success(function() {
             LocalStorage.removeVisitorId();
             User.isLogin = true;
           });
@@ -25,7 +23,7 @@ angular.module('2ViVe')
           LocalStorage.removeToken();
         },
         remember: function() {
-          LocalStorage.saveToken(token);
+          LocalStorage.saveToken();
         },
         isRemembered: function() {
           return LocalStorage.isTokenSaved();
@@ -34,6 +32,7 @@ angular.module('2ViVe')
           return $http.get('/api/v2/profile')
             .success(function(data) {
               User.data = data.response;
+              User.isLogin = true;
             });
         }
       };
