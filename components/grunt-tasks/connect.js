@@ -58,10 +58,7 @@ module.exports = (function() {
           host: '<%= 2ViVe.APIServerIP %>',
           port: '<%= 2ViVe.APIServerPort %>',
           changeOrigin: true,
-          xforward: true,
-          rewrite: {
-            '^/api': ''
-          }
+          xforward: true
         }
       ]
     },

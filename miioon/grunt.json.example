@@ -2,7 +2,7 @@
   "port": 11442,
   "hostname": "0.0.0.0",
   "APIServerIP": "199.27.105.132",
-  "APIServerPort": 20442,
+  "APIServerPort": 60442,
   "protocol": "http",
   "livereload": "35730"
 }
