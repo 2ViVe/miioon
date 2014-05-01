@@ -15,13 +15,16 @@
       </strong>
     </div>
 
-    <div class='info-panel'>
+    <form name="amountForm" class='info-panel'>
       <label for="amount" class='info-panel-title'>Amount:</label>
-      <select id="amount" name="amount" ng-options="giftCard.price for giftCard in giftCards | orderBy: price"
+      <select required id="amount" name="amount" ng-options="giftCard.price for giftCard in giftCards | orderBy: price"
               ng-model="selectedGiftCard">
         <option value=''>Choose an Amount...</option>
       </select>
-    </div>
+      <small ng-show="amountForm.amount.$dirty && amountForm.amount.$error.required" class="error">
+        This field is required.
+      </small>
+    </form>
     <div class='info-panel'>
       <h6 class='info-panel-title'>Delivery Details:</h6>
 

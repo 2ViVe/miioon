@@ -3,8 +3,6 @@
 angular.module('2ViVe')
   .controller('GiftController', ['$scope', '$modal', 'GiftCard',
     function($scope, $modal, GiftCard) {
-      $scope.selectedGiftCard = {};
-
       var giftCard = new GiftCard();
       giftCard.fetch.success(function() {
         $scope.giftCards = giftCard.data.variants;
