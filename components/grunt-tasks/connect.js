@@ -54,7 +54,7 @@ module.exports = (function() {
     APIServer: {
       proxies: [
         {
-          context: '/api',
+          context: ['/api', '/authentication'],
           host: '<%= 2ViVe.APIServerIP %>',
           port: '<%= 2ViVe.APIServerPort %>',
           changeOrigin: true,
