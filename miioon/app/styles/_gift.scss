@@ -1,340 +1,67 @@
-.gift {
-
-  .info-panel {
-    border-bottom: 1px dashed $grey-border;
-    padding: 25px 0;
-
-    &.first {
-      padding-top: 0;
-    }
-
-    &.last {
-      border-bottom: 0;
-    }
-    .tabs-content{
-        margin-bottom: 0;
-    }
-
-    .info-panel-title {
-      font-weight: bold;
-      margin-bottom: 10px;
-      font-size: $medium-font-size;
-    }
-
-  }
-
-  .gift-detail-photo{
-    img{
-      border:1px solid $grey-border;
-    }
-  }
-
-    .info-panel-title {
-      font-weight: bold;
-      margin-bottom: 10px;
-      font-size: $medium-font-size;
-    }
-
-  .gift-detail-info {
-    margin-bottom: rem-calc(20);
-    .gift-detail-price {
-      display: block;
-      font-size: rem-calc(22);
-    }
-    .gift-detail-quantity {
-      select, input {
-        width: rem-calc(80);
-        margin-bottom: 0;
-      }
-      border-top: 1px dashed $grey-border;
-      border-bottom: 1px dashed $grey-border;
-    }
-    .gift-detail-sizeList {
-      ul {
-        li {
-          float: left;
-          margin-right: rem-calc(10);
-          a {
-            display: block;
-            width: rem-calc(30);
-            height: rem-calc(30);
-            line-height: rem-calc(30);
-            background: #fff;
-            border: 1px solid $grey-border;
-            text-align: center;
-            font-size: rem-calc(14);
-            color: $grey;
-            &:hover {
-              border-color: $primary-color;
-              text-decoration: none;
-            }
-            &.current {
-              border-color: $primary-color;
-              background: $primary-color;
-              color: #fff;
-            }
-          }
-
-        }
-      }
-    }
-
-    .gift-detail-designList {
-      ul {
-        li {
-          float: left;
-          margin-right: rem-calc(10);
-          a {
-            display: block;
-            width: rem-calc(104);
-            height: rem-calc(74);
-            border: 2px solid $grey-border;
-            &:hover {
-              border: 2px solid $primary-color;
-              text-decoration: none;
-            }
-            &.current {
-              border: 2px solid $primary-color;
-            }
-          }
-
-        }
-      }
-    }
-    .gift-detail-ctrBt {
-    }
-    .gift-detail-tabs {
-      dd {
-        & > a {
-          background: none;
-          border-bottom: 1px solid $grey-border;
-          color: $grey-dark;
-          padding: rem-calc(10) 0 rem-calc(5) rem-calc(5);
-          font-size: rem-calc(14);
-          &:hover {
-            background: $grey-lighter;
-            text-decoration: none;
-          }
-        }
-        .content {
-          font-size: rem-calc(14);
-          color: $grey-dark;
-        }
-      }
-    }
-    .gift-detail-share {
-      margin-top: rem-calc(20);
-      color: $grey;
-      span {
-        font-size: rem-calc(14);
-
-      }
-      a {
-        font-size: rem-calc(30);
-        margin-left: rem-calc(10);
-      }
-    }
-  }
-
-  //style for gift checkout
-
-  h2{
-
-  }
-
-  h3{
-    font-size: rem-calc(18);
-    color:$primary-color;
-  }
-  h4{
-    font-size: rem-calc(16);
-    color:$grey-dark;
-  }
-
-  .ng-invalid{margin-bottom:0;}
-
-  .alert-box.error{
-    background-color:#FBE9E7;
-    border-color:#EAC4BF;
-    color:$grey-darker;
-  }
-
-  // table style
-  table{
-    thead{
-      background:none;
-      tr{
-        th{
-          border-bottom: 2px solid $grey-border;
-          font-weight: normal;
-          font-size:rem-calc(14);
-        }
-      }
-    }
-    tfoot{
-      .check-out-foot{
-          margin: rem-calc(16) 0 rem-calc(16) 0;
-          p{
-            margin-bottom: 0;
-            color:#9E9A99;
-            font-weight: normal;
-            line-height:rem-calc(30);
-            font-size: rem-calc(14);
-          }
-          strong.price-total{
-              display:block;
-              line-height:rem-calc(30);
-              font-size:rem-calc(16);
-              border-top: 1px $grey-border dashed;
-              margin-top: rem-calc(15);
-              padding-top:rem-calc(15);
-          }
-      }
-    }
-    tbody{
-      tr{
-        &:nth-of-type(2n){
-          background:none;
-        }
-        td{
-          border-bottom: 1px solid $grey-border;
-          p{
-            margin-bottom: 0;
-            font-size: rem-calc(14);
-          }
-        }
-      }
-    }
-    .border-sep{
-      td{
-        border-left:1px solid $grey-border;
-        &:first-child{border-left:0;}
-      }
-
-    }
-  }
-
-  //tabs
-  .tabs dd{
-    font-weight: bold;
-    a{
-      padding:rem-calc(10) rem-calc(16);
-      &:hover{
-        text-decoration: none;
-      }
-    }
-    &.active{
-      a{
-        color:$primary-color;
-      }
-    }
-  }
-
-
-  //private style
-
-  .gift-checkout-table{
-    td{
-      vertical-align: top;
-      border-bottom:1px solid $grey-border;
-    }
-    .gift-checkout-table-img{
-      width:rem-calc(90);
-      text-align: center;
-      img{
-        border:1px solid $grey-border;
-      }
-    }
-    .gift-checkout-table-item{
-      .gift-info{
-        .gift-name{
-          font-size: rem-calc(14);
-          margin-bottom: 6px;
-        }
-        .gift-id{
-          color:$grey-dark;
-          margin-bottom: 6px;
-          font-size: rem-calc(12);
-          line-height: 1;
-        }
-        .gift-size{
-          margin-bottom: 6px;
-          font-size: rem-calc(12);
-          line-height: 1;
-          color: $grey;
-        }
-        .gift-option{
-          color:$grey-darker;
-          margin-bottom: 6px;
-          font-size: rem-calc(12);
-          line-height: 1;
-        }
-      }
-    }
-  }
-
+.gift-card {
+  margin-top: 40px;
 }
 
-.gift-preview-popup{
-    .columns{
-      padding:0;
-    }
+.gift-preview-popup {
+  .columns {
+    padding: 0;
+  }
+  width: 674px;
+  margin: 0 auto;
+  h2 {
+    color: $primary-color;
+    //font-size: $large-font-size;
+    border-bottom: 1px dashed $grey-border;
+  }
+  .gift-to-from {
+    font-size: rem-calc(24);
+    color: $grey-dark;
+    margin: $panel-padding 0;
+    height: 40px;
+    line-height: 40px;
+  }
+  p {
+    color: $grey-darker;
+    font-size: $medium-font-size;
+  }
+  .gift-preview-imgWrap {
     width: 674px;
     margin: 0 auto;
-    h2{
-      color:$primary-color;
-      //font-size: $large-font-size;
-      border-bottom:1px dashed $grey-border;
-    }
-    .gift-to-from{
-      font-size: rem-calc(24);
-      color:$grey-dark;
-      margin: $panel-padding 0;
-      height: 40px;
-      line-height: 40px;
-    }
-    p{
-      color:$grey-darker;
-      font-size: $medium-font-size;
-    }
-    .gift-preview-imgWrap{
-      width: 674px;
-      margin: 0 auto;
-      position: relative;
-      .gift-preview-cert{
-        position: absolute;
-        left:60px;
-        top: 60px;
-        strong{
-          font-size: rem-calc(60);
-          color: $grey-darker;
-        }
-        span{
-          margin-left: 10px;
-        }
-      }
-      .gift-preview-code{
-        position: absolute;
-        left:85px;
-        top:240px;
-        font-size: 22px;
+    position: relative;
+    .gift-preview-cert {
+      position: absolute;
+      left: 60px;
+      top: 60px;
+      strong {
+        font-size: rem-calc(60);
         color: $grey-darker;
       }
+      span {
+        margin-left: 10px;
+      }
     }
-    .gift-preview-foot{
-        margin-top:$panel-padding;
-        border:0;
-        h2{
-          border:0;
-          margin-bottom:$panel-padding;
-        }
-        ul{
-          li{
-            margin-bottom: rem-calc(10);
-          }
-        }
+    .gift-preview-code {
+      position: absolute;
+      left: 85px;
+      top: 240px;
+      font-size: 22px;
+      color: $grey-darker;
     }
   }
+  .gift-preview-foot {
+    margin-top: $panel-padding;
+    border: 0;
+    h2 {
+      border: 0;
+      margin-bottom: $panel-padding;
+    }
+    ul {
+      li {
+        margin-bottom: rem-calc(10);
+      }
+    }
+  }
+}
 
 
 

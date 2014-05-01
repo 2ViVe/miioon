@@ -1,57 +1,42 @@
-<div class='gift'>
-  <div class='row'>
-    <div class='small-12 columns'>
-      <ul class="breadcrumbs">
-        <li><a href="#">&gt; GIFTS</a></li>
-        <li class="current"><a href="#">GIFT CERTIFICATE</a></li>
-      </ul>
+<div class='row product-detail gift-card'>
+  <div class='medium-6 columns gift-detail-photo'>
+    <div>
+      <img src='images/gift/gift-img-big-3.jpg' alt='Gift Design'/>
     </div>
   </div>
-  <div class='row gift-detail'>
-    <!-- gift-detail-photo start -->
-    <div class='medium-6 columns gift-detail-photo'>
-      <div>
-        <img src='images/gift/gift-img-big-3.jpg' alt='Gift Design' />
-      </div>
-    </div>
-    <!-- gift-detail-photo end -->
-    <!-- gift-detail-info start -->
-    <div class='medium-6 columns gift-detail-info'>
-      <h2>Gift Certificate<a ng-click="preview()" class='button attenuate tiny right'>PREVIEW</a></h2>
-      <strong class='gift-detail-price info-panel'>
+  <div class='medium-6 columns'>
+    <div class="info-panel first">
+      <h2>
+        Gift Certificate
+        <button ng-click="preview()" class='attenuate tiny right'>PREVIEW</button>
+      </h2>
+      <strong class='price'>
         {{amount === 0 ? '￡12.50 - ￡100.00' : '￡' + amount}}
       </strong>
-      <div class='gift-detail-quantity info-panel'>
-        <h6 class='info-panel-title'>Amount:</h6>
-        <select style='width:250px;' ng-model="amount" ng-init="amount=0">
-          <option value='0'>Choose an Amount...</option>
-          <option value='12.50'>￡12.50</option>
-          <option value='20.00'>￡20.00</option>
-          <option value='40.00'>￡40.00</option>
-          <option value='40.00'>￡100.00</option>
-        </select>
-      </div>
-      <div class='gift-detail-detailList info-panel'>
-        <h6 class='info-panel-title'>Delivery Details:</h6>
-
-        <div class="tabs" data-tabset>
-          <div data-tab ng-repeat="tab in tabs" data-heading="{{tab.title}}" data-active="tab.active">
-            <div ng-include="tab.url"></div>
-          </div>
-        </div>
-
-      </div>
-      <div class='gift-detail-ctrBt info-panel last'>
-        <a href='#' class='button small'>PURCHASE</a>
-      </div>
-      <div class='gift-detail-share text-right'>
-        <!--<span><i class="fa">SHARE:</i></span>-->
-        <a href="#"><i class="fa fa-twitter-square"></i></a>
-        <a href="#"><i class="fa fa-linkedin-square"></i></a>
-        <a href="#"><i class="fa fa-pinterest-square"></i></a>
-        <a href="#"><i class="fa fa-facebook-square"></i></a>
-      </div>
     </div>
-    <!-- gift-detail-info end -->
+
+    <div class='info-panel'>
+      <h6 class='info-panel-title'>Amount:</h6>
+      <select style='width:250px;' ng-model="amount" ng-init="amount=0">
+        <option value='0'>Choose an Amount...</option>
+        <option value='12.50'>￡12.50</option>
+        <option value='20.00'>￡20.00</option>
+        <option value='40.00'>￡40.00</option>
+        <option value='40.00'>￡100.00</option>
+      </select>
+    </div>
+    <div class='info-panel'>
+      <h6 class='info-panel-title'>Delivery Details:</h6>
+
+      <div class="tabs" data-tabset>
+        <div data-tab ng-repeat="tab in tabs" data-heading="{{tab.title}}" data-active="tab.active">
+          <div ng-include="tab.url"></div>
+        </div>
+      </div>
+
+    </div>
+    <div class='info-panel last'>
+      <a href='#' class='button small'>PURCHASE</a>
+    </div>
   </div>
 </div>
