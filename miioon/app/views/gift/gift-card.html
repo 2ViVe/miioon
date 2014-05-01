@@ -10,19 +10,16 @@
         Gift Certificate
         <button ng-click="preview()" class='attenuate tiny right'>PREVIEW</button>
       </h2>
-      <strong class='price'>
-        {{amount === 0 ? '￡12.50 - ￡100.00' : '￡' + amount}}
+      <strong class='price large-font'>
+        {{selectedGiftCard.price ? '￡' + selectedGiftCard.price : '￡12.50 - ￡100.00'}}
       </strong>
     </div>
 
     <div class='info-panel'>
-      <h6 class='info-panel-title'>Amount:</h6>
-      <select style='width:250px;' ng-model="amount" ng-init="amount=0">
-        <option value='0'>Choose an Amount...</option>
-        <option value='12.50'>￡12.50</option>
-        <option value='20.00'>￡20.00</option>
-        <option value='40.00'>￡40.00</option>
-        <option value='40.00'>￡100.00</option>
+      <label for="amount" class='info-panel-title'>Amount:</label>
+      <select id="amount" name="amount" ng-options="giftCard.price for giftCard in giftCards | orderBy: price"
+              ng-model="selectedGiftCard">
+        <option value=''>Choose an Amount...</option>
       </select>
     </div>
     <div class='info-panel'>

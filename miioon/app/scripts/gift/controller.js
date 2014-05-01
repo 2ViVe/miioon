@@ -1,8 +1,15 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('GiftController', ['$scope', '$modal',
-    function($scope, $modal) {
+  .controller('GiftController', ['$scope', '$modal', 'GiftCard',
+    function($scope, $modal, GiftCard) {
+      $scope.selectedGiftCard = {};
+
+      var giftCard = new GiftCard();
+      giftCard.fetch.success(function() {
+        $scope.giftCards = giftCard.data.variants;
+      });
+
       $scope.preview = function() {
         $modal.open({
           templateUrl: 'views/gift/gift-preview.html',
@@ -12,11 +19,11 @@ angular.module('2ViVe')
 
       $scope.tabs = [
         {
-          title: 'EMAIL',
+          title: 'Email',
           url: 'views/gift/email.html'
         },
         {
-          title: 'POST',
+          title: 'Post',
           url: 'views/gift/post.html'
         }
       ];
