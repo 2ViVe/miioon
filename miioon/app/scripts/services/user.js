@@ -6,7 +6,7 @@ angular.module('2ViVe')
       var User = {
         isLogin: false,
         login: function(username, password, isRemember) {
-          return $http.post('/authentication/token', {
+          return $http.post('/api/v2/authentications/token', {
             user: username,
             password: password,
             'client-id': 'ZlnElLNFjFt6pOBAOQpH8e',
