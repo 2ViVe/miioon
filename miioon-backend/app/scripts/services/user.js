@@ -17,16 +17,6 @@ angular.module('2ViVe')
           });
         },
         logout: function() {
-          LocalStorage.removeToken();
-        },
-        forget: function() {
-          LocalStorage.removeToken();
-        },
-        remember: function() {
-          LocalStorage.saveToken();
-        },
-        isRemembered: function() {
-          return LocalStorage.isTokenSaved();
         },
         fetch: function() {
           return $http.get('/api/v2/profile')
