@@ -39,7 +39,7 @@ describe('Profile Service', function() {
         });
       httpBackend.flush();
 
-//      expect(profile).toEqual(data);
+      expect(profile).toEqual({ userId: 1234, name: 'xxx' });
     });
   });
 
