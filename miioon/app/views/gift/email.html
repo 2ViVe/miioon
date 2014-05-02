@@ -1,8 +1,8 @@
-<form name="email" novalidate>
+<form name="emailForm" novalidate>
   <div class="row">
     <div class="large-12 columns">
       <label>Recipients e-mail:
-        <input type="text" placeholder=""/>
+        <input type="text" name="recipients-email" ng-model="emailInfo['recipient-email']"/>
       </label>
     </div>
   </div>
