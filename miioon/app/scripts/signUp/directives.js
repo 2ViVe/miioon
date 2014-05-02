@@ -8,11 +8,10 @@ angular.module('2ViVe')
       };
    }])
   .directive('countriesAndStates', ['Registration',
-    function(Registration) {
+    function() {
       return {
         restrict: 'A',
-        controller: ['$scope', function($scope, countries) {
-          $scope.countries = countries.data.response;
+        controller: ['$scope', function($scope) {
           $scope.onCountryChanged = function(selectedCountryId) {
             angular.forEach($scope.countries, function(country) {
               if (country.id === selectedCountryId) {

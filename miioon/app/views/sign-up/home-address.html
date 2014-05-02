@@ -78,7 +78,9 @@
       <label class="right inline required" for="home-country-id">Country</label>
     </div>
     <div class="small-5 end columns">
-      <select required id="home-country-id" name="home-country-id" ng-model="homeAddress['country-id']"
+      <select required id="home-country-id"
+              name="home-country-id"
+              ng-model="homeAddress['country-id']"
               ng-options="country.id as country.name for country in countries | orderBy:'name'"
               ng-change="onCountryChanged(homeAddress['country-id'])">
       </select>

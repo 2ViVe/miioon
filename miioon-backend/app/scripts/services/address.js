@@ -3,7 +3,7 @@
 angular.module('2ViVe')
   .factory('Address', ['$http', 'CamelCaseLize', function($http, camelCaselize) {
 
-    var API_URL = '/v2/addresses';
+    var API_URL = '/api/v2/addresses';
 
 
     function fetchAddress() {

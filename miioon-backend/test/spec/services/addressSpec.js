@@ -32,7 +32,7 @@ describe('Address Service', function() {
     });
 
     beforeEach(function() {
-      httpBackend.when('GET', '/v2/addresses').respond(responseData);
+      httpBackend.when('GET', '/api/v2/addresses').respond(responseData);
     });
 
     it('should transform the data key from dash to camel', function() {

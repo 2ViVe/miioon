@@ -11,8 +11,12 @@ angular.module('2ViVe')
             password: password,
             'client-id': 'ZlnElLNFjFt6pOBAOQpH8e',
             'remember-me': isRemember
-          }).success(function() {
+          }).success(function(data) {
             LocalStorage.removeVisitorId();
+            if (isRemember) {
+              LocalStorage.setToken(data.response['authentication-token']);
+              LocalStorage.saveToken(data.response['authentication-token']);
+            }
             User.isLogin = true;
           });
         },

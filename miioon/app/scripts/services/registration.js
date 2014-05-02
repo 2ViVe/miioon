@@ -1,18 +1,38 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Registration', ['$http',
-    function($http) {
+  .factory('Registration', ['$http', '$q', '$rootScope',
+    function($http, $q, $rootScope) {
       var countries = [];
 
       function fetchCountries() {
+        var deferred = $q.defer(),
+            promise = deferred.promise;
+
+        countries.$promise = deferred.promise;
+
+        countries.then = function(fn, errFn) {
+          return promise.then(fn, errFn);
+        };
+
+        countries.catch = function(fn) {
+          return promise.catch(fn);
+        };
+
         if (!countries.length) {
           $http.get('/api/v2/registrations/countries')
             .success(function(ctx) {
               angular.forEach(ctx.response, function(country, idx) {
                 countries[idx] = country;
               });
+              deferred.resolve(countries);
             });
+        }
+        else {
+          $rootScope.$evalAsync(function() {
+            promise.resolve(countries);
+          });
+
         }
         return countries;
       }

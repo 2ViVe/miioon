@@ -15,7 +15,7 @@ angular.module('miioonApp')
         controller: 'SignUpController',
         resolve: {
           countries: ['Registration', function(Registration) {
-            return Registration.getCountries();
+            return Registration.countries();
           }]
         }
       })
