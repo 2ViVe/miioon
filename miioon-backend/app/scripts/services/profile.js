@@ -1,17 +1,24 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Profile', ['$http',
-    function($http) {
+  .factory('Profile', ['$http', 'CamelCaseLize',
+    function($http, camelCaseLize) {
+
+      function fetchProfile() {
+        return $http.get('/api/v2/profile', {
+          transformResponse: camelCaseLize
+        })
+          .then(function(resp) {
+            Profile.data = resp.data.response;
+            Profile.isLogin = true;
+            return Profile.data;
+          });
+      }
+
       var Profile = {
         isLogin: false,
-        fetch: function() {
-          return $http.get('/api/v2/profile')
-            .success(function(data) {
-              Profile.data = data.response;
-              Profile.isLogin = true;
-            });
-        }
+        fetch: fetchProfile
       };
+
       return Profile;
     }]);

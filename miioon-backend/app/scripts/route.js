@@ -8,7 +8,15 @@ angular.module('miioonApp')
       })
       .when('/account', {
         templateUrl: 'views/profile.html',
-        controller: 'ProfileController'
+        controller: 'ProfileController',
+        resolve: {
+          'profile': ['Profile', function(Profile) {
+            return Profile.fetch();
+          }],
+          'address': ['Address', function(Address) {
+            return Address.fetch();
+          }]
+        }
       })
       .when('/party/my-party', {
         templateUrl: 'views/party/my-party.html',

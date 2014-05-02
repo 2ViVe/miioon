@@ -14,12 +14,12 @@
     <div ng-if="!editingAccount">
       <div class="row">
         <div class="small-3 columns inline">User Name</div>
-        <div class="small-3 end columns">{{ username }}</div>
+        <div class="small-3 end columns">{{ profile.login }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Email</div>
-        <div class="small-3 end columns">{{ email }}</div>
+        <div class="small-3 end columns">{{ profile.email }}</div>
       </div>
     </div>
 
@@ -29,7 +29,7 @@
           <label for="userName" class="inline">User Name:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="userName" name="userName" ng-model="username" placeholder="please input your username">
+          <input type="text" id="userName" name="userName" ng-model="profile.login" placeholder="please input your username">
         </div>
       </div>
 
@@ -38,7 +38,7 @@
           <label for="email" class="inline">Email:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="email" name="email" ng-model="email" placeholder="please input your email">
+          <input type="text" id="email" name="email" ng-model="profile.email" placeholder="please input your email">
         </div>
       </div>
 
@@ -126,11 +126,11 @@
     <div ng-if="!editingPersonalInfo">
       <div class="row">
         <div class="small-3 columns">Date Of Birth</div>
-        <div class="small-3 end columns">MM-DD-YYYY</div>
+        <div class="small-3 end columns">{{ profile.birthDate }}</div>
       </div>
       <div class="row">
         <div class="small-3 columns">SSN</div>
-        <div class="small-3 end columns">XXX-XXXX-1234</div>
+        <div class="small-3 end columns">{{ profile.ssn }}</div>
       </div>
     </div>
 
@@ -142,7 +142,7 @@
           <label for="dateOfBirth" class="inline">Date Of Birth:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="dateOfBirth" name="dateOfBirth" ng-model="dateOfBirth"
+          <input type="text" id="dateOfBirth" name="dateOfBirth" ng-model="profile.birthDate"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -172,52 +172,52 @@
     <div ng-if="!editingHomeAddress">
       <div class="row">
         <div class="small-3 columns">Name</div>
-        <div class="small-3 end columns">AJ Telecent</div>
+        <div class="small-3 end columns">{{ address.home.firstName }} {{ address.home.lastName }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Address Line 1</div>
-        <div class="small-3 end columns">1 New Orchard Road</div>
+        <div class="small-3 end columns">{{ address.home.street }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">City</div>
-        <div class="small-3 end columns">Armonk</div>
+        <div class="small-3 end columns">{{ address.home.city }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Zip</div>
-        <div class="small-3 end columns">10504</div>
+        <div class="small-3 end columns">{{ address.home.zip }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Country</div>
-        <div class="small-3 end columns">US</div>
+        <div class="small-3 end columns">{{ address.home.country }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">State</div>
-        <div class="small-3 end columns">New York</div>
+        <div class="small-3 end columns">{{ address.home.stateId }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Home Phone</div>
-        <div class="small-3 end columns">914-499-1900</div>
+        <div class="small-3 end columns">{{ address.home.phone }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Mobile Phone</div>
-        <div class="small-3 end columns">914-499-1900</div>
+        <div class="small-3 end columns">{{ address.home.mobile }}</div>
       </div>
     </div>
 
     <form ng-if="editingHomeAddress">
       <div class="row">
         <div class="small-3 columns">
-          <label for="homeAddrName" class="inline">Name:</label>
+          <label for="homeAddrFirstName" class="inline">Name:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrName" name="homeAddrName" ng-model="homeAddrName"
+          <input type="text" id="homeAddrFirstName" name="homeAddrFirstName" ng-model="address.home.firstName"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -227,7 +227,7 @@
           <label for="homeAddrLine" class="inline">Address Line 1:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrLine" name="homeAddrLine" ng-model="homeAddrLine"
+          <input type="text" id="homeAddrLine" name="homeAddrLine" ng-model="address.home.street"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -237,7 +237,7 @@
           <label for="homeAddrCity" class="inline">City:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrCity" name="homeAddrCity" ng-model="homeAddrCity"
+          <input type="text" id="homeAddrCity" name="homeAddrCity" ng-model="address.home.city"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -247,7 +247,7 @@
           <label for="homeAddrZip" class="inline">Zip:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrZip" name="homeAddrZip" ng-model="homeAddrZip"
+          <input type="text" id="homeAddrZip" name="homeAddrZip" ng-model="address.home.zip"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -258,7 +258,7 @@
           <label for="homeAddrCountry" class="inline">Country:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrCountry" name="homeAddrCountry" ng-model="homeAddrCountry"
+          <input type="text" id="homeAddrCountry" name="homeAddrCountry" ng-model="address.home.country"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -269,7 +269,7 @@
           <label for="homeAddrState" class="inline">State:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrState" name="homeAddrState" ng-model="homeAddrState"
+          <input type="text" id="homeAddrState" name="homeAddrState" ng-model="address.home.state"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -280,7 +280,7 @@
           <label for="homeAddrHomePhone" class="inline">Home Phone:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrHomePhone" name="homeAddrHomePhone" ng-model="homeAddrHomePhone"
+          <input type="text" id="homeAddrHomePhone" name="homeAddrHomePhone" ng-model="address.home.phone"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -290,7 +290,7 @@
           <label for="homeAddrMobilePhone" class="inline">Mobile Phone:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrMobilePhone" name="homeAddrMobilePhone" ng-model="homeAddrMobilePhone"
+          <input type="text" id="homeAddrMobilePhone" name="homeAddrMobilePhone" ng-model="address.home.mobile"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -319,82 +319,52 @@
     <div ng-if="!editingShipmentAddress">
       <div class="row">
         <div class="small-3 columns">Name</div>
-        <div class="small-3 end columns">AJ Telecent</div>
+        <div class="small-3 end columns">{{ address.shipping.firstName }} {{ address.shipping.lastName }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Address Line 1</div>
-        <div class="small-3 end columns">1 New Orchard Road</div>
+        <div class="small-3 end columns">{{ address.shipping.street }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">City</div>
-        <div class="small-3 end columns">Armonk</div>
+        <div class="small-3 end columns">{{ address.shipping.city }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Zip</div>
-        <div class="small-3 end columns">10504</div>
+        <div class="small-3 end columns">{{ address.shipping.zip }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Country</div>
-        <div class="small-3 end columns">US</div>
+        <div class="small-3 end columns">{{ address.shipping.countryId }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">State</div>
-        <div class="small-3 end columns">New York</div>
+        <div class="small-3 end columns">{{ address.shipping.state }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Home Phone</div>
-        <div class="small-3 end columns">914-499-1900</div>
+        <div class="small-3 end columns">{{ address.shipping.phone }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Mobile Phone</div>
-        <div class="small-3 end columns">914-499-1900</div>
+        <div class="small-3 end columns">{{ address.shipping.mobile }}</div>
       </div>
     </div>
 
     <form ng-if="editingShipmentAddress">
       <div class="row">
         <div class="small-3 columns">
-          <label for="homeAddrName" class="inline">Name:</label>
+          <label for="shipmentAddrFirstName" class="inline">Name:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrName" name="homeAddrName" ng-model="homeAddrName"
-                 placeholder="click to edit ... ">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="homeAddrLine" class="inline">Address Line 1:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text" id="homeAddrLine" name="homeAddrLine" ng-model="homeAddrLine"
-                 placeholder="click to edit ... ">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="homeAddrCity" class="inline">City:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text" id="homeAddrCity" name="homeAddrCity" ng-model="homeAddrCity"
-                 placeholder="click to edit ... ">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="homeAddrZip" class="inline">Zip:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text" id="homeAddrZip" name="homeAddrZip" ng-model="homeAddrZip"
+          <input type="text" id="shipmentAddrFirstName" name="shipmentAddrFirstName" ng-model="address.shipping.firstName"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -402,10 +372,10 @@
 
       <div class="row">
         <div class="small-3 columns">
-          <label for="homeAddrCountry" class="inline">Country:</label>
+          <label for="shipmentLastAddrName" class="inline">Name:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrCountry" name="homeAddrCountry" ng-model="homeAddrCountry"
+          <input type="text" id="shipmentLastAddrName" name="shipmentLastAddrName" ng-model="address.shipping.lastName"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -413,10 +383,30 @@
 
       <div class="row">
         <div class="small-3 columns">
-          <label for="homeAddrState" class="inline">State:</label>
+          <label for="shipmentAddrLine" class="inline">Address Line 1:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrState" name="homeAddrState" ng-model="homeAddrState"
+          <input type="text" id="shipmentAddrLine" name="homeAddrLine" ng-model="address.shipping.street"
+                 placeholder="click to edit ... ">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="shipmentAddrCity" class="inline">City:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text" id="shipmentAddrCity" name="shipmentAddrCity" ng-model="address.shipping.city"
+                 placeholder="click to edit ... ">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="shipmentAddrZip" class="inline">Zip:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text" id="shipmentAddrZip" name="shipmentAddrZip" ng-model="address.shipping.zip"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -424,20 +414,42 @@
 
       <div class="row">
         <div class="small-3 columns">
-          <label for="homeAddrHomePhone" class="inline">Home Phone:</label>
+          <label for="shipmentAddrCountry" class="inline">Country:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrHomePhone" name="homeAddrHomePhone" ng-model="homeAddrHomePhone"
+          <input type="text" id="shipmentAddrCountry" name="shipmentAddrCountry" ng-model="address.shipping.countryId"
+                 placeholder="click to edit ... ">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="shipmentAddrState" class="inline">State:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text" id="shipmentAddrState" name="shipmentAddrState" ng-model="address.shipping.stateId"
+                 placeholder="click to edit ... ">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="shipmentAddrHomePhone" class="inline">Home Phone:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text" id="shipmentAddrHomePhone" name="shipmentAddrHomePhone" ng-model="adddress.shipping.phone"
                  placeholder="click to edit ... ">
         </div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">
-          <label for="homeAddrMobilePhone" class="inline">Mobile Phone:</label>
+          <label for="shipmentAddrMobilePhone" class="inline">Mobile Phone:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrMobilePhone" name="homeAddrMobilePhone" ng-model="homeAddrMobilePhone"
+          <input type="text" id="shipmentAddrMobilePhone" name="shipmentAddrMobilePhone" ng-model="address.shipping.mobile"
                  placeholder="click to edit ... ">
         </div>
       </div>
@@ -464,77 +476,72 @@
     <div ng-if="!editingWebAddress">
       <div class="row">
         <div class="small-3 columns">Name</div>
-        <div class="small-3 end columns">AJ Telecent</div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">Address Line 1</div>
-        <div class="small-3 end columns">1 New Orchard Road</div>
+        <div class="small-3 end columns">{{ address.website.firstName }} {{ address.website.lastName }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Home Phone</div>
-        <div class="small-3 end columns">914-499-1900</div>
+        <div class="small-3 end columns">{{ address.website.phone }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Mobile Phone</div>
-        <div class="small-3 end columns">914-499-1900</div>
+        <div class="small-3 end columns">{{ address.website.mobile }}</div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">Email</div>
-        <div class="small-3 end columns">abc@abovegem.com</div>
+        <div class="small-3 end columns">{{ address.website.email }}</div>
       </div>
     </div>
 
     <form ng-if="editingWebAddress">
       <div class="row">
         <div class="small-3 columns">
-          <label for="homeAddrName" class="inline">Name:</label>
+          <label for="websiteAddrFirstName" class="inline">Name:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrName" name="homeAddrName" ng-model="homeAddrName"
+          <input type="text" id="websiteAddrFirstName" name="websiteAddrFirstName" ng-model="address.website.firstName"
                  placeholder="click to edit ... ">
         </div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">
-          <label for="homeAddrLine" class="inline">Address Line 1:</label>
+          <label for="websiteAddrLastName" class="inline">Name:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrLine" name="homeAddrLine" ng-model="homeAddrLine"
+          <input type="text" id="websiteAddrLastName" name="websiteAddrLastName" ng-model="address.website.lastName"
                  placeholder="click to edit ... ">
         </div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">
-          <label for="homeAddrHomePhone" class="inline">Home Phone:</label>
+          <label for="websiteAddrHomePhone" class="inline">Home Phone:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrHomePhone" name="homeAddrHomePhone" ng-model="homeAddrHomePhone"
+          <input type="text" id="websiteAddrHomePhone" name="websiteAddrHomePhone" ng-model="address.website.phone"
                  placeholder="click to edit ... ">
         </div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">
-          <label for="homeAddrMobilePhone" class="inline">Mobile Phone:</label>
+          <label for="websiteAddrMobilePhone" class="inline">Mobile Phone:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="homeAddrMobilePhone" name="homeAddrMobilePhone" ng-model="homeAddrMobilePhone"
+          <input type="text" id="websiteAddrMobilePhone" name="websiteAddrMobilePhone" ng-model="address.website.mobile"
                  placeholder="click to edit ... ">
         </div>
       </div>
 
       <div class="row">
         <div class="small-3 columns">
-          <label for="homeAddrEmail" class="inline">Email:</label>
+          <label for="websiteAddrEmail" class="inline">Email:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="email" id="homeAddrEmail" name="homeAddrEmail" ng-model="homeAddrEmail"
+          <input type="email" id="websiteAddrEmail" name="websiteAddrEmail" ng-model="address.website.email"
                  placeholder="click to edit ... ">
         </div>
       </div>

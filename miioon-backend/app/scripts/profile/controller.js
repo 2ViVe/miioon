@@ -1,7 +1,10 @@
+'use strict';
+
 angular.module('miioonApp')
-  .controller('ProfileController', ['$scope', function($scope) {
-    $scope.username = 'USERNAME';
-    $scope.email = 'EMAIL@EXAMPLE.com';
+  .controller('ProfileController', ['$scope', 'profile', 'address', function($scope, profile, address) {
+
+    $scope.profile = profile;
+    $scope.address = address;
 
     $scope.saveAccountInfo = function() {
       $scope.editingAccount = !$scope.editingAccount;

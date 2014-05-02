@@ -8,7 +8,7 @@ angular.module('miioonApp')
     }])
   .run(['User', 'Profile', 'Shopping',
     function(User, Profile, Shopping) {
-      Profile.fetch().success(function() {
+      Profile.fetch().then(function() {
         Shopping.fetchForUser();
       });
     }]);
