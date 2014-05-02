@@ -7,12 +7,16 @@ angular.module('2ViVe')
     }
 
     function camelCaselize(data) {
+      data = angular.fromJson(data);
       var keys = Object.keys(data);
       var result = {};
 
       angular.forEach(keys, function(key) {
         var camelCasedKey = camelcase(key);
-        if (typeof data[key] === 'object') {
+        if (!data.hasOwnProperty(key)) {
+          return;
+        }
+        if (data[key] && typeof data[key] === 'object') {
           result[camelCasedKey] = camelCaselize(data[key]);
         }
         else {
