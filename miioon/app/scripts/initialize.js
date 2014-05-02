@@ -1,17 +1,36 @@
 'use strict';
 
 angular.module('miioonApp')
-  .constant('CLIENT_ID', 'ZlnElLNFjFt6pOBAOQpH8e')
-  .config(['$httpProvider',
-    function($httpProvider) {
-      $httpProvider.interceptors.push('HttpInterceptor');
-    }])
   .run(['User', 'Taxons', 'Shopping',
     function(User, Taxons, Shopping) {
       User.fetch().success(function() {
         Shopping.fetchForUser();
+        Taxons.fetch();
       }).error(function() {
         Shopping.fetchForVisitor();
+        Taxons.fetch();
       });
-      Taxons.fetch();
+    }])
+  .run(['$rootScope', 'cfpLoadingBar', 'UrlHandler',
+    function($rootScope, cfpLoadingBar, UrlHandler) {
+      $rootScope.$on('$routeChangeStart', function() {
+        cfpLoadingBar.start();
+      });
+
+      $rootScope.$on('$locationChangeStart', function(event, nextUrl, currentUrl) {
+        var nextPath = nextUrl.split('#')[1];
+        var currentPath = currentUrl.split('#')[1];
+        UrlHandler.savePath(nextPath, currentPath);
+        UrlHandler.handleSecurityPath(function() {
+          event.preventDefault();
+        });
+      });
+
+      $rootScope.$on('$routeChangeError', function() {
+        cfpLoadingBar.complete();
+      });
+
+      $rootScope.$on('$viewContentLoaded', function() {
+        cfpLoadingBar.complete();
+      });
     }]);
