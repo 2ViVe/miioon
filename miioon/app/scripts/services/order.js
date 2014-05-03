@@ -5,6 +5,12 @@ angular.module('2ViVe')
     function($http) {
       var Order = {
         data: {},
+        updateBillingAddress: function(orderId, billingAddress) {
+          return $http.post('/api/v2/orders/' + orderId + '/addresses/billing', billingAddress);
+        },
+        updateShippingAddress: function(orderId, shippingAddress) {
+          return $http.post('/api/v2/orders/' + orderId + '/addresses/shipping', shippingAddress);
+        },
         currentShippingMethod: function() {
           var currentShippingMethod = null;
           angular.forEach(Order.data['available-shipping-methods'], function(shippingMethod) {

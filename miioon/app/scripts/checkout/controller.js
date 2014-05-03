@@ -7,6 +7,7 @@ angular.module('2ViVe')
       $scope.placingOrder = false;
       $scope.isSucceed = false;
       $scope.isFailed = false;
+      $scope.orderId = null;
 
       $scope.$watch(function() {
         return User.isLogin;
@@ -36,6 +37,9 @@ angular.module('2ViVe')
           controller: 'ShippingModalController'
         }).result.then(function(shippingAddress) {
             $scope.order.data['shipping-address'] = shippingAddress;
+            if ($scope.orderId) {
+              Order.updateShippingAddress($scope.orderId, shippingAddress);
+            }
           });
       };
 
@@ -43,8 +47,11 @@ angular.module('2ViVe')
         $modal.open({
           templateUrl: 'views/checkout/billing-address.html',
           controller: 'BillingModalController'
-        }).result.then(function(BillingAddress) {
-            $scope.order.data['billing-address'] = BillingAddress;
+        }).result.then(function(billingAddress) {
+            $scope.order.data['billing-address'] = billingAddress;
+            if ($scope.orderId) {
+              Order.updateBillingAddress($scope.orderId, billingAddress);
+            }
           });
       };
 
@@ -64,13 +71,20 @@ angular.module('2ViVe')
         Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethod.id, $scope.creditCard)
           .success(function(data) {
             $scope.placingOrder = false;
+            $scope.orderId = data.response['order-id'];
 
             if (data.response['payment-state'] === 'failed') {
               $scope.isFailed = true;
+              $scope.failedMessage = 'Process order failed, please check your payment information.';
               return;
             }
             $scope.isSucceed = true;
             $scope.successInfo = data.response;
+          })
+          .error(function(data) {
+            $scope.placingOrder = false;
+            $scope.isFailed = true;
+            $scope.failedMessage = data.meta.error.message;
           });
       };
     }
