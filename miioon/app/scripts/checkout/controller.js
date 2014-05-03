@@ -8,9 +8,13 @@ angular.module('2ViVe')
       $scope.isSucceed = false;
       $scope.isFailed = false;
 
-      if (!User.isLogin) {
-        $location.path('/signin');
-      }
+      $scope.$watch(function() {
+        return User.isLogin;
+      }, function() {
+        if (User.isLogin === false) {
+          $location.path('/signin');
+        }
+      });
 
       $scope.$watch(function() {
         return Shopping.items;

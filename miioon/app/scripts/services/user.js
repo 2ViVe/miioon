@@ -4,7 +4,6 @@ angular.module('2ViVe')
   .factory('User', ['$http', 'LocalStorage',
     function($http, LocalStorage) {
       var User = {
-        isLogin: false,
         login: function(username, password, isRemember) {
           return $http.post('/authentication/token', {
             user: username,
@@ -22,6 +21,9 @@ angular.module('2ViVe')
             .success(function(data) {
               User.data = data.response;
               User.isLogin = true;
+            })
+            .error(function() {
+              User.isLogin = false;
             });
         }
       };
