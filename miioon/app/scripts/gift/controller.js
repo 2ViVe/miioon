@@ -13,17 +13,17 @@ angular.module('2ViVe')
         $scope.formInvalid.post = invalid;
       });
     }])
-  .controller('GiftController', ['$scope', '$modal', 'GiftCard',
-    function($scope, $modal, GiftCard) {
+  .controller('GiftController', ['$scope', '$modal', 'GiftCard', '$location',
+    function($scope, $modal, GiftCard, $location) {
       $scope.submitted = false;
+      var giftCard = new GiftCard();
       $scope.giftCardInfo = {};
       $scope.formInvalid = {
         'email': true,
         'post': true
       };
 
-      var giftCard = new GiftCard();
-      giftCard.fetch.success(function() {
+      giftCard.fetch().success(function() {
         $scope.giftCards = giftCard.data.variants;
       });
 
@@ -47,6 +47,9 @@ angular.module('2ViVe')
         if (tabInValid || this.amountForm.$invalid) {
           return null;
         }
+
+        giftCard.purchase($scope.selectedGiftCard, $scope.giftCardInfo);
+        $location.path('/gift/checkout');
       };
 
       $scope.tabs = [
