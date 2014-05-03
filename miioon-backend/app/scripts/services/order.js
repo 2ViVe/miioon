@@ -15,6 +15,11 @@ angular.module('2ViVe')
           });
           return currentShippingMethod;
         },
+        changeShippingMethod: function(orderId, shippingMethodId) {
+          return $http.post('/api/v2/orders/' + orderId + 'selected-shipping-method', {
+            id: shippingMethodId
+          });
+        },
         checkout: function(lineItems) {
           return $http.post('/api/v2/orders/checkout', {
             'line-items': lineItems

@@ -9,7 +9,15 @@ angular.module('2ViVe')
           return $http.post('/api/v2/orders/' + orderId + '/addresses/billing', billingAddress);
         },
         updateShippingAddress: function(orderId, shippingAddress) {
-          return $http.post('/api/v2/orders/' + orderId + '/addresses/shipping', shippingAddress);
+          return $http.post('/api/v2/orders/' + orderId + '/shipping', {
+            'shipping-address': shippingAddress
+          });
+        },
+        adjustmentsWithOrderId: function(orderId) {
+          return $http.get('/api/v2/orders/' + orderId + '/adjustments')
+            .success(function(data) {
+              Order.data.adjustments = data.response;
+            });
         },
         currentShippingMethod: function() {
           var currentShippingMethod = null;
