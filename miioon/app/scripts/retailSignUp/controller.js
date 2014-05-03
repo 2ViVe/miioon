@@ -10,7 +10,7 @@ angular.module('2ViVe')
     'Shopping',
     'Taxons',
     'LocalStorage',
-    'countires',
+    'countries',
     function($scope, $location, Registration, Address, User, Shopping, Taxons, LocalStorage, countries) {
       $scope.countries = countries;
       $scope.$errorMessages = {};
