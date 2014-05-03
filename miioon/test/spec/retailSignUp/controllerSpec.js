@@ -29,7 +29,8 @@ describe('RetailSignUpCtrl', function() {
       User: User,
       Taxons: {},
       Shopping: {},
-      LocalStorage: {}
+      LocalStorage: {},
+      countires: []
     });
 
     basicInfo(scope);

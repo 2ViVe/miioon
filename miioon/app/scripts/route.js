@@ -21,7 +21,12 @@ angular.module('miioonApp')
       })
       .when('/retail-signup', {
         templateUrl: 'views/sign-up/retail-signup.html',
-        controller: 'RetailSignUpController'
+        controller: 'RetailSignUpController',
+        resolve: {
+          countries: ['Registration', function(Registration) {
+            return Registration.countries();
+          }]
+        }
       })
       .when('/about', {
         templateUrl: 'views/about.html'

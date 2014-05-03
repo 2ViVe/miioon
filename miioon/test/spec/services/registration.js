@@ -42,15 +42,25 @@ describe('Registration', function() {
   describe('#countries', function() {
 
     it('should call the api', function() {
-      var countries = Reg.countries();
+      var countries;
+      Reg.countries().then(function(cs) {
+        countries = cs;
+      });
       httpBackend.flush();
       expect(countries[0]).toEqual(us);
     });
 
-    it('should always return the same countries', function() {
-      expect(Reg.countries()).toBe(Reg.countries());
+    it('should always return the same countries', inject(function($q) {
+
+      $q.all({
+        countriesOne: Reg.countries(),
+        countriesTwo: Reg.countries()
+      }).then(function(result) {
+        expect(result.countriesOne).toBe(result.countriesTwo);
+      });
+
       httpBackend.flush();
-    });
+    }));
 
   });
 

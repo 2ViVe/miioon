@@ -6,35 +6,27 @@ angular.module('2ViVe')
       var countries = [];
 
       function fetchCountries() {
-        var deferred = $q.defer(),
-            promise = deferred.promise;
-
-        countries.$promise = deferred.promise;
-
-        countries.then = function(fn, errFn) {
-          return promise.then(fn, errFn);
-        };
-
-        countries.catch = function(fn) {
-          return promise.catch(fn);
-        };
+        var promise;
 
         if (!countries.length) {
-          $http.get('/api/v2/registrations/countries')
-            .success(function(ctx) {
+          promise = $http.get('/api/v2/registrations/countries')
+            .then(function(ctx) {
+              ctx = ctx.data;
               angular.forEach(ctx.response, function(country, idx) {
                 countries[idx] = country;
               });
-              deferred.resolve(countries);
+              return countries;
             });
         }
         else {
+          var deferred = $q.defer();
           $rootScope.$evalAsync(function() {
-            promise.resolve(countries);
+            deferred.resolve(countries);
           });
-
+          promise = deferred.promise;
         }
-        return countries;
+
+        return promise;
       }
 
       function getShippingMethods(countryId, stateId) {
