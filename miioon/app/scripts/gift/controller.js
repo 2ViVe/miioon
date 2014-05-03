@@ -64,11 +64,6 @@ angular.module('2ViVe')
           title: 'Email',
           url: 'views/gift/email.html',
           form: 'email'
-        },
-        {
-          title: 'Post',
-          url: 'views/gift/post.html',
-          form: 'post'
         }
       ];
     }]);
