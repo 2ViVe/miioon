@@ -73,6 +73,9 @@ angular.module('miioonApp')
       .when('/printing', {
         templateUrl: 'views/printing.html'
       })
+      .when('/shipping-returns', {
+        templateUrl: 'views/shipping-returns.html'
+      })
       .when('/checkout', {
         templateUrl: 'views/checkout/all.html',
         controller: 'CheckoutController'
