@@ -97,8 +97,10 @@
       <label class="right inline required" for="home-state-id">County</label>
     </div>
     <div class="small-5 end columns">
-      <select id="home-state-id" name="home-state-id" ng-model="homeAddress['state-id']"
-              ng-required="states.length > 0"
+      <select id="home-state-id"
+              name="home-state-id"
+              ng-model="homeAddress['state-id']"
+              ng-required="getStates(homeAddress['country-id']).length > 0"
               ng-options="state.id as state.name for state in states | orderBy:'name'">
       </select>
       <small ng-show="submitted && form['home-state-id'].$error.required" class="error">

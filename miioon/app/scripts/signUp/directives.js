@@ -17,6 +17,17 @@ angular.module('2ViVe')
             $scope.countries = result;
           });
 
+
+          $scope.getStates = function(selectedCountryId) {
+            angular.forEach($scope.countries, function(country) {
+              if (country.id === selectedCountryId) {
+                $scope.states = country.states;
+                return;
+              }
+            });
+            return $scope.states;
+          };
+
           $scope.onCountryChanged = function(selectedCountryId) {
             angular.forEach($scope.countries, function(country) {
               if (country.id === selectedCountryId) {
