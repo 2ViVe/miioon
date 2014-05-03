@@ -30,7 +30,7 @@ describe('RetailSignUpCtrl', function() {
       Taxons: {},
       Shopping: {},
       LocalStorage: {},
-      countires: []
+      countries: []
     });
 
     basicInfo(scope);
