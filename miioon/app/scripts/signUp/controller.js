@@ -42,7 +42,6 @@ angular.module('2ViVe')
             $scope.address.shipmentAddress['shipping-method-id'],
             $scope.address.shipmentAddress,
             $scope.payment.billingAddress,
-            null,
             $scope.payment['line-items']
           ).success(function(data) {
             $scope.currentStepNumber++;

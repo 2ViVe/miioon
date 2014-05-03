@@ -70,22 +70,21 @@ angular.module('2ViVe')
         });
       }
 
-      function create(paymentMethodId, userInfo, creditcard, homeAddress, shippingMethodId, shippingAddress, billingAddress, autoShipItems, lineItems, specialInstructions, orderNotes) {
-        userInfo.sponsor = '136301';
-        userInfo['role-code'] = 'D';
+      function create(paymentMethodId, userInfo, creditcard, homeAddress, shippingMethodId, shippingAddress, billingAddress, lineItems) {
+        var _userInfo = angular.copy(userInfo);
+        _userInfo['role-code'] = 'D';
+        _userInfo['country-iso'] = userInfo.country.iso;
+        delete _userInfo.country;
 
         return $http.post('/api/v2/registrations', {
           'payment-method-id': paymentMethodId,
-          'user-info': userInfo,
+          'user-info': _userInfo,
           'creditcard': creditcard,
           'home-address': homeAddress,
           'shipping-method-id': shippingMethodId,
           'shipping-address': shippingAddress,
           'billing-address': billingAddress,
-          //'autoship-items': autoShipItems,
           'line-items': lineItems
-          //'special-instructions': specialInstructions,
-          //'order-notes': orderNotes
         });
       }
 
