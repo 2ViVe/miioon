@@ -9,7 +9,6 @@ angular.module('2ViVe')
           return $http.post('/authentication/token', {
             user: username,
             password: password,
-            'client-id': 'ZlnElLNFjFt6pOBAOQpH8e',
             'remember-me': isRemember
           }).success(function() {
             LocalStorage.removeVisitorId();
