@@ -4,6 +4,7 @@ angular.module('2ViVe')
   .controller('GiftController', ['$scope', '$modal', 'GiftCard',
     function($scope, $modal, GiftCard) {
       $scope.submitted = false;
+      $scope.giftCardInfo = {};
 
       var giftCard = new GiftCard();
       giftCard.fetch.success(function() {

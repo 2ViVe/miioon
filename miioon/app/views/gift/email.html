@@ -1,27 +1,40 @@
 <form name="emailForm" novalidate>
   <div class="row">
     <div class="large-12 columns">
-      <label>Recipients e-mail:
-        <input type="text" name="recipients-email" ng-model="emailInfo['recipient-email']"/>
+      <label>
+        Recipients e-mail:
+        <input required type="text" name="recipients-email" ng-model="giftCardInfo['recipient-email']"/>
+        <small ng-show="submitted && emailForm['recipients-email'].$error.required" class="error">
+          This field is required.
+        </small>
       </label>
     </div>
   </div>
   <div class="row">
     <div class="large-6 columns">
-      <label>To:
-        <input type="text" placeholder=""/>
+      <label>
+        To:
+        <input required type="text" name="name-to" ng-model="giftCardInfo['name-to']"/>
+        <small ng-show="submitted && emailForm['name-to'].$error.required" class="error">
+          This field is required.
+        </small>
       </label>
     </div>
     <div class="large-6 columns">
-      <label>From:
-        <input type="text" placeholder=""/>
+      <label>
+        From:
+        <input required type="text" name="name-from" ng-model="giftCardInfo['name-from']"/>
+        <small ng-show="submitted && emailForm['name-from'].$error.required" class="error">
+          This field is required.
+        </small>
       </label>
     </div>
   </div>
   <div class="row">
     <div class="large-12 columns">
-      <label>Messages
-        <textarea placeholder=""></textarea>
+      <label>
+        Messages
+        <textarea ng-model="giftCardInfo['email-message']"></textarea>
       </label>
     </div>
   </div>
