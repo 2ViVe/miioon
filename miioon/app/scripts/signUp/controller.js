@@ -61,6 +61,10 @@ angular.module('2ViVe')
           Registration.orderSummary($scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress, $scope.lineItems)
             .success(function(data) {
               $scope.payment = data.response;
+              var paymentMethod = data.response['available-payment-methods'][0];
+              $scope.payment['payment-method-id'] = paymentMethod.id;
+              $scope.payment['is-creditcard'] = paymentMethod['is-creditcard'];
+              $scope.payment['paymend-method'] = paymentMethod.name;
               angular.forEach($scope.payment['available-shipping-methods'], function(availableShippingMethod) {
                 if (availableShippingMethod.id === $scope.payment['shipping-method-id']) {
                   $scope.payment['shipping-method'] = availableShippingMethod.name;

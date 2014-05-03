@@ -299,6 +299,7 @@ angular.module('2ViVe')
               phone: ''
             };
           }
+
           $scope.$on('remoteValidate', function() {
             Address.validateBillingAddress($scope.billingAddress)
               .success(function() {
