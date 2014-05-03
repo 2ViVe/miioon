@@ -17,7 +17,6 @@ angular.module('2ViVe')
             $scope.countries = result;
           });
 
-
           $scope.getStates = function(selectedCountryId) {
             angular.forEach($scope.countries, function(country) {
               if (country.id === selectedCountryId) {
