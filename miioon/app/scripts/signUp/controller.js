@@ -35,15 +35,20 @@ angular.module('2ViVe')
       $scope.$on('CreateAccount', function() {
         $window.scrollTo(0, 0);
         Registration.create(
-            $scope.payment['payment-method-id'],
-            $scope.userInfo,
-            $scope.creditcard,
-            $scope.address.homeAddress,
-            $scope.address.shipmentAddress['shipping-method-id'],
-            $scope.address.shipmentAddress,
-            $scope.payment.billingAddress,
-            $scope.payment['line-items']
-          ).success(function(data) {
+          $scope.payment['payment-method-id'],
+          $scope.userInfo,
+          $scope.creditcard,
+          $scope.address.homeAddress,
+          $scope.address.shipmentAddress['shipping-method-id'],
+          $scope.address.shipmentAddress,
+          $scope.payment.billingAddress,
+          $scope.payment['line-items']
+        ).success(function(data) {
+            if (data.response.order['payment-state'] === 'failed') {
+              $scope.isFailed = true;
+              return;
+            }
+
             $scope.currentStepNumber++;
             $scope.successInfo = data.response;
           });

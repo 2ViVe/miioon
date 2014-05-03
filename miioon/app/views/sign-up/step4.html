@@ -6,6 +6,13 @@
 
     <div class="columns small-3" ng-include="'views/sign-up/steps-navigation.html'"></div>
   </div>
+  <div class="row" ng-if="isFailed">
+    <div class="columns medium-12">
+      <div data-alert class="alert-box alert">
+        Process order failed, please check your payment information.
+      </div>
+    </div>
+  </div>
   <div class="row title">
     <h6 class="small-12 columns">
       ORDER DETAILS AND PAYMENT
