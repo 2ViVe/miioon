@@ -8,7 +8,6 @@
     <div class="info-panel first">
       <h2>
         Gift Certificate
-        <button ng-click="preview()" class='attenuate tiny right'>PREVIEW</button>
       </h2>
       <strong class='price large-font'>
         {{selectedGiftCard.price ? '￡' + selectedGiftCard.price : '￡12.50 - ￡100.00'}}
@@ -35,7 +34,8 @@
 
     </div>
     <div class='info-panel last'>
-      <button ng-click="purchase()" class='small'>PURCHASE</button>
+      <button ng-click="purchase()" class='small right'>PURCHASE</button>
+      <button ng-click="preview()" class='attenuate small right'>PREVIEW</button>
     </div>
   </div>
 </div>
