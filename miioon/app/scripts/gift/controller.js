@@ -13,8 +13,8 @@ angular.module('2ViVe')
         $scope.formInvalid.post = invalid;
       });
     }])
-  .controller('GiftController', ['$scope', '$modal', 'GiftCard', '$location',
-    function($scope, $modal, GiftCard, $location) {
+  .controller('GiftController', ['$scope', '$modal', 'GiftCard', '$location', 'User', 'LocalStorage',
+    function($scope, $modal, GiftCard, $location, User, LocalStorage) {
       $scope.submitted = false;
       var giftCard = new GiftCard();
       $scope.giftCardInfo = {};
@@ -49,7 +49,13 @@ angular.module('2ViVe')
         }
 
         giftCard.purchase($scope.selectedGiftCard, $scope.giftCardInfo);
-        $location.path('/gift/checkout');
+        if (User.isLogin) {
+          $location.path('/gift/checkout');
+        } else {
+          LocalStorage.setPathAfterLogin('/gift/checkout');
+          $location.path('/signin');
+        }
+
       };
 
       $scope.tabs = [

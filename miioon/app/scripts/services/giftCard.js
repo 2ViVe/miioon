@@ -23,6 +23,11 @@ angular.module('2ViVe')
         $cookieStore.put('giftCardInfo', info);
       };
 
+      GiftCard.prototype.clear = function() {
+        $cookieStore.remove('selectedGiftCard');
+        $cookieStore.remove('giftCardInfo');
+      };
+
       GiftCard.prototype.populate = function() {
         this.info = $cookieStore.get('giftCardInfo');
         this.selectedGiftCard = $cookieStore.get('selectedGiftCard');
@@ -36,6 +41,7 @@ angular.module('2ViVe')
           'name-to': this.info['name-to'],
           'recipient-email': this.info['recipient-email'],
           'variant-id': this.selectedGiftCard.id,
+          'payment-method-id': 3003,
           'creditcard': creditcard
         });
       };
