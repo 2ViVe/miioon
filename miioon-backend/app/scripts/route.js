@@ -58,6 +58,9 @@ angular.module('miioonApp')
         templateUrl: 'views/checkout.html',
         controller: 'CheckoutController'
       })
+      .when('/t-c', {
+        templateUrl: 'views/t-c.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
