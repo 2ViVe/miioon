@@ -19,7 +19,7 @@ angular.module('2ViVe')
           return null;
         }
 
-        giftCard.placeOrder($scope.creditCard).success(function() {
+        giftCard.placeOrder($scope.creditCard).success(function(data) {
           $scope.placingOrder = false;
 
           if (data.response['payment-state'] === 'failed') {
