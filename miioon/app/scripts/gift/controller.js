@@ -30,7 +30,8 @@ angular.module('2ViVe')
       $scope.preview = function() {
         $modal.open({
           templateUrl: 'views/gift/gift-preview.html',
-          controller: 'GiftModalController'
+          controller: 'GiftModalController',
+          scope: $scope
         });
       };
 

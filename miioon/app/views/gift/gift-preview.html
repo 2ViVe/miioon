@@ -6,26 +6,26 @@
   </div>
   <div class="row gift-to-from">
     <div class="small-4 columns">
-      <span>To:</span> <span class="grey-darker-color">Eddie</span>
+      <span>To:</span> <span class="grey-darker-color">{{giftCardInfo['name-to'] ? giftCardInfo['name-to'] : '--'}}</span>
     </div>
-    <div class="small-5 columns">
-      <span>From:</span> <span class="grey-darker-color">Mum</span>
+    <div class="small-4 columns">
+      <span>From:</span> <span class="grey-darker-color">{{giftCardInfo['name-from'] ? giftCardInfo['name-from'] : '--'}}</span>
     </div>
-    <div class="small-3 columns">
-      <a href='#' class='button tiny right'>SHOP NOW</a>
+    <div class="small-4 columns">
+      <button ng-click="cancel();purchase()" class='tiny right'>PURCHASE NOW</button>
     </div>
   </div>
   <div class="row">
     <div class="small-12 columns">
-      <p>This is where the message goes...</p>
+      <p>{{giftCardInfo['email-message'] ? giftCardInfo['email-message'] : 'This is where the message goes...'}}</p>
     </div>
   </div>
   <div class="row">
     <div class="small-12 columns">
       <div class='gift-preview-imgWrap'>
-        <div class='gift-preview-cert'><strong>￡100</strong><br/><span>Gift Card</span></div>
+        <div class='gift-preview-cert'><strong>￡{{selectedGiftCard ? selectedGiftCard.price : '100'}}</strong><br/><span>Gift Card</span></div>
         <span class='gift-preview-code'>xxxxxx</span>
-        <img src='images/gift/gift-card-preview.jpg' alt='Gift Card'/>
+        <img src="{{selectedGiftCard.images[0] ? selectedGiftCard.images[0] : 'images/gift/gift-card-preview.jpg'}}" alt='Gift Card'/>
       </div>
     </div>
   </div>
