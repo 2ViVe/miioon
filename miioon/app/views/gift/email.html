@@ -1,11 +1,14 @@
-<form name="emailForm" novalidate>
+<form name="emailForm" novalidate ng-controller="GiftCardEmailFormController">
   <div class="row">
     <div class="large-12 columns">
       <label>
         Recipients e-mail:
-        <input required type="text" name="recipients-email" ng-model="giftCardInfo['recipient-email']"/>
+        <input required type="email" name="recipients-email" ng-model="giftCardInfo['recipient-email']"/>
         <small ng-show="submitted && emailForm['recipients-email'].$error.required" class="error">
           This field is required.
+        </small>
+        <small ng-show="submitted && emailForm['recipients-email'].$error.email" class="error">
+          Email is not available.
         </small>
       </label>
     </div>
@@ -23,10 +26,7 @@
     <div class="large-6 columns">
       <label>
         From:
-        <input required type="text" name="name-from" ng-model="giftCardInfo['name-from']"/>
-        <small ng-show="submitted && emailForm['name-from'].$error.required" class="error">
-          This field is required.
-        </small>
+        <input type="text" name="name-from" ng-model="giftCardInfo['name-from']"/>
       </label>
     </div>
   </div>

@@ -1,10 +1,26 @@
 'use strict';
 
 angular.module('2ViVe')
+  .controller('GiftCardEmailFormController', ['$scope',
+    function($scope) {
+      $scope.$watch('emailForm.$invalid', function(invalid) {
+        $scope.formInvalid.email = invalid;
+      });
+    }])
+  .controller('GiftCardPostFormController', ['$scope',
+    function($scope) {
+      $scope.$watch('postForm.$invalid', function(invalid) {
+        $scope.formInvalid.post = invalid;
+      });
+    }])
   .controller('GiftController', ['$scope', '$modal', 'GiftCard',
     function($scope, $modal, GiftCard) {
       $scope.submitted = false;
       $scope.giftCardInfo = {};
+      $scope.formInvalid = {
+        'email': true,
+        'post': true
+      };
 
       var giftCard = new GiftCard();
       giftCard.fetch.success(function() {
@@ -21,8 +37,9 @@ angular.module('2ViVe')
       $scope.purchase = function() {
         $scope.submitted = true;
         var tabInValid = false;
+
         angular.forEach($scope.tabs, function(tab) {
-          if (tab.active && this[tab.form].$invalid) {
+          if (tab.active && $scope.formInvalid[tab.form].$invalid) {
             tabInValid = true;
             return null;
           }
@@ -36,17 +53,15 @@ angular.module('2ViVe')
         {
           title: 'Email',
           url: 'views/gift/email.html',
-          form: 'emailForm'
+          form: 'email'
         },
         {
           title: 'Post',
           url: 'views/gift/post.html',
-          form: 'postForm'
+          form: 'post'
         }
       ];
-    }
-  ]
-);
+    }]);
 
 
 

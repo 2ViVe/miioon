@@ -13,7 +13,6 @@
         {{selectedGiftCard.price ? '￡' + selectedGiftCard.price : '￡12.50 - ￡100.00'}}
       </strong>
     </div>
-
     <form name="amountForm" class='info-panel'>
       <div class='info-panel-title'>Amount:</div>
       <select required id="amount" name="amount" ng-options="giftCard.price for giftCard in giftCards | orderBy: price"
