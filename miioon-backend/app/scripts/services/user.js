@@ -1,8 +1,23 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('User', ['$http', 'LocalStorage',
-    function($http, LocalStorage) {
+  .factory('User', ['$http', 'LocalStorage', 'CamelCaseLize', 'Dashlize',
+    function($http, LocalStorage, camelCaseLize, dashlize) {
+
+      function UserModel(data) {
+        angular.extend(this, data);
+      }
+
+      var proto = UserModel.prototype;
+
+      proto.save = function() {
+        var self = this;
+        return $http.post('/api/v2/profile', this, {
+          transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
+          transformResponse: camelCaseLize
+        }).then(function() { return self; });
+      };
+
       var User = {
         isLogin: false,
         login: function(username, password, isRemember) {
@@ -18,11 +33,15 @@ angular.module('2ViVe')
         logout: function() {
         },
         fetch: function() {
-          return $http.get('/api/v2/profile')
-            .success(function(data) {
-              User.data = data.response;
-              User.isLogin = true;
-            });
+          return $http.get('/api/v2/profile', {
+                    transformResponse: camelCaseLize
+                  })
+                  .success(function(data) {
+                    User.data = new UserModel(data.response);
+                    User.isLogin = true;
+                  }).then(function(resp) {
+                    return new UserModel(resp.data.response);
+                  });
         }
       };
       return User;

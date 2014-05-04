@@ -1,0 +1,50 @@
+<div class="row panel">
+
+  <!-- user name/email panel -->
+  <div class="small-10 small-offset-1">
+    <header class="row">
+      <h3 class="small-7 columns primary-color">Account Infomation</h3>
+
+      <div class="small-3 end columns primary-color text-right"><a ng-click="toggle()">Edit</a>
+      </div>
+    </header>
+
+    <div ng-if="!isEditing">
+      <div class="row">
+        <div class="small-3 columns inline">User Name</div>
+        <div class="small-3 end columns">{{ profile.login }}</div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">Email</div>
+        <div class="small-3 end columns">{{ profile.email }}</div>
+      </div>
+    </div>
+
+    <form ng-if="isEditing" ng-submit="save()">
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="userName" class="inline">User Name:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text" id="userName" name="userName" ng-model="profile.login" placeholder="please input your username">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="email" class="inline">Email:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text" id="email" name="email" ng-model="profile.email" placeholder="please input your email">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-5 end columns small-offset-3">
+          <button class="btn-block" type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
