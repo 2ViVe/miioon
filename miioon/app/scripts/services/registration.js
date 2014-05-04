@@ -88,7 +88,7 @@ angular.module('2ViVe')
         });
       }
 
-      function createRetail(sponsor, login, password, email,  shippingAddress) {
+      function createRetail(sponsor, login, password, email, shippingAddress) {
         return $http.post('/api/v2/registrations/retail-customers', {
           sponsor: sponsor,
           login: login,
@@ -114,7 +114,19 @@ angular.module('2ViVe')
         return $http.get('/api/v2/registrations/countries');
       }
 
+      function orderAdjustments(shippingMethodId, lineItems, homeAddress, shippingAddress, billingAddress) {
+        return $http.post('/api/v2/registrations/orders/adjustments', {
+          'shipping-method-id': shippingMethodId,
+          'line-items': lineItems,
+          'home-address': homeAddress,
+          'shipping-address': shippingAddress,
+          'billing-address': billingAddress,
+          'role-code': 'D'
+        });
+      }
+
       return {
+        orderAdjustments: orderAdjustments,
         getShippingMethods: getShippingMethods,
         orderSummary: orderSummary,
         getProducts: getProducts,

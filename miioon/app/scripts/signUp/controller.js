@@ -70,12 +70,26 @@ angular.module('2ViVe')
               $scope.payment['is-creditcard'] = paymentMethod['is-creditcard'];
               $scope.payment['paymend-method'] = paymentMethod.name;
               angular.forEach($scope.payment['available-shipping-methods'], function(availableShippingMethod) {
-                if (availableShippingMethod.id === $scope.payment['shipping-method-id']) {
+                if (availableShippingMethod.id === $scope.address.shipmentAddress['shipping-method-id']) {
                   $scope.payment['shipping-method'] = availableShippingMethod.name;
                   return;
                 }
               });
+
+              Registration.orderAdjustments(
+                $scope.address.shipmentAddress['shipping-method-id'], $scope.lineItems,
+                $scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress)
+                .success(function(data) {
+                  $scope.payment.adjustments = data.response;
+
+                  var _adjustments = 0;
+                  angular.forEach($scope.payment.adjustments, function(adjustment) {
+                    _adjustments += adjustment.amount;
+                  });
+                  $scope.payment.total = _adjustments + $scope.payment['item-total'];
+                });
             });
+
         }
       });
 
