@@ -3,7 +3,8 @@
 angular.module('2ViVe')
   .factory('GiftCard', ['$http', '$cookieStore',
     function($http, $cookieStore) {
-      var GiftCard = function() {};
+      var GiftCard = function() {
+      };
 
       GiftCard.prototype.fetch = function() {
         var giftCard = this;
@@ -34,15 +35,22 @@ angular.module('2ViVe')
       };
 
       GiftCard.prototype.placeOrder = function(creditcard) {
+        var giftCard = this;
+
+        if (giftCard.orderId) {
+          return $http.post('/api/v2/giftcard-orders/' + giftCard.orderId + '/payments', {
+            'creditcard': creditcard
+          });
+        }
+
         return $http.post('/api/v2/giftcards', {
-          amount: this.selectedGiftCard.price,
-          'email-message': this.info['email-message'],
-          'name-from': this.info['name-from'],
-          'name-to': this.info['name-to'],
-          'recipient-email': this.info['recipient-email'],
           'variant-id': this.selectedGiftCard.id,
-          'payment-method-id': 3003,
-          'creditcard': creditcard
+          'creditcard': creditcard,
+          'email-info': this.info
+        }).success(function(data) {
+          if (data.response['payment-state'] === 'failed') {
+            giftCard.orderId = data.response['order-id'];
+          }
         });
       };
 
