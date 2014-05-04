@@ -5,7 +5,6 @@ angular.module('2ViVe')
     function($scope, Registration, $window, countries, User) {
       $scope.countries = countries;
       $scope.currentStepNumber = 1;
-      $scope.completedStepNumber = 1;
       $scope.shouldValidateRemotlyOnSubmit = false;
       $scope.isRemoteValidated = false;
       $scope.submitted = false;
@@ -58,9 +57,6 @@ angular.module('2ViVe')
         $window.scrollTo(0, 0);
         $scope.submitted = false;
         $scope.currentStepNumber++;
-        if ($scope.currentStepNumber > $scope.completedStepNumber) {
-          $scope.completedStepNumber = $scope.currentStepNumber;
-        }
         if ($scope.currentStepNumber === 4) {
           Registration.orderSummary($scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress, $scope.lineItems)
             .success(function(data) {
@@ -94,7 +90,7 @@ angular.module('2ViVe')
       });
 
       $scope.goToStep = function(stepNumber) {
-        if (stepNumber <= $scope.completedStepNumber) {
+        if (stepNumber < $scope.currentStepNumber) {
           $scope.currentStepNumber = stepNumber;
         }
       };
