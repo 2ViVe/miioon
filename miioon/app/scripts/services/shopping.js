@@ -80,6 +80,12 @@ angular.module('2ViVe')
             Shopping.items = data.response;
           });
         },
+        deleteAll: function() {
+          return $http.delete('/api/v2/shopping-carts/users')
+            .success(function() {
+              Shopping.items = [];
+            });
+        },
         fetchForUser: function() {
           return $http.get('/api/v2/shopping-carts/users')
             .success(function(data) {

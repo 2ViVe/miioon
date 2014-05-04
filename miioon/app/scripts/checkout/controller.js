@@ -88,6 +88,7 @@ angular.module('2ViVe')
             }
             $scope.isSucceed = true;
             $scope.successInfo = data.response;
+            Shopping.deleteAll();
           })
           .error(function(data) {
             $scope.placingOrder = false;
