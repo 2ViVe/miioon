@@ -1,5 +1,5 @@
 <div class="row sign-in">
-  <div class="columns small-5">
+  <form class="columns small-5" novalidate name="loginForm">
     <h2>
       SIGN IN
     </h2>
@@ -8,8 +8,11 @@
     <a class="forgot-password" href="#">Forgot Password?</a>
     <input id="is-remember" type="checkbox" ng-model="isRemember"/>
     <label for="is-remember">remember me</label>
+    <span class="error" ng-show="isError">
+      The username or password is wrong, please enter again.
+    </span>
     <button class="sign-in-button" ng-click="signIn()">SIGN IN</button>
-  </div>
+  </form>
   <div class="columns small-1 separator"></div>
   <div class="columns small-5">
     <h3>

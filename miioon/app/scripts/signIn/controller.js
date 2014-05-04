@@ -11,6 +11,7 @@ angular.module('2ViVe')
       $scope.isRemember = false;
 
       $scope.signIn = function() {
+        $scope.isError = false;
         var isAlreadyLogin = User.isLogin;
 
         User.login($scope.username, $scope.password, $scope.isRemember)
@@ -22,6 +23,9 @@ angular.module('2ViVe')
                 Shopping.fetchForUser().success(goToPreviousPath);
               }
             });
+          })
+          .error(function() {
+            $scope.isError = true;
           });
       };
     }]);
