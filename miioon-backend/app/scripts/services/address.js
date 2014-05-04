@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Address', ['$http', 'CamelCaseLize', function($http, camelCaselize) {
+  .factory('Address', ['$http', 'CamelCaseLize', 'Dashlize',
+    function($http, camelCaselize, dashlize) {
 
     var API_URL = '/api/v2/addresses';
 
@@ -22,14 +23,34 @@ angular.module('2ViVe')
     proto = Address.prototype;
 
     proto.extend = function(address) {
+      var self = this;
       angular.forEach(['home', 'billing', 'shipping', 'website'], function(type) {
+
+        self[type]['update'] = function() {
+          return self.update(type, self[type]);
+        };
+
         if (!address[type]) {
           return;
         }
-        angular.extend(this[type], address[type]);
-      }, this);
+        angular.extend(self[type], address[type]);
+      });
 
       return this;
+    };
+
+    proto.update = function(type, data) {
+      var self = this;
+      return $http
+                .post(API_URL + '/' + type, data, {
+                  transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
+                  transformResponse: camelCaselize
+                })
+                .then(function(resp) {
+                  var data = resp.data.response;
+                  angular.extend(self[type], data);
+                  return data;
+                });
     };
 
     function fetchAddress() {

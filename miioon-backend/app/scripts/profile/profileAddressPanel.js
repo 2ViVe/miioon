@@ -8,13 +8,24 @@
       $scope.isEditing = false;
       $scope.isLoading = true;
 
+      Address.fetch().then(function(addr) {
+        $scope.address = addr[$scope.addressType.toLowerCase()];
+      });
+
       $scope.toggle = function() {
         $scope.isEditing = !$scope.isEditing;
       };
 
-      Address.fetch().then(function(addr) {
-        $scope.address = addr[$scope.addressType.toLowerCase()];
-      });
+      $scope.save = function() {
+        $scope.address.update()
+          .then(function() {
+            $scope.isEditing = false;
+          })
+          .catch(function() {
+            $scope.isEditing = true;
+          });
+      };
+
     }])
     .directive('profileAddressPanel', function() {
       return {
