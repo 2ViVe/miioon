@@ -55,6 +55,14 @@ angular.module('2ViVe')
           });
       };
 
+      $scope.totalPrice = function() {
+        var adjustments = 0;
+        angular.forEach(Order.data.adjustments, function(adjustment) {
+          adjustments += adjustment.amount;
+        });
+        return adjustments + Order.data.total;
+      };
+
       $scope.changeShippingMethod = function(selectedShippingMethod) {
         if ($scope.orderId) {
           Order.changeShippingMethod($scope.orderId, selectedShippingMethod.id)
