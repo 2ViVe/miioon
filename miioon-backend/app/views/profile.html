@@ -4,53 +4,7 @@
 
 <div data-profile-password-panel></div>
 
-
-<div class="row panel">
-  <!-- Personal Information -->
-  <div class="small-10 small-offset-1">
-    <header class="row">
-      <h3 class="small-7 columns primary-color">Personal Information</h3>
-
-      <div class="small-3 end columns primary-color text-right">
-        <a ng-click="editingPersonalInfo = !editingPersonalInfo">Edit</a>
-      </div>
-    </header>
-
-    <div ng-if="!editingPersonalInfo">
-      <div class="row">
-        <div class="small-3 columns">Date Of Birth</div>
-        <div class="small-3 end columns">{{ profile.birthDate }}</div>
-      </div>
-      <div class="row">
-        <div class="small-3 columns">SSN</div>
-        <div class="small-3 end columns">{{ profile.ssn }}</div>
-      </div>
-    </div>
-
-    <form ng-if="editingPersonalInfo" ng-submit="savePersonalInfo()">
-
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="dateOfBirth" class="inline">Date Of Birth:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text" id="dateOfBirth" name="dateOfBirth" ng-model="profile.birthDate"
-                 placeholder="click to edit ... ">
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="small-5 end columns small-offset-3">
-          <button class="btn-block" type="submit">Save</button>
-        </div>
-      </div>
-    </form>
-
-  </div>
-
-</div>
+<div data-profile-personal-panel></div>
 
 <div class="row panel">
   <!-- Home Address -->

@@ -4,6 +4,8 @@ angular.module('2ViVe')
   .factory('User', ['$http', 'LocalStorage', 'CamelCaseLize', 'Dashlize',
     function($http, LocalStorage, camelCaseLize, dashlize) {
 
+      var useCache = false;
+
       function UserModel(data) {
         angular.extend(this, data);
       }
@@ -12,6 +14,7 @@ angular.module('2ViVe')
 
       proto.save = function() {
         var self = this;
+        useCache = false;
         return $http.post('/api/v2/profile', this, {
           transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
           transformResponse: camelCaseLize
@@ -34,11 +37,13 @@ angular.module('2ViVe')
         },
         fetch: function() {
           return $http.get('/api/v2/profile', {
-                    transformResponse: camelCaseLize
+                    transformResponse: camelCaseLize,
+                    cache: useCache
                   })
                   .success(function(data) {
                     User.data = new UserModel(data.response);
                     User.isLogin = true;
+                    useCache = true;
                   }).then(function(resp) {
                     return new UserModel(resp.data.response);
                   });
