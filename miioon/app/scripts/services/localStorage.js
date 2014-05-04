@@ -4,6 +4,9 @@ angular.module('2ViVe')
   .factory('LocalStorage', ['$cookies', 'UUID',
     function($cookies, UUID) {
       return {
+        clearSession: function() {
+          $cookies.sid = '';
+        },
         createVisitorId: function() {
           $cookies.visitorId = UUID.generate();
           return $cookies.visitorId;
