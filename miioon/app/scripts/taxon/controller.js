@@ -9,6 +9,9 @@ angular.module('2ViVe')
       $scope.$watch(function() {
         return Taxons.data;
       }, function() {
+        if (Taxons.data.length === 0) {
+          return null;
+        }
         $scope.taxon = Taxons.getById(taxonId);
         $scope.currentSubTaxon = Taxons.getSubTaxonByIdAndTaxon(subTaxonId, $scope.taxon);
 
