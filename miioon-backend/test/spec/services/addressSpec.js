@@ -24,9 +24,11 @@ describe('Address Service', function() {
 
     beforeEach(function() {
       responseData = {
-        'billing': {
-          'first-name': 'kidd',
-          'last-name' : 'kai'
+        'response': {
+          'billing': {
+            'first-name': 'kidd',
+            'last-name' : 'kai'
+          }
         }
       };
     });
@@ -46,7 +48,7 @@ describe('Address Service', function() {
 
       httpBackend.flush();
 
-      expect(data.billing.firstName).toEqual(responseData.billing['first-name']);
+      expect(data.billing.firstName).toEqual(responseData.response.billing['first-name']);
     });
 
 
