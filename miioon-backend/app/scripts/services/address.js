@@ -6,11 +6,31 @@ angular.module('2ViVe')
     var API_URL = '/api/v2/addresses';
 
     var address,
-        needCache = false;
+        needCache = false,
+        proto;
 
     function Address(data) {
-      angular.extend(this, data);
+
+      this.home = {};
+      this.billing = {};
+      this.website = {};
+      this.shipping = {};
+
+      this.extend(data);
     }
+
+    proto = Address.prototype;
+
+    proto.extend = function(address) {
+      angular.forEach(['home', 'billing', 'shipping', 'website'], function(type) {
+        if (!address[type]) {
+          return;
+        }
+        angular.extend(this[type], address[type]);
+      }, this);
+
+      return this;
+    };
 
     function fetchAddress() {
       return $http.get(API_URL, {
@@ -18,7 +38,7 @@ angular.module('2ViVe')
         cache: needCache
       }).then(function(resp) {
         needCache = true;
-        address = address ? angular.extend(address, resp.data.response) : new Address(resp.data.response);
+        address = address ? address.extend(resp.data.response) : new Address(resp.data.response);
         return address;
       });
     }
