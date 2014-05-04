@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries',
-    function($scope, Registration, $window, countries) {
+  .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries', 'User',
+    function($scope, Registration, $window, countries, User) {
       $scope.countries = countries;
       $scope.currentStepNumber = 1;
       $scope.completedStepNumber = 1;
@@ -48,7 +48,7 @@ angular.module('2ViVe')
               $scope.isFailed = true;
               return;
             }
-
+            User.login($scope.userInfo.login, $scope.userInfo.password);
             $scope.currentStepNumber++;
             $scope.successInfo = data.response;
           });
