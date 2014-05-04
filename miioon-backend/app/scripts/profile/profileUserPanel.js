@@ -7,6 +7,12 @@
       $scope.isEditing = false;
       $scope.isLoading = true;
 
+      $scope.passwords = {
+        newPassword: '',
+        oldPassword: ''
+      };
+
+
       User.fetch().then(function(result) {
         $scope.profile = result;
         $scope.isLoading = false;
@@ -14,6 +20,12 @@
 
       $scope.toggle = function() {
         $scope.isEditing = !$scope.isEditing;
+      };
+
+      $scope.changePassword = function() {
+        $scope.profile.updatePassword($scope.passwords).then(function() {
+          $scope.isEditing = false;
+        });
       };
 
       $scope.save = function() {

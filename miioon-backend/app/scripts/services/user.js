@@ -5,6 +5,7 @@ angular.module('2ViVe')
     function($http, LocalStorage, camelCaseLize, dashlize) {
 
       var useCache = false;
+      var user = null;
 
       function UserModel(data) {
         angular.extend(this, data);
@@ -14,11 +15,23 @@ angular.module('2ViVe')
 
       proto.save = function() {
         var self = this;
-        useCache = false;
         return $http.post('/api/v2/profile', this, {
           transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
           transformResponse: camelCaseLize
-        }).then(function() { return self; });
+        }).then(function() {
+          useCache = false;
+          return self;
+        });
+      };
+
+      proto.updatePassword = function(passwords) {
+        return $http.post('/api/v2/profile/password', passwords, {
+          transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
+          transformResponse: camelCaseLize
+        }).then(function(resp) {
+          useCache = false;
+          return resp.data.response;
+        });
       };
 
       var User = {
@@ -41,11 +54,23 @@ angular.module('2ViVe')
                     cache: useCache
                   })
                   .success(function(data) {
-                    User.data = new UserModel(data.response);
+                    if (!user) {
+                      user = new UserModel(data.response);
+                    }
+                    else {
+                      angular.extend(user, data.response);
+                    }
+                    User.data = user;
                     User.isLogin = true;
                     useCache = true;
                   }).then(function(resp) {
-                    return new UserModel(resp.data.response);
+                    if (!user) {
+                      user = new UserModel(resp.data.response);
+                    }
+                    else {
+                      angular.extend(user, resp.data.response);
+                    }
+                    return user;
                   });
         }
       };
