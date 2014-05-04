@@ -61,6 +61,9 @@ angular.module('miioonApp')
       .when('/t-c', {
         templateUrl: 'views/t-c.html'
       })
+      .when('/mentoring', {
+        templateUrl: 'views/comming.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
