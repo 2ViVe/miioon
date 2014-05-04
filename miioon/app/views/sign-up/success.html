@@ -76,13 +76,16 @@
 </div>
 <div class="row">
   <div class="columns small-12">
-    <ul class="medium-font">
-      <li>{{payment['shipping-address']['first-name']}} {{payment['shipping-address']['last-name']}}</li>
-      <li>{{payment['shipping-address']['street']}}</li>
-      <li>{{payment['shipping-address']['city']}}, {{payment['shipping-address']['state']}},
-        {{payment['shipping-address']['country']}}, {{payment['shipping-address']['zip']}}
-      </li>
-    </ul>
+    <p>
+      {{payment['shipping-address']['first-name']}} {{payment['shipping-address']['last-name']}}
+    </p>
+    <p>
+      {{payment['shipping-address']['street']}}
+    </p>
+    <p>
+      {{payment['shipping-address']['city']}}, {{payment['shipping-address']['state']}},
+      {{payment['shipping-address']['country']}}, {{payment['shipping-address']['zip']}}
+    </p>
   </div>
 </div>
 <div class="row title">
@@ -92,13 +95,16 @@
 </div>
 <div class="row">
   <div class="columns small-12">
-    <ul class="medium-font">
-      <li>{{payment.billingAddress['first-name']}} {{payment.billingAddress['last-name']}}</li>
-      <li>{{payment.billingAddress['street']}}</li>
-      <li>{{payment.billingAddress['city']}}, {{payment.billingAddress['state']}},
-        {{payment.billingAddress['country']}}, {{payment.billingAddress['zip']}}
-      </li>
-    </ul>
+    <p>
+      {{payment.billingAddress['first-name']}} {{payment.billingAddress['last-name']}}
+    </p>
+    <p>
+      {{payment.billingAddress['street']}}
+    </p>
+    <p>
+      {{payment.billingAddress['city']}}, {{payment.billingAddress['state']}},
+      {{payment.billingAddress['country']}}, {{payment.billingAddress['zip']}}
+    </p>
   </div>
 </div>
 <div class="row title">
