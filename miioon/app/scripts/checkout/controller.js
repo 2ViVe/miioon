@@ -60,7 +60,7 @@ angular.module('2ViVe')
         angular.forEach(Order.data.adjustments, function(adjustment) {
           adjustments += adjustment.amount;
         });
-        return adjustments + Order.data.total;
+        return adjustments + Order.data['item-total'];
       };
 
       $scope.changeShippingMethod = function(selectedShippingMethod) {
