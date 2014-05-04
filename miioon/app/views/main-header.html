@@ -33,9 +33,12 @@
     <div class="columns medium-3 small-5">
       <div class="shopping-bag right">
         <i class="icons-shopping-bag"></i>
-        <a href="/#/shopping">
-          Shopping Bag ({{shopping.items.length ? shopping.items.length : 0}} items)
+        <a href="/#/shopping" ng-if="shopping.items.length > 0">
+          Shopping Bag (shopping.items.length)
         </a>
+        <span ng-if="shopping.items.length === 0">
+          Shopping Bag (0)
+        </span>
       </div>
     </div>
   </div>
