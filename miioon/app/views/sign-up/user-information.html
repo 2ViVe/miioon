@@ -54,7 +54,7 @@
     <label class="right inline required" for="password">Password</label>
   </div>
   <div class="small-5 end columns">
-    <input required ng-model="userInfo.password" type="password" name="password" id="password" ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/"/>
+    <input required ng-model="userInfo.password" type="password" name="password" id="password" ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/"/>
     <small ng-show="submitted && step.password.$error.required" class="error">
       This field is required.
     </small>
