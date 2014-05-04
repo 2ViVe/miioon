@@ -1,6 +1,6 @@
 'use strict';
 
-;(function() {
+(function() {
 
   angular.module('2ViVe')
     .controller('profileInfoPanelCtrl', ['$scope', 'User', function($scope, User) {
@@ -39,7 +39,6 @@
         controller: 'profileInfoPanelCtrl',
         scope: {},
         link: function(scope, elem, attrs) {
-
         }
       };
     });
