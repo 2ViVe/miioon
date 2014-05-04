@@ -1,107 +1,17 @@
 <div class='profile-container'>
 
-<div data-profile-info-panel></div>
+  <div data-profile-info-panel></div>
 
-<div data-profile-password-panel></div>
+  <div data-profile-password-panel></div>
 
-<div data-profile-personal-panel></div>
+  <div data-profile-personal-panel></div>
 
-<div data-profile-address-panel data-address-type="home" data-address-title="Home"></div>
+  <div data-profile-address-panel data-address-type="home" data-address-title="Home"></div>
 
-<div data-profile-address-panel data-address-type="shipping" data-address-title="Shipment"></div>
+  <div data-profile-address-panel data-address-type="shipping" data-address-title="Shipment"></div>
 
-<div class="row panel">
-  <!-- WebAddress -->
-  <div class="small-10 small-offset-1">
-    <header class="row">
-      <h3 class="small-7 columns primary-color">WebAddress</h3>
+  <div data-profile-website-panel data-address-type="website"></div>
 
-      <div class="small-3 end columns primary-color text-right"><a ng-click="editingWebAddress = !editingWebAddress">edit</a>
-      </div>
-    </header>
-
-    <div ng-if="!editingWebAddress">
-      <div class="row">
-        <div class="small-3 columns">Name</div>
-        <div class="small-3 end columns">{{ address.website.firstName }} {{ address.website.lastName }}</div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">Home Phone</div>
-        <div class="small-3 end columns">{{ address.website.phone }}</div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">Mobile Phone</div>
-        <div class="small-3 end columns">{{ address.website.mobile }}</div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">Email</div>
-        <div class="small-3 end columns">{{ address.website.email }}</div>
-      </div>
-    </div>
-
-    <form ng-if="editingWebAddress">
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="websiteAddrFirstName" class="inline">Name:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text" id="websiteAddrFirstName" name="websiteAddrFirstName" ng-model="address.website.firstName"
-                 placeholder="click to edit ... ">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="websiteAddrLastName" class="inline">Name:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text" id="websiteAddrLastName" name="websiteAddrLastName" ng-model="address.website.lastName"
-                 placeholder="click to edit ... ">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="websiteAddrHomePhone" class="inline">Home Phone:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text" id="websiteAddrHomePhone" name="websiteAddrHomePhone" ng-model="address.website.phone"
-                 placeholder="click to edit ... ">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="websiteAddrMobilePhone" class="inline">Mobile Phone:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text" id="websiteAddrMobilePhone" name="websiteAddrMobilePhone" ng-model="address.website.mobile"
-                 placeholder="click to edit ... ">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="websiteAddrEmail" class="inline">Email:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="email" id="websiteAddrEmail" name="websiteAddrEmail" ng-model="address.website.email"
-                 placeholder="click to edit ... ">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-5 end columns small-offset-3">
-          <button class="btn-block" type="submit">Save</button>
-        </div>
-      </div>
-    </form>
-
-  </div>
-</div>
 </div>
 
 

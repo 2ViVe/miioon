@@ -1,0 +1,92 @@
+<div class="row panel">
+  <!-- WebAddress -->
+  <div class="small-10 small-offset-1">
+    <header class="row">
+      <h3 class="small-7 columns primary-color">WebAddress</h3>
+
+      <div class="small-3 end columns primary-color text-right"><a ng-click="toggle()">edit</a>
+      </div>
+    </header>
+
+    <div ng-if="!isEditing">
+      <div class="row">
+        <div class="small-3 columns">Name</div>
+        <div class="small-3 end columns">{{ address.firstName }} {{ address.lastName }}</div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">Home Phone</div>
+        <div class="small-3 end columns">{{ address.phone }}</div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">Mobile Phone</div>
+        <div class="small-3 end columns">{{ address.mobile }}</div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">Email</div>
+        <div class="small-3 end columns">{{ address.email }}</div>
+      </div>
+    </div>
+
+    <form ng-if="isEditing" ng-submit="save()">
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="websiteAddrFirstName" class="inline">Name:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text" id="websiteAddrFirstName" name="websiteAddrFirstName" ng-model="address.firstName"
+                 placeholder="click to edit ... ">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="websiteAddrLastName" class="inline">Name:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text" id="websiteAddrLastName" name="websiteAddrLastName" ng-model="address.lastName"
+                 placeholder="click to edit ... ">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="websiteAddrHomePhone" class="inline">Home Phone:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text" id="websiteAddrHomePhone" name="websiteAddrHomePhone" ng-model="address.phone"
+                 placeholder="click to edit ... ">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="websiteAddrMobilePhone" class="inline">Mobile Phone:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text" id="websiteAddrMobilePhone" name="websiteAddrMobilePhone" ng-model="address.mobile"
+                 placeholder="click to edit ... ">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="websiteAddrEmail" class="inline">Email:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="email" id="websiteAddrEmail" name="websiteAddrEmail" ng-model="address.email"
+                 placeholder="click to edit ... ">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-5 end columns small-offset-3">
+          <button class="btn-block" type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
