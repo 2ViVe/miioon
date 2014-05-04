@@ -25,6 +25,7 @@ angular.module('2ViVe')
 
       giftCard.fetch().success(function() {
         $scope.giftCards = giftCard.data.variants;
+        $scope.giftCardImages = giftCard.data.images;
       });
 
       $scope.preview = function() {
