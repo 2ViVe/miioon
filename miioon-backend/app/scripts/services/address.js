@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Address', ['$http', 'CamelCaseLize', 'Dashlize',
-    function($http, camelCaselize, dashlize) {
+  .factory('Address', ['$http', '$q', 'CamelCaseLize', 'Dashlize',
+    function($http, $q, camelCaselize, dashlize) {
 
     var API_URL = '/api/v2/addresses';
 
@@ -39,18 +39,57 @@ angular.module('2ViVe')
       return this;
     };
 
+    proto.validate = function(type, data) {
+      var deferred = $q.defer();
+      $http
+        .post(API_URL + '/' + type + '/validate', data, {
+          transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
+          transformResponse: camelCaselize
+        })
+        .then(validateHandler);
+
+
+      function validateHandler(response) {
+        var failures = response.data.response.failures;
+        if (failures && Object.keys(failures).length) {
+          failures = failuresToObject(failures);
+          address[type]['errors'] = failures;
+          deferred.reject(failures);
+        }
+        else {
+          delete address[type]['errors'];
+          deferred.resolve(failures);
+        }
+      }
+
+      return deferred.promise;
+    };
+
+    function failuresToObject(failures) {
+      var result = {};
+      angular.forEach(failures, function(failure) {
+        result[failure.field] = failure.message;
+      });
+
+      return camelCaselize(result);
+    }
+
     proto.update = function(type, data) {
       var self = this;
-      return $http
-                .post(API_URL + '/' + type, data, {
-                  transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
-                  transformResponse: camelCaselize
-                })
-                .then(function(resp) {
-                  var data = resp.data.response;
-                  angular.extend(self[type], data);
-                  return data;
-                });
+
+      return self.validate(type, data)
+                 .then(function() {
+                   return $http
+                     .post(API_URL + '/' + type, data, {
+                       transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
+                       transformResponse: camelCaselize
+                     });
+                 })
+                 .then(function(resp) {
+                   var data = resp.data.response;
+                   angular.extend(self[type], data);
+                   return data;
+                 });
     };
 
     function fetchAddress() {
