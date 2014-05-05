@@ -5,7 +5,7 @@ angular.module('2ViVe')
     function($http, LocalStorage) {
       var User = {
         login: function(username, password, isRemember) {
-          return $http.post('/authentication/token', {
+          return $http.post('/login', {
             user: username,
             password: password,
             'remember-me': isRemember
@@ -15,7 +15,11 @@ angular.module('2ViVe')
           });
         },
         logout: function() {
-          LocalStorage.clearSession();
+          return $http.post('/logout')
+            .success(function() {
+              LocalStorage.clearSession();
+              User.isLogin = false;
+            });
         },
         fetch: function() {
           User.onFetch = $http.get('/api/v2/profile')
