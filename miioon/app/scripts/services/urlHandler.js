@@ -21,8 +21,8 @@ angular.module('2ViVe')
           }
 
           return url.indexOf('www.miioon') >= 0 ?
-            url.replace('www.miioon', 'back-office.miioon') :
-            url.replace('miioon', 'back-office.miioon');
+            url.replace('www.miioon', 'backoffice.miioon') :
+            url.replace('miioon', 'backoffice.miioon');
         },
         handleSecurityPath: function(stopLocationChange) {
           var path = $location.path();
