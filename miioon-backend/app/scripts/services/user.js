@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('User', ['$http', 'LocalStorage', 'CamelCaseLize', 'Dashlize',
-    function($http, LocalStorage, camelCaseLize, dashlize) {
+  .factory('User', ['$http', '$q', 'LocalStorage', 'CamelCaseLize', 'Dashlize',
+    function($http, $q, LocalStorage, camelCaseLize, dashlize) {
 
       var useCache = false;
       var user = null;
@@ -53,23 +53,17 @@ angular.module('2ViVe')
                     transformResponse: camelCaseLize,
                     cache: useCache
                   })
-                  .success(function(data) {
-                    if (!user) {
-                      user = new UserModel(data.response);
-                    }
-                    else {
-                      angular.extend(user, data.response);
-                    }
-                    User.data = user;
-                    User.isLogin = true;
-                    useCache = true;
-                  }).then(function(resp) {
+                  .then(function(resp) {
                     if (!user) {
                       user = new UserModel(resp.data.response);
                     }
                     else {
                       angular.extend(user, resp.data.response);
                     }
+
+                    User.data = user;
+                    User.isLogin = true;
+                    useCache = true;
                     return user;
                   });
         }
