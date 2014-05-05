@@ -23,8 +23,6 @@
     display: table-cell;
 
     &:hover {
-      background: $grey-lighter;
-
       .view-detail {
         display: block;
       }
