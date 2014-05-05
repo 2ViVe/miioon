@@ -113,7 +113,7 @@
       <input type="password" required
              id="password" name="password"
              ng-model="password"
-             ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/" />
+             ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/" />
       <small ng-show="submitted && retailSignupForm.password.$error.required" class="error">
         This field is required.
       </small>
