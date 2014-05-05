@@ -68,7 +68,7 @@ angular.module('2ViVe')
               angular.forEach($scope.payment['available-shipping-methods'], function(availableShippingMethod) {
                 if (availableShippingMethod.id === $scope.address.shipmentAddress['shipping-method-id']) {
                   $scope.payment['shipping-method'] = availableShippingMethod.name;
-                  return;
+                  return null;
                 }
               });
 

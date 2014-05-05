@@ -5,6 +5,17 @@ angular.module('2ViVe')
     function($http, $q, $rootScope) {
       var countries = [];
 
+      function parseLineItems(lineitems) {
+        var _lineItems = [];
+        angular.forEach(lineitems, function(lineItem) {
+          _lineItems.push({
+            'variant-id': lineItem['variant-id'],
+            'quantity': lineItem.quantity
+          });
+        });
+        return _lineItems;
+      }
+
       function fetchCountries() {
         var promise;
 
@@ -42,18 +53,11 @@ angular.module('2ViVe')
         if (!roleCode) {
           roleCode = 'D';
         }
-        var _lineItems = [];
-        angular.forEach(lineItems, function(lineItem) {
-          _lineItems.push({
-            'variant-id': lineItem['variant-id'],
-            'quantity': 1
-          });
-        });
         return $http.post('/api/v2/registrations/orders/summary', {
           'home-address': homeAddress,
           'shipping-address': shippingAddress,
           'billing-address': billingAddress,
-          'line-items': _lineItems,
+          'line-items': parseLineItems(lineItems),
           'role-code': roleCode
         });
       }
@@ -84,7 +88,7 @@ angular.module('2ViVe')
           'shipping-method-id': shippingMethodId,
           'shipping-address': shippingAddress,
           'billing-address': billingAddress,
-          'line-items': lineItems
+          'line-items': parseLineItems(lineItems)
         });
       }
 
@@ -115,17 +119,9 @@ angular.module('2ViVe')
       }
 
       function orderAdjustments(shippingMethodId, lineItems, homeAddress, shippingAddress, billingAddress) {
-        var _lineItems = [];
-        angular.forEach(lineItems, function(lineItem) {
-          _lineItems.push({
-            'variant-id': lineItem['variant-id'],
-            'quantity': lineItem['quantity']
-          });
-        });
-
         return $http.post('/api/v2/registrations/orders/adjustments', {
           'shipping-method-id': shippingMethodId,
-          'line-items': _lineItems,
+          'line-items': parseLineItems(lineItems),
           'home-address': homeAddress,
           'shipping-address': shippingAddress,
           'billing-address': billingAddress,
