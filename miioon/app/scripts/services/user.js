@@ -5,7 +5,7 @@ angular.module('2ViVe')
     function($http, LocalStorage) {
       var User = {
         login: function(username, password, isRemember) {
-          return $http.post('/login', {
+          return $http.post('/api/login', {
             user: username,
             password: password,
             'remember-me': isRemember
@@ -15,7 +15,7 @@ angular.module('2ViVe')
           });
         },
         logout: function() {
-          return $http.post('/logout')
+          return $http.post('/api/logout')
             .success(function() {
               LocalStorage.clearSession();
               User.isLogin = false;
