@@ -8,7 +8,8 @@ angular.module('2ViVe')
       $scope.backOfficeUrl = UrlHandler.backOfficeUrl();
 
       $scope.logout = function() {
-        User.logout();
-        $window.location.href = '/';
+        User.logout().success(function() {
+          $window.location.href = '/';
+        });
       };
     }]);
