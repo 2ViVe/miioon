@@ -18,7 +18,7 @@ angular.module('2ViVe')
           LocalStorage.clearSession();
         },
         fetch: function() {
-          return $http.get('/api/v2/profile')
+          User.onFetch = $http.get('/api/v2/profile')
             .success(function(data) {
               User.data = data.response;
               User.isLogin = true;
@@ -26,6 +26,7 @@ angular.module('2ViVe')
             .error(function() {
               User.isLogin = false;
             });
+          return User.onFetch;
         }
       };
       return User;

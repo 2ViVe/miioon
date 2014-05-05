@@ -6,11 +6,11 @@ angular.module('2ViVe')
       var GiftCard = function() {
       };
 
-      GiftCard.prototype.fetch = function() {
+      GiftCard.prototype.fetch = function(roleCode) {
         var giftCard = this;
         return $http.get('/api/v2/products/18', {
           params: {
-            'role-code': 'D',
+            'role-code': roleCode,
             'country-id': 1213,
             'catalog-code': 'GC'
           }

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('GiftCardEmailFormController', ['$scope',
-    function($scope) {
+  .controller('GiftCardEmailFormController', ['$scope', 'User',
+    function($scope, User) {
       $scope.$watch('emailForm.$invalid', function(invalid) {
         $scope.formInvalid.email = invalid;
       });
@@ -23,9 +23,18 @@ angular.module('2ViVe')
         'post': true
       };
 
-      giftCard.fetch().success(function() {
-        $scope.giftCards = giftCard.data.variants;
-        $scope.giftCardImages = giftCard.data.images;
+      User.onFetch.error(function() {
+        giftCard.fetch('R').success(function() {
+          $scope.giftCards = giftCard.data.variants;
+          $scope.giftCardImages = giftCard.data.images;
+        });
+      });
+
+      User.onFetch.success(function() {
+        giftCard.fetch().success(function() {
+          $scope.giftCards = giftCard.data.variants;
+          $scope.giftCardImages = giftCard.data.images;
+        });
       });
 
       $scope.preview = function() {
