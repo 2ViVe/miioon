@@ -115,9 +115,17 @@ angular.module('2ViVe')
       }
 
       function orderAdjustments(shippingMethodId, lineItems, homeAddress, shippingAddress, billingAddress) {
+        var _lineItems = [];
+        angular.forEach(lineItems, function(lineItem) {
+          _lineItems.push({
+            'variant-id': lineItem['variant-id'],
+            'quantity': lineItem['quantity']
+          });
+        });
+
         return $http.post('/api/v2/registrations/orders/adjustments', {
           'shipping-method-id': shippingMethodId,
-          'line-items': lineItems,
+          'line-items': _lineItems,
           'home-address': homeAddress,
           'shipping-address': shippingAddress,
           'billing-address': billingAddress,
