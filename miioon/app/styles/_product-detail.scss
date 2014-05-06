@@ -1,6 +1,20 @@
 .product-detail {
   margin-bottom: 20px;
 
+  .thumbnails {
+    margin-top: 20px;
+
+    .current {
+      img {
+        border-color: $grey-border;
+      }
+    }
+
+    img {
+      border: 2px solid transparent;
+    }
+  }
+
   .info-panel {
     border-bottom: 1px dashed $grey-border;
     padding: 25px 0;

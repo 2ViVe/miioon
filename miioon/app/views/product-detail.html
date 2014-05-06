@@ -8,8 +8,14 @@
   </div>
 </div>
 <div class='row product-detail'>
-  <div class='medium-5 columns'>
-    <img class="zoom-image" ng-src="{{product.images[0]}}" alt="{{product.name}}"/>
+  <div class='medium-5 columns text-center'>
+    <img class="zoom-image" ng-src="{{currentImage}}" alt="{{product.name}}"/>
+    <ul class="small-block-grid-6 thumbnails">
+      <li ng-repeat="image in product.images" ng-click="changeImage(image)"
+        ng-class="{current: currentImage === image}">
+        <img ng-src="{{thumbnailImage(image)}}"/>
+      </li>
+    </ul>
   </div>
   <div class="medium-7 columns">
     <div class="row">

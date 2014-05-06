@@ -17,6 +17,7 @@ angular.module('2ViVe')
         $scope.sizes = product.sizes;
         $scope.selectedColor = product.colors[0];
         $scope.selectedSize = product.sizes[0];
+        $scope.currentImage = product.data.images[0];
         updateVariant();
 
         $scope.$watch(function() {
@@ -30,6 +31,14 @@ angular.module('2ViVe')
           }
         });
       });
+
+      $scope.changeImage = function(image) {
+        $scope.currentImage = image;
+      };
+
+      $scope.thumbnailImage = function(image) {
+        return image.replace('large', 'small');
+      };
 
       $scope.changeSize = function(size) {
         $scope.selectedSize = size;
