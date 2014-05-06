@@ -3,7 +3,8 @@
     <ul class="breadcrumbs">
       <li><a ng-href="{{taxon | taxonLink}}">&gt; {{taxon.name}}</a></li>
       <li ng-if="subTaxon"><a ng-href="/#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">{{subTaxon.name}}</a></li>
-      <li class="current">{{product.name}}</li>
+      <!--TODO: fix display problemin safari, need to remove inline style when find a better way-->
+      <li style="width: 50%;">{{product.name}}</li>
     </ul>
   </div>
 </div>
