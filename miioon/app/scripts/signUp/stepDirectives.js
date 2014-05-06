@@ -52,6 +52,7 @@ angular.module('2ViVe')
         $scope.nextStep = function() {
           if (this.step.$valid) {
             $scope.$emit('NextStep');
+            $scope.lineItems = [];
             angular.forEach($scope.products, function(product) {
               if (product.quantity > 0) {
                 $scope.lineItems.push({
