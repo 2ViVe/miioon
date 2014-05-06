@@ -10,19 +10,25 @@ angular.module('2ViVe')
         });
       };
 
-      var product = new Product($routeParams.productId);
-      product.fetch.success(function() {
-        $scope.product = product.data;
-        $scope.colors = product.colors;
-        $scope.sizes = product.sizes;
-        $scope.selectedColor = product.colors[0];
-        $scope.selectedSize = product.sizes[0];
-        $scope.currentImage = product.data.images[0];
-        updateVariant();
+      var product;
 
-        $scope.$watch(function() {
-          return Taxons.data;
-        }, function() {
+      $scope.$watch(function() {
+        return Taxons.data;
+      }, function() {
+        if (Taxons.data.length === 0) {
+          return;
+        }
+
+        product = new Product($routeParams.productId);
+        product.fetch.success(function() {
+          $scope.product = product.data;
+          $scope.colors = product.colors;
+          $scope.sizes = product.sizes;
+          $scope.selectedColor = product.colors[0];
+          $scope.selectedSize = product.sizes[0];
+          $scope.currentImage = product.data.images[0];
+          updateVariant(product);
+
           $scope.subTaxon = Taxons.getSubTaxonById(product.data['taxon-id']);
           if ($scope.subTaxon !== null) {
             $scope.taxon = Taxons.getById($scope.subTaxon.parent_id);
