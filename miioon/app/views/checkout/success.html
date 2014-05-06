@@ -1,6 +1,9 @@
 <div class="row">
   <h2 class="columns small-12">
     Your order has been processed successfully!
+    <a ng-href="/api/v2/orders/pdf-invoice?ids={{successInfo['order-id']}}" class="button tiny right" target="_blank">
+      Print
+    </a>
   </h2>
 </div>
 <div class="row title">
