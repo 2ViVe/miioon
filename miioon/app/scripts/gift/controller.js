@@ -50,7 +50,7 @@ angular.module('2ViVe')
         var tabInValid = false;
 
         angular.forEach($scope.tabs, function(tab) {
-          if (tab.active && $scope.formInvalid[tab.form].$invalid) {
+          if (tab.active && $scope.formInvalid[tab.form]) {
             tabInValid = true;
             return null;
           }
