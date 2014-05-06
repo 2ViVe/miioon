@@ -12,10 +12,10 @@
         oldPassword: ''
       };
 
-
       User.fetch().then(function(result) {
         $scope.profile = result;
         $scope.isLoading = false;
+        $scope.initProfile = angular.copy($scope.profile);
       });
 
       $scope.toggle = function() {

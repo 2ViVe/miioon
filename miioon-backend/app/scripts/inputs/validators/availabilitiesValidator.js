@@ -5,12 +5,19 @@ angular.module('2ViVe')
         restrict: 'A',
         require: 'ngModel',
         scope: {
-          key: '@availabilitiesValidator'
+          key: '@availabilitiesValidator',
+          initValue: '=initValue'
         },
         link: function (scope, element, attrs, ctrl) {
           angular.element(element).on('blur', function () {
             var value = ctrl.$modelValue;
+
             if (ctrl.$isEmpty(value)) {
+              return;
+            }
+
+            if (scope.initValue && scope.initValue.trim() === value.trim()) {
+              ctrl.$setValidity('available', true);
               return;
             }
 
