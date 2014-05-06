@@ -6,6 +6,7 @@
     .controller('profileInfoPanelCtrl', ['$scope', 'User', function($scope, User) {
       $scope.isEditing = false;
       $scope.isLoading = true;
+      $scope.submitted = false;
 
       $scope.passwords = {
         newPassword: '',
@@ -22,13 +23,29 @@
         $scope.isEditing = !$scope.isEditing;
       };
 
-      $scope.changePassword = function() {
-        $scope.profile.updatePassword($scope.passwords).then(function() {
-          $scope.isEditing = false;
-        });
+      $scope.changePassword = function(isValid) {
+        $scope.submitted = true;
+        if (!isValid) {
+          return;
+        }
+        $scope
+          .profile
+          .updatePassword($scope.passwords).then(function() {
+            $scope.isEditing = false;
+            $scope.submitted = false;
+            $scope.$errors = {};
+          })
+          .catch(function(resp) {
+            if (!resp.data.meta || !resp.data.meta.error) { return ; }
+            var error = resp.data.meta.error;
+            $scope.$errors = {};
+            $scope.$errors[error.errorCode] = error.message;
+          });
+
       };
 
       $scope.save = function() {
+        $scope.submitted = true;
         $scope.isLoading = true;
         $scope
           .profile
