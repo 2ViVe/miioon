@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <form novalidate ng-if="isEditing" name="form" ng-submit="save()">
+    <form novalidate ng-if="isEditing" name="form" ng-submit="save(form.$valid, form)">
       <div class="row">
         <div class="small-3 columns">
           <label for="{{addressType}}-firstName" class="inline">First Name:</label>
@@ -195,11 +195,14 @@
           <label for="{{addressType}}-AddrHomePhone" class="inline">Home Phone:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="{{addressType}}-AddrHomePhone" name="addrHomePhone" ng-model="address.phone"
+          <input type="text"
+                 id="{{addressType}}-AddrHomePhone"
+                 name="addrHomePhone"
+                 ng-model="address.phone"
+                 data-require-with="address.mobile"
                  placeholder="click to edit ... ">
-
-          <small ng-show="form.addrHomePhone.$error.required" class="error">
-            This field is required.
+          <small ng-show="form.addrHomePhone.$error.requireWith || form.addrMobilePhone.$error.requireWith" class="error">
+            Mobile and Home Phone at least should have one filled.
           </small>
           <small class="error" ng-show="address.errors.phone">
             {{ address.errors.phone }}
@@ -213,10 +216,17 @@
           <label for="{{addressType}}-AddrMobilePhone" class="inline">Mobile Phone:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="{{addressType}}-AddrMobilePhone" name="addrMobilePhone" ng-model="address.mobile"
+          <input type="text"
+                 id="{{addressType}}-AddrMobilePhone"
+                 name="addrMobilePhone"
+                 ng-model="address.mobile"
+                 data-require-with="address.phone"
                  placeholder="click to edit ... ">
           <small class="error" ng-show="address.errors.mobile">
             {{ address.errors.mobile }}
+          </small>
+          <small ng-show="form.addrMobilePhone.$error.requireWith || form.addrHomePhone.$error.requireWith" class="error">
+            Mobile and Home Phone at least should have one filled.
           </small>
         </div>
       </div>

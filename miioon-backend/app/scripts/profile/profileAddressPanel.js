@@ -21,7 +21,10 @@
         $scope.isEditing = !$scope.isEditing;
       };
 
-      $scope.save = function() {
+      $scope.save = function(isValid) {
+        if (!isValid) {
+          return;
+        }
         $scope.address.update()
           .then(function() {
             $scope.isEditing = false;
