@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <form ng-if="isEditing" name="form" ng-submit="save()">
+    <form novalidate ng-if="isEditing" name="form" ng-submit="save()">
       <div class="row">
         <div class="small-3 columns">
           <label for="{{addressType}}-firstName" class="inline">First Name:</label>
