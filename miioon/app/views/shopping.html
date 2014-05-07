@@ -32,10 +32,12 @@
             <a ng-href="/#/product/{{variant['product-id']}}" class="product-name">
               {{variant.name}}
             </a>
-            <div class="product-sku">
-              SKU: {{variant.sku}}
-            </div>
-            <a ng-click="remove(variant)" class="primary-color small-font">x Remove</a>
+            <ul class="item-info medium-font">
+              <li>
+                SKU: {{variant.sku}}
+              </li>
+            </ul>
+            <a ng-click="remove(variant)" class="primary-color small-font remove-item">x Remove</a>
           </td>
           <td class="quantity">
             <input type="number" ng-model="shopping.getByItemId(variant.id).quantity"/> <br/>

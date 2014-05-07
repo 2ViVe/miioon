@@ -54,8 +54,6 @@ angular.module('2ViVe')
             'shipping-address': Order.data['shipping-address'],
             'billing-address': Order.data['billing-address'],
             'line-items': Order.data['line-items']
-          }).success(function(data) {
-            console.log(data);
           });
         }
       };
