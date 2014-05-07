@@ -1,39 +1,37 @@
-<header class="main-header">
-        <div class='row'>
-          <div class="medium-4 small-12 columns">   
-            <a href="#">
-              <img src="images/logo.png" class='main-header-logo' alt="MiiOffice"/>
-            </a>
-          </div>
-          <div class="medium-8 small-12 columns text-right header-info">
-            <ul class="header-account-info separator-slash">
-              <li class='header-links-bowl icons-food-bowl'>
-                ID: 26
-              </li>
-              <li>
-                username <a href='#'>(sign out)</a>
-              </li>
-            </ul>
-            <ul class="header-links separator-slash primary-color">
-              <li>
-                <img src='images/flag-en.png' alt='English' />
-              </li>
-              <li>
-                <a href='#'>go to miioon.com</a>
-              </li>
-              <li>
-                <a href='#/account'>account</a>
-              </li>
-              <li>
-                <a href='#'>wishlist</a>
-              </li>
-              <li>
-                <a href='#'>items</a>
-              </li>
-              <li>
-                <a href='#'>0 items &gt; </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+<header class="main-header" ng-controller="HeaderController">
+  <div class='row'>
+    <div class="medium-4 small-12 columns">
+      <a href="#">
+        <img src="images/logo.png" class='main-header-logo' alt="MiiOffice"/>
+      </a>
+    </div>
+    <div class="medium-8 small-12 columns text-right header-info">
+      <ul class="header-account-info separator-slash">
+        <li class='header-links-bowl icons-food-bowl'>
+          ID: {{user.data['user-id']}}
+        </li>
+        <li>
+          {{user.data.name}}
+          <a ng-click="logout()">(sign out)</a>
+        </li>
+      </ul>
+      <ul class="header-links separator-slash primary-color">
+        <li>
+          <img src='images/flag-en.png' alt='English'/>
+        </li>
+        <li>
+          <a ng-href='{{retailUrl}}'>go to miioon.com</a>
+        </li>
+        <li>
+          <a href='/#/account'>account</a>
+        </li>
+        <li>
+          <a href='#'>wishlist</a>
+        </li>
+        <li>
+          <a ng-href='{{retailUrl}}/#/shopping'>0 items &gt; </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </header>
