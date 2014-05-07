@@ -26,7 +26,7 @@ ul {
 .separator-vertical-line {
   li {
     &:first-child:before {
-      content:"";
+      content:" ";
     }
 
     &:before {
