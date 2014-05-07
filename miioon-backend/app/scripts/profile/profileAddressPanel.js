@@ -53,6 +53,18 @@
         return $scope.states;
       };
 
+      $scope.getCountryById = function(countryId) {
+        var country;
+        if (!$scope.countries) return null;
+        angular.forEach($scope.countries, function(c) {
+          if (c.id === countryId) {
+            country = c;
+            return;
+          }
+        });
+        return country;
+      };
+
       $scope.getStateName = function(countryId, stateId) {
         var result = '';
         if (!$scope.countries) { return ''; }

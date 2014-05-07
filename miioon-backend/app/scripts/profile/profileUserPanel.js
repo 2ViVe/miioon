@@ -39,10 +39,6 @@
 
       };
 
-
-
-
-
       function respErrHandler(resp) {
         $scope.isLoading = false;
         $scope.isEditing = true;

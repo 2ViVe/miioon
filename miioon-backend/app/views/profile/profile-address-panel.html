@@ -35,7 +35,7 @@
       </div>
 
       <div class="row">
-        <div class="small-3 columns">State</div>
+        <div class="small-3 columns">County</div>
         <div class="small-3 end columns">{{ getStateName(address.countryId, address.stateId) }}</div>
       </div>
 
@@ -154,9 +154,12 @@
           <label for="{{addressType}}-AddrCountry" class="inline">Country:</label>
         </div>
         <div class="small-5 end columns">
-          <select required id="{{addressType}}-AddrCountry" name="addrCountry" ng-model="address.countryId"
-                  ng-options="country.name for country in countries | orderBy:'name'"
-                  ng-change="onCountryChanged(billingAddress.country.id)">
+          <select required id="{{addressType}}-AddrCountry"
+                  name="addrCountry"
+                  ng-model="address.countryId"
+                  ng-init="getCountryById(address.countryId)"
+                  ng-options="country.id as country.name for country in countries | orderBy:'name'"
+                  ng-change="onCountryChanged(billingAddress.country.id)"></select>
           <small ng-show="form.addrCountry.$error.required" class="error">
             This field is required.
           </small>
@@ -172,9 +175,9 @@
         </div>
         <div class="small-5 end columns">
 
-          <select id="{{addressType}}-AddrState" name="addrState" ng-model="address.state"
+          <select id="{{addressType}}-AddrState" name="addrState" ng-model="address.stateId"
                   ng-required="states.length > 0"
-                  ng-options="state.name for state in getStates(address.countryId) | orderBy:'name'">
+                  ng-options="state.id as state.name for state in getStates(address.countryId) | orderBy:'name'">
           </select>
 
           <small ng-show="form.addrState.$error.required" class="error">
