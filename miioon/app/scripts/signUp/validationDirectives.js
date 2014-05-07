@@ -63,12 +63,13 @@ angular.module('2ViVe')
 
           function validate(value) {
             if (ctrl.$isEmpty(value)) {
+              ctrl.$setValidity('sponsorError', true);
               return;
             }
 
             if (!isInputting) {
               Registration.validateSponsor(value)
-                .success(function (data) {
+                .success(function(data) {
                   if (data.response.name === undefined) {
                     scope.sponsorValidatorErrorMsg = 'Invalid sponsor ID, please enter another one.';
                     ctrl.$setValidity('sponsorError', false);
@@ -77,7 +78,7 @@ angular.module('2ViVe')
                   scope.sponsorName = data.response.name;
                   ctrl.$setValidity('sponsorError', true);
                 })
-                .error(function (data) {
+                .error(function(data) {
                   scope.sponsorValidatorErrorMsg = data.meta.error.message;
                   ctrl.$setValidity('sponsorError', false);
                 });
