@@ -42,6 +42,9 @@
           <small class="error" ng-show="form.email.$error.available">
             Email is not available.
           </small>
+          <small class="error" ng-show="$errors.InvalidEmail">
+            {{ $errors.InvalidEmail }}
+          </small>
         </div>
       </div>
 

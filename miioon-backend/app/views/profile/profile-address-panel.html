@@ -154,8 +154,9 @@
           <label for="{{addressType}}-AddrCountry" class="inline">Country:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="{{addressType}}-AddrCountry" name="addrCountry" ng-model="address.country"
-                 placeholder="click to edit ... ">
+          <select required id="{{addressType}}-AddrCountry" name="addrCountry" ng-model="address.country"
+                  ng-options="country.name for country in countries | orderBy:'name'"
+                  ng-change="onCountryChanged(billingAddress.country.id)">
           <small ng-show="form.addrCountry.$error.required" class="error">
             This field is required.
           </small>
@@ -167,11 +168,14 @@
 
       <div class="row">
         <div class="small-3 columns">
-          <label for="{{addressType}}-AddrState" class="inline">State:</label>
+          <label for="{{addressType}}-AddrState" class="inline">County:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="{{addressType}}-AddrState" name="addrState" ng-model="address.state"
-                 placeholder="click to edit ... ">
+
+          <select id="{{addressType}}-AddrState" name="addrState" ng-model="address.state"
+                  ng-required="states.length > 0"
+                  ng-options="state.name for state in getStates(address.country) | orderBy:'name'">
+          </select>
 
           <small ng-show="form.addrState.$error.required" class="error">
             This field is required.
