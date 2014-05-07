@@ -102,7 +102,7 @@
                  name="addrLine"
                  ng-model="address.street"
                  placeholder="click to edit ... ">
-          <small ng-show="form.street.$error.required" class="error">
+          <small ng-show="form.addrLine.$error.required" class="error">
             This field is required.
           </small>
           <small class="error" ng-show="address.errors.street">
@@ -123,7 +123,7 @@
                  ng-model="address.city"
                  placeholder="click to edit ... ">
 
-          <small ng-show="form.city.$error.required" class="error">
+          <small ng-show="form.addrCity.$error.required" class="error">
             This field is required.
           </small>
           <small class="error" ng-show="address.errors.city">
