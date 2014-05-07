@@ -1,12 +1,6 @@
 'use strict';
 
 angular.module('2ViVe')
-  .directive('registrationCountries', [
-    function() {
-      return {
-        restrict: 'A'
-      };
-   }])
   .directive('countriesAndStates', ['Registration',
     function(Registration) {
       return {

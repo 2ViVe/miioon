@@ -51,7 +51,7 @@ angular.module('2ViVe')
       controller: ['$scope', function($scope) {
         $scope.nextStep = function() {
           if (this.step.$valid) {
-            $scope.lineItems.splice(0, $scope.lineItems.length)
+            $scope.lineItems.splice(0, $scope.lineItems.length);
             angular.forEach($scope.products, function(product) {
               if (product.quantity > 0) {
                 $scope.lineItems.push({

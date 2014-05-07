@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('GiftCardEmailFormController', ['$scope', 'User',
-    function($scope, User) {
+  .controller('GiftCardEmailFormController', ['$scope',
+    function($scope) {
       $scope.$watch('emailForm.$invalid', function(invalid) {
         $scope.formInvalid.email = invalid;
       });
