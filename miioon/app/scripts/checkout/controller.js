@@ -64,6 +64,8 @@ angular.module('2ViVe')
       };
 
       $scope.changeShippingMethod = function(selectedShippingMethod) {
+        $scope.selectedShippingMethod = selectedShippingMethod;
+
         if ($scope.orderId) {
           Order.changeShippingMethod($scope.orderId, selectedShippingMethod.id)
             .success(function() {
