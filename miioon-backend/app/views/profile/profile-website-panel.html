@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <form novalidate ng-if="isEditing" ng-submit="save()">
+    <form novalidate ng-if="isEditing" ng-submit="save(form.$valid)" name="form">
       <div class="row">
         <div class="small-3 columns">
           <label for="websiteAddrFirstName" class="inline">Name:</label>
@@ -56,8 +56,13 @@
           <label for="websiteAddrHomePhone" class="inline">Home Phone:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="websiteAddrHomePhone" name="websiteAddrHomePhone" ng-model="address.phone"
+          <input type="text" id="websiteAddrHomePhone" name="websiteAddrHomePhone"
+                 ng-model="address.phone"
+                 data-require-with="address.mobile"
                  placeholder="click to edit ... ">
+          <small ng-show="form.websiteAddrMobilePhone.$error.requireWith || form.websiteAddrHomePhone.$error.requireWith" class="error">
+            Mobile and Home Phone at least should have one filled.
+          </small>
         </div>
       </div>
 
@@ -66,8 +71,14 @@
           <label for="websiteAddrMobilePhone" class="inline">Mobile Phone:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="websiteAddrMobilePhone" name="websiteAddrMobilePhone" ng-model="address.mobile"
+          <input type="text" id="websiteAddrMobilePhone"
+                 name="websiteAddrMobilePhone"
+                 ng-model="address.mobile"
+                 data-require-with="address.phone"
                  placeholder="click to edit ... ">
+          <small ng-show="form.websiteAddrMobilePhone.$error.requireWith || form.websiteAddrHomePhone.$error.requireWith" class="error">
+            Mobile and Home Phone at least should have one filled.
+          </small>
         </div>
       </div>
 
