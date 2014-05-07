@@ -1,17 +1,24 @@
 .product-detail {
   margin-bottom: 20px;
 
+  .detail-image {
+    height: 300px;
+    img {
+      max-height: 300px;
+    }
+  }
+
   .thumbnails {
     margin-top: 20px;
 
-    .current {
-      img {
+    li {
+      height: 100px;
+      cursor: pointer;
+      border: 2px solid transparent;
+
+      &.current {
         border-color: $grey-border;
       }
-    }
-
-    img {
-      border: 2px solid transparent;
     }
   }
 

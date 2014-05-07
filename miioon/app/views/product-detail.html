@@ -10,7 +10,10 @@
 </div>
 <div class='row product-detail'>
   <div class='medium-5 columns text-center'>
-    <img class="zoom-image" ng-src="{{currentImage}}" alt="{{product.name}}"/>
+    <div class="detail-image">
+      <img class="zoom-image" ng-src="{{currentImage}}" alt="{{product.name}}"/>
+    </div>
+
     <ul class="small-block-grid-4 thumbnails">
       <li ng-repeat="image in product.images" ng-click="changeImage(image)"
         ng-class="{current: currentImage === image}">
