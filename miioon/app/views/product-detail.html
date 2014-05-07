@@ -15,9 +15,10 @@
     </div>
 
     <ul class="small-block-grid-4 thumbnails">
-      <li ng-repeat="image in product.images" ng-click="changeImage(image)"
-        ng-class="{current: currentImage === image}">
-        <img ng-src="{{image | imageSize:'small' }}"/>
+      <li ng-repeat="image in product.images" ng-click="changeImage(image)">
+        <div class="thumbnail-image" ng-class="{current: currentImage === image}">
+          <img ng-src="{{image | imageSize:'small' }}"/>
+        </div>
       </li>
     </ul>
   </div>

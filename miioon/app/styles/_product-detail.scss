@@ -11,10 +11,17 @@
   .thumbnails {
     margin-top: 20px;
 
-    li {
+    .thumbnail-image {
       height: 100px;
+      width: 100%;
       cursor: pointer;
       border: 2px solid transparent;
+      display: table-cell;
+      vertical-align: middle;
+
+      img {
+        max-height: 96px;
+      }
 
       &.current {
         border-color: $grey-border;
