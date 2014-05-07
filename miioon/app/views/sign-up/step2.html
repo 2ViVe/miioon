@@ -22,7 +22,7 @@
         <tr ng-repeat="product in products">
           <td class="text-left">{{product.sku}}</td>
           <td class="text-left">
-            <img ng-src="{{product.images[0]}}" alt="{{product.name}}"/>
+            <img ng-src="{{product.images[0] | imageSize:'small' }}" alt="{{product.name}}"/>
             {{product.name}}
           </td>
           <td>{{product.variants[0].commissions[0].volume}}</td>

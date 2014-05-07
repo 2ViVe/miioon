@@ -128,7 +128,7 @@
       <tr ng-repeat="lineItem in successInfo.order['line-items']">
         <td class="text-left">{{lineItem.sku}}</td>
         <td class="text-left">
-          <img ng-src="{{lineItem['image-url']}}" alt="{{lineItem['product-name']}}"/>
+          <img ng-src="{{lineItem['image-url'] | imageSize:'small' }}" alt="{{lineItem['product-name']}}"/>
           {{lineItem['product-name']}}
         </td>
         <td class="price">£{{lineItem.price}}</td>
