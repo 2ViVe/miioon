@@ -21,14 +21,19 @@
     </div>
 
     <form ng-if="isEditing" ng-submit="save()">
-
-
       <div class="row">
         <div class="small-3 columns">
           <label for="dateOfBirth" class="inline">Date Of Birth:</label>
         </div>
         <div class="small-5 end columns">
-          <input type="text" id="dateOfBirth" name="dateOfBirth" ng-model="profile.birthDate"
+          <input type="text"
+                 id="dateOfBirth"
+                 readonly
+                 required
+                 class="date-picker"
+                 data-date-picker
+                 name="dateOfBirth"
+                 ng-model="profile.birthDate"
                  placeholder="click to edit ... ">
         </div>
       </div>
