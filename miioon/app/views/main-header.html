@@ -22,7 +22,7 @@
         <li>
           <a href="/#/host">Host</a>
         </li>
-        <li>
+        <li ng-if="user.data['role-code'] === 'D'">
           <a href="{{backOfficeUrl}}">BackOffice</a>
         </li>
         <li>
