@@ -3,7 +3,7 @@
 (function() {
 
   angular.module('2ViVe')
-    .controller('profileInfoPanelCtrl', ['$scope', 'User', function($scope, User) {
+    .controller('profileInfoPanelCtrl', ['$scope', 'User', '$http', '$q', function($scope, User, $http, $q) {
       $scope.isEditing = false;
       $scope.isLoading = true;
       $scope.submitted = false;
@@ -36,12 +36,31 @@
             $scope.$errors = {};
           })
           .catch(respErrHandler);
-
       };
+
+
+      // TODO: remove this when backend api fixed
+      function checkEmailAvalibility(needCheck) {
+        var deferred = $q.defer();
+
+        if (needCheck) {
+          $http.get('/api/v2/registrations/availabilities', {
+            params: { email: $scope.profile.email }
+          }).success(function(data) {
+            (data.response.available ? deferred.resolve : deferred.reject)(data.response.available);
+          });
+        }
+        else {
+          $scope.$evalAsync(function() { deferred.resolve(true); });
+        }
+
+        return deferred.promise;
+      }
 
       function respErrHandler(resp) {
         $scope.isLoading = false;
         $scope.isEditing = true;
+        if (!resp.data) { return; }
         if (!resp.data.meta || !resp.data.meta.error) { return ; }
         var error = resp.data.meta.error;
         $scope.$errors = {};
@@ -51,9 +70,10 @@
       $scope.save = function() {
         $scope.submitted = true;
         $scope.isLoading = true;
-        $scope
-          .profile
-          .save()
+        checkEmailAvalibility($scope.profile.email !== $scope.initProfile.email)
+          .then(function() {
+            return $scope.profile.save();
+          })
           .then(function() {
             $scope.isLoading = false;
             $scope.isEditing = false;
