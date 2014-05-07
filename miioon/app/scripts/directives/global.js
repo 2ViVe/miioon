@@ -23,23 +23,25 @@ angular.module('2ViVe')
         link: function(scope, element, attrs) {
           var brushImageUrl = attrs.brushImageUrl;
           if (brushImageUrl !== 'http://demo.abovegem.com:11442') {
-            var brushImage = new Image();
-            brushImage.src = brushImageUrl;
-            $timeout(function() {
-              var image = angular.element(element).find('img');
-              var originalImageUrl = image.attr('src');
-              angular.element(element).hover(function() {
-                if (image.attr('not-found') === 'true') {
-                  return;
-                }
-                image.attr('src', brushImageUrl);
-              }, function() {
-                if (image.attr('not-found') === 'true') {
-                  return;
-                }
-                image.attr('src', originalImageUrl);
-              });
-            }, 0);
+            var brushImage = angular.element('<img/>');
+            brushImage.attr('src', brushImageUrl);
+            brushImage.on('load', function() {
+              $timeout(function() {
+                var image = angular.element(element).find('img');
+                var originalImageUrl = image.attr('src');
+                angular.element(element).hover(function() {
+                  if (image.attr('not-found') === 'true') {
+                    return;
+                  }
+                  image.attr('src', brushImageUrl);
+                }, function() {
+                  if (image.attr('not-found') === 'true') {
+                    return;
+                  }
+                  image.attr('src', originalImageUrl);
+                });
+              }, 0);
+            });
           }
         }
       }
