@@ -47,7 +47,16 @@
           $http.get('/api/v2/registrations/availabilities', {
             params: { email: $scope.profile.email }
           }).success(function(data) {
-            (data.response.available ? deferred.resolve : deferred.reject)(data.response.available);
+            (data.response.available ? deferred.resolve : deferred.reject)({
+              data: {
+                meta: {
+                  error: {
+                    errorCode: 'InvalidEmail',
+                    message: 'Email is not available.'
+                  }
+                }
+              }
+            });
           });
         }
         else {
@@ -60,7 +69,6 @@
       function respErrHandler(resp) {
         $scope.isLoading = false;
         $scope.isEditing = true;
-        if (!resp.data) { return; }
         if (!resp.data.meta || !resp.data.meta.error) { return ; }
         var error = resp.data.meta.error;
         $scope.$errors = {};
