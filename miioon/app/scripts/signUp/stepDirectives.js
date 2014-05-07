@@ -73,16 +73,17 @@ angular.module('2ViVe')
         $scope.isHomeAddressValidated = false;
         $scope.isWebAddressValidated = false;
         $scope.isShipmentAddressValidated = false;
+        var clearRemoteValidation = $scope.$watchCollection(
+          '[isHomeAddressValidated, isWebAddressValidated, isShipmentAddressValidated]', function() {
+            if ($scope.isHomeAddressValidated && $scope.isWebAddressValidated && $scope.isShipmentAddressValidated) {
+              $scope.$emit('NextStep');
+              clearRemoteValidation();
+            }
+          });
 
         $scope.nextStep = function() {
           if ($scope.submitted || this.step.$valid) {
             $scope.$broadcast('remoteValidate');
-            $scope.$watchCollection(
-              '[isHomeAddressValidated, isWebAddressValidated, isShipmentAddressValidated]', function() {
-                if ($scope.isHomeAddressValidated && $scope.isWebAddressValidated && $scope.isShipmentAddressValidated) {
-                  $scope.$emit('NextStep');
-                }
-              });
           }
           $scope.submitted = true;
         };
