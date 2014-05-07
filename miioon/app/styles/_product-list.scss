@@ -32,7 +32,7 @@
     &:hover {
       border-color: $grey-border;
 
-      .view-detail {
+      .view-detail,.add-to-cart {
         display: block;
       }
     }
@@ -52,6 +52,14 @@
         @include opacity(0.6);
         padding: 10px 20px;
       }
+    }
+    .add-to-cart{
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom:10px;
+      text-align: center;
+      display: none;
     }
   }
 }
