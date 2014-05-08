@@ -70,7 +70,12 @@
     </div>
     <div class="tabs" data-tabset>
       <div data-tab data-heading="Product Description">
-        {{product.description}}
+        <div class="detail-description">
+          {{product.description}}
+        </div>
+      </div>
+      <div data-tab data-heading="Size Charts">
+        <div ng-include="'views/product/size-charts.html'"></div>
       </div>
     </div>
   </div>

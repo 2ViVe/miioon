@@ -36,7 +36,7 @@ angular.module('miioonApp')
         controller: 'TaxonController'
       })
       .when('/product/:productId', {
-        templateUrl: 'views/product-detail.html',
+        templateUrl: 'views/product/product-detail.html',
         controller: 'ProductController'
       })
       .when('/taxon/:taxonId/sub-taxon/:subTaxonId', {

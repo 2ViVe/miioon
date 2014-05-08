@@ -4,8 +4,8 @@
   .detail-image {
     height: 304px;
     line-height: 304px;
-    text-align:center;
-    border:1px solid $grey-border;
+    text-align: center;
+    border: 1px solid $grey-border;
     img {
       max-height: 300px;
     }
@@ -96,7 +96,7 @@
     }
   }
 
-  .tabs-content{
-    color:$grey-dark;
+  .detail-description {
+    color: $grey-dark;
   }
 }
