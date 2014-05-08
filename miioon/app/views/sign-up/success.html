@@ -102,8 +102,8 @@
       {{payment.billingAddress['street']}}
     </p>
     <p>
-      {{payment.billingAddress['city']}}, {{payment.billingAddress['state']}},
-      {{payment.billingAddress['country']}}, {{payment.billingAddress['zip']}}
+      {{payment.billingAddress['city']}}, {{getStateName(payment.billingAddress['country-id'], payment.billingAddress['state-id'])}},
+      {{getCountryName(payment.billingAddress['country-id'])}}, {{payment.billingAddress['zip']}}
     </p>
   </div>
 </div>
