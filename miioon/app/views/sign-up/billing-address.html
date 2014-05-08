@@ -60,6 +60,7 @@
     </div>
     <div class="small-5 end columns">
       <select required id="billing-country-id" name="billing-country-id" ng-model="billingAddress['country-id']"
+              ng-init="billingAddress['country-id'] = defailtCountryId"
               ng-options="country.id as country.name for country in countries | orderBy:'name'"
               ng-change="onCountryChanged(billingAddress['country-id'])">
       </select>

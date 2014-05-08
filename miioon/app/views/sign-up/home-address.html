@@ -81,6 +81,7 @@
       <select required id="home-country-id"
               name="home-country-id"
               ng-model="homeAddress['country-id']"
+              ng-init="homeAddress['country-id'] = defailtCountryId"
               ng-options="country.id as country.name for country in countries | orderBy:'name'"
               ng-change="onCountryChanged(homeAddress['country-id'])">
       </select>

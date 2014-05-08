@@ -6,9 +6,11 @@ angular.module('2ViVe')
       return {
         restrict: 'A',
         controller: ['$scope', function($scope) {
+          $scope.defailtCountryId = 1213;
 
           Registration.countries().then(function(result) {
             $scope.countries = result;
+            $scope.onCountryChanged($scope.defailtCountryId);
           });
 
           $scope.getStates = function(selectedCountryId) {
