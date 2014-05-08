@@ -6,11 +6,11 @@ $body-bg:url('../images/body-bg.jpg') transparent 0 0 repeat;
 $row-width:rem-calc(960);
 
 $grey-lighter: #F5F5F5;
-$grey-light: #eee;
+$grey-light: #b2b2b2;
 $grey: #ccc;
 $grey-dark: #999;
 $grey-darker: #666666;
-$grey-border: #b7b7b7;
+$grey-border: #eaeaea;
 $border-radius: rem-calc(5);
 
 $red: #EB5A3C;
@@ -18,6 +18,7 @@ $pink: #f297a3;
 
 $base-font-size: 16px;
 $rem-base: $base-font-size;
+$smaller-font-size: rem-calc(11);
 $small-font-size: rem-calc(12);
 $medium-font-size: rem-calc(14);
 $large-font-size: rem-calc(18);

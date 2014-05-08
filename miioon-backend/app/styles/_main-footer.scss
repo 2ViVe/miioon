@@ -36,7 +36,9 @@
     padding-top: 12px;
     padding-bottom: 35px;
     border-top: 1px solid $grey-border;
-    color:#333;
+    color:#4f4f4f;
+    margin-left:0;
+    margin-right:0;
 
     .extra-links {
       float: right;
@@ -44,8 +46,9 @@
       li {
         float: left;
         font-size: $small-font-size;
+        color:$grey-light;
         a{
-          color:#333;
+          color:$grey-light;
         }
       }
     }

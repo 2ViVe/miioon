@@ -2,10 +2,11 @@
   .main-header-logo{
     margin-bottom:20px;
   }
-  
+
   .header-info{
     height:rem-calc(90);
     position:relative;
+    font-size: $small-font-size;
     .header-account-info{
       position: absolute;
       right:10px;
