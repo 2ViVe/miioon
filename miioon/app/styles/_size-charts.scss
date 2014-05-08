@@ -1,0 +1,31 @@
+.size-charts {
+  p {
+    font-size: $medium-font-size;
+  }
+
+  h6 {
+    color: $primary-color;
+  }
+
+  .size-charts-table {
+    width: 100%;
+    border-spacing: 0;
+    color: $grey-dark;
+    border: 1px solid $grey-light;
+
+    .even td {
+      background: #F3F6F8;
+    }
+
+    td {
+      font-size: 13px;
+    }
+
+    th {
+      background: $grey-darker;
+      color: white;
+      font-weight: normal;
+      font-size: 13px;
+    }
+  }
+}
