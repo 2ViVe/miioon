@@ -12,6 +12,7 @@
     border-spacing: 0;
     color: $grey-dark;
     border: 1px solid $grey-light;
+    border-bottom: 0;
 
     .even td {
       background: #F3F6F8;
@@ -19,6 +20,9 @@
 
     td {
       font-size: 13px;
+      max-width: 180px;
+      border-bottom: 1px solid $grey-light;
+      color: $grey-dark;
     }
 
     th {
