@@ -75,12 +75,12 @@ $font-weight-bold: bold !default;
 
   //pagination
   $pagination-li-font-size:$small-font-size;
-  $pagination-link-font-color:$grey-light;
-  $pagination-link-active-bg: $grey-lighter;
+  $pagination-link-font-color:#fff;
+  $pagination-link-active-bg: $primary-color;
   $pagination-link-current-background: $primary-color;
   $pagination-link-current-active-bg: $primary-color;
   $pagination-link-current-font-color: #fff;
-  $pagination-link-pad: rem-calc(1 3 1);
+  $pagination-link-pad: rem-calc(2 5);
 
   //form
   $form-spacing: rem-calc(14);
