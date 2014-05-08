@@ -10,7 +10,8 @@
 
   .name {
     padding: 10px 30px 0;
-    color:$grey-dark;
+    color: $grey-dark;
+    display: block;
   }
 
   li {
@@ -26,14 +27,14 @@
     border: 1px solid transparent;
     text-align: center;
 
-    img{
+    img {
       max-height: 194px;
     }
 
     &:hover {
       border-color: $grey-border;
 
-      .view-detail{
+      .view-detail {
         display: block;
       }
     }
