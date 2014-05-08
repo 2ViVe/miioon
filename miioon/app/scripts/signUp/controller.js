@@ -47,7 +47,10 @@ angular.module('2ViVe')
               $scope.isFailed = true;
               return;
             }
-            User.login($scope.userInfo.login, $scope.userInfo.password);
+            User.login($scope.userInfo.login, $scope.userInfo.password)
+              .success(function() {
+                User.fetch();
+              });
             $scope.currentStepNumber++;
             $scope.successInfo = data.response;
           });
