@@ -64,7 +64,35 @@
            ng-model="shipmentAddress['street-contd']"/>
   </div>
 </div>
+<div class="row">
+  <div class="small-3 columns">
+    <label class="right inline required" for="shipment-city">City</label>
+  </div>
+  <div class="small-5 end columns">
+    <input required type="text" id="shipment-city" name="shipment-city" ng-model="shipmentAddress.city"/>
+    <small ng-show="submitted && form['shipment-city'].$error.required" class="error">
+      This field is required.
+    </small>
+    <small ng-show="submitted && form['shipment-city'].$error.validated" class="error">
+      {{form['shipment-city'].errorMessageValidated}}
+    </small>
+  </div>
+</div>
 <div data-countries-and-states>
+  <div class="row" ng-show="states.length > 0">
+    <div class="small-3 columns">
+      <label class="right inline required" for="shipment-state-id">County</label>
+    </div>
+    <div class="small-5 end columns">
+      <select id="shipment-state-id" name="shipment-state-id" ng-model="shipmentAddress['state-id']"
+              ng-required="getStates(shipmentAddress['country-id']).length > 0"
+              ng-options="state.id as state.name for state in states | orderBy:'name'">
+      </select>
+      <small ng-show="submitted && form['shipment-state-id'].$error.required" class="error">
+        This field is required.
+      </small>
+    </div>
+  </div>
   <div class="row">
     <div class="small-3 columns">
       <label class="right inline required" for="shipment-country-id">Country</label>
@@ -81,34 +109,6 @@
         This field is required.
       </small>
     </div>
-  </div>
-  <div class="row" ng-show="states.length > 0">
-    <div class="small-3 columns">
-      <label class="right inline required" for="shipment-state-id">County</label>
-    </div>
-    <div class="small-5 end columns">
-      <select id="shipment-state-id" name="shipment-state-id" ng-model="shipmentAddress['state-id']"
-              ng-required="getStates(shipmentAddress['country-id']).length > 0"
-              ng-options="state.id as state.name for state in states | orderBy:'name'">
-      </select>
-      <small ng-show="submitted && form['shipment-state-id'].$error.required" class="error">
-        This field is required.
-      </small>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="small-3 columns">
-    <label class="right inline required" for="shipment-city">City</label>
-  </div>
-  <div class="small-5 end columns">
-    <input required type="text" id="shipment-city" name="shipment-city" ng-model="shipmentAddress.city"/>
-    <small ng-show="submitted && form['shipment-city'].$error.required" class="error">
-      This field is required.
-    </small>
-    <small ng-show="submitted && form['shipment-city'].$error.validated" class="error">
-      {{form['shipment-city'].errorMessageValidated}}
-    </small>
   </div>
 </div>
 <div class="row">

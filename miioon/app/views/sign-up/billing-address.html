@@ -53,22 +53,18 @@
     <input type="text" id="billing-street-contd" name="billing-street-contd" ng-model="billingAddress['street-contd']"/>
   </div>
 </div>
-<div data-countries-and-states>
-  <div class="row">
-    <div class="small-3 columns">
-      <label class="right inline required" for="billing-country-id">Country</label>
-    </div>
-    <div class="small-5 end columns">
-      <select required id="billing-country-id" name="billing-country-id" ng-model="billingAddress['country-id']"
-              ng-init="billingAddress['country-id'] = defailtCountryId"
-              ng-options="country.id as country.name for country in countries | orderBy:'name'"
-              ng-change="onCountryChanged(billingAddress['country-id'])">
-      </select>
-      <small ng-show="submitted && form['billing-country-id'].$error.required" class="error">
-        This field is required.
-      </small>
-    </div>
+<div class="row">
+  <div class="small-3 columns">
+    <label class="right inline required" for="billing-city">City</label>
   </div>
+  <div class="small-5 end columns">
+    <input required type="text" id="billing-city" name="billing-city" ng-model="billingAddress.city"/>
+    <small ng-show="submitted && form['billing-city'].$error.required" class="error">
+      This field is required.
+    </small>
+  </div>
+</div>
+<div data-countries-and-states>
   <div class="row" ng-show="states.length > 0">
     <div class="small-3 columns">
       <label class="right inline required" for="billing-state-id">County</label>
@@ -83,16 +79,20 @@
       </small>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="small-3 columns">
-    <label class="right inline required" for="billing-city">City</label>
-  </div>
-  <div class="small-5 end columns">
-    <input required type="text" id="billing-city" name="billing-city" ng-model="billingAddress.city"/>
-    <small ng-show="submitted && form['billing-city'].$error.required" class="error">
-      This field is required.
-    </small>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline required" for="billing-country-id">Country</label>
+    </div>
+    <div class="small-5 end columns">
+      <select required id="billing-country-id" name="billing-country-id" ng-model="billingAddress['country-id']"
+              ng-init="billingAddress['country-id'] = defailtCountryId"
+              ng-options="country.id as country.name for country in countries | orderBy:'name'"
+              ng-change="onCountryChanged(billingAddress['country-id'])">
+      </select>
+      <small ng-show="submitted && form['billing-country-id'].$error.required" class="error">
+        This field is required.
+      </small>
+    </div>
   </div>
 </div>
 <div class="row">

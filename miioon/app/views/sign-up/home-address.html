@@ -72,27 +72,21 @@
     {{form['home-street-contd'].errorMessageValidated}}
   </small>
 </div>
-<div data-countries-and-states>
-  <div class="row">
-    <div class="small-3 columns">
-      <label class="right inline required" for="home-country-id">Country</label>
-    </div>
-    <div class="small-5 end columns">
-      <select required id="home-country-id"
-              name="home-country-id"
-              ng-model="homeAddress['country-id']"
-              ng-init="homeAddress['country-id'] = defailtCountryId"
-              ng-options="country.id as country.name for country in countries | orderBy:'name'"
-              ng-change="onCountryChanged(homeAddress['country-id'])">
-      </select>
-      <small ng-show="submitted && form['home-country-id'].$error.required" class="error">
-        This field is required.
-      </small>
-      <small ng-show="submitted && form['home-country-id'].$error.validated" class="error">
-        {{form['home-country-id'].errorMessageValidated}}
-      </small>
-    </div>
+<div class="row">
+  <div class="small-3 columns">
+    <label class="right inline required" for="home-city">City</label>
   </div>
+  <div class="small-5 end columns">
+    <input required type="text" id="home-city" name="home-city" ng-model="homeAddress.city"/>
+    <small ng-show="submitted && form['home-city'].$error.required" class="error">
+      This field is required.
+    </small>
+    <small ng-show="submitted && form['home-city'].$error.validated" class="error">
+      {{form['home-city'].errorMessageValidated}}
+    </small>
+  </div>
+</div>
+<div data-countries-and-states>
   <div class="row" ng-show="states.length > 0">
     <div class="small-3 columns">
       <label class="right inline required" for="home-state-id">County</label>
@@ -112,19 +106,25 @@
       </small>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="small-3 columns">
-    <label class="right inline required" for="home-city">City</label>
-  </div>
-  <div class="small-5 end columns">
-    <input required type="text" id="home-city" name="home-city" ng-model="homeAddress.city"/>
-    <small ng-show="submitted && form['home-city'].$error.required" class="error">
-      This field is required.
-    </small>
-    <small ng-show="submitted && form['home-city'].$error.validated" class="error">
-      {{form['home-city'].errorMessageValidated}}
-    </small>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline required" for="home-country-id">Country</label>
+    </div>
+    <div class="small-5 end columns">
+      <select required id="home-country-id"
+              name="home-country-id"
+              ng-model="homeAddress['country-id']"
+              ng-init="homeAddress['country-id'] = defailtCountryId"
+              ng-options="country.id as country.name for country in countries | orderBy:'name'"
+              ng-change="onCountryChanged(homeAddress['country-id'])">
+      </select>
+      <small ng-show="submitted && form['home-country-id'].$error.required" class="error">
+        This field is required.
+      </small>
+      <small ng-show="submitted && form['home-country-id'].$error.validated" class="error">
+        {{form['home-country-id'].errorMessageValidated}}
+      </small>
+    </div>
   </div>
 </div>
 <div class="row">
