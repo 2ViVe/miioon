@@ -6,12 +6,13 @@
   .header-info{
     height:rem-calc(90);
     position:relative;
-    font-size: $small-font-size;
+
     .header-account-info{
       position: absolute;
       right:10px;
       top:25px;
       color:$grey;
+      font-size: $small-font-size;
       li{
         list-style:none;
         float:left;
@@ -22,6 +23,7 @@
       position:absolute;
       right:10px;
       top:50px;
+      font-size: $small-font-size;
     }
     li{
       list-style:none;
