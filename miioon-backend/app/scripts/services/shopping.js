@@ -95,6 +95,8 @@ angular.module('2ViVe')
           } else {
             return $http.post('/api/v2/shopping-carts/visitors', {
               'id': LocalStorage.createVisitorId()
+            }).success(function(data) {
+              Shopping.items = data.response['line-items'];
             });
           }
         }
