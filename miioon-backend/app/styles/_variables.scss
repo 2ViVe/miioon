@@ -74,10 +74,12 @@ $font-weight-bold: bold !default;
   // table style
 
   //pagination
-  $pagination-link-active-bg: none;
-  $pagination-link-current-background: none;
-  $pagination-link-current-active-bg: none;
-  $pagination-link-current-font-color: $primary-color;
+  $pagination-li-font-size:$small-font-size;
+  $pagination-link-font-color:$grey-light;
+  $pagination-link-active-bg: $grey-lighter;
+  $pagination-link-current-background: $primary-color;
+  $pagination-link-current-active-bg: $primary-color;
+  $pagination-link-current-font-color: #fff;
   $pagination-link-pad: rem-calc(1 3 1);
 
   //form
