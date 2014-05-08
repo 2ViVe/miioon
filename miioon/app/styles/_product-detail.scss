@@ -3,7 +3,9 @@
 
   .detail-image {
     height: 300px;
-    background: $grey-lighter;
+    line-height: 300px;
+    text-align:center;
+    border:1px solid $grey-border;
     img {
       max-height: 300px;
     }
