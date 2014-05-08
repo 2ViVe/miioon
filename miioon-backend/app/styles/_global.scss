@@ -163,11 +163,18 @@ ul {
 }
 
 // foundation style reset
+
 ul.pagination{
   li{
     a{
       background:$grey-lighter;
       border-radius:0;
+    }
+    &:hover{
+      a{
+        color:#fff;
+        text-decoration: none;
+      }
     }
   }
 }

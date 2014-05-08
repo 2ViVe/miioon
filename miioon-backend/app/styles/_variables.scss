@@ -79,8 +79,9 @@ $font-weight-bold: bold !default;
   $pagination-link-active-bg: $primary-color;
   $pagination-link-current-background: $primary-color;
   $pagination-link-current-active-bg: $primary-color;
+  $pagination-link-unavailable-bg-active: $primary-color;
   $pagination-link-current-font-color: #fff;
-  $pagination-link-pad: rem-calc(2 5);
+  $pagination-link-pad: rem-calc(5 8 4);
 
   //form
   $form-spacing: rem-calc(14);
