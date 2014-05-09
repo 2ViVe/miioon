@@ -12,7 +12,7 @@ angular.module('2ViVe')
         retailUrl: function() {
           var port = $location.port();
           var host = $location.host();
-          console.log($location.host());
+
           if (port === PORT_FOR_BACK_OFFICE_DEMO_SITE) {
             return 'http://' + host + ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE + '/';
           }
