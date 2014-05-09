@@ -23,6 +23,10 @@
         $scope.isEditing = !$scope.isEditing;
       };
 
+      $scope.restore = function() {
+        angular.extend($scope.profile, $scope.initProfile);
+      };
+
       $scope.changePassword = function(isValid) {
         $scope.submitted = true;
         if (!isValid) {
