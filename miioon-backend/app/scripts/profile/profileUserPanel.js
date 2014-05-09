@@ -80,6 +80,7 @@
         $scope.isLoading = true;
         checkEmailAvalibility($scope.profile.email !== $scope.initProfile.email)
           .then(function() {
+            $scope.initProfile.email = $scope.profile.email;
             return $scope.profile.save();
           })
           .then(function() {
