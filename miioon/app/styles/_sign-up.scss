@@ -38,13 +38,22 @@
   .with-mail-chimp{
     position:relative;
     .book-a-call{
+      h3{
+        font-size:$large-font-size;
+        small{
+          font-size:$medium-font-size;
+        }
+      }
       position: absolute;
       z-index: 2;
       top: 0;
       right:0;
-      width:100%;
+      width:40%;
       border:1px solid $grey-border;
       padding:$panel-padding;
+      .button{
+        margin-bottom: 0;
+      }
     }
   }
 
