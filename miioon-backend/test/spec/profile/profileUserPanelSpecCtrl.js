@@ -26,9 +26,6 @@ describe('Profile User Panel', function() {
 
     }));
 
-
-
-
     when('user try to toggle the edit mode', function() {
 
       it('should change it to the other state', function() {
