@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries', 'User',
-    function($scope, Registration, $window, countries, User) {
+  .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries', 'User', '$modal',
+    function($scope, Registration, $window, countries, User, $modal) {
       $scope.countries = countries;
       $scope.currentStepNumber = 1;
       $scope.shouldValidateRemotlyOnSubmit = false;
@@ -138,4 +138,20 @@ angular.module('2ViVe')
           }
         });
       };
-    }]);
+
+      $scope.showMailChimp = function() {
+        $modal.open({
+          templateUrl: 'views/sign-up/mail-chimp.html',
+          controller: 'ChimpModalController',
+          scope: $scope
+        });
+      };
+
+    }])
+    .controller('ChimpModalController', ['$scope', '$modalInstance',
+      function($scope, $modalInstance) {
+        $scope.cancel = function() {
+          $modalInstance.dismiss('cancel');
+        };
+      }
+    ]);
