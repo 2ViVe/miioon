@@ -34,4 +34,18 @@
       font-size: rem-calc(22);
     }
   }
+
+  .with-mail-chimp{
+    position:relative;
+    .book-a-call{
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      right:0;
+      width:100%;
+      border:1px solid $grey-border;
+      padding:$panel-padding;
+    }
+  }
+
 }
