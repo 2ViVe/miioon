@@ -26,7 +26,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="variant in variants.data | orderBy: id">
+        <tr ng-repeat="variant in variants.data | orderBy: 'id' ">
           <td class="cart-item text-left">
             <img ng-src="{{variant.images[0] | imageSize:'small' }}" alt="{{variant.name}}"/>
             <a ng-href="/#/product/{{variant['product-id']}}" class="product-name">

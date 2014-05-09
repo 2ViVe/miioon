@@ -1,6 +1,6 @@
-<nav class="main-navigation">
+<nav class="main-navigation" ng-controller="MainNavigationController">
   <div class="row">
-    <ul class="small-12 columns root-taxons" ng-controller="MainNavigationController">
+    <ul class="small-12 columns root-taxons">
       <li>
         <a href="/#/about">ABOUT US</a>
       </li>
@@ -10,14 +10,14 @@
       <li>
         <a href="/#/gift/gift-card">gift card</a>
       </li>
-      <li ng-repeat="taxon in taxons | orderBy: position">
+      <li ng-repeat="taxon in taxons | orderBy: 'position' ">
         <a href="{{taxon | taxonLink}}">
           {{taxon.name}}
         </a>
         <div class="sub-taxons-container" ng-if="taxon.id === 5">
           <div class="row">
             <ul class="sub-taxons columns small-6">
-              <li ng-repeat="subTaxon in taxon['sub-taxons']">
+              <li ng-repeat="subTaxon in taxon['sub-taxons'] | orderBy: 'position' ">
                 <a href="/#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">{{subTaxon.name}}</a>
               </li>
             </ul>
