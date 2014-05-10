@@ -17,7 +17,8 @@
     <ul class="small-block-grid-4 thumbnails">
       <li ng-repeat="image in product.images" ng-click="changeImage(image)">
         <div class="thumbnail-image" ng-class="{current: currentImage === image}">
-          <img ng-src="{{image | imageSize:'small' }}"/>
+
+          <img data-pre-load-image-url="{{image}}" ng-src="{{image | imageSize:'small' }}"/>
         </div>
       </li>
     </ul>

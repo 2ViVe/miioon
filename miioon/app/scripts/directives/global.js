@@ -16,6 +16,15 @@ angular.module('2ViVe')
       }
     };
   })
+  .directive('preLoadImageUrl',
+  function() {
+    return {
+      restrict: 'A',
+      link: function(scope, element, attrs) {
+        angular.element('<img/>').attr('src', attrs.preLoadImageUrl);
+      }
+    }
+  })
   .directive('brushImageUrl', ['$timeout',
     function($timeout) {
       return {
@@ -23,8 +32,7 @@ angular.module('2ViVe')
         link: function(scope, element, attrs) {
           var brushImageUrl = attrs.brushImageUrl;
           if (brushImageUrl !== 'http://demo.abovegem.com:11442') {
-            var brushImage = angular.element('<img/>');
-            brushImage.attr('src', brushImageUrl);
+            var brushImage = angular.element('<img/>').attr('src', brushImageUrl);
             brushImage.on('load', function() {
               $timeout(function() {
                 var image = angular.element(element).find('img');
