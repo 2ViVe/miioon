@@ -6,7 +6,7 @@ angular.module('2ViVe')
       return function switchKey(data) {
         data = angular.fromJson(data);
         var keys = Object.keys(data);
-        var result = {};
+        var result = angular.isArray(data) ? [] : {};
 
         angular.forEach(keys, function (key) {
           var camelCasedKey = keyHandlerFn(key);
