@@ -57,21 +57,12 @@ angular.module('2ViVe')
       }
 
       function redirectBack() {
-        User.fetch().success(function() {
-          if (Shopping.items) {
-            Shopping.mergeItems();
-          } else {
-            Shopping.fetchForUser();
-          }
-        });
-        Taxons.fetch();
         $location.url(LocalStorage.getPathAfterLogin());
-
         LocalStorage.removePathAfterLogin();
       }
 
       function login() {
-        User.login($scope.login, $scope.password)
+        User.login($scope.login, $scope.password, 'on')
           .success(redirectBack);
       }
     }
