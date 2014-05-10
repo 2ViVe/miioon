@@ -3,23 +3,19 @@
     <table width="100%">
       <thead>
       <tr>
-        <th>Order</th>
         <th>Order Date</th>
+        <th>Gift Card Code</th>
+        <th>Recipient Email</th>
         <th>Gift Card Value</th>
-        <th>Payment Status</th>
-        <th>Gift Code</th>
-        <th>Gift Card Holder</th>
         <th>Remaining Balance</th>
       </tr>
       </thead>
       <tbody>
       <tr ng-repeat="giftcard in giftcodes">
-        <td>{{ giftcard.code }}</td>
         <td>{{ giftcard.purchaseDate }}</td>
+        <td>{{ giftcard.code }}</td>
+        <td>{{ giftcard.recipientEmail }}</td>
         <td>{{ giftcard.amount }}</td>
-        <td>{{ giftcard.Status }}Pro</td>
-        <td>{{ giftcard.pin }}</td>
-        <td>Customer</td>
         <td>{{ giftcard.balance }}</td>
       </tr>
       </tbody>
