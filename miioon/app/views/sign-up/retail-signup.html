@@ -256,16 +256,13 @@
   <div class="row">
 
     <div class="small-3 columns">
-      <label class="right inline required" for="address-line-2">Address Line 2</label>
+      <label class="right inline" for="address-line-2">Address Line 2</label>
     </div>
 
     <div class="small-5 end columns">
-      <input type="text" required
+      <input type="text"
              id="address-line-2" name="address-line-2"
              ng-model="secondAddressLine"/>
-      <small ng-show="submitted && form['address-line-2'].$error.required" class="error">
-        This field is required.
-      </small>
       <small ng-show="submitted && $shippingAddressErrors.InvalidStreetCont" class="error">
         {{ $shippingAddressErrors.InvalidStreetCont }}
       </small>
@@ -354,7 +351,6 @@
       </small>
     </div>
   </div>
-
 
   <div class="row">
     <div class="columns small-9 small-offset-3">
