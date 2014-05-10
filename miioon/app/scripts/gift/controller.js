@@ -23,19 +23,20 @@ angular.module('2ViVe')
         'post': true
       };
 
-      User.onFetch.error(function() {
-        giftCard.fetch('R').success(function() {
-          $scope.giftCards = giftCard.data.variants;
-          $scope.giftCardImages = giftCard.data.images;
+      User
+        .fetch()
+        .then(function() {
+          giftCard.fetch().success(function() {
+            $scope.giftCards = giftCard.data.variants;
+            $scope.giftCardImages = giftCard.data.images;
+          });
+        })
+        .catch(function() {
+          giftCard.fetch('R').success(function() {
+            $scope.giftCards = giftCard.data.variants;
+            $scope.giftCardImages = giftCard.data.images;
+          });
         });
-      });
-
-      User.onFetch.success(function() {
-        giftCard.fetch().success(function() {
-          $scope.giftCards = giftCard.data.variants;
-          $scope.giftCardImages = giftCard.data.images;
-        });
-      });
 
       $scope.preview = function() {
         $modal.open({

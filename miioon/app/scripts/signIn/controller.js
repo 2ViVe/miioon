@@ -16,7 +16,7 @@ angular.module('2ViVe')
 
         User.login($scope.username, $scope.password, $scope.isRemember)
           .success(function() {
-            User.fetch().success(function() {
+            User.fetch().then(function() {
               if (!isAlreadyLogin && Shopping.items) {
                 Shopping.mergeItems().success(goToPreviousPath);
               } else {

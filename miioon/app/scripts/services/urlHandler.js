@@ -6,7 +6,7 @@ angular.module('2ViVe')
       var PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE = 11442;
       var PORT_FOR_SECURE_RETAIL_DEMO_SITE = 22442;
       var PORT_FOR_BACK_OFFICE_DEMO_SITE = 33442;
-      var SECURE_PATHS = ['/signup', '/signin', '/checkout', '/retail-signup'];
+      var SECURE_PATHS = ['/signup', '/signin', '/checkout', '/retail-signup', '/account'];
 
       return {
         backOfficeUrl: function() {

@@ -3,10 +3,10 @@
 angular.module('miioonApp')
   .run(['User', 'Taxons', 'Shopping',
     function(User, Taxons, Shopping) {
-      User.fetch().success(function() {
+      User.fetch().then(function() {
         Shopping.fetchForUser();
         Taxons.fetch();
-      }).error(function() {
+      }).catch(function() {
         Shopping.fetchForVisitor();
         Taxons.fetch();
       });

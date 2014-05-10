@@ -1,9 +1,41 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('User', ['$http', 'LocalStorage',
-    function($http, LocalStorage) {
+  .factory('User', ['$http', '$q', 'LocalStorage', 'CamelCaseLize', 'Dashlize',
+    function($http, $q, LocalStorage, camelCaseLize, dashlize) {
+
+      var useCache = false;
+      var user = null;
+
+      function UserModel(data) {
+        angular.extend(this, data);
+      }
+
+      var proto = UserModel.prototype;
+
+      proto.save = function() {
+        var self = this;
+        return $http.post('/api/v2/profile', this, {
+          transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
+          transformResponse: camelCaseLize
+        }).then(function() {
+          useCache = false;
+          return self;
+        });
+      };
+
+      proto.updatePassword = function(passwords) {
+        return $http.post('/api/v2/profile/password', passwords, {
+          transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
+          transformResponse: camelCaseLize
+        }).then(function(resp) {
+          useCache = false;
+          return resp.data.response;
+        });
+      };
+
       var User = {
+        isLogin: false,
         login: function(username, password, isRemember) {
           return $http.post('/api/login', {
             user: username,
@@ -22,15 +54,23 @@ angular.module('2ViVe')
             });
         },
         fetch: function() {
-          User.onFetch = $http.get('/api/v2/profile')
-            .success(function(data) {
-              User.data = data.response;
+          return $http.get('/api/v2/profile', {
+            transformResponse: camelCaseLize,
+            cache: useCache
+          })
+            .then(function(resp) {
+              if (!user) {
+                user = new UserModel(resp.data.response);
+              }
+              else {
+                angular.extend(user, resp.data.response);
+              }
+
+              User.data = user;
               User.isLogin = true;
-            })
-            .error(function() {
-              User.isLogin = false;
+              useCache = true;
+              return user;
             });
-          return User.onFetch;
         }
       };
       return User;
