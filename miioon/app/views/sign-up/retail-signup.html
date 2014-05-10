@@ -169,7 +169,7 @@
              ng-model="firstName"
              />
 
-      <small ng-show="submitted && form['first-name'].$error.required" class="error">
+      <small ng-show="submitted && retailSignupForm['first-name'].$error.required" class="error">
         This field is required.
       </small>
       <small ng-show="submitted && $shippingAddressErrors.InvalidFirstName" class="error">
@@ -192,7 +192,7 @@
              ng-model="lastName"
              />
 
-      <small ng-show="submitted && form['last-name'].$error.required" class="error">
+      <small ng-show="submitted && retailSignupForm['last-name'].$error.required" class="error">
         This field is required.
       </small>
 
@@ -216,7 +216,7 @@
              ng-model="phoneNumber"/>
 
 
-      <small ng-show="submitted && form['phone-number'].$error.required" class="error">
+      <small ng-show="submitted && retailSignupForm['phone-number'].$error.required" class="error">
         This field is required.
       </small>
 
@@ -239,7 +239,7 @@
              id="address-line-1" name="address-line-1"
              ng-model="firstAddressLine"/>
 
-      <small ng-show="submitted && form['address-line-1'].$error.required" class="error">
+      <small ng-show="submitted && retailSignupForm['address-line-1'].$error.required" class="error">
         This field is required.
       </small>
 
@@ -281,7 +281,7 @@
       <input type="text" required
              id="city" name="city"
              ng-model="city"/>
-      <small ng-show="submitted && form['city'].$error.required" class="error">
+      <small ng-show="submitted && retailSignupForm['city'].$error.required" class="error">
         This field is required.
       </small>
       <small ng-show="submitted && $shippingAddressErrors.InvalidCity" class="error">
@@ -304,7 +304,7 @@
               ng-options="country.name for country in countries | orderBy:'name'"
               >
       </select>
-      <small ng-show="submitted && form['country'].$error.required" class="error">
+      <small ng-show="submitted && retailSignupForm['country'].$error.required" class="error">
         This field is required.
       </small>
       <small ng-show="submitted && $shippingAddressErrors.InvalidCountry" class="error">
@@ -326,7 +326,7 @@
               ng-options="state.name for state in country.states | orderBy:'name'"
               >
       </select>
-      <small ng-show="submitted && form['state'].$error.required" class="error">
+      <small ng-show="submitted && retailSignupForm.state.$error.required" class="error">
         This field is required.
       </small>
       <small ng-show="submitted && $shippingAddressErrors.InvalidState" class="error">
@@ -347,7 +347,7 @@
              id="zip" name="zip"
              ng-model="zip"/>
 
-      <small ng-show="submitted && form['zip'].$error.required" class="error">
+      <small ng-show="submitted && retailSignupForm['zip'].$error.required" class="error">
         This field is required.
       </small>
     </div>
