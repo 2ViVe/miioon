@@ -299,6 +299,7 @@
       <select required
               name="country"
               id="country"
+              ng-init="country = countries[0]"
               ng-model="country"
               ng-options="country.name for country in countries | orderBy:'name'"
               >
