@@ -16,6 +16,8 @@
 
 .tabs-content {
   border: 1px solid $grey-border;
+  height: 400px;
+  overflow: scroll;
 
   .content {
     padding: 32px 16px;
