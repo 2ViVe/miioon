@@ -5,10 +5,8 @@ angular.module('miioonApp')
     function(User, Taxons, Shopping) {
       User.fetch().then(function() {
         Shopping.fetchForUser();
-        Taxons.fetch();
       }).catch(function() {
         Shopping.fetchForVisitor();
-        Taxons.fetch();
       });
     }])
   .run(['$rootScope', 'cfpLoadingBar', 'UrlHandler',

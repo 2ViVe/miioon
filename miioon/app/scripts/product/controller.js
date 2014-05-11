@@ -13,10 +13,6 @@ angular.module('2ViVe')
       var product;
 
       Taxons.fetch().success(function() {
-        if (Taxons.data.length === 0) {
-          return;
-        }
-
         product = new Product($routeParams.productId);
         product.fetch.success(function() {
           $scope.product = product.data;
