@@ -23,7 +23,7 @@ angular.module('2ViVe')
       link: function(scope, element, attrs) {
         angular.element('<img/>').attr('src', attrs.preLoadImageUrl);
       }
-    }
+    };
   })
   .directive('brushImageUrl', ['$timeout',
     function($timeout) {

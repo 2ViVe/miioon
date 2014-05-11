@@ -101,7 +101,7 @@
         templateUrl: '/views/profile/profile-info-panel.html',
         controller: 'profileInfoPanelCtrl',
         scope: {},
-        link: function(scope, elem, attrs) {
+        link: function() {
         }
       };
     });

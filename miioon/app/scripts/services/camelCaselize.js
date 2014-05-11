@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('2ViVe')
   .factory('CamelCaseLize', ['keySwitcher', function( keySwitcher) {
 

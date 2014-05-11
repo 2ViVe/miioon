@@ -20,7 +20,7 @@ angular.module('2ViVe')
         angular.forEach(countries, function(country) {
           if (country.id === countryId) {
             countryName = country.name;
-            return null
+            return null;
           }
         });
         return countryName;

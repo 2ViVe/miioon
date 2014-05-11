@@ -61,7 +61,7 @@ angular.module('2ViVe')
       var self = this;
       angular.forEach(['home', 'billing', 'shipping', 'website'], function(type) {
 
-        self[type]['update'] = function() {
+        self[type].update = function() {
           return self.update(type, self[type]);
         };
 
@@ -76,26 +76,26 @@ angular.module('2ViVe')
 
     proto.validate = function(type, data) {
       var deferred = $q.defer();
+
+      function validateHandler(response) {
+        var failures = response.data.response.failures;
+        if (failures && Object.keys(failures).length) {
+          failures = failuresToObject(failures);
+          address[type].errors = failures;
+          deferred.reject(failures);
+        }
+        else {
+          delete address[type].errors;
+          deferred.resolve(failures);
+        }
+      }
+
       $http
         .post(API_URL + '/' + type + '/validate', data, {
           transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
           transformResponse: camelCaselize
         })
         .then(validateHandler);
-
-
-      function validateHandler(response) {
-        var failures = response.data.response.failures;
-        if (failures && Object.keys(failures).length) {
-          failures = failuresToObject(failures);
-          address[type]['errors'] = failures;
-          deferred.reject(failures);
-        }
-        else {
-          delete address[type]['errors'];
-          deferred.resolve(failures);
-        }
-      }
 
       return deferred.promise;
     };
