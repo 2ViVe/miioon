@@ -9,9 +9,7 @@ angular.module('2ViVe')
       $scope.isFailed = false;
       $scope.orderId = null;
 
-      $scope.$watch(function() {
-        return User.isLogin;
-      }, function() {
+      User.fetch().catch(function() {
         if (User.isLogin === false) {
           $location.path('/signin');
         }
