@@ -6,9 +6,7 @@ angular.module('2ViVe')
       var taxonId = Number($routeParams.taxonId);
       var subTaxonId = Number($routeParams.subTaxonId);
 
-      $scope.$watch(function() {
-        return Taxons.data;
-      }, function() {
+      Taxons.fetch().success(function() {
         if (Taxons.data.length === 0) {
           return null;
         }

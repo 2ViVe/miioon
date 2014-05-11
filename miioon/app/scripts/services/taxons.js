@@ -4,9 +4,10 @@ angular.module('2ViVe')
   .factory('Taxons', ['$http',
     function($http) {
       var Taxons = {
-        data: [],
         fetch: function() {
-          return $http.get('/api/v2/taxons')
+          return $http.get('/api/v2/taxons', {
+            cache: true
+          })
             .success(function(data) {
               var taxons = data.response;
               angular.forEach(taxons, function(taxon) {

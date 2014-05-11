@@ -12,9 +12,7 @@ angular.module('2ViVe')
 
       var product;
 
-      $scope.$watch(function() {
-        return Taxons.data;
-      }, function() {
+      Taxons.fetch().success(function() {
         if (Taxons.data.length === 0) {
           return;
         }
