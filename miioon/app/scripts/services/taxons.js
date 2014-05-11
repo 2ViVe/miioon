@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Taxons', ['$http',
-    function($http) {
+  .factory('Taxons', ['$http', 'CamelCaseLize',
+    function($http, CamelCaseLize) {
       var _data = [];
 
       function hardCodeTaxonImages(taxons) {
         angular.forEach(taxons, function(taxon) {
           taxon.image = 'images/taxon/banner-' + taxon.id + '.png';
-          angular.forEach(taxon['sub-taxons'], function(subTaxon) {
+          angular.forEach(taxon.subTaxons, function(subTaxon) {
             subTaxon.image = 'images/taxon/banner-' + taxon.id + '-' + subTaxon.id + '.png';
           });
         });
@@ -17,6 +17,7 @@ angular.module('2ViVe')
       var Taxons = {
         fetch: function() {
           return $http.get('/api/v2/taxons', {
+            transformResponse: CamelCaseLize,
             cache: true
           }).success(function(data) {
             _data = data.response;
@@ -49,7 +50,7 @@ angular.module('2ViVe')
           if (taxon === null) {
             return result;
           }
-          angular.forEach(taxon['sub-taxons'], function(subTaxon) {
+          angular.forEach(taxon.subTaxons, function(subTaxon) {
             if (subTaxon.id === subTaxonId) {
               result = subTaxon;
               return null;

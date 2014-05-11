@@ -25,7 +25,7 @@ angular.module('2ViVe')
 
           $scope.subTaxon = Taxons.getSubTaxonById(product.data['taxon-id']);
           if ($scope.subTaxon !== null) {
-            $scope.taxon = Taxons.getById($scope.subTaxon.parent_id);
+            $scope.taxon = Taxons.getById($scope.subTaxon.parentId);
           } else {
             $scope.taxon = Taxons.getById(product.data['taxon-id']);
           }

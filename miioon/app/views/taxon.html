@@ -10,7 +10,7 @@
       {{taxon.name}}
     </h5>
     <ul>
-      <li ng-repeat="subTaxon in taxon['sub-taxons'] | orderBy: 'position' ">
+      <li ng-repeat="subTaxon in taxon.subTaxons | orderBy: 'position' ">
         <span class="current" ng-if="subTaxon.id === currentSubTaxon.id">
           {{subTaxon.name}}
         </span>

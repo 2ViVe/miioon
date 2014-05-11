@@ -7,8 +7,9 @@ angular.module('2ViVe')
         return;
       }
       var link = '/#/taxon/' + taxon.id;
-      if (taxon['sub-taxons'].length > 0) {
-        link += '/sub-taxon/' + taxon['sub-taxons'][0].id;
+      var subTaxons = taxon.subTaxons;
+      if (subTaxons.length > 0) {
+        link += '/sub-taxon/' + subTaxons[0].id;
       }
       return link;
     };

@@ -17,7 +17,7 @@
         <div class="sub-taxons-container" ng-if="taxon.id === 5">
           <div class="row">
             <ul class="sub-taxons columns small-6">
-              <li ng-repeat="subTaxon in taxon['sub-taxons'] | orderBy: 'position' ">
+              <li ng-repeat="subTaxon in taxon.subTaxons | orderBy: 'position' ">
                 <a href="/#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">{{subTaxon.name}}</a>
               </li>
             </ul>
