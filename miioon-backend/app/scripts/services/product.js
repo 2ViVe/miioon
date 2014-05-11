@@ -1,22 +1,21 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Products', ['$http',
-    function($http) {
+  .factory('Products', ['$http', 'User',
+    function($http, User) {
       return {
         getByTaxon: function(taxonId) {
-          //TODO: need to remove role code and country id when API is modified
           return $http.get('/api/v2/products/taxons/' + taxonId, {
             params: {
-              'role-code': 'R',
+              'role-code': User.isLogin ? null : 'R',
               'country-id': '1213'
             }
           });
         }
       };
     }])
-  .factory('Variants', ['$http',
-    function($http) {
+  .factory('Variants', ['$http', 'User',
+    function($http, User) {
       var Variants = {
         data: [],
         remove: function(variantId) {
@@ -35,7 +34,7 @@ angular.module('2ViVe')
           }
           return $http.get('/api/v2/variants', {
             params: {
-              'role-code': 'R',
+              'role-code': User.isLogin ? null : 'R',
               'id': ids.join(',')
             }
           }).success(function(data) {
@@ -48,8 +47,8 @@ angular.module('2ViVe')
       };
       return Variants;
     }])
-  .factory('Product', ['$http',
-    function($http) {
+  .factory('Product', ['$http', 'User',
+    function($http, User) {
       var ATTRIBUTE_KEY = {
         'Color': 'colors',
         'Size': 'sizes'
@@ -59,10 +58,9 @@ angular.module('2ViVe')
         var product = this;
         product.colors = [];
         product.sizes = [];
-        //TODO: need to remove role code when API is modified
         product.fetch = $http.get('/api/v2/products/' + id, {
           params: {
-            'role-code': 'R'
+            'role-code': User.isLogin ? null : 'R'
           }
         }).success(function(data) {
           product.data = data.response;

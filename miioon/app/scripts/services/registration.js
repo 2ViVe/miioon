@@ -20,7 +20,7 @@ angular.module('2ViVe')
         var promise;
 
         if (!countries.length) {
-          promise = $http.get('/api/v2/registrations/countries')
+          promise = $http.get('/api/v2/registrations/countries', { cache: true })
             .then(function(ctx) {
               ctx = ctx.data;
               angular.forEach(ctx.response, function(country, idx) {

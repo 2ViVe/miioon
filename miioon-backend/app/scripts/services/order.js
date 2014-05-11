@@ -5,6 +5,20 @@ angular.module('2ViVe')
     function($http) {
       var Order = {
         data: {},
+        updateBillingAddress: function(orderId, billingAddress) {
+          return $http.post('/api/v2/orders/' + orderId + '/addresses/billing', billingAddress);
+        },
+        updateShippingAddress: function(orderId, shippingAddress) {
+          return $http.post('/api/v2/orders/' + orderId + '/shipping', {
+            'shipping-address': shippingAddress
+          });
+        },
+        adjustmentsWithOrderId: function(orderId) {
+          return $http.get('/api/v2/orders/' + orderId + '/adjustments')
+            .success(function(data) {
+              Order.data.adjustments = data.response;
+            });
+        },
         currentShippingMethod: function() {
           var currentShippingMethod = null;
           angular.forEach(Order.data['available-shipping-methods'], function(shippingMethod) {
@@ -14,11 +28,6 @@ angular.module('2ViVe')
             }
           });
           return currentShippingMethod;
-        },
-        changeShippingMethod: function(orderId, shippingMethodId) {
-          return $http.post('/api/v2/orders/' + orderId + 'selected-shipping-method', {
-            id: shippingMethodId
-          });
         },
         checkout: function(lineItems) {
           return $http.post('/api/v2/orders/checkout', {
@@ -45,8 +54,6 @@ angular.module('2ViVe')
             'shipping-address': Order.data['shipping-address'],
             'billing-address': Order.data['billing-address'],
             'line-items': Order.data['line-items']
-          }).success(function(data) {
-            console.log(data);
           });
         }
       };

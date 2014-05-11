@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('2ViVe')
   .factory('keySwitcher', function() {
 
@@ -22,7 +24,6 @@ angular.module('2ViVe')
         });
 
         return result;
-      }
-
-    }
+      };
+    };
   });

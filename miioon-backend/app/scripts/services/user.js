@@ -37,7 +37,7 @@ angular.module('2ViVe')
       var User = {
         isLogin: false,
         login: function(username, password, isRemember) {
-          return $http.post('/authentication/token', {
+          return $http.post('/api/login', {
             user: username,
             password: password,
             'remember-me': isRemember
@@ -55,22 +55,22 @@ angular.module('2ViVe')
         },
         fetch: function() {
           return $http.get('/api/v2/profile', {
-                    transformResponse: camelCaseLize,
-                    cache: useCache
-                  })
-                  .then(function(resp) {
-                    if (!user) {
-                      user = new UserModel(resp.data.response);
-                    }
-                    else {
-                      angular.extend(user, resp.data.response);
-                    }
+            transformResponse: camelCaseLize,
+            cache: useCache
+          })
+            .then(function(resp) {
+              if (!user) {
+                user = new UserModel(resp.data.response);
+              }
+              else {
+                angular.extend(user, resp.data.response);
+              }
 
-                    User.data = user;
-                    User.isLogin = true;
-                    useCache = true;
-                    return user;
-                  });
+              User.data = user;
+              User.isLogin = true;
+              useCache = true;
+              return user;
+            });
         }
       };
       return User;
