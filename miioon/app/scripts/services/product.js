@@ -1,21 +1,22 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Products', ['$http', 'User',
-    function($http, User) {
+  .factory('Products', ['$http', 'User', 'CamelCaseLize',
+    function($http, User, CamelCaseLize) {
       return {
-        getByTaxon: function(taxonId) {
+        getByTaxon: function(taxonId, countryId) {
           return $http.get('/api/v2/products/taxons/' + taxonId, {
+            transformResponse: CamelCaseLize,
             params: {
               'role-code': User.isLogin ? null : 'R',
-              'country-id': '1213'
+              'country-id': countryId
             }
           });
         }
       };
     }])
-  .factory('Variants', ['$http', 'User',
-    function($http, User) {
+  .factory('Variants', ['$http', 'User', 'CamelCaseLize',
+    function($http, User, CamelCaseLize) {
       var Variants = {
         data: [],
         remove: function(variantId) {
@@ -33,6 +34,7 @@ angular.module('2ViVe')
             return null;
           }
           return $http.get('/api/v2/variants', {
+            transformResponse: CamelCaseLize,
             params: {
               'role-code': User.isLogin ? null : 'R',
               'id': ids.join(',')
@@ -40,15 +42,12 @@ angular.module('2ViVe')
           }).success(function(data) {
             Variants.data = data.response;
           });
-        },
-        getById: function(id) {
-          return $http.get('/api/v2/variants/' + id);
         }
       };
       return Variants;
     }])
-  .factory('Product', ['$http', 'User',
-    function($http, User) {
+  .factory('Product', ['$http', 'User', 'CamelCaseLize',
+    function($http, User, CamelCaseLize) {
       var ATTRIBUTE_KEY = {
         'Color': 'colors',
         'Size': 'sizes'
@@ -59,6 +58,7 @@ angular.module('2ViVe')
         product.colors = [];
         product.sizes = [];
         product.fetch = $http.get('/api/v2/products/' + id, {
+          transformResponse: CamelCaseLize,
           params: {
             'role-code': User.isLogin ? null : 'R'
           }
