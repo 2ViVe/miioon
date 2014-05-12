@@ -143,6 +143,7 @@ angular.module('2ViVe')
         $modal.open({
           templateUrl: 'views/sign-up/mail-chimp.html',
           controller: 'ChimpModalController',
+          windowClass: 'small',
           scope: $scope
         });
       };
