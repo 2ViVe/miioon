@@ -1,0 +1,14 @@
+.taxon-navigation {
+  .current {
+    color: $primary-color;
+  }
+
+  .root-taxon {
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  li {
+    padding-top: 15px;
+  }
+}

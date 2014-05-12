@@ -68,6 +68,14 @@ angular.module('miioonApp')
       .when('/mentoring', {
         templateUrl: 'views/coming.html'
       })
+      .when('/taxon/:taxonId/sub-taxon/:subTaxonId', {
+        templateUrl: 'views/taxon.html',
+        controller: 'TaxonController'
+      })
+      .when('/taxon/:taxonId', {
+        templateUrl: 'views/taxon.html',
+        controller: 'TaxonController'
+      })
       .otherwise({
         redirectTo: '/'
       });
