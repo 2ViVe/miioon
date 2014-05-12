@@ -40,11 +40,13 @@
       };
 
       $scope.getCountryName = function(countryId) {
-        if (!$scope.countries) return '';
+        if (!$scope.countries) {
+          return '';
+        }
         angular.forEach($scope.countries, function(country) {
           if (country.id === countryId) {
             $scope.address.country = country.name;
-            return;
+            return null;
           }
         });
         return $scope.address.country;
@@ -54,7 +56,7 @@
         angular.forEach($scope.countries, function(country) {
           if (country.id === selectedCountryId) {
             $scope.states = country.states;
-            return;
+            return null;
           }
         });
         return $scope.states;
@@ -62,11 +64,13 @@
 
       $scope.getCountryById = function(countryId) {
         var country;
-        if (!$scope.countries) return null;
+        if (!$scope.countries) {
+          return null;
+        }
         angular.forEach($scope.countries, function(c) {
           if (c.id === countryId) {
             country = c;
-            return;
+            return null;
           }
         });
         return country;
@@ -96,7 +100,7 @@
           addressType: '@',
           addressTitle: '@'
         },
-        link: function(scope, elem, attrs) {
+        link: function() {
         }
       };
     });

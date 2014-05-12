@@ -10,7 +10,7 @@
         templateUrl: '/views/profile/profile-personal-panel.html',
         controller: 'profileInfoPanelCtrl',
         scope: {},
-        link: function(scope, elem, attrs) {
+        link: function() {
         }
       };
     });

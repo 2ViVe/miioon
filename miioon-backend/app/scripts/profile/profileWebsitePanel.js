@@ -13,7 +13,7 @@
           addressType: '@',
           addressTitle: '@'
         },
-        link: function(scope, elem, attrs) {
+        link: function() {
         }
       };
     });
