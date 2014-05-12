@@ -14,7 +14,7 @@ angular.module('2ViVe')
 
       Taxons.fetch().success(function() {
         product = new Product($routeParams.productId);
-        product.fetch.success(function() {
+        product.fetch().then(function() {
           $scope.product = product.data;
           $scope.colors = product.colors;
           $scope.sizes = product.sizes;
