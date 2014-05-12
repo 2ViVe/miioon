@@ -2,7 +2,12 @@
   <div class="columns small-2 taxon-navigation">
     <div ng-repeat="taxon in taxons" class="taxon-group">
       <h4 class="root-taxon">
-        {{taxon.name}}
+        <span class="current" ng-if="taxon.id === currentTaxonId">
+          {{taxon.name}}
+        </span>
+        <a ng-click="changeSubTaxon(taxon.id)" ng-if="taxon.id !== currentTaxonId">
+          {{taxon.name}}
+        </a>
       </h4>
       <ul ng-repeat-end>
         <li ng-repeat="subTaxon in taxon.subTaxons | orderBy: 'position' ">
