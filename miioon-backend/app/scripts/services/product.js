@@ -8,6 +8,7 @@ angular.module('2ViVe')
           var deferred = $q.defer();
           $http.get('/api/v2/products/taxons/' + taxonId, {
             transformResponse: CamelCaseLize,
+            cache: true,
             params: {
               'role-code': User.isLogin ? null : 'R',
               'country-id': countryId

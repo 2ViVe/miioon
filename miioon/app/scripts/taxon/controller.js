@@ -12,8 +12,9 @@ angular.module('2ViVe')
         $scope.taxon = Taxons.getById(taxonId);
         $scope.currentSubTaxon = Taxons.getSubTaxonByIdAndTaxon(subTaxonId, $scope.taxon);
 
-        Products.getByTaxon(productTaxonId, UKCountryId).success(function(data) {
-          $scope.products = data.response.products;
-        });
+        Products.getByTaxon(productTaxonId, UKCountryId)
+          .then(function(data) {
+            $scope.products = data.products;
+          });
       });
     }]);
