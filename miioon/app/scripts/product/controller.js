@@ -23,11 +23,11 @@ angular.module('2ViVe')
           $scope.currentImage = product.data.images[0];
           updateVariant(product);
 
-          $scope.subTaxon = Taxons.getSubTaxonById(product.data['taxon-id']);
+          $scope.subTaxon = Taxons.getSubTaxonById(product.data.taxonId);
           if ($scope.subTaxon !== null) {
             $scope.taxon = Taxons.getById($scope.subTaxon.parentId);
           } else {
-            $scope.taxon = Taxons.getById(product.data['taxon-id']);
+            $scope.taxon = Taxons.getById(product.data.taxonId);
           }
         });
       });
