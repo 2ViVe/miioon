@@ -3,8 +3,6 @@ $fa-font-path: "/bower_components/fontawesome/fonts";
 
 $body-bg:url('../images/body-bg.jpg') transparent 0 0 repeat;
 
-$row-width:rem-calc(960);
-
 $grey-lighter: #F5F5F5;
 $grey-light: #b2b2b2;
 $grey: #ccc;
@@ -16,7 +14,7 @@ $border-radius: rem-calc(5);
 $red: #EB5A3C;
 $pink: #f297a3;
 
-$base-font-size: 16px;
+$base-font-size: 12px;
 $rem-base: $base-font-size;
 $smaller-font-size: rem-calc(11);
 $small-font-size: rem-calc(12);
