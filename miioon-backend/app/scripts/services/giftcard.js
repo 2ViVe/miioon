@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('2ViVe')
   .factory('GiftCard', ['$http', 'CamelCaseLize', function($http, camelcase) {
 

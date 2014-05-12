@@ -16,6 +16,7 @@ angular.module('2ViVe')
             return;
           }
           image.elevateZoom({
+            zoomContainerWrapper: '.main-container',
             tint: true,
             tintColour: 'white',
             tintOpacity: 0.5

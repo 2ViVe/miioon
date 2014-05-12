@@ -19,7 +19,7 @@
     "sticky": "*",
     "angular-loading-bar": "~0.4.0",
     "angular-animate": "~1.2.16",
-    "elevatezoom": "*"
+    "elevatezoom": "git@github.com:zation/elevatezoom.git#7b2ed520979e62fddbb1f483f1c0bf162bf60ff8"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",
