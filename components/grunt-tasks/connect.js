@@ -1,3 +1,22 @@
+var httpProxy = require('http-proxy');
+var grunt = require('grunt');
+var url = require('url');
+
+function strictProxy(url, dest) {
+
+  var proxy = httpProxy.createProxyServer({});
+
+  return function(req, res, next) {
+    console.log(req.url)
+    if (req.url === url) {
+      proxy.web(req, res, { target: dest });
+    }
+    else {
+      next();
+    }
+  };
+}
+
 module.exports = (function() {
   // The actual grunt server settings
   return {
@@ -21,6 +40,18 @@ module.exports = (function() {
           if (!Array.isArray(options.base)) {
             options.base = [options.base];
           }
+
+          var ip = grunt.config.get('2ViVe.APIServerIP');
+          var port = grunt.config.get('2ViVe.APIServerPort');
+          var urlToGo = url.format({
+            protocol: 'http',
+            hostname: ip,
+            port: port
+          });
+
+          console.log('===============', urlToGo)
+          middlewares.push(strictProxy('/', urlToGo));
+
           options.base.forEach(function(base) {
             // Serve static files.
             middlewares.push(connect.static(base));
@@ -54,7 +85,7 @@ module.exports = (function() {
     APIServer: {
       proxies: [
         {
-          context: ['/api'],
+          context: ['/api', '/'],
           host: '<%= 2ViVe.APIServerIP %>',
           port: '<%= 2ViVe.APIServerPort %>',
           changeOrigin: true,
