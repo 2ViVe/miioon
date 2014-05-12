@@ -3,9 +3,24 @@
     color: $primary-color;
   }
 
+  a {
+    color: $grey-darker;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  .taxon-group {
+    margin-bottom: 10px;
+    border-top: 1px solid $grey-border;
+  }
+
   .root-taxon {
-    margin: 0;
     text-transform: uppercase;
+    color: $grey-darker;
+    margin: 0;
+    padding-top: 10px;
   }
 
   li {
