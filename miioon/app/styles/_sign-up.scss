@@ -58,3 +58,18 @@
   }
 
 }
+
+.mail-chimp-popup{
+  text-align: center;
+  h2{
+    margin-bottom: 30px;
+    line-height: 1;
+    small{
+      font-size: $base-font-size;
+      line-height: 1;
+    }
+  }
+  #mc_embed_signup{
+    margin:0 auto;
+  }
+}
