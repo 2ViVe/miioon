@@ -1,10 +1,22 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Order', ['$http',
-    function($http) {
+  .factory('Order', ['$http', 'CamelCaseLize',
+    function($http, CamelCaseLize) {
       var Order = {
         data: {},
+        recent: function(offset, limit) {
+          return $http.get('/api/v2/orders/recent', {
+            transformResponse: CamelCaseLize,
+            cache: true,
+            params: {
+              offset: offset,
+              limit: limit
+            }
+          }).then(function(response) {
+            return response.data.response;
+          });
+        },
         updateBillingAddress: function(orderId, billingAddress) {
           return $http.post('/api/v2/orders/' + orderId + '/addresses/billing', billingAddress);
         },
