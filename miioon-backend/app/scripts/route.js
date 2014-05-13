@@ -91,6 +91,10 @@ angular.module('miioonApp')
         templateUrl: 'views/report/order.html',
         controller: 'OrderReportController'
       })
+      .when('/tools', {
+        templateUrl: 'views/tools/train.html',
+        controller: 'TrainController'
+      })
       .otherwise({
         redirectTo: '/'
       });
