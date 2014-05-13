@@ -74,6 +74,9 @@ angular.module('miioonApp')
       .when('/t-c', {
         templateUrl: 'views/t-c.html'
       })
+      .when('/contact', {
+        templateUrl: 'views/contact-us.html'
+      })
       .when('/printing', {
         templateUrl: 'views/printing.html'
       })
