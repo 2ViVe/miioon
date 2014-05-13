@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('miioonApp')
-  .run(['User', 'Profile', 'UrlHandler', 'Shopping',
-    function(User, Profile, UrlHandler, Shopping) {
-      Profile.fetch();
+
+  .run(['User', 'UrlHandler', 'Shopping',
+    function(User, UrlHandler, Shopping) {
       User.fetch().then(function() {
         if (User.data.roleCode === 'R') {
           UrlHandler.goToRetailSite();

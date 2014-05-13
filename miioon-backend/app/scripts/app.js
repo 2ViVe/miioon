@@ -13,5 +13,6 @@ angular.module('miioonApp', [
   'mm.foundation.tabs',
   'mm.foundation.position',
   'mm.foundation.dropdownToggle',
-  'mm.foundation.modal'
+  'mm.foundation.modal',
+  'chieffancypants.loadingBar'
 ]);

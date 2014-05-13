@@ -10,8 +10,8 @@ angular.module('miioonApp')
         templateUrl: 'views/profile.html',
         controller: 'ProfileController',
         resolve: {
-          'profile': ['Profile', function(Profile) {
-            return Profile.fetch();
+          'profile': ['User', function(User) {
+            return User.fetch();
           }],
           'address': ['Address', function(Address) {
             return Address.fetch();
