@@ -8,7 +8,10 @@ angular.module('2ViVe')
       var PORT_FOR_BACK_OFFICE_DEMO_SITE = 33442;
       var SECURE_PATHS = ['/signup', '/signin', '/checkout', '/retail-signup'];
 
-      return {
+      var UrlHandler = {
+        goToRetailSite: function() {
+          $window.location.href = UrlHandler.retailUrl();
+        },
         retailUrl: function() {
           var port = $location.port();
           var host = $location.host();
@@ -66,4 +69,5 @@ angular.module('2ViVe')
           }
         }
       };
+      return UrlHandler;
     }]);
