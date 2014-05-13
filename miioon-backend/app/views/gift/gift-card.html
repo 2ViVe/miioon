@@ -1,0 +1,40 @@
+<div class='row product-detail gift-card'>
+  <div class='medium-6 columns gift-detail-photo'>
+    <div>
+      <img ng-src="{{giftCardImages[0]}}" alt='Gift Card'/>
+    </div>
+  </div>
+  <div class='medium-6 columns'>
+    <div class="info-panel first">
+      <h2>
+        Gift Certificate
+      </h2>
+      <strong class='price large-font'>
+        {{selectedGiftCard.price ? '￡' + selectedGiftCard.price : '￡12.50 - ￡100.00'}}
+      </strong>
+    </div>
+    <form name="amountForm" class='info-panel'>
+      <div class='info-panel-title'>Amount:</div>
+      <select required id="amount" name="amount" ng-options="'￡' + giftCard.price for giftCard in giftCards | orderBy: 'price' "
+              ng-model="selectedGiftCard">
+        <option value=''>Choose an Amount...</option>
+      </select>
+      <small ng-show="submitted && amountForm.amount.$error.required" class="error">
+        This field is required.
+      </small>
+    </form>
+    <div class='info-panel'>
+      <h6 class='info-panel-title'>Delivery Details:</h6>
+      <div class="tabs" data-tabset>
+        <div data-tab ng-repeat="tab in tabs" data-heading="{{tab.title}}" data-active="tab.active">
+          <div ng-include="tab.url"></div>
+        </div>
+      </div>
+
+    </div>
+    <div class='info-panel last'>
+      <button ng-click="purchase()" class='small right'>PURCHASE</button>
+      <button ng-click="preview()" class='attenuate small right'>PREVIEW</button>
+    </div>
+  </div>
+</div>

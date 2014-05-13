@@ -1,0 +1,113 @@
+<div ng-if="!isSucceed">
+  <div class="row">
+    <div class="columns medium-12">
+      <h5>
+        REVIEW & PLACE ORDER
+      </h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns medium-12">
+      <div data-alert class="alert-box alert" ng-if="isFailed">
+        Process order failed, please check your payment information.
+      </div>
+    </div>
+  </div>
+  <div class="row checkout">
+    <div class="columns medium-7">
+      <div class="info-panel">
+        <h5>
+          PAYMENT INFO
+        </h5>
+
+        <form name="creditCardForm">
+          <div class="row">
+            <div class="columns medium-12">
+              <label for="number" class="required">Card Number</label>
+            </div>
+            <div class="columns medium-8">
+              <input required type="text" ng-model="creditCard.number"
+                     id="number" name="number"/>
+              <small ng-show="submitted && creditCardForm.number.$error.required" class="error">
+                This field is required.
+              </small>
+            </div>
+            <div class="columns medium-4">
+              <img src="images/cards.png" alt="Cards"/>
+            </div>
+          </div>
+          <div class="row credit-card-expiration">
+            <div class="columns medium-8">
+              <label for="expiration-month" class="required">Expiration</label>
+            </div>
+            <div class="columns medium-4">
+              <label for="cvv" class="required">Card Code</label>
+            </div>
+            <div class="columns medium-4">
+              <select id="expiration-month" name="expiration-month" required
+                      ng-model="creditCard['expiration-month']"
+                      ng-options="month for month in expirationMonths">
+                <option value="">Month</option>
+              </select>
+              <small ng-show="submitted && creditCardForm['expiration-month'].$error.required" class="error">
+                This field is required.
+              </small>
+            </div>
+            <div class="columns medium-4">
+              <select id="expiration-year" name="expiration-year" required
+                      ng-model="creditCard['expiration-year']"
+                      ng-options="year for year in expirationYears">
+                <option value="">Year</option>
+              </select>
+              <small ng-show="submitted && creditCardForm['expiration-year'].$error.required" class="error">
+                This field is required.
+              </small>
+            </div>
+            <div class="columns medium-4">
+              <input type="text" id="cvv" name="cvv" required
+                     ng-model="creditCard['cvv']"/>
+              <small ng-show="submitted && creditCardForm.cvv.$error.required" class="error">
+                This field is required.
+              </small>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="columns medium-5">
+      <h5>
+        CART
+      </h5>
+
+      <div class="shopping-cart-small">
+        <ul class="medium-font">
+          <li class="row" ng-repeat="lineItem in lineItems">
+            <div class="columns medium-6">
+              <img class="thumbnail" ng-src="{{lineItem['images'][0]}}" alt="Product"/>
+            </div>
+            <div class="columns medium-6">
+              <a class="primary-color" href="/#/gift/gift-card">
+                Gift Certificate
+              </a>
+
+              <div class="unimportant-text">
+                {{lineItem.sku}}
+              </div>
+              <div>
+                £{{lineItem.price | price}}
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="summary clearfix">
+          <dl class="total medium-font clearfix">
+            <dt class="columns medium-9">Total Price</dt>
+            <dd class="columns medium-3 text-right">£{{lineItems[0].price | price}}</dd>
+          </dl>
+        </div>
+        <button class="place-order small" ng-disabled="placingOrder" ng-click="placeOrder()">PLACE ORDER</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-include="'views/gift/success.html'" ng-if="isSucceed"></div>

@@ -91,6 +91,14 @@ angular.module('miioonApp')
         templateUrl: 'views/report/order.html',
         controller: 'OrderReportController'
       })
+      .when('/gift/gift-card', {
+        templateUrl: 'views/gift/gift-card.html',
+        controller: 'GiftController'
+      })
+      .when('/gift/checkout', {
+        templateUrl: 'views/gift/gift-checkout.html',
+        controller: 'GiftCheckoutController'
+      })
       .otherwise({
         redirectTo: '/'
       });
