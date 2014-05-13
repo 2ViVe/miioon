@@ -11,5 +11,6 @@ angular.module('miioonApp', [
   'ui.utils',
   'mm.foundation.tabs',
   'mm.foundation.position',
-  'mm.foundation.dropdownToggle'
+  'mm.foundation.dropdownToggle',
+  'mm.foundation.modal'
 ]);
