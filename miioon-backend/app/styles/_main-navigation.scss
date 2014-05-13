@@ -1,25 +1,24 @@
-.main-navigation{
-  ul{
-    margin:10px 0;
-    background: #f297a3;
-    height: 30px;
-    li{
-      list-style:none;
-      float:left;
-      a{
-        display:block;
-        height:30px;
-        line-height:30px;
-        background:$pink;
-        color:#fff;
-        padding:0 11px;
-        font-size: 11px;
-        font-weight:bold;
-        &:hover,&.active{
-          background:#fff;
-          color:$pink;
-          text-decoration: none;
-        }
+.main-navigation {
+  background: $pink;
+  margin-bottom: 10px;
+
+  li {
+    list-style: none;
+    float: left;
+
+    a {
+      display: block;
+      height: 30px;
+      line-height: 30px;
+      color: white;
+      padding: 0 11px;
+      font-size: 11px;
+      font-weight: bold;
+
+      &:hover, &.active {
+        background: white;
+        color: $pink;
+        text-decoration: none;
       }
     }
   }
