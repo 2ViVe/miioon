@@ -1,9 +1,11 @@
 .shopping-title {
   padding: 20px 0;
+  margin-bottom: 0;
 }
 
 .shopping-table {
   width: 100%;
+  border: 0;
 
   thead,
   tfoot {
@@ -14,6 +16,7 @@
     th {
       font-size: $medium-font-size;
       font-weight: normal;
+      color: $grey-darker;
       border-top: $grey-border dotted 1px;
     }
   }
@@ -32,6 +35,10 @@
 
   td {
     vertical-align: top;
+  }
+
+  tr:nth-of-type(even) {
+    background: white;
   }
 
   .quantity {

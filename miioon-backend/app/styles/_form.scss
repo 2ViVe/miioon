@@ -1,0 +1,74 @@
+@import "foundation/scss/foundation/components/forms";
+
+button,
+.button {
+  min-width: 150px;
+
+  &.right {
+    margin-left: 15px;
+  }
+
+  &.tertiary {
+    background-color: $grey-darker;
+
+    &:hover {
+      background-color: scale-color($grey-darker, $lightness: $button-function-factor);
+    }
+  }
+
+  &.attenuate {
+    background-color: $grey-light;
+
+    &:hover {
+      background-color: scale-color($grey-light, $lightness: $button-function-factor);
+    }
+  }
+
+  &.go:after {
+    content: "\25BA";
+    margin-left: 12px;
+    font-size: rem-calc(11);
+    position: relative;
+    bottom: 1px;
+  }
+}
+
+.required {
+  &:before {
+    content: "* ";
+    color: $primary-color;
+  }
+}
+
+form {
+  label {
+    color: $grey-dark;
+  }
+
+  .button,
+  button {
+    &[disabled],
+    &.disabled {
+      background-color: $grey-darker;
+
+      &:hover,
+      &:focus {
+        background-color: $grey-darker;
+      }
+    }
+  }
+
+  .title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .input-description {
+    @include form-label(inline,false);
+    display: inline-block;
+  }
+
+  .ng-invalid {
+    margin-bottom: 0;
+  }
+}
