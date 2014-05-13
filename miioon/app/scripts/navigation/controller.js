@@ -3,7 +3,7 @@
 angular.module('2ViVe')
   .controller('MainNavigationController', ['$scope', 'Taxons',
     function($scope, Taxons) {
-      Taxons.fetch().success(function() {
-        $scope.taxons = Taxons.getByPositionMoreThan(0);
+      Taxons.fetch().then(function() {
+        $scope.taxons = Taxons.getByPositionBetween(0, 1000);
       });
     }]);

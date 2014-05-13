@@ -19,15 +19,16 @@ angular.module('2ViVe')
           return $http.get('/api/v2/taxons', {
             transformResponse: CamelCaseLize,
             cache: true
-          }).success(function(data) {
-            _data = data.response;
+          }).then(function(response) {
+            _data = response.data.response;
             hardCodeTaxonImages(_data);
+            return _data;
           });
         },
-        getByPositionMoreThan: function(position) {
+        getByPositionBetween: function(startPosition, endPostion) {
           var results = [];
           angular.forEach(_data, function(taxon) {
-            if (taxon.position > position) {
+            if (taxon.position > startPosition && taxon.position < endPostion) {
               results.push(taxon);
               return null;
             }

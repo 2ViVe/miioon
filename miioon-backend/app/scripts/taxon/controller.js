@@ -7,7 +7,7 @@ angular.module('2ViVe')
       $scope.currentTaxonId = Number($routeParams.taxonId);
 
       Taxons.fetch().then(function() {
-        $scope.taxons = Taxons.getByPositionMoreThan(0);
+        $scope.taxons = Taxons.getByPositionBetween(0, 1000);
         Products.getByTaxon($scope.currentTaxonId, UKCountryId)
           .then(function(data) {
             $scope.products = data.products;

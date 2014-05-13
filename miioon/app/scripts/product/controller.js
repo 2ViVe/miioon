@@ -10,7 +10,7 @@ angular.module('2ViVe')
         });
       };
 
-      Taxons.fetch().success(function() {
+      Taxons.fetch().then(function() {
         $scope.product = product.data;
         $scope.colors = product.colors;
         $scope.sizes = product.sizes;
