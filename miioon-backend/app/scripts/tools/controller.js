@@ -6,9 +6,8 @@ var downloadUrlPrefix = '/documents/tools/',
 angular.module('2ViVe')
   .controller('TrainController', ['$scope', 'Tools', function($scope, Tools) {
     Tools.fetch().then(function(result) {
-      var filesArr = {},
-        folder;
-
+      var filesArr = {};
+      
       angular.forEach(result, function (files, folderName) {
         filesArr[folderName] = [];
         angular.forEach(files,function (filename, index) {
