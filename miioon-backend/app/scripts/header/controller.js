@@ -5,6 +5,7 @@ angular.module('2ViVe')
     function($scope, User, $window, Shopping, UrlHandler) {
       $scope.user = User;
       $scope.retailUrl = UrlHandler.retailUrl();
+      $scope.shopping = Shopping;
 
       $scope.logout = function() {
         User.logout().success(function() {

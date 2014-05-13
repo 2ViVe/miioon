@@ -26,7 +26,12 @@
           <a href='/#/account'>Account</a>
         </li>
         <li>
-          <a ng-href='{{retailUrl}}/#/shopping'>0 items &gt; </a>
+          <a href="/#/shopping" ng-if="shopping.items.length > 0">
+            Shopping Bag ({{shopping.items.length}})
+          </a>
+          <span ng-if="shopping.items.length === 0">
+            Shopping Bag (0)
+          </span>
         </li>
       </ul>
     </div>
