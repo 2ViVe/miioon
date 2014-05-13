@@ -2,10 +2,10 @@
   <div class="columns small-2 taxon-navigation">
     <div ng-repeat="taxon in taxons" class="taxon-group">
       <h4 class="root-taxon">
-        <span class="current" ng-if="taxon.id === currentTaxonId">
+        <span ng-class="{current: taxon.id === currentTaxonId}" ng-if="taxon.subTaxons.length > 0">
           {{taxon.name}}
         </span>
-        <a ng-click="changeSubTaxon(taxon.id)" ng-if="taxon.id !== currentTaxonId">
+        <a ng-click="changeSubTaxon(taxon.id)" ng-if="taxon.subTaxons.length === 0">
           {{taxon.name}}
         </a>
       </h4>

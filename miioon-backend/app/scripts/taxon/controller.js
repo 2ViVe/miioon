@@ -15,8 +15,8 @@ angular.module('2ViVe')
           });
       };
 
-      Taxons.fetch().then(function(data) {
-        $scope.taxons = data;
+      Taxons.fetch().then(function() {
+        $scope.taxons = Taxons.getByPositionMoreThan(0);
         $scope.changeSubTaxon($scope.currentTaxonId);
       });
     }]);
