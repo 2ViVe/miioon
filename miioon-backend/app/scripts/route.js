@@ -72,6 +72,10 @@ angular.module('miioonApp')
         templateUrl: 'views/taxon.html',
         controller: 'TaxonController'
       })
+      .when('/product/:productId', {
+        templateUrl: 'views/product/product-detail.html',
+        controller: 'ProductController'
+      })
       .otherwise({
         redirectTo: '/'
       });

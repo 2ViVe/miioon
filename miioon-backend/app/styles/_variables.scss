@@ -87,11 +87,9 @@ $font-weight-bold: bold !default;
   $form-spacing: rem-calc(14);
 
   //breadcrumbs
-  $crumb-bg:scale-color(#ffffff, $lightness: 55%);
+  $crumb-bg: white;
   $crumb-border-size:0;
-  $crumb-padding:0;
+  $crumb-padding:0 0 20px;
   $crumb-font-transform:capitalize;
   $crumb-font-size:$medium-font-size;
   $crumb-slash:">";
-
-
