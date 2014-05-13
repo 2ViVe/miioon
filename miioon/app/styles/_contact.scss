@@ -2,13 +2,14 @@
   h2{
     margin:30px 0;
   }
-  .icons-location,.icons-phone{
-    vertical-align: bottom;
+  p{
+    margin-bottom: rem-calc(50)
   }
-  .address-info{
-    margin-left:30px;
+  .icons-location,.icons-phone,.icons-email{
+    vertical-align: bottom;
   }
   a,a:hover{
     text-decoration: underline;
+    color:$primary-color;
   }
 }
