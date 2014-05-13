@@ -1,7 +1,8 @@
 @import "foundation/scss/foundation/functions";
+
 $fa-font-path: "/bower_components/fontawesome/fonts";
 
-$body-bg:url('../images/body-bg.jpg') transparent 0 0 repeat;
+$body-bg: url('../images/body-bg.jpg') transparent 0 0 repeat;
 
 $grey-lighter: #F5F5F5;
 $grey-light: #b2b2b2;
@@ -42,8 +43,8 @@ $button-lrg: rem-calc(12);
 $button-font-med: rem-calc(14);
 $button-font-weight: bold;
 $button-function-factor: -20%;
-$button-margin-bottom:0;
-$button-font-color-alt:#fff;
+$button-margin-bottom: 0;
+$button-font-color-alt: #fff;
 
 $cursor-default-value: auto;
 
@@ -68,30 +69,30 @@ $block-grid-default-spacing: rem-calc(10);
 $font-weight-bold: bold !default;
 
 // foundation style reset
-  // panel style
-  $panel-bg:#fff;
-  $panel-border-size:0;
-  $panel-padding:rem-calc(20);
+// panel style
+$panel-bg: #fff;
+$panel-border-size: 0;
+$panel-padding: rem-calc(20);
 
-  // table style
+// table style
 
-  //pagination
-  $pagination-li-font-size:$small-font-size;
-  $pagination-link-font-color:$grey-light;
-  $pagination-link-active-bg: $primary-color;
-  $pagination-link-current-background: $primary-color;
-  $pagination-link-current-active-bg: $primary-color;
-  $pagination-link-unavailable-bg-active: $primary-color;
-  $pagination-link-current-font-color: #fff;
-  $pagination-link-pad: rem-calc(5 8 4);
+//pagination
+$pagination-li-font-size: $small-font-size;
+$pagination-link-font-color: $grey-light;
+$pagination-link-active-bg: $primary-color;
+$pagination-link-current-background: $primary-color;
+$pagination-link-current-active-bg: $primary-color;
+$pagination-link-unavailable-bg-active: $primary-color;
+$pagination-link-current-font-color: #fff;
+$pagination-link-pad: rem-calc(5 8 4);
 
-  //form
-  $form-spacing: rem-calc(14);
+//form
+$form-spacing: rem-calc(14);
 
-  //breadcrumbs
-  $crumb-bg: white;
-  $crumb-border-size:0;
-  $crumb-padding:0 0 20px;
-  $crumb-font-transform:capitalize;
-  $crumb-font-size:$medium-font-size;
-  $crumb-slash:">";
+//breadcrumbs
+$crumb-bg: white;
+$crumb-border-size: 0;
+$crumb-padding: 0 0 20px;
+$crumb-font-transform: capitalize;
+$crumb-font-size: $medium-font-size;
+$crumb-slash: ">";
