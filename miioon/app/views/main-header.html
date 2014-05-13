@@ -42,6 +42,16 @@
       </div>
     </div>
   </div>
+
+  <div class="row" ng-if="replicateOwner">
+    <ul>
+      <li>name: {{ replicateOwner['first-name'] + replicateOwner['last-name'] }}</li>
+      <li>distributor-id: {{ replicateOwner['distributor-id'] }}</li>
+      <li>email:          {{ replicateOwner['email']}} </li>
+      <li>profile-image-url: {{ replicateOwner['profile-image-url'] }}"</li>
+    </ul>
+  </div>
+
   <div class="row">
     <div class="medium-3 show-for-medium-up columns">
       <a href="https://kids.miioon.com">

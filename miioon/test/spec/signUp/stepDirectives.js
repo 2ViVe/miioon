@@ -1,7 +1,8 @@
+'use strict';
+
 describe('Signup Directives', function () {
 
-  var when = describe,
-      $compile,
+  var $compile,
       $scope;
 
 

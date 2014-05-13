@@ -37,6 +37,18 @@ angular.module('2ViVe')
         },
         removePathToContinueShopping: function() {
           $cookies.pathToContinueShopping = '';
+        },
+        getReplicateOwner: function() {
+          var owner = $cookies['replicate-site-owner'];
+          if (!owner) {
+            return null;
+          }
+          owner = owner.slice(2);
+          try {
+            return angular.fromJson(owner);
+          } catch(e) {
+            return null;
+          }
         }
       };
     }]);
