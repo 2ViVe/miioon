@@ -71,7 +71,7 @@ angular.module('miioonApp')
       .when('/coming', {
         templateUrl: 'views/coming.html'
       })
-      .when('/order-shopping', {
+      .when('/order-shopping/:taxonId', {
         templateUrl: 'views/product/taxon.html',
         controller: 'TaxonController'
       })

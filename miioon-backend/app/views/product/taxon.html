@@ -5,7 +5,8 @@
         <span ng-class="{current: taxon.id === currentTaxonId}" ng-if="taxon.subTaxons.length > 0">
           {{taxon.name}}
         </span>
-        <a ng-click="changeSubTaxon(taxon.id)" ng-if="taxon.subTaxons.length === 0">
+        <a ng-href="/#/order-shopping/{{taxon.id}}" ng-class="{current: taxon.id === currentTaxonId}"
+           ng-if="taxon.subTaxons.length === 0">
           {{taxon.name}}
         </a>
       </h4>
@@ -14,7 +15,7 @@
         <span class="current" ng-if="subTaxon.id === currentTaxonId">
           {{subTaxon.name}}
         </span>
-        <a ng-if="subTaxon.id !== currentTaxonId" ng-click="changeSubTaxon(subTaxon.id)">
+        <a ng-if="subTaxon.id !== currentTaxonId" ng-href="/#/order-shopping/{{subTaxon.id}}">
           {{subTaxon.name}}
         </a>
         </li>
