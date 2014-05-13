@@ -14,7 +14,7 @@ function strictProxy(url, dest) {
       next();
     }
   };
-  
+
 }
 
 module.exports = (function() {
