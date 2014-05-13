@@ -86,6 +86,18 @@ angular.module('2ViVe')
               Shopping.items = [];
             });
         },
+        empty: function() {
+          if (User.isLogin) {
+            return $http.put('/api/v2/shopping-carts/users/line-items', [])
+              .success(function(data) {
+                Shopping.items = data.response;
+              });
+          }
+          return $http.put('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', [])
+            .success(function(data) {
+              Shopping.items = data.response;
+            });
+        },
         fetchForUser: function() {
           return $http.get('/api/v2/shopping-carts/users')
             .success(function(data) {
