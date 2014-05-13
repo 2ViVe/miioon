@@ -4,5 +4,6 @@
   "APIServerIP": "199.27.105.132",
   "APIServerPort": 60442,
   "protocol": "https",
-  "livereload": "35731"
+  "livereload": "35731",
+  "optimizationLevel": 3
 }
