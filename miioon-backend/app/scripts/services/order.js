@@ -5,6 +5,14 @@ angular.module('2ViVe')
     function($http, CamelCaseLize) {
       var Order = {
         data: {},
+        detail: function(id) {
+          return $http.get('/api/v2/orders/' + id, {
+            transformResponse: CamelCaseLize,
+            cache: true
+          }).then(function(response) {
+            return response.data.response;
+          });
+        },
         recent: function(offset, limit) {
           return $http.get('/api/v2/orders/recent', {
             transformResponse: CamelCaseLize,
