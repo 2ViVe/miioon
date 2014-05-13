@@ -72,7 +72,7 @@ angular.module('miioonApp')
         templateUrl: 'views/coming.html'
       })
       .when('/order-shopping', {
-        templateUrl: 'views/taxon.html',
+        templateUrl: 'views/product/taxon.html',
         controller: 'TaxonController'
       })
       .when('/product/:productId', {
