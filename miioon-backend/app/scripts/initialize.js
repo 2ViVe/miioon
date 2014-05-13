@@ -11,4 +11,18 @@ angular.module('miioonApp')
         }
         Shopping.fetchForUser();
       }).catch(UrlHandler.goToRetailSite);
+    }])
+  .run(['$rootScope', 'cfpLoadingBar',
+    function($rootScope, cfpLoadingBar) {
+      $rootScope.$on('$routeChangeStart', function() {
+        cfpLoadingBar.start();
+      });
+
+      $rootScope.$on('$routeChangeError', function() {
+        cfpLoadingBar.complete();
+      });
+
+      $rootScope.$on('$viewContentLoaded', function() {
+        cfpLoadingBar.complete();
+      });
     }]);

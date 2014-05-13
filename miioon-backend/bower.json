@@ -17,7 +17,8 @@
     "angular-mm-foundation": "*",
     "angular-scroll": "~0.4.1",
     "sticky": "*",
-    "fontawesome": "~4.0.3"
+    "fontawesome": "~4.0.3",
+    "angular-loading-bar": "~0.4.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",
