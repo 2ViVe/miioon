@@ -77,7 +77,13 @@ angular.module('miioonApp')
       })
       .when('/product/:productId', {
         templateUrl: 'views/product/product-detail.html',
-        controller: 'ProductController'
+        controller: 'ProductController',
+        resolve: {
+          'product': ['Product', '$route', function(Product, $route) {
+            var product = new Product($route.current.params.productId);
+            return product.fetch();
+          }]
+        }
       })
       .when('/shopping', {
         templateUrl: 'views/shopping.html',

@@ -52,8 +52,8 @@ angular.module('2ViVe')
       };
       return Variants;
     }])
-  .factory('Product', ['$http', 'User', 'CamelCaseLize', '$q',
-    function($http, User, CamelCaseLize, $q) {
+  .factory('Product', ['$http', 'User', 'CamelCaseLize',
+    function($http, User, CamelCaseLize) {
       var ATTRIBUTE_KEY = {
         'Color': 'colors',
         'Size': 'sizes'
@@ -67,9 +67,8 @@ angular.module('2ViVe')
       };
 
       Product.prototype.fetch = function() {
-        var deferred = $q.defer();
         var product = this;
-        $http.get('/api/v2/products/' + product.id, {
+        return $http.get('/api/v2/products/' + product.id, {
           transformResponse: CamelCaseLize,
           params: {
             'role-code': User.isLogin ? null : 'R'
@@ -83,10 +82,8 @@ angular.module('2ViVe')
               }
             });
           });
-          deferred.resolve(response.data.response);
+          return product;
         });
-
-        return deferred.promise;
       };
 
       Product.prototype.getVariantByOptions = function(options) {
