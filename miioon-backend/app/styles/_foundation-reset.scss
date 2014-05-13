@@ -13,14 +13,12 @@
 
   // table style
   table{
-    border:1px solid $grey-border;
+    border-spacing: 0;
+    border-bottom: 0;
     thead{
-      background:$primary-color;
       tr{
         th{
-          color:#fff;
           font-weight: normal;
-          font-size:$medium-font-size;
         }
       }
     }
@@ -46,23 +44,14 @@
     }
     tbody{
       tr{
-        &.odd{
-          background:#f3f6f8;
-        }
         td{
           border-bottom: 1px solid $grey-border;
-          color:$grey-darker;
           p{
             margin-bottom: 0;
             font-size: $medium-font-size;
           }
           input[type="file"], input[type="checkbox"], input[type="radio"], select{
             margin-bottom: 0;
-          }
-        }
-        &.last-tr{
-          td{
-            border-bottom:0;
           }
         }
       }

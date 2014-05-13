@@ -52,10 +52,12 @@ $body-font-family: Arial, sans-serif;
 
 $list-nested-margin: 0;
 
-$table-border-size: 0;
-$table-head-font-size: rem-calc(18);
-$table-head-bg: #EEEEEE;
-$table-even-row-bg: $grey-light;
+$table-border-color: $grey-border;
+$table-even-row-bg: $grey-lighter;
+$table-head-font-size: $medium-font-size;
+$table-head-bg: $primary-color;
+$table-head-font-color: white;
+$table-row-font-color: $grey-darker;
 
 $base-margin-top: rem-calc(20);
 $base-margin-bottom: rem-calc(20);
