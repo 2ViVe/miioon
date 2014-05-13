@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('GiftCard', ['$http', 'CamelCaseLize', function($http, camelcase) {
+  .factory('GiftCards', ['$http', 'CamelCaseLize', function($http, camelcase) {
 
-    function GiftCard() {}
+    function GiftCards() {}
 
-    GiftCard.fetch = function() {
+    GiftCards.fetch = function() {
       return $http.get('/api/v2/giftcards', {
         transformResponse:  camelcase
       }).then(function(resp) {
@@ -13,5 +13,5 @@ angular.module('2ViVe')
       });
     };
 
-    return GiftCard;
+    return GiftCards;
   }]);
