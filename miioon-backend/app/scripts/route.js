@@ -68,6 +68,9 @@ angular.module('miioonApp')
       .when('/mentoring', {
         templateUrl: 'views/coming.html'
       })
+      .when('/coming', {
+        templateUrl: 'views/coming.html'
+      })
       .when('/order-shopping', {
         templateUrl: 'views/taxon.html',
         controller: 'TaxonController'
