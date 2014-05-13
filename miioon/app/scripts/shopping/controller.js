@@ -21,7 +21,7 @@ angular.module('2ViVe')
         angular.forEach(Variants.data, function(variant) {
           total += variant.price * Shopping.getByItemId(variant.id).quantity;
         });
-        return parseInt(total * 100) / 100;
+        return total;
       };
 
       $scope.$watch(function() {

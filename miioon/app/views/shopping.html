@@ -44,10 +44,10 @@
             <a ng-click="update()">Update</a>
           </td>
           <td>
-            £{{variant.price}}
+            £{{variant.price | price}}
           </td>
           <td>
-            £{{variant.price * shopping.getByItemId(variant['id']).quantity}}
+            £{{variant.price * shopping.getByItemId(variant['id']).quantity | price}}
           </td>
         </tr>
         </tbody>
@@ -57,7 +57,7 @@
             Grand Total:
           </td>
           <td class="primary-color">
-            £{{GrandTotal()}}
+            £{{GrandTotal() | price}}
           </td>
         </tr>
         </tfoot>
