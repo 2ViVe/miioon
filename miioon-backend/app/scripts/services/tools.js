@@ -22,8 +22,8 @@ angular.module('2ViVe')
             if (item.type.toLocaleLowerCase() === 'pdf') {
               item.canView = true;
             }
-            item.downloadUrl = downloadUrlPrefix + filename;
-            item.viewUrl = viewUrlPrefix + filename;
+            item.downloadUrl = downloadUrlPrefix + folderName + '/' + filename;
+            item.viewUrl = viewUrlPrefix + folderName + '/' + filename;
             item.filename = filename;
             filesArr[folderName].push(item);
           });
