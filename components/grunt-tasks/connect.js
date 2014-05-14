@@ -7,7 +7,6 @@ function strictProxy(url, dest) {
   var proxy = httpProxy.createProxyServer({});
 
   return function(req, res, next) {
-    console.log(req.url)
     if (req.url === url) {
       proxy.web(req, res, { target: dest });
     }
@@ -15,6 +14,7 @@ function strictProxy(url, dest) {
       next();
     }
   };
+
 }
 
 module.exports = (function() {
@@ -49,7 +49,6 @@ module.exports = (function() {
             port: port
           });
 
-          console.log('===============', urlToGo)
           middlewares.push(strictProxy('/', urlToGo));
 
           options.base.forEach(function(base) {

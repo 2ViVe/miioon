@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Profile User Panel', function() {
 
   var when = describe,

@@ -34,6 +34,10 @@ angular.module('2ViVe')
         Shopping.checkout();
       };
 
+      $scope.empty = function() {
+        Shopping.empty();
+      };
+
       $scope.continueShopping = function() {
         Shopping.continueShopping();
       };

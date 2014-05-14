@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Gift Code', function() {
 
   var $scope,

@@ -1,3 +1,5 @@
+'use strict';
+/* jshint ignore:start */
 describe('Dashlize', function() {
 
   var dashlize;
@@ -6,7 +8,9 @@ describe('Dashlize', function() {
 
   it('should dashlize the key of object', inject(function(Dashlize) {
     var obj = { thisIsTheName: 1 };
-    expect(Dashlize(obj)['this-is-the-name']).toBe(obj.thisIsTheName);
-  }));
 
+    expect(Dashlize(obj)['this-is-the-name']).toBe(obj.thisIsTheName);
+
+  }));
 });
+/* jshint ignore:end */

@@ -42,16 +42,25 @@
       </div>
     </div>
   </div>
+
   <div class="row">
     <div class="medium-3 show-for-medium-up columns">
       <a href="https://kids.miioon.com">
         <img src="images/kids-link.gif" alt="Kids this way"/>
       </a>
     </div>
-    <div class="medium-9 show-for-medium-up end columns">
+    <div class="medium-6 show-for-medium-up columns">
       <a href="/#/" class="logo">
         <img alt="Miioon" src="images/logo.png">
       </a>
+    </div>
+    <div class="medium-3 show-for-medium-up end columns">
+      <ul ng-if="replicateOwner">
+        <li>name: {{ replicateOwner['first-name'] + replicateOwner['last-name'] }}</li>
+        <li>distributor-id: {{ replicateOwner['distributor-id'] }}</li>
+        <li>email: {{ replicateOwner['email']}} </li>
+        <!--<img alt="{{ replicateOwner['first-name'] + replicateOwner['last-name'] }}" src="replicateOwner['profile-image-url']">-->
+      </ul>
     </div>
     <div class="small-12 show-for-small-only end columns text-center">
       <a href="/#/" class="logo">

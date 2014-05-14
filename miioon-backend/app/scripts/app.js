@@ -7,10 +7,12 @@ angular.module('miioonApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
+  'chieffancypants.loadingBar',
   '2ViVe',
   'ui.utils',
   'mm.foundation.tabs',
   'mm.foundation.position',
   'mm.foundation.dropdownToggle',
-  'mm.foundation.modal'
+  'mm.foundation.modal',
+  'chieffancypants.loadingBar'
 ]);

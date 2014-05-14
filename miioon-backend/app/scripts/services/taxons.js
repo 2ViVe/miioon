@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Taxons', ['$http', 'CamelCaseLize', '$q',
-    function($http, CamelCaseLize, $q) {
+  .factory('Taxons', ['$http', 'CamelCaseLize',
+    function($http, CamelCaseLize) {
       var _data = [];
 
       function hardCodeTaxonImages(taxons) {
@@ -16,22 +16,19 @@ angular.module('2ViVe')
 
       var Taxons = {
         fetch: function() {
-          var deferred = $q.defer();
-          $http.get('/api/v2/taxons', {
+          return $http.get('/api/v2/taxons', {
             transformResponse: CamelCaseLize,
             cache: true
           }).then(function(response) {
             _data = response.data.response;
             hardCodeTaxonImages(_data);
-            deferred.resolve(_data);
+            return _data;
           });
-
-          return deferred.promise;
         },
-        getByPositionMoreThan: function(position) {
+        getByPositionBetween: function(startPosition, endPostion) {
           var results = [];
           angular.forEach(_data, function(taxon) {
-            if (taxon.position > position) {
+            if (taxon.position > startPosition && taxon.position < endPostion) {
               results.push(taxon);
               return null;
             }

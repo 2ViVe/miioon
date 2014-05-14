@@ -8,7 +8,7 @@ angular.module('2ViVe')
       var subTaxonId = Number($routeParams.subTaxonId);
       var productTaxonId = subTaxonId ? subTaxonId : taxonId;
 
-      Taxons.fetch().success(function() {
+      Taxons.fetch().then(function() {
         $scope.taxon = Taxons.getById(taxonId);
         $scope.currentSubTaxon = Taxons.getSubTaxonByIdAndTaxon(subTaxonId, $scope.taxon);
 
