@@ -6,7 +6,7 @@ describe('Gift Code', function() {
       giftCodeCtrl,
       deferred,
       promise,
-      giftCard,
+      giftCards,
       rootScope,
       when = describe;
 
@@ -17,20 +17,20 @@ describe('Gift Code', function() {
     deferred = $q.defer();
     promise = deferred.promise;
     $scope = $rootScope.$new();
-    giftCard = GiftCards;
+    giftCards = GiftCards;
     rootScope = $rootScope;
     spyOn(GiftCards, 'fetch').andReturn(promise);
 
     giftCodeCtrl = $controller('giftCodeCtrl', {
       $scope: $scope,
-      GiftCard: GiftCards
+      GiftCards: GiftCards
     });
 
   }));
 
   when('controller initialized', function() {
     it('should start fetching the giftcard items', function() {
-      expect(giftCard.fetch).toHaveBeenCalled();
+      expect(giftCards.fetch).toHaveBeenCalled();
     });
 
     it('should assign scope with the result of giftcard service', function() {
