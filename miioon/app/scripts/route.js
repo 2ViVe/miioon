@@ -94,7 +94,7 @@ angular.module('miioonApp')
         controller: 'CheckoutController'
       })
       .when('/starter-pack', {
-        templateUrl: 'views/starter-pack.html',
+        templateUrl: 'views/starter-pack.html'
         //controller: 'CheckoutController'
       })
       .otherwise({
