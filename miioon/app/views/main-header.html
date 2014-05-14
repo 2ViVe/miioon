@@ -16,6 +16,9 @@
         <li>
           Welcome {{user.data.name}}
         </li>
+        <li ng-if="user.data.roleCode === 'R'">
+          <a href="/#/account">Account</a>
+        </li>
         <li>
           <a href="/#/gift/gift-card">Gift</a>
         </li>

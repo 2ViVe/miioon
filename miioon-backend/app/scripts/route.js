@@ -105,6 +105,10 @@ angular.module('miioonApp')
         templateUrl: 'views/gift/gift-checkout.html',
         controller: 'GiftCheckoutController'
       })
+      .when('/tools', {
+        templateUrl: 'views/tools/train.html',
+        controller: 'TrainController'
+      })
       .otherwise({
         redirectTo: '/'
       });
