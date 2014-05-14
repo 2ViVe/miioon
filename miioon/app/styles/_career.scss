@@ -57,6 +57,15 @@
   		left: rem-calc(-30);
       z-index: 2;
   	}
+    .starter-pack{
+      position: absolute;
+      display: block;
+      width:16%;
+      height: 25%;
+      bottom: 2%;
+      right: 2%;
+      z-index: 2;
+    }
   }
 
   .career-2{
