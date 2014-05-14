@@ -93,6 +93,10 @@ angular.module('miioonApp')
         templateUrl: 'views/checkout/all.html',
         controller: 'CheckoutController'
       })
+      .when('/starter-pack', {
+        templateUrl: 'views/starter-pack.html',
+        //controller: 'CheckoutController'
+      })
       .otherwise({
         redirectTo: '/'
       });
