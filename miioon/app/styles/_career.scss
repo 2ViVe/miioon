@@ -114,6 +114,36 @@
 	}
   }
 
+  .career-7{
+    position: relative;
+    margin-bottom:rem-calc(30);
+
+    &.bottom-arrow:before{
+      display: none;
+    }
+    &.bottom-arrow:after{
+      top:0;
+    }
+    h2{
+      position:absolute;
+      top:rem-calc(40);
+      color:#fff;
+      width:100%;
+    }
+    .career-video{
+      position: absolute;
+      top:rem-calc(100);
+      text-align: center;
+      width:80%;
+      left:10%;
+      border:3px #fff solid;
+      border-radius:5px;
+    }
+    .flex-video.widescreen{
+      padding-bottom:50%;
+    }
+  }
+
   .career-3{
   	position: relative;
   	//background:image-url('career/career-3-1.jpg') 0 0 no-repeat;
