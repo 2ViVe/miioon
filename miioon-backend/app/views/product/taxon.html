@@ -5,7 +5,7 @@
         <span ng-class="{current: taxon.id === currentTaxonId}" ng-if="taxon.subTaxons.length > 0">
           {{taxon.name}}
         </span>
-        <a ng-href="/#/order-shopping/{{taxon.id}}" ng-class="{current: taxon.id === currentTaxonId}"
+        <a ng-href="#/order-shopping/{{taxon.id}}" ng-class="{current: taxon.id === currentTaxonId}"
            ng-if="taxon.subTaxons.length === 0">
           {{taxon.name}}
         </a>
@@ -15,7 +15,7 @@
         <span class="current" ng-if="subTaxon.id === currentTaxonId">
           {{subTaxon.name}}
         </span>
-        <a ng-if="subTaxon.id !== currentTaxonId" ng-href="/#/order-shopping/{{subTaxon.id}}">
+        <a ng-if="subTaxon.id !== currentTaxonId" ng-href="#/order-shopping/{{subTaxon.id}}">
           {{subTaxon.name}}
         </a>
         </li>
@@ -23,7 +23,7 @@
     </div>
     <div class="taxon-group">
       <h4 class="root-taxon">
-        <a href="/#/gift/gift-card">
+        <a href="#/gift/gift-card">
           Gift Card
         </a>
       </h4>
@@ -36,11 +36,11 @@
           <img ng-src="{{product.images[0] | imageSize:'list_thumb' }}" alt="{{product.name}}"/>
 
           <div class="view-detail">
-            <a href="/#/product/{{product.id}}">VIEW DETAIL</a>
+            <a href="#/product/{{product.id}}">VIEW DETAIL</a>
           </div>
         </div>
         <div class="name">
-          <a ng-href="/#/product/{{product.id}}">
+          <a ng-href="#/product/{{product.id}}">
             {{product.name}}
           </a>
         </div>

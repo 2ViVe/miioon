@@ -3,19 +3,21 @@
 angular.module('2ViVe')
   .factory('Tools', ['$http', 'CamelCaseLize', function($http, camelcase) {
 
-    var url = '/api/v2/documents/links/tools'
+    var url = '/api/v2/documents/links/tools',
+      downloadUrlPrefix = '/documents/tools/',
+      viewUrlPrefix = '/downloads/documents/tools/';
 
     function Tools() {}
 
     Tools.fetch = function() {
-      return $http.get('/api/v2/documents/links/tools', {
+      return $http.get(url, {
         transformResponse:  camelcase
       }).then(function(resp) {
         var filesArr = {},
           result = resp.data.response;
         angular.forEach(result, function (files, folderName) {
           filesArr[folderName] = [];
-          angular.forEach(files,function (filename, index) {
+          angular.forEach(files,function (filename) {
             var item = {};
             item.type = /[^.]+$/.exec(filename)[0] || '';
             item.canView = false;

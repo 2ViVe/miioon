@@ -29,7 +29,7 @@
         <tr ng-repeat="variant in variants.data | orderBy: 'id' ">
           <td class="cart-item text-left">
             <img ng-src="{{variant.images[0] | imageSize:'small' }}" alt="{{variant.name}}"/>
-            <a ng-href="/#/product/{{variant['product-id']}}" class="product-name">
+            <a ng-href="#/product/{{variant['product-id']}}" class="product-name">
               {{variant.name}}
             </a>
             <ul class="item-info medium-font">
@@ -85,7 +85,7 @@
     <div class="columns medium-12">
       <p class="large-font text-center">
         Your Shopping Cart is empty, please
-        <a class="primary-link" href="/#/taxon/5/sub-taxon/9">
+        <a class="primary-link" href="#/taxon/5/sub-taxon/9">
           pick up some products
         </a>
         first.

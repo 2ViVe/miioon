@@ -2,13 +2,13 @@
   <div class="row">
     <ul class="small-12 columns root-taxons">
       <li>
-        <a href="/#/about">ABOUT US</a>
+        <a href="#/about">ABOUT US</a>
       </li>
       <li>
-        <a href="/#/brand">BRANDS</a>
+        <a href="#/brand">BRANDS</a>
       </li>
       <li>
-        <a href="/#/gift/gift-card">gift card</a>
+        <a href="#/gift/gift-card">gift card</a>
       </li>
       <li ng-repeat="taxon in taxons | orderBy: 'position' ">
         <a href="{{taxon | taxonLink}}">
@@ -18,7 +18,7 @@
           <div class="row">
             <ul class="sub-taxons columns small-6">
               <li ng-repeat="subTaxon in taxon.subTaxons | orderBy: 'position' ">
-                <a href="/#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">{{subTaxon.name}}</a>
+                <a href="#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">{{subTaxon.name}}</a>
               </li>
             </ul>
             <div class="sub-taxon-thumbnail columns small-6 text-center">
@@ -28,13 +28,13 @@
         </div>
       </li>
       <li>
-        <a href="/#/press">PRESS</a>
+        <a href="#/press">PRESS</a>
       </li>
       <li>
         <a onclick="$('#glossi-embed-114370').click();" href="javascript:void(0);">look book</a>
       </li>
       <li class="career-opportunity right">
-        <a class="button" href="/#/career">CAREER OPPORTUNITY</a>
+        <a class="button" href="#/career">CAREER OPPORTUNITY</a>
       </li>
     </ul>
   </div>
