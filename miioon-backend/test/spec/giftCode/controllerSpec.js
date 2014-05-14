@@ -12,18 +12,18 @@ describe('Gift Code', function() {
 
   beforeEach(module('2ViVe'));
 
-  beforeEach(inject(function($rootScope, $controller, GiftCard, $q) {
+  beforeEach(inject(function($rootScope, $controller, GiftCards, $q) {
 
     deferred = $q.defer();
     promise = deferred.promise;
     $scope = $rootScope.$new();
-    giftCard = GiftCard;
+    giftCard = GiftCards;
     rootScope = $rootScope;
-    spyOn(GiftCard, 'fetch').andReturn(promise);
+    spyOn(GiftCards, 'fetch').andReturn(promise);
 
     giftCodeCtrl = $controller('giftCodeCtrl', {
       $scope: $scope,
-      GiftCard: GiftCard
+      GiftCard: GiftCards
     });
 
   }));
