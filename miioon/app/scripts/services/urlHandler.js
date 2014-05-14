@@ -11,18 +11,13 @@ angular.module('2ViVe')
       return {
         backOfficeUrl: function() {
           var port = $location.port();
-          var protocol = $location.protocol();
-          var url = $location.absUrl();
 
           if (port === PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE ||
             port === PORT_FOR_SECURE_RETAIL_DEMO_SITE) {
-            url = url.replace(':' + port, ':' + PORT_FOR_BACK_OFFICE_DEMO_SITE);
-            return url.replace(protocol + ':', 'https:');
+            return 'https://' + $location.host() + ':' + PORT_FOR_BACK_OFFICE_DEMO_SITE;
           }
 
-          return url.indexOf('www.miioon') >= 0 ?
-            url.replace('www.miioon', 'backoffice.miioon') :
-            url.replace('miioon', 'backoffice.miioon');
+          return 'https://backoffice.miioon.com';
         },
         handleSecurityPath: function(stopLocationChange) {
           var path = $location.path();
