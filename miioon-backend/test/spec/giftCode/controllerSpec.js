@@ -6,31 +6,31 @@ describe('Gift Code', function() {
       giftCodeCtrl,
       deferred,
       promise,
-      giftCard,
+      giftCards,
       rootScope,
       when = describe;
 
   beforeEach(module('2ViVe'));
 
-  beforeEach(inject(function($rootScope, $controller, GiftCard, $q) {
+  beforeEach(inject(function($rootScope, $controller, GiftCards, $q) {
 
     deferred = $q.defer();
     promise = deferred.promise;
     $scope = $rootScope.$new();
-    giftCard = GiftCard;
+    giftCards = GiftCards;
     rootScope = $rootScope;
-    spyOn(GiftCard, 'fetch').andReturn(promise);
+    spyOn(GiftCards, 'fetch').andReturn(promise);
 
     giftCodeCtrl = $controller('giftCodeCtrl', {
       $scope: $scope,
-      GiftCard: GiftCard
+      GiftCards: GiftCards
     });
 
   }));
 
   when('controller initialized', function() {
     it('should start fetching the giftcard items', function() {
-      expect(giftCard.fetch).toHaveBeenCalled();
+      expect(giftCards.fetch).toHaveBeenCalled();
     });
 
     it('should assign scope with the result of giftcard service', function() {
