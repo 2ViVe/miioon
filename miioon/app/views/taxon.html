@@ -14,7 +14,7 @@
         <span class="current" ng-if="subTaxon.id === currentSubTaxon.id">
           {{subTaxon.name}}
         </span>
-        <a ng-if="subTaxon.id !== currentSubTaxon.id" href="/#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">
+        <a ng-if="subTaxon.id !== currentSubTaxon.id" href="#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">
           {{subTaxon.name}}
         </a>
       </li>
@@ -27,11 +27,11 @@
           <img ng-src="{{product.images[0] | imageSize:'list_thumb' }}"alt="{{product.name}}"/>
 
           <div class="view-detail">
-            <a href="/#/product/{{product.id}}">VIEW DETAIL</a>
+            <a href="#/product/{{product.id}}">VIEW DETAIL</a>
           </div>
         </div>
         <div class="name">
-          <a ng-href="/#/product/{{product.id}}">
+          <a ng-href="#/product/{{product.id}}">
             {{product.name}}
           </a>
         </div>

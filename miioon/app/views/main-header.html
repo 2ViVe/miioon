@@ -3,13 +3,13 @@
     <div class="columns medium-9 small-7">
       <ul class="header-links separator-slash" ng-if="!user.isLogin">
         <li>
-          <a href="/#/signin">Sign In</a>
+          <a href="#/signin">Sign In</a>
         </li>
         <li>
-          <a href="/#/gift/gift-card">Gift</a>
+          <a href="#/gift/gift-card">Gift</a>
         </li>
         <li>
-          <a href="/#/host">Host</a>
+          <a href="#/host">Host</a>
         </li>
       </ul>
       <ul class="header-links separator-slash" ng-if="user.isLogin">
@@ -17,13 +17,13 @@
           Welcome {{user.data.name}}
         </li>
         <li ng-if="user.data.roleCode === 'R'">
-          <a href="/#/account">Account</a>
+          <a href="#/account">Account</a>
         </li>
         <li>
-          <a href="/#/gift/gift-card">Gift</a>
+          <a href="#/gift/gift-card">Gift</a>
         </li>
         <li>
-          <a href="/#/host">Host</a>
+          <a href="#/host">Host</a>
         </li>
         <li ng-if="user.data.roleCode === 'D'">
           <a href="{{backOfficeUrl}}">BackOffice</a>
@@ -36,7 +36,7 @@
     <div class="columns medium-3 small-5">
       <div class="shopping-bag right">
         <i class="icons-shopping-bag"></i>
-        <a href="/#/shopping" ng-if="shopping.items.length > 0">
+        <a href="#/shopping" ng-if="shopping.items.length > 0">
           Shopping Bag ({{shopping.items.length}})
         </a>
         <span ng-if="shopping.items.length === 0">
@@ -53,7 +53,7 @@
       </a>
     </div>
     <div class="medium-6 show-for-medium-up columns">
-      <a href="/#/" class="logo">
+      <a href="#/" class="logo">
         <img alt="Miioon" src="images/logo.png">
       </a>
     </div>
@@ -66,7 +66,7 @@
       </ul>
     </div>
     <div class="small-12 show-for-small-only end columns text-center">
-      <a href="/#/" class="logo">
+      <a href="#/" class="logo">
         <img alt="Miioon" src="images/logo.png">
       </a>
     </div>
