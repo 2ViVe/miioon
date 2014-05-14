@@ -20,7 +20,7 @@ angular.module('2ViVe')
               if (!isAlreadyLogin && Shopping.items) {
                 Shopping.mergeItems().success(goToPreviousPath);
               } else {
-                Shopping.fetchForUser().success(goToPreviousPath);
+                Shopping.fetch().then(goToPreviousPath);
               }
             });
           })

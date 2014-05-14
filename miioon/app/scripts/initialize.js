@@ -3,10 +3,8 @@
 angular.module('miioonApp')
   .run(['User', 'Taxons', 'Shopping',
     function(User, Taxons, Shopping) {
-      User.fetch().then(function() {
-        Shopping.fetchForUser();
-      }).catch(function() {
-        Shopping.fetchForVisitor();
+      User.fetch().finally(function() {
+        Shopping.fetch();
       });
     }])
   .run(['$rootScope', 'cfpLoadingBar', 'UrlHandler',

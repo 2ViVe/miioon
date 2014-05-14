@@ -98,23 +98,26 @@ angular.module('2ViVe')
               Shopping.items = data.response;
             });
         },
-        fetchForUser: function() {
-          return $http.get('/api/v2/shopping-carts/users')
-            .success(function(data) {
-              Shopping.items = data.response['line-items'];
-            });
-        },
-        fetchForVisitor: function() {
+        fetch: function() {
+          if (User.isLogin) {
+            return $http.get('/api/v2/shopping-carts/users')
+              .then(function(response) {
+                Shopping.items = response.data.response['line-items'];
+                return response.data.response;
+              });
+          }
           if (LocalStorage.isVisitorIdSaved()) {
             return $http.get('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId())
-              .success(function(data) {
-                Shopping.items = data.response['line-items'];
+              .then(function(response) {
+                Shopping.items = response.data.response['line-items'];
+                return response.data.response;
               });
           } else {
             return $http.post('/api/v2/shopping-carts/visitors', {
               'id': LocalStorage.createVisitorId()
-            }).success(function(data) {
-              Shopping.items = data.response['line-items'];
+            }).then(function(response) {
+              Shopping.items = response.data.response['line-items'];
+              return response.data.response;
             });
           }
         }
