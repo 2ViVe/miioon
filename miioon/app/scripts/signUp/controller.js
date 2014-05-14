@@ -91,6 +91,7 @@ angular.module('2ViVe')
           Registration.orderSummary($scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress, $scope.lineItems)
             .success(function(data) {
               $scope.payment = data.response;
+              $scope.payment.billingAddress = data.response['billing-address'];
               var paymentMethod = data.response['available-payment-methods'][0];
               $scope.payment['payment-method-id'] = paymentMethod.id;
               $scope.payment['is-creditcard'] = paymentMethod['is-creditcard'];
@@ -149,10 +150,10 @@ angular.module('2ViVe')
       };
 
     }])
-    .controller('ChimpModalController', ['$scope', '$modalInstance',
-      function($scope, $modalInstance) {
-        $scope.cancel = function() {
-          $modalInstance.dismiss('cancel');
-        };
-      }
-    ]);
+  .controller('ChimpModalController', ['$scope', '$modalInstance',
+    function($scope, $modalInstance) {
+      $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
+      };
+    }
+  ]);
