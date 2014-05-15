@@ -4,8 +4,8 @@ angular.module('2ViVe')
   .factory('Tools', ['$http', 'CamelCaseLize', function($http, camelcase) {
 
     var url = '/api/v2/documents/links/tools',
-      downloadUrlPrefix = '/documents/tools/',
-      viewUrlPrefix = '/downloads/documents/tools/';
+      viewUrlPrefix = '/documents/tools/',
+      downloadUrlPrefix = '/downloads/documents/tools/';
 
     function Tools() {}
 
