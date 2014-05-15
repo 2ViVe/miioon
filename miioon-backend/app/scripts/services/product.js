@@ -60,11 +60,12 @@ angular.module('2ViVe')
         'Size': 'sizes'
       };
 
-      var Product = function(id) {
+      var Product = function(id, catalogCode) {
         var product = this;
         product.colors = [];
         product.sizes = [];
         product.id = id;
+        product.catalogCode = catalogCode ? catalogCode : null;
       };
 
       Product.prototype.fetch = function() {
@@ -72,7 +73,8 @@ angular.module('2ViVe')
         return $http.get('/api/v2/products/' + product.id, {
           transformResponse: CamelCaseLize,
           params: {
-            'role-code': User.isLogin ? null : 'R'
+            'role-code': User.isLogin ? null : 'R',
+            'catalog-code': product.catalogCode
           }
         }).then(function(response) {
           product.data = response.data.response;
