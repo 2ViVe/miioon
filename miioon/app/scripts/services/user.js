@@ -49,7 +49,6 @@ angular.module('2ViVe')
         logout: function() {
           return $http.post('/api/logout')
             .success(function() {
-              LocalStorage.clearSession();
               User.isLogin = false;
             });
         },
