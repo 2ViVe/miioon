@@ -4,9 +4,6 @@ angular.module('2ViVe')
   .factory('LocalStorage', ['$cookies', 'UUID',
     function($cookies, UUID) {
       return {
-        clearSession: function() {
-          $cookies.sid = '';
-        },
         createVisitorId: function() {
           $cookies.visitorId = UUID.generate();
           return $cookies.visitorId;
@@ -15,7 +12,7 @@ angular.module('2ViVe')
           return $cookies.visitorId;
         },
         removeVisitorId: function() {
-          $cookies.visitorId = '';
+          delete $cookies.visitorId;
         },
         getVisitorId: function() {
           return $cookies.visitorId;
@@ -27,7 +24,7 @@ angular.module('2ViVe')
           return $cookies.pathAfterLogin ? $cookies.pathAfterLogin : '/';
         },
         removePathAfterLogin: function() {
-          $cookies.pathAfterLogin = '';
+          delete $cookies.pathAfterLogin;
         },
         setPathToContinueShopping: function(path) {
           $cookies.pathToContinueShopping = path;
@@ -36,7 +33,19 @@ angular.module('2ViVe')
           return $cookies.pathToContinueShopping ? $cookies.pathToContinueShopping : '/';
         },
         removePathToContinueShopping: function() {
-          $cookies.pathToContinueShopping = '';
+          delete $cookies.pathToContinueShopping;
+        },
+        getReplicateOwner: function() {
+          var owner = $cookies['replicate-site-owner'];
+          if (!owner) {
+            return null;
+          }
+          owner = owner.slice(2);
+          try {
+            return angular.fromJson(owner);
+          } catch(e) {
+            return null;
+          }
         }
       };
     }]);
