@@ -14,11 +14,9 @@ angular.module('2ViVe')
         },
         retailUrl: function() {
           var port = $location.port();
-          var host = $location.host();
-
           if (port === PORT_FOR_BACK_OFFICE_DEMO_SITE) {
-            host.replace('miioon.backoffice', 'miioon.www');
-            return 'http://' + host + ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE + '/';
+            return 'http://' + $location.host().replace('miioon.backoffice', 'miioon.www') +
+              ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE + '/';
           }
 
           return 'http://www.miioon.com';

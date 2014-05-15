@@ -92,6 +92,7 @@ angular.module('2ViVe')
             .success(function(data) {
               $scope.payment = data.response;
               $scope.payment.billingAddress = data.response['billing-address'];
+              $scope.payment.billingAddress['street-contd'] = $scope.address.homeAddress['street-contd'];
               var paymentMethod = data.response['available-payment-methods'][0];
               $scope.payment['payment-method-id'] = paymentMethod.id;
               $scope.payment['is-creditcard'] = paymentMethod['is-creditcard'];
