@@ -1,6 +1,6 @@
 <header class="main-header row" ng-controller="HeaderController">
   <div class="row">
-    <div class="columns medium-9 small-7">
+    <div class="columns medium-8 small-7">
       <ul class="header-links separator-slash" ng-if="!user.isLogin">
         <li>
           <a href="#/signin">Sign In</a>
@@ -33,7 +33,7 @@
         </li>
       </ul>
     </div>
-    <div class="columns medium-3 small-5">
+    <div class="columns medium-4 small-5">
       <div class="shopping-bag right">
         <i class="icons-shopping-bag"></i>
         <a href="#/shopping" ng-if="shopping.items.length > 0">
@@ -42,6 +42,7 @@
         <span ng-if="shopping.items.length === 0">
           Shopping Bag (0)
         </span>
+        <i class='icons-message'></i>
         <a href ng-click='contactMe();'>Contact Me</a>
       </div>
     </div>

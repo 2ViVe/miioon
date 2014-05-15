@@ -5,16 +5,28 @@ angular.module('2ViVe')
     function($window, $location, LocalStorage) {
       var PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE = 11442;
       var PORT_FOR_SECURE_RETAIL_DEMO_SITE = 22442;
-      var PORT_FOR_BACK_OFFICE_DEMO_SITE = 33442;
+      var PORT_FOR_BACK_OFFICE_DEMO_SITE = 22442;
       var SECURE_PATHS = ['/signup', '/signin', '/checkout', '/retail-signup', '/account'];
 
-      return {
+      var UrlHandler = {
+        goToRetailSite: function() {
+          $window.location.href = UrlHandler.retailUrl();
+        },
+        retailUrl: function() {
+          var port = $location.port();
+          if (port === PORT_FOR_BACK_OFFICE_DEMO_SITE) {
+            return 'http://' + $location.host().replace('miioon.backoffice', 'miioon.www') +
+              ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE + '/';
+          }
+
+          return 'http://www.miioon.com';
+        },
         backOfficeUrl: function() {
           var port = $location.port();
-
           if (port === PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE ||
             port === PORT_FOR_SECURE_RETAIL_DEMO_SITE) {
-            return 'https://' + $location.host() + ':' + PORT_FOR_BACK_OFFICE_DEMO_SITE;
+            return 'https://' + $location.host().replace('miioon.www', 'miioon.backoffice') +
+              ':' + PORT_FOR_BACK_OFFICE_DEMO_SITE;
           }
 
           return 'https://backoffice.miioon.com';
@@ -51,4 +63,5 @@ angular.module('2ViVe')
           }
         }
       };
+      return UrlHandler;
     }]);

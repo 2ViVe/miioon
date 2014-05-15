@@ -5,8 +5,8 @@ angular.module('2ViVe')
     function($window, $location, LocalStorage) {
       var PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE = 11442;
       var PORT_FOR_SECURE_RETAIL_DEMO_SITE = 22442;
-      var PORT_FOR_BACK_OFFICE_DEMO_SITE = 33442;
-      var SECURE_PATHS = ['/signup', '/signin', '/checkout', '/retail-signup'];
+      var PORT_FOR_BACK_OFFICE_DEMO_SITE = 22442;
+      var SECURE_PATHS = ['/signup', '/signin', '/checkout', '/retail-signup', '/account'];
 
       var UrlHandler = {
         goToRetailSite: function() {
@@ -14,28 +14,22 @@ angular.module('2ViVe')
         },
         retailUrl: function() {
           var port = $location.port();
-          var host = $location.host();
-
           if (port === PORT_FOR_BACK_OFFICE_DEMO_SITE) {
-            return 'http://' + host + ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE + '/';
+            return 'http://' + $location.host().replace('miioon.backoffice', 'miioon.www') +
+              ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE + '/';
           }
 
           return 'http://www.miioon.com';
         },
         backOfficeUrl: function() {
           var port = $location.port();
-          var protocol = $location.protocol();
-          var url = $location.absUrl();
-
           if (port === PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE ||
             port === PORT_FOR_SECURE_RETAIL_DEMO_SITE) {
-            url = url.replace(':' + port, ':' + PORT_FOR_BACK_OFFICE_DEMO_SITE);
-            return url.replace(protocol + ':', 'https:');
+            return 'https://' + $location.host().replace('miioon.www', 'miioon.backoffice') +
+              ':' + PORT_FOR_BACK_OFFICE_DEMO_SITE;
           }
 
-          return url.indexOf('www.miioon') >= 0 ?
-            url.replace('www.miioon', 'backoffice.miioon') :
-            url.replace('miioon', 'backoffice.miioon');
+          return 'https://backoffice.miioon.com';
         },
         handleSecurityPath: function(stopLocationChange) {
           var path = $location.path();
