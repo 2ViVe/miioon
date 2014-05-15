@@ -14,7 +14,7 @@
           <td ng-if="$first" rowspan="{{ files.length }}">{{ catalog }}</td>
           <td>{{ file.filename }}</td>
           <td>{{ file.type }}</td>
-          <td><a class="button right attenuate" href="{{ file.downloadUrl }}">Download</a><a class="button right" href="{{ file.viewUrl }}">View</a></td>
+          <td><a class="button right attenuate" href="{{ file.downloadUrl }}">Download</a><a class="button right" target="_blank" href="{{ file.viewUrl }}">View</a></td>
         </tr>
       </tbody>
     </table>
