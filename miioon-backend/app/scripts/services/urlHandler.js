@@ -14,23 +14,19 @@ angular.module('2ViVe')
         },
         retailUrl: function() {
           var port = $location.port();
-          var host = $location.host();
-
           if (port === PORT_FOR_BACK_OFFICE_DEMO_SITE) {
-            host.replace('miioon.backoffice', 'miioon.www');
-            return 'http://' + host + ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE + '/';
+            return 'http://' + $location.host().replace('miioon.backoffice', 'miioon.www') +
+              ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE + '/';
           }
 
           return 'http://www.miioon.com';
         },
         backOfficeUrl: function() {
           var port = $location.port();
-          var host = $location.host();
-
           if (port === PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE ||
             port === PORT_FOR_SECURE_RETAIL_DEMO_SITE) {
-            host.replace('miioon.www', 'miioon.backoffice');
-            return 'https://' + host + ':' + PORT_FOR_BACK_OFFICE_DEMO_SITE;
+            return 'https://' + $location.host().replace('miioon.www', 'miioon.backoffice') +
+              ':' + PORT_FOR_BACK_OFFICE_DEMO_SITE;
           }
 
           return 'https://backoffice.miioon.com';
