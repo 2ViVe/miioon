@@ -13,4 +13,17 @@ angular.module('2ViVe')
             $scope.products = data.products;
           });
       });
+    }])
+  .controller('MarketingMaterialsController', ['$scope', 'Products', 'User',
+    function($scope, Products, User) {
+      var UKCountryId = 1213;
+      var MarketingMaterialsTaxonId = 21;
+      var MarketingMaterialsCatalogCode = 'MM';
+
+      User.fetch().then(function() {
+        Products.getByTaxon(MarketingMaterialsTaxonId, UKCountryId, MarketingMaterialsCatalogCode)
+          .then(function(data) {
+            $scope.products = data.products;
+          });
+      });
     }]);

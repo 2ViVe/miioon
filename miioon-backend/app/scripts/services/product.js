@@ -4,14 +4,15 @@ angular.module('2ViVe')
   .factory('Products', ['$http', 'User', 'CamelCaseLize', '$q',
     function($http, User, CamelCaseLize, $q) {
       return {
-        getByTaxon: function(taxonId, countryId) {
+        getByTaxon: function(taxonId, countryId, catalogCode) {
           var deferred = $q.defer();
           $http.get('/api/v2/products/taxons/' + taxonId, {
             transformResponse: CamelCaseLize,
             cache: true,
             params: {
               'role-code': User.isLogin ? null : 'R',
-              'country-id': countryId
+              'country-id': countryId,
+              'catalog-code': catalogCode
             }
           }).then(function(response) {
             deferred.resolve(response.data.response);
