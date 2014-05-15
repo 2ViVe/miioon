@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries', 'User', '$modal',
-    function($scope, Registration, $window, countries, User, $modal) {
+  .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries', 'User', '$modal', 'UrlHandler',
+    function($scope, Registration, $window, countries, User, $modal, UrlHandler) {
+      $scope.retailUrl = UrlHandler.retailUrl();
       $scope.countries = countries;
       $scope.currentStepNumber = 1;
       $scope.shouldValidateRemotlyOnSubmit = false;
