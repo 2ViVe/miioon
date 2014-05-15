@@ -60,12 +60,13 @@ angular.module('2ViVe')
               Shopping.items = data.response;
             });
         },
-        add: function(variant, quantity) {
+        add: function(variant, quantity, catalogCode) {
           if (User.isLogin) {
             return $http.post('/api/v2/shopping-carts/users/line-items', [
               {
                 'variant-id': variant.id,
-                'quantity': quantity
+                'quantity': quantity,
+                'catalog-code': catalogCode
               }
             ]).success(function(data) {
               Shopping.items = data.response;
