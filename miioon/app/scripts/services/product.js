@@ -4,14 +4,15 @@ angular.module('2ViVe')
   .factory('Products', ['$http', 'User', 'CamelCaseLize', '$q',
     function($http, User, CamelCaseLize, $q) {
       return {
-        getByTaxon: function(taxonId, countryId) {
+        getByTaxon: function(taxonId, countryId, catalogCode) {
           var deferred = $q.defer();
           $http.get('/api/v2/products/taxons/' + taxonId, {
             transformResponse: CamelCaseLize,
             cache: true,
             params: {
               'role-code': User.isLogin ? null : 'R',
-              'country-id': countryId
+              'country-id': countryId,
+              'catalog-code': catalogCode
             }
           }).then(function(response) {
             deferred.resolve(response.data.response);
@@ -52,38 +53,46 @@ angular.module('2ViVe')
       };
       return Variants;
     }])
-  .factory('Product', ['$http', 'User', 'CamelCaseLize',
-    function($http, User, CamelCaseLize) {
+  .factory('Product', ['$http', 'User', 'CamelCaseLize', '$q',
+    function($http, User, CamelCaseLize, $q) {
       var ATTRIBUTE_KEY = {
         'Color': 'colors',
         'Size': 'sizes'
       };
 
-      var Product = function(id) {
+      var Product = function(id, catalogCode) {
         var product = this;
         product.colors = [];
         product.sizes = [];
         product.id = id;
+        product.catalogCode = catalogCode ? catalogCode : null;
       };
 
       Product.prototype.fetch = function() {
+        var deferred = $q.defer();
         var product = this;
-        return $http.get('/api/v2/products/' + product.id, {
-          transformResponse: CamelCaseLize,
-          params: {
-            'role-code': User.isLogin ? null : 'R'
-          }
-        }).then(function(response) {
-          product.data = response.data.response;
-          angular.forEach(product.data.variants, function(variant) {
-            angular.forEach(variant.options, function(option) {
-              if (product[ATTRIBUTE_KEY[option.type]].indexOf(option.name) < 0) {
-                product[ATTRIBUTE_KEY[option.type]].push(option.name);
-              }
+
+        User.fetch().then(function() {
+          $http.get('/api/v2/products/' + product.id, {
+            transformResponse: CamelCaseLize,
+            params: {
+              'role-code': User.isLogin ? null : 'R',
+              'catalog-code': product.catalogCode
+            }
+          }).then(function(response) {
+            product.data = response.data.response;
+            angular.forEach(product.data.variants, function(variant) {
+              angular.forEach(variant.options, function(option) {
+                if (product[ATTRIBUTE_KEY[option.type]].indexOf(option.name) < 0) {
+                  product[ATTRIBUTE_KEY[option.type]].push(option.name);
+                }
+              });
             });
+            deferred.resolve(product);
           });
-          return product;
         });
+
+        return deferred.promise;
       };
 
       Product.prototype.getVariantByOptions = function(options) {
