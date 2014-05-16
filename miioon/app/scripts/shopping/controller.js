@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('ShoppingController', ['$scope', 'Shopping', 'Variants',
-    function($scope, Shopping, Variants) {
+  .controller('ShoppingController', ['$scope', 'Shopping', 'Variants', 'User',
+    function($scope, Shopping, Variants, User) {
       $scope.shopping = Shopping;
       $scope.variants = Variants;
 
@@ -24,10 +24,10 @@ angular.module('2ViVe')
         return total;
       };
 
-      $scope.$watch(function() {
-        return Shopping.items;
-      }, function() {
-        Variants.getByIds(Shopping.getItemIds());
+      User.fetch().then(function() {
+        Shopping.fetch().then(function() {
+          Variants.getByIds(Shopping.getItemIds());
+        });
       });
 
       $scope.checkout = function() {
