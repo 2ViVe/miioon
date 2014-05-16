@@ -4,14 +4,15 @@ angular.module('2ViVe')
   .factory('Products', ['$http', 'User', 'CamelCaseLize', '$q',
     function($http, User, CamelCaseLize, $q) {
       return {
-        getByTaxon: function(taxonId, countryId) {
+        getByTaxon: function(taxonId, countryId, catalogCode) {
           var deferred = $q.defer();
           $http.get('/api/v2/products/taxons/' + taxonId, {
             transformResponse: CamelCaseLize,
             cache: true,
             params: {
               'role-code': User.isLogin ? null : 'R',
-              'country-id': countryId
+              'country-id': countryId,
+              'catalog-code': catalogCode
             }
           }).then(function(response) {
             deferred.resolve(response.data.response);
@@ -59,11 +60,12 @@ angular.module('2ViVe')
         'Size': 'sizes'
       };
 
-      var Product = function(id) {
+      var Product = function(id, catalogCode) {
         var product = this;
         product.colors = [];
         product.sizes = [];
         product.id = id;
+        product.catalogCode = catalogCode ? catalogCode : null;
       };
 
       Product.prototype.fetch = function() {
@@ -71,7 +73,8 @@ angular.module('2ViVe')
         return $http.get('/api/v2/products/' + product.id, {
           transformResponse: CamelCaseLize,
           params: {
-            'role-code': User.isLogin ? null : 'R'
+            'role-code': User.isLogin ? null : 'R',
+            'catalog-code': product.catalogCode
           }
         }).then(function(response) {
           product.data = response.data.response;

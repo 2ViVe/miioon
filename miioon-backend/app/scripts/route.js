@@ -4,7 +4,6 @@ angular.module('miioonApp')
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
-        // redirectTo: '/order-shopping/9'
         templateUrl: 'views/home.html'
       })
       .when('/account', {
@@ -76,6 +75,16 @@ angular.module('miioonApp')
         templateUrl: 'views/product/taxon.html',
         controller: 'TaxonController'
       })
+      .when('/product/:productId/:catalogCode', {
+        templateUrl: 'views/product/product-detail-marketing-materials.html',
+        controller: 'ProductController',
+        resolve: {
+          'product': ['Product', '$route', function(Product, $route) {
+            var product = new Product($route.current.params.productId, $route.current.params.catalogCode);
+            return product.fetch();
+          }]
+        }
+      })
       .when('/product/:productId', {
         templateUrl: 'views/product/product-detail.html',
         controller: 'ProductController',
@@ -109,6 +118,10 @@ angular.module('miioonApp')
       .when('/tools', {
         templateUrl: 'views/tools/train.html',
         controller: 'TrainController'
+      })
+      .when('/marketing-materials', {
+        templateUrl: 'views/product/marketing-materials.html',
+        controller: 'MarketingMaterialsController'
       })
       .otherwise({
         redirectTo: '/'
