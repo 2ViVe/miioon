@@ -1,7 +1,14 @@
 <div class='home-container'>
 	<div class='row'>
 		<div class="columns medium-8">
-        <div class='home-video radius'><img src='/images/home/home-video.jpg' alt='Video Name' class='radius' />
+      <div class='home-video radius'>
+        <iframe class='vimeo-video' src="//player.vimeo.com/video/93490109"  height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <!-- TODO -->
+        <style>
+          .home-container .home-video .vimeo-video{
+            width: 100%;
+          }
+        </style>
       </div>
 		</div>
 		<div class="columns medium-4">
@@ -41,6 +48,7 @@
 	<div class='row'>
 		<div class='columns medium-6'>
 			<h3 class='primary-color'>MIIOON FACEBOOK FEED</h3>
+      <!-- facebook-likebox start -->
 			<div class='home-facebook block-margin-top'>
 				<div id="fb-root"></div>
         <script>(function(d, s, id) {
@@ -50,8 +58,14 @@
           js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=655504081186151&version=v2.0";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-        <div class="fb-like-box" data-href="https://www.facebook.com/TheOons" data-width="470" data-height="561" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="true" data-show-border="true"></div>
+        <div class="fb-like-box" data-href="https://www.facebook.com/TheOons" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="true" data-show-border="true"></div>
+        <style>
+          .fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+            width: 100% !important;
+          }
+        </style>
 			</div>
+      <!-- facebook-likebox start end -->
 		</div>
 		<div class='columns medium-6'>
 			<h3 class='primary-color'>MIIOON BLOG FEED</h3>
