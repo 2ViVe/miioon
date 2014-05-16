@@ -53,8 +53,8 @@ angular.module('2ViVe')
       };
       return Variants;
     }])
-  .factory('Product', ['$http', 'User', 'CamelCaseLize',
-    function($http, User, CamelCaseLize) {
+  .factory('Product', ['$http', 'User', 'CamelCaseLize', '$q',
+    function($http, User, CamelCaseLize, $q) {
       var ATTRIBUTE_KEY = {
         'Color': 'colors',
         'Size': 'sizes'
@@ -69,24 +69,30 @@ angular.module('2ViVe')
       };
 
       Product.prototype.fetch = function() {
+        var deferred = $q.defer();
         var product = this;
-        return $http.get('/api/v2/products/' + product.id, {
-          transformResponse: CamelCaseLize,
-          params: {
-            'role-code': User.isLogin ? null : 'R',
-            'catalog-code': product.catalogCode
-          }
-        }).then(function(response) {
-          product.data = response.data.response;
-          angular.forEach(product.data.variants, function(variant) {
-            angular.forEach(variant.options, function(option) {
-              if (product[ATTRIBUTE_KEY[option.type]].indexOf(option.name) < 0) {
-                product[ATTRIBUTE_KEY[option.type]].push(option.name);
-              }
+
+        User.fetch().then(function() {
+          $http.get('/api/v2/products/' + product.id, {
+            transformResponse: CamelCaseLize,
+            params: {
+              'role-code': User.isLogin ? null : 'R',
+              'catalog-code': product.catalogCode
+            }
+          }).then(function(response) {
+            product.data = response.data.response;
+            angular.forEach(product.data.variants, function(variant) {
+              angular.forEach(variant.options, function(option) {
+                if (product[ATTRIBUTE_KEY[option.type]].indexOf(option.name) < 0) {
+                  product[ATTRIBUTE_KEY[option.type]].push(option.name);
+                }
+              });
             });
+            deferred.resolve(product);
           });
-          return product;
         });
+
+        return deferred.promise;
       };
 
       Product.prototype.getVariantByOptions = function(options) {

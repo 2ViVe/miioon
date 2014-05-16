@@ -46,7 +46,7 @@ angular.module('2ViVe')
       };
 
       $scope.addToCart = function() {
-        Shopping.add($scope.variant, $scope.quantity);
+        Shopping.add($scope.variant, $scope.quantity, product.catalogCode);
       };
 
       $scope.purchase = function() {
