@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('miioonApp')
-
+  .config(['$httpProvider', function($httpProvider) {
+    $httpProvider.interceptors.push('HttpInterceptor');
+  }])
   .run(['User', 'UrlHandler', 'Shopping',
     function(User, UrlHandler, Shopping) {
       User.fetch().then(function() {

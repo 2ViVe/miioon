@@ -4,7 +4,6 @@ angular.module('miioonApp')
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
-        // redirectTo: '/order-shopping/9'
         templateUrl: 'views/home.html'
       })
       .when('/account', {
