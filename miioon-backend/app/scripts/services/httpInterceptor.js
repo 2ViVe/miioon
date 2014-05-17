@@ -10,7 +10,7 @@ angular.module('2ViVe')
       },
       responseError: function(rejection) {
         if (rejection.status === 401) {
-          UrlHandler.goToRetailSite();
+          UrlHandler.goToRetailSite('/signin');
         }
         return $q.reject(rejection);
       }
