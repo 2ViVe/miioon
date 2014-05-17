@@ -50,7 +50,7 @@ angular.module('2ViVe')
       };
 
       $scope.purchase = function() {
-        Shopping.add($scope.variant, $scope.quantity)
+        Shopping.add($scope.variant, $scope.quantity, product.catalogCode)
           .success(function() {
             Shopping.checkout();
           });
