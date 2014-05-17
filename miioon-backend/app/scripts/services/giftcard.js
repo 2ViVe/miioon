@@ -1,28 +1,19 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('GiftCards', ['$http', 'CamelCaseLize', function($http, camelcase) {
+  .factory('GiftCard', ['$http', 'ipCookie', '$location',
+    function($http, ipCookie, $location) {
+      var domain = $location.host().split('.');
+      domain = '.' + domain[domain.length - 2] + '.' + domain[domain.length - 1];
 
-    function GiftCards() {}
+      var GiftCard = function() {
+      };
 
-    GiftCards.fetch = function() {
-      return $http.get('/api/v2/giftcards', {
-        transformResponse: camelcase
-      }).then(function(resp) {
-        return resp.data.response;
-      });
-    };
-
-    return GiftCards;
-  }])
-  .factory('GiftCard', ['$http', '$cookieStore',
-    function($http, $cookieStore) {
-      var GiftCard = function() {};
-
-      GiftCard.prototype.fetch = function() {
+      GiftCard.prototype.fetch = function(roleCode) {
         var giftCard = this;
         return $http.get('/api/v2/products/18', {
           params: {
+            'role-code': roleCode,
             'country-id': 1213,
             'catalog-code': 'GC'
           }
@@ -32,18 +23,22 @@ angular.module('2ViVe')
       };
 
       GiftCard.prototype.purchase = function(selectedGiftCard, info) {
-        $cookieStore.put('selectedGiftCard', selectedGiftCard);
-        $cookieStore.put('giftCardInfo', info);
+        ipCookie('selectedGiftCard', selectedGiftCard, {
+          domain: domain
+        });
+        ipCookie('giftCardInfo', info, {
+          domain: domain
+        });
       };
 
       GiftCard.prototype.clear = function() {
-        $cookieStore.remove('selectedGiftCard');
-        $cookieStore.remove('giftCardInfo');
+        ipCookie.remove('selectedGiftCard');
+        ipCookie.remove('giftCardInfo');
       };
 
       GiftCard.prototype.populate = function() {
-        this.info = $cookieStore.get('giftCardInfo');
-        this.selectedGiftCard = $cookieStore.get('selectedGiftCard');
+        this.info = ipCookie('giftCardInfo');
+        this.selectedGiftCard = ipCookie('selectedGiftCard');
       };
 
       GiftCard.prototype.placeOrder = function(creditcard) {

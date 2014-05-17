@@ -12,5 +12,6 @@ angular.module('miioonApp', [
   'ui.utils',
   'mm.foundation.tabs',
   'mm.foundation.modal',
-  'duScroll'
+  'duScroll',
+  'ipCookie'
 ]);

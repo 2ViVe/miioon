@@ -14,5 +14,6 @@ angular.module('miioonApp', [
   'mm.foundation.position',
   'mm.foundation.dropdownToggle',
   'mm.foundation.modal',
-  'chieffancypants.loadingBar'
+  'chieffancypants.loadingBar',
+  'ipCookie'
 ]);

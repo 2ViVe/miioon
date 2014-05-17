@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('GiftCard', ['$http', '$cookieStore',
-    function($http, $cookieStore) {
+  .factory('GiftCard', ['$http', 'ipCookie', '$location',
+    function($http, ipCookie, $location) {
       var GiftCard = function() {
       };
 
@@ -20,18 +20,24 @@ angular.module('2ViVe')
       };
 
       GiftCard.prototype.purchase = function(selectedGiftCard, info) {
-        $cookieStore.put('selectedGiftCard', selectedGiftCard);
-        $cookieStore.put('giftCardInfo', info);
+        var domain = $location.host().split('.');
+        domain = '.' + domain[domain.length - 2] + '.' + domain[domain.length - 1];
+        ipCookie('selectedGiftCard', selectedGiftCard, {
+          domain: domain
+        });
+        ipCookie('giftCardInfo', info, {
+          domain: domain
+        });
       };
 
       GiftCard.prototype.clear = function() {
-        $cookieStore.remove('selectedGiftCard');
-        $cookieStore.remove('giftCardInfo');
+        ipCookie.remove('selectedGiftCard');
+        ipCookie.remove('giftCardInfo');
       };
 
       GiftCard.prototype.populate = function() {
-        this.info = $cookieStore.get('giftCardInfo');
-        this.selectedGiftCard = $cookieStore.get('selectedGiftCard');
+        this.info = ipCookie('giftCardInfo');
+        this.selectedGiftCard = ipCookie('selectedGiftCard');
       };
 
       GiftCard.prototype.placeOrder = function(creditcard) {
