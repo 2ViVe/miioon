@@ -1,14 +1,17 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('ProductController', ['$scope', 'product', 'Taxons', 'Shopping',
-    function($scope, product, Taxons, Shopping) {
+  .controller('ProductController', ['$scope', 'product', 'Taxons', 'Shopping', 'LocalStorage',
+    function($scope, product, Taxons, Shopping, LocalStorage) {
       var updateVariant = function() {
         $scope.variant = product.getVariantByOptions({
           'Color': $scope.selectedColor,
           'Size': $scope.selectedSize
         });
       };
+
+      var replicateOwner = LocalStorage.getReplicateOwner();
+      $scope.replicateOwnerLogin = replicateOwner? replicateOwner.login : '';
 
       Taxons.fetch().then(function() {
         $scope.product = product.data;
