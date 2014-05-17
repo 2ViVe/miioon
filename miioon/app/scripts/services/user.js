@@ -16,7 +16,9 @@ angular.module('2ViVe')
       proto.save = function() {
         var self = this;
         return $http.post('/api/v2/profile', this, {
-          transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
+          transformRequest: function(data) {
+            return angular.toJson(dashlize(data));
+          },
           transformResponse: camelCaseLize
         }).then(function() {
           useCache = false;
@@ -26,7 +28,9 @@ angular.module('2ViVe')
 
       proto.updatePassword = function(passwords) {
         return $http.post('/api/v2/profile/password', passwords, {
-          transformRequest: function(data)  { return angular.toJson(dashlize(data)); },
+          transformRequest: function(data) {
+            return angular.toJson(dashlize(data));
+          },
           transformResponse: camelCaseLize
         }).then(function(resp) {
           useCache = false;
@@ -44,6 +48,7 @@ angular.module('2ViVe')
           }).success(function() {
             LocalStorage.removeVisitorId();
             User.isLogin = true;
+            useCache = false;
           });
         },
         logout: function() {
@@ -53,11 +58,15 @@ angular.module('2ViVe')
             });
         },
         fetch: function() {
-          return $http.get('/api/v2/profile', {
-            transformResponse: camelCaseLize,
-            cache: useCache
-          })
-            .then(function(resp) {
+          var deferred = $q.defer();
+
+          if (useCache && !User.isLogin) {
+            deferred.reject(user);
+          } else {
+            $http.get('/api/v2/profile', {
+              transformResponse: camelCaseLize,
+              cache: useCache
+            }).then(function(resp) {
               if (!user) {
                 user = new UserModel(resp.data.response);
               }
@@ -67,9 +76,16 @@ angular.module('2ViVe')
 
               User.data = user;
               User.isLogin = true;
+              deferred.resolve(user);
+            }).catch(function() {
+              User.isLogin = false;
+              deferred.reject(user);
+            }).finally(function() {
               useCache = true;
-              return user;
             });
+          }
+
+          return deferred.promise;
         }
       };
       return User;
