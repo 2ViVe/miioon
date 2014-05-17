@@ -1,45 +1,44 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('ShoppingController', ['$scope', 'Shopping', 'Variants',
-    function($scope, Shopping, Variants) {
-      $scope.shopping = Shopping;
+  .controller('ShoppingController', ['$scope', 'shopping', 'Variants',
+    function($scope, shopping, Variants) {
+      $scope.shopping = shopping;
       $scope.variants = Variants;
 
       $scope.update = function() {
-        Shopping.update();
+        shopping.update();
       };
 
       $scope.remove = function(variant) {
-        Shopping.removeItem(variant.id).success(function() {
+        shopping.removeItem(variant.id).success(function() {
           Variants.remove(variant.id);
         });
       };
 
       $scope.GrandTotal = function() {
         var total = 0;
-        angular.forEach(Variants.data, function(variant) {
-          total += variant.price * Shopping.getByItemId(variant.id).quantity;
+        angular.forEach(shopping.items, function(item) {
+          var variant = Variants.getById(item['variant-id']);
+          if (variant) {
+            total += variant.price * item.quantity;
+          }
         });
         return total;
       };
 
-      $scope.$watch(function() {
-        return Shopping.items;
-      }, function() {
-        Variants.getByIds(Shopping.getItemIds());
-      });
+      Variants.getByIds(shopping.getItemIds());
 
       $scope.checkout = function() {
-        Shopping.checkout();
+        shopping.checkout();
       };
 
       $scope.empty = function() {
-        Shopping.empty();
+        shopping.empty();
       };
 
       $scope.continueShopping = function() {
-        Shopping.continueShopping();
+        shopping.continueShopping();
       };
     }
   ]);

@@ -11,8 +11,8 @@ angular.module('miioonApp')
           UrlHandler.goToRetailSite();
           return null;
         }
-        Shopping.fetchForUser();
-      }).catch(UrlHandler.goToRetailSite);
+        Shopping.fetch();
+      });
     }])
   .run(['$rootScope', 'cfpLoadingBar',
     function($rootScope, cfpLoadingBar) {

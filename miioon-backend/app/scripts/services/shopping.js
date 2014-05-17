@@ -3,6 +3,8 @@
 angular.module('2ViVe')
   .factory('Shopping', ['$http', 'LocalStorage', 'User', '$location',
     function($http, LocalStorage, User, $location) {
+      var useCache = false;
+
       var Shopping = {
         mergeItems: function() {
           return Shopping.addItems(Shopping.items);
@@ -44,20 +46,28 @@ angular.module('2ViVe')
         },
         update: function() {
           if (User.isLogin) {
-            return $http.put('/api/v2/shopping-carts/users/line-items', Shopping.items);
+            return $http.put('/api/v2/shopping-carts/users/line-items', Shopping.items)
+              .success(function() {
+                useCache = false;
+              });
           }
-          return $http.put('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', Shopping.items);
+          return $http.put('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', Shopping.items)
+            .success(function() {
+              useCache = false;
+            });
         },
         addItems: function(items) {
           if (User.isLogin) {
             return $http.post('/api/v2/shopping-carts/users/line-items', items)
               .success(function(data) {
                 Shopping.items = data.response;
+                useCache = false;
               });
           }
           return $http.post('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', items)
             .success(function(data) {
               Shopping.items = data.response;
+              useCache = false;
             });
         },
         add: function(variant, quantity, catalogCode) {
@@ -70,21 +80,25 @@ angular.module('2ViVe')
               }
             ]).success(function(data) {
               Shopping.items = data.response;
+              useCache = false;
             });
           }
           return $http.post('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', [
             {
               'variant-id': variant.id,
-              'quantity': quantity
+              'quantity': quantity,
+              'catalog-code': catalogCode
             }
           ]).success(function(data) {
             Shopping.items = data.response;
+            useCache = false;
           });
         },
         deleteAll: function() {
           return $http.delete('/api/v2/shopping-carts/users')
             .success(function() {
               Shopping.items = [];
+              useCache = false;
             });
         },
         empty: function() {
@@ -92,6 +106,7 @@ angular.module('2ViVe')
             return $http.put('/api/v2/shopping-carts/users/line-items', [])
               .success(function(data) {
                 Shopping.items = data.response;
+                useCache = false;
               });
           }
           return $http.put('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', [])
@@ -99,23 +114,31 @@ angular.module('2ViVe')
               Shopping.items = data.response;
             });
         },
-        fetchForUser: function() {
-          return $http.get('/api/v2/shopping-carts/users')
-            .success(function(data) {
-              Shopping.items = data.response['line-items'];
+        fetch: function() {
+          if (User.isLogin) {
+            return $http.get('/api/v2/shopping-carts/users', {
+              cache: useCache
+            }).then(function(response) {
+              Shopping.items = response.data.response['line-items'];
+              useCache = true;
+              return Shopping;
             });
-        },
-        fetchForVisitor: function() {
+          }
           if (LocalStorage.isVisitorIdSaved()) {
-            return $http.get('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId())
-              .success(function(data) {
-                Shopping.items = data.response['line-items'];
-              });
+            return $http.get('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId(), {
+              cache: useCache
+            }).then(function(response) {
+              Shopping.items = response.data.response['line-items'];
+              useCache = true;
+              return Shopping;
+            });
           } else {
             return $http.post('/api/v2/shopping-carts/visitors', {
               'id': LocalStorage.createVisitorId()
-            }).success(function(data) {
-              Shopping.items = data.response['line-items'];
+            }).then(function(response) {
+              Shopping.items = response.data.response['line-items'];
+              useCache = false;
+              return Shopping;
             });
           }
         }

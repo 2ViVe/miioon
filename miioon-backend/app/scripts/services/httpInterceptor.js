@@ -1,13 +1,18 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('HttpInterceptor', ['$q', '$cookies', function($q, $cookies) {
+  .factory('HttpInterceptor', ['$q', '$cookies', 'UrlHandler',
+    function($q, $cookies, UrlHandler) {
     return {
       request: function(config) {
-        var deferred = $q.defer();
         delete $cookies.sid;
-        deferred.resolve(config);
-        return deferred.promise;
+        return config || $q.when(config);
+      },
+      responseError: function(rejection) {
+        if (rejection.status === 401) {
+          UrlHandler.goToRetailSite();
+        }
+        return $q.reject(rejection);
       }
     };
   }]);
