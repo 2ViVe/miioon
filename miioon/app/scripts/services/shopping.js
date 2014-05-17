@@ -119,7 +119,7 @@ angular.module('2ViVe')
             }).then(function(response) {
               Shopping.items = response.data.response['line-items'];
               useCache = true;
-              return response.data.response;
+              return Shopping;
             });
           }
           if (LocalStorage.isVisitorIdSaved()) {
@@ -128,7 +128,7 @@ angular.module('2ViVe')
             }).then(function(response) {
               Shopping.items = response.data.response['line-items'];
               useCache = true;
-              return response.data.response;
+              return Shopping;
             });
           } else {
             return $http.post('/api/v2/shopping-carts/visitors', {
@@ -136,7 +136,7 @@ angular.module('2ViVe')
             }).then(function(response) {
               Shopping.items = response.data.response['line-items'];
               useCache = false;
-              return response.data.response;
+              return Shopping;
             });
           }
         }

@@ -26,6 +26,15 @@ angular.module('2ViVe')
     function($http, User, CamelCaseLize) {
       var Variants = {
         data: [],
+        getById: function(id) {
+          var _variant = null;
+          angular.forEach(Variants.data, function(variant) {
+            if (variant.id === id) {
+              _variant = variant;
+            }
+          });
+          return _variant;
+        },
         remove: function(variantId) {
           var itemIndex;
           angular.forEach(Variants.data, function(variant, index) {
@@ -72,7 +81,7 @@ angular.module('2ViVe')
         var deferred = $q.defer();
         var product = this;
 
-        User.fetch().then(function() {
+        User.fetch().finally(function() {
           $http.get('/api/v2/products/' + product.id, {
             transformResponse: CamelCaseLize,
             params: {

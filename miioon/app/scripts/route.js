@@ -75,7 +75,18 @@ angular.module('miioonApp')
       })
       .when('/shopping', {
         templateUrl: 'views/shopping.html',
-        controller: 'ShoppingController'
+        controller: 'ShoppingController',
+        resolve: {
+          shopping: ['Shopping', 'User', '$q', function(Shopping, User, $q) {
+            var deferred = $q.defer();
+            User.fetch().finally(function() {
+              Shopping.fetch().then(function() {
+                deferred.resolve(Shopping);
+              });
+            });
+            return deferred.promise;
+          }]
+        }
       })
       .when('/t-c', {
         templateUrl: 'views/t-c.html'
