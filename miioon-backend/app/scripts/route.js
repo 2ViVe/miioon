@@ -58,10 +58,6 @@ angular.module('miioonApp')
         templateUrl: 'views/gift/code.html',
         controller: 'giftCodeCtrl'
       })
-      .when('/checkout', {
-        templateUrl: 'views/checkout.html',
-        controller: 'CheckoutController'
-      })
       .when('/t-c', {
         templateUrl: 'views/t-c.html'
       })
