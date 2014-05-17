@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Shopping', ['$http', 'LocalStorage', 'User', '$location',
-    function($http, LocalStorage, User, $location) {
+  .factory('Shopping', ['$http', 'LocalStorage', 'User', '$location', 'Variant',
+    function($http, LocalStorage, User, $location, Variant) {
       var useCache = false;
 
       var Shopping = {
@@ -34,10 +34,10 @@ angular.module('2ViVe')
           });
           return itemIds;
         },
-        removeItem: function(variantId) {
+        removeItem: function(item) {
           var itemIndex;
-          angular.forEach(Shopping.items, function(item, index) {
-            if (item['variant-id'] === variantId) {
+          angular.forEach(Shopping.items, function(_item, index) {
+            if (_item === item) {
               itemIndex = index;
             }
           });
@@ -120,6 +120,12 @@ angular.module('2ViVe')
               cache: useCache
             }).then(function(response) {
               Shopping.items = response.data.response['line-items'];
+              angular.forEach(Shopping.items, function(item) {
+                Variant.fetch(item['variant-id'], item['catalog-code'])
+                  .then(function(response) {
+                    item.data = response.data.response;
+                  });
+              });
               useCache = true;
               return Shopping;
             });

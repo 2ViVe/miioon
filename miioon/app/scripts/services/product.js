@@ -22,45 +22,20 @@ angular.module('2ViVe')
         }
       };
     }])
-  .factory('Variants', ['$http', 'User', 'CamelCaseLize',
+  .factory('Variant', ['$http', 'User', 'CamelCaseLize',
     function($http, User, CamelCaseLize) {
-      var Variants = {
-        data: [],
-        getById: function(id) {
-          var _variant = null;
-          angular.forEach(Variants.data, function(variant) {
-            if (variant.id === id) {
-              _variant = variant;
-            }
-          });
-          return _variant;
-        },
-        remove: function(variantId) {
-          var itemIndex;
-          angular.forEach(Variants.data, function(variant, index) {
-            if (variant.id === variantId) {
-              itemIndex = index;
-              return null;
-            }
-          });
-          Variants.data.splice(itemIndex, 1);
-        },
-        getByIds: function(ids) {
-          if (ids.length === 0) {
-            return null;
-          }
-          return $http.get('/api/v2/variants', {
+      return {
+        fetch: function(id, catalogCode) {
+          return $http.get('/api/v2/variants/' + id, {
             transformResponse: CamelCaseLize,
+            cache: true,
             params: {
               'role-code': User.isLogin ? null : 'R',
-              'id': ids.join(',')
+              'catalog-code': catalogCode
             }
-          }).success(function(data) {
-            Variants.data = data.response;
           });
         }
       };
-      return Variants;
     }])
   .factory('Product', ['$http', 'User', 'CamelCaseLize', '$q',
     function($http, User, CamelCaseLize, $q) {

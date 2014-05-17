@@ -99,15 +99,16 @@ angular.module('miioonApp')
         templateUrl: 'views/shopping.html',
         controller: 'ShoppingController',
         resolve: {
-          shopping: ['Shopping', 'User', '$q', function(Shopping, User, $q) {
-            var deferred = $q.defer();
-            User.fetch().finally(function() {
-              Shopping.fetch().then(function() {
-                deferred.resolve(Shopping);
+          shopping: ['Shopping', 'User', '$q',
+            function(Shopping, User, $q) {
+              var deferred = $q.defer();
+              User.fetch().finally(function() {
+                Shopping.fetch().then(function() {
+                  deferred.resolve(Shopping);
+                });
               });
-            });
-            return deferred.promise;
-          }]
+              return deferred.promise;
+            }]
         }
       })
       .when('/checkout', {
