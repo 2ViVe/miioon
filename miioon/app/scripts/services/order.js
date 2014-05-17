@@ -32,8 +32,9 @@ angular.module('2ViVe')
         checkout: function(lineItems) {
           return $http.post('/api/v2/orders/checkout', {
             'line-items': lineItems
-          }).success(function(data) {
-            Order.data = data.response;
+          }).then(function(response) {
+            Order.data = response.data.response;
+            return Order;
           });
         },
         adjustments: function(shippingMethodId) {

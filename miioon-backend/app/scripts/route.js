@@ -112,7 +112,21 @@ angular.module('miioonApp')
       })
       .when('/checkout', {
         templateUrl: 'views/checkout/all.html',
-        controller: 'CheckoutController'
+        controller: 'CheckoutController',
+        resolve: {
+          shopping: ['Shopping', 'User', 'Order', '$q',
+            function(Shopping, User, Order, $q) {
+              var deferred = $q.defer();
+              User.fetch().then(function() {
+                Shopping.fetch().then(function() {
+                  Order.checkout(Shopping.items).then(function() {
+                    deferred.resolve(Order);
+                  });
+                });
+              });
+              return deferred.promise;
+            }]
+        }
       })
       .when('/report', {
         templateUrl: 'views/report/order.html',

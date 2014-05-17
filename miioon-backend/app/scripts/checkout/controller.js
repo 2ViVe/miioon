@@ -15,23 +15,9 @@ angular.module('2ViVe')
         }
       });
 
-      User.fetch()
-        .then(function() {
-          Shopping.fetch()
-            .then(function(data) {
-              Order.checkout(data['line-items'])
-                .success(function() {
-                  $scope.selectedShippingMethod = Order.currentShippingMethod();
-                  $scope.selectedPaymentMethod = Order.data['available-payment-methods'][0];
-                  $scope.order = Order;
-                });
-            });
-        })
-        .catch(function() {
-          if (User.isLogin === false) {
-            $location.path('/signin');
-          }
-        });
+      $scope.selectedShippingMethod = Order.currentShippingMethod();
+      $scope.selectedPaymentMethod = Order.data['available-payment-methods'][0];
+      $scope.order = Order;
 
       $scope.editShippingAddress = function() {
         $modal.open({
