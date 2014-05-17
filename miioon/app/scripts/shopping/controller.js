@@ -23,10 +23,6 @@ angular.module('2ViVe')
         return total;
       };
 
-      $scope.checkout = function() {
-        shopping.checkout();
-      };
-
       $scope.empty = function() {
         shopping.empty();
       };

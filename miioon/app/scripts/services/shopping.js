@@ -27,13 +27,6 @@ angular.module('2ViVe')
           LocalStorage.removePathToContinueShopping();
           $location.path(path);
         },
-        getItemIds: function() {
-          var itemIds = [];
-          angular.forEach(Shopping.items, function(item) {
-            itemIds.push(item['variant-id']);
-          });
-          return itemIds;
-        },
         removeItem: function(item) {
           var itemIndex;
           angular.forEach(Shopping.items, function(_item, index) {
