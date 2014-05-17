@@ -15,12 +15,12 @@ angular.module('2ViVe')
           if (isError) {
             return;
           }
-          image.elevateZoom({
-            zoomContainerWrapper: '.main-container',
-            tint: true,
-            tintColour: 'white',
-            tintOpacity: 0.5
-          });
+//          image.elevateZoom({
+//            zoomContainerWrapper: '.main-container',
+//            tint: true,
+//            tintColour: 'white',
+//            tintOpacity: 0.5
+//          });
         });
       }
     };
