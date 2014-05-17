@@ -2,9 +2,11 @@
   <div class='small-12 columns'>
     <ul class="breadcrumbs">
       <li>
-        <a ng-href="#/order-shopping/{{taxon.id}}">&gt; {{taxon.name}}</a>
+        <a ng-href="{{taxon | taxonLink}}">&gt; {{taxon.name}}</a>
       </li>
-      <li ng-if="subTaxon"><a ng-href="#/order-shopping/{{subTaxon.id}}">{{subTaxon.name}}</a></li>
+      <li ng-if="subTaxon">
+        <a ng-href="#/products/{{taxon.permalink}}/{{subTaxon.permalink}}">{{subTaxon.name}}</a>
+      </li>
       <!--TODO: fix display problemin safari, need to remove inline style when find a better way-->
       <li style="width: 50%;">{{product.name}}</li>
     </ul>

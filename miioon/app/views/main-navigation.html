@@ -18,7 +18,7 @@
           <div class="row">
             <ul class="sub-taxons columns small-6">
               <li ng-repeat="subTaxon in taxon.subTaxons | orderBy: 'position' ">
-                <a href="#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">{{subTaxon.name}}</a>
+                <a href="#/products/{{taxon.permalink}}/{{subTaxon.permalink}}">{{subTaxon.name}}</a>
               </li>
             </ul>
             <div class="sub-taxon-thumbnail columns small-6 text-center">

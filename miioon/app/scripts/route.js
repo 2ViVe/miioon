@@ -34,8 +34,8 @@ angular.module('miioonApp')
       .when('/about', {
         templateUrl: 'views/about.html'
       })
-      .when('/taxon/:taxonId', {
-        templateUrl: '../views/product/taxon.html',
+      .when('/products/:taxonPermalink/:subTaxonPermalink?', {
+        templateUrl: 'views/product/taxon.html',
         controller: 'TaxonController'
       })
       .when('/product/:productId', {
@@ -47,10 +47,6 @@ angular.module('miioonApp')
             return product.fetch();
           }]
         }
-      })
-      .when('/taxon/:taxonId/sub-taxon/:subTaxonId', {
-        templateUrl: '../views/product/taxon.html',
-        controller: 'TaxonController'
       })
       .when('/host', {
         templateUrl: 'views/host.html'

@@ -4,10 +4,19 @@ angular.module('2ViVe')
   .controller('TaxonController', ['$scope', 'Products', '$routeParams', 'Taxons',
     function($scope, Products, $routeParams, Taxons) {
       var UKCountryId = 1213;
-      $scope.currentTaxonId = Number($routeParams.taxonId);
+      var taxonPermalink = $routeParams.taxonPermalink;
+      var subTaxonPermalink = $routeParams.subTaxonPermalink;
 
       Taxons.fetch().then(function() {
         $scope.taxons = Taxons.getByPositionBetween(0, 1000);
+        var taxon = Taxons.getByPermalink(taxonPermalink);
+        $scope.currentTaxonId = taxon.id;
+
+        if (subTaxonPermalink) {
+          var subTaxon = Taxons.getSubTaxonByPermalinkAndTaxon(subTaxonPermalink, taxon);
+          $scope.currentTaxonId = subTaxon.id;
+        }
+
         Products.getByTaxon($scope.currentTaxonId, UKCountryId)
           .then(function(data) {
             $scope.products = data.products;

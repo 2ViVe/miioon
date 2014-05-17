@@ -46,6 +46,19 @@ angular.module('2ViVe')
           });
           return result;
         },
+        getSubTaxonByPermalinkAndTaxon: function(permalink, taxon) {
+          var result = null;
+          if (taxon === null) {
+            return result;
+          }
+          angular.forEach(taxon.subTaxons, function(subTaxon) {
+            if (subTaxon.permalink === permalink) {
+              result = subTaxon;
+              return null;
+            }
+          });
+          return result;
+        },
         getSubTaxonByIdAndTaxon: function(subTaxonId, taxon) {
           var result = null;
           if (taxon === null) {
@@ -54,6 +67,16 @@ angular.module('2ViVe')
           angular.forEach(taxon.subTaxons, function(subTaxon) {
             if (subTaxon.id === subTaxonId) {
               result = subTaxon;
+              return null;
+            }
+          });
+          return result;
+        },
+        getByPermalink: function(permalink) {
+          var result = null;
+          angular.forEach(_data, function(taxon) {
+            if (taxon.permalink === permalink) {
+              result = taxon;
               return null;
             }
           });

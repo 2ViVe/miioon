@@ -14,7 +14,7 @@
         <span class="current" ng-if="subTaxon.id === currentSubTaxon.id">
           {{subTaxon.name}}
         </span>
-        <a ng-if="subTaxon.id !== currentSubTaxon.id" href="#/taxon/{{taxon.id}}/sub-taxon/{{subTaxon.id}}">
+        <a ng-if="subTaxon.id !== currentSubTaxon.id" href="#/products/{{taxon.permalink}}/{{subTaxon.permalink}}">
           {{subTaxon.name}}
         </a>
       </li>
