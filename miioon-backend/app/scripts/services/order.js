@@ -5,6 +5,21 @@ angular.module('2ViVe')
     function($http, CamelCaseLize) {
       var Order = {
         data: {},
+        updateBillingAddress: function(orderId, billingAddress) {
+          return $http.post('/api/v2/orders/' + orderId + '/addresses/billing', billingAddress)
+            .success(function(data) {
+              Order.data['billing-address'] = data.response['billing-address'];
+            });
+        },
+        updateShippingAddress: function(orderId, shippingAddress, shippingMethodId) {
+          return $http.post('/api/v2/orders/' + orderId + '/shipping', {
+            'shipping-method-id': shippingMethodId,
+            'shipping-address': shippingAddress
+          }).success(function(data) {
+            Order.data['shipping-method'] = data.response['shipping-method'];
+            Order.data['shipping-address'] = data.response['shipping-address'];
+          });
+        },
         detail: function(id) {
           return $http.get('/api/v2/orders/' + id, {
             transformResponse: CamelCaseLize,
@@ -25,14 +40,6 @@ angular.module('2ViVe')
             return response.data.response;
           });
         },
-        updateBillingAddress: function(orderId, billingAddress) {
-          return $http.post('/api/v2/orders/' + orderId + '/addresses/billing', billingAddress);
-        },
-        updateShippingAddress: function(orderId, shippingAddress) {
-          return $http.post('/api/v2/orders/' + orderId + '/shipping', {
-            'shipping-address': shippingAddress
-          });
-        },
         adjustmentsWithOrderId: function(orderId) {
           return $http.get('/api/v2/orders/' + orderId + '/adjustments')
             .success(function(data) {
@@ -42,7 +49,7 @@ angular.module('2ViVe')
         currentShippingMethod: function() {
           var currentShippingMethod = null;
           angular.forEach(Order.data['available-shipping-methods'], function(shippingMethod) {
-            if(shippingMethod.id === Order.data['shipping-method-id']) {
+            if (shippingMethod.id === Order.data['shipping-method-id']) {
               currentShippingMethod = shippingMethod;
               return null;
             }
@@ -52,8 +59,9 @@ angular.module('2ViVe')
         checkout: function(lineItems) {
           return $http.post('/api/v2/orders/checkout', {
             'line-items': lineItems
-          }).success(function(data) {
-            Order.data = data.response;
+          }).then(function(response) {
+            Order.data = response.data.response;
+            return Order;
           });
         },
         adjustments: function(shippingMethodId) {

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('CheckoutController', ['$scope', 'Order', 'Shopping', '$location', 'LocalStorage', '$modal',
-    function($scope, order, Shopping, $location, LocalStorage, $modal) {
+  .controller('CheckoutController', ['$scope', 'order', 'Shopping', '$modal',
+    function($scope, order, Shopping, $modal) {
       $scope.creditCard = {};
       $scope.placingOrder = false;
       $scope.isSucceed = false;
@@ -20,7 +20,10 @@ angular.module('2ViVe')
         }).result.then(function(shippingAddress) {
             $scope.order.data['shipping-address'] = shippingAddress;
             if ($scope.orderId) {
-              order.updateShippingAddress($scope.orderId, shippingAddress);
+              order.updateShippingAddress($scope.orderId, shippingAddress)
+                .success(function() {
+                  order.adjustmentsWithOrderId($scope.orderId);
+                });
             }
           });
       };
@@ -49,7 +52,7 @@ angular.module('2ViVe')
         $scope.selectedShippingMethod = selectedShippingMethod;
 
         if ($scope.orderId) {
-          order.changeShippingMethod($scope.orderId, selectedShippingMethod.id)
+          order.updateShippingAddress($scope.orderId, order.data['shipping-address'], selectedShippingMethod.id)
             .success(function() {
               order.adjustmentsWithOrderId($scope.orderId);
             });
@@ -91,6 +94,3 @@ angular.module('2ViVe')
     }
   ]
 );
-
-
-

@@ -104,7 +104,7 @@ angular.module('miioonApp')
         templateUrl: 'views/checkout/all.html',
         controller: 'CheckoutController',
         resolve: {
-          shopping: ['Shopping', 'User', 'Order', '$q', '$location',
+          order: ['Shopping', 'User', 'Order', '$q', '$location',
             function(Shopping, User, Order, $q, $location) {
               var deferred = $q.defer();
               User.fetch().then(function() {

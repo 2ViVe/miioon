@@ -1,16 +1,43 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Order', ['$http',
-    function($http) {
+  .factory('Order', ['$http', 'CamelCaseLize',
+    function($http, CamelCaseLize) {
       var Order = {
         data: {},
         updateBillingAddress: function(orderId, billingAddress) {
-          return $http.post('/api/v2/orders/' + orderId + '/addresses/billing', billingAddress);
+          return $http.post('/api/v2/orders/' + orderId + '/addresses/billing', billingAddress)
+            .success(function(data) {
+              Order.data['billing-address'] = data.response['billing-address'];
+            });
         },
-        updateShippingAddress: function(orderId, shippingAddress) {
+        updateShippingAddress: function(orderId, shippingAddress, shippingMethodId) {
           return $http.post('/api/v2/orders/' + orderId + '/shipping', {
+            'shipping-method-id': shippingMethodId,
             'shipping-address': shippingAddress
+          }).success(function(data) {
+            Order.data['shipping-method'] = data.response['shipping-method'];
+            Order.data['shipping-address'] = data.response['shipping-address'];
+          });
+        },
+        detail: function(id) {
+          return $http.get('/api/v2/orders/' + id, {
+            transformResponse: CamelCaseLize,
+            cache: true
+          }).then(function(response) {
+            return response.data.response;
+          });
+        },
+        recent: function(offset, limit) {
+          return $http.get('/api/v2/orders/recent', {
+            transformResponse: CamelCaseLize,
+            cache: true,
+            params: {
+              offset: offset,
+              limit: limit
+            }
+          }).then(function(response) {
+            return response.data.response;
           });
         },
         adjustmentsWithOrderId: function(orderId) {
@@ -22,7 +49,7 @@ angular.module('2ViVe')
         currentShippingMethod: function() {
           var currentShippingMethod = null;
           angular.forEach(Order.data['available-shipping-methods'], function(shippingMethod) {
-            if(shippingMethod.id === Order.data['shipping-method-id']) {
+            if (shippingMethod.id === Order.data['shipping-method-id']) {
               currentShippingMethod = shippingMethod;
               return null;
             }
