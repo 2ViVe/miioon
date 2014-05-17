@@ -9,16 +9,6 @@ angular.module('2ViVe')
         mergeItems: function() {
           return Shopping.addItems(Shopping.items);
         },
-        getByItemId: function(id) {
-          var result;
-          angular.forEach(Shopping.items, function(item) {
-            if (item['variant-id'] === id) {
-              result = item;
-              return null;
-            }
-          });
-          return result;
-        },
         checkout: function() {
           $location.path('/checkout');
         },
@@ -38,45 +28,30 @@ angular.module('2ViVe')
           return Shopping.update();
         },
         update: function() {
-          if (User.isLogin) {
-            return $http.put('/api/v2/shopping-carts/users/line-items', Shopping.items)
-              .success(function() {
-                useCache = false;
-              });
-          }
-          return $http.put('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', Shopping.items)
+          var url = User.isLogin ?
+            '/api/v2/shopping-carts/users/line-items' :
+            '/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items';
+          return $http.put(url, Shopping.items)
             .success(function() {
               useCache = false;
             });
         },
         addItems: function(items) {
-          if (User.isLogin) {
-            return $http.post('/api/v2/shopping-carts/users/line-items', items)
-              .success(function(data) {
-                Shopping.items = data.response;
-                useCache = false;
-              });
-          }
-          return $http.post('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', items)
+          var url = User.isLogin ?
+            '/api/v2/shopping-carts/users/line-items' :
+            '/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items';
+          return $http.post(url, items)
             .success(function(data) {
               Shopping.items = data.response;
               useCache = false;
             });
         },
         add: function(variant, quantity, catalogCode) {
-          if (User.isLogin) {
-            return $http.post('/api/v2/shopping-carts/users/line-items', [
-              {
-                'variant-id': variant.id,
-                'quantity': quantity,
-                'catalog-code': catalogCode
-              }
-            ]).success(function(data) {
-              Shopping.items = data.response;
-              useCache = false;
-            });
-          }
-          return $http.post('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', [
+          var url = User.isLogin ?
+            '/api/v2/shopping-carts/users/line-items' :
+            '/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items';
+
+          return $http.post(url, [
             {
               'variant-id': variant.id,
               'quantity': quantity,
@@ -88,37 +63,42 @@ angular.module('2ViVe')
           });
         },
         deleteAll: function() {
-          return $http.delete('/api/v2/shopping-carts/users')
+          var url = User.isLogin ?
+            '/api/v2/shopping-carts/users' :
+            '/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId();
+          return $http.delete(url)
             .success(function() {
               Shopping.items = [];
               useCache = false;
             });
         },
         empty: function() {
-          if (User.isLogin) {
-            return $http.put('/api/v2/shopping-carts/users/line-items', [])
-              .success(function(data) {
-                Shopping.items = data.response;
-                useCache = false;
-              });
-          }
-          return $http.put('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items', [])
+          var url = User.isLogin ?
+            '/api/v2/shopping-carts/users/line-items' :
+            '/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId() + '/line-items';
+
+          return $http.put(url, [])
             .success(function(data) {
               Shopping.items = data.response;
+              useCache = false;
             });
         },
         fetch: function() {
+          var updateItemsWithVariantsData = function() {
+            angular.forEach(Shopping.items, function(item) {
+              Variant.fetch(item['variant-id'], item['catalog-code'])
+                .then(function(response) {
+                  item.data = response.data.response;
+                });
+            });
+          };
+
           if (User.isLogin) {
             return $http.get('/api/v2/shopping-carts/users', {
               cache: useCache
             }).then(function(response) {
               Shopping.items = response.data.response['line-items'];
-              angular.forEach(Shopping.items, function(item) {
-                Variant.fetch(item['variant-id'], item['catalog-code'])
-                  .then(function(response) {
-                    item.data = response.data.response;
-                  });
-              });
+              updateItemsWithVariantsData();
               useCache = true;
               return Shopping;
             });
@@ -128,6 +108,7 @@ angular.module('2ViVe')
               cache: useCache
             }).then(function(response) {
               Shopping.items = response.data.response['line-items'];
+              updateItemsWithVariantsData();
               useCache = true;
               return Shopping;
             });
@@ -136,6 +117,7 @@ angular.module('2ViVe')
               'id': LocalStorage.createVisitorId()
             }).then(function(response) {
               Shopping.items = response.data.response['line-items'];
+              updateItemsWithVariantsData();
               useCache = false;
               return Shopping;
             });
