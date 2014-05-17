@@ -16,10 +16,7 @@ angular.module('miioonApp')
         cfpLoadingBar.start();
       });
 
-      $rootScope.$on('$locationChangeStart', function(event, nextUrl, currentUrl) {
-        var nextPath = nextUrl.split('#')[1];
-        var currentPath = currentUrl.split('#')[1];
-        UrlHandler.savePath(nextPath, currentPath);
+      $rootScope.$on('$locationChangeStart', function(event) {
         UrlHandler.handleSecurityPath(function() {
           event.preventDefault();
         });

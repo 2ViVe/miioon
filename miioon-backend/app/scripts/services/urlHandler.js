@@ -1,16 +1,17 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('UrlHandler', ['$window', '$location', 'LocalStorage',
-    function($window, $location, LocalStorage) {
+  .factory('UrlHandler', ['$window', '$location',
+    function($window, $location) {
       var PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE = 11442;
       var PORT_FOR_SECURE_RETAIL_DEMO_SITE = 22442;
       var PORT_FOR_BACK_OFFICE_DEMO_SITE = 22442;
       var SECURE_PATHS = ['/signup', '/signin', '/checkout', '/retail-signup', '/account'];
 
       var UrlHandler = {
-        goToRetailSite: function() {
-          $window.location.href = UrlHandler.retailUrl();
+        goToRetailSite: function(path) {
+          path = path ? path : '';
+          $window.location.href = UrlHandler.retailUrl() + '/#' + path;
         },
         retailUrl: function() {
           var port = $location.port();
@@ -20,6 +21,10 @@ angular.module('2ViVe')
           }
 
           return 'http://www.miioon.com';
+        },
+        goToBackOffice: function(path) {
+          path = path ? path : '';
+          $window.location.href = UrlHandler.backOfficeUrl() + '/#' + path;
         },
         backOfficeUrl: function() {
           var port = $location.port();
@@ -53,13 +58,6 @@ angular.module('2ViVe')
             }
             stopLocationChange();
             $window.location.href = url;
-          }
-        },
-        savePath: function(nextPath, currentPath) {
-          if (nextPath === '/signin' && currentPath !== '/signin') {
-            LocalStorage.setPathAfterLogin(currentPath);
-          } else if (nextPath === '/shopping' && currentPath !== '/shopping') {
-            LocalStorage.setPathToContinueShopping(currentPath);
           }
         }
       };

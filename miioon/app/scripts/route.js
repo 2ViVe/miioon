@@ -104,8 +104,8 @@ angular.module('miioonApp')
         templateUrl: 'views/checkout/all.html',
         controller: 'CheckoutController',
         resolve: {
-          order: ['Shopping', 'User', 'Order', '$q', '$location',
-            function(Shopping, User, Order, $q, $location) {
+          order: ['Shopping', 'User', 'Order', '$q', '$location', 'LocalStorage',
+            function(Shopping, User, Order, $q, $location, LocalStorage) {
               var deferred = $q.defer();
               User.fetch().then(function() {
                 Shopping.fetch().then(function() {
@@ -114,9 +114,8 @@ angular.module('miioonApp')
                   });
                 });
               }).catch(function() {
-                if (User.isLogin === false) {
-                  $location.path('/signin');
-                }
+                LocalStorage.setPathAfterLogin($location.path());
+                $location.path('/signin');
               });
               return deferred.promise;
             }]
