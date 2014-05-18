@@ -105,6 +105,7 @@
         controller: 'profileInfoPanelCtrl',
         scope: {},
         link: function() {
+          
         }
       };
     });

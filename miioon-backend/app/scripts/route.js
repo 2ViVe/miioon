@@ -145,6 +145,10 @@ angular.module('miioonApp')
         templateUrl: 'views/product/marketing-materials.html',
         controller: 'MarketingMaterialsController'
       })
+      .when('/earnings/hyperwallet', {
+        templateUrl: 'views/hyperwallet/index.html',
+        controller: 'HyperWalletController'
+      })
       .otherwise({
         redirectTo: '/'
       });
