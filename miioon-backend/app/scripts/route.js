@@ -95,6 +95,9 @@ angular.module('miioonApp')
           'product': ['Product', '$route', function(Product, $route) {
             var product = new Product($route.current.params.productId, $route.current.params.catalogCode);
             return product.fetch();
+          }],
+          'taxons': ['Taxons', function(Taxons) {
+            return Taxons.fetch();
           }]
         }
       })
@@ -105,6 +108,9 @@ angular.module('miioonApp')
           'product': ['Product', '$route', function(Product, $route) {
             var product = new Product($route.current.params.productId);
             return product.fetch();
+          }],
+          'taxons': ['Taxons', function(Taxons) {
+            return Taxons.fetch();
           }]
         }
       })

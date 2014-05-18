@@ -51,6 +51,9 @@ angular.module('miioonApp')
           'product': ['Product', '$route', function(Product, $route) {
             var product = new Product($route.current.params.productId);
             return product.fetch();
+          }],
+          'taxons': ['Taxons', function(Taxons) {
+            return Taxons.fetch();
           }]
         }
       })
