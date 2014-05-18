@@ -131,7 +131,21 @@ angular.module('miioonApp')
       })
       .when('/gift/gift-card', {
         templateUrl: 'views/gift/gift-card.html',
-        controller: 'GiftController'
+        controller: 'GiftController',
+        resolve: {
+          giftCard: ['User', 'GiftCard', '$q', function(User, GiftCard, $q) {
+            var deferred = $q.defer();
+            var giftCard = new GiftCard();
+
+            User.fetch().finally(function() {
+              giftCard.fetch().success(function() {
+                deferred.resolve(giftCard);
+              });
+            });
+
+            return deferred.promise;
+          }]
+        }
       })
       .when('/gift/checkout', {
         templateUrl: 'views/gift/gift-checkout.html',

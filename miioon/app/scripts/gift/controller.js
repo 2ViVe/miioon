@@ -13,30 +13,17 @@ angular.module('2ViVe')
         $scope.formInvalid.post = invalid;
       });
     }])
-  .controller('GiftController', ['$scope', '$modal', 'GiftCard', '$location', 'User', 'LocalStorage',
-    function($scope, $modal, GiftCard, $location, User, LocalStorage) {
+  .controller('GiftController', ['$scope', '$modal', 'giftCard', '$location', 'User', 'LocalStorage',
+    function($scope, $modal, giftCard, $location, User, LocalStorage) {
       $scope.submitted = false;
-      var giftCard = new GiftCard();
       $scope.giftCardInfo = {};
       $scope.formInvalid = {
         'email': true,
         'post': true
       };
 
-      User
-        .fetch()
-        .then(function() {
-          giftCard.fetch().success(function() {
-            $scope.giftCards = giftCard.data.variants;
-            $scope.giftCardImages = giftCard.data.images;
-          });
-        })
-        .catch(function() {
-          giftCard.fetch('R').success(function() {
-            $scope.giftCards = giftCard.data.variants;
-            $scope.giftCardImages = giftCard.data.images;
-          });
-        });
+      $scope.giftCards = giftCard.data.variants;
+      $scope.giftCardImages = giftCard.data.images;
 
       $scope.preview = function() {
         $modal.open({
@@ -61,13 +48,13 @@ angular.module('2ViVe')
         }
 
         giftCard.purchase($scope.selectedGiftCard, $scope.giftCardInfo);
+
         if (User.isLogin) {
           $location.path('/gift/checkout');
         } else {
           LocalStorage.setPathAfterLogin('/gift/checkout');
           $location.path('/signin');
         }
-
       };
 
       $scope.tabs = [
