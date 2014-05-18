@@ -148,17 +148,9 @@ angular.module('miioonApp')
         templateUrl: 'views/gift/gift-card.html',
         controller: 'GiftController',
         resolve: {
-          giftCard: ['User', 'GiftCard', '$q', function(User, GiftCard, $q) {
-            var deferred = $q.defer();
+          giftCard: ['GiftCard', function(GiftCard) {
             var giftCard = new GiftCard();
-
-            User.fetch().finally(function() {
-              giftCard.fetch().success(function() {
-                deferred.resolve(giftCard);
-              });
-            });
-
-            return deferred.promise;
+            return giftCard.fetch();
           }]
         }
       })

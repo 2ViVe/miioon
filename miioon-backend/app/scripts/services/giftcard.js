@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('GiftCard', ['$http', 'ipCookie', '$location', 'DEFAULT_COUNTRY_ID', 'User',
-    function($http, ipCookie, $location, DEFAULT_COUNTRY_ID, User) {
+  .factory('GiftCard', ['$http', 'ipCookie', '$location', 'DEFAULT_COUNTRY_ID', 'User', '$q', 'LocalStorage',
+    function($http, ipCookie, $location, DEFAULT_COUNTRY_ID, User, $q, LocalStorage) {
       var domain = $location.host().split('.');
       domain = '.' + domain[domain.length - 2] + '.' + domain[domain.length - 1];
 
@@ -10,16 +10,23 @@ angular.module('2ViVe')
       };
 
       GiftCard.prototype.fetch = function() {
+        var deferred = $q.defer();
         var giftCard = this;
-        return $http.get('/api/v2/products/18', {
-          params: {
-            'role-code': User.isLogin ? null : 'R',
-            'country-id': User.isLogin ? null : DEFAULT_COUNTRY_ID,
-            'catalog-code': 'GC'
-          }
-        }).success(function(data) {
-          giftCard.data = data.response;
+
+        User.fetch().finally(function() {
+          $http.get('/api/v2/products/18', {
+            params: {
+              'role-code': User.isLogin ? null : 'R',
+              'country-id': User.isLogin ? null : DEFAULT_COUNTRY_ID,
+              'catalog-code': 'GC'
+            }
+          }).success(function(data) {
+            giftCard.data = data.response;
+            deferred.resolve(giftCard);
+          });
         });
+
+        return deferred.promise;
       };
 
       GiftCard.prototype.purchase = function(selectedGiftCard, info) {
@@ -29,6 +36,12 @@ angular.module('2ViVe')
         ipCookie('giftCardInfo', info, {
           domain: domain
         });
+        if (User.isLogin) {
+          $location.path('/gift/checkout');
+        } else {
+          LocalStorage.setPathAfterLogin('/gift/checkout');
+          $location.path('/signin');
+        }
       };
 
       GiftCard.prototype.clear = function() {
