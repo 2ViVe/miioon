@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('TaxonController', ['$scope', 'Products', '$routeParams', 'Taxons', 'DEFAULT_COUNTRY_ID',
-    function($scope, Products, $routeParams, Taxons, DEFAULT_COUNTRY_ID) {
+  .controller('TaxonController', ['$scope', 'Products', '$routeParams', 'Taxons',
+    function($scope, Products, $routeParams, Taxons) {
       var taxonPermalink = $routeParams.taxonPermalink;
       var subTaxonPermalink = $routeParams.subTaxonPermalink;
 
@@ -15,7 +15,7 @@ angular.module('2ViVe')
           productTaxonId = $scope.currentSubTaxon.id;
         }
 
-        Products.getByTaxon(productTaxonId, DEFAULT_COUNTRY_ID)
+        Products.getByTaxon(productTaxonId)
           .then(function(data) {
             $scope.products = data.products;
           });

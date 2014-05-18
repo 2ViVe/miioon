@@ -1,21 +1,24 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Products', ['$http', 'User', 'CamelCaseLize', '$q',
-    function($http, User, CamelCaseLize, $q) {
+  .factory('Products', ['$http', 'User', 'CamelCaseLize', '$q', 'DEFAULT_COUNTRY_ID',
+    function($http, User, CamelCaseLize, $q, DEFAULT_COUNTRY_ID) {
       return {
-        getByTaxon: function(taxonId, countryId, catalogCode) {
+        getByTaxon: function(taxonId, catalogCode) {
           var deferred = $q.defer();
-          $http.get('/api/v2/products/taxons/' + taxonId, {
-            transformResponse: CamelCaseLize,
-            cache: true,
-            params: {
-              'role-code': User.isLogin ? null : 'R',
-              'country-id': countryId,
-              'catalog-code': catalogCode
-            }
-          }).then(function(response) {
-            deferred.resolve(response.data.response);
+
+          User.fetch().finally(function() {
+            $http.get('/api/v2/products/taxons/' + taxonId, {
+              transformResponse: CamelCaseLize,
+              cache: true,
+              params: {
+                'role-code': User.isLogin ? null : 'R',
+                'country-id': User.isLogin ? null : DEFAULT_COUNTRY_ID,
+                'catalog-code': catalogCode
+              }
+            }).then(function(response) {
+              deferred.resolve(response.data.response);
+            });
           });
 
           return deferred.promise;
