@@ -67,16 +67,7 @@ angular.module('miioonApp')
       .when('/coming', {
         templateUrl: 'views/coming.html'
       })
-      .when('/products/:taxonPermalink/:subTaxonPermalink?', {
-        templateUrl: 'views/product/taxon.html',
-        controller: 'TaxonController',
-        resolve: {
-          taxons: ['Taxons', function(Taxons) {
-            return Taxons.fetch();
-          }]
-        }
-      })
-      .when('/marketing-materials', {
+      .when('/products/marketing-materials/items', {
         templateUrl: 'views/product/marketing-materials.html',
         controller: 'MarketingMaterialsController',
         resolve: {
@@ -88,25 +79,21 @@ angular.module('miioonApp')
           }]
         }
       })
-      .when('/product/:productId/:catalogCode', {
-        templateUrl: 'views/product/product-detail-marketing-materials.html',
-        controller: 'ProductController',
+      .when('/products/:taxonPermalink/:subTaxonPermalink?', {
+        templateUrl: 'views/product/taxon.html',
+        controller: 'TaxonController',
         resolve: {
-          'product': ['Product', '$route', function(Product, $route) {
-            var product = new Product($route.current.params.productId, $route.current.params.catalogCode);
-            return product.fetch();
-          }],
-          'taxons': ['Taxons', function(Taxons) {
+          taxons: ['Taxons', function(Taxons) {
             return Taxons.fetch();
           }]
         }
       })
-      .when('/product/:productId', {
+      .when('/product/:productId/:catalogCode?', {
         templateUrl: 'views/product/product-detail.html',
         controller: 'ProductController',
         resolve: {
           'product': ['Product', '$route', function(Product, $route) {
-            var product = new Product($route.current.params.productId);
+            var product = new Product($route.current.params.productId, $route.current.params.catalogCode);
             return product.fetch();
           }],
           'taxons': ['Taxons', function(Taxons) {
