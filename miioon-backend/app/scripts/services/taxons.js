@@ -22,7 +22,7 @@ angular.module('2ViVe')
           }).then(function(response) {
             _data = response.data.response;
             hardCodeTaxonImages(_data);
-            return _data;
+            return Taxons;
           });
         },
         getByPositionBetween: function(startPosition, endPostion) {

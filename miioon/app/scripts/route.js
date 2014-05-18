@@ -37,7 +37,12 @@ angular.module('miioonApp')
       })
       .when('/products/:taxonPermalink/:subTaxonPermalink?', {
         templateUrl: 'views/product/taxon.html',
-        controller: 'TaxonController'
+        controller: 'TaxonController',
+        resolve: {
+          taxons: ['Taxons', function(Taxons) {
+            return Taxons.fetch();
+          }]
+        }
       })
       .when('/product/:productId', {
         templateUrl: 'views/product/product-detail.html',

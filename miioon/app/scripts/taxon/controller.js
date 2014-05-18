@@ -2,22 +2,20 @@
 
 angular.module('2ViVe')
   .controller('TaxonController', ['$scope', 'Products', '$routeParams', 'Taxons',
-    function($scope, Products, $routeParams, Taxons) {
+    function($scope, Products, $routeParams, taxons) {
       var taxonPermalink = $routeParams.taxonPermalink;
       var subTaxonPermalink = $routeParams.subTaxonPermalink;
 
-      Taxons.fetch().then(function() {
-        $scope.taxon = Taxons.getByPermalink(taxonPermalink);
-        var productTaxonId = $scope.taxon.id;
+      $scope.taxon = taxons.getByPermalink(taxonPermalink);
+      var productTaxonId = $scope.taxon.id;
 
-        if (subTaxonPermalink) {
-          $scope.currentSubTaxon = Taxons.getSubTaxonByPermalinkAndTaxon(subTaxonPermalink, $scope.taxon);
-          productTaxonId = $scope.currentSubTaxon.id;
-        }
+      if (subTaxonPermalink) {
+        $scope.currentSubTaxon = taxons.getSubTaxonByPermalinkAndTaxon(subTaxonPermalink, $scope.taxon);
+        productTaxonId = $scope.currentSubTaxon.id;
+      }
 
-        Products.getByTaxon(productTaxonId)
-          .then(function(data) {
-            $scope.products = data.products;
-          });
-      });
+      Products.getByTaxon(productTaxonId)
+        .then(function(data) {
+          $scope.products = data.products;
+        });
     }]);

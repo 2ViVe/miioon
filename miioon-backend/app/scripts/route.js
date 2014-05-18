@@ -69,7 +69,24 @@ angular.module('miioonApp')
       })
       .when('/products/:taxonPermalink/:subTaxonPermalink?', {
         templateUrl: 'views/product/taxon.html',
-        controller: 'TaxonController'
+        controller: 'TaxonController',
+        resolve: {
+          taxons: ['Taxons', function(Taxons) {
+            return Taxons.fetch();
+          }]
+        }
+      })
+      .when('/marketing-materials', {
+        templateUrl: 'views/product/marketing-materials.html',
+        controller: 'MarketingMaterialsController',
+        resolve: {
+          products: ['Products', function(Products) {
+            var MarketingMaterialsTaxonId = 21;
+            var MarketingMaterialsCatalogCode = 'MM';
+
+            return Products.getByTaxon(MarketingMaterialsTaxonId, MarketingMaterialsCatalogCode);
+          }]
+        }
       })
       .when('/product/:productId/:catalogCode', {
         templateUrl: 'views/product/product-detail-marketing-materials.html',
@@ -154,10 +171,6 @@ angular.module('miioonApp')
       .when('/tools', {
         templateUrl: 'views/tools/train.html',
         controller: 'TrainController'
-      })
-      .when('/marketing-materials', {
-        templateUrl: 'views/product/marketing-materials.html',
-        controller: 'MarketingMaterialsController'
       })
       .when('/earnings/hyperwallet', {
         templateUrl: 'views/hyperwallet/index.html',
