@@ -1,3 +1,8 @@
 <div class="hyperwallet-container">
-  hello hyper wallet
+  <div ng-if="HyperWallet.data && !HyperWallet.isLoading">
+    ahah ! I have data !
+  </div>
+  <div ng-if="!HyperWallet.data && !HyperWallet.isLoading">
+    <div data-hyperwallet-form data-onSuccess="HyperWallet.init()"></div>
+  </div>
 </div>
