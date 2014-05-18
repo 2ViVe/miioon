@@ -137,7 +137,12 @@ angular.module('miioonApp')
       })
       .when('/report', {
         templateUrl: 'views/report/order.html',
-        controller: 'OrderReportController'
+        controller: 'OrderReportController',
+        resolve: {
+          orders: ['Order', function(Order) {
+            return Order.recent(0, 25);
+          }]
+        }
       })
       .when('/gift/gift-card', {
         templateUrl: 'views/gift/gift-card.html',
