@@ -69,7 +69,8 @@ angular.module('2ViVe')
           $scope.address.shipmentAddress['shipping-method-id'],
           $scope.address.shipmentAddress,
           $scope.payment.billingAddress,
-          $scope.payment['line-items']
+          $scope.payment['line-items'],
+          $scope.address.webAddress
         ).success(function(data) {
             if (data.response.order['payment-state'] === 'failed') {
               $scope.isFailed = true;
@@ -89,7 +90,7 @@ angular.module('2ViVe')
         $scope.submitted = false;
         $scope.currentStepNumber++;
         if ($scope.currentStepNumber === 4) {
-          Registration.orderSummary($scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress, $scope.lineItems)
+          Registration.orderSummary($scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress, $scope.lineItems, $scope.address.webAddress)
             .success(function(data) {
               $scope.payment = data.response;
               $scope.payment.billingAddress = data.response['billing-address'];

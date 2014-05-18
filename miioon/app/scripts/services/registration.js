@@ -49,7 +49,7 @@ angular.module('2ViVe')
         });
       }
 
-      function orderSummary(homeAddress, shippingAddress, billingAddress, lineItems, roleCode) {
+      function orderSummary(homeAddress, shippingAddress, billingAddress, lineItems, webAddress, roleCode) {
         if (!roleCode) {
           roleCode = 'D';
         }
@@ -57,6 +57,7 @@ angular.module('2ViVe')
           'home-address': homeAddress,
           'shipping-address': shippingAddress,
           'billing-address': billingAddress,
+          'web-address': webAddress,
           'line-items': parseLineItems(lineItems),
           'role-code': roleCode
         });
@@ -74,7 +75,7 @@ angular.module('2ViVe')
         });
       }
 
-      function create(paymentMethodId, userInfo, creditcard, homeAddress, shippingMethodId, shippingAddress, billingAddress, lineItems) {
+      function create(paymentMethodId, userInfo, creditcard, homeAddress, shippingMethodId, shippingAddress, billingAddress, lineItems, webAddress) {
         var _userInfo = angular.copy(userInfo);
         _userInfo['role-code'] = 'D';
         _userInfo['country-iso'] = userInfo.country.iso;
@@ -88,6 +89,7 @@ angular.module('2ViVe')
           'shipping-method-id': shippingMethodId,
           'shipping-address': shippingAddress,
           'billing-address': billingAddress,
+          'web-address': webAddress,
           'line-items': parseLineItems(lineItems)
         });
       }
