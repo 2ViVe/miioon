@@ -4,7 +4,8 @@ angular.module('miioonApp')
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/home.html'
+        templateUrl: 'views/home.html',
+        controller: 'HomeController'
       })
       .when('/signin', {
         templateUrl: 'views/sign-in.html',
@@ -120,6 +121,9 @@ angular.module('miioonApp')
       .when('/starter-pack', {
         templateUrl: 'views/starter-pack.html'
         //controller: 'CheckoutController'
+      })
+      .when('/:login', {
+        templateUrl: 'views/home.html'
       })
       .otherwise({
         redirectTo: '/'
