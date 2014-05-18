@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Products', ['$http', 'User', 'CamelCaseLize', '$q', 'DEFAULT_COUNTRY_ID',
-    function($http, User, CamelCaseLize, $q, DEFAULT_COUNTRY_ID) {
+  .factory('Products', ['$http', 'User', 'CamelCaseLize', '$q', 'DEFAULT_COUNTRY_ID', 'UrlHandler',
+    function($http, User, CamelCaseLize, $q, DEFAULT_COUNTRY_ID, UrlHandler) {
       return {
         getByTaxon: function(taxonId, catalogCode) {
           var deferred = $q.defer();
@@ -18,6 +18,10 @@ angular.module('2ViVe')
               }
             }).then(function(response) {
               deferred.resolve(response.data.response);
+            }).catch(function(error) {
+              if (error.status === 400) {
+                UrlHandler.goToRetailSite('/signin');
+              }
             });
           });
 
