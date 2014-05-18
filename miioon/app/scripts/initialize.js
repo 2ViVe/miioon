@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('miioonApp')
+  .constant('DEFAULT_COUNTRY_ID', 1213)
   .config(['$httpProvider', function($httpProvider) {
     $httpProvider.interceptors.push('HttpInterceptor');
   }])

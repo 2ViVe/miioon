@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('TaxonController', ['$scope', 'Products', '$routeParams', 'Taxons',
-    function($scope, Products, $routeParams, Taxons) {
-      var UKCountryId = 1213;
+  .controller('TaxonController', ['$scope', 'Products', '$routeParams', 'Taxons', 'DEFAULT_COUNTRY_ID',
+    function($scope, Products, $routeParams, Taxons, DEFAULT_COUNTRY_ID) {
       var taxonPermalink = $routeParams.taxonPermalink;
       var subTaxonPermalink = $routeParams.subTaxonPermalink;
 
@@ -17,20 +16,19 @@ angular.module('2ViVe')
           $scope.currentTaxonId = subTaxon.id;
         }
 
-        Products.getByTaxon($scope.currentTaxonId, UKCountryId)
+        Products.getByTaxon($scope.currentTaxonId, DEFAULT_COUNTRY_ID)
           .then(function(data) {
             $scope.products = data.products;
           });
       });
     }])
-  .controller('MarketingMaterialsController', ['$scope', 'Products', 'User',
-    function($scope, Products, User) {
-      var UKCountryId = 1213;
+  .controller('MarketingMaterialsController', ['$scope', 'Products', 'User', 'DEFAULT_COUNTRY_ID',
+    function($scope, Products, User, DEFAULT_COUNTRY_ID) {
       var MarketingMaterialsTaxonId = 21;
       var MarketingMaterialsCatalogCode = 'MM';
 
       User.fetch().then(function() {
-        Products.getByTaxon(MarketingMaterialsTaxonId, UKCountryId, MarketingMaterialsCatalogCode)
+        Products.getByTaxon(MarketingMaterialsTaxonId, DEFAULT_COUNTRY_ID, MarketingMaterialsCatalogCode)
           .then(function(data) {
             $scope.products = data.products;
           });

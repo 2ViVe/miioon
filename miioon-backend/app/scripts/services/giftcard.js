@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('GiftCard', ['$http', 'ipCookie', '$location',
-    function($http, ipCookie, $location) {
+  .factory('GiftCard', ['$http', 'ipCookie', '$location', 'DEFAULT_COUNTRY_ID',
+    function($http, ipCookie, $location, DEFAULT_COUNTRY_ID) {
       var domain = $location.host().split('.');
       domain = '.' + domain[domain.length - 2] + '.' + domain[domain.length - 1];
 
@@ -14,7 +14,7 @@ angular.module('2ViVe')
         return $http.get('/api/v2/products/18', {
           params: {
             'role-code': roleCode,
-            'country-id': 1213,
+            'country-id': DEFAULT_COUNTRY_ID,
             'catalog-code': 'GC'
           }
         }).success(function(data) {
