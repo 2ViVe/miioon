@@ -88,14 +88,8 @@ angular.module('miioonApp')
         templateUrl: 'views/shopping.html',
         controller: 'ShoppingController',
         resolve: {
-          shopping: ['Shopping', 'User', '$q', function(Shopping, User, $q) {
-            var deferred = $q.defer();
-            User.fetch().finally(function() {
-              Shopping.fetch().then(function() {
-                deferred.resolve(Shopping);
-              });
-            });
-            return deferred.promise;
+          shopping: ['Shopping', function(Shopping) {
+            return Shopping.fetch();
           }]
         }
       })
@@ -115,20 +109,11 @@ angular.module('miioonApp')
         templateUrl: 'views/checkout/all.html',
         controller: 'CheckoutController',
         resolve: {
-          order: ['Shopping', 'User', 'Order', '$q', '$location', 'LocalStorage',
-            function(Shopping, User, Order, $q, $location, LocalStorage) {
-              var deferred = $q.defer();
-              User.fetch().then(function() {
-                Shopping.fetch().then(function() {
-                  Order.checkout(Shopping.items).then(function() {
-                    deferred.resolve(Order);
-                  });
-                });
-              }).catch(function() {
-                LocalStorage.setPathAfterLogin($location.path());
-                $location.path('/signin');
+          order: ['Shopping', 'Order',
+            function(Shopping, Order) {
+              return Shopping.fetch().then(function(shopping) {
+                return Order.checkout(shopping.items);
               });
-              return deferred.promise;
             }]
         }
       })

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Shopping', ['$http', 'LocalStorage', 'User', '$location', 'Variant',
-    function($http, LocalStorage, User, $location, Variant) {
+  .factory('Shopping', ['$http', 'LocalStorage', 'User', '$location', 'Variant', '$q',
+    function($http, LocalStorage, User, $location, Variant, $q) {
       var Shopping = {
         mergeItems: function() {
           return Shopping.addItems(Shopping.items);
@@ -84,30 +84,33 @@ angular.module('2ViVe')
             });
           };
 
-          if (User.isLogin) {
-            return $http.get('/api/v2/shopping-carts/users')
-              .then(function(response) {
+          var deferred = $q.defer();
+          User.fetch().finally(function() {
+            if (User.isLogin) {
+              $http.get('/api/v2/shopping-carts/users')
+                .then(function(response) {
+                  Shopping.items = response.data.response['line-items'];
+                  updateItemsWithVariantsData();
+                  deferred.resolve(Shopping);
+                });
+            } else if (LocalStorage.isVisitorIdSaved()) {
+              $http.get('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId())
+                .then(function(response) {
+                  Shopping.items = response.data.response['line-items'];
+                  updateItemsWithVariantsData();
+                  deferred.resolve(Shopping);
+                });
+            } else {
+              $http.post('/api/v2/shopping-carts/visitors', {
+                'id': LocalStorage.createVisitorId()
+              }).then(function(response) {
                 Shopping.items = response.data.response['line-items'];
                 updateItemsWithVariantsData();
-                return Shopping;
+                deferred.resolve(Shopping);
               });
-          }
-          if (LocalStorage.isVisitorIdSaved()) {
-            return $http.get('/api/v2/shopping-carts/visitors/' + LocalStorage.getVisitorId())
-              .then(function(response) {
-                Shopping.items = response.data.response['line-items'];
-                updateItemsWithVariantsData();
-                return Shopping;
-              });
-          } else {
-            return $http.post('/api/v2/shopping-carts/visitors', {
-              'id': LocalStorage.createVisitorId()
-            }).then(function(response) {
-              Shopping.items = response.data.response['line-items'];
-              updateItemsWithVariantsData();
-              return Shopping;
-            });
-          }
+            }
+          });
+          return deferred.promise;
         }
       };
       return Shopping;
