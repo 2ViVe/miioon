@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('Products', ['$http', 'User', 'CamelCaseLize', '$q', 'DEFAULT_COUNTRY_ID', 'UrlHandler',
-    function($http, User, CamelCaseLize, $q, DEFAULT_COUNTRY_ID, UrlHandler) {
+  .factory('Products', ['$http', 'User', 'CamelCaseLize', '$q', 'DEFAULT_COUNTRY_ID', 'UrlHandler', 'DEFAULT_ROLE_CODE',
+    function($http, User, CamelCaseLize, $q, DEFAULT_COUNTRY_ID, UrlHandler, DEFAULT_ROLE_CODE) {
       return {
         getByTaxon: function(taxonId, catalogCode) {
           var deferred = $q.defer();
@@ -12,7 +12,7 @@ angular.module('2ViVe')
               transformResponse: CamelCaseLize,
               cache: true,
               params: {
-                'role-code': User.isLogin ? null : 'R',
+                'role-code': User.isLogin ? null : DEFAULT_ROLE_CODE,
                 'country-id': User.isLogin ? null : DEFAULT_COUNTRY_ID,
                 'catalog-code': catalogCode
               }
@@ -29,23 +29,23 @@ angular.module('2ViVe')
         }
       };
     }])
-  .factory('Variant', ['$http', 'User', 'CamelCaseLize',
-    function($http, User, CamelCaseLize) {
+  .factory('Variant', ['$http', 'User', 'CamelCaseLize', 'DEFAULT_ROLE_CODE',
+    function($http, User, CamelCaseLize, DEFAULT_ROLE_CODE) {
       return {
         fetch: function(id, catalogCode) {
           return $http.get('/api/v2/variants/' + id, {
             transformResponse: CamelCaseLize,
             cache: true,
             params: {
-              'role-code': User.isLogin ? null : 'R',
+              'role-code': User.isLogin ? null : DEFAULT_ROLE_CODE,
               'catalog-code': catalogCode
             }
           });
         }
       };
     }])
-  .factory('Product', ['$http', 'User', 'CamelCaseLize', '$q',
-    function($http, User, CamelCaseLize, $q) {
+  .factory('Product', ['$http', 'User', 'CamelCaseLize', '$q', 'DEFAULT_ROLE_CODE',
+    function($http, User, CamelCaseLize, $q, DEFAULT_ROLE_CODE) {
       var ATTRIBUTE_KEY = {
         'Color': 'colors',
         'Size': 'sizes'
@@ -67,7 +67,7 @@ angular.module('2ViVe')
           $http.get('/api/v2/products/' + product.id, {
             transformResponse: CamelCaseLize,
             params: {
-              'role-code': User.isLogin ? null : 'R',
+              'role-code': User.isLogin ? null : DEFAULT_ROLE_CODE,
               'catalog-code': product.catalogCode
             }
           }).then(function(response) {

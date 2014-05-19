@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('GiftCard', ['$http', 'ipCookie', '$location', 'DEFAULT_COUNTRY_ID', 'User', '$q', 'LocalStorage',
-    function($http, ipCookie, $location, DEFAULT_COUNTRY_ID, User, $q, LocalStorage) {
+  .factory('GiftCard', ['$http', 'ipCookie', '$location', 'DEFAULT_COUNTRY_ID', 'User', '$q', 'LocalStorage', 'DEFAULT_ROLE_CODE',
+    function($http, ipCookie, $location, DEFAULT_COUNTRY_ID, User, $q, LocalStorage, DEFAULT_ROLE_CODE) {
       var domain = $location.host().split('.');
       domain = '.' + domain[domain.length - 2] + '.' + domain[domain.length - 1];
 
@@ -16,7 +16,7 @@ angular.module('2ViVe')
         User.fetch().finally(function() {
           $http.get('/api/v2/products/18', {
             params: {
-              'role-code': User.isLogin ? null : 'R',
+              'role-code': User.isLogin ? null : DEFAULT_ROLE_CODE,
               'country-id': User.isLogin ? null : DEFAULT_COUNTRY_ID,
               'catalog-code': 'GC'
             }
