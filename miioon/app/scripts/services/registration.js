@@ -3,6 +3,8 @@
 angular.module('2ViVe')
   .factory('Registration', ['$http', '$q', '$rootScope',
     function($http, $q, $rootScope) {
+      var DEFAULT_REGISTRATION_ROLE_CODE = 'D';
+
       var countries = [];
 
       function parseLineItems(lineitems) {
@@ -50,34 +52,28 @@ angular.module('2ViVe')
       }
 
       function orderSummary(homeAddress, shippingAddress, billingAddress, lineItems, webAddress, roleCode) {
-        if (!roleCode) {
-          roleCode = 'D';
-        }
         return $http.post('/api/v2/registrations/orders/summary', {
           'home-address': homeAddress,
           'shipping-address': shippingAddress,
           'billing-address': billingAddress,
           'web-address': webAddress,
           'line-items': parseLineItems(lineItems),
-          'role-code': roleCode
+          'role-code': roleCode ? roleCode : DEFAULT_REGISTRATION_ROLE_CODE
         });
       }
 
       function getProducts(countryId, roleCode) {
-        if (!roleCode) {
-          roleCode = 'D';
-        }
         return $http.get('/api/v2/registrations/products', {
           params: {
             'country-id': countryId,
-            'role-code': roleCode
+            'role-code': roleCode ? roleCode : DEFAULT_REGISTRATION_ROLE_CODE
           }
         });
       }
 
       function create(paymentMethodId, userInfo, creditcard, homeAddress, shippingMethodId, shippingAddress, billingAddress, lineItems, webAddress) {
         var _userInfo = angular.copy(userInfo);
-        _userInfo['role-code'] = 'D';
+        _userInfo['role-code'] = DEFAULT_REGISTRATION_ROLE_CODE;
         _userInfo['country-iso'] = userInfo.country.iso;
         delete _userInfo.country;
 
@@ -127,7 +123,7 @@ angular.module('2ViVe')
           'home-address': homeAddress,
           'shipping-address': shippingAddress,
           'billing-address': billingAddress,
-          'role-code': 'D'
+          'role-code': DEFAULT_REGISTRATION_ROLE_CODE
         });
       }
 
