@@ -122,7 +122,7 @@ angular.module('miioonApp')
             }]
         }
       })
-      .when('/report', {
+      .when('/report/orders', {
         templateUrl: 'views/report/order.html',
         controller: 'OrderReportController',
         resolve: {
@@ -145,11 +145,11 @@ angular.module('miioonApp')
         templateUrl: 'views/gift/gift-checkout.html',
         controller: 'GiftCheckoutController'
       })
-      .when('/tools', {
+      .when('/miioon-u', {
         templateUrl: 'views/tools/train.html',
         controller: 'TrainController'
       })
-      .when('/earnings/hyperwallet', {
+      .when('/e-wallet', {
         templateUrl: 'views/hyperwallet/index.html',
         controller: 'HyperWalletController',
         controllerAs: 'HyperWallet'
