@@ -1,6 +1,20 @@
 'use strict';
 
 angular.module('2ViVe')
+  .factory('GiftCards', ['$http', 'CamelCaseLize', function($http, camelcase) {
+
+    function GiftCards() {}
+
+    GiftCards.fetch = function() {
+      return $http.get('/api/v2/giftcards', {
+        transformResponse: camelcase
+      }).then(function(resp) {
+        return resp.data.response;
+      });
+    };
+
+    return GiftCards;
+  }])
   .factory('GiftCard', ['$http', 'ipCookie', '$location', 'DEFAULT_COUNTRY_ID', 'User', '$q', 'LocalStorage', 'DEFAULT_ROLE_CODE',
     function($http, ipCookie, $location, DEFAULT_COUNTRY_ID, User, $q, LocalStorage, DEFAULT_ROLE_CODE) {
       var domain = $location.host().split('.');
