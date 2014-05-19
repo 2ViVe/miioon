@@ -21,11 +21,16 @@ angular.module('miioonApp', [
       })
       .when('/signup', {
         redirectTo: '/signup'
-        //templateUrl: 'views/sign-up/all.html'
       })
       .when('/signup/:stepNumber', {
         templateUrl: 'views/sign-up/all.html',
         controller: 'SignUpController'
+      })
+      .when('/retail-signup', {
+        templateUrl: 'views/sign-up/retail-signup.html'
+      })
+      .when('/quick-signup', {
+        templateUrl: 'views/sign-up/quick-signup.html'
       })
       .when('/products/', {
         templateUrl: 'views/products/products-index.html',

@@ -6,9 +6,26 @@
   <img alt="Step 1" src="images/step_bar_1.jpg">
 </div>
 <form class="sign-up-step-1 sign-up-step" name="step" novalidate>
+  <div class="row">
+    <h2 class="small-12 columns">Sign up as an Distributor</h2>
+  </div>
+  <div class="row">
+    <p class="register-customer small-12 columns medium-font">
+      Do you just want to shop? <a class="primary-link" href="/#/retail-signup">Register as a customer</a>
+    </p>
+  </div>
   <div class='row'>
     <div class='medium-12 columns'>
-      <h2>CREATE YOUR ACCOUNT</h2>
+      <h3>Sponsor Information</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class='medium-4 columns'>
+      <label>Sponsor ID <small class='required'>*</small></label>
+    </div>
+    <div class='medium-8 columns'>
+      <input type="text" required pattern="">
+      <small class="error">This information is required.</small>
     </div>
   </div>
   <div class='row'>
@@ -54,19 +71,31 @@
       <small class="error hide">This information is required.</small>
     </div>
   </div>
-  <div class='row'>
-    <div class='medium-12 columns'>
-      <h3>Sponsor Information</h3>
+  <div class="row">
+    <div class='medium-4 columns'>
+      <label>Country <small class='required'>*</small></label>
+    </div>
+    <div class='medium-8 columns'>
+      <select>
+        <option>United Kingdom</option>
+      </select>
+      <small class="error hide">This information is required.</small>
     </div>
   </div>
   <div class="row">
-    <div class='medium-4 columns'>
-      <label>Sponsor ID <small class='required'>*</small></label>
+    <div class='columns small-8 small-offset-4'>
+      <textarea id="term-condition" readonly cols="30" rows="14"></textarea>
     </div>
-    <div class='medium-8 columns'>
-      <input type="text" required pattern="">
-      <small class="error">This information is required.</small>
+  </div>
+  <div class="row">
+    <div class="columns small-8 small-offset-4">
+      <label for="is-agreed"><input required type="checkbox"/> I agree to the above Terms and Conditions.</label>
     </div>
+  </div>
+  <div class="row">
+    <p class="unimportant-text medium-font columns small-8 small-offset-4">
+      Note: must read through the distributor agreement and click agree before proceed (your consent will be recorded)
+    </p>
   </div>
   <div class="row">
     <div class='medium-8 columns small-offset-4'>
