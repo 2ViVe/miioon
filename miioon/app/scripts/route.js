@@ -58,7 +58,8 @@ angular.module('miioonApp')
         }
       })
       .when('/host', {
-        templateUrl: 'views/host.html'
+        templateUrl: 'views/host.html',
+        controller: 'HostController'
       })
       .when('/press', {
         templateUrl: 'views/press.html',
