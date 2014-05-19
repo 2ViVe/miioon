@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('hyperwallet', ['$http', 'CamelCaseLize', 'Dashlize',function($http, camelize, dashlize) {
+  .factory('hyperwallet', ['$http', 'CamelCaseLize', 'Dashlize', function($http, camelize, dashlize) {
 
     function handleResponse(resp) {
       return resp.data.response;
@@ -10,19 +10,15 @@ angular.module('2ViVe')
     return {
       fetch: function() {
         return $http.get('/api/v2/hyperwallets/accounts', {
-                       transformResponse: camelize
-                     })
-                    .then(handleResponse);
+          transformResponse: camelize
+        }).then(handleResponse);
       },
       create: function(hyperwallet) {
         return $http.post('/api/v2/hyperwallets/accounts', hyperwallet, {
-                       transformResponse: function(data) {
-                         return angular.toJson(dashlize(data));
-                       }
-                     })
-                    .then(handleResponse);
+          transformRequest: function(data) {
+            return angular.toJson(dashlize(data));
+          }
+        }).then(handleResponse);
       }
-    }
-
-
+    };
   }]);
