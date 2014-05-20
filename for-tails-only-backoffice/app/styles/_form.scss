@@ -1,0 +1,76 @@
+@import "foundation/scss/foundation/components/forms";
+
+button,
+.button {
+  &.tertiary {
+    background-color: $grey-darker;
+
+    &:hover {
+      background-color: scale-color($grey-darker, $lightness: $button-function-factor);
+    }
+  }
+
+  &.go:after {
+    content: "\25BA";
+    margin-left: 12px;
+    font-size: rem-calc(11);
+    position: relative;
+    bottom: 1px;
+  }
+}
+
+.required {
+  color:#F64F99;
+  font-size: 100%;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea,
+select{
+      margin-bottom: 0;
+}
+
+form {
+  label {
+    line-height: rem-calc(30);
+  }
+
+  .button,
+  button {
+    &[disabled],
+    &.disabled {
+      background-color: $grey-darker;
+
+      &:hover,
+      &:focus {
+        background-color: $grey-darker;
+      }
+    }
+  }
+
+  .title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .input-description {
+    @include form-label(inline,false);
+    display: inline-block;
+  }
+
+  .ng-invalid {
+    margin-bottom: 0;
+  }
+}

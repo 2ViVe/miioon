@@ -1,0 +1,40 @@
+.product-table {
+  border-spacing: 0;
+  width: 100%;
+
+  thead,
+  tbody {
+    tr {
+      th,
+      td {
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+  }
+
+  tfoot {
+    background: white;
+    tr td {
+      font-size: $medium-font-size;
+      font-weight: normal;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+  }
+
+  .price {
+    color: $red;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 40px;
+  }
+
+  .product-thumbnail {
+    height: 60px;
+  }
+}
+
+.sign-up-step-2 .product-table {
+  margin-top: 20px;
+}
