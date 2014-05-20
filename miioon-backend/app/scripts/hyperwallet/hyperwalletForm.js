@@ -65,6 +65,9 @@ angular.module('2ViVe')
         this.create = function() {
           self.processing = true;
 
+          // for testing
+          self.data.countryIso = 'US';
+
           hyperwallet
             .create(this.data)
             .then(function() {

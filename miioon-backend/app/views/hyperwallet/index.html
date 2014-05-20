@@ -1,8 +1,59 @@
 <div class="hyperwallet-container">
-  <div ng-if="HyperWallet.data && !HyperWallet.isLoading">
-    ahah ! I have data !
+  <div class="row panel">
+    <div class="small-12" >
+
+      <div ng-if="HyperWallet.loadFailed === true">
+        load failed, <a href="javascript:;" ng-click="HyperWallet.init()">try again</a>
+      </div>
+
+      <div ng-if="HyperWallet.hasHyperWallet === true">
+        <div class="row">
+          <div class="small-3 columns">Sample</div>
+          <div class="small-3 end columns">sample</div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">Distributor ID</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.distributorId }}</div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">Account Number</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.accountNumber }}</div>
+        </div>
+
+
+        <div class="row">
+          <div class="small-3 columns">Account Status</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.accountStatus }}</div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">First Name</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.firstName }}</div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">Last Name</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.lastName }}</div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">Currency Code</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.currencyCode }}</div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">Account Balance</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.accountBalance }}</div>
+        </div>
+
+      </div>
+
+      <div ng-if="HyperWallet.hasHyperWallet === false">
+        <div data-hyperwallet-form data-onSuccess="HyperWallet.init()"></div>
+      </div>
+    </div>
   </div>
-  <div ng-if="!HyperWallet.data && !HyperWallet.isLoading">
-    <div data-hyperwallet-form data-onSuccess="HyperWallet.init()"></div>
-  </div>
+
 </div>

@@ -1,4 +1,9 @@
-.profile-container {
+.profile-container, .hyperwallet-container {
+
+  ol {
+    list-style: decimal;
+    padding-left: 30px;
+  }
 
   padding: 68px;
 
@@ -10,8 +15,13 @@
   .panel {
     margin-bottom: 0px;
     padding-top: 0px;
+    .panel {
+      padding-left: 0;
+    }
     .row {
       margin-bottom: 15px;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
