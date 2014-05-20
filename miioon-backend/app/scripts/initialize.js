@@ -2,6 +2,7 @@
 
 angular.module('miioonApp')
   .constant('DEFAULT_COUNTRY_ID', 1213)
+  .constant('DEFAULT_ROLE_CODE', 'R')
   .config(['$httpProvider', function($httpProvider) {
     $httpProvider.interceptors.push('HttpInterceptor');
   }])

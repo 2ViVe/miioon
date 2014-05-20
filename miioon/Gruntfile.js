@@ -86,7 +86,7 @@ module.exports = function(grunt) {
 
     grunt.task.run([
       'clean:server',
-//      'bowerInstall',
+      'bowerInstall',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -99,9 +99,7 @@ module.exports = function(grunt) {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     } else if (target === 'static') {
       return grunt.task.run([
-        'clean:server',
-//        'bowerInstall',
-        'concurrent:server',
+        'bowerInstall',
         'autoprefixer',
         'watch'
       ]);
@@ -110,7 +108,7 @@ module.exports = function(grunt) {
     grunt.task.run([
       'configureProxies:local',
       'clean:server',
-//      'bowerInstall',
+      'bowerInstall',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -128,7 +126,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-//    'bowerInstall',
+    'bowerInstall',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
