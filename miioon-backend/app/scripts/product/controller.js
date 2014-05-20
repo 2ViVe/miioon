@@ -16,6 +16,8 @@ angular.module('2ViVe')
       $scope.selectedColor = product.colors[0];
       $scope.selectedSize = product.sizes[0];
       $scope.currentImage = product.data.images[0];
+      $scope.catalogCode = product.catalogCode;
+
       updateVariant(product);
 
       $scope.subTaxon = taxons.getSubTaxonById(product.data.taxonId);
