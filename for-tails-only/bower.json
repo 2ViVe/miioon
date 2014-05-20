@@ -12,7 +12,8 @@
     "foundation": "~5.1.1",
     "unslider": "*",
     "angular-ui-utils": "bower",
-    "font-awesome": "~4.0.3"
+    "font-awesome": "~4.0.3",
+    "2ViVe": "git@github.com:2ViVe/frontend-modules.git"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",
