@@ -11,7 +11,7 @@ angular.module('2ViVe')
       };
 
       var replicateOwner = LocalStorage.getReplicateOwner();
-      $scope.replicateOwnerId = replicateOwner ? replicateOwner['distributor-id'] : '';
+      $scope.replicateOwnerLogin = replicateOwner ? replicateOwner.login : '';
 
       $scope.product = product.data;
       $scope.colors = product.colors;
