@@ -17,7 +17,7 @@ angular.module('2ViVe')
           var port = $location.port();
           if (port === PORT_FOR_BACK_OFFICE_DEMO_SITE) {
             return 'http://' + $location.host().replace('miioon.backoffice', 'miioon.www') +
-              ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE + '/';
+              ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE;
           }
 
           return 'http://www.miioon.com';
