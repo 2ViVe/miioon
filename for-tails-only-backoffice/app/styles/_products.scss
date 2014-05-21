@@ -159,56 +159,35 @@
         width: rem-calc(80);
       }
     }
-    .products-detail-sizeList{
-      margin-bottom: rem-calc(15);
-      ul{
-        li{
-          float:left;
-          margin-right: rem-calc(10);
-          a{
-            display:block;
-            width:rem-calc(30);
-            height:rem-calc(30);
-            line-height:rem-calc(30);
-            background:#fff;
-            border:1px solid $grey-border;
-            text-align: center;
-            font-size:rem-calc(14);
-            color:$grey;
-            &:hover{
-              border-color:$primary-color;
-              text-decoration: none;
-            }
-            &.current{
-              border-color:$primary-color;
-              background:$primary-color;
-              color:#fff;
-            }
-          }
 
+    .options {
+      @include clearfix;
+
+      li {
+        float: left;
+        border: 2px solid $grey-border;
+        line-height: 26px;
+        height: 30px;
+        min-width: 30px;
+        text-align: center;
+        margin-right: 10px;
+        font-size: $medium-font-size;
+        cursor: pointer;
+
+        &.current {
+          border-color: $primary-color;
+          background: $primary-color;
+          color: white;
         }
       }
     }
+
+    .products-detail-sizeList{
+      margin-bottom: rem-calc(15);
+    }
     .products-detail-colorList{
       margin-bottom: rem-calc(15);
-      ul{
-        li{
-          margin-right: rem-calc(10);
-          float:left;
-          a{
-            display:block;
-            width:rem-calc(30);
-            height:rem-calc(30);
-            &:hover{
-              border:1px solid $grey-darker;
-              text-decoration: none;
-            }
-            &.current{
-              border:1px solid $grey-darker;
-            }
-          }
-        }
-      }
+
     }
     .products-detail-designList{
       margin-bottom: rem-calc(15);
