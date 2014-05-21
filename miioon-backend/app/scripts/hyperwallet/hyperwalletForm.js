@@ -75,6 +75,7 @@ angular.module('2ViVe')
             .catch(function(resp) {
               if (resp.data.meta && resp.data.meta.error && resp.data.meta.error.message) {
                 self.creteErrorMessage = resp.data.meta.error.message;
+                $scope.$broadcast('hyperwallet.error', self.creteErrorMessage);
               }
               self.processing = false;
             });
@@ -85,6 +86,10 @@ angular.module('2ViVe')
       scope: {
         onSuccess: '&'
       },
-      link: function() {}
+      link: function($scope, $elm) {
+        $scope.$on('hyperwallet.error', function() {
+          angular.element('body').animate({scrollTop: $elm.offset().top}, 300);
+        });
+      }
     };
   }]);
