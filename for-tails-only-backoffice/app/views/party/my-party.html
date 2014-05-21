@@ -1,0 +1,83 @@
+<div class='party-container'>
+  <div class='row party-topbar'>
+    <div class='small-12 medium-4 columns'>
+          <div class='row collapse'>
+              <div class='small-10 columns'>
+                <input type='text' placeholder='Search...' class='secondary-item no-margin-bottom' dropdown-toggle="#drop-menu-search" />
+              </div>
+              <div class='small-2 columns'>
+                <a href='#' class='postfix button secondary'><i class="fa fa-search"></i></a>
+              </div>
+              <ul id="drop-menu-search" class='f-dropdown party-panel-list'>
+                <li ng-repeat="choice in searchItems">
+                  <i class="fa fa-caret-right primary-color"></i>
+                  <a href='#'>[choice.name]</a>
+                  <span href='#' class='label secondary right'>[choice.date]</span>
+                </li>
+              </ul>
+          </div>
+    </div>
+    <div class='small-12 medium-8 columns text-right'>
+      <a href='#' class='button small'>Create a Meet</a>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='columns medium-8'>
+      <h4>Upcoming Pawties <a href='#' class='button small right'>Recent Pawties</a></h4>
+      <table class='party-list' width='100%'>
+        <tbody>
+          <tr>
+            <td class='text-center'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
+            <td class='party-list-info'>
+              <p><strong>2 Years Birthday</strong></p>
+              <p>October 24, 2013, 7:30AM | Closes November 14, 2013</p>
+              <p>33 Pin, San Francisco, CA</p>
+              <p>Host: <a href='#'>Abovegem</a> | <a href='#'>Invite Guests</a> | <a href='#'>Edit</a> | <a href='#'>Delete</a></p>
+            </td>
+            <td>
+              <div clas='party-list-members'>
+                <strong class='primary-link'>5</strong>
+                <small>INVITED</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class='text-center'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
+            <td class='party-list-info'>
+              <p><strong>2 Years Birthday</strong></p>
+              <p>October 24, 2013, 7:30AM | Closes November 14, 2013</p>
+              <p>33 Pin, San Francisco, CA</p>
+              <p>Host: <a href='#'>Abovegem</a> | <a href='#'>Invite Guests</a> | <a href='#'>Edit</a> | <a href='#'>Delete</a></p>
+            </td>
+            <td>
+              <div clas='party-list-members'>
+                <strong class='primary-link'>5</strong>
+                <small>INVITED</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class='text-center'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
+            <td class='party-list-info'>
+              <p><strong>2 Years Birthday</strong></p>
+              <p>October 24, 2013, 7:30AM | Closes November 14, 2013</p>
+              <p>33 Pin, San Francisco, CA</p>
+              <p>Host: <a href='#'>Abovegem</a> | <a href='#'>Invite Guests</a> | <a href='#'>Edit</a> | <a href='#'>Delete</a></p>
+            </td>
+            <td>
+              <div clas='party-list-members'>
+                <strong class='primary-link'>5</strong>
+                <small>INVITED</small>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class='columns medium-4'>
+      <div class='party-calendar'>
+        <img ng-src='/images/party/calendar.png' />
+      </div>
+    </div>
+  </div>
+</div>
