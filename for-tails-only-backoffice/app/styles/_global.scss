@@ -93,9 +93,12 @@ ul {
   padding-right:0 !important;
 }
 
-.tails-wrapper{
-  padding-top:0;
-  margin-bottom: 0;
+.wrapper{
+  width: $row-width;
+  margin: 0 auto;
+  border-right: 1px solid $grey-border;
+  border-left: 1px solid $grey-border;
+  box-shadow: 0 0 3px $grey-light;
 }
 
 .separator-line{
@@ -121,12 +124,6 @@ ul {
     margin: rem-calc(20) 0;
   }
 
-  // panel style
-  .panel{
-    -moz-box-shadow: 0 0 3px #ccc;
-    -webkit-box-shadow: 0 0 3px #ccc;
-    box-shadow: 0 0 3px #ccc;
-  }
   // table style
   table{
     thead{
