@@ -70,8 +70,12 @@ angular.module('2ViVe')
             .then(function() {
               self.processing = false;
               $scope.onSuccess && $scope.onSuccess();
+              self.creteErrorMessage = undefined;
             })
-            .catch(function() {
+            .catch(function(resp) {
+              if (resp.data.meta && resp.data.meta.error && resp.data.meta.error.message) {
+                self.creteErrorMessage = resp.data.meta.error.message;
+              }
               self.processing = false;
             });
         };
