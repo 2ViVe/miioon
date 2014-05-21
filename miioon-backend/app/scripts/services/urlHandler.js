@@ -20,7 +20,7 @@ angular.module('2ViVe')
               ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE;
           }
 
-          return 'http://www.miioon.com';
+          return 'http://preview.miioon.com';
         },
         goToBackOffice: function(path) {
           path = path ? path : '';
