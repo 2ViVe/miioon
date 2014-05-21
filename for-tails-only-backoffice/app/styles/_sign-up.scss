@@ -9,7 +9,7 @@
     .sign-up-step-text-1,.sign-up-step-text-2,.sign-up-step-text-3,.sign-up-step-text-4{
       position:absolute;
       top:20px;
-      font-size: rem-calc(12);
+      font-size: $small-font-size;
     }
     .sign-up-step-text-1{left:-15px;}
     .sign-up-step-text-2{left:240px;}

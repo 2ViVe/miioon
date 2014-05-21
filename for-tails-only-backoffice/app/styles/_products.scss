@@ -12,7 +12,7 @@
       }
       dd{
         margin-bottom: rem-calc(8);
-        font-size: rem-calc(12);
+        font-size: $small-font-size;
         a{
           color:$grey-darker;
         }
@@ -46,7 +46,7 @@
     }
     .product-name{
       color:$grey-darker;
-      font-size: rem-calc(12);
+      font-size: $small-font-size;
       margin: rem-calc(10) 0 rem-calc(20) 0;
     }
     .product-price{
@@ -69,12 +69,12 @@
       .product-id{
         color:$grey;
         margin-bottom: 6px;
-        font-size: rem-calc(12);
+        font-size: $small-font-size;
         line-height: 1;
       }
       .product-size{
         margin-bottom: 6px;
-        font-size: rem-calc(12);
+        font-size: $small-font-size;
         line-height: 1;
       }
     }
@@ -111,7 +111,7 @@
       }
     }
     h6{
-      font-size: rem-calc(12);
+      font-size: $small-font-size;
       color:$grey;
       margin-bottom: rem-calc(5);
     }
@@ -232,7 +232,7 @@
         margin-left:0;
         padding:rem-calc(10) rem-calc(10);
         label{
-          font-size: rem-calc(12);
+          font-size: $small-font-size;
           height: rem-calc(37);
           line-height:rem-calc(37);
         }
@@ -245,7 +245,7 @@
           color:$grey;
           margin: 0;
           padding:0;
-          font-size: rem-calc(12);
+          font-size: $small-font-size;
           height: rem-calc(20);
           line-height: rem-calc(20);
         }
@@ -276,19 +276,19 @@
       .product-id{
         color:$grey-dark;
         margin-bottom: 6px;
-        font-size: rem-calc(12);
+        font-size: $small-font-size;
         line-height: 1;
       }
       .product-size{
         margin-bottom: 6px;
-        font-size: rem-calc(12);
+        font-size: $small-font-size;
         line-height: 1;
         color: $grey;
       }
       .product-option{
         color:$grey-darker;
         margin-bottom: 6px;
-        font-size: rem-calc(12);
+        font-size: $small-font-size;
         line-height: 1;
       }
     }

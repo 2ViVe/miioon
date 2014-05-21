@@ -6,7 +6,7 @@
 
   .header-links {
     color: $grey;
-    font-size: rem-calc(12);
+    font-size: $small-font-size;
     margin-bottom: 10px;
     @include clearfix;
 
