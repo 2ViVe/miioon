@@ -69,7 +69,6 @@ angular.module('2ViVe')
             .create(this.data)
             .then(function() {
               self.processing = false;
-              debugger;
               $scope.onSuccess && $scope.onSuccess();
             })
             .catch(function() {
