@@ -75,9 +75,7 @@
     </div>
     <div class="tabs" data-tabset>
       <div data-tab data-heading="Product Description">
-        <div class="detail-description">
-          {{product.description}}
-        </div>
+        <div class="detail-description" ng-bind-html="product.description"></div>
       </div>
       <div data-tab data-heading="Size Charts">
         <div class="size-charts" ng-include="'views/product/size-charts.html'"></div>

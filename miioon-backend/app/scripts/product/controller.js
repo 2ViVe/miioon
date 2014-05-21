@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('ProductController', ['$scope', 'product', 'taxons', 'Shopping',
-    function($scope, product, taxons, Shopping) {
+  .controller('ProductController', ['$scope', 'product', 'taxons', 'Shopping', '$location', '$sce',
+    function($scope, product, taxons, Shopping, $location, $sce) {
       var updateVariant = function() {
         $scope.variant = product.getVariantByOptions({
           'Color': $scope.selectedColor,
@@ -10,7 +10,12 @@ angular.module('2ViVe')
         });
       };
 
+      if (product.data.price === 0 || isNaN(product.data.price)) {
+        $location.path('/');
+      }
+
       $scope.product = product.data;
+      $scope.product.description = $sce.trustAsHtml($scope.product.description);
       $scope.colors = product.colors;
       $scope.sizes = product.sizes;
       $scope.selectedColor = product.colors[0];

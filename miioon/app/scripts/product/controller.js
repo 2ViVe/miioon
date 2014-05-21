@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('ProductController', ['$scope', 'product', 'taxons', 'Shopping', 'LocalStorage', '$location',
-    function($scope, product, taxons, Shopping, LocalStorage, $location) {
+  .controller('ProductController', ['$scope', 'product', 'taxons', 'Shopping', 'LocalStorage', '$location', '$sce',
+    function($scope, product, taxons, Shopping, LocalStorage, $location, $sce) {
       var updateVariant = function() {
         $scope.variant = product.getVariantByOptions({
           'Color': $scope.selectedColor,
@@ -18,6 +18,7 @@ angular.module('2ViVe')
       $scope.replicateOwnerLogin = replicateOwner ? replicateOwner.login : '';
 
       $scope.product = product.data;
+      $scope.product.description = $sce.trustAsHtml($scope.product.description);
       $scope.colors = product.colors;
       $scope.sizes = product.sizes;
       $scope.selectedColor = product.colors[0];
