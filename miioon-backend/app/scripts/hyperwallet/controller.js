@@ -12,13 +12,13 @@ angular.module('2ViVe')
         .fetch()
         .then(function(data) {
           self.isLoading = false;
-          if (data.responses.responseCode === 'succeeded') {
+          if (data.responseCode === 'succeeded') {
             self.hasHyperWallet = true;
             deferred.resolve(true);
           }
           else {
             self.hasHyperWallet = false;
-            deferred.reject(data.responses.responseCode)
+            deferred.reject(data.responseCode);
           }
         }, function(resp) {
           if (resp.statusCode === 401) {
@@ -41,7 +41,7 @@ angular.module('2ViVe')
         })
         .catch(function() {
           self.loadFailed = true;
-        })
+        });
     };
 
     this.init();
