@@ -138,15 +138,12 @@ ul {
     }
     tfoot{
       .check-out-foot{
-          margin: rem-calc(16) 0 rem-calc(16) 0;
           p{
-            margin-bottom: 0;
-            color:#9E9A99;
-            font-weight: normal;
-            line-height:rem-calc(30);
-            font-size: rem-calc(14);
+            margin-bottom: 5px;
+            color: $grey-darker;
+            font-size: $medium-font-size;
           }
-          strong.price-total{
+          .price-total{
               display:block;
               line-height:rem-calc(30); 
               font-size:rem-calc(16);
