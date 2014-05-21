@@ -24,6 +24,7 @@ angular.module('2ViVe')
           if (resp.statusCode === 401) {
             return $location.path('/signin');
           }
+
           self.isLoading = false;
           self.loadFailed = true;
         });
@@ -40,7 +41,7 @@ angular.module('2ViVe')
           self.data = data;
         })
         .catch(function() {
-          self.loadFailed = true;
+          self.isLoading = false;
         });
     };
 
