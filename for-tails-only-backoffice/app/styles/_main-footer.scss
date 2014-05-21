@@ -46,7 +46,7 @@
       margin-bottom: 5px;
       line-height: normal;
       a {
-        font-size: rem-calc(11);
+        font-size: $tiny-font-size;
       }
     }
     li.authorize{
@@ -83,6 +83,6 @@
     margin-top: rem-calc(20);
     border-top: 1px solid $grey-border;
     color:$grey-light;
-    font-size: rem-calc(11);
+    font-size: $tiny-font-size;
   }
 }
