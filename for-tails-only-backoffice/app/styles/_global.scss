@@ -94,7 +94,7 @@ ul {
 }
 
 .wrapper{
-  width: $row-width;
+  max-width: $row-width;
   margin: 0 auto;
   border-right: 1px solid $grey-border;
   border-left: 1px solid $grey-border;
