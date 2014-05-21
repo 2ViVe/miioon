@@ -107,7 +107,6 @@
       font-size: $large-font-size;
       color:$primary-color;
       small{
-        font-size:$medium-font-size;
         color:$grey-darker;
       }
     }
@@ -128,7 +127,6 @@
         min-width: 30px;
         text-align: center;
         margin-right: 10px;
-        font-size: $medium-font-size;
         cursor: pointer;
 
         &.current {
