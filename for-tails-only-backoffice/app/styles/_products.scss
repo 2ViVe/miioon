@@ -1,8 +1,6 @@
 .products {
 
   .products-sidebar{
-    padding-left:0;
-    padding-right:0;
     dl{
       dt{
         color:$primary-color;
@@ -97,9 +95,6 @@
       padding:rem-calc(10) 0;
       font-size: rem-calc(14);
       font-style: italic;
-      .unimportant-text{
-        //margin-top: 10px;
-      }
     }
 
   .products-cart{
@@ -302,6 +297,8 @@
         border:1px solid $grey-border;
         background:$grey-lighter;
         margin-bottom: rem-calc(20);
+        margin-right:0;
+        margin-left:0;
         padding:rem-calc(10) rem-calc(10);
         label{
           font-size: rem-calc(12);
