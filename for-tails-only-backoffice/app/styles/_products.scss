@@ -104,9 +104,10 @@
   .products-detail-info{
     margin-bottom: rem-calc(20);
     h3{
-      font-size: rem-calc(18);
-      &.subheader{
-        font-size:rem-calc(14);
+      font-size: $large-font-size;
+      color:$primary-color;
+      small{
+        font-size:$medium-font-size;
         color:$grey-darker;
       }
     }
@@ -114,50 +115,6 @@
       font-size: rem-calc(12);
       color:$grey;
       margin-bottom: rem-calc(5);
-    }
-    /*
-    .products-detail-priceList{
-      li{
-        color:#fff;
-        text-align: center;
-        
-        strong{
-          display:block;
-          font-size: rem-calc(16);
-        }
-        small{
-          display:block;
-          font-size: rem-calc(11);
-        }
-        .products-detail-priceList-y{
-          background: #F2D500;
-          border:1px #DBB300 solid;
-          padding:rem-calc(5) 0;
-        }
-        .products-detail-priceList-r{
-          background: #FDA1A1;
-          border:1px #E57777 solid;
-          padding:rem-calc(5) 0;
-        }
-        .products-detail-priceList-g{
-          background: #C6DC70;
-          border:1px #A8BF4E solid;
-          padding:rem-calc(5) 0;
-        }
-      }
-    }
-    */
-    .products-detail-price{
-      display: block;
-      font-size: rem-calc(22);
-      margin: rem-calc(25) 0;
-      color: $primary-color;
-    }
-    .products-detail-quantity{
-      margin-bottom: rem-calc(15);
-      input{
-        width: rem-calc(80);
-      }
     }
 
     .options {
@@ -182,13 +139,19 @@
       }
     }
 
-    .products-detail-sizeList{
-      margin-bottom: rem-calc(15);
+    .product-panel{
+      .product-quantity{
+        width:60px;
+      }
     }
-    .products-detail-colorList{
-      margin-bottom: rem-calc(15);
 
+    .products-detail-price{
+      display: block;
+      font-size: rem-calc(22);
+      margin: rem-calc(25) 0;
+      color: $primary-color;
     }
+
     .products-detail-designList{
       margin-bottom: rem-calc(15);
       ul{
