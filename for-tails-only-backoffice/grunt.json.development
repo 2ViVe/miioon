@@ -1,0 +1,9 @@
+{
+  "port": 10002,
+  "hostname": "fto.backoffice.dev.com",
+  "APIServerIP": "199.27.105.132",
+  "APIServerPort": 60442,
+  "protocol": "http",
+  "livereload": "35730",
+  "optimizationLevel": 3
+}
