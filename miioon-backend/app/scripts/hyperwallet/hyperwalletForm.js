@@ -79,7 +79,7 @@ angular.module('2ViVe')
       controllerAs: 'HyperWalletCreator',
       templateUrl: 'views/hyperwallet/form.html',
       scope: {
-        onSuccess: '='
+        onSuccess: '&'
       },
       link: function() {}
     };
