@@ -24,13 +24,13 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div class='wrapper'>
-        <div ng-include="'views/main-header.html'"></div>
-        <div ng-include="'views/main-navigation.html'"></div>
+        <header class="main-header" ng-include="'views/main-header.html'"></header>
+        <nav class="main-navigation" ng-include="'views/main-navigation.html'"></nav>
 
         <!-- Add your site or application content here -->
         <div class="main-container" ng-view=""></div>
 
-        <div ng-include="'views/main-footer.html'"></div>
+        <footer class="main-footer" ng-include="'views/main-footer.html'"></footer>
     </div>
 
     <!--[if lt IE 9]>
