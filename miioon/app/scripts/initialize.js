@@ -12,8 +12,8 @@ angular.module('miioonApp')
         Shopping.fetch();
       });
     }])
-  .run(['$rootScope', 'cfpLoadingBar', 'UrlHandler',
-    function($rootScope, cfpLoadingBar, UrlHandler) {
+  .run(['$rootScope', 'cfpLoadingBar', 'UrlHandler', '$location',
+    function($rootScope, cfpLoadingBar, UrlHandler, $location) {
       $rootScope.$on('$routeChangeStart', function() {
         cfpLoadingBar.start();
       });
@@ -25,6 +25,7 @@ angular.module('miioonApp')
       });
 
       $rootScope.$on('$routeChangeError', function() {
+        $location.path('/');
         cfpLoadingBar.complete();
       });
 

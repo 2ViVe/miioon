@@ -16,13 +16,14 @@ angular.module('miioonApp')
         Shopping.fetch();
       });
     }])
-  .run(['$rootScope', 'cfpLoadingBar',
-    function($rootScope, cfpLoadingBar) {
+  .run(['$rootScope', 'cfpLoadingBar', '$location',
+    function($rootScope, cfpLoadingBar, $location) {
       $rootScope.$on('$routeChangeStart', function() {
         cfpLoadingBar.start();
       });
 
       $rootScope.$on('$routeChangeError', function() {
+        $location.path('/');
         cfpLoadingBar.complete();
       });
 
