@@ -18,13 +18,12 @@ angular.module('2ViVe')
       $scope.replicateOwnerLogin = replicateOwner ? replicateOwner.login : '';
 
       $scope.product = product.data;
-      $scope.product.description = $sce.trustAsHtml($scope.product.description);
       $scope.colors = product.colors;
       $scope.sizes = product.sizes;
       $scope.selectedColor = product.colors[0];
       $scope.selectedSize = product.sizes[0];
       $scope.currentImage = product.data.images[0];
-      updateVariant(product);
+      updateVariant();
 
       $scope.subTaxon = taxons.getSubTaxonById(product.data.taxonId);
       if ($scope.subTaxon !== null) {
