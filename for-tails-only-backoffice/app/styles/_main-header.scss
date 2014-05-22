@@ -29,25 +29,11 @@
     }
   }
 
-  .header-search {
+  .row.header-search {
     margin: 0;
     width: 350px;
     > .columns:first-child {
       padding-right: rem-calc(5);
-    }
-    .postfix.button {
-      margin-left: rem-calc(5);
-      line-height: rem-calc(30);
-    }
-    select {
-      padding: rem-calc(5);
-    }
-    input[type='text'], .postfix.button, select {
-      height: rem-calc(30);
-      background: $grey-light;
-      color: #fff;
-      box-shadow: none;
-      border: 0;
     }
   }
 }

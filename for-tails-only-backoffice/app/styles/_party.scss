@@ -7,8 +7,23 @@
   table.party-list{
     border:1px solid $grey-border;
     margin-top:$panel-margin-bottom;
-    tbody tr:nth-of-type(2n){
-      background:#f6f8fa;
+    tbody{
+      tr:nth-of-type(2n){
+        background:#f6f8fa;
+      }
+      tr:last-child{
+        td{
+          border-bottom:0;
+        }
+      }
+    }
+    .party-list-photo{
+      text-align: center;
+      vertical-align: top;
+    }
+    .party-list-info{
+      font-size:$small-font-size;
+      color:$grey-darker;
     }
   }
 
@@ -16,30 +31,3 @@
 }
 
 
-// foundation reset css
-
-//collapse
-.row.collapse > .column, .row.collapse > .columns {
-  padding-right: 2px;
-}
-
-
-
-// global css
-.secondary-item,.postfix.button,.secondary-item[type="text"],.secondary-item[type="text"]:focus{
-  background:$secondary-color !important;
-  color:#fff !important;
-  border:none;
-  box-shadow:none;
-  height:rem-calc(30);
-  line-height: rem-calc(30);
-}
-.secondary-item:-moz-input-placeholder{
-  color:#fff !important;
-}
-.secondary-item:-ms-input-placeholder{
-  color:#fff !important;
-}
-.secondary-item::-webkit-input-placeholder{
-  color:#fff !important;
-}

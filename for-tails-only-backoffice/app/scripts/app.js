@@ -63,6 +63,9 @@ angular.module('miioonApp', [
       .when('/about', {
         templateUrl: 'views/about.html'
       })
+      .when('/party/my-party', {
+        templateUrl: 'views/party/my-party.html'
+      })
       .when('/taxon/:taxonId', {
         templateUrl: 'views/taxon.html'
       })

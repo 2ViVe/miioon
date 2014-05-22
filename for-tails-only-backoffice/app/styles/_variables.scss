@@ -49,7 +49,7 @@ $list-nested-margin: 0;
 
 $table-border-size: 0;
 $table-head-font-size: rem-calc(18);
-$table-head-bg: #EEEEEE;
+$table-head-bg: #eee;
 $table-even-row-bg: $grey-light;
 
 // common style
@@ -59,6 +59,7 @@ $font-weight-bold: bold !default;
 	// panel style
 	$panel-bg:#fff;
 	$panel-border-size:0;
+  $panel-margin-bottom: rem-calc(20);
 
 	// table style
 
