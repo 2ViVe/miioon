@@ -210,6 +210,16 @@ select.secondary-item{
     color:$grey-darker;
   }
 
+  // pagination
+  ul.pagination{
+    li{
+      a{
+        background:$grey-light;
+        border-radius:0;
+      }
+    }
+  }
+
 .row.collapse > .column, .row.collapse > .columns {
   padding-right: 2px;
 }

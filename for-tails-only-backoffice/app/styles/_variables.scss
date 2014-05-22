@@ -15,10 +15,11 @@ $tiny-font-size: rem-calc(11);
 $small-font-size: rem-calc(12);
 $medium-font-size: rem-calc(16);
 $large-font-size: rem-calc(18);
+$xlarge-font-size: rem-calc(20);
 $base-font-color: #333;
 $body-font-color: #333;
 
-$primary-color: #62C8C8;
+$primary-color: #6AB6AC;
 $secondary-color: #4EACDB;
 
 $h2-font-size: rem-calc(26);
@@ -67,4 +68,7 @@ $font-weight-bold: bold !default;
   $hr-border-color:$grey-border;
   $hr-margin: rem-calc(15);
 
+  //pagination
+  $pagination-link-font-color: #fff;
+  $pagination-link-unavailable-bg-active:$grey-light;
 

@@ -4,29 +4,61 @@
     margin-bottom: $panel-margin-bottom;
   }
 
+  .party-calendar{
+    img{
+      width:100%;
+    }
+  }
+
   table.party-list{
     border:1px solid $grey-border;
     margin-top:$panel-margin-bottom;
     tbody{
-      tr:nth-of-type(2n){
-        background:#f6f8fa;
-      }
-      tr:last-child{
+      tr{
+        &:nth-of-type(2n){
+          background:#f6f8fa;
+        }
+        &:last-child{
+          td{
+            border-bottom:0;
+          }
+        }
         td{
-          border-bottom:0;
+          .party-list-members{
+            width:82px;
+            height:82px;
+            background:url("/images/party/party-list-circle.png") 50% 50% no-repeat;
+            text-align:center;
+            margin:0 auto;
+            strong{
+              display:block;
+              font-size:$xlarge-font-size;
+              color:$primary-color;
+              padding-top:22px;
+            }
+            small{
+              color:$grey-darker;
+              font-size:$tiny-font-size;
+            }
+          }
+          &.party-list-photo{
+            text-align: center;
+            vertical-align: top;
+          }
+          &.party-list-info{
+            p{
+              font-size:$small-font-size;
+              color:$grey-darker;
+            }
+            a{
+              color:$grey-darker;
+              text-decoration: underline;
+            }
+          }
         }
       }
     }
-    .party-list-photo{
-      text-align: center;
-      vertical-align: top;
-    }
-    .party-list-info{
-      font-size:$small-font-size;
-      color:$grey-darker;
-    }
   }
-
 
 }
 
