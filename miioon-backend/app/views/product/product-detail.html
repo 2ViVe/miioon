@@ -45,7 +45,7 @@
           <div class="info-panel-title">Size:</div>
           <ul class="options">
             <li ng-repeat="size in sizes" ng-click="changeSize(size)" ng-class="{current: size === selectedSize}">
-              {{size}}
+              {{size.presentationValue}}
             </li>
           </ul>
         </div>
@@ -53,7 +53,7 @@
           <div class="info-panel-title">Color:</div>
           <ul class="options">
             <li ng-repeat="color in colors" ng-click="changeColor(color)" ng-class="{current: color === selectedColor}">
-              {{color}}
+              {{color.presentationValue}}
             </li>
           </ul>
         </div>
