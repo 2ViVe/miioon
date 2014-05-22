@@ -57,6 +57,10 @@ $table-even-row-bg: $grey-light;
 $font-weight-bold: bold !default;
 
 // foundation style reset
+
+  //grid
+  $column-gutter: rem-calc(30);
+
 	// panel style
 	$panel-bg:#fff;
 	$panel-border-size:0;
