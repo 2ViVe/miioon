@@ -63,11 +63,14 @@ angular.module('miioonApp', [
       .when('/about', {
         templateUrl: 'views/about.html'
       })
-      .when('/party/my-party', {
+      .when('/party/party-my', {
         templateUrl: 'views/party/my-party.html'
       })
-      .when('/party/none-party', {
+      .when('/party/party-none', {
         templateUrl: 'views/party/none-party.html'
+      })
+      .when('/party/party-invite', {
+        templateUrl: 'views/party/party-invite.html'
       })
       .when('/taxon/:taxonId', {
         templateUrl: 'views/taxon.html'
