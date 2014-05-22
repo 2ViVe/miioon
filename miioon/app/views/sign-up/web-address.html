@@ -20,8 +20,8 @@
     <small ng-show="submitted && form['web-first-name'].$error.required" class="error">
       This field is required.
     </small>
-    <small ng-show="submitted && form['web-first-name'].$error.validated" class="error">
-      {{form['web-first-name'].errorMessageValidated}}
+    <small ng-show="submitted && $webAddressErrors.InvalidFirstName" class="error">
+      {{ $webAddressErrors.InvalidFirstName.message }}
     </small>
   </div>
 </div>
@@ -34,8 +34,8 @@
     <small ng-show="submitted && form['web-last-name'].$error.required" class="error">
       This field is required.
     </small>
-    <small ng-show="submitted && form['web-last-name'].$error.validated" class="error">
-      {{form['web-last-id'].errorMessageValidated}}
+    <small ng-show="submitted && $webAddressErrors.InvalidLastName" class="error">
+      {{ $webAddressErrors.InvalidLastName.message }}
     </small>
   </div>
 </div>
@@ -48,8 +48,8 @@
     <small ng-show="submitted && form['web-phone'].$error.required" class="error">
       This field is required.
     </small>
-    <small ng-show="submitted && form['web-phone'].$error.validated" class="error">
-      {{form['web-phone'].errorMessageValidated}}
+    <small ng-show="submitted && $webAddressErrors.InvalidPhone" class="error">
+      {{ $webAddressErrors.InvalidPhone.message }}
     </small>
   </div>
 </div>
@@ -59,8 +59,8 @@
   </div>
   <div class="small-5 end columns">
     <input type="text" id="web-mobile-phone" name="web-mobile-phone" ng-model="webAddress['mobile-phone']"/>
-    <small ng-show="submitted && form['web-mobile-phone'].$error.validated" class="error">
-      {{form['web-mobile-phone'].errorMessageValidated}}
+    <small ng-show="submitted && $webAddressErrors.InvalidMobilePhone" class="error">
+      {{ $webAddressErrors.InvalidMobilePhone.message }}
     </small>
   </div>
 </div>

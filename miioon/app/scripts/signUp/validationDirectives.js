@@ -162,21 +162,16 @@ angular.module('2ViVe')
               invalidField.$setValidity('validated', true);
             });
             invalidFields = [];
-            Address.validateWebAddress($scope.webAddress)
-              .success(function(data) {
-                var failures = data.response.failures;
-                if (failures.length > 0) {
-                  angular.forEach(failures, function(failiure) {
-                    $scope.form['web-' + failiure.field].$setValidity('validated', false);
-                    $scope.form['web-' + failiure.field].errorMessageValidated = failiure.message;
-                    invalidFields.push($scope.form['web-' + failiure.field]);
-                  });
-                  $scope.isWebAddressValidated = false;
-                } else {
-                  $scope.isWebAddressValidated = true;
-                }
+            Address.validateWebAddressNew($scope.webAddress)
+              .then(function() {
+                $scope.isWebAddressValidated = true;
               })
-              .error(function() {
+              .catch(function(failures) {
+                angular.forEach(failures, function(failiure) {
+                  $scope.form['web-' + failiure.field].$setValidity('validated', false);
+                  invalidFields.push($scope.form['web-' + failiure.field]);
+                });
+                $scope.$webAddressErrors = failures;
                 $scope.isWebAddressValidated = false;
               });
           });
