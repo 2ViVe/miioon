@@ -112,21 +112,16 @@ angular.module('2ViVe')
               invalidField.$setValidity('validated', true);
             });
             invalidFields = [];
-            Address.validateHomeAddress($scope.homeAddress)
-              .success(function(data) {
-                var failures = data.response.failures;
-                if (failures.length > 0) {
-                  angular.forEach(failures, function(failiure) {
-                    $scope.form['home-' + failiure.field].$setValidity('validated', false);
-                    $scope.form['home-' + failiure.field].errorMessageValidated = failiure.message;
-                    invalidFields.push($scope.form['home-' + failiure.field]);
-                  });
-                  $scope.isHomeAddressValidated = false;
-                } else {
-                  $scope.isHomeAddressValidated = true;
-                }
+            Address.validateHomeAddressNew($scope.homeAddress)
+              .then(function() {
+                $scope.isHomeAddressValidated = true;
               })
-              .error(function() {
+              .catch(function(failures) {
+                angular.forEach(failures, function(failiure) {
+                  $scope.form['home-' + failiure.field].$setValidity('validated', false);
+                  invalidFields.push($scope.form['home-' + failiure.field]);
+                });
+                $scope.$homeAddressErrors = failures;
                 $scope.isHomeAddressValidated = false;
               });
           });
