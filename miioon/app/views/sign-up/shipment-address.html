@@ -21,8 +21,8 @@
     <small ng-show="submitted && form['shipment-first-name'].$error.required" class="error">
       This field is required.
     </small>
-    <small ng-show="submitted && form['shipment-first-name'].$error.validated" class="error">
-      {{form['shipment-first-name'].errorMessageValidated}}
+    <small ng-show="submitted && $shippingAddressErrors.InvalidFirstName" class="error">
+      {{$shippingAddressErrors.InvalidFirstName.message}}
     </small>
   </div>
 </div>
@@ -36,8 +36,8 @@
     <small ng-show="submitted && form['shipment-last-name'].$error.required" class="error">
       This field is required.
     </small>
-    <small ng-show="submitted && form['shipment-last-name'].$error.validated" class="error">
-      {{form['shipment-last-name'].errorMessageValidated}}
+    <small ng-show="submitted && $shippingAddressErrors.InvalidLastName" class="error">
+      {{$shippingAddressErrors.InvalidLastName.message}}
     </small>
   </div>
 </div>
@@ -50,8 +50,8 @@
     <small ng-show="submitted && form['shipment-street'].$error.required" class="error">
       This field is required.
     </small>
-    <small ng-show="submitted && form['shipment-street'].$error.validated" class="error">
-      {{form['shipment-street'].errorMessageValidated}}
+    <small ng-show="submitted && $shippingAddressErrors.InvalidStreet" class="error">
+      {{$shippingAddressErrors.InvalidStreet.message}}
     </small>
   </div>
 </div>
@@ -62,6 +62,9 @@
   <div class="small-5 end columns">
     <input type="text" id="shipment-street-contd" name="shipment-street-contd"
            ng-model="shipmentAddress['street-contd']"/>
+    <small ng-show="submitted && $shippingAddressErrors.InvalidStreetContd" class="error">
+      {{$shippingAddressErrors.InvalidStreetContd.message}}
+    </small>
   </div>
 </div>
 <div class="row">
@@ -73,8 +76,8 @@
     <small ng-show="submitted && form['shipment-city'].$error.required" class="error">
       This field is required.
     </small>
-    <small ng-show="submitted && form['shipment-city'].$error.validated" class="error">
-      {{form['shipment-city'].errorMessageValidated}}
+    <small ng-show="submitted && $shippingAddressErrors.InvalidCity" class="error">
+      {{$shippingAddressErrors.InvalidCity.message}}
     </small>
   </div>
 </div>
@@ -90,6 +93,9 @@
       </select>
       <small ng-show="submitted && form['shipment-state-id'].$error.required" class="error">
         This field is required.
+      </small>
+      <small ng-show="submitted && $shippingAddressErrors.InvalidState" class="error">
+        {{$shippingAddressErrors.InvalidState.message}}
       </small>
     </div>
   </div>
@@ -108,6 +114,9 @@
       <small ng-show="submitted && form['shipment-country-id'].$error.required" class="error">
         This field is required.
       </small>
+      <small ng-show="submitted && $shippingAddressErrors.InvalidCountry" class="error">
+        {{$shippingAddressErrors.InvalidCountry.message}}
+      </small>
     </div>
   </div>
 </div>
@@ -120,8 +129,8 @@
     <small ng-show="submitted && form['shipment-zip'].$error.required" class="error">
       This field is required.
     </small>
-    <small ng-show="submitted && form['shipment-zip'].$error.validated" class="error">
-      {{form['shipment-zip'].errorMessageValidated}}
+    <small ng-show="submitted && $shippingAddressErrors.InvalidZip" class="error">
+      {{$shippingAddressErrors.InvalidZip.message}}
     </small>
   </div>
 </div>
@@ -134,8 +143,8 @@
     <small ng-show="submitted && form['shipment-phone'].$error.required" class="error">
       This field is required.
     </small>
-    <small ng-show="submitted && form['shipment-phone'].$error.validated" class="error">
-      {{form['shipment-phone'].errorMessageValidated}}
+    <small ng-show="submitted && $shippingAddressErrors.InvalidPhone" class="error">
+      {{$shippingAddressErrors.InvalidPhone.message}}
     </small>
   </div>
 </div>

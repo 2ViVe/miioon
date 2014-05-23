@@ -218,21 +218,16 @@ angular.module('2ViVe')
               invalidField.$setValidity('validated', true);
             });
             invalidFields = [];
-            Address.validateShippingAddress($scope.shipmentAddress)
-              .success(function(data) {
-                var failures = data.response.failures;
-                if (failures.length > 0) {
-                  angular.forEach(failures, function(failiure) {
-                    $scope.form['shipment-' + failiure.field].$setValidity('validated', false);
-                    $scope.form['shipment-' + failiure.field].errorMessageValidated = failiure.message;
-                    invalidFields.push($scope.form['shipment-' + failiure.field]);
-                  });
-                  $scope.isShipmentAddressValidated = false;
-                } else {
-                  $scope.isShipmentAddressValidated = true;
-                }
+            Address.validateShippingAddressNew($scope.shipmentAddress)
+              .then(function() {
+                $scope.isShipmentAddressValidated = true;
               })
-              .error(function() {
+              .catch(function(failures) {
+                angular.forEach(failures, function(failiure) {
+                  $scope.form['shipment-' + failiure.field].$setValidity('validated', false);
+                  invalidFields.push($scope.form['shipment-' + failiure.field]);
+                });
+                $scope.$shippingAddressErrors = failures;
                 $scope.isShipmentAddressValidated = false;
               });
           });

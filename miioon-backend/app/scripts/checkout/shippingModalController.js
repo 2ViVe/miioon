@@ -8,9 +8,8 @@ angular.module('2ViVe')
       var invalidFields = [];
 
       $scope.submit = function() {
-        $scope.submitted = true;
         var form = this.form;
-        if (form.$valid) {
+        if ($scope.submitted || form.$valid) {
           var shippingAddress = {
             'first-name': $scope.shippingAddress['first-name'],
             'last-name': $scope.shippingAddress['last-name'],
@@ -24,32 +23,28 @@ angular.module('2ViVe')
             'country': $scope.shippingAddress.country.name,
             'phone': $scope.shippingAddress.phone
           };
-          Address.validateShippingAddress(shippingAddress)
-            .success(function(data) {
-              angular.forEach(invalidFields, function(invalidField) {
-                invalidField.$setValidity('validated', true);
+
+          angular.forEach(invalidFields, function(invalidField) {
+            invalidField.$setValidity('validated', true);
+          });
+
+          Address.validateShippingAddressNew(shippingAddress)
+            .then(function() {
+              $modalInstance.close(shippingAddress);
+            })
+            .catch(function(failures) {
+              angular.forEach(failures, function(failiure) {
+                form['shipping-' + failiure.field].$setValidity('validated', false);
+                invalidFields.push(form['shipping-' + failiure.field]);
               });
-              invalidFields = [];
-              var failures = data.response.failures;
-              if (failures.length > 0) {
-                angular.forEach(failures, function(failiure) {
-                  form['shipping-' + failiure.field].$setValidity('validated', false);
-                  form['shipping-' + failiure.field].errorMessageValidated = failiure.message;
-                  invalidFields.push(form['shipping-' + failiure.field]);
-                });
-              } else {
-                $modalInstance.close(shippingAddress);
-              }
+              $scope.$shippingAddressErrors = failures;
             });
         }
+        $scope.submitted = true;
       };
 
       $scope.cancel = function() {
         $modalInstance.dismiss('cancel');
       };
     }
-  ]
-);
-
-
-
+  ]);
