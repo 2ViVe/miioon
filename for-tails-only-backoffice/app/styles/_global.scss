@@ -154,6 +154,12 @@ select.secondary-item{
           font-weight: normal;
           font-size:rem-calc(14);
         }
+        &.table-title-bg{
+          background: $primary-color !important;
+          th{
+            color:#fff;
+          }
+        }
       }
     }
     tfoot{

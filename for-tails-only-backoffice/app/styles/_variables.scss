@@ -86,7 +86,7 @@ $font-weight-bold: bold !default;
   $crumb-bg:#fff;
   $crumb-font-color:$grey-dark;
   $crumb-font-color-current:$grey-darker;
-  $crumb-padding:$panel-margin-bottom 0;
+  $crumb-padding:0 0 $panel-margin-bottom 0;
   $crumb-font-transform:none;
   $crumb-side-padding:rem-calc(6);
 
