@@ -64,10 +64,10 @@ angular.module('miioonApp', [
         templateUrl: 'views/about.html'
       })
       .when('/party/party-my', {
-        templateUrl: 'views/party/my-party.html'
+        templateUrl: 'views/party/party-my.html'
       })
       .when('/party/party-none', {
-        templateUrl: 'views/party/none-party.html'
+        templateUrl: 'views/party/party-none.html'
       })
       .when('/party/party-invite', {
         templateUrl: 'views/party/party-invite.html'
