@@ -1,7 +1,5 @@
 'use strict';
 
-angular.module('2ViVe', []);
-
 angular.module('miioonApp', [
   'ngCookies',
   'ngResource',
@@ -12,5 +10,6 @@ angular.module('miioonApp', [
   'ui.utils',
   'mm.foundation.tabs',
   'mm.foundation.modal',
-  'duScroll'
+  'duScroll',
+  'ipCookie'
 ]);

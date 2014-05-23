@@ -1,6 +1,6 @@
 <header class="main-header row" ng-controller="HeaderController">
   <div class="row">
-    <div class="columns medium-9 small-7">
+    <div class="columns medium-8 small-7">
       <ul class="header-links separator-slash" ng-if="!user.isLogin">
         <li>
           <a href="#/signin">Sign In</a>
@@ -33,7 +33,7 @@
         </li>
       </ul>
     </div>
-    <div class="columns medium-3 small-5">
+    <div class="columns medium-4 small-5">
       <div class="shopping-bag right">
         <i class="icons-shopping-bag"></i>
         <a href="#/shopping" ng-if="shopping.items.length > 0">
@@ -42,13 +42,17 @@
         <span ng-if="shopping.items.length === 0">
           Shopping Bag (0)
         </span>
+        <!-- contact me popup
+        <i class='icons-message'></i>
+        <a href ng-click='contactMe();'>Contact Me</a>
+        -->
       </div>
     </div>
   </div>
 
   <div class="row">
     <div class="medium-3 show-for-medium-up columns">
-      <a href="https://miioonsite-qa.azurewebsites.net/">
+      <a ng-href="http://kids.miioon.com?SponsorId={{replicateOwner.login}}">
         <img src="images/kids-link.gif" alt="Kids this way"/>
       </a>
     </div>
@@ -59,9 +63,9 @@
     </div>
     <div class="medium-3 show-for-medium-up end columns">
       <ul ng-if="replicateOwner">
-        <li>name: {{ replicateOwner['first-name'] + replicateOwner['last-name'] }}</li>
-        <li>distributor-id: {{ replicateOwner['distributor-id'] }}</li>
-        <li>email: {{ replicateOwner['email']}} </li>
+        <li>Sponsor Name: {{ replicateOwner['first-name'] + ' ' + replicateOwner['last-name'] }}</li>
+        <li>Sponsor Id: {{ replicateOwner['distributor-id'] }}</li>
+        <li>Email: {{ replicateOwner['email']}} </li>
         <!--<img alt="{{ replicateOwner['first-name'] + replicateOwner['last-name'] }}" src="replicateOwner['profile-image-url']">-->
       </ul>
     </div>

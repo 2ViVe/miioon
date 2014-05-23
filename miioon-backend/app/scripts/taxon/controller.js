@@ -1,16 +1,26 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('TaxonController', ['$scope', 'Products', '$routeParams', 'Taxons',
-    function($scope, Products, $routeParams, Taxons) {
-      var UKCountryId = 1213;
-      $scope.currentTaxonId = Number($routeParams.taxonId);
+  .controller('TaxonController', ['$scope', 'Products', '$routeParams', 'taxons',
+    function($scope, Products, $routeParams, taxons) {
+      var taxonPermalink = $routeParams.taxonPermalink;
+      var subTaxonPermalink = $routeParams.subTaxonPermalink;
 
-      Taxons.fetch().then(function() {
-        $scope.taxons = Taxons.getByPositionBetween(0, 1000);
-        Products.getByTaxon($scope.currentTaxonId, UKCountryId)
-          .then(function(data) {
-            $scope.products = data.products;
-          });
-      });
+      $scope.taxons = taxons.getByPositionBetween(0, 1000);
+      var taxon = taxons.getByPermalink(taxonPermalink);
+      $scope.currentTaxonId = taxon.id;
+
+      if (subTaxonPermalink) {
+        var subTaxon = taxons.getSubTaxonByPermalinkAndTaxon(subTaxonPermalink, taxon);
+        $scope.currentTaxonId = subTaxon.id;
+      }
+
+      Products.getByTaxon($scope.currentTaxonId)
+        .then(function(data) {
+          $scope.products = data.products;
+        });
+    }])
+  .controller('MarketingMaterialsController', ['$scope', 'products',
+    function($scope, products) {
+      $scope.products = products.products;
     }]);

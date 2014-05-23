@@ -29,7 +29,9 @@
  			border-radius:0 0 $border-radius $border-radius;
  		}
  	}
- 	.home-facebook{}
+ 	.home-facebook{
+ 		height:600px;
+ 	}
  	.home-blog{
  		margin-bottom: rem-calc(30);
 		.home-blog-item{
@@ -58,4 +60,7 @@
 			}
 		}
  	}
+ 	.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    	width: 100% !important;
+    }
 }

@@ -1,11 +1,9 @@
 'use strict';
 
 angular.module('miioonApp')
-  .controller('OrderReportController', ['$scope', 'Order', '$modal',
-    function($scope, Order, $modal) {
-      Order.recent(0, 25).then(function(data) {
-        $scope.orders = data;
-      });
+  .controller('OrderReportController', ['$scope', 'orders', '$modal',
+    function($scope, orders, $modal) {
+      $scope.orders = orders;
 
       $scope.viewDetail = function(id) {
         $modal.open({

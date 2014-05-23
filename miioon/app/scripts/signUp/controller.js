@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries', 'User', '$modal',
-    function($scope, Registration, $window, countries, User, $modal) {
+  .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries', 'User', '$modal', 'UrlHandler',
+    function($scope, Registration, $window, countries, User, $modal, UrlHandler) {
+      $scope.retailUrl = UrlHandler.retailUrl();
       $scope.countries = countries;
       $scope.currentStepNumber = 1;
       $scope.shouldValidateRemotlyOnSubmit = false;
@@ -68,7 +69,8 @@ angular.module('2ViVe')
           $scope.address.shipmentAddress['shipping-method-id'],
           $scope.address.shipmentAddress,
           $scope.payment.billingAddress,
-          $scope.payment['line-items']
+          $scope.payment['line-items'],
+          $scope.address.webAddress
         ).success(function(data) {
             if (data.response.order['payment-state'] === 'failed') {
               $scope.isFailed = true;
@@ -88,10 +90,11 @@ angular.module('2ViVe')
         $scope.submitted = false;
         $scope.currentStepNumber++;
         if ($scope.currentStepNumber === 4) {
-          Registration.orderSummary($scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress, $scope.lineItems)
+          Registration.orderSummary($scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress, $scope.lineItems, $scope.address.webAddress)
             .success(function(data) {
               $scope.payment = data.response;
               $scope.payment.billingAddress = data.response['billing-address'];
+              $scope.payment.billingAddress['street-contd'] = $scope.address.homeAddress['street-contd'];
               var paymentMethod = data.response['available-payment-methods'][0];
               $scope.payment['payment-method-id'] = paymentMethod.id;
               $scope.payment['is-creditcard'] = paymentMethod['is-creditcard'];

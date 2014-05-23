@@ -1,7 +1,5 @@
 'use strict';
 
-angular.module('2ViVe', []);
-
 angular.module('miioonApp', [
   'ngCookies',
   'ngResource',
@@ -14,5 +12,6 @@ angular.module('miioonApp', [
   'mm.foundation.position',
   'mm.foundation.dropdownToggle',
   'mm.foundation.modal',
-  'chieffancypants.loadingBar'
+  'chieffancypants.loadingBar',
+  'ipCookie'
 ]);

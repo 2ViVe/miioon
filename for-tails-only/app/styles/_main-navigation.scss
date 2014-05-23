@@ -1,11 +1,6 @@
 .main-navigation {
-  
-  background:#fff;
 
-  >.row{
-    border-top: 1px solid $grey-border;
-    border-bottom: 1px solid $grey-border;
-  }
+  background:#fff;
 
   .sub-taxons-container {
     display: none;
@@ -38,7 +33,10 @@
   }
 
   .root-taxons {
-    >li {
+    border-top: 1px solid $grey-border;
+    border-bottom: 1px solid $grey-border;
+    @include clearfix;
+    &>li {
       float: left;
       margin-right: 5px;
 

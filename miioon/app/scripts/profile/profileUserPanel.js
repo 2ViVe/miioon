@@ -3,7 +3,7 @@
 (function() {
 
   angular.module('2ViVe')
-    .controller('profileInfoPanelCtrl', ['$scope', 'User', '$http', '$q', 'UrlHandler', '$location', function($scope, User, $http, $q, UrlHandler, $location) {
+    .controller('profileInfoPanelCtrl', ['$scope', 'User', '$http', '$q', 'LocalStorage', '$location', function($scope, User, $http, $q, LocalStorage, $location) {
       $scope.isEditing = false;
       $scope.isLoading = true;
       $scope.submitted = false;
@@ -18,7 +18,7 @@
         $scope.isLoading = false;
         $scope.initProfile = angular.copy($scope.profile);
       }).catch(function() {
-        UrlHandler.savePath($location.path(), $location.path());
+        LocalStorage.setPathAfterLogin($location.path());
         $location.path('/signin');
       });
 
@@ -105,6 +105,7 @@
         controller: 'profileInfoPanelCtrl',
         scope: {},
         link: function() {
+          
         }
       };
     });

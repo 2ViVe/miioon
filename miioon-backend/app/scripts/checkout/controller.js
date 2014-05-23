@@ -1,33 +1,17 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('CheckoutController', ['$scope', 'Order', 'Shopping', 'User', '$location', 'LocalStorage', '$modal',
-    function($scope, Order, Shopping, User, $location, LocalStorage, $modal) {
+  .controller('CheckoutController', ['$scope', 'order', 'Shopping', '$modal',
+    function($scope, order, Shopping, $modal) {
       $scope.creditCard = {};
       $scope.placingOrder = false;
       $scope.isSucceed = false;
       $scope.isFailed = false;
       $scope.orderId = null;
 
-      User.fetch().catch(function() {
-        if (User.isLogin === false) {
-          $location.path('/signin');
-        }
-      });
-
-      $scope.$watch(function() {
-        return Shopping.items;
-      }, function() {
-        if (!Shopping.items) {
-          return;
-        }
-        Order.checkout(Shopping.items)
-          .success(function() {
-            $scope.selectedShippingMethod = Order.currentShippingMethod();
-            $scope.selectedPaymentMethod = Order.data['available-payment-methods'][0];
-            $scope.order = Order;
-          });
-      });
+      $scope.selectedShippingMethod = order.currentShippingMethod();
+      $scope.selectedPaymentMethod = order.data['available-payment-methods'][0];
+      $scope.order = order;
 
       $scope.editShippingAddress = function() {
         $modal.open({
@@ -36,7 +20,10 @@ angular.module('2ViVe')
         }).result.then(function(shippingAddress) {
             $scope.order.data['shipping-address'] = shippingAddress;
             if ($scope.orderId) {
-              Order.updateShippingAddress($scope.orderId, shippingAddress);
+              order.updateShippingAddress($scope.orderId, shippingAddress)
+                .success(function() {
+                  order.adjustmentsWithOrderId($scope.orderId);
+                });
             }
           });
       };
@@ -48,31 +35,31 @@ angular.module('2ViVe')
         }).result.then(function(billingAddress) {
             $scope.order.data['billing-address'] = billingAddress;
             if ($scope.orderId) {
-              Order.updateBillingAddress($scope.orderId, billingAddress);
+              order.updateBillingAddress($scope.orderId, billingAddress);
             }
           });
       };
 
       $scope.totalPrice = function() {
         var adjustments = 0;
-        angular.forEach(Order.data.adjustments, function(adjustment) {
+        angular.forEach(order.data.adjustments, function(adjustment) {
           adjustments += adjustment.amount;
         });
-        return adjustments + Order.data['item-total'];
+        return adjustments + order.data['item-total'];
       };
 
       $scope.changeShippingMethod = function(selectedShippingMethod) {
         $scope.selectedShippingMethod = selectedShippingMethod;
 
         if ($scope.orderId) {
-          Order.changeShippingMethod($scope.orderId, selectedShippingMethod.id)
+          order.updateShippingAddress($scope.orderId, order.data['shipping-address'], selectedShippingMethod.id)
             .success(function() {
-              Order.adjustmentsWithOrderId($scope.orderId);
+              order.adjustmentsWithOrderId($scope.orderId);
             });
           return null;
         }
 
-        Order.adjustments(selectedShippingMethod.id);
+        order.adjustments(selectedShippingMethod.id);
       };
 
       $scope.placeOrder = function() {
@@ -84,7 +71,7 @@ angular.module('2ViVe')
           return;
         }
 
-        Order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethod.id, $scope.creditCard)
+        order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethod.id, $scope.creditCard)
           .success(function(data) {
             $scope.placingOrder = false;
             $scope.orderId = data.response['order-id'];
@@ -107,6 +94,3 @@ angular.module('2ViVe')
     }
   ]
 );
-
-
-

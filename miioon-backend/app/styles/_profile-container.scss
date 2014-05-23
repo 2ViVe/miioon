@@ -1,4 +1,9 @@
-.profile-container {
+.profile-container, .hyperwallet-container {
+
+  ol {
+    list-style: decimal;
+    padding-left: 30px;
+  }
 
   padding: 68px;
 
@@ -10,13 +15,14 @@
   .panel {
     margin-bottom: 0px;
     padding-top: 0px;
+    .panel {
+      padding-left: 0;
+    }
     .row {
       margin-bottom: 15px;
+      margin-left: 0;
+      margin-right: 0;
     }
-  }
-
-  div, label, input[type], select {
-    font-size: 12px;
   }
 
   div.columns {
@@ -35,10 +41,6 @@
 
     a {
       display: inline-block;
-      font-size: 12px;
     }
   }
-
-
-  
 }

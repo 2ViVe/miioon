@@ -1,0 +1,72 @@
+.main-navigation {
+  
+  background:#fff;
+
+  >.row{
+    border-top: 1px solid $grey-border;
+    border-bottom: 1px solid $grey-border;
+  }
+
+  .sub-taxons-container {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: 110px;
+    border: 1px solid #46AAAA;
+    background: #62C8C8;
+    padding:rem-calc(5);
+    top:rem-calc(35);
+
+    .sub-taxon-thumbnail {
+      border-left: 1px solid $grey-border;
+    }
+
+    .sub-taxons {
+      li {
+        a{
+          display:block;
+          height: rem-calc(25);
+          line-height: rem-calc(25);
+          color:#fff;
+          font-weight: normal;
+          font-size: $small-font-size;
+        }
+      }
+    }
+
+
+  }
+
+  .root-taxons {
+    >li {
+      float: left;
+      margin-right: 5px;
+
+      &:hover {
+        .sub-taxons-container {
+          display: block;
+        }
+      }
+
+      &:before{
+        content: '/';
+        color:$primary-color;
+      }
+
+      &:first-child {
+        &:before{
+          content:'';
+        }
+        >a {
+          padding-left: 0px;
+        }
+      }
+
+      >a {
+        color:$base-font-color;
+        padding: 10px 10px;
+        display: inline-block;
+      }
+    }
+  }
+}

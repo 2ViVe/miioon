@@ -32,7 +32,9 @@ angular.module('2ViVe')
           if (!isViewedTermAndCondition) {
             isViewedTermAndCondition = (this.scrollTop + this.offsetHeight) > this.scrollHeight;
           }
-          $element.find('#is-agreed').removeAttr('disabled');
+          if (isViewedTermAndCondition) {
+            $element.find('#is-agreed').removeAttr('disabled');
+          }
         });
         $element.find('#is-agreed').on('change', function() {
           isAgreementChecked = angular.element(this).is(':checked');

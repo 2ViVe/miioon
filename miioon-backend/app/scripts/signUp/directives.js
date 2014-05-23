@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('2ViVe')
-  .directive('countriesAndStates', ['Registration',
-    function(Registration) {
+  .directive('countriesAndStates', ['Registration', 'DEFAULT_COUNTRY_ID',
+    function(Registration, DEFAULT_COUNTRY_ID) {
       return {
         restrict: 'A',
         controller: ['$scope', function($scope) {
-          $scope.defailtCountryId = 1213;
+          $scope.defailtCountryId = DEFAULT_COUNTRY_ID;
 
           Registration.countries().then(function(result) {
             $scope.countries = result;

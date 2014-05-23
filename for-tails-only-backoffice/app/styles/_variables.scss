@@ -1,0 +1,69 @@
+$body-bg:url('../images/bg-body.jpg') transparent 0 0 repeat;
+
+$grey-lighter: #F5F5F5;
+$grey-light: #ccc;
+$grey: #C8C8C8;
+$grey-dark: #B6B6B6;
+$grey-darker: #666666;
+$grey-border: #D6D7D6;
+
+$red: #EB5A3C;
+
+$base-font-size: 14px;
+$rem-base: $base-font-size;
+$tiny-font-size: rem-calc(11);
+$small-font-size: rem-calc(12);
+$medium-font-size: rem-calc(16);
+$large-font-size: rem-calc(18);
+$base-font-color: #333;
+$body-font-color: #333;
+
+$primary-color: #62C8C8;
+$secondary-color: #4EACDB;
+
+$h2-font-size: rem-calc(26);
+$h3-font-size: rem-calc(24);
+$h4-font-size: rem-calc(22);
+$h5-font-size: rem-calc(20);
+$h6-font-size: rem-calc(18);
+
+$anchor-font-color: $primary-color;
+$anchor-font-color-hover: $primary-color;
+
+$button-tny: rem-calc(5);
+$button-sml: rem-calc(8);
+$button-med: rem-calc(10);
+$button-lrg: rem-calc(12);
+$button-font-med: rem-calc(14);
+$button-font-weight: bold;
+$button-function-factor: -20%;
+$button-margin-bottom:0;
+$secondary-color:#DCDCDC;
+
+$cursor-default-value: auto;
+
+$header-font-family: Arial, sans-serif;
+$body-font-family: Arial, sans-serif;
+
+$list-nested-margin: 0;
+
+$table-border-size: 0;
+$table-head-font-size: rem-calc(18);
+$table-head-bg: #EEEEEE;
+$table-even-row-bg: $grey-light;
+
+// common style
+$font-weight-bold: bold !default;
+
+// foundation style reset
+	// panel style
+	$panel-bg:#fff;
+	$panel-border-size:0;
+
+	// table style
+
+  //type
+  $hr-border-color:$grey-border;
+  $hr-margin: rem-calc(15);
+
+

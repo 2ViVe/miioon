@@ -5,7 +5,7 @@
         <span ng-class="{current: taxon.id === currentTaxonId}" ng-if="taxon.subTaxons.length > 0">
           {{taxon.name}}
         </span>
-        <a ng-href="#/order-shopping/{{taxon.id}}" ng-class="{current: taxon.id === currentTaxonId}"
+        <a ng-href="#/products/{{taxon.permalink}}" ng-class="{current: taxon.id === currentTaxonId}"
            ng-if="taxon.subTaxons.length === 0">
           {{taxon.name}}
         </a>
@@ -15,7 +15,7 @@
         <span class="current" ng-if="subTaxon.id === currentTaxonId">
           {{subTaxon.name}}
         </span>
-        <a ng-if="subTaxon.id !== currentTaxonId" ng-href="#/order-shopping/{{subTaxon.id}}">
+        <a ng-if="subTaxon.id !== currentTaxonId" ng-href="#/products/{{taxon.permalink}}/{{subTaxon.permalink}}">
           {{subTaxon.name}}
         </a>
         </li>

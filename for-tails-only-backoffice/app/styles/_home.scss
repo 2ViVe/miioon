@@ -1,0 +1,111 @@
+.home-performance{
+	background:#C0E9E8;
+  padding:rem-calc(20);
+	h2{
+		font-size: rem-calc(30);
+		text-align: center;
+    color:$primary-color;
+	}
+	.home-performance-item{
+		padding:rem-calc(15) rem-calc(10) rem-calc(10) rem-calc(10);
+		background:#fff;
+		.home-performance-itemInner{
+			padding-left:rem-calc(90);
+			padding-top:rem-calc(35);
+			margin:rem-calc(10) rem-calc(10) rem-calc(20) rem-calc(10);
+			font-size: rem-calc(18);
+			color:$primary-color;
+			height: rem-calc(77);
+		}
+		h3{
+			border-top:3px solid $primary-color;
+			height: rem-calc(40);
+			line-height: rem-calc(40);
+			color:$grey-darker;
+			font-size: rem-calc(16);
+			margin-bottom: 0;
+		}
+	}
+}
+
+.home-handlers-data{
+	margin-top:rem-calc(20);
+    li{
+    	color:#fff;
+        text-align: center;
+        
+    	strong{
+          display:block;
+          font-size: rem-calc(30);
+        }
+        small{
+          display:block;
+          font-size: rem-calc(14);
+          line-height: normal;
+        }
+        .home-handlers-data-y{
+          background: #F2D500;
+          border:1px #DBB300 solid;
+          padding:rem-calc(20) 0;
+        }
+        .home-handlers-data-r{
+          background: #FDA1A1;
+          border:1px #E57777 solid;
+          padding:rem-calc(20) 0;
+        }
+        .home-handlers-data-g{
+          background: #C6DC70;
+          border:1px #A8BF4E solid;
+          padding:rem-calc(20) 0;
+        }
+    }
+}
+
+.home-summary{
+	h2{
+		font-size: rem-calc(20);
+		height: rem-calc(40);
+		line-height: rem-calc(40);
+		margin-bottom: 0;
+		border-top:1px solid $grey-border;
+		border-bottom:1px solid $grey-border;
+	}
+	table{
+		tr{
+			th{
+				background:$grey-lighter;
+				color:$grey-dark;
+			}
+		}
+	}
+}
+
+.home-topics {
+	h3{
+		font-size: rem-calc(20);
+		height: rem-calc(40);
+		line-height: rem-calc(40);
+		margin-bottom: rem-calc(10);
+		border-top:1px solid $grey-border;
+		border-bottom:1px solid $grey-border;
+		margin-top: rem-calc(20)
+	}
+	ul{
+	    li {
+	      margin-bottom: 5px;
+	      line-height: normal;
+	      a {
+	        font-size: $tiny-font-size;
+	      }
+	    }
+	    li.authorize{
+	      text-align: center;
+	      width:90px;
+
+	      a{
+	        color:$base-font-color;
+	        line-height: rem-calc(12);
+	      }
+	    }
+	}
+  }

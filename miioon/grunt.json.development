@@ -1,0 +1,9 @@
+{
+  "port": 11442,
+  "hostname": "miioon.backoffice.dev.com",
+  "APIServerIP": "199.27.105.132",
+  "APIServerPort": 60442,
+  "protocol": "http",
+  "livereload": "35730",
+  "optimizationLevel": 0
+}

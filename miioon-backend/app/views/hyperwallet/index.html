@@ -1,0 +1,59 @@
+<div class="hyperwallet-container medium-font">
+  <div class="row panel">
+    <div class="small-12" >
+
+      <div ng-if="HyperWallet.loadFailed === true">
+        load failed, <a href="javascript:;" ng-click="HyperWallet.init()">try again</a>
+      </div>
+
+      <div ng-if="HyperWallet.hasHyperWallet === true">
+
+        <header class="row">
+          <h3 class="small-8 columns primary-color">HyperWallet Account</h3>
+        </header>
+
+        <div class="row">
+          <div class="small-3 columns">Distributor ID</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.distributorId }}</div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">Account Number</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.accountNumber }}</div>
+        </div>
+
+
+        <div class="row">
+          <div class="small-3 columns">Account Status</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.accountStatus }}</div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">First Name</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.firstName }}</div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">Last Name</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.lastName }}</div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">Currency Code</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.currencyCode }}</div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">Account Balance</div>
+          <div class="small-3 end columns">{{ HyperWallet.data.accountBalance }}</div>
+        </div>
+
+      </div>
+
+      <div ng-if="HyperWallet.hasHyperWallet === false">
+        <div data-hyperwallet-form data-on-success="HyperWallet.init()"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

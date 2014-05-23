@@ -2,9 +2,11 @@
   <div class='small-12 columns'>
     <ul class="breadcrumbs">
       <li>
-        <a ng-href="#/order-shopping/{{taxon.id}}">&gt; {{taxon.name}}</a>
+        <a ng-href="{{taxon | taxonLink}}">&gt; {{taxon.name}}</a>
       </li>
-      <li ng-if="subTaxon"><a ng-href="#/order-shopping/{{subTaxon.id}}">{{subTaxon.name}}</a></li>
+      <li ng-if="subTaxon">
+        <a ng-href="#/products/{{taxon.permalink}}/{{subTaxon.permalink}}">{{subTaxon.name}}</a>
+      </li>
       <!--TODO: fix display problemin safari, need to remove inline style when find a better way-->
       <li style="width: 50%;">{{product.name}}</li>
     </ul>
@@ -32,7 +34,7 @@
           <h2 class="name">{{product.name}}</h2>
 
           <div>
-            Item Code: {{variant.sku}}
+            SKU: {{variant.sku}}
           </div>
           <h2 class='price'>
             £{{variant.price | price}}
@@ -43,7 +45,7 @@
           <div class="info-panel-title">Size:</div>
           <ul class="options">
             <li ng-repeat="size in sizes" ng-click="changeSize(size)" ng-class="{current: size === selectedSize}">
-              {{size}}
+              {{size.presentationValue}}
             </li>
           </ul>
         </div>
@@ -51,7 +53,7 @@
           <div class="info-panel-title">Color:</div>
           <ul class="options">
             <li ng-repeat="color in colors" ng-click="changeColor(color)" ng-class="{current: color === selectedColor}">
-              {{color}}
+              {{color.presentationValue}}
             </li>
           </ul>
         </div>
@@ -65,17 +67,15 @@
           <button class='button' ng-click="addToCart()">ADD TO CART</button>
         </div>
       </div>
-      <div class="columns medium-4">
-        <a href="https://miioonsite-qa.azurewebsites.net/" target="_blank">
+      <div class="columns medium-4" ng-if="catalogCode !== 'MM'">
+        <a href="http://kids.miioon.com/" target="_blank">
           <img src="images/design.gif" alt="Design Your Own"/>
         </a>
       </div>
     </div>
     <div class="tabs" data-tabset>
       <div data-tab data-heading="Product Description">
-        <div class="detail-description">
-          {{product.description}}
-        </div>
+        <div class="detail-description" ng-bind-html="product.description"></div>
       </div>
       <div data-tab data-heading="Size Charts">
         <div class="size-charts" ng-include="'views/product/size-charts.html'"></div>

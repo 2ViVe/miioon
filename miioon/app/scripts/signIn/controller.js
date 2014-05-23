@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('SignInController', ['$scope', '$location', 'User', 'Taxons', 'Shopping', 'LocalStorage',
-    function($scope, $location, User, Taxons, Shopping, LocalStorage) {
+  .controller('SignInController', ['$scope', 'UrlHandler', 'User', 'Taxons', 'Shopping', 'LocalStorage',
+    function($scope, UrlHandler, User, Taxons, Shopping, LocalStorage) {
       var goToPreviousPath = function() {
-        $location.path(LocalStorage.getPathAfterLogin());
+        var pathAfterLogin = LocalStorage.getPathAfterLogin();
         LocalStorage.removePathAfterLogin();
+        UrlHandler.goToBackOffice(pathAfterLogin);
       };
 
       $scope.isRemember = false;

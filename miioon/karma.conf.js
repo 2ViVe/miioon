@@ -19,6 +19,8 @@ module.exports = function(config) {
       'app/bower_components/angular-sanitize/angular-sanitize.js',
       'app/bower_components/angular-route/angular-route.js',
       'app/bower_components/sinonjs/sinon.js',
+      'app/bower_components/2ViVe/scripts/main.js',
+      'app/bower_components/2ViVe/scripts/services/*.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',

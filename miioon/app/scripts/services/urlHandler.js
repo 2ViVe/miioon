@@ -1,28 +1,40 @@
 'use strict';
 
 angular.module('2ViVe')
-  .factory('UrlHandler', ['$window', '$location', 'LocalStorage',
-    function($window, $location, LocalStorage) {
+  .factory('UrlHandler', ['$window', '$location',
+    function($window, $location) {
       var PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE = 11442;
       var PORT_FOR_SECURE_RETAIL_DEMO_SITE = 22442;
-      var PORT_FOR_BACK_OFFICE_DEMO_SITE = 33442;
+      var PORT_FOR_BACK_OFFICE_DEMO_SITE = 22442;
       var SECURE_PATHS = ['/signup', '/signin', '/checkout', '/retail-signup', '/account'];
 
-      return {
-        backOfficeUrl: function() {
+      var UrlHandler = {
+        goToRetailSite: function(path) {
+          path = path ? path : '';
+          $window.location.href = UrlHandler.retailUrl() + '/#' + path;
+        },
+        retailUrl: function() {
           var port = $location.port();
-          var protocol = $location.protocol();
-          var url = $location.absUrl();
-
-          if (port === PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE ||
-            port === PORT_FOR_SECURE_RETAIL_DEMO_SITE) {
-            url = url.replace(':' + port, ':' + PORT_FOR_BACK_OFFICE_DEMO_SITE);
-            return url.replace(protocol + ':', 'https:');
+          if (port === PORT_FOR_BACK_OFFICE_DEMO_SITE) {
+            return 'http://' + $location.host().replace('miioon.backoffice', 'miioon.www') +
+              ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE;
           }
 
-          return url.indexOf('www.miioon') >= 0 ?
-            url.replace('www.miioon', 'backoffice.miioon') :
-            url.replace('miioon', 'backoffice.miioon');
+          return 'http://www.miioon.com';
+        },
+        goToBackOffice: function(path) {
+          path = path ? path : '';
+          $window.location.href = UrlHandler.backOfficeUrl() + '/#' + path;
+        },
+        backOfficeUrl: function() {
+          var port = $location.port();
+          if (port === PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE ||
+            port === PORT_FOR_SECURE_RETAIL_DEMO_SITE) {
+            return 'https://' + $location.host().replace('miioon.www', 'miioon.backoffice') +
+              ':' + PORT_FOR_BACK_OFFICE_DEMO_SITE;
+          }
+
+          return 'https://backoffice.miioon.com';
         },
         handleSecurityPath: function(stopLocationChange) {
           var path = $location.path();
@@ -47,13 +59,7 @@ angular.module('2ViVe')
             stopLocationChange();
             $window.location.href = url;
           }
-        },
-        savePath: function(nextPath, currentPath) {
-          if (nextPath === '/signin' && currentPath !== '/signin') {
-            LocalStorage.setPathAfterLogin(currentPath);
-          } else if (nextPath === '/shopping' && currentPath !== '/shopping') {
-            LocalStorage.setPathToContinueShopping(currentPath);
-          }
         }
       };
+      return UrlHandler;
     }]);
