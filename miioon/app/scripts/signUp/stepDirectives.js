@@ -98,17 +98,19 @@ angular.module('2ViVe')
       restrict: 'C',
       controller: ['$scope', function($scope) {
         $scope.isBillingAddressValidated = false;
-        $scope.submit = function() {
-          $scope.submitted = true;
-          if (this.step.$invalid) {
-            return;
+
+        var clearRemoteValidation = $scope.$watch('isBillingAddressValidated', function() {
+          if ($scope.isBillingAddressValidated) {
+            $scope.$emit('CreateAccount');
+            clearRemoteValidation();
           }
-          $scope.$broadcast('remoteValidate');
-          $scope.$watch('isBillingAddressValidated', function() {
-            if ($scope.isBillingAddressValidated) {
-              $scope.$emit('CreateAccount');
-            }
-          });
+        });
+
+        $scope.submit = function() {
+          if ($scope.submitted || this.step.$valid) {
+            $scope.$broadcast('remoteValidate');
+          }
+          $scope.submitted = true;
         };
       }]
     };

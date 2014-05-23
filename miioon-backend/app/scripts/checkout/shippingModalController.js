@@ -27,6 +27,8 @@ angular.module('2ViVe')
           angular.forEach(invalidFields, function(invalidField) {
             invalidField.$setValidity('validated', true);
           });
+          invalidFields = [];
+          $scope.$shippingAddressErrors = {};
 
           Address.validateShippingAddressNew(shippingAddress)
             .then(function() {

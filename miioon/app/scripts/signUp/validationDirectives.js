@@ -112,6 +112,7 @@ angular.module('2ViVe')
               invalidField.$setValidity('validated', true);
             });
             invalidFields = [];
+            $scope.$homeAddressErrors = {};
             Address.validateHomeAddressNew($scope.homeAddress)
               .then(function() {
                 $scope.isHomeAddressValidated = true;
@@ -157,6 +158,7 @@ angular.module('2ViVe')
               invalidField.$setValidity('validated', true);
             });
             invalidFields = [];
+            $scope.$webAddressErrors = {};
             Address.validateWebAddressNew($scope.webAddress)
               .then(function() {
                 $scope.isWebAddressValidated = true;
@@ -218,6 +220,7 @@ angular.module('2ViVe')
               invalidField.$setValidity('validated', true);
             });
             invalidFields = [];
+            $scope.$shippingAddressErrors = {};
             Address.validateShippingAddressNew($scope.shipmentAddress)
               .then(function() {
                 $scope.isShipmentAddressValidated = true;
@@ -291,12 +294,23 @@ angular.module('2ViVe')
             };
           }
 
+          var invalidFields = [];
           $scope.$on('remoteValidate', function() {
-            Address.validateBillingAddress($scope.billingAddress)
-              .success(function() {
+            angular.forEach(invalidFields, function(invalidField) {
+              invalidField.$setValidity('validated', true);
+            });
+            invalidFields = [];
+            $scope.$billingAddressErrors = {};
+            Address.validateBillingAddressNew($scope.billingAddress)
+              .then(function() {
                 $scope.isBillingAddressValidated = true;
               })
-              .error(function() {
+              .catch(function(failures) {
+                angular.forEach(failures, function(failiure) {
+                  $scope.form['billing-' + failiure.field].$setValidity('validated', false);
+                  invalidFields.push($scope.form['billing-' + failiure.field]);
+                });
+                $scope.$billingAddressErrors = failures;
                 $scope.isBillingAddressValidated = false;
               });
           });

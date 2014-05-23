@@ -8,9 +8,8 @@ angular.module('2ViVe')
       var invalidFields = [];
 
       $scope.submit = function() {
-        $scope.submitted = true;
         var form = this.form;
-        if (form.$valid) {
+        if ($scope.submitted || form.$valid) {
           var billingAddress = {
             'first-name': $scope.billingAddress['first-name'],
             'last-name': $scope.billingAddress['last-name'],
@@ -24,24 +23,26 @@ angular.module('2ViVe')
             'country': $scope.billingAddress.country.name,
             'phone': $scope.billingAddress.phone
           };
-          Address.validateBillingAddress(billingAddress)
-            .success(function(data) {
-              angular.forEach(invalidFields, function(invalidField) {
-                invalidField.$setValidity('validated', true);
+
+          angular.forEach(invalidFields, function(invalidField) {
+            invalidField.$setValidity('validated', true);
+          });
+          invalidFields = [];
+          $scope.$billingAddressErrors = {};
+
+          Address.validateBillingAddressNew(billingAddress)
+            .then(function() {
+              $modalInstance.close(billingAddress);
+            })
+            .catch(function(failures) {
+              angular.forEach(failures, function(failiure) {
+                form['billing-' + failiure.field].$setValidity('validated', false);
+                invalidFields.push(form['billing-' + failiure.field]);
               });
-              invalidFields = [];
-              var failures = data.response.failures;
-              if (failures.length > 0) {
-                angular.forEach(failures, function(failiure) {
-                  form['billing-' + failiure.field].$setValidity('validated', false);
-                  form['billing-' + failiure.field].errorMessageValidated = failiure.message;
-                  invalidFields.push(form['billing-' + failiure.field]);
-                });
-              } else {
-                $modalInstance.close(billingAddress);
-              }
+              $scope.$billingAddressErrors = failures;
             });
         }
+        $scope.submitted = true;
       };
 
       $scope.cancel = function() {
@@ -50,6 +51,3 @@ angular.module('2ViVe')
     }
   ]
 );
-
-
-
