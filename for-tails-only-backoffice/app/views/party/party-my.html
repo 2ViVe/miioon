@@ -6,7 +6,7 @@
                 <input type='text' placeholder='Search...' class='secondary-item no-margin-bottom' dropdown-toggle="#drop-menu-search" />
               </div>
               <div class='small-2 columns'>
-                <a href='#' class='postfix button secondary'><i class="fa fa-search"></i></a>
+                <a href='#' class='postfix button'><i class="fa fa-search"></i></a>
               </div>
               <ul id="drop-menu-search" class='f-dropdown party-panel-list'>
                 <li ng-repeat="choice in searchItems">
@@ -23,11 +23,11 @@
   </div>
   <div class='row'>
     <div class='columns medium-8'>
-      <h4>Upcoming Pawties <a href='#' class='button small right'>Recent Pawties</a></h4>
+      <h4 class="primary-color">Upcoming Pawties <a href='#' class='button small right'>Recent Pawties</a></h4>
       <table class='party-list' width='100%'>
         <tbody>
           <tr>
-            <td class='text-center'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
+            <td class='party-list-photo'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
             <td class='party-list-info'>
               <p><strong>2 Years Birthday</strong></p>
               <p>October 24, 2013, 7:30AM | Closes November 14, 2013</p>
@@ -35,14 +35,14 @@
               <p>Host: <a href='#'>Abovegem</a> | <a href='#'>Invite Guests</a> | <a href='#'>Edit</a> | <a href='#'>Delete</a></p>
             </td>
             <td>
-              <div clas='party-list-members'>
+              <div class='party-list-members'>
                 <strong class='primary-color'>5</strong>
                 <small>INVITED</small>
               </div>
             </td>
           </tr>
           <tr>
-            <td class='text-center'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
+            <td class='party-list-photo'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
             <td class='party-list-info'>
               <p><strong>2 Years Birthday</strong></p>
               <p>October 24, 2013, 7:30AM | Closes November 14, 2013</p>
@@ -50,14 +50,14 @@
               <p>Host: <a href='#'>Abovegem</a> | <a href='#'>Invite Guests</a> | <a href='#'>Edit</a> | <a href='#'>Delete</a></p>
             </td>
             <td>
-              <div clas='party-list-members'>
+              <div class='party-list-members'>
                 <strong class='primary-color'>5</strong>
                 <small>INVITED</small>
               </div>
             </td>
           </tr>
           <tr>
-            <td class='text-center'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
+            <td class='party-list-photo'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
             <td class='party-list-info'>
               <p><strong>2 Years Birthday</strong></p>
               <p>October 24, 2013, 7:30AM | Closes November 14, 2013</p>
@@ -65,7 +65,37 @@
               <p>Host: <a href='#'>Abovegem</a> | <a href='#'>Invite Guests</a> | <a href='#'>Edit</a> | <a href='#'>Delete</a></p>
             </td>
             <td>
-              <div clas='party-list-members'>
+              <div class='party-list-members'>
+                <strong class='primary-color'>5</strong>
+                <small>INVITED</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class='party-list-photo'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
+            <td class='party-list-info'>
+              <p><strong>2 Years Birthday</strong></p>
+              <p>October 24, 2013, 7:30AM | Closes November 14, 2013</p>
+              <p>33 Pin, San Francisco, CA</p>
+              <p>Host: <a href='#'>Abovegem</a> | <a href='#'>Invite Guests</a> | <a href='#'>Edit</a> | <a href='#'>Delete</a></p>
+            </td>
+            <td>
+              <div class='party-list-members'>
+                <strong class='primary-color'>5</strong>
+                <small>INVITED</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class='party-list-photo'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
+            <td class='party-list-info'>
+              <p><strong>2 Years Birthday</strong></p>
+              <p>October 24, 2013, 7:30AM | Closes November 14, 2013</p>
+              <p>33 Pin, San Francisco, CA</p>
+              <p>Host: <a href='#'>Abovegem</a> | <a href='#'>Invite Guests</a> | <a href='#'>Edit</a> | <a href='#'>Delete</a></p>
+            </td>
+            <td>
+              <div class='party-list-members'>
                 <strong class='primary-color'>5</strong>
                 <small>INVITED</small>
               </div>
@@ -73,8 +103,10 @@
           </tr>
         </tbody>
       </table>
+      <ul class="pagination right"> <li class="arrow unavailable"><a href="">&laquo;</a></li> <li class="current"><a href="">1</a></li> <li><a href="">2</a></li> <li><a href="">3</a></li> <li><a href="">4</a></li> <li class="unavailable"><a href="">&hellip;</a></li> <li><a href="">12</a></li> <li><a href="">13</a></li> <li class="arrow"><a href="">&raquo;</a></li> </ul>
     </div>
     <div class='columns medium-4'>
+      <h4 class="primary-color">Party Calendar</h4>
       <div class='party-calendar'>
         <img ng-src='/images/party/calendar.png' />
       </div>
