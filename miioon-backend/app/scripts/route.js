@@ -101,10 +101,11 @@ angular.module('miioonApp')
         templateUrl: 'views/product/product-detail.html',
         controller: 'ProductController',
         resolve: {
-          'product': ['Product', '$route', function(Product, $route) {
-            var product = new Product($route.current.params.productId, $route.current.params.catalogCode);
-            return product.fetch();
-          }],
+          'product': ['Product', '$route',
+            function(Product, $route) {
+              var product = new Product($route.current.params.productId, $route.current.params.catalogCode);
+              return product.fetch();
+            }],
           'taxons': ['Taxons', function(Taxons) {
             return Taxons.fetch();
           }]
