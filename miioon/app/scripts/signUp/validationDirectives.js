@@ -112,21 +112,17 @@ angular.module('2ViVe')
               invalidField.$setValidity('validated', true);
             });
             invalidFields = [];
-            Address.validateHomeAddress($scope.homeAddress)
-              .success(function(data) {
-                var failures = data.response.failures;
-                if (failures.length > 0) {
-                  angular.forEach(failures, function(failiure) {
-                    $scope.form['home-' + failiure.field].$setValidity('validated', false);
-                    $scope.form['home-' + failiure.field].errorMessageValidated = failiure.message;
-                    invalidFields.push($scope.form['home-' + failiure.field]);
-                  });
-                  $scope.isHomeAddressValidated = false;
-                } else {
-                  $scope.isHomeAddressValidated = true;
-                }
+            $scope.$homeAddressErrors = {};
+            Address.validateHomeAddressNew($scope.homeAddress)
+              .then(function() {
+                $scope.isHomeAddressValidated = true;
               })
-              .error(function() {
+              .catch(function(failures) {
+                angular.forEach(failures, function(failiure) {
+                  $scope.form['home-' + failiure.field].$setValidity('validated', false);
+                  invalidFields.push($scope.form['home-' + failiure.field]);
+                });
+                $scope.$homeAddressErrors = failures;
                 $scope.isHomeAddressValidated = false;
               });
           });
@@ -162,21 +158,17 @@ angular.module('2ViVe')
               invalidField.$setValidity('validated', true);
             });
             invalidFields = [];
-            Address.validateWebAddress($scope.webAddress)
-              .success(function(data) {
-                var failures = data.response.failures;
-                if (failures.length > 0) {
-                  angular.forEach(failures, function(failiure) {
-                    $scope.form['web-' + failiure.field].$setValidity('validated', false);
-                    $scope.form['web-' + failiure.field].errorMessageValidated = failiure.message;
-                    invalidFields.push($scope.form['web-' + failiure.field]);
-                  });
-                  $scope.isWebAddressValidated = false;
-                } else {
-                  $scope.isWebAddressValidated = true;
-                }
+            $scope.$webAddressErrors = {};
+            Address.validateWebAddressNew($scope.webAddress)
+              .then(function() {
+                $scope.isWebAddressValidated = true;
               })
-              .error(function() {
+              .catch(function(failures) {
+                angular.forEach(failures, function(failiure) {
+                  $scope.form['web-' + failiure.field].$setValidity('validated', false);
+                  invalidFields.push($scope.form['web-' + failiure.field]);
+                });
+                $scope.$webAddressErrors = failures;
                 $scope.isWebAddressValidated = false;
               });
           });
@@ -228,21 +220,17 @@ angular.module('2ViVe')
               invalidField.$setValidity('validated', true);
             });
             invalidFields = [];
-            Address.validateShippingAddress($scope.shipmentAddress)
-              .success(function(data) {
-                var failures = data.response.failures;
-                if (failures.length > 0) {
-                  angular.forEach(failures, function(failiure) {
-                    $scope.form['shipment-' + failiure.field].$setValidity('validated', false);
-                    $scope.form['shipment-' + failiure.field].errorMessageValidated = failiure.message;
-                    invalidFields.push($scope.form['shipment-' + failiure.field]);
-                  });
-                  $scope.isShipmentAddressValidated = false;
-                } else {
-                  $scope.isShipmentAddressValidated = true;
-                }
+            $scope.$shippingAddressErrors = {};
+            Address.validateShippingAddressNew($scope.shipmentAddress)
+              .then(function() {
+                $scope.isShipmentAddressValidated = true;
               })
-              .error(function() {
+              .catch(function(failures) {
+                angular.forEach(failures, function(failiure) {
+                  $scope.form['shipment-' + failiure.field].$setValidity('validated', false);
+                  invalidFields.push($scope.form['shipment-' + failiure.field]);
+                });
+                $scope.$shippingAddressErrors = failures;
                 $scope.isShipmentAddressValidated = false;
               });
           });
@@ -306,12 +294,23 @@ angular.module('2ViVe')
             };
           }
 
+          var invalidFields = [];
           $scope.$on('remoteValidate', function() {
-            Address.validateBillingAddress($scope.billingAddress)
-              .success(function() {
+            angular.forEach(invalidFields, function(invalidField) {
+              invalidField.$setValidity('validated', true);
+            });
+            invalidFields = [];
+            $scope.$billingAddressErrors = {};
+            Address.validateBillingAddressNew($scope.billingAddress)
+              .then(function() {
                 $scope.isBillingAddressValidated = true;
               })
-              .error(function() {
+              .catch(function(failures) {
+                angular.forEach(failures, function(failiure) {
+                  $scope.form['billing-' + failiure.field].$setValidity('validated', false);
+                  invalidFields.push($scope.form['billing-' + failiure.field]);
+                });
+                $scope.$billingAddressErrors = failures;
                 $scope.isBillingAddressValidated = false;
               });
           });

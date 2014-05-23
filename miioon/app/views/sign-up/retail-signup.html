@@ -173,7 +173,7 @@
         This field is required.
       </small>
       <small ng-show="submitted && $shippingAddressErrors.InvalidFirstName" class="error">
-        {{ $shippingAddressErrors.InvalidFirstName }}
+        {{ $shippingAddressErrors.InvalidFirstName.message }}
       </small>
     </div>
   </div>
@@ -197,7 +197,7 @@
       </small>
 
       <small ng-show="submitted && $shippingAddressErrors.InvalidLastName" class="error">
-        {{ $shippingAddressErrors.InvalidLastName }}
+        {{ $shippingAddressErrors.InvalidLastName.message }}
       </small>
 
     </div>
@@ -221,7 +221,7 @@
       </small>
 
       <small ng-show="submitted && $shippingAddressErrors.InvalidPhone" class="error">
-        {{ $shippingAddressErrors.InvalidPhone }}
+        {{ $shippingAddressErrors.InvalidPhone.message }}
       </small>
     </div>
   </div>
@@ -244,7 +244,7 @@
       </small>
 
       <small ng-show="submitted && $shippingAddressErrors.InvalidStreet">
-        {{ $shippingAddressErrors.InvalidStreet }}
+        {{ $shippingAddressErrors.InvalidStreet.message }}
       </small>
 
     </div>
@@ -264,7 +264,7 @@
              id="address-line-2" name="address-line-2"
              ng-model="secondAddressLine"/>
       <small ng-show="submitted && $shippingAddressErrors.InvalidStreetCont" class="error">
-        {{ $shippingAddressErrors.InvalidStreetCont }}
+        {{ $shippingAddressErrors.InvalidStreetCont.message }}
       </small>
     </div>
   </div>
@@ -285,7 +285,7 @@
         This field is required.
       </small>
       <small ng-show="submitted && $shippingAddressErrors.InvalidCity" class="error">
-        {{ $shippingAddressErrors.InvalidCity }}
+        {{ $shippingAddressErrors.InvalidCity.message }}
       </small>
     </div>
   </div>
@@ -308,7 +308,7 @@
         This field is required.
       </small>
       <small ng-show="submitted && $shippingAddressErrors.InvalidCountry" class="error">
-        {{ $shippingAddressErrors.InvalidCountry }}
+        {{ $shippingAddressErrors.InvalidCountry.message }}
       </small>
     </div>
   </div>
@@ -330,7 +330,7 @@
         This field is required.
       </small>
       <small ng-show="submitted && $shippingAddressErrors.InvalidState" class="error">
-        {{ $shippingAddressErrors.InvalidState }}
+        {{ $shippingAddressErrors.InvalidState.message }}
       </small>
     </div>
   </div>

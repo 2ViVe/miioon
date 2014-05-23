@@ -21,6 +21,9 @@
     <small ng-show="submitted && form['billing-first-name'].$error.required" class="error">
       This field is required.
     </small>
+    <small ng-show="submitted && $billingAddressErrors.InvalidFirstName" class="error">
+      {{$billingAddressErrors.InvalidFirstName.message}}
+    </small>
   </div>
 </div>
 <div class="row">
@@ -31,6 +34,9 @@
     <input required type="text" id="billing-last-name" name="billing-last-name" ng-model="billingAddress['last-name']"/>
     <small ng-show="submitted && form['billing-last-name'].$error.required" class="error">
       This field is required.
+    </small>
+    <small ng-show="submitted && $billingAddressErrors.InvalidLastName" class="error">
+      {{$billingAddressErrors.InvalidLastName.message}}
     </small>
   </div>
 </div>
@@ -43,6 +49,9 @@
     <small ng-show="submitted && form['billing-street'].$error.required" class="error">
       This field is required.
     </small>
+    <small ng-show="submitted && $billingAddressErrors.InvalidStreet" class="error">
+      {{$billingAddressErrors.InvalidStreet.message}}
+    </small>
   </div>
 </div>
 <div class="row">
@@ -52,6 +61,9 @@
   <div class="small-5 end columns">
     <input type="text" id="billing-street-contd" name="billing-street-contd" ng-model="billingAddress['street-contd']"/>
   </div>
+  <small ng-show="submitted && $billingAddressErrors.InvalidStreetContd" class="error">
+    {{$billingAddressErrors.InvalidStreetContd.message}}
+  </small>
 </div>
 <div class="row">
   <div class="small-3 columns">
@@ -61,6 +73,9 @@
     <input required type="text" id="billing-city" name="billing-city" ng-model="billingAddress.city"/>
     <small ng-show="submitted && form['billing-city'].$error.required" class="error">
       This field is required.
+    </small>
+    <small ng-show="submitted && $billingAddressErrors.InvalidCity" class="error">
+      {{$billingAddressErrors.InvalidCity.message}}
     </small>
   </div>
 </div>
@@ -77,6 +92,9 @@
       <small ng-show="submitted && form['billing-state-id'].$error.required" class="error">
         This field is required.
       </small>
+      <small ng-show="submitted && $billingAddressErrors.InvalidState" class="error">
+        {{$billingAddressErrors.InvalidState.message}}
+      </small>
     </div>
   </div>
   <div class="row">
@@ -92,6 +110,9 @@
       <small ng-show="submitted && form['billing-country-id'].$error.required" class="error">
         This field is required.
       </small>
+      <small ng-show="submitted && $billingAddressErrors.InvalidCountry" class="error">
+        {{$billingAddressErrors.InvalidCountry.message}}
+      </small>
     </div>
   </div>
 </div>
@@ -104,6 +125,9 @@
     <small ng-show="submitted && form['billing-zip'].$error.required" class="error">
       This field is required.
     </small>
+    <small ng-show="submitted && $billingAddressErrors.InvalidZip" class="error">
+      {{$billingAddressErrors.InvalidZip.message}}
+    </small>
   </div>
 </div>
 <div class="row">
@@ -114,6 +138,9 @@
     <input required type="text" id="billing-phone" name="billing-phone" ng-model="billingAddress.phone"/>
     <small ng-show="submitted && form['billing-phone'].$error.required" class="error">
       This field is required.
+    </small>
+    <small ng-show="submitted && $billingAddressErrors.InvalidPhone" class="error">
+      {{$billingAddressErrors.InvalidPhone.message}}
     </small>
   </div>
 </div>
