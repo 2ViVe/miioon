@@ -103,6 +103,10 @@ ul {
   width: 100% !important;
 }
 
+.block-margin-bottom{
+  margin-bottom: $panel-margin-bottom !important;
+}
+
 .secondary-item,.postfix.button,.secondary-item[type="text"],.secondary-item[type="text"]:focus{
   background:$grey-dark !important;
   color:#fff !important;
@@ -126,9 +130,17 @@ select.secondary-item{
 
 // foundation style reset
 
+  h4{
+    margin-bottom:$h4-margin-bottom;
+  }
+
   .panel h2{
     font-size: rem-calc(14);
     margin: rem-calc(20) 0;
+  }
+
+  textarea{
+    height: auto;
   }
 
   // table style
@@ -173,7 +185,7 @@ select.secondary-item{
           }
         }
         &.table-title-bg{
-          background: $primary-color;
+          background: $primary-color !important;
           th{
             color:#fff;
           }
@@ -217,6 +229,7 @@ select.secondary-item{
     border-color:#FAEBCC;
     color:$grey-darker;
   }
+
 
   // pagination
   ul.pagination{
