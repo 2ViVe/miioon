@@ -10,6 +10,38 @@
     }
   }
 
+  .party-invite-info{
+    border:1px solid $grey-border;
+    .party-pink-circle{
+      display:block;
+      margin:20px auto;
+      width:165px;
+      height: 165px;
+      background: url("/images/party/party-pink-circle.png") 50% 50% no-repeat;
+      text-align: center;
+      strong{
+        display:block;
+        font-size:46px;
+        color:#fff;
+        padding: 40px 0 5px 0;
+      }
+      small{
+        display:block;
+        color:#fff;
+      }
+    }
+    h6{
+      text-align: center;
+      color:#F65CA0;
+      font-weight: normal;
+      font-size: $large-font-size;
+    }
+    p{
+      color: $grey-dark;
+      margin-bottom: $block-margin-bottom;
+    }
+  }
+
   table.party-list{
     border:1px solid $grey-border;
     tbody{
