@@ -36,10 +36,11 @@ $button-sml: rem-calc(8);
 $button-med: rem-calc(10);
 $button-lrg: rem-calc(12);
 $button-font-med: rem-calc(14);
-$button-font-weight: bold;
+$button-font-weight: normal;
 $button-function-factor: -20%;
 $button-margin-bottom:0;
-$secondary-color:#DCDCDC;
+$button-font-color-alt:#fff;
+$secondary-color:$grey;
 
 $cursor-default-value: auto;
 
@@ -75,4 +76,16 @@ $font-weight-bold: bold !default;
   //pagination
   $pagination-link-font-color: #fff;
   $pagination-link-unavailable-bg-active:$grey-light;
+
+  //Breadcrumbs
+  $crumb-font-size:$small-font-size;
+  $crumb-slash-color:$grey-dark;
+  $crumb-border-size:0;
+  $crumb-slash: ">";
+  $crumb-bg:#fff;
+  $crumb-font-color:$grey-dark;
+  $crumb-font-color-current:$grey-darker;
+  $crumb-padding:$panel-margin-bottom 0;
+  $crumb-font-transform:none;
+  $crumb-side-padding:rem-calc(6);
 

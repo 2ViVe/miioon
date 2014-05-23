@@ -1,49 +1,50 @@
 <div class='party-container'>
-  <div class='row party-topbar'>
-    <div class='small-12 medium-4 columns'>
-          <div class='row collapse'>
-              <div class='small-10 columns'>
-                <input type='text' placeholder='Search...' class='secondary-item no-margin-bottom' dropdown-toggle="#drop-menu-search" />
-              </div>
-              <div class='small-2 columns'>
-                <a href='#' class='postfix button'><i class="fa fa-search"></i></a>
-              </div>
-              <ul id="drop-menu-search" class='f-dropdown party-panel-list'>
-                <li ng-repeat="choice in searchItems">
-                  <i class="fa fa-caret-right primary-color"></i>
-                  <a href='#'>[choice.name]</a>
-                  <span href='#' class='label secondary right'>[choice.date]</span>
-                </li>
-              </ul>
-          </div>
-    </div>
-    <div class='small-12 medium-8 columns text-right'>
-      <a href='#' class='button small'>Create a Meet</a>
+  <div class='row'>
+    <div class="small-12 columns">
+      <ul class="breadcrumbs">
+        <li><a href="#">My Pawty</a></li>
+        <li><a href="#">My Pawty Name</a></li>
+        <li class="current"><a href="#">Cloning</a></li>
+      </ul>
     </div>
   </div>
   <div class='row'>
       <div class='columns medium-8'>
-        <h4 class="primary-color">Let's Book a Trunk Show</h4>
-        <div class="party-none">
-          <p>The Trunk Show is the heart of your business. Hone your booking skills and you'll always be able to finll your calendar, and earn what you desire.</p>
-          <p>Start by following the 3 simple steps of booking:</p>
-          <ul class='party-none-step'>
-            <li>
-              <b class=''>1</b>
-              <p>Brainstorm a list of people you know<br/><a href='#'>Learn More</a></p>
-            </li>
-            <li>
-              <b class=''>2</b>
-              <p>Warmly offer the opportunity to host to each person on your list<br/><a href='#'>Learn More</a></p>
-            </li>
-            <li>
-              <b class=''>3</b>
-              <p>Book trunk shows from trunk show<br/><a href='#'>Learn More</a></p>
-            </li>
-          </ul>
-          <br/><br/>
-          <p class='text-center'><a href='#' class='button small'>Create a Pawty</a></p>
-        </div>
+        <h4 class="primary-color">Invite Guests List</h4>
+        <table class="party-invite-list">
+          <tbody>
+            <tr>
+              <td  class="party-invite-list-textarea" colspan="3">
+                <textarea cols="30" rows="6"></textarea>
+              </td>
+            </tr>
+            <tr class="table-title-bg">
+              <th width="25%" class="text-left">Name</th>
+              <th class="text-left">Email Address</th>
+              <th width="25%"></th>
+            </tr>
+            <tr>
+              <td>Abovegem</td>
+              <td>admin@abovegem.com</td>
+              <td class="text-right"><a href class="button tiny">Edit</a> <a href class="button secondary tiny">Remove</a></td>
+            </tr>
+            <tr>
+              <td>Abovegem</td>
+              <td>admin@abovegem.com</td>
+              <td class="text-right"><a href class="button tiny">Edit</a> <a href class="button secondary tiny">Remove</a></td>
+            </tr>
+            <tr>
+              <td>Abovegem</td>
+              <td>admin@abovegem.com</td>
+              <td class="text-right"><a href class="button tiny">Edit</a> <a href class="button secondary tiny">Remove</a></td>
+            </tr>
+            <tr>
+              <td>Abovegem</td>
+              <td>admin@abovegem.com</td>
+              <td class="text-right"><a href class="button tiny">Edit</a> <a href class="button secondary tiny">Remove</a></td>
+            </tr>
+          </tbody>
+        </table>
     </div>
     <div class='columns medium-4'>
       <h4 class="primary-color">Party Calendar</h4>

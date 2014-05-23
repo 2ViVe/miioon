@@ -133,6 +133,7 @@ select.secondary-item{
 
   // table style
   table{
+    width:100%;
     thead{
       background:none;
       tr{
@@ -151,7 +152,7 @@ select.secondary-item{
           }
           .price-total{
               display:block;
-              line-height:rem-calc(30); 
+              line-height:rem-calc(30);
               font-size:rem-calc(16);
               border-top: 1px $grey-border dashed;
               margin-top: rem-calc(15);
@@ -171,14 +172,21 @@ select.secondary-item{
             font-size: rem-calc(14);
           }
         }
+        &.table-title-bg{
+          background: $primary-color;
+          th{
+            color:#fff;
+          }
+        }
       }
     }
+
     .border-sep{
       td{
         border-left:1px solid $grey-border;
         &:first-child{border-left:0;}
       }
-      
+
     }
   }
 

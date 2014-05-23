@@ -91,6 +91,21 @@
     }
   }
 
+  .party-invite-list{
+    border:1px solid $grey-border;
+    tr:last-child{
+        td{
+          border-bottom: 0;
+        }
+    }
+    .party-invite-list-textarea{
+      background:#f6f8fa;
+      textarea{
+        height:auto;
+      }
+    }
+  }
+
 }
 
 
