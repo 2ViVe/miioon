@@ -75,14 +75,16 @@
     </div>
   </div>
   <div data-countries-and-states>
-    <div class="row" ng-show="states.length > 0">
+    <div class="row" ng-show="billingAddress.country.states.length > 0">
       <div class="small-3 columns">
         <label class="right inline required" for="billing-state-id">County</label>
       </div>
       <div class="small-5 end columns">
-        <select id="billing-state-id" name="billing-state-id" ng-model="billingAddress.state"
-                ng-required="states.length > 0"
-                ng-options="state.name for state in states | orderBy:'name'">
+        <select id="billing-state-id"
+                name="billing-state-id"
+                ng-model="billingAddress.state"
+                ng-required="billingAddress.country.states.length > 0"
+                ng-options="state.name for state in billingAddress.country.states | orderBy:'name'">
         </select>
         <small ng-show="submitted && form['billing-state'].$error.required" class="error">
           This field is required.
@@ -97,10 +99,10 @@
         <label class="right inline required" for="billing-country-id">Country</label>
       </div>
       <div class="small-5 end columns">
-        <select required id="billing-country-id" name="billing-country-id" ng-model="billingAddress.country"
-                ng-init="billingAddress.country = countries[0]"
-                ng-options="country.name for country in countries | orderBy:'name'"
-                ng-change="onCountryChanged(billingAddress['country-id'])">
+        <select required id="billing-country-id"
+                name="billing-country-id"
+                ng-model="billingAddress.country"
+                ng-options="country.name for country in countries | orderBy:'name'">
         </select>
         <small ng-show="submitted && form['billing-country-id'].$error.required" class="error">
           This field is required.

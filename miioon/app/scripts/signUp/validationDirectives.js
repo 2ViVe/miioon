@@ -113,7 +113,12 @@ angular.module('2ViVe')
             });
             invalidFields = [];
             $scope.$homeAddressErrors = {};
-            Address.validateHomeAddressNew($scope.homeAddress)
+            var data = angular.copy($scope.homeAddress);
+            data['country-id'] = data.country.id;
+            delete data.country;
+            data['state-id'] = data.state.id;
+            delete data.state;
+            Address.validateHomeAddressNew(data)
               .then(function() {
                 $scope.isHomeAddressValidated = true;
               })
@@ -221,7 +226,12 @@ angular.module('2ViVe')
             });
             invalidFields = [];
             $scope.$shippingAddressErrors = {};
-            Address.validateShippingAddressNew($scope.shipmentAddress)
+            var data = angular.copy($scope.shipmentAddress);
+            data['country-id'] = data.country.id;
+            delete data.country;
+            data['state-id'] = data.state.id;
+            delete data.state;
+            Address.validateShippingAddressNew(data)
               .then(function() {
                 $scope.isShipmentAddressValidated = true;
               })
@@ -234,19 +244,14 @@ angular.module('2ViVe')
                 $scope.isShipmentAddressValidated = false;
               });
           });
-          $scope.$watch('shipmentAddress["country-id"]', function(selectedCountryId) {
-            angular.forEach($scope.countries, function(country) {
-              if (country.id === selectedCountryId && country.states.length === 0) {
-                Registration.getShippingMethods(selectedCountryId)
-                  .success(function(data) {
-                    $scope.shippingMethods = data.response;
-                  });
-              }
-            });
+          $scope.$watch('shipmentAddress.country', function(selectedCountry) {
+            Registration.getShippingMethods(selectedCountry.id)
+              .success(function(data) {
+                $scope.shippingMethods = data.response;
+              });
           });
-          $scope.$watch('shipmentAddress["state-id"]', function(selectedStateId) {
-            var selectedCountryId = $scope.shipmentAddress['country-id'];
-            Registration.getShippingMethods(selectedCountryId, selectedStateId)
+          $scope.$watch('shipmentAddress.state', function(selectedState) {
+            Registration.getShippingMethods($scope.shipmentAddress.country.id, selectedState.id)
               .success(function(data) {
                 $scope.shippingMethods = data.response;
               });
@@ -301,6 +306,11 @@ angular.module('2ViVe')
             });
             invalidFields = [];
             $scope.$billingAddressErrors = {};
+            var data = angular.copy($scope.billingAddress);
+            data['country-id'] = data.country.id;
+            delete data.country;
+            data['state-id'] = data.state.id;
+            delete data.state;
             Address.validateBillingAddressNew($scope.billingAddress)
               .then(function() {
                 $scope.isBillingAddressValidated = true;

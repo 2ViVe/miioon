@@ -75,14 +75,16 @@
     </div>
   </div>
   <div data-countries-and-states>
-    <div class="row" ng-show="states.length > 0">
+    <div class="row" ng-show="shippingAddress.country.states.length > 0">
       <div class="small-3 columns">
         <label class="right inline required" for="shipping-state-id">County</label>
       </div>
       <div class="small-5 end columns">
-        <select id="shipping-state-id" name="shipping-state-id" ng-model="shippingAddress.state"
-                ng-required="states.length > 0"
-                ng-options="state.name for state in states | orderBy:'name'">
+        <select id="shipping-state-id"
+                name="shipping-state-id"
+                ng-model="shippingAddress.state"
+                ng-required="shippingAddress.country.states.length > 0"
+                ng-options="state.name for state in shippingAddress.country.states | orderBy:'name'">
           <option value="">Please select county</option>
         </select>
         <small ng-show="submitted && form['shipping-state-id'].$error.required" class="error">
@@ -98,9 +100,10 @@
         <label class="right inline required" for="shipping-country-id">Country</label>
       </div>
       <div class="small-5 end columns">
-        <select required id="shipping-country-id" name="shipping-country-id" ng-model="shippingAddress.country"
-                ng-options="country.name for country in countries | orderBy:'name'"
-                ng-change="onCountryChanged(shippingAddress.country.id)">
+        <select required id="shipping-country-id"
+                name="shipping-country-id"
+                ng-model="shippingAddress.country"
+                ng-options="country.name for country in countries | orderBy:'name'">
           <option value="">Please select country</option>
         </select>
         <small ng-show="submitted && form['shipping-country-id'].$error.required" class="error">

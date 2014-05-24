@@ -22,10 +22,26 @@ angular.module('2ViVe')
       $scope.shouldValidateRemotlyOnSubmit = false;
       $scope.isRemoteValidated = false;
       $scope.submitted = false;
-      $scope.address = {};
       $scope.payment = {};
+      var defaultCountry = countries.defaultCountry();
       $scope.userInfo = {
-        country: countries.defaultCountry()
+        country: defaultCountry
+      };
+      $scope.address = {
+        homeAddress: {
+          country: defaultCountry
+        },
+        shipmentAddress: {
+          country: defaultCountry,
+          state: '',
+          'first-name': '',
+          'last-name': '',
+          street: '',
+          'street-contd': '',
+          city: '',
+          zip: '',
+          phone: ''
+        }
       };
       updateProducts($scope.userInfo.country);
       $scope.products = [];
@@ -61,18 +77,39 @@ angular.module('2ViVe')
 
       $scope.registrationCountryChange = function(country) {
         updateProducts(country);
+        $scope.address.homeAddress.country = country;
+        $scope.address.shipmentAddress.country = country;
       };
 
       $scope.$on('CreateAccount', function() {
         $window.scrollTo(0, 0);
+
+        var homeAddressData = angular.copy($scope.address.homeAddress);
+        homeAddressData['country-id'] = homeAddressData.country.id;
+        delete homeAddressData.country;
+        homeAddressData['state-id'] = homeAddressData.state.id;
+        delete homeAddressData.state;
+
+        var shipmentAddressData = angular.copy($scope.address.shipmentAddress);
+        shipmentAddressData['country-id'] = shipmentAddressData.country.id;
+        delete shipmentAddressData.country;
+        shipmentAddressData['state-id'] = shipmentAddressData.state.id;
+        delete shipmentAddressData.state;
+
+        var billingAddressData = angular.copy($scope.payment.billingAddress);
+        billingAddressData['country-id'] = billingAddressData.country.id;
+        delete billingAddressData.country;
+        billingAddressData['state-id'] = billingAddressData.state.id;
+        delete billingAddressData.state;
+
         Registration.create(
           $scope.payment['payment-method-id'],
           $scope.userInfo,
           $scope.creditcard,
-          $scope.address.homeAddress,
+          homeAddressData,
           $scope.address.shipmentAddress['shipping-method-id'],
-          $scope.address.shipmentAddress,
-          $scope.payment.billingAddress,
+          billingAddressData,
+          billingAddressData,
           $scope.payment['line-items'],
           $scope.address.webAddress
         ).success(function(data) {
@@ -94,7 +131,18 @@ angular.module('2ViVe')
         $scope.submitted = false;
         $scope.currentStepNumber++;
         if ($scope.currentStepNumber === 4) {
-          Registration.orderSummary($scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress, $scope.lineItems, $scope.address.webAddress)
+          var homeAddressData = angular.copy($scope.address.homeAddress);
+          homeAddressData['country-id'] = homeAddressData.country.id;
+          delete homeAddressData.country;
+          homeAddressData['state-id'] = homeAddressData.state.id;
+          delete homeAddressData.state;
+
+          var shipmentAddressData = angular.copy($scope.address.shipmentAddress);
+          shipmentAddressData['country-id'] = shipmentAddressData.country.id;
+          delete shipmentAddressData.country;
+          shipmentAddressData['state-id'] = shipmentAddressData.state.id;
+          delete shipmentAddressData.state;
+          Registration.orderSummary(homeAddressData, shipmentAddressData, homeAddressData, $scope.lineItems, $scope.address.webAddress)
             .success(function(data) {
               $scope.payment = data.response;
               $scope.payment.billingAddress = data.response['billing-address'];
@@ -112,7 +160,7 @@ angular.module('2ViVe')
 
               Registration.orderAdjustments(
                 $scope.address.shipmentAddress['shipping-method-id'], $scope.lineItems,
-                $scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress)
+                homeAddressData, shipmentAddressData, homeAddressData)
                 .success(function(data) {
                   $scope.payment.adjustments = data.response;
 

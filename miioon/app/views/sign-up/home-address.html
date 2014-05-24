@@ -87,16 +87,16 @@
   </div>
 </div>
 <div data-countries-and-states>
-  <div class="row" ng-show="states.length > 0">
+  <div class="row" ng-show="homeAddress.country.states.length > 0">
     <div class="small-3 columns">
       <label class="right inline required" for="home-state-id">County</label>
     </div>
     <div class="small-5 end columns">
       <select id="home-state-id"
               name="home-state-id"
-              ng-model="homeAddress['state-id']"
-              ng-required="getStates(homeAddress['country-id']).length > 0"
-              ng-options="state.id as state.name for state in states | orderBy:'name'">
+              ng-model="homeAddress.state"
+              ng-required="homeAddress.country.states.length > 0"
+              ng-options="state.name for state in homeAddress.country.states | orderBy:'name'">
       </select>
       <small ng-show="submitted && form['home-state-id'].$error.required" class="error">
         This field is required.
@@ -113,10 +113,8 @@
     <div class="small-5 end columns">
       <select required id="home-country-id"
               name="home-country-id"
-              ng-model="homeAddress['country-id']"
-              ng-init="homeAddress['country-id'] = defailtCountryId"
-              ng-options="country.id as country.name for country in countries | orderBy:'name'"
-              ng-change="onCountryChanged(homeAddress['country-id'])">
+              ng-model="homeAddress.country"
+              ng-options="country.name for country in countries | orderBy:'name'">
       </select>
       <small ng-show="submitted && form['home-country-id'].$error.required" class="error">
         This field is required.
