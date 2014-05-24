@@ -95,7 +95,7 @@ angular.module('2ViVe')
     function(Address) {
       return {
         restrict: 'A',
-        templateUrl: 'views/sign-up/home-address.html',
+        templateUrl: 'bower_components/2ViVe/views/miioon/home-address.html',
         scope: {
           homeAddress: '=',
           submitted: '=',
@@ -138,7 +138,7 @@ angular.module('2ViVe')
     function(Address) {
       return {
         restrict: 'A',
-        templateUrl: 'views/sign-up/web-address.html',
+        templateUrl: 'bower_components/2ViVe/views/miioon/web-address.html',
         scope: {
           homeAddressSource: '=',
           webAddress: '=',
@@ -193,21 +193,21 @@ angular.module('2ViVe')
         }]
       };
     }])
-  .directive('shipmentAddress', ['Address', 'Registration',
-    function(Address, Registration) {
+  .directive('shippingAddress', ['Address',
+    function(Address) {
       return {
         restrict: 'A',
-        templateUrl: 'views/sign-up/shipment-address.html',
+        templateUrl: 'bower_components/2ViVe/views/miioon/shipping-address.html',
         scope: {
           homeAddressSource: '=',
-          shipmentAddress: '=',
+          shippingAddress: '=',
           submitted: '=',
           form: '=',
-          isShipmentAddressValidated: '='
+          isShippingAddressValidated: '='
         },
         controller: ['$scope', function($scope) {
-          if ($scope.shipmentAddress === undefined) {
-            $scope.shipmentAddress = {
+          if ($scope.shippingAddress === undefined) {
+            $scope.shippingAddress = {
               'first-name': '',
               'last-name': '',
               street: '',
@@ -226,46 +226,34 @@ angular.module('2ViVe')
             });
             invalidFields = [];
             $scope.$shippingAddressErrors = {};
-            var data = angular.copy($scope.shipmentAddress);
+            var data = angular.copy($scope.shippingAddress);
             data['country-id'] = data.country.id;
             delete data.country;
             data['state-id'] = data.state.id;
             delete data.state;
             Address.validateShippingAddressNew(data)
               .then(function() {
-                $scope.isShipmentAddressValidated = true;
+                $scope.isShippingAddressValidated = true;
               })
               .catch(function(failures) {
                 angular.forEach(failures, function(failiure) {
-                  $scope.form['shipment-' + failiure.field].$setValidity('validated', false);
-                  invalidFields.push($scope.form['shipment-' + failiure.field]);
+                  $scope.form['shipping-' + failiure.field].$setValidity('validated', false);
+                  invalidFields.push($scope.form['shipping-' + failiure.field]);
                 });
                 $scope.$shippingAddressErrors = failures;
-                $scope.isShipmentAddressValidated = false;
-              });
-          });
-          $scope.$watch('shipmentAddress.country', function(selectedCountry) {
-            Registration.getShippingMethods(selectedCountry.id)
-              .success(function(data) {
-                $scope.shippingMethods = data.response;
-              });
-          });
-          $scope.$watch('shipmentAddress.state', function(selectedState) {
-            Registration.getShippingMethods($scope.shipmentAddress.country.id, selectedState.id)
-              .success(function(data) {
-                $scope.shippingMethods = data.response;
+                $scope.isShippingAddressValidated = false;
               });
           });
           $scope.useHomeAddress = function() {
-            if ($scope.shipmentIsUseHomeAddress) {
+            if ($scope.shippingIsUseHomeAddress) {
               angular.forEach($scope.homeAddressSource, function(value, key) {
-                if ($scope.shipmentAddress[key] !== undefined) {
-                  $scope.shipmentAddress[key] = value;
+                if ($scope.shippingAddress[key] !== undefined) {
+                  $scope.shippingAddress[key] = value;
                 }
               });
             } else {
-              angular.forEach($scope.shipmentAddress, function(value, key) {
-                $scope.shipmentAddress[key] = '';
+              angular.forEach($scope.shippingAddress, function(value, key) {
+                $scope.shippingAddress[key] = '';
               });
             }
           };
@@ -276,7 +264,7 @@ angular.module('2ViVe')
     function(Address) {
       return {
         restrict: 'A',
-        templateUrl: 'views/sign-up/billing-address.html',
+        templateUrl: 'bower_components/2ViVe/views/miioon/billing-address.html',
         scope: {
           homeAddressSource: '=',
           billingAddress: '=',
