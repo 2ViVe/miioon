@@ -98,7 +98,6 @@ angular.module('2ViVe')
         templateUrl: 'bower_components/2ViVe/views/miioon/home-address.html',
         scope: {
           homeAddress: '=',
-          submitted: '=',
           form: '=',
           isHomeAddressValidated: '='
         },
@@ -142,7 +141,6 @@ angular.module('2ViVe')
         scope: {
           homeAddressSource: '=',
           webAddress: '=',
-          submitted: '=',
           form: '=',
           isWebAddressValidated: '='
         },
@@ -201,7 +199,6 @@ angular.module('2ViVe')
         scope: {
           homeAddressSource: '=',
           shippingAddress: '=',
-          submitted: '=',
           form: '=',
           isShippingAddressValidated: '='
         },
@@ -268,7 +265,6 @@ angular.module('2ViVe')
         scope: {
           homeAddressSource: '=',
           billingAddress: '=',
-          submitted: '=',
           form: '=',
           isBillingAddressValidated: '='
         },
