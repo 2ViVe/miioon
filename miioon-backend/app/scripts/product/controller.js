@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('ProductController', ['$scope', 'product', 'taxons', 'Shopping', '$location',
-    function($scope, product, taxons, Shopping, $location) {
+  .controller('ProductController', ['$scope', 'product', 'taxons', 'Shopping',
+    function($scope, product, taxons, Shopping) {
       var updateVariant = function() {
         $scope.variant = product.getVariantByOptions({
           'Color': $scope.selectedColor,

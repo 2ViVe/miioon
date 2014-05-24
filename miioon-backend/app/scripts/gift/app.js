@@ -8,7 +8,7 @@ angular
     'ngRoute',
     '2ViVe',
     'ipCookie'
-   ])
-  .config(['$routeProvider', function($routeProvider) {
+  ])
+  .config([function() {
 
   }]);
