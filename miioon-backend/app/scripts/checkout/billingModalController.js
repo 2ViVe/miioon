@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('2ViVe')
+angular
+  .module('miioon/checkout')
   .controller('BillingModalController', ['$scope', '$modalInstance', 'Address',
     function($scope, $modalInstance, Address) {
       $scope.billingAddress = {};

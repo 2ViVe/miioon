@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('2ViVe')
+angular
+  .module('miioon/gift')
   .controller('GiftCardEmailFormController', ['$scope',
     function($scope) {
       $scope.$watch('emailForm.$invalid', function(invalid) {

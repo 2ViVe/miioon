@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('2ViVe')
+angular
+  .module('miioon/checkout')
   .filter('byOptionType', function() {
     return function(options, type) {
       var presentation = '';

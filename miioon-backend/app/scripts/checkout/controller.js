@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('2ViVe')
+angular
+  .module('miioon/checkout')
   .controller('CheckoutController', ['$scope', 'order', 'Shopping', '$modal',
     function($scope, order, Shopping, $modal) {
       $scope.creditCard = {};

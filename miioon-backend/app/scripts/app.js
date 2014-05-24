@@ -13,5 +13,8 @@ angular.module('miioonApp', [
   'mm.foundation.dropdownToggle',
   'mm.foundation.modal',
   'chieffancypants.loadingBar',
-  'ipCookie'
+  'ipCookie',
+   // apps
+  'miioon/checkout',
+  'miioon/gift'
 ]);

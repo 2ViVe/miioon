@@ -120,18 +120,6 @@ angular.module('miioonApp')
           }]
         }
       })
-      .when('/checkout', {
-        templateUrl: 'views/checkout/all.html',
-        controller: 'CheckoutController',
-        resolve: {
-          order: ['Shopping', 'Order',
-            function(Shopping, Order) {
-              return Shopping.fetch().then(function(shopping) {
-                return Order.checkout(shopping.items);
-              });
-            }]
-        }
-      })
       .when('/report/orders', {
         templateUrl: 'views/report/order.html',
         controller: 'OrderReportController',
