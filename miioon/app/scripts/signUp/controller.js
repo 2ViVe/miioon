@@ -48,33 +48,6 @@ angular.module('2ViVe')
       $scope.lineItems = [];
       $scope.creditcard = {};
 
-      $scope.getCountryName = function(countryId) {
-        var countryName = null;
-        angular.forEach(countries.data, function(country) {
-          if (country.id === countryId) {
-            countryName = country.name;
-            return null;
-          }
-        });
-        return countryName;
-      };
-
-      $scope.getStateName = function(countryId, stateId) {
-        var stateName = null;
-        angular.forEach(countries.data, function(country) {
-          if (country.id === countryId) {
-            angular.forEach(country.states, function(state) {
-              if (state.id === stateId) {
-                stateName = state.name;
-                return null;
-              }
-            });
-            return null;
-          }
-        });
-        return stateName;
-      };
-
       $scope.registrationCountryChange = function(country) {
         updateProducts(country);
         $scope.address.homeAddress.country = country;
