@@ -3,22 +3,38 @@
 angular.module('2ViVe')
   .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries', 'User', '$modal', 'UrlHandler',
     function($scope, Registration, $window, countries, User, $modal, UrlHandler) {
+      function updateProducts(country) {
+        Registration.getProducts(country.id)
+          .success(function(data) {
+            var products = data.response.products;
+            angular.forEach(products, function(product) {
+              if (product['variant-id']) {
+                product.quantity = 1;
+              }
+            });
+            $scope.products = products;
+          });
+      }
+
       $scope.retailUrl = UrlHandler.retailUrl();
-      $scope.countries = countries;
+      $scope.countries = countries.data;
       $scope.currentStepNumber = 1;
       $scope.shouldValidateRemotlyOnSubmit = false;
       $scope.isRemoteValidated = false;
       $scope.submitted = false;
       $scope.address = {};
       $scope.payment = {};
-      $scope.userInfo = {};
+      $scope.userInfo = {
+        country: countries.defaultCountry()
+      };
+      updateProducts($scope.userInfo.country);
       $scope.products = [];
       $scope.lineItems = [];
       $scope.creditcard = {};
 
       $scope.getCountryName = function(countryId) {
         var countryName = null;
-        angular.forEach(countries, function(country) {
+        angular.forEach(countries.data, function(country) {
           if (country.id === countryId) {
             countryName = country.name;
             return null;
@@ -29,7 +45,7 @@ angular.module('2ViVe')
 
       $scope.getStateName = function(countryId, stateId) {
         var stateName = null;
-        angular.forEach(countries, function(country) {
+        angular.forEach(countries.data, function(country) {
           if (country.id === countryId) {
             angular.forEach(country.states, function(state) {
               if (state.id === stateId) {
@@ -44,19 +60,7 @@ angular.module('2ViVe')
       };
 
       $scope.registrationCountryChange = function(country) {
-        Registration.getProducts(country.id)
-          .success(function(data) {
-            var products = data.response.products;
-            var entryProductIndex;
-            angular.forEach(products, function(product) {
-              if (product['variant-id']) {
-                product.quantity = 1;
-              }
-            });
-            var entryProduct = products.splice(entryProductIndex, 1)[0];
-            products.unshift(entryProduct);
-            $scope.products = products;
-          });
+        updateProducts(country);
       };
 
       $scope.$on('CreateAccount', function() {

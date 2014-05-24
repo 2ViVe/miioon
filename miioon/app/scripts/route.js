@@ -15,8 +15,9 @@ angular.module('miioonApp')
         templateUrl: 'views/sign-up/all.html',
         controller: 'SignUpController',
         resolve: {
-          countries: ['Registration', function(Registration) {
-            return Registration.countries();
+          countries: ['Registration.Countries', function(Countries) {
+            var countries = new Countries();
+            return countries.fetch();
           }]
         }
       })
