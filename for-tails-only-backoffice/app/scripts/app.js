@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('2ViVe', []);
-
 angular.module('miioonApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngRoute',
     '2ViVe',
-    'ui.utils'
+    'ui.utils',
+    // apps
+    'fto/signup'
   ])
   .config(function($routeProvider) {
     $routeProvider
@@ -28,9 +28,6 @@ angular.module('miioonApp', [
       })
       .when('/retail-signup', {
         templateUrl: 'views/sign-up/retail-signup.html'
-      })
-      .when('/quick-signup', {
-        templateUrl: 'views/sign-up/quick-signup.html'
       })
       .when('/products/', {
         templateUrl: 'views/products/products-index.html',
