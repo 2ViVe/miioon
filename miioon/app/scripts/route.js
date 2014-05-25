@@ -16,8 +16,7 @@ angular.module('miioonApp')
         controller: 'SignUpController',
         resolve: {
           countries: ['Registration.Countries', function(Countries) {
-            var countries = new Countries();
-            return countries.fetch();
+            return Countries.fetch();
           }]
         }
       })
@@ -111,10 +110,13 @@ angular.module('miioonApp')
         templateUrl: 'views/checkout/all.html',
         controller: 'CheckoutController',
         resolve: {
-          order: ['Shopping', 'Order',
-            function(Shopping, Order) {
+          order: ['Shopping', 'Order', '$location',
+            function(Shopping, Order, $location) {
               return Shopping.fetch().then(function(shopping) {
-                return Order.checkout(shopping.items);
+                return Order.checkout(shopping.items)
+                  .catch(function() {
+                    $location.path('/signin');
+                  });
               });
             }]
         }

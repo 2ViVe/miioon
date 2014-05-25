@@ -95,10 +95,9 @@ angular.module('2ViVe')
     function(Address) {
       return {
         restrict: 'A',
-        templateUrl: 'views/sign-up/home-address.html',
+        templateUrl: 'bower_components/2ViVe/views/miioon/home-address.html',
         scope: {
           homeAddress: '=',
-          submitted: '=',
           form: '=',
           isHomeAddressValidated: '='
         },
@@ -113,7 +112,12 @@ angular.module('2ViVe')
             });
             invalidFields = [];
             $scope.$homeAddressErrors = {};
-            Address.validateHomeAddressNew($scope.homeAddress)
+            var data = angular.copy($scope.homeAddress);
+            data['country-id'] = data.country.id;
+            delete data.country;
+            data['state-id'] = data.state.id;
+            delete data.state;
+            Address.validateHomeAddressNew(data)
               .then(function() {
                 $scope.isHomeAddressValidated = true;
               })
@@ -133,11 +137,10 @@ angular.module('2ViVe')
     function(Address) {
       return {
         restrict: 'A',
-        templateUrl: 'views/sign-up/web-address.html',
+        templateUrl: 'bower_components/2ViVe/views/miioon/web-address.html',
         scope: {
           homeAddressSource: '=',
           webAddress: '=',
-          submitted: '=',
           form: '=',
           isWebAddressValidated: '='
         },
@@ -188,21 +191,20 @@ angular.module('2ViVe')
         }]
       };
     }])
-  .directive('shipmentAddress', ['Address', 'Registration',
-    function(Address, Registration) {
+  .directive('shippingAddress', ['Address',
+    function(Address) {
       return {
         restrict: 'A',
-        templateUrl: 'views/sign-up/shipment-address.html',
+        templateUrl: 'bower_components/2ViVe/views/miioon/shipping-address.html',
         scope: {
           homeAddressSource: '=',
-          shipmentAddress: '=',
-          submitted: '=',
+          shippingAddress: '=',
           form: '=',
-          isShipmentAddressValidated: '='
+          isShippingAddressValidated: '='
         },
         controller: ['$scope', function($scope) {
-          if ($scope.shipmentAddress === undefined) {
-            $scope.shipmentAddress = {
+          if ($scope.shippingAddress === undefined) {
+            $scope.shippingAddress = {
               'first-name': '',
               'last-name': '',
               street: '',
@@ -221,46 +223,34 @@ angular.module('2ViVe')
             });
             invalidFields = [];
             $scope.$shippingAddressErrors = {};
-            Address.validateShippingAddressNew($scope.shipmentAddress)
+            var data = angular.copy($scope.shippingAddress);
+            data['country-id'] = data.country.id;
+            delete data.country;
+            data['state-id'] = data.state.id;
+            delete data.state;
+            Address.validateShippingAddressNew(data)
               .then(function() {
-                $scope.isShipmentAddressValidated = true;
+                $scope.isShippingAddressValidated = true;
               })
               .catch(function(failures) {
                 angular.forEach(failures, function(failiure) {
-                  $scope.form['shipment-' + failiure.field].$setValidity('validated', false);
-                  invalidFields.push($scope.form['shipment-' + failiure.field]);
+                  $scope.form['shipping-' + failiure.field].$setValidity('validated', false);
+                  invalidFields.push($scope.form['shipping-' + failiure.field]);
                 });
                 $scope.$shippingAddressErrors = failures;
-                $scope.isShipmentAddressValidated = false;
-              });
-          });
-          $scope.$watch('shipmentAddress["country-id"]', function(selectedCountryId) {
-            angular.forEach($scope.countries, function(country) {
-              if (country.id === selectedCountryId && country.states.length === 0) {
-                Registration.getShippingMethods(selectedCountryId)
-                  .success(function(data) {
-                    $scope.shippingMethods = data.response;
-                  });
-              }
-            });
-          });
-          $scope.$watch('shipmentAddress["state-id"]', function(selectedStateId) {
-            var selectedCountryId = $scope.shipmentAddress['country-id'];
-            Registration.getShippingMethods(selectedCountryId, selectedStateId)
-              .success(function(data) {
-                $scope.shippingMethods = data.response;
+                $scope.isShippingAddressValidated = false;
               });
           });
           $scope.useHomeAddress = function() {
-            if ($scope.shipmentIsUseHomeAddress) {
+            if ($scope.shippingIsUseHomeAddress) {
               angular.forEach($scope.homeAddressSource, function(value, key) {
-                if ($scope.shipmentAddress[key] !== undefined) {
-                  $scope.shipmentAddress[key] = value;
+                if ($scope.shippingAddress[key] !== undefined) {
+                  $scope.shippingAddress[key] = value;
                 }
               });
             } else {
-              angular.forEach($scope.shipmentAddress, function(value, key) {
-                $scope.shipmentAddress[key] = '';
+              angular.forEach($scope.shippingAddress, function(value, key) {
+                $scope.shippingAddress[key] = '';
               });
             }
           };
@@ -271,11 +261,10 @@ angular.module('2ViVe')
     function(Address) {
       return {
         restrict: 'A',
-        templateUrl: 'views/sign-up/billing-address.html',
+        templateUrl: 'bower_components/2ViVe/views/miioon/billing-address.html',
         scope: {
           homeAddressSource: '=',
           billingAddress: '=',
-          submitted: '=',
           form: '=',
           isBillingAddressValidated: '='
         },
@@ -301,6 +290,11 @@ angular.module('2ViVe')
             });
             invalidFields = [];
             $scope.$billingAddressErrors = {};
+            var data = angular.copy($scope.billingAddress);
+            data['country-id'] = data.country.id;
+            delete data.country;
+            data['state-id'] = data.state.id;
+            delete data.state;
             Address.validateBillingAddressNew($scope.billingAddress)
               .then(function() {
                 $scope.isBillingAddressValidated = true;

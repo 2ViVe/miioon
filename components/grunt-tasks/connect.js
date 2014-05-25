@@ -68,7 +68,7 @@ module.exports = (function() {
     },
     test: {
       options: {
-        port: 9001,
+        port: '<%= 2ViVe.testPort %>' || 9001,
         base: [
           '.tmp',
           'test',

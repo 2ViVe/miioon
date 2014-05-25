@@ -22,57 +22,67 @@ angular.module('2ViVe')
       $scope.shouldValidateRemotlyOnSubmit = false;
       $scope.isRemoteValidated = false;
       $scope.submitted = false;
-      $scope.address = {};
       $scope.payment = {};
+      var defaultCountry = countries.defaultCountry();
       $scope.userInfo = {
-        country: countries.defaultCountry()
+        country: defaultCountry
+      };
+      $scope.address = {
+        homeAddress: {
+          country: defaultCountry
+        },
+        shippingAddress: {
+          country: defaultCountry,
+          state: '',
+          'first-name': '',
+          'last-name': '',
+          street: '',
+          'street-contd': '',
+          city: '',
+          zip: '',
+          phone: ''
+        }
       };
       updateProducts($scope.userInfo.country);
       $scope.products = [];
       $scope.lineItems = [];
       $scope.creditcard = {};
 
-      $scope.getCountryName = function(countryId) {
-        var countryName = null;
-        angular.forEach(countries.data, function(country) {
-          if (country.id === countryId) {
-            countryName = country.name;
-            return null;
-          }
-        });
-        return countryName;
-      };
-
-      $scope.getStateName = function(countryId, stateId) {
-        var stateName = null;
-        angular.forEach(countries.data, function(country) {
-          if (country.id === countryId) {
-            angular.forEach(country.states, function(state) {
-              if (state.id === stateId) {
-                stateName = state.name;
-                return null;
-              }
-            });
-            return null;
-          }
-        });
-        return stateName;
-      };
-
       $scope.registrationCountryChange = function(country) {
         updateProducts(country);
+        $scope.address.homeAddress.country = country;
+        $scope.address.shippingAddress.country = country;
       };
 
       $scope.$on('CreateAccount', function() {
         $window.scrollTo(0, 0);
+
+        var homeAddressData = angular.copy($scope.address.homeAddress);
+        homeAddressData['country-id'] = homeAddressData.country.id;
+        delete homeAddressData.country;
+        homeAddressData['state-id'] = homeAddressData.state.id;
+        delete homeAddressData.state;
+
+        var shippingAddressData = angular.copy($scope.address.shippingAddress);
+        shippingAddressData['country-id'] = shippingAddressData.country.id;
+        delete shippingAddressData.country;
+        shippingAddressData['state-id'] = shippingAddressData.state.id;
+        delete shippingAddressData.state;
+
+        var billingAddressData = angular.copy($scope.payment.billingAddress);
+        billingAddressData['country-id'] = billingAddressData.country.id;
+        delete billingAddressData.country;
+        billingAddressData['state-id'] = billingAddressData.state.id;
+        delete billingAddressData.state;
+
         Registration.create(
           $scope.payment['payment-method-id'],
           $scope.userInfo,
           $scope.creditcard,
-          $scope.address.homeAddress,
-          $scope.address.shipmentAddress['shipping-method-id'],
-          $scope.address.shipmentAddress,
-          $scope.payment.billingAddress,
+          homeAddressData,
+          $scope.address.shippingAddress['shipping-method-id'],
+          billingAddressData,
+          billingAddressData,
           $scope.payment['line-items'],
           $scope.address.webAddress
         ).success(function(data) {
@@ -94,7 +104,18 @@ angular.module('2ViVe')
         $scope.submitted = false;
         $scope.currentStepNumber++;
         if ($scope.currentStepNumber === 4) {
-          Registration.orderSummary($scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress, $scope.lineItems, $scope.address.webAddress)
+          var homeAddressData = angular.copy($scope.address.homeAddress);
+          homeAddressData['country-id'] = homeAddressData.country.id;
+          delete homeAddressData.country;
+          homeAddressData['state-id'] = homeAddressData.state.id;
+          delete homeAddressData.state;
+
+          var shippingAddressData = angular.copy($scope.address.shippingAddress);
+          shippingAddressData['country-id'] = shippingAddressData.country.id;
+          delete shippingAddressData.country;
+          shippingAddressData['state-id'] = shippingAddressData.state.id;
+          delete shippingAddressData.state;
+          Registration.orderSummary(homeAddressData, shippingAddressData, homeAddressData, $scope.lineItems, $scope.address.webAddress)
             .success(function(data) {
               $scope.payment = data.response;
               $scope.payment.billingAddress = data.response['billing-address'];
@@ -104,15 +125,15 @@ angular.module('2ViVe')
               $scope.payment['is-creditcard'] = paymentMethod['is-creditcard'];
               $scope.payment['paymend-method'] = paymentMethod.name;
               angular.forEach($scope.payment['available-shipping-methods'], function(availableShippingMethod) {
-                if (availableShippingMethod.id === $scope.address.shipmentAddress['shipping-method-id']) {
+                if (availableShippingMethod.id === $scope.address.shippingAddress['shipping-method-id']) {
                   $scope.payment['shipping-method'] = availableShippingMethod.name;
                   return null;
                 }
               });
 
               Registration.orderAdjustments(
-                $scope.address.shipmentAddress['shipping-method-id'], $scope.lineItems,
-                $scope.address.homeAddress, $scope.address.shipmentAddress, $scope.address.homeAddress)
+                $scope.address.shippingAddress['shipping-method-id'], $scope.lineItems,
+                homeAddressData, shippingAddressData, homeAddressData)
                 .success(function(data) {
                   $scope.payment.adjustments = data.response;
 

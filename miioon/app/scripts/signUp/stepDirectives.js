@@ -71,13 +71,27 @@ angular.module('2ViVe')
   .directive('signUpStep3', [function() {
     return {
       restrict: 'C',
-      controller: ['$scope', function($scope) {
+      controller: ['$scope', 'Registration', function($scope, Registration) {
         $scope.isHomeAddressValidated = false;
         $scope.isWebAddressValidated = false;
-        $scope.isShipmentAddressValidated = false;
+        $scope.isShippingAddressValidated = false;
+
+        $scope.$watch('address.shippingAddress.country', function(selectedCountry) {
+          Registration.getShippingMethods(selectedCountry.id)
+            .success(function(data) {
+              $scope.shippingMethods = data.response;
+            });
+        });
+        $scope.$watch('address.shippingAddress.state', function(selectedState) {
+          Registration.getShippingMethods($scope.address.shippingAddress.country.id, selectedState.id)
+            .success(function(data) {
+              $scope.shippingMethods = data.response;
+            });
+        });
+
         var clearRemoteValidation = $scope.$watchCollection(
-          '[isHomeAddressValidated, isWebAddressValidated, isShipmentAddressValidated]', function() {
-            if ($scope.isHomeAddressValidated && $scope.isWebAddressValidated && $scope.isShipmentAddressValidated) {
+          '[isHomeAddressValidated, isWebAddressValidated, isShippingAddressValidated]', function() {
+            if ($scope.isHomeAddressValidated && $scope.isWebAddressValidated && $scope.isShippingAddressValidated) {
               $scope.$emit('NextStep');
               clearRemoteValidation();
             }
