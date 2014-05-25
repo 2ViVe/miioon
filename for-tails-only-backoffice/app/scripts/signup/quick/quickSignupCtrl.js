@@ -36,6 +36,10 @@ angular
       account.homeAddress = homeAddress;
       account.shippingAddress = shippingAddress;
 
+      angular.forEach($scope.$errors, function(val, key) {
+        delete $scope.$errors[key];
+      });
+
       $http
         .post('/api/v2/registrations/distributors-without-order', account, {
           transformRequest: function(data) { return angular.toJson(dashlize(data)); },
@@ -45,7 +49,6 @@ angular
           $scope.isProcessing = false;
         })
         .catch(function(resp) {
-          debugger;
           if (resp.status === 400) {
             var error = resp.data.meta.error;
             $scope.$errors[error.errorCode] = error.message;
