@@ -93,8 +93,11 @@
       <small ng-show="retailSignupForm.email.$error.available" class="error">
         Email is not available
       </small>
-      <small ng-show="submitted && (retailSignupForm.email.$error.required || retailSignupForm.email.$error.email)" class="error">
-        A valid email address is required.
+      <small ng-show="submitted && retailSignupForm.email.$error.required" class="error">
+        This field is required.
+      </small>
+      <small ng-show="submitted && retailSignupForm.email.$error.email" class="error">
+        Email is invalid.
       </small>
     </div>
 
