@@ -20,6 +20,9 @@
       <small ng-show="submitted && accountForm.login.$error.required" class="error">
         This field is required.
       </small>
+      <small ng-show="errors.InvalidLogin" class="error">
+        {{ errors.InvalidLogin }}
+      </small>
     </div>
   </div>
 
@@ -58,8 +61,8 @@
              id="confirmPassword"
              name="confirmPassword"
              ng-model="confirmPassword"
-             ui-validate="'$value==password'"
-             ui-validate-watch="'password'"
+             ui-validate="'$value==account.password'"
+             ui-validate-watch="'account.password'"
              >
       <small ng-show="accountForm.confirmPassword.$error.validator" class="error">
         Passwords must match.
@@ -78,11 +81,15 @@
     <div class="medium-8 end columns">
       <input type="email" required
              id="email" name="email"
-             ng-model="email"
+             ng-model="account.email"
               />
       <small ng-show="submitted && (accountForm.email.$error.required || accountForm.email.$error.email)" class="error">
         A valid email address is required.
       </small>
+      <small ng-show="errors.InvalidEmail" class="error">
+        {{ errors.InvalidEmail }}
+      </small>
+
     </div>
 
   </div>

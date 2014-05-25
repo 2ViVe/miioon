@@ -11,6 +11,7 @@ angular
   ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/quick-signup', {
-      templateUrl: 'views/sign-up/quick-signup.html'
+      templateUrl: 'views/sign-up/quick-signup.html',
+      controller: 'QuickSignupCtrl'
     });
   }]);

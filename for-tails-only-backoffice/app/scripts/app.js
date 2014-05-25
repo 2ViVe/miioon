@@ -10,6 +10,7 @@ angular.module('miioonApp', [
     // apps
     'fto/signup'
   ])
+  .constant('DEFAULT_COUNTRY_ID', 1213)
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {

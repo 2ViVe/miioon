@@ -1,27 +1,33 @@
 <div class="sign-up row">
   <div class='small-12 panel sign-up-form-panel'>
-    <form class="sign-up-step-1 sign-up-step" name="step" novalidate>
+    <form class="" novalidate ng-submit="create()">
       <div class="row">
         <h2 class="small-12 columns">Create Distributor</h2>
       </div>
 
-      <div data-sponsor-panel></div>
+      <div data-sponsor-panel
+           data-account="account"></div>
 
-      <div data-account-panel></div>
+      <div data-account-panel
+           data-account="account"
+           data-errors="$errors"></div>
 
       <div data-address-panel
            data-address-type="home"
            data-title="Home"
+           data-address="address.home"
            >
       </div>
 
       <div data-address-panel
            data-address-type="shipping"
            data-title="Shipping"
+           data-address="address.shipping"
            data-home-address="address.home"
            >
       </div>
 
+      <button type="submit" class="btn" ng-disabled="isProcessing">Create</button>
     </form>
   </div>
 </div>

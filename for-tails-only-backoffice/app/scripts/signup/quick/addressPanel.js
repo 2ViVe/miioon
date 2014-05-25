@@ -2,7 +2,7 @@
 
 angular
   .module('fto/signup')
-  .directive('addressPanel', function() {
+  .directive('addressPanel', [function() {
     return {
       replace: true,
       templateUrl: function(elm, attr) {
@@ -12,17 +12,15 @@ angular
         if (type === 'web') {
           filename = 'web-' + filename;
         }
-
         return 'views/sign-up/components/' + filename;
       },
       controller: 'AddressPanelCtrl',
       controllerAs: 'panel',
       scope: {
         title: '@',
+        address: '=',
         addressType: '@',
         homeAddress: '='
-      },
-      link: function(scope, element) {
       }
     };
-  });
+  }]);

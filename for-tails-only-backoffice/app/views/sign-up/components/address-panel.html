@@ -4,7 +4,7 @@
 
       <h3 ng-if="!homeAddress">{{ title }} Address</h3>
       <h3 ng-if="homeAddress">{{ title }} Address <label class='right'>
-        <input type='checkbox' /> Use Home Address</label>
+        <input type='checkbox' ng-click="useHomeAddress()"/> Use Home Address</label>
       </h3>
 
     </div>
@@ -124,10 +124,12 @@
        data-label="State"
        data-address-type="addressType"
        data-name="state"
+       ng-if="address.country"
        >
-    <select id="{{addressType}}-AddrState" name="addrState" ng-model="address.stateId"
-            ng-required="states.length > 0"
-            ng-options="state.id as state.name for state in getStates(address.countryId) | orderBy:'name'">
+    <select id="{{addressType}}-AddrState"
+            name="addrState"
+            ng-model="address.state"
+            ng-options="state as state.name for state in address.country.states | orderBy:'name'">
     </select>
 
     <small ng-show="form.addrState.$error.required" class="error">

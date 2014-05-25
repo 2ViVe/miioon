@@ -6,7 +6,8 @@ angular
     return {
       templateUrl: 'views/sign-up/components/account-panel.html',
       scope: {
-        account: '='
+        account: '=',
+        errors: '='
       }
     };
   }]);
