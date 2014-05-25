@@ -72,6 +72,10 @@ ul {
   font-size: $base-font-size;
 }
 
+.small-font {
+  font-size: $small-font-size;
+}
+
 .default-cursor {
   cursor: auto;
 }
@@ -88,6 +92,8 @@ ul {
 .no-columns-padding-right{
   padding-right:0 !important;
 }
+
+
 
 .wrapper{
   max-width: $row-width;

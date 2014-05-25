@@ -1,6 +1,126 @@
 .party-container{
   .party-topbar{
     margin-bottom: $panel-margin-bottom;
+    h4{
+      margin-bottom:0;
+      margin-top:0;
+    }
+  }
+
+  h3{
+    .right{
+      margin-top:4px;
+    }
+  }
+
+  .party-panel{
+    border:1px solid $grey-border;
+    padding:rem-calc(3);
+    @include clearfix;
+    .pagination{
+      margin:rem-calc(10);
+    }
+    h4{
+      font-size: $medium-font-size;
+      background:$primary-color;
+      color:#fff;
+      margin:0;
+      padding:15px $panel-padding;
+      border-bottom: 2px solid #fff;
+      .fa.right{
+        font-size: $large-font-size;
+        margin-top: rem-calc(6);
+      }
+      small{
+        color:#fff;
+      }
+    }
+    .party-panel-con-bar{
+      background:#f6f8fa;
+      padding:rem-calc(10) $panel-padding;
+      span.right{
+        font-size: $medium-font-size;
+        margin-top: rem-calc(5);
+      }
+    }
+
+    .party-user-table{
+      margin-bottom:0;
+      border:0;
+      tr{
+        &:nth-of-type(2n){
+          background:#f6f8fa;
+        }
+        &:last-child{
+          td{
+            border-bottom:0;
+          }
+        }
+      }
+      th{
+        background:$primary-color;
+        color: $grey-dark;
+      }
+      .party-user-table-img{
+        float: left;
+      }
+      .party-user-table-info{
+        margin-left:rem-calc(60);
+        h5{
+          font-size:$small-font-size;
+          vertical-align: top;
+          small{
+            font-size: 80%;
+            color:$grey-dark;
+          }
+          small.right{
+            margin-top:7px;
+          }
+        }
+      }
+      .party-user-table-info-noPho{
+        margin-left:0;
+      }
+      .party-user-table-num{
+        display: block;
+        width:rem-calc(20);
+        height: rem-calc(20);
+        line-height: rem-calc(20);
+        background:$primary-color;
+        color: #fff;
+        text-align: center;
+        border-radius:50%;
+      }
+    }
+
+    .party-details-info{
+      padding:15px $panel-padding;
+      dl{
+        @include clearfix;
+        font-size:$small-font-size;
+        margin-bottom:0;
+        margin-top:0;
+        &.row{
+          margin-left:0;
+          margin-right:0;
+          .columns{
+            padding-left:0;
+            padding-right:0;
+          }
+        }
+        dt{
+          color:$grey-dark;
+          font-weight:normal;
+          padding:3px;
+          margin-bottom:0;
+        }
+        dd{
+          color:$grey-darker;
+          padding:5px;
+          margin-bottom:0;
+        }
+      }
+    }
   }
 
   .party-calendar{
@@ -40,6 +160,84 @@
       margin-bottom: $panel-margin-bottom;
     }
   }
+
+  .party-blue-circle-s,.party-orange-circle-s,.party-green-circle-s,.party-pink-circle-s{
+    text-align: center;
+    p{
+      width:123px;
+      height:123px;
+      color: #fff;
+      padding-top:30px;
+      margin:0 auto;
+      strong{
+        font-size: $large-font-size;
+      }
+    }
+    h5{
+      font-size:$medium-font-size;
+      margin-top:$h4-margin-bottom;
+    }
+  }
+
+  .party-blue-circle-s{
+    p{
+      background:url("/images/party/party-blue-circle-s.png") 50% 50% no-repeat;
+    }
+    h5{
+      color:#00c0f0;
+    }
+  }
+  .party-orange-circle-s{
+    p{
+      background:url("/images/party/party-orange-circle-s.png") 50% 50% no-repeat;
+    }
+    h5{
+      color:#ff9900;
+    }
+  }
+  .party-green-circle-s{
+    p{
+      background:url("/images/party/party-green-circle-s.png") 50% 50% no-repeat;
+    }
+    h5{
+      color:#98cc3b;
+    }
+  }
+  .party-pink-circle-s{
+    p{
+      background:url("/images/party/party-pink-circle-s.png") 50% 50% no-repeat;
+    }
+    h5{
+      color:#f35398;
+    }
+  }
+
+  .party-price{
+    color:$primary-color;
+    padding:$panel-padding;
+    border:1px solid $grey-border;
+    font-weight: bold;
+    ul{
+      font-size: $large-font-size;
+      li{
+        border-left: 1px solid $grey-border;
+        height: rem-calc(90);
+        span{
+          display:block;
+          margin:5px 0;
+        }
+        small{
+          color:$grey-dark;
+          font-weight:normal;
+        }
+      }
+      li:first-child{
+        border-left: 0;
+      }
+    }
+  }
+
+
 
   table.party-list{
     border:1px solid $grey-border;
