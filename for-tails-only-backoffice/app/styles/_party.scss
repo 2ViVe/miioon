@@ -26,7 +26,6 @@
       color:#fff;
       margin:0;
       padding:15px $panel-padding;
-      border-bottom: 2px solid #fff;
       .fa.right{
         font-size: $large-font-size;
         margin-top: rem-calc(6);
@@ -320,6 +319,71 @@
           }
         }
       }
+    }
+  }
+
+  //party view invitation
+  .party-email-banner{
+    margin-bottom: $panel-margin-bottom;
+    position: relative;
+    .party-email-banner-img{
+      width:100%;
+    }
+    .party-email-banner-text{
+      position: absolute;
+      z-index: 2;
+      top:0;
+      width:100%;
+      text-align: center;
+      color:#fff;
+      padding-top:4%;
+      h2{
+        color:#fff;
+        line-height: 1;
+        font-size:36px;
+        small{
+          display:block;
+          margin-top:34px;
+          color:#fff;
+          font-size: $large-font-size;
+        }
+        margin-bottom: 4%;
+      }
+      p{
+        margin-bottom: 4%;
+      }
+      a{
+        color:#fff;
+        text-decoration: underline;
+      }
+      .party-email-banner-button{
+        text-align: center;
+        margin-top: rem-calc(20);
+        margin-bottom: rem-calc(40);
+        .button{
+          color:$primary-color;
+          background:#fff;
+          border-bottom:3px solid #5ca6af;
+          border-radius:rem-calc(5);
+          margin-left:rem-calc(10);
+          margin-right:rem-calc(10);
+        }
+        a.button{
+          text-decoration: none;
+        }
+      }
+      .party-email-banner-anwser{
+        font-size: $large-font-size;
+      }
+    }
+    .party-email-banner-go{
+      position: absolute;
+      z-index: 2;
+      bottom:5%;
+      width:100%;
+      text-align: center;
+      color:#fff;
+      text-decoration: underline;
     }
   }
 
