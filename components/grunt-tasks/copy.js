@@ -12,7 +12,7 @@ module.exports = (function() {
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
-            'views/{,*/}*.html',
+            'views/**/*.html',
             'template/{,*/}*.html',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
