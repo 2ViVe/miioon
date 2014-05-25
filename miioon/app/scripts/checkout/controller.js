@@ -3,6 +3,10 @@
 angular.module('2ViVe')
   .controller('CheckoutController', ['$scope', 'order', 'Shopping', '$modal',
     function($scope, order, Shopping, $modal) {
+      if (order === undefined) {
+        return;
+      }
+
       $scope.creditCard = {};
       $scope.placingOrder = false;
       $scope.isSucceed = false;
