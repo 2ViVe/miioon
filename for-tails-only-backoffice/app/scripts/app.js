@@ -79,6 +79,9 @@ angular.module('miioonApp', [
       .when('/party/party-view-invitation', {
         templateUrl: 'views/party/party-view-invitation.html'
       })
+      .when('/party/party-create', {
+        templateUrl: 'views/party/party-create.html'
+      })
       .when('/taxon/:taxonId', {
         templateUrl: 'views/taxon.html'
       })

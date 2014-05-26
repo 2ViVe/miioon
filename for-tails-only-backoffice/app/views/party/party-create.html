@@ -1,35 +1,236 @@
 <div class='party-container'>
-  <div class='row party-topbar'>
-    <div class='small-12 medium-4 columns'>
-          <div class='row collapse'>
-              <div class='small-10 columns'>
-                <input type='text' placeholder='Search...' class='secondary-item no-margin-bottom' dropdown-toggle="#drop-menu-search" />
-              </div>
-              <div class='small-2 columns'>
-                <a href='#' class='postfix button'><i class="fa fa-search"></i></a>
-              </div>
-              <ul id="drop-menu-search" class='f-dropdown party-panel-list'>
-                <li ng-repeat="choice in searchItems">
-                  <i class="fa fa-caret-right primary-color"></i>
-                  <a href='#'>[choice.name]</a>
-                  <span href='#' class='label secondary right'>[choice.date]</span>
-                </li>
-              </ul>
-          </div>
-    </div>
-    <div class='small-12 medium-8 columns text-right'>
-      <a href='#' class='button small'>Create a Meet</a>
-    </div>
-  </div>
   <div class='row'>
-    <div class='columns medium-8'>
-      <h4 class="primary-color">Let's Book a Trunk Show</h4>
-    </div>
-    <div class='columns medium-4'>
-      <h4 class="primary-color">Party Calendar</h4>
-      <div class='party-calendar'>
-        <img ng-src='/images/party/calendar.png' />
+    <div class='small-12 columns party-create-slider'>
+      <div class='party-panel block-margin-bottom'>
+        <h4>Select a Invitation Theme</h4>
+        <div>
+          hahahahhaha
+        </div>
       </div>
     </div>
   </div>
+  <div class='row'>
+    <div class='columns medium-12'>
+      <h4 class="primary-color">Pawty Details</h4>
+    </div>
+  </div>
+  <!--
+  <form novalidate>
+    <div class='row'>
+      <div class='columns medium-12'>
+        <div class="row">
+          <div class="small-1 columns">
+            <label>Meet Title <small class='required'>*</small></label>
+          </div>
+          <div class="small-4 columns">
+            <input type="text" required pattern="" />
+            <small class="error">This information is required.</small>
+          </div>
+          <div class="small-1 columns">
+            <label>Host <small class='required'>*</small></label>
+          </div>
+          <div class="small-3 columns">
+            <input type="text" required pattern="" />
+            <small class="error">This information is required.</small>
+          </div>
+          <div class="small-1 columns">
+            <a href class="button small">Contact</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-1 columns">
+            <label>Location Name <small class='required'>*</small></label>
+          </div>
+          <div class="small-4 columns">
+            <input type="text" required pattern="" />
+            <small class="error">This information is required.</small>
+          </div>
+          <div class="small-1 columns">
+            <label>Address <small class='required'>*</small></label>
+          </div>
+          <div class="small-4 columns">
+            <input type="text" required pattern="" />
+            <small class="error">This information is required.</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-1 columns">
+            <label>City <small class='required'>*</small></label>
+          </div>
+          <div class="small-4 columns">
+            <input type="text" required pattern="" />
+            <small class="error">This information is required.</small>
+          </div>
+          <div class="small-1 columns">
+            <label>State <small class='required'>*</small></label>
+          </div>
+          <div class="small-2 columns">
+            <select>
+              <option>...</option>
+            </select>
+            <small class="error">This information is required.</small>
+          </div>
+          <div class="small-1 columns">
+            <label>Zip Code <small class='required'>*</small></label>
+          </div>
+          <div class="small-2 columns">
+            <input type="text" required pattern="" />
+            <small class="error">This information is required.</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-1 columns">
+            <label>Date <small class='required'>*</small></label>
+          </div>
+          <div class="small-2 columns">
+            <input type="text" required pattern="" />
+            <small class="error">This information is required.</small>
+          </div>
+          <div class="small-1 columns">
+            <label>Start Time <small class='required'>*</small></label>
+          </div>
+          <div class="small-2 columns">
+            <select>
+              <option>...</option>
+            </select>
+            <small class="error">This information is required.</small>
+          </div>
+          <div class="small-1 columns">
+            <label>End Date <small class='required'>*</small></label>
+          </div>
+          <div class="small-2 columns">
+            <input type="text" required pattern="" />
+            <small class="error">This information is required.</small>
+          </div>
+          <div class="small-1 columns">
+            <label>End Time <small class='required'>*</small></label>
+          </div>
+          <div class="small-2 columns">
+            <select>
+              <option>...</option>
+            </select>
+            <small class="error">This information is required.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  -->
+  <form novalidate>
+    <div class='row'>
+      <div class='columns medium-6'>
+        <div class="row">
+          <div class="small-3 columns">
+            <label>Meet Title <small class='required'>*</small></label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" required pattern="" />
+            <small class="error"></small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-3 columns">
+            <label>Location Name <small class='required'>*</small></label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" required pattern="" />
+            <small class="error"></small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-3 columns">
+            <label>City <small class='required'>*</small></label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" required pattern="" />
+            <small class="error"></small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-3 columns">
+            <label>Date <small class='required'>*</small></label>
+          </div>
+          <div class="small-3 columns">
+            <input type="text" required pattern="" />
+            <small class="error"></small>
+          </div>
+          <div class="small-3 columns">
+            <label>Start Time <small class='required'>*</small></label>
+          </div>
+          <div class="small-3 columns">
+            <select>
+              <option>...</option>
+            </select>
+            <small class="error"></small>
+          </div>
+        </div>
+      </div>
+      <div class='columns medium-6'>
+        <div class="row">
+          <div class="small-3 columns">
+            <label>Host <small class='required'>*</small></label>
+          </div>
+          <div class="small-6 columns">
+            <input type="text" required pattern="" />
+            <small class="error"></small>
+          </div>
+          <div class="small-3 columns">
+            <a href class="button small">Contact</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-3 columns">
+            <label>Address <small class='required'>*</small></label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" required pattern="" />
+            <small class="error"></small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-3 columns">
+            <label>State <small class='required'>*</small></label>
+          </div>
+          <div class="small-3 columns">
+            <select required>
+              <option>...</option>
+            </select>
+            <small class="error"></small>
+          </div>
+          <div class="small-3 columns">
+            <label>Zip Code</label>
+          </div>
+          <div class="small-3 columns">
+            <input type="text" pattern="" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-3 columns">
+            <label>End Date <small class='required'>*</small></label>
+          </div>
+          <div class="small-3 columns">
+            <input type="text" required pattern="" />
+            <small class="error"></small>
+          </div>
+          <div class="small-3 columns">
+            <label>End Time <small class='required'>*</small></label>
+          </div>
+          <div class="small-3 columns">
+            <select>
+              <option>...</option>
+            </select>
+            <small class="error"></small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns"><hr/></div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns text-center">
+        <a href class="button small">Save</a> <a href class="button secondary small">Cancel</a>
+      </div>
+    </div>
+  </form>
 </div>
