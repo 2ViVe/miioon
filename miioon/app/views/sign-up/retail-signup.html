@@ -293,29 +293,6 @@
     </div>
   </div>
 
-  <!-- Country -->
-  <div class="row">
-    <div class="small-3 columns">
-      <label class="right inline required" for="country">Country</label>
-    </div>
-    <div class="small-5 end columns">
-      <select required
-              name="country"
-              id="country"
-              ng-init="country = countries[0]"
-              ng-model="country"
-              ng-options="country.name for country in countries | orderBy:'name'"
-              >
-      </select>
-      <small ng-show="submitted && retailSignupForm['country'].$error.required" class="error">
-        This field is required.
-      </small>
-      <small ng-show="submitted && $shippingAddressErrors.InvalidCountry" class="error">
-        {{ $shippingAddressErrors.InvalidCountry.message }}
-      </small>
-    </div>
-  </div>
-
   <!-- State -->
   <div class="row">
     <div class="small-3 columns">
@@ -327,13 +304,35 @@
               id="state"
               ng-model="state"
               ng-options="state.name for state in country.states | orderBy:'name'"
-              >
+        >
       </select>
       <small ng-show="submitted && retailSignupForm.state.$error.required" class="error">
         This field is required.
       </small>
       <small ng-show="submitted && $shippingAddressErrors.InvalidState" class="error">
         {{ $shippingAddressErrors.InvalidState.message }}
+      </small>
+    </div>
+  </div>
+
+  <!-- Country -->
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="right inline required" for="country">Country</label>
+    </div>
+    <div class="small-5 end columns">
+      <select required
+              name="country"
+              id="country"
+              ng-model="country"
+              ng-options="country.name for country in countries | orderBy:'name'"
+              >
+      </select>
+      <small ng-show="submitted && retailSignupForm['country'].$error.required" class="error">
+        This field is required.
+      </small>
+      <small ng-show="submitted && $shippingAddressErrors.InvalidCountry" class="error">
+        {{ $shippingAddressErrors.InvalidCountry.message }}
       </small>
     </div>
   </div>
