@@ -253,6 +253,28 @@ select.secondary-item{
     }
   }
 
+  // modal
+  .reveal-modal{
+    padding:2px;
+    h2{
+      font-size: $medium-font-size;
+      background:$primary-color;
+      color:#fff;
+      margin:0;
+      padding:15px $panel-padding;
+    }
+    .close-reveal-modal{
+      color:#fff;
+      font-weight: $large-font-size;
+      top: rem-calc(18);
+      right:rem-calc(15);
+    }
+    .popup-con{
+      padding:$panel-padding;
+//      padding:20px;
+    }
+  }
+
 .row.collapse > .column, .row.collapse > .columns {
   padding-right: 2px;
 }

@@ -69,6 +69,7 @@ $font-weight-bold: bold !default;
 	$panel-border-size:0;
   $panel-margin-bottom: rem-calc(20);
   $h4-margin-bottom: rem-calc(15);
+  $panel-padding: rem-calc(20);
 
 	// table style
 
@@ -91,4 +92,3 @@ $font-weight-bold: bold !default;
   $crumb-padding:0 0 $panel-margin-bottom 0;
   $crumb-font-transform:none;
   $crumb-side-padding:rem-calc(6);
-

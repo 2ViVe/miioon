@@ -8,6 +8,7 @@ angular.module('ftoApp')
         $modal.open({
           templateUrl: 'views/party/party-invite-confirm.html',
           controller: 'PartyModalController',
+          windowClass: 'medium',
           scope: $scope
         });
       };
