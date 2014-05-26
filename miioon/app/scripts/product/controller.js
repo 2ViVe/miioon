@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('ProductController', ['$scope', 'product', 'taxons', 'Shopping', 'LocalStorage',
-    function($scope, product, taxons, Shopping, LocalStorage) {
+  .controller('ProductController', ['$scope', 'product', 'taxons', 'Shopping', 'LocalStorage', '$modal',
+    function($scope, product, taxons, Shopping, LocalStorage, $modal) {
       var updateVariant = function() {
         $scope.variant = product.getVariantByOptions({
           'Color': $scope.selectedColor,
@@ -47,7 +47,18 @@ angular.module('2ViVe')
       };
 
       $scope.addToCart = function() {
-        Shopping.add($scope.variant, $scope.quantity, product.catalogCode);
+        Shopping.add($scope.variant, $scope.quantity, product.catalogCode)
+          .success(function() {
+            $modal.open({
+              templateUrl: 'views/shopping/shopping-modal.html',
+              controller: 'ShoppingController',
+              resolve: {
+                shopping: ['Shopping', function(Shopping) {
+                  return Shopping.fetch();
+                }]
+              }
+            });
+          });
       };
 
       $scope.purchase = function() {

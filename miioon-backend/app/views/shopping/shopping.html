@@ -6,7 +6,22 @@
       </h2>
     </div>
   </div>
-  <div ng-include="'views/shopping/shopping-cart.html'"></div>
+  <div ng-include="'views/shopping/shopping-table.html'"></div>
+  <div class="row">
+    <div class="columns medium-12">
+      <button class="attenuate" ng-click="empty()">
+        Empty Cart
+      </button>
+
+      <a href="#/checkout" class="right button">
+        CHECK OUT
+      </a>
+
+      <button ng-click="continueShopping()" class="right attenuate">
+        CONTINUE SHOPPING
+      </button>
+    </div>
+  </div>
 </div>
 <div ng-if="shopping.items.length === 0">
   <div class="row">

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('ShoppingController', ['$scope', 'shopping',
-    function($scope, shopping) {
+  .controller('ShoppingController', ['$scope', 'shopping', '$modalInstance',
+    function($scope, shopping, $modalInstance) {
       $scope.shopping = shopping;
 
       $scope.update = function() {
@@ -29,6 +29,10 @@ angular.module('2ViVe')
 
       $scope.continueShopping = function() {
         shopping.continueShopping();
+      };
+
+      $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
       };
     }
   ]);

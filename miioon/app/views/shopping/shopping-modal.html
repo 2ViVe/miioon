@@ -2,22 +2,18 @@
   <div class="row">
     <div class="columns medium-12">
       <h2 class="shopping-title">
-        Your Shopping Cart
+        Add to cart successful
       </h2>
     </div>
   </div>
   <div ng-include="'views/shopping/shopping-table.html'"></div>
   <div class="row">
     <div class="columns medium-12">
-      <button class="attenuate" ng-click="empty()">
-        Empty Cart
-      </button>
-
-      <a href="#/checkout" ng-click="cancel()" class="right button">
+      <a href="#/checkout" class="right button">
         CHECK OUT
       </a>
 
-      <button ng-click="continueShopping()" class="right attenuate">
+      <button ng-click="cancel()" class="right attenuate">
         CONTINUE SHOPPING
       </button>
     </div>
@@ -36,3 +32,4 @@
     </div>
   </div>
 </div>
+<a class="close-reveal-modal" ng-click="cancel()">&#215;</a>
