@@ -13,5 +13,6 @@ angular.module('miioonApp', [
   'duScroll',
   'ipCookie',
 
-  'miioon/report'
+  'miioon/report',
+  'miioon.shopping'
 ]);

@@ -85,15 +85,6 @@ angular.module('miioonApp')
         templateUrl: 'views/gift/gift-checkout.html',
         controller: 'GiftCheckoutController'
       })
-      .when('/shopping', {
-        templateUrl: 'views/shopping.html',
-        controller: 'ShoppingController',
-        resolve: {
-          shopping: ['Shopping', function(Shopping) {
-            return Shopping.fetch();
-          }]
-        }
-      })
       .when('/t-c', {
         templateUrl: 'views/t-c.html'
       })

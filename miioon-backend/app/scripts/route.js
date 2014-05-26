@@ -111,15 +111,6 @@ angular.module('miioonApp')
           }]
         }
       })
-      .when('/shopping', {
-        templateUrl: 'views/shopping.html',
-        controller: 'ShoppingController',
-        resolve: {
-          shopping: ['Shopping', function(Shopping) {
-            return Shopping.fetch();
-          }]
-        }
-      })
       .when('/report/orders', {
         templateUrl: 'views/report/order.html',
         controller: 'OrderReportController',

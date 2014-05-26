@@ -16,5 +16,6 @@ angular.module('miioonApp', [
   'ipCookie',
    // apps
   'miioon/checkout',
-  'miioon/gift'
+  'miioon/gift',
+  'miioon.shopping'
 ]);

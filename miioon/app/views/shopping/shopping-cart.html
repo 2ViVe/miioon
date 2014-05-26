@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="columns medium-12">
+    <table class="shopping-table">
+      <thead>
+      <tr>
+        <th class="text-left">
+          CART ITEMS
+        </th>
+        <th>
+          QTY
+        </th>
+        <th>
+          ITEM PRICE
+        </th>
+        <th>
+          ITEM TOTAL
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="item in shopping.items | orderBy: 'variant-id' ">
+        <td class="cart-item text-left">
+          <img ng-src="{{item.data.images[0] | imageSize:'small' }}" alt="{{item.data.name}}"/>
+          <a ng-href="#/product/{{item.data.productId}}" class="product-name">
+            {{item.data.name}}
+          </a>
+          <ul class="item-info medium-font">
+            <li>
+              SKU: {{item.data.sku}}
+            </li>
+          </ul>
+          <a ng-click="remove(item)" class="primary-color small-font remove-item">x Remove</a>
+        </td>
+        <td class="quantity">
+          <input type="number" ng-model="item.quantity"/> <br/>
+          <a ng-click="update()">Update</a>
+        </td>
+        <td>
+          £{{item.data.price | price}}
+        </td>
+        <td>
+          £{{item.data.price * item.quantity | price}}
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="3">
+          Grand Total:
+        </td>
+        <td class="primary-color">
+          £{{GrandTotal() | price}}
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="columns medium-12">
+    <button class="attenuate" ng-click="empty()">
+      Empty Cart
+    </button>
+
+    <a href="#/checkout" class="right button">
+      CHECK OUT
+    </a>
+
+    <button ng-click="continueShopping()" class="right attenuate">
+      CONTINUE SHOPPING
+    </button>
+  </div>
+</div>
