@@ -110,10 +110,13 @@ angular.module('miioonApp')
         templateUrl: 'views/checkout/all.html',
         controller: 'CheckoutController',
         resolve: {
-          order: ['Shopping', 'Order',
-            function(Shopping, Order) {
+          order: ['Shopping', 'Order', '$location',
+            function(Shopping, Order, $location) {
               return Shopping.fetch().then(function(shopping) {
-                return Order.checkout(shopping.items);
+                return Order.checkout(shopping.items)
+                  .catch(function() {
+                    $location.path('/signin');
+                  });
               });
             }]
         }

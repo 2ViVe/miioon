@@ -1,0 +1,96 @@
+<div ng-form name="accountForm">
+  <div class='row'>
+    <div class='medium-12 columns'>
+      <h3>Account Information</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-4 columns">
+      <label class="inline" for="login">Username
+        <small class='required'>*</small>
+      </label>
+    </div>
+    <div class="medium-8 columns">
+      <input type="text"
+             required
+             ng-model="account.login"
+             id="login"
+             name="login">
+      <small ng-show="submitted && accountForm.login.$error.required" class="error">
+        This field is required.
+      </small>
+      <small ng-show="errors.InvalidLogin" class="error">
+        {{ errors.InvalidLogin }}
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='medium-4 columns'>
+      <label class="inline" for="password">Password
+        <small class='required'>*</small>
+      </label>
+    </div>
+    <div class='medium-8 columns'>
+      <input type="password"
+             required
+             id="password"
+             ng-model="account.password"
+             ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/"
+              >
+      <small ng-show="accountForm.password.$error.required" class="error">
+        Password should include at least one number, one uppercase, one lowercase and more than 6 characters.
+      </small>
+      <small ng-show="accountForm.password.$error.pattern" class="error">
+        Password should include at least one number, one uppercase, one lowercase and more than 6 characters.
+      </small>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class='medium-4 columns'>
+      <label class="inline" for="confirmPassword">Password Confirmation
+        <small class='required'>*</small>
+      </label>
+    </div>
+    <div class='medium-8 columns'>
+      <input type="password"
+             required
+             id="confirmPassword"
+             name="confirmPassword"
+             ng-model="confirmPassword"
+             ui-validate="'$value==account.password'"
+             ui-validate-watch="'account.password'"
+             >
+      <small ng-show="accountForm.confirmPassword.$error.validator" class="error">
+        Passwords must match.
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="medium-4 columns">
+      <label for="email" class="inline">Email Address
+        <small class='required'>*</small>
+      </label>
+    </div>
+
+    <div class="medium-8 end columns">
+      <input type="email" required
+             id="email" name="email"
+             ng-model="account.email"
+              />
+      <small ng-show="submitted && (accountForm.email.$error.required || accountForm.email.$error.email)" class="error">
+        A valid email address is required.
+      </small>
+      <small ng-show="errors.InvalidEmail" class="error">
+        {{ errors.InvalidEmail }}
+      </small>
+
+    </div>
+
+  </div>
+</div>

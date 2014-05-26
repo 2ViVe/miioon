@@ -1,0 +1,32 @@
+<div ng-form name="sponsorForm">
+  <div class='row'>
+    <div class='medium-12 columns'>
+      <h3>Sponsor Information</h3>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="small-4 columns">
+      <label class="inline" for="sponsor">Sponsor ID</label>
+    </div>
+    <div class="small-8 end columns">
+      <input type="text"
+             id="sponsor" name="sponsor"
+             ng-model="account.sponsor"
+             data-sponsor-validator
+             data-sponsor-name="sponsorName"
+             data-sponsor-validator-error-msg="$errorMessages['sponsor']"
+              />
+
+      <small ng-show="sponsorForm.sponsor.$error.sponsorError" class="error">
+        {{ $errorMessages.sponsor }}
+      </small>
+    </div>
+
+    <div class="small-4 columns input-description unimportant-text" ng-show="sponsorName">
+      Sponsor Name: {{ sponsorName }}
+    </div>
+
+  </div>
+</div>
