@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('miioonApp', [
+angular.module('ftoApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngRoute',
     '2ViVe',
     'ui.utils',
+    'mm.foundation.modal',
     // apps
     'fto/signup'
   ])
@@ -77,7 +78,11 @@ angular.module('miioonApp', [
         templateUrl: 'views/party/party-details.html'
       })
       .when('/party/party-view-invitation', {
-        templateUrl: 'views/party/party-view-invitation.html'
+        templateUrl: 'views/party/party-view-invitation.html',
+        controller: 'PartyInvitationController'
+      })
+      .when('/party/party-view-invitation-closed', {
+        templateUrl: 'views/party/party-view-invitation-closed.html'
       })
       .when('/party/party-create', {
         templateUrl: 'views/party/party-create.html'

@@ -1,5 +1,13 @@
 <div class='party-container'>
   <div class='row'>
+    <div class="small-12 columns">
+      <ul class="breadcrumbs">
+        <li><a href="#">My Pawty</a></li>
+        <li class="current"><a href="#">Create a Pawty</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class='row'>
     <div class='small-12 columns party-create-slider'>
       <div class='party-panel block-margin-bottom'>
         <h4>Select a Invitation Theme</h4>
@@ -14,114 +22,12 @@
       <h4 class="primary-color">Pawty Details</h4>
     </div>
   </div>
-  <!--
-  <form novalidate>
-    <div class='row'>
-      <div class='columns medium-12'>
-        <div class="row">
-          <div class="small-1 columns">
-            <label>Meet Title <small class='required'>*</small></label>
-          </div>
-          <div class="small-4 columns">
-            <input type="text" required pattern="" />
-            <small class="error">This information is required.</small>
-          </div>
-          <div class="small-1 columns">
-            <label>Host <small class='required'>*</small></label>
-          </div>
-          <div class="small-3 columns">
-            <input type="text" required pattern="" />
-            <small class="error">This information is required.</small>
-          </div>
-          <div class="small-1 columns">
-            <a href class="button small">Contact</a>
-          </div>
-        </div>
-        <div class="row">
-          <div class="small-1 columns">
-            <label>Location Name <small class='required'>*</small></label>
-          </div>
-          <div class="small-4 columns">
-            <input type="text" required pattern="" />
-            <small class="error">This information is required.</small>
-          </div>
-          <div class="small-1 columns">
-            <label>Address <small class='required'>*</small></label>
-          </div>
-          <div class="small-4 columns">
-            <input type="text" required pattern="" />
-            <small class="error">This information is required.</small>
-          </div>
-        </div>
-        <div class="row">
-          <div class="small-1 columns">
-            <label>City <small class='required'>*</small></label>
-          </div>
-          <div class="small-4 columns">
-            <input type="text" required pattern="" />
-            <small class="error">This information is required.</small>
-          </div>
-          <div class="small-1 columns">
-            <label>State <small class='required'>*</small></label>
-          </div>
-          <div class="small-2 columns">
-            <select>
-              <option>...</option>
-            </select>
-            <small class="error">This information is required.</small>
-          </div>
-          <div class="small-1 columns">
-            <label>Zip Code <small class='required'>*</small></label>
-          </div>
-          <div class="small-2 columns">
-            <input type="text" required pattern="" />
-            <small class="error">This information is required.</small>
-          </div>
-        </div>
-        <div class="row">
-          <div class="small-1 columns">
-            <label>Date <small class='required'>*</small></label>
-          </div>
-          <div class="small-2 columns">
-            <input type="text" required pattern="" />
-            <small class="error">This information is required.</small>
-          </div>
-          <div class="small-1 columns">
-            <label>Start Time <small class='required'>*</small></label>
-          </div>
-          <div class="small-2 columns">
-            <select>
-              <option>...</option>
-            </select>
-            <small class="error">This information is required.</small>
-          </div>
-          <div class="small-1 columns">
-            <label>End Date <small class='required'>*</small></label>
-          </div>
-          <div class="small-2 columns">
-            <input type="text" required pattern="" />
-            <small class="error">This information is required.</small>
-          </div>
-          <div class="small-1 columns">
-            <label>End Time <small class='required'>*</small></label>
-          </div>
-          <div class="small-2 columns">
-            <select>
-              <option>...</option>
-            </select>
-            <small class="error">This information is required.</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-  -->
-  <form novalidate>
+  <form novalidate class="party-create-form">
     <div class='row'>
       <div class='columns medium-6'>
         <div class="row">
           <div class="small-3 columns">
-            <label>Meet Title <small class='required'>*</small></label>
+            <label class="text-right">Meet Title <small class='required'>*</small></label>
           </div>
           <div class="small-9 columns">
             <input type="text" required pattern="" />
@@ -130,7 +36,7 @@
         </div>
         <div class="row">
           <div class="small-3 columns">
-            <label>Location Name <small class='required'>*</small></label>
+            <label class="text-right">Location Name <small class='required'>*</small></label>
           </div>
           <div class="small-9 columns">
             <input type="text" required pattern="" />
@@ -139,7 +45,7 @@
         </div>
         <div class="row">
           <div class="small-3 columns">
-            <label>City <small class='required'>*</small></label>
+            <label class="text-right">City <small class='required'>*</small></label>
           </div>
           <div class="small-9 columns">
             <input type="text" required pattern="" />
@@ -148,14 +54,14 @@
         </div>
         <div class="row">
           <div class="small-3 columns">
-            <label>Date <small class='required'>*</small></label>
+            <label class="text-right">Date <small class='required'>*</small></label>
           </div>
           <div class="small-3 columns">
             <input type="text" required pattern="" />
             <small class="error"></small>
           </div>
           <div class="small-3 columns">
-            <label>Start Time <small class='required'>*</small></label>
+            <label class="text-right">Start Time <small class='required'>*</small></label>
           </div>
           <div class="small-3 columns">
             <select>
@@ -168,7 +74,7 @@
       <div class='columns medium-6'>
         <div class="row">
           <div class="small-3 columns">
-            <label>Host <small class='required'>*</small></label>
+            <label class="text-right">Host <small class='required'>*</small></label>
           </div>
           <div class="small-6 columns">
             <input type="text" required pattern="" />
@@ -180,7 +86,7 @@
         </div>
         <div class="row">
           <div class="small-3 columns">
-            <label>Address <small class='required'>*</small></label>
+            <label class="text-right">Address <small class='required'>*</small></label>
           </div>
           <div class="small-9 columns">
             <input type="text" required pattern="" />
@@ -189,7 +95,7 @@
         </div>
         <div class="row">
           <div class="small-3 columns">
-            <label>State <small class='required'>*</small></label>
+            <label class="text-right">State <small class='required'>*</small></label>
           </div>
           <div class="small-3 columns">
             <select required>
@@ -198,7 +104,7 @@
             <small class="error"></small>
           </div>
           <div class="small-3 columns">
-            <label>Zip Code</label>
+            <label class="text-right">Zip Code</label>
           </div>
           <div class="small-3 columns">
             <input type="text" pattern="" />
@@ -206,14 +112,14 @@
         </div>
         <div class="row">
           <div class="small-3 columns">
-            <label>End Date <small class='required'>*</small></label>
+            <label class="text-right">End Date <small class='required'>*</small></label>
           </div>
           <div class="small-3 columns">
             <input type="text" required pattern="" />
             <small class="error"></small>
           </div>
           <div class="small-3 columns">
-            <label>End Time <small class='required'>*</small></label>
+            <label class="text-right">End Time <small class='required'>*</small></label>
           </div>
           <div class="small-3 columns">
             <select>

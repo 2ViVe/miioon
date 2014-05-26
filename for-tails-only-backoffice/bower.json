@@ -13,6 +13,7 @@
     "unslider": "*",
     "angular-ui-utils": "bower",
     "font-awesome": "~4.0.3",
+    "angular-mm-foundation": "*",
     "2ViVe": "git@github.com:2ViVe/frontend-modules.git"
   },
   "devDependencies": {

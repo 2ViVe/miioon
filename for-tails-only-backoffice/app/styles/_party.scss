@@ -387,6 +387,17 @@
     }
   }
 
+  //party create page
+  .party-create-form{
+    margin-top:$panel-margin-bottom;
+    hr{
+      padding-bottom:$panel-margin-bottom;
+    }
+    & > row{
+      margin-bottom:$panel-margin-bottom;
+    }
+  }
+
 }
 
 
