@@ -4,7 +4,11 @@
       <div class="row">
         <h2 class="small-12 columns">Create Distributor</h2>
       </div>
-
+      <div class="row" ng-if="$errors.InvalidAddress">
+        <span class="error">
+          {{ $errors.InvalidAddress }}
+        </span>
+      </div>
       <div data-sponsor-panel
            data-account="account"></div>
 
