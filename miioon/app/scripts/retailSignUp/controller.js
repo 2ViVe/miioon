@@ -12,9 +12,9 @@ angular.module('2ViVe')
     'LocalStorage',
     'countries',
     function($scope, $location, Registration, Address, User, Shopping, Taxons, LocalStorage, countries) {
-      $scope.countries = countries;
+      $scope.countries = countries.data;
+      $scope.country = countries.defaultCountry();
       $scope.$errorMessages = {};
-      $scope.country = {};
       $scope.state = {};
 
       function getShippingAddress() {

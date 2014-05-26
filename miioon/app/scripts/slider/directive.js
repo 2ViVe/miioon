@@ -8,7 +8,8 @@ angular.module('2ViVe')
       link: function(scope, element) {
         angular.element(element).unslider({
           dots: true,
-          autoplay: true
+          autoplay: true,
+          delay: 7000
         });
       }
     };
