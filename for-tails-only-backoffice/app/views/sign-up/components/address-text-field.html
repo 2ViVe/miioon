@@ -1,6 +1,6 @@
 <div class="row">
   <div class="medium-4 small-12 columns">
-    <label class="inline" for="{{ addressType() }}-{{ name }}">{{ label }}</label>
+    <label ng-class="{required: required}" class="inline" for="{{ addressType() }}-{{ name }}">{{ label }}</label>
   </div>
   <div class="medium-8 small-12 columns" ng-transclude>
   </div>

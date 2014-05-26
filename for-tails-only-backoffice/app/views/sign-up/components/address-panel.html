@@ -14,6 +14,7 @@
        data-label="First Name"
        data-address-type="addressType"
        data-name="firstName"
+       data-required="true"
        >
     <input type="text"
            required
@@ -31,7 +32,6 @@
        data-name="middleName"
           >
     <input type="text"
-           required
            id="{{addressType}}-middleName"
            name="middleName"
            ng-model="address.middleName"
@@ -45,6 +45,7 @@
        data-label="Last Name"
        data-address-type="addressType"
        data-name="lastName"
+       data-required="true"
        >
       <input type="text"
              required
@@ -64,6 +65,7 @@
        data-label="Address Line 1"
        data-address-type="addressType"
        data-name="addressLineOne"
+       data-required="true"
        >
     <input type="text" required
            id="{{addressType}}-addressLineOne"
@@ -92,6 +94,7 @@
        data-label="City"
        data-address-type="addressType"
        data-name="city"
+       data-required="true"
           >
     <input type="text" required
            id="{{addressType}}-city"
@@ -106,6 +109,7 @@
        data-label="Country"
        data-address-type="addressType"
        data-name="country"
+       data-required="true"
           >
     <select required id="{{addressType}}-AddrCountry"
             name="addrCountry"
@@ -126,6 +130,7 @@
        data-address-type="addressType"
        data-name="state"
        ng-if="address.country"
+       data-required="true"
        >
     <select id="{{addressType}}-AddrState"
             name="addrState"
@@ -145,8 +150,9 @@
        data-label="Zip"
        data-address-type="addressType"
        data-name="zip"
+       data-required="true"
        >
-    <input type="text" id="{{addressType}}-AddrZip" name="addrZip" ng-model="address.zip"
+    <input type="text" required="" id="{{addressType}}-AddrZip" name="addrZip" ng-model="address.zip"
            placeholder="click to edit ... ">
     <small ng-show="form.addrZip.$error.required" class="error">
       This field is required.
@@ -160,11 +166,13 @@
        data-label="Phone"
        data-address-type="addressType"
        data-name="phone"
+       data-required="true"
        >
     <input type="text"
            id="{{addressType}}-AddrHomePhone"
            name="addrHomePhone"
            ng-model="address.phone"
+           required
            placeholder="click to edit ... ">
     <small class="error" ng-show="address.errors.phone">
       {{ address.errors.phone }}

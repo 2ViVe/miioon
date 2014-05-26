@@ -19,9 +19,9 @@ button,
   }
 }
 
-.required {
+.required:after {
+  content: " *";
   color:#F64F99;
-  font-size: 100%;
 }
 
 input[type="text"],

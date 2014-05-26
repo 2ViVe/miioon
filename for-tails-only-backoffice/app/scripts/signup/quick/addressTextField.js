@@ -11,7 +11,8 @@ angular
       scope: {
         addressType: '&',
         name: '@',
-        label: '@'
+        label: '@',
+        required: '@'
       },
       link: function(scope, element) {
       }
