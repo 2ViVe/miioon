@@ -6,7 +6,11 @@ angular.module('2ViVe')
       var goToPreviousPath = function() {
         var pathAfterLogin = LocalStorage.getPathAfterLogin();
         LocalStorage.removePathAfterLogin();
-        UrlHandler.goToBackOffice(pathAfterLogin);
+        if (User.data.roleCode === 'D') {
+          UrlHandler.goToBackOffice(pathAfterLogin);
+        } else {
+          UrlHandler.goToRetailSite(pathAfterLogin);
+        }
       };
 
       $scope.isRemember = false;
