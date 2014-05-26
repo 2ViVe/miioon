@@ -98,5 +98,17 @@
 
   .detail-description {
     color: $grey-dark;
+
+    ol, ul {
+      margin: 10px 25px;
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
   }
 }
