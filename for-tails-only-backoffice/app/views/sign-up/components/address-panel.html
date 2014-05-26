@@ -110,6 +110,7 @@
     <select required id="{{addressType}}-AddrCountry"
             name="addrCountry"
             ng-model="address.country"
+            ng-init="address.country = countries[0]"
             ng-options="country as country.name for country in countries | orderBy:'name'"
             ng-change=""></select>
     <small ng-show="form.addrCountry.$error.required" class="error">
