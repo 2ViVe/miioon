@@ -1,6 +1,6 @@
 angular
   .module('fto/signup')
-  .controller('QuickSignupCtrl', ['$scope', '$http', 'Dashlize', 'CamelCaseLize',function($scope, $http, dashlize, camelize) {
+  .controller('QuickSignupCtrl', ['$scope', '$http', 'Dashlize', 'CamelCaseLize', 'signupResult', '$location',function($scope, $http, dashlize, camelize, result, $location) {
     $scope.$errors = {};
 
     $scope.account = {
@@ -45,8 +45,10 @@ angular
           transformRequest: function(data) { return angular.toJson(dashlize(data)); },
           transformResponse: camelize
         })
-        .then(function() {
+        .then(function(resp) {
           $scope.isProcessing = false;
+          result.set(resp.data.response);
+          $location.path('/quick-signup/success');
         })
         .catch(function(resp) {
           if (resp.status === 400) {

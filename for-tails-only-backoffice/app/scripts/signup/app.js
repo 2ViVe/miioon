@@ -10,8 +10,14 @@ angular
     'ui.utils'
   ])
   .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/quick-signup', {
-      templateUrl: 'views/sign-up/quick-signup.html',
-      controller: 'QuickSignupCtrl'
-    });
+    $routeProvider
+      .when('/quick-signup', {
+        templateUrl: 'views/sign-up/quick-signup.html',
+        controller: 'QuickSignupCtrl'
+      })
+      .when('/quick-signup/success', {
+        templateUrl: 'views/sign-up/quick-signup-success.html',
+        controller: 'SignupSuccessCtrl',
+        controllerAs: 'signup'
+      });
   }]);
