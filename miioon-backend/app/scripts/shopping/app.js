@@ -7,7 +7,8 @@ angular
     'ngSanitize',
     'ngRoute',
     '2ViVe',
-    'ipCookie'
+    'ipCookie',
+    'mm.foundation.modal'
   ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('miioon.shopping')
-  .controller('ShoppingController', ['$scope', 'shopping',
-    function($scope, shopping) {
+  .controller('ShoppingModalController', ['$scope', 'shopping', '$modalInstance',
+    function($scope, shopping, $modalInstance) {
       $scope.shopping = shopping;
 
       $scope.update = function() {
@@ -29,6 +29,10 @@ angular.module('miioon.shopping')
 
       $scope.continueShopping = function() {
         shopping.continueShopping();
+      };
+
+      $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
       };
     }
   ]);

@@ -51,7 +51,7 @@ angular.module('2ViVe')
           .success(function() {
             $modal.open({
               templateUrl: 'views/shopping/shopping-modal.html',
-              controller: 'ShoppingController',
+              controller: 'ShoppingModalController',
               resolve: {
                 shopping: ['Shopping', function(Shopping) {
                   return Shopping.fetch();
