@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ftoApp')
+angular.module('fto')
   //for party view invitation page
   .controller('PartyInvitationController', ['$scope', '$modal',
     function($scope, $modal) {

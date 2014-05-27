@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ftoApp', [
+angular.module('fto', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
