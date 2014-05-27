@@ -33,13 +33,13 @@
     "karma-ng-html2js-preprocessor": "~0.1.0",
     "karma-ng-scenario": "~0.1.0",
     "karma-jasmine": "~0.1.5",
-    "karma-chrome-launcher": "~0.1.2"
+    "karma-chrome-launcher": "~0.1.2",
+    "2ViVe": "git+ssh://git@github.com:2ViVe/frontend-automation.git"
   },
   "engines": {
     "node": ">=0.8.0"
   },
   "scripts": {
-    "test": "grunt test",
-    "preinstall": "npm install ../components/grunt-tasks"
+    "test": "grunt test"
   }
 }

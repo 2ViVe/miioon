@@ -27,23 +27,23 @@ module.exports = function(grunt) {
 
     '2ViVe': grunt.file.readJSON('grunt.json'),
 
-    watch: require('grunt-tasks/watch'),
-    connect: require('grunt-tasks/connect'),
-    jshint: require('grunt-tasks/jshint'),
-    clean: require('grunt-tasks/clean'),
-    autoprefixer: require('grunt-tasks/autoprefixer'),
-    bowerInstall: require('grunt-tasks/bowerInstall'),
-    compass: require('grunt-tasks/compass'),
-    rev: require('grunt-tasks/rev'),
-    useminPrepare: require('grunt-tasks/useminPrepare'),
-    usemin: require('grunt-tasks/usemin'),
-    imagemin: require('grunt-tasks/imagemin'),
-    svgmin: require('grunt-tasks/svgmin'),
-    htmlmin: require('grunt-tasks/htmlmin'),
-    ngmin: require('grunt-tasks/ngmin'),
-    cdnify: require('grunt-tasks/cdnify'),
-    copy: require('grunt-tasks/copy'),
-    concurrent: require('grunt-tasks/concurrent'),
+    watch: require('2ViVe/grunt-tasks/watch'),
+    connect: require('2ViVe/grunt-tasks/connect'),
+    jshint: require('2ViVe/grunt-tasks/jshint'),
+    clean: require('2ViVe/grunt-tasks/clean'),
+    autoprefixer: require('2ViVe/grunt-tasks/autoprefixer'),
+    bowerInstall: require('2ViVe/grunt-tasks/bowerInstall'),
+    compass: require('2ViVe/grunt-tasks/compass'),
+    rev: require('2ViVe/grunt-tasks/rev'),
+    useminPrepare: require('2ViVe/grunt-tasks/useminPrepare'),
+    usemin: require('2ViVe/grunt-tasks/usemin'),
+    imagemin: require('2ViVe/grunt-tasks/imagemin'),
+    svgmin: require('2ViVe/grunt-tasks/svgmin'),
+    htmlmin: require('2ViVe/grunt-tasks/htmlmin'),
+    ngmin: require('2ViVe/grunt-tasks/ngmin'),
+    cdnify: require('2ViVe/grunt-tasks/cdnify'),
+    copy: require('2ViVe/grunt-tasks/copy'),
+    concurrent: require('2ViVe/grunt-tasks/concurrent'),
 
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
     //   dist: {}
     // },
 
-    karma: require('grunt-tasks/karma')
+    karma: require('2ViVe/grunt-tasks/karma')
   });
 
   grunt.registerTask('proxy', function(target) {
