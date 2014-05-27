@@ -1,5 +1,5 @@
 'use strict';
-angular.module('2ViVe')
+angular.module('fto/signup')
   .controller('SignUpController', ['$scope', '$routeParams', '$location',
     function($scope, $routeParams, $location) {
       $scope.stepNumber = $routeParams.stepNumber;

@@ -3,13 +3,15 @@
 angular.module('2ViVe', []);
 
 angular.module('miioonApp', [
-    'ngCookies',
-    'ngResource',
-    'ngSanitize',
-    'ngRoute',
-    '2ViVe',
-    'ui.utils'
-  ])
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'ngRoute',
+  '2ViVe',
+  'ui.utils',
+
+  'fto/signup'
+])
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
@@ -18,13 +20,6 @@ angular.module('miioonApp', [
       .when('/signin', {
         templateUrl: 'views/sign-in.html',
         controller: 'SignInController'
-      })
-      .when('/signup', {
-        redirectTo: '/signup'
-      })
-      .when('/signup/:stepNumber', {
-        templateUrl: 'views/sign-up/all.html',
-        controller: 'SignUpController'
       })
       .when('/retail-signup', {
         templateUrl: 'views/sign-up/retail-signup.html'
