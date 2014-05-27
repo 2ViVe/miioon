@@ -1,8 +1,6 @@
 .products {
 
   .products-sidebar{
-    padding-left:0;
-    padding-right:0;
     dl{
       dt{
         color:$primary-color;
@@ -14,7 +12,7 @@
       }
       dd{
         margin-bottom: rem-calc(8);
-        font-size: rem-calc(12);
+        font-size: $small-font-size;
         a{
           color:$grey-darker;
         }
@@ -23,41 +21,32 @@
   }
 
   .products-list{
-    ul.products-list-wrap{
-      margin-bottom: rem-calc(20);
-      li{
-        float:left;
-        margin-right:15px;
-        margin-bottom: 15px;
-        .product-img{
-          position:relative;
-          border:1px solid $grey-border;
-          vertical-align: middle;
-          a{
-            display:table-cell;
-            vertical-align: middle;
-            height:220px;
-            width: 164px;
-            img{
-              vertical-align: middle;
-              max-width: 164px;
-              max-height: 220px;
-            } 
-          }
-          a.button{
-            position:absolute;
-            top:50%;
-            left:30px;
-            width:auto;
-            height:auto;
-            z-index: 2;
-          }
+    margin-bottom: rem-calc(20);
+    li{
+      .product-img{
+        position:relative;
+        border:1px solid $grey-border;
+        display:table-cell;
+        vertical-align: middle;
+        height:220px;
+
+        img{
+          max-height: 220px;
+          width:100%;
+        }
+
+        .button{
+          position:absolute;
+          top:50%;
+          left:50%;
+          margin-left: -51px;
+          z-index: 2;
         }
       }
     }
     .product-name{
       color:$grey-darker;
-      font-size: rem-calc(12);
+      font-size: $small-font-size;
       margin: rem-calc(10) 0 rem-calc(20) 0;
     }
     .product-price{
@@ -80,12 +69,12 @@
       .product-id{
         color:$grey;
         margin-bottom: 6px;
-        font-size: rem-calc(12);
+        font-size: $small-font-size;
         line-height: 1;
       }
       .product-size{
         margin-bottom: 6px;
-        font-size: rem-calc(12);
+        font-size: $small-font-size;
         line-height: 1;
       }
     }
@@ -97,13 +86,10 @@
       padding:rem-calc(10) 0;
       font-size: rem-calc(14);
       font-style: italic;
-      .unimportant-text{
-        //margin-top: 10px;
-      }
     }
 
   .products-cart{
-    
+
     .product-cart-chekout-left{
       font-size: rem-calc(14);
       color:$grey;
@@ -118,112 +104,52 @@
   .products-detail-info{
     margin-bottom: rem-calc(20);
     h3{
-      font-size: rem-calc(18);
-      &.subheader{
-        font-size:rem-calc(14);
+      font-size: $large-font-size;
+      color:$primary-color;
+      small{
         color:$grey-darker;
       }
     }
     h6{
-      font-size: rem-calc(12);
+      font-size: $small-font-size;
       color:$grey;
       margin-bottom: rem-calc(5);
     }
-    /*
-    .products-detail-priceList{
-      li{
-        color:#fff;
+
+    .options {
+      @include clearfix;
+
+      li {
+        float: left;
+        border: 2px solid $grey-border;
+        line-height: 26px;
+        height: 30px;
+        min-width: 30px;
         text-align: center;
-        
-        strong{
-          display:block;
-          font-size: rem-calc(16);
-        }
-        small{
-          display:block;
-          font-size: rem-calc(11);
-        }
-        .products-detail-priceList-y{
-          background: #F2D500;
-          border:1px #DBB300 solid;
-          padding:rem-calc(5) 0;
-        }
-        .products-detail-priceList-r{
-          background: #FDA1A1;
-          border:1px #E57777 solid;
-          padding:rem-calc(5) 0;
-        }
-        .products-detail-priceList-g{
-          background: #C6DC70;
-          border:1px #A8BF4E solid;
-          padding:rem-calc(5) 0;
+        margin-right: 10px;
+        cursor: pointer;
+
+        &.current {
+          border-color: $primary-color;
+          background: $primary-color;
+          color: white;
         }
       }
     }
-    */
+
+    .product-panel{
+      .product-quantity{
+        width:60px;
+      }
+    }
+
     .products-detail-price{
       display: block;
       font-size: rem-calc(22);
       margin: rem-calc(25) 0;
       color: $primary-color;
     }
-    .products-detail-quantity{
-      margin-bottom: rem-calc(15);
-      input{
-        width: rem-calc(80);
-      }
-    }
-    .products-detail-sizeList{
-      margin-bottom: rem-calc(15);
-      ul{
-        li{
-          float:left;
-          margin-right: rem-calc(10);
-          a{
-            display:block;
-            width:rem-calc(30);
-            height:rem-calc(30);
-            line-height:rem-calc(30);
-            background:#fff;
-            border:1px solid $grey-border;
-            text-align: center;
-            font-size:rem-calc(14);
-            color:$grey;
-            &:hover{
-              border-color:$primary-color;
-              text-decoration: none;
-            }
-            &.current{
-              border-color:$primary-color;
-              background:$primary-color;
-              color:#fff;
-            }
-          }
 
-        }
-      }
-    }
-    .products-detail-colorList{
-      margin-bottom: rem-calc(15);
-      ul{
-        li{
-          margin-right: rem-calc(10);
-          float:left;
-          a{
-            display:block;
-            width:rem-calc(30);
-            height:rem-calc(30);
-            &:hover{
-              border:1px solid $grey-darker;
-              text-decoration: none;
-            }
-            &.current{
-              border:1px solid $grey-darker;
-            }
-          }
-        }
-      }
-    }
     .products-detail-designList{
       margin-bottom: rem-calc(15);
       ul{
@@ -302,9 +228,11 @@
         border:1px solid $grey-border;
         background:$grey-lighter;
         margin-bottom: rem-calc(20);
+        margin-right:0;
+        margin-left:0;
         padding:rem-calc(10) rem-calc(10);
         label{
-          font-size: rem-calc(12);
+          font-size: $small-font-size;
           height: rem-calc(37);
           line-height:rem-calc(37);
         }
@@ -317,7 +245,7 @@
           color:$grey;
           margin: 0;
           padding:0;
-          font-size: rem-calc(12);
+          font-size: $small-font-size;
           height: rem-calc(20);
           line-height: rem-calc(20);
         }
@@ -348,19 +276,19 @@
       .product-id{
         color:$grey-dark;
         margin-bottom: 6px;
-        font-size: rem-calc(12);
+        font-size: $small-font-size;
         line-height: 1;
       }
       .product-size{
         margin-bottom: 6px;
-        font-size: rem-calc(12);
+        font-size: $small-font-size;
         line-height: 1;
         color: $grey;
       }
       .product-option{
         color:$grey-darker;
         margin-bottom: 6px;
-        font-size: rem-calc(12);
+        font-size: $small-font-size;
         line-height: 1;
       }
     }

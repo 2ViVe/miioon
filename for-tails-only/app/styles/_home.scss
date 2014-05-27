@@ -1,9 +1,10 @@
 .home-performance{
 	background:#C0E9E8;
-	margin:0 -20px;
+  padding:rem-calc(20);
 	h2{
 		font-size: rem-calc(30);
 		text-align: center;
+    color:$primary-color;
 	}
 	.home-performance-item{
 		padding:rem-calc(15) rem-calc(10) rem-calc(10) rem-calc(10);
@@ -15,7 +16,6 @@
 			font-size: rem-calc(18);
 			color:$primary-color;
 			height: rem-calc(77);
-
 		}
 		h3{
 			border-top:3px solid $primary-color;
@@ -95,7 +95,7 @@
 	      margin-bottom: 5px;
 	      line-height: normal;
 	      a {
-	        font-size: rem-calc(11);
+	        font-size: $tiny-font-size;
 	      }
 	    }
 	    li.authorize{

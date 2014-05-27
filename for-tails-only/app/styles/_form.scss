@@ -13,15 +13,15 @@ button,
   &.go:after {
     content: "\25BA";
     margin-left: 12px;
-    font-size: rem-calc(11);
+    font-size: $tiny-font-size;
     position: relative;
     bottom: 1px;
   }
 }
 
-.required {
+.required:after {
+  content: " *";
   color:#F64F99;
-  font-size: 100%;
 }
 
 input[type="text"],

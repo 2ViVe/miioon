@@ -1,6 +1,13 @@
 .main-navigation {
-
+  padding-left:$column-gutter/2;
+  padding-right:$column-gutter/2;
   background:#fff;
+  margin-bottom: $panel-margin-bottom;
+
+  >.row{
+    border-top: 1px solid $grey-border;
+    border-bottom: 1px solid $grey-border;
+  }
 
   .sub-taxons-container {
     display: none;
@@ -24,7 +31,7 @@
           line-height: rem-calc(25);
           color:#fff;
           font-weight: normal;
-          font-size: rem-calc(12);
+          font-size: $small-font-size;
         }
       }
     }
@@ -33,10 +40,9 @@
   }
 
   .root-taxons {
-    border-top: 1px solid $grey-border;
-    border-bottom: 1px solid $grey-border;
-    @include clearfix;
-    &>li {
+    padding-left:0;
+    padding-right:0;
+    >li {
       float: left;
       margin-right: 5px;
 
@@ -62,7 +68,6 @@
 
       >a {
         color:$base-font-color;
-        font-size: $medium-font-size;
         padding: 10px 10px;
         display: inline-block;
       }

@@ -1,8 +1,6 @@
-@import "foundation/scss/foundation/functions";
-
 $body-bg:url('../images/bg-body.jpg') transparent 0 0 repeat;
 
-$row-width:rem-calc(960);
+$fa-font-path: "/bower_components/font-awesome/fonts";
 
 $grey-lighter: #F5F5F5;
 $grey-light: #ccc;
@@ -13,14 +11,17 @@ $grey-border: #D6D7D6;
 
 $red: #EB5A3C;
 
-$base-font-size: 16px;
+$base-font-size: 14px;
 $rem-base: $base-font-size;
-$medium-font-size: rem-calc(14);
+$tiny-font-size: rem-calc(11);
+$small-font-size: rem-calc(12);
+$medium-font-size: rem-calc(16);
 $large-font-size: rem-calc(18);
+$xlarge-font-size: rem-calc(20);
 $base-font-color: #333;
 $body-font-color: #333;
 
-$primary-color: #62C8C8;
+$primary-color: #6AB6AC;
 $secondary-color: #4EACDB;
 
 $h2-font-size: rem-calc(26);
@@ -37,10 +38,11 @@ $button-sml: rem-calc(8);
 $button-med: rem-calc(10);
 $button-lrg: rem-calc(12);
 $button-font-med: rem-calc(14);
-$button-font-weight: bold;
+$button-font-weight: normal;
 $button-function-factor: -20%;
 $button-margin-bottom:0;
-$secondary-color:#DCDCDC;
+$button-font-color-alt:#fff;
+$secondary-color:$grey;
 
 $cursor-default-value: auto;
 
@@ -51,18 +53,42 @@ $list-nested-margin: 0;
 
 $table-border-size: 0;
 $table-head-font-size: rem-calc(18);
-$table-head-bg: #EEEEEE;
+$table-head-bg: #eee;
 $table-even-row-bg: $grey-light;
 
 // common style
 $font-weight-bold: bold !default;
 
 // foundation style reset
+
+  //grid
+  $column-gutter: rem-calc(30);
+
 	// panel style
 	$panel-bg:#fff;
 	$panel-border-size:0;
   $panel-margin-bottom: rem-calc(20);
+  $h4-margin-bottom: rem-calc(15);
   $panel-padding: rem-calc(20);
+
 	// table style
 
+  //type
+  $hr-border-color:$grey-border;
+  $hr-margin: rem-calc(15);
 
+  //pagination
+  $pagination-link-font-color: #fff;
+  $pagination-link-unavailable-bg-active:$grey-light;
+
+  //Breadcrumbs
+  $crumb-font-size:$small-font-size;
+  $crumb-slash-color:$grey-dark;
+  $crumb-border-size:0;
+  $crumb-slash: ">";
+  $crumb-bg:#fff;
+  $crumb-font-color:$grey-dark;
+  $crumb-font-color-current:$grey-darker;
+  $crumb-padding:0 0 $panel-margin-bottom 0;
+  $crumb-font-transform:none;
+  $crumb-side-padding:rem-calc(6);
