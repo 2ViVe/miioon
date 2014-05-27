@@ -1,4 +1,12 @@
 .party-container{
+  h3{
+    .right{
+      margin-top:4px;
+    }
+  }
+}
+
+
   .party-topbar{
     margin-bottom: $panel-margin-bottom;
     h4{
@@ -7,11 +15,7 @@
     }
   }
 
-  h3{
-    .right{
-      margin-top:4px;
-    }
-  }
+
 
   .party-panel{
     border:1px solid $grey-border;
@@ -237,61 +241,7 @@
   }
 
 
- //party table
-  table.party-list{
-    border:1px solid $grey-border;
-    tbody{
-      .party-list-textarea{
-        background:#f6f8fa;
-        textarea{
-          height:auto;
-        }
-      }
-      tr{
-        &:nth-of-type(2n){
-          background:#f6f8fa;
-        }
-        &:last-child{
-          td{
-            border-bottom:0;
-          }
-        }
-        td{
-          .party-list-members{
-            width:82px;
-            height:82px;
-            background:url("/images/party/party-list-circle.png") 50% 50% no-repeat;
-            text-align:center;
-            margin:0 auto;
-            strong{
-              display:block;
-              font-size:$xlarge-font-size;
-              color:$primary-color;
-              padding-top:22px;
-            }
-            small{
-              color:$grey-darker;
-              font-size:$tiny-font-size;
-            }
-          }
-          &.party-list-photo{
-            text-align: center;
-            vertical-align: top;
-          }
-          &.party-list-info{
-            p{
-              font-size:$small-font-size;
-              color:$grey-darker;
-            }
-            a{
-              color:$grey-darker;
-              text-decoration: underline;
-            }
-          }
-        }
-      }
-    }
-  }
+
 
   .party-none{
     color:$grey-darker;
@@ -398,6 +348,63 @@
     }
   }
 
+//party table
+table.party-list{
+  border:1px solid $grey-border;
+  tbody{
+    .party-list-textarea{
+      background:#f6f8fa;
+      textarea{
+        height:auto;
+      }
+    }
+    tr{
+      &:nth-of-type(2n){
+        background:#f6f8fa;
+      }
+      &:last-child{
+        td{
+          border-bottom:0;
+        }
+      }
+      td{
+        .party-list-members{
+          width:82px;
+          height:82px;
+          background:url("/images/party/party-list-circle.png") 50% 50% no-repeat;
+          text-align:center;
+          margin:0 auto;
+          strong{
+            display:block;
+            font-size:$xlarge-font-size;
+            color:$primary-color;
+            padding-top:22px;
+          }
+          small{
+            color:$grey-darker;
+            font-size:$tiny-font-size;
+          }
+        }
+        &.party-list-photo{
+          text-align: center;
+          vertical-align: top;
+        }
+        &.party-list-info{
+          p{
+            font-size:$small-font-size;
+            color:$grey-darker;
+          }
+          a{
+            color:$grey-darker;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    input[type="file"], input[type="checkbox"], input[type="radio"], select{
+      margin-bottom:0;
+    }
+  }
 }
 
 

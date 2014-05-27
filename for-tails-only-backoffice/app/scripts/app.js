@@ -72,7 +72,8 @@ angular.module('fto', [
         templateUrl: 'views/party/party-invite.html'
       })
       .when('/party/party-contact', {
-        templateUrl: 'views/party/party-contact.html'
+        templateUrl: 'views/party/party-contact.html',
+        controller: 'PartyContactController'
       })
       .when('/party/party-details', {
         templateUrl: 'views/party/party-details.html'
@@ -85,7 +86,8 @@ angular.module('fto', [
         templateUrl: 'views/party/party-view-invitation-closed.html'
       })
       .when('/party/party-create', {
-        templateUrl: 'views/party/party-create.html'
+        templateUrl: 'views/party/party-create.html',
+        controller: 'PartyCreateController'
       })
       .when('/taxon/:taxonId', {
         templateUrl: 'views/taxon.html'
