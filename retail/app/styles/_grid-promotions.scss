@@ -1,5 +1,7 @@
 .grid-promotions {
-  margin-top: 10px;
+  &.row{
+    margin-top: 10px;
+  }
 
   .first-promotion {
     padding-right: 0;
