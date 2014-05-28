@@ -1,6 +1,8 @@
 .main-navigation {
   border-top: 5px solid $grey-border;
   border-bottom: 1px solid $grey-border;
+  width:$row-width;
+  margin:0 auto;
 
   a {
     text-transform: uppercase;
