@@ -1,10 +1,9 @@
 .grid-promotions {
   &.row{
     margin-top: 10px;
-  }
-
-  img{
-    width:100%;
+    a img{
+      width:100%;
+    }
   }
 
   .first-promotion {
