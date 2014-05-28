@@ -11,18 +11,15 @@ angular.module('2ViVe')
     'Taxons',
     'LocalStorage',
     'countries',
-    'ipCookie',
-    function($scope, $location, Registration, Address, User, Shopping, Taxons, LocalStorage, countries, ipCookie) {
+    function($scope, $location, Registration, Address, User, Shopping, Taxons, LocalStorage, countries) {
       $scope.countries = countries.data;
       $scope.country = countries.defaultCountry();
       $scope.$errorMessages = {};
       $scope.state = {};
 
-      var replicateSiteOwnerCookie = ipCookie('replicate-site-owner');
+      var replicateSiteOwner = LocalStorage.getReplicateOwner();
       $scope.sponsorId = '';
-      if (replicateSiteOwnerCookie) {
-        var replicateSiteOwner = replicateSiteOwnerCookie.slice(2,replicateSiteOwnerCookie.length);
-        replicateSiteOwner = JSON.parse(replicateSiteOwner);
+      if (replicateSiteOwner) {
         $scope.sponsorId = replicateSiteOwner['distributor-id'];
       }
 

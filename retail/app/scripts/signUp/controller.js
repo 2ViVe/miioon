@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries', 'User', '$modal', 'UrlHandler', 'ipCookie',
-    function($scope, Registration, $window, countries, User, $modal, UrlHandler, ipCookie) {
+  .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries', 'User', '$modal', 'UrlHandler',
+    function($scope, Registration, $window, countries, User, $modal, UrlHandler) {
       function updateProducts(country) {
         Registration.getProducts(country.id)
           .success(function(data) {
@@ -16,12 +16,10 @@ angular.module('2ViVe')
           });
       }
 
-      var replicateSiteOwnerCookie = ipCookie('replicate-site-owner');
-      var sponsorId = '';
-      if (replicateSiteOwnerCookie) {
-        var replicateSiteOwner = replicateSiteOwnerCookie.slice(2,replicateSiteOwnerCookie.length);
-        replicateSiteOwner = JSON.parse(replicateSiteOwner);
-        sponsorId = replicateSiteOwner['distributor-id'];
+      var replicateSiteOwner = LocalStorage.getReplicateOwner();
+      $scope.sponsorId = '';
+      if (replicateSiteOwner) {
+        $scope.sponsorId = replicateSiteOwner['distributor-id'];
       }
 
       $scope.retailUrl = UrlHandler.retailUrl();
