@@ -20,6 +20,11 @@ ul {
   list-style: none;
 }
 
+.main-wrapper{
+  min-width:$row-width;
+  margin:0 auto;
+}
+
 .separator-slash,
 .separator-vertical-line {
   li {
