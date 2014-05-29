@@ -32,7 +32,7 @@ angular.module('2ViVe')
       var defaultCountry = countries.defaultCountry();
       $scope.userInfo = {
         country: defaultCountry,
-        sponsor : sponsorId
+        sponsor : $scope.sponsorId
       };
       $scope.address = {
         homeAddress: {
