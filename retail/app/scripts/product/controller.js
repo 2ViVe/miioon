@@ -14,10 +14,10 @@ angular.module('2ViVe')
       $scope.replicateOwnerLogin = replicateOwner ? replicateOwner.login : '';
 
       $scope.product = product.data;
-      $scope.colors = product.colors;
-      $scope.sizes = product.sizes;
-      $scope.selectedColor = product.colors[0];
-      $scope.selectedSize = product.sizes[0];
+      $scope.colors = product.Color;
+      $scope.sizes = product.Size;
+      $scope.selectedColor = product.Color ? product.Color[0] : null;
+      $scope.selectedSize = product.Size ? product.Size[0] : null;
       $scope.currentImage = product.data.images[0];
       updateVariant();
 
