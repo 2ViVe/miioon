@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries', 'User', '$modal', 'UrlHandler',
-    function($scope, Registration, $window, countries, User, $modal, UrlHandler) {
+  .controller('SignUpController', ['$scope', 'Registration', '$window', 'countries', 'User', '$modal', 'UrlHandler', 'LocalStorage'
+    function($scope, Registration, $window, countries, User, $modal, UrlHandler, LocalStorage) {
       function updateProducts(country) {
         Registration.getProducts(country.id)
           .success(function(data) {
