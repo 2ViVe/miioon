@@ -156,22 +156,17 @@
   }
 
   .career-3{
-  	position: relative;
-  	//background:image-url('career/career-3-1.jpg') 0 0 no-repeat;
-	//height:rem-calc(1265);
-	//min-width:rem-calc(720);
+
 	margin-bottom:rem-calc(30);
+    padding:0;
 	&.bottom-arrow:before{
 		display: none;
 	}
 	&.bottom-arrow:after{
-		top:0;
+		top:-2px;
 	}
 	.career-3-bt{
-		position: absolute;
-		bottom:7%;
-		left:43%;
-    z-index: 2;
+
 	}
   }
 
