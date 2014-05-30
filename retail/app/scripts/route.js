@@ -57,9 +57,9 @@ angular.module('miioonApp')
           }]
         }
       })
-      .when('/host', {
-        templateUrl: 'views/host.html',
-        controller: 'HostController'
+      .when('/fundraising', {
+        templateUrl: 'views/fundraising.html',
+        controller: 'FundraisingController'
       })
       .when('/press', {
         templateUrl: 'views/press.html',

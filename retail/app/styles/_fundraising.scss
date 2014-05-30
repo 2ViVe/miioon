@@ -1,4 +1,31 @@
-.host-container {
+.fundraising-container {
+  .fundraising-video {
+    margin-bottom: 0;
+  }
+  .fundraising-red {
+    background: #F26344;
+  }
+  .fundraising-pink {
+    background: #F26D77;
+  }
+  .blue-border-panel, .grey-border-panel, .pink-border-panel {
+    padding: 0;
+  }
+  .grey-border-panel {
+    border-color: $grey-light;
+    &.bottom-arrow {
+      &:before {
+        border-top-color: $grey-light;
+      }
+    }
+  }
+  .pink-border-panel {
+    &.bottom-arrow {
+      &:before {
+        border-top-color: #F26D77;
+      }
+    }
+  }
 }
 
 .blue-border-panel{
@@ -14,6 +41,12 @@
 
 .grey-border-panel{
   border:2px solid $grey-darker;
+  padding:10px;
+  margin-bottom: 25px;
+}
+
+.pink-border-panel{
+  border:2px solid #F26D77;
   padding:10px;
   margin-bottom: 25px;
 }

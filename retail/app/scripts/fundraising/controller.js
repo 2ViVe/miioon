@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('HostController', ['$scope', '$modal', function($scope, $modal) {
+  .controller('FundraisingController', ['$scope', '$modal', function($scope, $modal) {
     $scope.showMailChimp = function() {
       $modal.open({
         templateUrl: 'views/sign-up/mail-chimp.html',
