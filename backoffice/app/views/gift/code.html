@@ -5,6 +5,7 @@
       <tr>
         <th>Order Date</th>
         <th>Gift Card Code</th>
+        <th>Pin</th>
         <th>Recipient Email</th>
         <th>Gift Card Value</th>
         <th>Remaining Balance</th>
@@ -14,6 +15,7 @@
       <tr ng-repeat="giftcard in giftcodes">
         <td>{{ giftcard.purchaseDate }}</td>
         <td>{{ giftcard.code }}</td>
+        <td>{{ giftcard.pin }}</td>
         <td>{{ giftcard.recipientEmail }}</td>
         <td>{{ giftcard.amount }}</td>
         <td>{{ giftcard.balance }}</td>
