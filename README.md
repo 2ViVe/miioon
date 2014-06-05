@@ -171,3 +171,23 @@ Run `grunt watch`, and grunt will automatically generate css, check js error whe
 Open [http://site.www.dev.com:11442](http://site.www.dev.com:11442) for Retail Site
 
 Open [https://site.backoffice.dev.com:11442](https://site.backoffice.dev.com:11442) for Back Office Site.
+
+# Deployment
+
+## Enviroment
+
+To build the front-end package, we need the same enviroment as development.
+
+## Steps
+
+Both in `retail/` and `backoffice/` do:
+
+	npm install
+	bower clean cache
+	bower install
+	bower update 2ViVe
+	cp grunt.json.production grunt.json
+	grunt test
+	grunt build
+
+And the files in `dist/` can put into production Nginx.
