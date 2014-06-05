@@ -1,7 +1,14 @@
 <div class="row" ng-if="isSuccess">
   <div class="columns medium-12">
     <div data-alert class="alert-box success">
-      Resend Email to successfully.
+      Email sent to {{reciEmail}}: Successful.
+    </div>
+  </div>
+</div>
+<div class="row" ng-if="!isSuccess && isSuccess!==undefined">
+  <div class="columns medium-12">
+    <div data-alert class="alert-box alert">
+      Email sent to {{reciEmail}}: Failed.
     </div>
   </div>
 </div>
