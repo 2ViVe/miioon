@@ -12,6 +12,8 @@ angular.module('miioonApp', [
   'mm.foundation.modal',
   'duScroll',
   'ipCookie',
+  'angulartics',
+  'angulartics.google.analytics',
 
   'miioon/report',
   'miioon.shopping'

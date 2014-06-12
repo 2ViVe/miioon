@@ -14,7 +14,9 @@ angular.module('miioonApp', [
   'mm.foundation.modal',
   'chieffancypants.loadingBar',
   'ipCookie',
-   // apps
+  'angulartics',
+  'angulartics.google.analytics',
+
   'miioon/checkout',
   'miioon/gift',
   'miioon.shopping'
