@@ -21,6 +21,25 @@
     color: $grey-dark;
   }
 
+  .sign-up-h2{
+    position:relative;
+    margin-bottom:30px;
+    .sign-up-h2-link{
+      font-size:20px;
+      color:$primary-color;
+    }
+    span{
+      color:$primary-color;
+    }
+    .sign-up-h2-small{
+      position: absolute;
+      font-size:$base-font-size;
+      color:$grey-dark;
+      top:40px;
+      left:362px;
+    }
+  }
+
   label[for=is-agreed] {
     color: $base-font-color;
   }
