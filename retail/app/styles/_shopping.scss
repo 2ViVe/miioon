@@ -41,6 +41,47 @@
     }
   }
 
+  .shopping{
+    color:$grey-dark;
+    font-size:$medium-font-size;
+    .shopping-buyBt{
+      display:inline-block;
+      background:#4ad1ff;
+      border:2px #4ad1ff solid;
+      color:#fff;
+      font-size:$medium-font-size;
+      font-weight:bold;
+      padding:12px 20px;
+      border-radius:5px;
+      &:hover{
+        background:#08bfff;
+        border:2px #08bfff solid;
+      }
+    }
+    .shopping-designBt{
+      position: relative;
+      display:inline-block;
+      background:#aece67;
+      border:2px #aece67 solid;
+      color:#aece67;
+      font-size:$medium-font-size;
+      font-weight:bold;
+      padding:12px 40px 12px 20px;
+      border-radius:5px;
+      &:hover{
+        background:#aece67;
+        border:2px #aece67 solid;
+        color:#fff;
+      }
+      .design-icon{
+        position:absolute;
+        z-index: 2;
+        right:-30px;
+        top:-35px;
+      }
+    }
+  }
+
   .cart-item {
     img {
       float: left;
