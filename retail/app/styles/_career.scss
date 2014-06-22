@@ -60,11 +60,15 @@
     .starter-pack{
       position: absolute;
       display: block;
-      width:16%;
-      height: 25%;
-      bottom: 2%;
-      right: 2%;
+      width:130px;
+      height: 130px;
+      bottom: 3px;
+      right: 3px;
       z-index: 2;
+      background:url("/images/career/CUBE_ORANGE-2.png") 50% 50% no-repeat;
+      &:hover{
+        background:url("/images/career/CUBE_BLUE-2.png") 50% 50% no-repeat;
+      }
     }
   }
   .starter-pack-container{
