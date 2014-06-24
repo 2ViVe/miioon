@@ -41,6 +41,38 @@
     margin-top: 20px;
     border: 1px solid transparent;
     text-align: center;
+    &.pink-view{
+      border:3px solid #f29aa8;
+      border-radius:3px;
+      .view-made{
+        background:#f29aa8;
+      }
+    }
+    &.blue-view{
+      border:3px solid #5baedc;
+      border-radius:3px;
+      .view-made{
+        background:#5baedc;
+      }
+    }
+    &.green-view{
+      border:3px solid #b0cf67;
+      border-radius:3px;
+      .view-made{
+        background:#b0cf67;
+      }
+    }
+
+    .view-made{
+      display:block;
+      position: absolute;
+      right: 30%;
+      left: 30%;
+      top:0;
+      border-radius:3px;
+      padding:2px 5px;
+      color:#fff;
+    }
 
     img {
       max-height: 194px;
