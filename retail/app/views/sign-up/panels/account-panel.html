@@ -1,0 +1,101 @@
+<div ng-form name="accountForm">
+  <div class='row'>
+    <div class='medium-3 columns text-right'>
+      <h6>USER INFORMATION</h6>
+    </div>
+    <div class='medium-9 columns with-mail-chimp' ng-controller="MailChimpController">
+      <div class='book-a-call'>
+        <h3>REGISTER YOUR INTEREST<br/><small>And speak to our Miioon Angel</small></h3>
+        <a ng-click="showMailChimp()" class='button tiny'>BOOK A CALL</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-3 columns">
+      <label class="inline required right" for="login">Login</label>
+    </div>
+    <div class="medium-5 end columns">
+      <input type="text"
+             required
+             ng-model="account.login"
+             data-availabilities-validator="login"
+             id="login"
+             ng-pattern="/(?!^\d+$)^.+$/"
+             name="login">
+      <small ng-show="submitted && accountForm.login.$error.required" class="error">
+        This field is required.
+      </small>
+      <small ng-show="accountForm.login.$error.available" class="error">
+        Username is invalid.
+      </small>
+      <small ng-show="accountForm.login.$error.pattern" class="error">
+        Username can't be all numbers.
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='medium-3 columns'>
+      <label class="inline right required" for="password">Password</label>
+    </div>
+    <div class='medium-5 end columns'>
+      <input type="password"
+             required
+             id="password"
+             name="password"
+             ng-model="account.password"
+             ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/"
+        >
+      <small ng-show="submitted && accountForm.password.$error.required" class="error">
+        Password should include at least one number, one uppercase, one lowercase and more than 6 characters.
+      </small>
+      <small ng-show="accountForm.password.$error.pattern" class="error">
+        Password should include at least one number, one uppercase, one lowercase and more than 6 characters.
+      </small>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class='medium-3 columns'>
+      <label class="inline required right" for="confirmPassword">Password Confirmation</label>
+    </div>
+    <div class='medium-5 end columns'>
+      <input type="password"
+             required
+             id="confirmPassword"
+             name="confirmPassword"
+             ng-model="confirmPassword"
+             ui-validate="'$value==account.password'"
+             ui-validate-watch="'account.password'"
+        >
+      <small ng-show="accountForm.confirmPassword.$error.validator" class="error">
+        Passwords must match.
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="medium-3 columns">
+      <label for="email" class="inline right required">Email</label>
+    </div>
+
+    <div class="medium-5 end columns">
+      <input type="email" required
+             id="email" name="email"
+             data-availabilities-validator="email"
+             ng-model="account.email"
+        />
+      <small ng-show="submitted && (accountForm.email.$error.required || accountForm.email.$error.email)" class="error">
+        Email is invalid.
+      </small>
+      <small ng-show="accountForm.email.$error.available" class="error">
+        Email is not available.
+      </small>
+
+    </div>
+
+  </div>
+</div>

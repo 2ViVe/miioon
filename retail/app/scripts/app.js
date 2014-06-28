@@ -16,5 +16,6 @@ angular.module('miioonApp', [
   'angulartics.google.analytics',
 
   'miioon/report',
+  'miioon/signup',
   'miioon.shopping'
 ]);

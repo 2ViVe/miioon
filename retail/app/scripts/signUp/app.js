@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('miioonApp/signup', [
+  .module('miioon/signup', [
     'ngCookies',
     'ngResource',
     'ngSanitize',

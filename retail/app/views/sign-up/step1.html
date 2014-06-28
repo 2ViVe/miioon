@@ -2,11 +2,48 @@
   <div class="row">
     <h2 class="small-9 columns sign-up-h2">
       Sign up as an Miioon Angel
-      <span class="register-customer medium-font">
-        If you are only looking to shop for now. <a class="primary-link" href="#/retail-signup">Register as a customer</a>
-      </span>
+      <span class="register-customer medium-font">If you are only looking to shop for now. <a class="primary-link" href="#/retail-signup">Register as a customer</a></span>
     </h2>
-    <div class="columns small-3" ng-include="'views/sign-up/steps-navigation.html'"></div>
+    <!--<div class="columns small-3" ng-include="'views/sign-up/steps-navigation.html'"></div>-->
+  </div>
+  <!--<div class="row">-->
+    <!--<p class="register-customer small-12 columns medium-font">-->
+      <!--Do you just want to shop? <a class="primary-link" href="#/retail-signup">Register as a customer</a>-->
+    <!--</p>-->
+  <!--</div>-->
+  <!--<div ng-include="'views/sign-up/user-information.html'"></div>-->
+  <div data-sponsor-panel
+       data-account="account"
+       data-required="true"
+       data-submitted="submitted"
+       data-no-search-handler="true"
+       data-tpl="views/sign-up/panels/sponsor-panel.html"></div>
+
+  <div data-account-panel
+       data-account="account"
+       data-submitted="submitted"
+       data-tpl="views/sign-up/panels/account-panel.html"></div>
+
+
+  <div class="row">
+    <div class='medium-3 columns'>
+      <label class="required right inline" for="account-country">Country</label>
+    </div>
+
+    <div class='medium-5 columns end'>
+      <select
+        required
+        id="account-country"
+        name="account-country"
+        ng-model="account.country"
+        ng-options="country.name for country in countries"
+        ng-change="registrationCountryChange(account.country)">>
+      </select>
+
+      <small ng-show="submitted && step['account-country'].$error.required" class="error">
+        This field is required.
+      </small>
+    </div>
   </div>
   <div ng-include="'views/sign-up/user-information.html'"></div>
   <div class="row">

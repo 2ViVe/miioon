@@ -21,8 +21,8 @@
     "angular-animate": "~1.2.16",
     "elevatezoom": "git@github.com:zation/elevatezoom.git#7b2ed520979e62fddbb1f483f1c0bf162bf60ff8",
     "angular-cookie": "~4.0.0",
-    "2ViVe": "git@github.com:2ViVe/frontend-modules.git#0.0.3",
-    "angulartics": "~0.15.18"
+    "angulartics": "~0.15.18",
+    "2ViVe": "git@github.com:2ViVe/frontend-modules.git#master"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",
