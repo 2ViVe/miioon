@@ -6,6 +6,16 @@ angular.module('miioon/signup')
       restrict: 'C',
       controller: ['$scope', 'Registration', function($scope, Registration) {
 
+        function debugDummy() {
+          $scope.account.sponsor = '1000101';
+          $scope.account.login = 'kiddzzz';
+          $scope.account.password = '!QAZ2w';
+          $scope.account.email = 'kiddkai@ggggg.com';
+          $scope.account.country = 'United States';
+        }
+
+        debugDummy();
+
         $scope.$watch('account.login', function(login) {
           $scope.account.login = login ? login.toLowerCase() : login;
         });

@@ -1,4 +1,4 @@
-<form class="sign-up-step-3 sign-up-step" name="step" novalidate>
+<form class="sign-up-step-3 sign-up-step" name="step3" novalidate ng-submit="nextStep()">
   <div class="row">
     <h2 class="columns small-9">
       Create a new account
@@ -7,14 +7,33 @@
     <div class="columns small-3" ng-include="'views/sign-up/steps-navigation.html'"></div>
   </div>
 
-  <div ng-include="'views/sign-up/personal-information.html'"></div>
+  <!--<div ng-include="'views/sign-up/personal-information.html'"></div>-->
 
-  <div data-is-home-address-validated="isHomeAddressValidated"
-       data-home-address="address.homeAddress" data-form="step"></div>
+  <div
+    data-personal-panel
+    data-account="account"
+    data-submitted="submitted"
+    data-tpl="views/sign-up/panels/personal-panel.html"
+    ></div>
 
-  <div data-is-shipping-address-validated="isShippingAddressValidated"
-       data-home-address-source="address.homeAddress"
-       data-shipping-address="address.shippingAddress" data-form="step"></div>
+  <div data-address-panel
+       data-address-type="home"
+       data-title="Home"
+       data-address="address.home"
+       data-submitted="submitted"
+       data-tpl="views/sign-up/panels/address-panel.html"
+    >
+  </div>
+
+  <div data-address-panel
+       data-address-type="shipping"
+       data-title="Shipping"
+       data-address="address.shipping"
+       data-home-address="address.home"
+       data-submitted="submitted"
+       data-tpl="views/sign-up/panels/address-panel.html"
+    >
+  </div>
 
   <div class="row title">
     <h6 class="small-3 text-right columns">
@@ -38,12 +57,20 @@
     </div>
   </div>
 
-  <div data-is-web-address-validated="isWebAddressValidated" data-home-address-source="address.homeAddress"
-       data-web-address="address.webAddress" data-form="step"></div>
+  <div data-address-panel
+       data-address-type="website"
+       data-title="Web"
+       data-address="address.website"
+       data-home-address="address.home"
+       data-submitted="submitted"
+       data-tpl="views/sign-up/panels/web-address-panel.html"
+    >
+  </div>
+
 
   <div class="row">
     <div class="columns small-9 small-offset-3">
-      <button ng-click="nextStep()">CONTINUE</button>
+      <button type="submit">CONTINUE</button>
     </div>
   </div>
 </form>
