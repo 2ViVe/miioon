@@ -16,7 +16,7 @@ angular.module('2ViVe')
         retailUrl: function() {
           var port = $location.port();
           if (port === PORT_FOR_BACK_OFFICE_DEMO_SITE) {
-            return 'http://' + $location.host().replace('miioon.backoffice', 'miioon.www') +
+            return 'http://' + $location.host().replace('mio.backoffice', 'mio.www') +
               ':' + PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE;
           }
 
@@ -30,7 +30,7 @@ angular.module('2ViVe')
           var port = $location.port();
           if (port === PORT_FOR_NON_SECURE_RETAIL_DEMO_SITE ||
             port === PORT_FOR_SECURE_RETAIL_DEMO_SITE) {
-            return 'https://' + $location.host().replace('miioon.www', 'miioon.backoffice') +
+            return 'https://' + $location.host().replace('mio.www', 'mio.backoffice') +
               ':' + PORT_FOR_BACK_OFFICE_DEMO_SITE;
           }
 
