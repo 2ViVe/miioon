@@ -1,18 +1,22 @@
 <div class="address-panel" data-ng-form name="addressForm">
   <div class='row'>
-    <div class='medium-12 columns'>
 
+    <div class='medium-3 columns text-right'>
       <h6>
         {{ title }} Address
-        <label class='right' ng-if="homeAddress">
-          <input type='checkbox'
-                 ng-model="isUseHomeAddress"
-                 ng-change="isUseHomeAddressChange(isUseHomeAddress)"/>
-          Use Home Address
-        </label>
       </h6>
-
     </div>
+    <div class="columns small-3 end">
+      <label ng-if="homeAddress">
+        <input type='checkbox'
+               ng-model="isUseHomeAddress"
+               ng-change="isUseHomeAddressChange(isUseHomeAddress)"/>
+        Use Home Address
+      </label>
+    </div>
+
+
+
   </div>
 
   <div address-field
