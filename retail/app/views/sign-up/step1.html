@@ -37,7 +37,7 @@
         name="account-country"
         ng-model="account.country"
         ng-options="country.name for country in countries"
-        ng-change="registrationCountryChange(account.country)">>
+        ng-change="updateProducts(account.country)">>
       </select>
 
       <small ng-show="submitted && step['account-country'].$error.required" class="error">

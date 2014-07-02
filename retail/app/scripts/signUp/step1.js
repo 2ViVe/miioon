@@ -4,42 +4,25 @@ angular.module('miioon/signup')
   .directive('signUpStep1', [function() {
     return {
       restrict: 'C',
-      controller: ['$scope', 'Registration', function($scope, Registration) {
-
+      controller: ['$scope', function($scope) {
         function debugDummy() {
           $scope.account.sponsor = '1000101';
           $scope.account.login = 'kiddzzz';
           $scope.account.password = '!QAZ2w';
           $scope.account.email = 'kiddkai@ggggg.com';
-          $scope.account.country = 'United States';
         }
 
-        debugDummy();
+//        debugDummy();
 
         $scope.$watch('account.login', function(login) {
           $scope.account.login = login ? login.toLowerCase() : login;
         });
-
-        function updateProducts(country) {
-          Registration.getProducts(country.id)
-            .success(function(data) {
-              var products = data.response.products;
-              $scope.products.data = products;
-              $scope.products.selection = products[0];
-            });
-        }
 
         $scope.nextStep = function() {
           $scope.submitted = true;
           if (this.step1.$valid) {
             $scope.goToNextStep();
           }
-        };
-
-//        updateProducts($scope.account.country);
-
-        $scope.registrationCountryChange = function(country) {
-          updateProducts(country);
         };
       }],
       link: function(scope, element) {

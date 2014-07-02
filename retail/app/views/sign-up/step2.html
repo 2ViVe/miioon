@@ -19,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="product in products">
+        <tr ng-repeat="product in products.data">
           <td class="text-left">{{product.sku}}</td>
           <td class="text-left">
             <img ng-src="{{product.images[0] | imageSize:'small' }}" alt="{{product.name}}"/>

@@ -1,12 +1,14 @@
 'use strict';
 angular.module('miioon/signup')
-  .controller('SignUpController', ['$scope', 'countries', 'Address', '$window',
-    function($scope, countries, Address, $window) {
+  .controller('SignUpController', ['$scope', 'countries', 'Address', '$window', 'Registration',
+    function($scope, countries, Address, $window, Registration) {
+
       $scope.stepNumber = 1;
       $scope.products = {
         data: {},
         selection: {}
       };
+
       $scope.method = {
         shipping: {},
         payment: {}
@@ -36,5 +38,17 @@ angular.module('miioon/signup')
           $scope.stepNumber = stepNumber;
         }
       };
+
+      $scope.updateProducts = function(country) {
+        Registration.getProducts(country.id)
+          .success(function(data) {
+            var products = data.response.products;
+            $scope.products.data = products;
+            $scope.products.selection = products;
+          });
+      };
+
+      $scope.updateProducts($scope.account.country);
+
 
     }]);
