@@ -6,7 +6,7 @@ angular.module('2ViVe')
       restrict: 'E',
       templateUrl: function(element, attr) {
         var templateUrl = attr.templateUrl;
-        return templateUrl ? templateUrl : 'pagination/view.html';
+        return templateUrl ? templateUrl : 'scripts/pagination/view.html';
       },
       scope: {
         hidePageNumber: '@',
