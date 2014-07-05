@@ -53,6 +53,7 @@ angular.module('miioon/signup')
                     return;
                   }
 
+
                   $scope.goToSuccess(data.response);
 
                   User.login($scope.account.login, $scope.account.password)
