@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('miioon.shopping')
+angular.module('miioon/shopping')
   .controller('ShoppingModalController', ['$scope', 'shopping', '$modalInstance',
     function($scope, shopping, $modalInstance) {
       $scope.shopping = shopping;

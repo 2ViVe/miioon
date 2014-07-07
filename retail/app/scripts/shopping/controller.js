@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('miioon.shopping')
+angular.module('miioon/shopping')
   .controller('ShoppingController', ['$scope', 'shopping',
     function($scope, shopping) {
       $scope.shopping = shopping;

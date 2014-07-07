@@ -18,12 +18,11 @@
       <h5>
         SHIPPING INFO
       </h5>
-
       <div class="sub-title">
         Shipping Method
       </div>
       <div>
-        <input ng-repeat-start="shippingMethod in order.data['available-shipping-methods']"
+        <input ng-repeat-start="shippingMethod in order.data.availableShippingMethods"
                type="radio" name="shipping-method" id="shipping-method-{{shippingMethod.id}}"
                ng-model="$parent.selectedShippingMethod" ng-value="shippingMethod"
                ng-change="changeShippingMethod($parent.selectedShippingMethod)"/>
@@ -33,44 +32,44 @@
         Ship To
       </div>
       <p class="medium-font">
-        {{order.data['shipping-address']['first-name']}}
-        {{order.data['shipping-address']['m']}}
-        {{order.data['shipping-address']['last-name']}}
+        {{order.data.shippingAddress.firstName}}
+        {{order.data.shippingAddress.m}}
+        {{order.data.shippingAddress.lastName}}
         <br/>
 
-        {{order.data['shipping-address']['street-cont']}}
-        {{order.data['shipping-address']['street']}},
-        {{order.data['shipping-address']['city']}},
-        {{order.data['shipping-address']['state']}},
-        {{order.data['shipping-address']['country']}},
-        {{order.data['shipping-address']['zip']}}
+        {{order.data.shippingAddress.street}}
+        {{order.data.shippingAddress.streetCont}},
+        {{order.data.shippingAddress.city}},
+        {{order.data.shippingAddress.state}},
+        {{order.data.shippingAddress.country}},
+        {{order.data.shippingAddress.zip}}
         <br/>
 
-        Phone: {{order.data['shipping-address']['phone']}}
+        Phone: {{order.data.shippingAddress.phone}}
       </p>
-      <button ng-show="order.data['shipping-address-changeable']" ng-click="editShippingAddress()">Edit</button>
+      <button ng-show="order.data.shippingAddressChangeable" ng-click="editShippingAddress()">Edit</button>
     </div>
     <div class="info-panel">
       <h5>
         PAYMENT INFO
       </h5>
 
-      <div class="sub-title" ng-hide="order.data['available-payment-methods'].length === 1">
+      <div class="sub-title" ng-hide="order.data.availablePaymentMethods.length === 1">
         Payment Method
       </div>
-      <div ng-hide="order.data['available-payment-methods'].length === 1">
-        <input ng-repeat-start="paymentMethod in order.data['available-payment-methods']"
+      <div ng-hide="order.data.availablePaymentMethods.length === 1">
+        <input ng-repeat-start="paymentMethod in order.data.availablePaymentMethods"
                type="radio" name="payment-method" id="shipping-method-{{paymentMethod.id}}"
                ng-model="$parent.selectedPaymentMethod" ng-value="paymentMethod"/>
         <label ng-repeat-end for="shipping-method-{{paymentMethod.id}}">{{paymentMethod.name}}</label>
       </div>
-      <form name="creditCardForm" ng-show="selectedPaymentMethod['is-creditcard']">
+      <form name="creditCardForm" ng-show="selectedPaymentMethod.isCreditcard">
         <div class="row">
           <div class="columns medium-12">
             <label for="number" class="required">Card Number</label>
           </div>
           <div class="columns medium-8">
-            <input ng-required="selectedPaymentMethod['is-creditcard']" type="text" ng-model="creditCard.number"
+            <input ng-required="selectedPaymentMethod.isCreditcard" type="text" ng-model="creditCard.number"
                    id="number" name="number"/>
             <small ng-show="submitted && creditCardForm.number.$error.required" class="error">
               This field is required.
@@ -88,28 +87,28 @@
             <label for="cvv" class="required">Card Code</label>
           </div>
           <div class="columns medium-4">
-            <select id="expiration-month" name="expiration-month" ng-required="selectedPaymentMethod['is-creditcard']"
-                    ng-model="creditCard['expiration-month']"
+            <select id="expiration-month" name="expiration-month" ng-required="selectedPaymentMethod.isCreditcard']"
+                    ng-model="creditCard.expirationMonth"
                     ng-options="month for month in expirationMonths">
               <option value="">Month</option>
             </select>
-            <small ng-show="submitted && creditCardForm['expiration-month'].$error.required" class="error">
+            <small ng-show="submitted && creditCardForm.expirationMonth.$error.required" class="error">
               This field is required.
             </small>
           </div>
           <div class="columns medium-4">
-            <select id="expiration-year" name="expiration-year" ng-required="selectedPaymentMethod['is-creditcard']"
-                    ng-model="creditCard['expiration-year']"
+            <select id="expiration-year" name="expiration-year" ng-required="selectedPaymentMethod.isCreditcard']"
+                    ng-model="creditCard.expirationYear"
                     ng-options="year for year in expirationYears">
               <option value="">Year</option>
             </select>
-            <small ng-show="submitted && creditCardForm['expiration-year'].$error.required" class="error">
+            <small ng-show="submitted && creditCardForm.expirationYear.$error.required" class="error">
               This field is required.
             </small>
           </div>
           <div class="columns medium-4">
-            <input type="text" id="cvv" name="cvv" ng-required="selectedPaymentMethod['is-creditcard']"
-                   ng-model="creditCard['cvv']"/>
+            <input type="text" id="cvv" name="cvv" ng-required="selectedPaymentMethod.isCreditcard"
+                   ng-model="creditCard.cvv"/>
             <small ng-show="submitted && creditCardForm.cvv.$error.required" class="error">
               This field is required.
             </small>
@@ -123,20 +122,20 @@
       </h5>
 
       <p class="medium-font">
-        {{order.data['billing-address']['first-name']}}
-        {{order.data['billing-address']['m']}}
-        {{order.data['billing-address']['last-name']}}
+        {{order.data.billingAddress.firstName}}
+        {{order.data.billingAddress.m}}
+        {{order.data.billingAddress.lastName}}
         <br/>
 
-        {{order.data['billing-address']['street-cont']}}
-        {{order.data['billing-address']['street']}},
-        {{order.data['billing-address']['city']}},
-        {{order.data['billing-address']['state']}},
-        {{order.data['billing-address']['country']}},
-        {{order.data['billing-address']['zip']}}
+        {{order.data.billingAddress.streetCont}}
+        {{order.data.billingAddress.street}},
+        {{order.data.billingAddress.city}},
+        {{order.data.billingAddress.state}},
+        {{order.data.billingAddress.country}},
+        {{order.data.billingAddress.zip}}
         <br/>
 
-        Phone: {{order.data['billing-address']['phone']}}
+        Phone: {{order.data.billingAddress.phone}}
       </p>
       <button ng-click="editBillingAddress()">Edit</button>
     </div>
@@ -148,13 +147,13 @@
 
     <div class="shopping-cart-small">
       <ul class="medium-font">
-        <li class="row" ng-repeat="lineItem in order.data['line-items']">
+        <li class="row" ng-repeat="lineItem in order.data.lineItems">
           <div class="columns medium-3 ">
-            <img class="thumbnail" ng-src="{{lineItem['image-url']}}" alt="Product"/>
+            <img class="thumbnail" ng-src="{{lineItem.imageUrl}}" alt="Product"/>
           </div>
           <div class="columns medium-9">
-            <a class="primary-color" href="#/product/{{lineItem['product-id']}}">
-              {{lineItem['product-name']}}
+            <a class="primary-color" href="#/product/{{lineItem.productId}}">
+              {{lineItem.productName}}
             </a>
 
             <div class="unimportant-text">
@@ -172,7 +171,7 @@
       <div class="summary clearfix">
         <dl class="medium-font clearfix unimportant-text">
           <dt class="columns medium-9">Updated SubTotal</dt>
-          <dd class="columns medium-3 text-right">£{{order.data['item-total'] | price}}</dd>
+          <dd class="columns medium-3 text-right">£{{order.data.itemTotal | price}}</dd>
           <dt class="columns medium-9" ng-repeat-start="adjustment in order.data.adjustments">{{adjustment.label}}</dt>
           <dd class="columns medium-3 text-right" ng-repeat-end>£{{adjustment.amount | price}}</dd>
         </dl>

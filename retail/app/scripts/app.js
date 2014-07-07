@@ -17,5 +17,6 @@ angular.module('miioonApp', [
 
   'miioon/report',
   'miioon/signup',
-  'miioon.shopping'
+  'miioon/shopping',
+  'miioon/checkout'
 ]);

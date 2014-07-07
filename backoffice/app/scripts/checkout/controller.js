@@ -1,9 +1,12 @@
 'use strict';
 
-angular
-  .module('miioon/checkout')
+angular.module('miioon/checkout')
   .controller('CheckoutController', ['$scope', 'order', 'Shopping', '$modal',
     function($scope, order, Shopping, $modal) {
+      if (order === undefined) {
+        return;
+      }
+
       $scope.creditCard = {};
       $scope.placingOrder = false;
       $scope.isSucceed = false;
@@ -11,7 +14,7 @@ angular
       $scope.orderId = null;
 
       $scope.selectedShippingMethod = order.currentShippingMethod();
-      $scope.selectedPaymentMethod = order.data['available-payment-methods'][0];
+      $scope.selectedPaymentMethod = order.data.availablePaymentMethods[0];
       $scope.order = order;
 
       $scope.editShippingAddress = function() {
@@ -19,7 +22,7 @@ angular
           templateUrl: 'views/checkout/shipping-address.html',
           controller: 'ShippingModalController'
         }).result.then(function(shippingAddress) {
-            $scope.order.data['shipping-address'] = shippingAddress;
+            $scope.order.data.shippingAddress = shippingAddress;
             if ($scope.orderId) {
               order.updateShippingAddress($scope.orderId, shippingAddress)
                 .success(function() {
@@ -34,7 +37,7 @@ angular
           templateUrl: 'views/checkout/billing-address.html',
           controller: 'BillingModalController'
         }).result.then(function(billingAddress) {
-            $scope.order.data['billing-address'] = billingAddress;
+            $scope.order.data.billingAddress = billingAddress;
             if ($scope.orderId) {
               order.updateBillingAddress($scope.orderId, billingAddress);
             }
@@ -46,14 +49,14 @@ angular
         angular.forEach(order.data.adjustments, function(adjustment) {
           adjustments += adjustment.amount;
         });
-        return adjustments + order.data['item-total'];
+        return adjustments + order.data.itemTotal;
       };
 
       $scope.changeShippingMethod = function(selectedShippingMethod) {
         $scope.selectedShippingMethod = selectedShippingMethod;
 
         if ($scope.orderId) {
-          order.updateShippingAddress($scope.orderId, order.data['shipping-address'], selectedShippingMethod.id)
+          order.updateShippingAddress($scope.orderId, order.data.shippingAddress, selectedShippingMethod.id)
             .success(function() {
               order.adjustmentsWithOrderId($scope.orderId);
             });
@@ -66,7 +69,7 @@ angular
       $scope.placeOrder = function() {
         $scope.placingOrder = true;
 
-        if ($scope.selectedPaymentMethod['is-creditcard'] && !this.creditCardForm.$valid) {
+        if ($scope.selectedPaymentMethod.isCreditcard && !this.creditCardForm.$valid) {
           $scope.submitted = true;
           $scope.placingOrder = false;
           return;
@@ -75,9 +78,9 @@ angular
         order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethod.id, $scope.creditCard)
           .success(function(data) {
             $scope.placingOrder = false;
-            $scope.orderId = data.response['order-id'];
+            $scope.orderId = data.response.orderId;
 
-            if (data.response['payment-state'] === 'failed') {
+            if (data.response.paymentState === 'failed') {
               $scope.isFailed = true;
               $scope.failedMessage = 'Process order failed, please check your payment information.';
               return;
