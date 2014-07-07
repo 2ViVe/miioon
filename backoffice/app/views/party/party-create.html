@@ -2,43 +2,134 @@
     <div class='row party-topbar'>
       <div class='small-12 columns'>
         <ul class="breadcrumbs">
-          <li class='unavailable'><a href="#">My Meet</a></li>
-          <li class='current'><a href="#">Create a Meet</a></li>
+          <li class='unavailable'><a href="#/party/overview/upcoming">My Meet</a></li>
+          <li class='current'>Create a Meet</li>
+        </ul>
       </div>
     </div>
     <div class='row'><div class='columns small-12'><p class='separator-line'></p></div></div>
     <div class='row'>
       <div class='columns small-12'>
         <div class='party-create-form'>
-          <form name="" novalidate>
+          <form name="form" novalidate>
             <div class='row'>
               <div class='medium-12 columns'>
-                <h3>Meet Type</h3>
+                <h3>Meet Information</h3>
               </div>
             </div>
             <div class="row">
               <div class="medium-3 columns">
-                <label class='inline'>Type <small class='required'>*</small></label>
+                <label for="type" class='inline required'>Type</label>
               </div>
               <div class='medium-9 columns'>
-                <select required>
-                  <option value=''>Miioon Meets</option>
+                <select required
+                        id="type"
+                        name="type"
+                        ng-model="data.typeId"
+                        ng-options="type.id as type.name for type in types ">
                 </select>
-                <small class="error">This information is required.</small>
-              </div>
-            </div>
-            <div class='row'>
-              <div class='medium-12 columns'>
-                <h3>Hostess Information</h3>
+                <small ng-show="submitted && form.type.$error.required" class="error">
+                  This information is required.
+                </small>
               </div>
             </div>
             <div class="row">
               <div class="medium-3 columns">
-                <label class='inline'>Host Name <small class='required'>*</small></label>
+                <label for="title" class='inline required'>Title</label>
               </div>
               <div class='medium-9 columns'>
-                <input type="text" required pattern="">
-                <small class="error">This information is required.</small>
+                <input required
+                       type="text"
+                       id="title"
+                       name="title"
+                       ng-model="data.title">
+                <small ng-show="submitted && form.title.$error.required" class="error">
+                  This information is required.
+                </small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-3 columns">
+                <label for="message" class='inline required'>Description</label>
+              </div>
+              <div class='medium-9 columns'>
+                <textarea required
+                          maxlength="250"
+                          placeholder="Limit in 250 character"
+                          cols="30"
+                          rows="8"
+                          id="message"
+                          name="message"
+                          ng-model="data.description">
+                </textarea>
+                <small ng-show="submitted && form.message.$error.required" class="error">
+                  This information is required.
+                </small>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='medium-12 columns'>
+                <h3>Host(ess) Information</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-3 columns">
+                <label for="first-name" class='inline required'>First Name</label>
+              </div>
+              <div class='medium-9 columns'>
+                <input type="text"
+                       ng-model="data.address.firstName"
+                       id="first-name"
+                       name="firstName"
+                       required>
+                <small class="error" ng-show="submitted && form.firstName.$error.required">
+                  This information is required.
+                </small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-3 columns">
+                <label for="middle-name" class='inline'>Middle Name</label>
+              </div>
+              <div class='medium-9 columns'>
+                <input type="text"
+                       ng-model="data.address.middleName"
+                       id="middle-name"
+                       name="middleName"
+                       required>
+                <small class="error" ng-show="submitted && form.middleName.$error.required">
+                  This information is required.
+                </small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-3 columns">
+                <label for="last-name" class='inline required'>Last Name</label>
+              </div>
+              <div class='medium-9 columns'>
+                <input type="text"
+                       ng-model="data.address.lastName"
+                       id="last-name"
+                       name="lastName"
+                       required>
+                <small class="error" ng-show="submitted && form.hostName.$error.required">
+                  This information is required.
+                </small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-3 columns">
+                <label for="host-name" class='inline required'>Host(ess) Name</label>
+              </div>
+              <div class='medium-9 columns'>
+                <input type="text"
+                       ng-model="data.hostName"
+                       id="host-name"
+                       name="hostName"
+                       required>
+                <small class="error" ng-show="submitted && form.hostName.$error.required">
+                  This information is required.
+                </small>
               </div>
             </div>
             <div class='row'>
@@ -48,49 +139,78 @@
             </div>
             <div class="row">
               <div class="medium-3 columns">
-                <label class='inline'>Location Name <small class='required'>*</small></label>
+                <label for="location-name" class='inline required'>Location Name</label>
               </div>
               <div class='medium-9 columns'>
-                <input type="text" required pattern="">
-                <small class="error">This information is required.</small>
+                <input type="text"
+                       ng-model="data.locationName"
+                       id="location-name"
+                       name="locationName"
+                       required>
+                <small class="error" ng-show="submitted && form.locationName.$error.required">
+                  This information is required.
+                </small>
               </div>
             </div>
             <div class="row">
               <div class="medium-3 columns">
-                <label class='inline'>Address <small class='required'>*</small></label>
+                <label for="street" class='inline required'>Address</label>
               </div>
               <div class='medium-9 columns'>
-                <input type="text" required pattern="">
-                <small class="error">This information is required.</small>
+                <input type="text"
+                       ng-model="data.address.street"
+                       id="street"
+                       name="street"
+                       required>
+                <small class="error" ng-show="submitted && form.street.$error.required">
+                  This information is required.
+                </small>
               </div>
             </div>
             <div class="row">
               <div class="medium-3 columns">
-                <label class='inline'>Town/City <small class='required'>*</small></label>
+                <label for="city" class='inline required'>Town/City</label>
               </div>
               <div class='medium-9 columns'>
-                <input type="text" required pattern="">
-                <small class="error">This information is required.</small>
+                <input type="text"
+                       id="city"
+                       name="city"
+                       ng-model="data.address.city"
+                       required>
+                <small class="error" ng-show="submitted && form.city.$error.required">
+                  This information is required.
+                </small>
               </div>
             </div>
             <div class="row">
               <div class="medium-3 columns">
-                <label class='inline'>State <small class='required'>*</small></label>
+                <label for="state" class='inline required'>State</label>
               </div>
               <div class='medium-9 columns'>
-                <select required>
-                  <option value=''></option>
+                <select id="state"
+                        name="state"
+                        ng-model="data.address.stateName"
+                        ng-options="state.name as state.name for state in country.states"
+                        required>
                 </select>
-                <small class="error">This information is required.</small>
+                <small class="error" ng-show="submitted && form.state.$error.required">
+                  This information is required.
+                </small>
               </div>
             </div>
             <div class="row">
               <div class="medium-3 columns">
-                <label class='inline'>Zip Code <small class='required'>*</small></label>
+                <label for="zip" class='inline required'>Zip Code</label>
               </div>
               <div class='medium-9 columns'>
-                <input type="text" required pattern="">
-                <small class="error">This information is required.</small>
+                <input type="text"
+                       id="zip"
+                       name="zip"
+                       ng-model="data.address.zip"
+                       required>
+                <small class="error" ng-show="submitted && form.zip.$error.required">
+                  This information is required.
+                </small>
               </div>
             </div>
             <div class='row'>
@@ -100,44 +220,59 @@
             </div>
             <div class="row">
               <div class="medium-3 columns">
-                <label class='inline'>Date <small class='required'>*</small></label>
+                <label class='inline required'>Date</label>
               </div>
               <div class='medium-3 columns'>
-                <input type="text" required pattern="">
-                <small class="error">This information is required.</small>
+                <input type="text"
+                       id="start-date"
+                       name="startDate"
+                       ng-model="time.startDate"
+                       data-date-picker
+                       required/>
+                <small class="error" ng-show="submitted && form.startDate.$error.required">
+                  This information is required.
+                </small>
               </div>
               <div class="medium-3 columns">
-                <label class='inline'>Start Time <small class='required'>*</small></label>
+                <label class='inline required'>Start Time</label>
               </div>
               <div class='medium-3 columns'>
-                <select required>
-                  <option value=''></option>
+                <select id="start-time"
+                        name="startTime"
+                        ng-model="time.startTime"
+                        ng-options="time for time in times">
                 </select>
-                <small class="error">This information is required.</small>
+                <small class="error" ng-show="submitted && form.startTime.$error.required">
+                  This information is required.
+                </small>
               </div>
             </div>
             <div class="row">
               <div class="medium-3 columns">
-                <label class='inline'>End Date <small class='required'>*</small></label>
+                <label class='inline'>End Date</label>
               </div>
               <div class='medium-3 columns'>
-                <input type="text" required pattern="">
-                <small class="error">This information is required.</small>
+                <input type="text"
+                       id="end-date"
+                       ng-model="time.endDate"
+                       data-date-picker
+                       required/>
               </div>
               <div class="medium-3 columns">
-                <label class='inline'>End Time <small class='required'>*</small></label>
+                <label class='inline'>End Time</label>
               </div>
               <div class='medium-3 columns'>
-                <select required>
-                  <option value=''></option>
+                <select id="end-time"
+                        name="endTime"
+                        ng-options="time for time in times"
+                        ng-model="time.endTime">
                 </select>
-                <small class="error">This information is required.</small>
               </div>
             </div>
             <div class="row">
               <div class='medium-9 columns small-offset-3'>
-                <a href='#' class="button" type="submit">Save</a>
-                <a href='#' class="button secondary" type="submit">Cancel</a>
+                <a ng-click="save()" class="button" type="submit">Save</a>
+                <a ng-click="cancel()" class="button secondary" type="submit">Cancel</a>
               </div>
             </div>
           </form>
