@@ -99,4 +99,3 @@ angular.module('2ViVe')
 
       return GiftCard;
     }]);
-Card
