@@ -1,4 +1,4 @@
-<form class="sign-up" name="retailSignupForm" novalidate ng-submit="register()">
+<form class="sign-up" name="retailSignupForm" novalidate ng-submit="create()">
   <div class="row">
     <h2 class="small-9 columns sign-up-h2">
       CREATE A CUSTOMER ACCOUNT
@@ -20,341 +20,33 @@
     </p>
   </div>
 
-  <!-- sponsor id -->
-  <div class="row">
+  <div data-sponsor-panel
+       data-account="account"
+       data-required="true"
+       data-submitted="submitted"
+       data-no-search-handler="true"
+       data-tpl="views/sign-up/panels/sponsor-panel.html"></div>
 
-    <div class="small-3 columns">
-      <label class="right inline" for="sponsor">Sponsor ID</label>
-    </div>
-    <div class="small-5 end columns">
-      <input type="text"
-             id="sponsor" name="sponsor"
-             ng-model="sponsorId"
-             data-sponsor-validator
-             data-sponsor-name="sponsorName"
-             data-sponsor-validator-error-msg="$errorMessages['sponsor']"
-             />
-
-      <small ng-show="retailSignupForm.sponsor.$error.sponsorError" class="error">
-        {{ $errorMessages.sponsor }}
-      </small>
-    </div>
-
-    <div class="small-4 columns input-description unimportant-text" ng-show="sponsorName">
-      Sponsor Name: {{ sponsorName }}
-    </div>
-
-  </div>
-
-  <!-- Login -->
-  <div class="row">
-
-    <div class="small-3 columns">
-      <label class="right inline required" for="login">Login</label>
-    </div>
-
-    <div class="small-5 end columns">
-      <input type="text" required
-             id="login" name="login"
-             ng-pattern="/(?!^\d+$)^.+$/"
-             data-availabilities-validator="login"
-             ng-model="login"
-             />
-
-      <small ng-show="retailSignupForm.login.$error.available">
-        Login is not available.
-      </small>
-      <small ng-show="submitted && retailSignupForm.login.$error.required" class="error">
-        This field is required.
-      </small>
-      <small ng-show="retailSignupForm.login.$error.pattern" class="error">
-        Username can't be all numbers.
-      </small>
-    </div>
-  </div>
+  <div
+    data-personal-panel
+    data-account="account"
+    data-submitted="submitted"
+    data-tpl="views/sign-up/panels/personal-panel.html"
+    ></div>
 
 
-  <!-- Email Address -->
-  <div class="row">
-
-    <div class="small-3 columns">
-      <label class="right inline required" for="email">Email Address</label>
-    </div>
-
-    <div class="small-5 end columns">
-      <input type="email" required
-             id="email" name="email"
-             ng-model="email"
-             data-availabilities-validator="email"
-             />
-
-      <small ng-show="retailSignupForm.email.$error.available" class="error">
-        Email is not available
-      </small>
-      <small ng-show="submitted && retailSignupForm.email.$error.required" class="error">
-        This field is required.
-      </small>
-      <small ng-show="submitted && retailSignupForm.email.$error.email" class="error">
-        Email is invalid.
-      </small>
-    </div>
-
-  </div>
-
-  <!-- Password -->
-  <div class="row">
-
-    <div class="small-3 columns">
-      <label class="right inline required" for="password">Password</label>
-    </div>
-
-    <div class="small-5 end columns">
-      <input type="password" required
-             id="password" name="password"
-             ng-model="password"
-             ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/" />
-      <small ng-show="submitted && retailSignupForm.password.$error.required" class="error">
-        This field is required.
-      </small>
-      <small ng-show="retailSignupForm.password.$error.pattern" class="error">
-        Password should include at least one number, one uppercase, one lowercase and more than 6 characters.
-      </small>
-    </div>
-  </div>
-
-
-  <!-- Confirm Password -->
-  <div class="row">
-
-    <div class="small-3 columns">
-      <label class="right inline required" for="confirm-password">Confirm Password</label>
-    </div>
-
-    <div class="small-5 end columns">
-      <input type="password" required
-             id="confirm-password" name="passwordConfirmation"
-             ng-model="passwordConfirmation"
-             ui-validate="'$value==password'"
-             ui-validate-watch="'password'"
-             />
-      <small ng-show="submitted && retailSignupForm.passwordConfirmation.$error.validator" class="error">
-        Passwords must match.
-      </small>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <h6 class="small-12 columns">
-      SHIPPING DETAILS
-    </h6>
+  <div data-address-panel
+       data-address-type="shipping"
+       data-title="Shipping"
+       data-address="address.shipping"
+       data-home-address="address.home"
+       data-submitted="submitted"
+       data-tpl="views/sign-up/panels/address-panel.html"
+    >
   </div>
 
   <div class="row">
-    <p class="small-12 columns medium-font">
-      Enter the name and address you'd like us to ship your order to
-    </p>
-  </div>
-
-
-  <!-- First name -->
-  <div class="row">
-
-    <div class="small-3 columns">
-      <label class="right inline required" for="first-name">First Name</label>
-    </div>
-
-    <div class="small-5 end columns">
-      <input type="text" required
-             id="first-name" name="first-name"
-             ng-model="firstName"
-             />
-
-      <small ng-show="submitted && retailSignupForm['first-name'].$error.required" class="error">
-        This field is required.
-      </small>
-      <small ng-show="submitted && $shippingAddressErrors.InvalidFirstName" class="error">
-        {{ $shippingAddressErrors.InvalidFirstName.message }}
-      </small>
-    </div>
-  </div>
-
-
-  <!-- Last Name -->
-  <div class="row">
-
-    <div class="small-3 columns">
-      <label class="right inline required" for="last-name">Last Name</label>
-    </div>
-
-    <div class="small-5 end columns">
-      <input type="text" required
-             id="last-name" name="last-name"
-             ng-model="lastName"
-             />
-
-      <small ng-show="submitted && retailSignupForm['last-name'].$error.required" class="error">
-        This field is required.
-      </small>
-
-      <small ng-show="submitted && $shippingAddressErrors.InvalidLastName" class="error">
-        {{ $shippingAddressErrors.InvalidLastName.message }}
-      </small>
-
-    </div>
-  </div>
-
-  <!-- Phone Number -->
-  <div class="row">
-
-    <div class="small-3 columns">
-      <label class="right inline required" for="phone-number">Phone Number</label>
-    </div>
-
-    <div class="small-5 end columns">
-      <input type="text" required
-             id="phone-number" name="phone-number"
-             ng-model="phoneNumber"/>
-
-
-      <small ng-show="submitted && retailSignupForm['phone-number'].$error.required" class="error">
-        This field is required.
-      </small>
-
-      <small ng-show="submitted && $shippingAddressErrors.InvalidPhone" class="error">
-        {{ $shippingAddressErrors.InvalidPhone.message }}
-      </small>
-    </div>
-  </div>
-
-
-  <!-- Address Line 1 -->
-  <div class="row">
-
-    <div class="small-3 columns">
-      <label class="right inline required" for="address-line-1">Address Line 1</label>
-    </div>
-
-    <div class="small-5 end columns">
-      <input type="text" required
-             id="address-line-1" name="address-line-1"
-             ng-model="firstAddressLine"/>
-
-      <small ng-show="submitted && retailSignupForm['address-line-1'].$error.required" class="error">
-        This field is required.
-      </small>
-
-      <small ng-show="submitted && $shippingAddressErrors.InvalidStreet">
-        {{ $shippingAddressErrors.InvalidStreet.message }}
-      </small>
-
-    </div>
-
-  </div>
-
-
-  <!-- Address Line 2 -->
-  <div class="row">
-
-    <div class="small-3 columns">
-      <label class="right inline" for="address-line-2">Address Line 2</label>
-    </div>
-
-    <div class="small-5 end columns">
-      <input type="text"
-             id="address-line-2" name="address-line-2"
-             ng-model="secondAddressLine"/>
-      <small ng-show="submitted && $shippingAddressErrors.InvalidStreetCont" class="error">
-        {{ $shippingAddressErrors.InvalidStreetCont.message }}
-      </small>
-    </div>
-  </div>
-
-
-  <!-- Suburb/City -->
-  <div class="row">
-
-    <div class="small-3 columns">
-      <label class="right inline required" for="city">Suburb/City</label>
-    </div>
-
-    <div class="small-5 end columns">
-      <input type="text" required
-             id="city" name="city"
-             ng-model="city"/>
-      <small ng-show="submitted && retailSignupForm['city'].$error.required" class="error">
-        This field is required.
-      </small>
-      <small ng-show="submitted && $shippingAddressErrors.InvalidCity" class="error">
-        {{ $shippingAddressErrors.InvalidCity.message }}
-      </small>
-    </div>
-  </div>
-
-  <!-- State -->
-  <div class="row">
-    <div class="small-3 columns">
-      <label class="right inline required" for="state">State</label>
-    </div>
-    <div class="small-5 end columns">
-      <select required
-              name="state"
-              id="state"
-              ng-model="state"
-              ng-options="state.name for state in country.states | orderBy:'name'"
-        >
-      </select>
-      <small ng-show="submitted && retailSignupForm.state.$error.required" class="error">
-        This field is required.
-      </small>
-      <small ng-show="submitted && $shippingAddressErrors.InvalidState" class="error">
-        {{ $shippingAddressErrors.InvalidState.message }}
-      </small>
-    </div>
-  </div>
-
-  <!-- Country -->
-  <div class="row">
-    <div class="small-3 columns">
-      <label class="right inline required" for="country">Country</label>
-    </div>
-    <div class="small-5 end columns">
-      <select required
-              name="country"
-              id="country"
-              ng-model="country"
-              ng-options="country.name for country in countries | orderBy:'name'"
-              >
-      </select>
-      <small ng-show="submitted && retailSignupForm['country'].$error.required" class="error">
-        This field is required.
-      </small>
-      <small ng-show="submitted && $shippingAddressErrors.InvalidCountry" class="error">
-        {{ $shippingAddressErrors.InvalidCountry.message }}
-      </small>
-    </div>
-  </div>
-
-  <!-- Zip/Post code -->
-  <div class="row">
-
-    <div class="small-3 columns">
-      <label class="right inline required" for="zip">Zip/Post code</label>
-    </div>
-
-    <div class="small-5 end columns">
-      <input type="text" required
-             id="zip" name="zip"
-             ng-model="zip"/>
-
-      <small ng-show="submitted && retailSignupForm['zip'].$error.required" class="error">
-        This field is required.
-      </small>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="columns small-9 small-offset-3">
+    <div class="column medium-3 medium-offset-3">
       <button type="submit">CREATE MY ACCOUNT</button>
     </div>
   </div>
