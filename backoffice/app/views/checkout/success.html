@@ -1,7 +1,7 @@
 <div class="row">
   <h2 class="columns small-12">
     Your order has been processed successfully!
-    <a ng-href="/api/v2/orders/pdf-invoice?ids={{successInfo['order-id']}}" class="button tiny right" target="_blank">
+    <a ng-href="/api/v2/orders/pdf-invoice?ids={{successInfo.orderId}}" class="button tiny right" target="_blank">
       Print
     </a>
   </h2>
@@ -13,25 +13,25 @@
 </div>
 <div class="row">
   <p class="columns small-5">
-    Status: <span class="important-text">{{successInfo['state']}}</span>
+    Status: <span class="important-text">{{successInfo.state}}</span>
   </p>
 
   <p class="columns small-5 end">
-    Payment Total: {{successInfo['payment-total']}}
+    Payment Total: {{successInfo.paymentTotal}}
   </p>
 </div>
 <div class="row">
   <p class="columns small-5">
-    Order Number: {{successInfo['order-number']}}
+    Order Number: {{successInfo.orderNumber}}
   </p>
 
   <p class="columns small-5 end">
-    Payment Date: {{successInfo['payment-date']}}
+    Payment Date: {{successInfo.paymentDate}}
   </p>
 </div>
 <div class="row">
   <p class="columns small-5">
-    Order Date: {{successInfo['order-date']}}
+    Order Date: {{successInfo.orderDate}}
   </p>
 
   <p class="columns small-5 end">
@@ -51,20 +51,20 @@
 <div class="row">
   <div class="columns small-12">
     <p class="medium-font">
-      {{order.data['shipping-address']['first-name']}}
-      {{order.data['shipping-address']['m']}}
-      {{order.data['shipping-address']['last-name']}}
+      {{order.data.shippingAddress.firstName}}
+      {{order.data.shippingAddress.m}}
+      {{order.data.shippingAddress.lastName}}
       <br/>
 
-      {{order.data['shipping-address']['street-cont']}}
-      {{order.data['shipping-address']['street']}},
-      {{order.data['shipping-address']['city']}},
-      {{order.data['shipping-address']['state']}},
-      {{order.data['shipping-address']['country']}},
-      {{order.data['shipping-address']['zip']}}
+      {{order.data.shippingAddress.street}}
+      {{order.data.shippingAddress.streetCont}},
+      {{order.data.shippingAddress.city}},
+      {{order.data.shippingAddress.state}},
+      {{order.data.shippingAddress.country}},
+      {{order.data.shippingAddress.zip}}
       <br/>
 
-      Phone: {{order.data['shipping-address']['phone']}}
+      Phone: {{order.data.shippingAddress.phone}}
     </p>
   </div>
 </div>
@@ -76,20 +76,20 @@
 <div class="row">
   <div class="columns small-12">
     <p class="medium-font">
-      {{order.data['billing-address']['first-name']}}
-      {{order.data['billing-address']['m']}}
-      {{order.data['billing-address']['last-name']}}
+      {{order.data.billingAddress.firstName}}
+      {{order.data.billingAddress.m}}
+      {{order.data.billingAddress.lastName}}
       <br/>
 
-      {{order.data['billing-address']['street-cont']}}
-      {{order.data['billing-address']['street']}},
-      {{order.data['billing-address']['city']}},
-      {{order.data['billing-address']['state']}},
-      {{order.data['billing-address']['country']}},
-      {{order.data['billing-address']['zip']}}
+      {{order.data.billingAddress.streetCont}}
+      {{order.data.billingAddress.street}},
+      {{order.data.billingAddress.city}},
+      {{order.data.billingAddress.state}},
+      {{order.data.billingAddress.country}},
+      {{order.data.billingAddress.zip}}
       <br/>
 
-      Phone: {{order.data['billing-address']['phone']}}
+      Phone: {{order.data.billingAddress.phone}}
     </p>
   </div>
 </div>
@@ -111,11 +111,11 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="lineItem in order.data['line-items']">
+      <tr ng-repeat="lineItem in order.data.lineItems">
         <td class="text-left">{{lineItem.sku}}</td>
         <td class="text-left">
-          <img ng-src="{{lineItem['image-url']}}" alt="{{lineItem['product-name']}}"/>
-          {{lineItem['product-name']}}
+          <img ng-src="{{lineItem.imageUrl}}" alt="{{lineItem.productName}}"/>
+          {{lineItem.productName}}
         </td>
         <td class="price">£{{lineItem.price | price}}</td>
         <td>
@@ -130,7 +130,7 @@
           Item Total
         </td>
         <td class="price">
-          £{{order.data['item-total'] | price}}
+          £{{order.data.itemTotal | price}}
         </td>
       </tr>
       <tr ng-repeat="adjustment in order.data.adjustments">

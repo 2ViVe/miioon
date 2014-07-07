@@ -88,7 +88,7 @@
             <label for="cvv" class="required">Card Code</label>
           </div>
           <div class="columns medium-4">
-            <select id="expiration-month" name="expiration-month" ng-required="selectedPaymentMethod.isCreditcard']"
+            <select id="expiration-month" name="expiration-month" ng-required="selectedPaymentMethod.isCreditcard"
                     ng-model="creditCard.expirationMonth"
                     ng-options="month for month in expirationMonths">
               <option value="">Month</option>
@@ -98,7 +98,7 @@
             </small>
           </div>
           <div class="columns medium-4">
-            <select id="expiration-year" name="expiration-year" ng-required="selectedPaymentMethod.isCreditcard']"
+            <select id="expiration-year" name="expiration-year" ng-required="selectedPaymentMethod.isCreditcard"
                     ng-model="creditCard.expirationYear"
                     ng-options="year for year in expirationYears">
               <option value="">Year</option>
