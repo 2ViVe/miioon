@@ -56,7 +56,12 @@ angular.module('miioonApp')
       })
       .when('/gift-codes', {
         templateUrl: 'views/gift/code.html',
-        controller: 'giftCodeCtrl'
+        controller: 'giftCodeCtrl',
+        resolve: {
+          'giftcodes': ['GiftCards', function(GiftCards) {
+            return GiftCards.fetch();
+          }]
+        }
       })
       .when('/t-c', {
         templateUrl: 'views/t-c.html'

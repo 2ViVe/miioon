@@ -1,10 +1,8 @@
 'use strict';
 
 angular.module('2ViVe')
-  .controller('giftCodeCtrl', ['$scope', 'GiftCards', function($scope, GiftCards) {
-    GiftCards.fetch().then(function(result) {
-      $scope.giftcodes = result;
-    });
+  .controller('giftCodeCtrl', ['$scope', 'giftcodes', 'GiftCards', function($scope, giftcodes, GiftCards) {
+    $scope.giftcodes = giftcodes;
 
     $scope.sendEmail = function(giftcard){
     	var code = giftcard.code;
