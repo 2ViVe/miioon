@@ -4,7 +4,7 @@ angular.module('miioon/signup')
   .directive('signUpStep4', [function() {
     return {
       restrict: 'CA',
-      controller: ['$scope', 'Registration', 'User', 'UrlHandler', function($scope, Registration, User, UrlHandler) {
+      controller: ['$scope', 'Registration', 'User', 'UrlHandler', '$window', function($scope, Registration, User, UrlHandler, $window) {
         var lineItems = $scope.products.selection.map(function(product) {
           return {
             variantId: product.variantId,
@@ -50,6 +50,7 @@ angular.module('miioon/signup')
                   $scope.isProcessing = false;
                   if (data.response.order.paymentState === 'failed') {
                     $scope.paymentFailed = true;
+                    $window.scrollTo(0, 0);
                     return;
                   }
 
@@ -60,6 +61,11 @@ angular.module('miioon/signup')
                     .success(function() {
                       User.fetch();
                     });
+                })
+                .error(function() {
+                  $scope.paymentFailed = true;
+                  $window.scrollTo(0, 0);
+                  return;
                 });
             });
           } else {
