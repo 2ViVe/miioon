@@ -41,19 +41,22 @@
           </h2>
         </div>
 
-        <div class='info-panel' ng-hide="sizes.length === 0">
-          <div class="info-panel-title">Size:</div>
+        <div class='info-panel'
+             ng-repeat="(optionType, options) in allOptions"
+             ng-hide="options.length < 2">
+          <div class="info-panel-title">
+            {{optionType}}: <span ng-if="currentOptions[optionType].presentationType === 'IMG'">: {{currentOptions[optionType].name}}</span>
+          </div>
           <ul class="options">
-            <li ng-repeat="size in sizes" ng-click="changeSize(size)" ng-class="{current: size === selectedSize}">
-              {{size.presentationValue}}
-            </li>
-          </ul>
-        </div>
-        <div class='info-panel' ng-hide="colors.length < 2">
-          <div class="info-panel-title">Color:</div>
-          <ul class="options">
-            <li ng-repeat="color in colors" ng-click="changeColor(color)" ng-class="{current: color === selectedColor}">
-              {{color.presentationValue}}
+            <li ng-repeat="option in options"
+                ng-class="{current: currentOptions[optionType] === option}"
+                ng-style="getOptionStyle(option)"
+                ng-click="changeOption(option, optionType)">
+              <img ng-src="{{option.presentationValue}}"
+                   ng-if="option.presentationType === 'IMG'"/>
+              <span ng-if="option.presentationType === 'TXT'">
+                {{option.presentationValue}}
+              </span>
             </li>
           </ul>
         </div>
