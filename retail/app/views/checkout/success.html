@@ -117,11 +117,11 @@
           <img ng-src="{{lineItem.imageUrl}}" alt="{{lineItem.productName}}"/>
           {{lineItem.productName}}
         </td>
-        <td class="price">£{{lineItem.price | price}}</td>
+        <td class="price">{{lineItem.price | price}}</td>
         <td>
           {{lineItem.quantity}}
         </td>
-        <td class="price">£{{lineItem.price * lineItem.quantity | price}}</td>
+        <td class="price">{{lineItem.price * lineItem.quantity | price}}</td>
       </tr>
       </tbody>
       <tfoot>
@@ -130,7 +130,7 @@
           Item Total
         </td>
         <td class="price">
-          £{{order.data.itemTotal | price}}
+          {{order.data.itemTotal | price}}
         </td>
       </tr>
       <tr ng-repeat="adjustment in order.data.adjustments">
@@ -138,7 +138,7 @@
           {{adjustment.label}}
         </td>
         <td class="price">
-          £{{adjustment.amount | price}}
+          {{adjustment.amount | price}}
         </td>
       </tr>
       <tr>
@@ -146,7 +146,7 @@
           Order Total
         </td>
         <td class="price">
-          £{{totalPrice() | price}}
+          {{totalPrice() | price}}
         </td>
       </tr>
       </tfoot>

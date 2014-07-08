@@ -164,7 +164,7 @@
               Quantity: {{lineItem.quantity}}
             </div>
             <div>
-              £{{lineItem.quantity * lineItem.price | price}}
+              {{lineItem.quantity * lineItem.price | price}}
             </div>
           </div>
         </li>
@@ -172,16 +172,16 @@
       <div class="summary clearfix">
         <dl class="medium-font clearfix unimportant-text">
           <dt class="columns medium-9">Updated SubTotal</dt>
-          <dd class="columns medium-3 text-right">£{{order.data.itemTotal | price}}</dd>
+          <dd class="columns medium-3 text-right">{{order.data.itemTotal | price}}</dd>
           <dt class="columns medium-9" ng-repeat-start="adjustment in order.data.adjustments">{{adjustment.label}}</dt>
-          <dd class="columns medium-3 text-right" ng-repeat-end>£{{adjustment.amount | price}}</dd>
+          <dd class="columns medium-3 text-right" ng-repeat-end>{{adjustment.amount | price}}</dd>
         </dl>
         <div class="columns medium-12">
           <hr/>
         </div>
         <dl class="total medium-font clearfix">
           <dt class="columns medium-9">Total Price</dt>
-          <dd class="columns medium-3 text-right">£{{totalPrice() | price}}</dd>
+          <dd class="columns medium-3 text-right">{{totalPrice() | price}}</dd>
         </dl>
       </div>
       <button class="place-order small" ng-disabled="placingOrder" ng-click="placeOrder()">PLACE ORDER</button>

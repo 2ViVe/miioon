@@ -131,11 +131,11 @@
           <img ng-src="{{lineItem['image-url'] | imageSize:'small' }}" alt="{{lineItem['product-name']}}"/>
           {{lineItem['product-name']}}
         </td>
-        <td class="price">£{{lineItem.price | price}}</td>
+        <td class="price">{{lineItem.price | price}}</td>
         <td>
           {{lineItem.quantity}}
         </td>
-        <td class="price">£{{lineItem.price * lineItem.quantity | price}}</td>
+        <td class="price">{{lineItem.price * lineItem.quantity | price}}</td>
       </tr>
       </tbody>
       <tfoot>
