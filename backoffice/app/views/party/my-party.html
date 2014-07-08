@@ -3,7 +3,7 @@
     <div class='small-12 medium-4 columns'>
       <div class='row collapse'>
         <div class='small-10 columns'>
-          <input type='text' ng-model="search" placeholder='Input Paw-ty title to Search...' class='secondary-item no-margin-bottom' dropdown-toggle="#drop-menu-search" />
+          <input type='text' ng-model="search" placeholder='Input meeting title to Search...' class='secondary-item no-margin-bottom' dropdown-toggle="#drop-menu-search" />
         </div>
         <div class='small-2 columns'>
           <a class='postfix button'><i class="fa fa-search"></i></a>
@@ -18,13 +18,13 @@
       </div>
     </div>
     <div class='small-12 medium-8 columns text-right'>
-      <a href='/#/party/create' class='button small'>Create a Meeting</a>
+      <a href='/#/meet/create' class='button small'>Create a Meeting</a>
     </div>
   </div>
   <div class='row'>
     <div class='columns medium-8'>
 
-      <a ng-href="#/party/overview/{{type === 'upcoming' ? 'recent' : 'upcoming'}}"
+      <a ng-href="#/meet/overview/{{type === 'upcoming' ? 'recent' : 'upcoming'}}"
          ng-class="{'party-switcher-upcoming': type === 'recent', 'party-switcher-recent': type === 'upcoming'}"
          class='right'>
           <span class="right">
@@ -45,10 +45,10 @@
         <tr ng-repeat="party in parties | filter:search">
           <td class='party-list-photo'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
           <td class='party-list-info'>
-            <a ng-href="#/party/{{party.id}}"><strong>{{party.title}}</strong></a>
+            <a ng-href="#/meet/{{party.id}}"><strong>{{party.title}}</strong></a>
             <p>{{party.startTime | date : 'medium'}} | {{party.endTime | date : 'medium'}}</p>
             <p>{{party.address.street}}  {{party.address.city}} {{party.address.stateName}} {{party.address.countryName}} {{party.address.zip}}</p>
-            <p>Host: {{party.hostName}} | <a href='/#/party/{{party.id}}/invite'>Invite Guests</a> | <a href='/#/party/{{party.id}}/edit'>Edit</a> | <a href='#'>Delete</a></p>
+            <p>Host: {{party.hostName}} | <a href='/#/meet/{{party.id}}/invite'>Invite Guests</a> | <a href='/#/meet/{{party.id}}/edit'>Edit</a> | <a href='#'>Delete</a></p>
           </td>
           <td>
             <div class='party-list-members'>
