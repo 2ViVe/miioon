@@ -21,5 +21,6 @@ angular.module('miioonApp', [
   'miioon/gift',
   'miioon.shopping',
   'miioon.organization',
-  'miioon/party'
+  'miioon/party',
+  'miioon/genealogy'
 ]);

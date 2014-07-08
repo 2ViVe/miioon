@@ -147,8 +147,5 @@ angular.module('miioonApp')
         templateUrl: 'views/hyperwallet/index.html',
         controller: 'HyperWalletController',
         controllerAs: 'HyperWallet'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
   }]);
