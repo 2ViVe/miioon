@@ -44,7 +44,7 @@ angular.module('miioon/party')
       };
 
       $scope.cancel = function() {
-        $location.path('/party/overview/upcoming');
+        $location.path('/meet/overview/upcoming');
       };
 
       $scope.save = function() {
@@ -53,7 +53,7 @@ angular.module('miioon/party')
         var event = new Event();
         event.create($scope.data, $scope.time)
           .then(function(event) {
-            $location.path('/party/' + event.data.id + '/invite');
+            $location.path('/meet/' + event.data.id + '/invite');
           })
           .catch(function(response) {
             $scope.error = response.data.meta.error.message;
