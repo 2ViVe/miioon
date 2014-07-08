@@ -15,7 +15,7 @@ angular.module('miioonApp')
     'COMPANY_CODE': 'MIO'
   })
   .config(['$httpProvider', function($httpProvider) {
-    $httpProvider.interceptors.push('HttpInterceptor');
+    $httpProvider.interceptors.push('RetailInterceptor');
   }])
   .run(['User', 'Taxons', 'Shopping',
     function(User, Taxons, Shopping) {
