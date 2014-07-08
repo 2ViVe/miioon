@@ -12,9 +12,4 @@ angular
       });
       return presentation;
     };
-  })
-  .filter('price', function() {
-    return function(price) {
-      return parseFloat(Math.round(price * 100) / 100).toFixed(2);
-    };
   });

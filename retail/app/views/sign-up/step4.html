@@ -37,7 +37,7 @@
             <img ng-src="{{lineItem['image-url'] | imageSize:'small' }}" alt="{{lineItem['product-name']}}"/>
             {{lineItem['productName']}}
           </td>
-          <td class="price">£{{lineItem.price | price}}</td>
+          <td class="price">{{lineItem.price | price}}</td>
           <td>
             {{lineItem.quantity}}
           </td>
