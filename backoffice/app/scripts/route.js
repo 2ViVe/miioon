@@ -125,20 +125,6 @@ angular.module('miioonApp')
           }]
         }
       })
-      .when('/gift/gift-card', {
-        templateUrl: 'views/gift/gift-card.html',
-        controller: 'GiftController',
-        resolve: {
-          giftCard: ['GiftCard', function(GiftCard) {
-            var giftCard = new GiftCard();
-            return giftCard.fetch();
-          }]
-        }
-      })
-      .when('/gift/checkout', {
-        templateUrl: 'views/gift/gift-checkout.html',
-        controller: 'GiftCheckoutController'
-      })
       .when('/miioon-u', {
         templateUrl: 'views/tools/train.html',
         controller: 'TrainController'

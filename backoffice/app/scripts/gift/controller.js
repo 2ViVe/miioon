@@ -23,8 +23,8 @@ angular
         'post': true
       };
 
-      $scope.giftCards = giftCard.data.variants;
-      $scope.giftCardImages = giftCard.data.images;
+      $scope.giftCards = giftCard.data[0].variants;
+      $scope.giftCardImages = giftCard.data[0].images;
 
       $scope.preview = function() {
         $modal.open({
