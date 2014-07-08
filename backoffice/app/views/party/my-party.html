@@ -1,205 +1,74 @@
 <div class='party-container'>
-    <div class='row party-topbar'>
-        <div class='small-12 medium-4 columns'>
-        	<div class='row collapse'>
-	            <div class='small-10 columns'>
-	              <input type='text' placeholder='Search Meets by Hostess Name' class='secondary-item no-margin-bottom' dropdown-toggle="#drop-menu-search" />
-	            </div>
-	            <div class='small-2 columns'>
-	              <a href='#' class='postfix button secondary'><i class="fa fa-search"></i></a>
-	            </div>
-              <!--
-              <ul id="drop-menu-search" class="f-dropdown">
-                <li ng-repeat="choice in searchItems">
-                  <a>{{choice}}</a>
-                </li>
-              </ul>
-              -->
-              <ul id="drop-menu-search" class='f-dropdown party-panel-list'>
-                <li ng-repeat="choice in searchItems">
-                  <i class="fa fa-caret-right primary-color"></i>
-                  <a href='#'>{{choice.name}}</a>
-                  <span href='#' class='label secondary right'>{{choice.date}}</span>
-                </li>
-              </ul>
-	        </div>
+  <div class='row topbar'>
+    <div class='small-12 medium-4 columns'>
+      <div class='row collapse'>
+        <div class='small-10 columns'>
+          <input type='text' ng-model="search" placeholder='Input Paw-ty title to Search...' class='secondary-item no-margin-bottom' dropdown-toggle="#drop-menu-search" />
         </div>
-        <div class='small-12 medium-8 columns text-right'>
-        	<a href='#' class='button small'>Create a Meet</a>
+        <div class='small-2 columns'>
+          <a class='postfix button'><i class="fa fa-search"></i></a>
         </div>
+        <ul id="drop-menu-search" class='f-dropdown party-panel-list'>
+          <li ng-repeat="choice in searchItems">
+            <i class="fa fa-caret-right primary-color"></i>
+            <a href='#'>[choice.name]</a>
+            <span href='#' class='label secondary right'>[choice.date]</span>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class='row'><div class='columns small-12'><p class='separator-line'></p></div></div>
-    <div class='row'>
-    	<div class='columns medium-4'>
-            <div class='party-panel'>
-                <h3 class='text-center'><small>Miioon Meets</small><img src='/images/button-on.jpg' /><small>Fundraising Event</small></h3>
-            </div>
-            <div class='party-panel'>
-                <h3 class='text-center'>Upcoming Meets</h3>
-                <ul class='party-panel-list'>
-                    <li><i class="fa fa-caret-right primary-color"></i> <a href='#'>Shell Olson</a> <span href='#' class='label secondary right'>TUE 10/24</span></li>
-                    <li><i class="fa fa-caret-right primary-color"></i> <a href='#'>Shell Olson</a> <span href='#' class='label secondary right'>TUE 10/24</span></li>
-                    <li><i class="fa fa-caret-right primary-color"></i> <a href='#'>Shell Olson</a> <span href='#' class='label secondary right'>TUE 10/24</span></li>
-                </ul>
-            </div>
-            <div class='party-panel'>
-                <img src='/images/calendar.jpg' />
-            </div>
-    	</div>
-    	<div class='columns medium-8'>
-            <div class='row'>
-              <div class='columns small-12'>
-                <div class='party-title'>
-                  <h4 class='left'><i class="fa fa-user"></i> Shelly Olson's Meet </h4>
-                  <div class='row collapse left dorp-menu' dropdown-toggle="#drop-menu-action">
-                      <div class='small-10 columns'>
-                        <input type='text' value='Actions' class='secondary-item no-margin-bottom dropMenu-con' disabled />
-                      </div>
-                      <div class='small-2 columns'>
-                        <a class='postfix button secondary'><i class="fa fa-arrow-down"></i></a>
-                      </div>
-                      <ul id="drop-menu-action" class="f-dropdown">
-                        <li ng-repeat="choice in actionItems">
-                          <a>{{choice}}</a>
-                        </li>
-                      </ul>
-                  </div>
-                </div>
-                <ul class='party-info'>
-                  <li>October 24, 2013</li>
-                  <li>7:30 AM</li>
-                  <li>Closes November 14, 2013</li>
-                  <li><a href='#'>33 Pine, San Francisco, CA</a></li>
-                  <li><a href='#'>Hostess</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class='row party-goal'>
-              <div class='small-3 columns party-goal-invited'>
-                <p class='icons-blue-circle'><strong>182</strong><br/><span>GOAL:40</span></p>
-                <h5>INVITED</h5>
-              </div>
-              <div class='small-3 columns party-goal-attending'>
-                <p class='icons-green-circle'><strong>182</strong><br/><span>GOAL:40</span></p>
-                <h5>ATTENDING</h5>
-              </div>
-              <div class='small-3 columns party-goal-orders'>
-                <p class='icons-red-circle'><strong>182</strong><br/><span>GOAL:40</span></p>
-                <h5>ORDERS</h5>
-              </div>
-              <div class='small-3 columns party-goal-earnings'>
-                <p class='icons-pink-circle'><strong>182</strong><br/><span>GOAL:40</span></p>
-                <h5>EARNINGS</h5>
-              </div>
-            </div>
-            <div class='row'>
-              <div class='columns small-12'>
-                <div class='party-panel party-price'>
-                  <ul class="row">
-                    <li class="small-4 columns text-center">$49.95<span>STYLIST</span></li>
-                    <li class="small-4 columns text-center">$42.12<span>RETAIL</span></li>
-                    <li class="small-4 columns text-center">$36.12<span>PCV</span><small>0 half off item(s)</small></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class='row'>
-              <div class='columns small-12'>
-                <div class='party-panel party-rsvps'>
-                  <h4>RSVPs <a href='#' class='button tiny'>Manage</a> <small class='right'>Invitation URL: http://www.miioon.com</small></h4>
-                  <div>
-                    <ul class='row'>
-                      <li class='small-3 columns'>
-                        <strong>1</strong>
-                        <button class='secondary tiny'>Yes</button>
-                      </li>
-                      <li class='small-3 columns'>
-                        <strong>12</strong>
-                        <button class='secondary tiny'>MAYBE</button>
-                      </li>
-                      <li class='small-3 columns'>
-                        <strong>0</strong>
-                        <button class='secondary tiny'>NO</button>
-                      </li>
-                      <li class='small-3 columns'>
-                        <strong>1</strong>
-                        <button class='secondary tiny'>NO REPLY YET</button>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <h4>
-              Meet Checklist
-              <ul class="button-group right">
-                <li><a href="#" class="tiny button">Before</a></li>
-                <li><a href="#" class="tiny secondary button">The day</a></li>
-                <li><a href="#" class="tiny secondary button">After</a></li>
-              </ul>
-            </h4>
-            <table width='100%'>
-              <tbody>
-                <tr>
-                  <td width='40' class='text-center'><input type='checkbox' /></td>
-                  <td>Today: <a href='#'>Send Confirmation email to your Hostess</a></td>
-                  <td width='80' class='text-center'><a href='#' class="tiny button">View</a></td>
-                </tr>
-                <tr class='odd'>
-                  <td width='40' class='text-center'><input type='checkbox' /></td>
-                  <td>Today: <a href='#'>Send Confirmation email to your Hostess</a></td>
-                  <td width='80' class='text-center'><a href='#' class="tiny button">View</a></td>
-                </tr>
-                <tr>
-                  <td width='40' class='text-center'><input type='checkbox' /></td>
-                  <td>Today: <a href='#'>Send Confirmation email to your Hostess</a></td>
-                  <td width='80' class='text-center'><a href='#' class="tiny button">View</a></td>
-                </tr>
-                <tr class='odd'>
-                  <td width='40' class='text-center'><input type='checkbox' /></td>
-                  <td>Today: <a href='#'>Send Confirmation email to your Hostess</a></td>
-                  <td width='80' class='text-center'><a href='#' class="tiny button">View</a></td>
-                </tr>
-                <tr>
-                  <td width='40' class='text-center'><input type='checkbox' /></td>
-                  <td>Today: <a href='#'>Send Confirmation email to your Hostess</a></td>
-                  <td width='80' class='text-center'><a href='#' class="tiny button">View</a></td>
-                </tr>
-                <tr class='odd'>
-                  <td width='40' class='text-center'><input type='checkbox' /></td>
-                  <td>Today: <a href='#'>Send Confirmation email to your Hostess</a></td>
-                  <td width='80' class='text-center'><a href='#' class="tiny button">View</a></td>
-                </tr>
-                <tr class='last-tr'>
-                  <td width='40' class='text-center'><input type='checkbox' /></td>
-                  <td>Today: <a href='#'>Send Confirmation email to your Hostess</a></td>
-                  <td width='80' class='text-center'><a href='#' class="tiny button">View</a></td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
+    <div class='small-12 medium-8 columns text-right'>
+      <a href='/#/party/create' class='button small'>Create a Meeting</a>
     </div>
+  </div>
+  <div class='row'>
+    <div class='columns medium-8'>
+
+      <a ng-href="#/party/overview/{{type === 'upcoming' ? 'recent' : 'upcoming'}}"
+         ng-class="{'party-switcher-upcoming': type === 'recent', 'party-switcher-recent': type === 'upcoming'}"
+         class='right'>
+          <span class="right">
+            Recent Meeting
+          </span>
+        Upcoming Meeting
+      </a>
+
+      <h4 ng-if="type === 'upcoming' " class="primary-color">
+        Upcoming Meeting
+      </h4>
+      <h4 ng-if="type === 'recent' " class="primary-color">
+        Recent Meeting
+      </h4>
+
+      <table class='party-list' width='100%'>
+        <tbody>
+        <tr ng-repeat="party in parties | filter:search">
+          <td class='party-list-photo'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
+          <td class='party-list-info'>
+            <a ng-href="#/party/{{party.id}}"><strong>{{party.title}}</strong></a>
+            <p>{{party.startTime | date : 'medium'}} | {{party.endTime | date : 'medium'}}</p>
+            <p>{{party.address.street}}  {{party.address.city}} {{party.address.stateName}} {{party.address.countryName}} {{party.address.zip}}</p>
+            <p>Host: {{party.hostName}} | <a href='/#/party/{{party.id}}/invite'>Invite Guests</a> | <a href='/#/party/{{party.id}}/edit'>Edit</a> | <a href='#'>Delete</a></p>
+          </td>
+          <td>
+            <div class='party-list-members'>
+              <strong class='primary-color'>
+                {{party.yesCount + party.noCount + party.maybeCount + party.noReplyCount}}
+              </strong>
+              <small>INVITED</small>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <!--<ul class="pagination right"> <li class="arrow unavailable"><a href="">&laquo;</a></li> <li class="current"><a href="">1</a></li> <li><a href="">2</a></li> <li><a href="">3</a></li> <li><a href="">4</a></li> <li class="unavailable"><a href="">&hellip;</a></li> <li><a href="">12</a></li> <li><a href="">13</a></li> <li class="arrow"><a href="">&raquo;</a></li> </ul>-->
+    </div>
+    <div class='columns medium-4'>
+      <h4 class="primary-color">Meeting Calendar</h4>
+      <div data-calendar
+           data-remarks="remarks"
+           data-selected-date="selectedDate">
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

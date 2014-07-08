@@ -14,7 +14,7 @@ angular
     $routeProvider
       .when('/meet/overview/:type', {
         templateUrl: 'views/party/my-party.html',
-//        controller: 'PartyLandingController',
+        controller: 'PartyLandingController',
         resolve: {
           events: ['Events', function(Events) {
             return Events.fetchAll();
