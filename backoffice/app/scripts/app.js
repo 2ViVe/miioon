@@ -12,6 +12,7 @@ angular.module('miioonApp', [
   'mm.foundation.position',
   'mm.foundation.dropdownToggle',
   'mm.foundation.modal',
+  'mm.foundation.tooltip',
   'chieffancypants.loadingBar',
   'ipCookie',
   'angulartics',
