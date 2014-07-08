@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('2ViVe')
+angular.module('miioon/gift')
   .controller('GiftCheckoutController', ['$scope', 'GiftCard',
     function($scope, GiftCard) {
       $scope.creditCard = {};

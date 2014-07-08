@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('2ViVe')
+angular.module('miioon/gift')
   .controller('GiftModalController', ['$scope', '$modalInstance',
     function($scope, $modalInstance) {
       $scope.cancel = function() {

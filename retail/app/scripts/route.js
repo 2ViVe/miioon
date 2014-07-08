@@ -71,20 +71,6 @@ angular.module('miioonApp')
       .when('/career', {
         templateUrl: 'views/career.html'
       })
-      .when('/gift/gift-card', {
-        templateUrl: 'views/gift/gift-card.html',
-        controller: 'GiftController',
-        resolve: {
-          giftCard: ['GiftCard', function(GiftCard) {
-            var giftCard = new GiftCard();
-            return giftCard.fetch();
-          }]
-        }
-      })
-      .when('/gift/checkout', {
-        templateUrl: 'views/gift/gift-checkout.html',
-        controller: 'GiftCheckoutController'
-      })
       .when('/t-c', {
         templateUrl: 'views/t-c.html'
       })
