@@ -16,6 +16,13 @@ ul {
   list-style: none;
 }
 
+.tooltip {
+  text-align: left;
+
+  a {
+    color: white;
+  }
+}
 
 // common class
 .separator-slash,
