@@ -23,7 +23,7 @@ angular
               60: 2,
               70: 3,
               80: 4,
-              90:5
+              90: 5
             });
             return genealogy
               .fetchUniLevels()
