@@ -13,8 +13,8 @@ angular
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/meet/overview/:type', {
-        templateUrl: 'views/party/overview.html',
-        controller: 'PartyLandingController',
+        templateUrl: 'views/party/my-party.html',
+//        controller: 'PartyLandingController',
         resolve: {
           events: ['Events', function(Events) {
             return Events.fetchAll();
@@ -22,7 +22,7 @@ angular
         }
       })
       .when('/meet/overview', {
-        templateUrl: 'views/party/party-none.html'
+        templateUrl: 'views/party/none-party.html'
       })
       .when('/meet/:partyId/invite', {
         templateUrl: 'views/party/invite.html',
