@@ -1,0 +1,102 @@
+<div class='party-container'>
+  <div class='row'>
+    <div class='small-12 columns party-email-banner'>
+      <img src='/images/party/party-email-banner-1.png' alt='Your RSVP' class="party-email-banner-img" />
+      <!--<img ng-src="{{templateImageUrl}}" alt='Your RSVP' class="party-email-banner-img" />-->
+      <div class='party-email-banner-text'>
+        <h2>
+          {{event.data.title}}
+          <small>{{event.data.startTime | date: 'medium'}}</small>
+        </h2>
+        <p>
+          {{event.data.locationName}}
+          <br/>
+          {{event.data.address.zip}},
+          {{event.data.address.street}},
+          {{event.data.address.city}},
+          {{event.data.address.stateName}},
+          {{event.data.address.countryName}}
+        </p>
+        <div class='party-email-banner-anwser' ng-if="response() !== 'noreply'">
+          Your reply is {{response().toUpperCase()}}.
+          <a class="small-font" ng-click="enableChangingReply()">Change Reply.</a><br/>
+          <p class='party-email-banner-button' ng-if="isChangingReply">
+            <a class='button small' ng-click="confirm('YES');">YES</a>
+            <a class='button small' ng-click="confirm('MAYBE')">MAYBE</a>
+            <a class='button small' ng-click="confirm('NO')">NO</a>
+          </p>
+        </div>
+        <div class='party-email-banner-anwser' ng-if="response() === 'noreply'">
+          Will you attend?<br/>
+          <p class='party-email-banner-button'>
+            <a class='button small' ng-click="confirm('YES');">YES</a>
+            <a class='button small' ng-click="confirm('MAYBE')">MAYBE</a>
+            <a class='button small' ng-click="confirm('NO')">NO</a>
+          </p>
+        </div>
+      </div>
+      <!--<a href='#/' class="party-email-banner-go">Go to Shopping</a>-->
+    </div>
+  </div>
+  <div class='row'>
+    <div class='columns medium-12'>
+      <h3 class="primary-color">Who's Coming?</h3>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='columns medium-6'>
+      <div data-rsvp-panel
+           data-invitees="event.invitees"
+           data-event="event.data"></div>
+    </div>
+    <div class='columns medium-6'>
+      <div class='party-panel'>
+        <h4>RSVP History</h4>
+        <table width='100%' class='party-user-table'>
+          <tbody>
+          <tr ng-repeat="invitee in event.invitees">
+            <td>
+              <div class='party-user-table-info'>
+                <h5>
+                  <span class="base-font">
+                    {{invitee.firstName}}
+                    {{invitee.middleName}}
+                    {{invitee.lastName}}
+                    ({{invitee.email}})
+                  </span>
+
+                  <br/>
+                  <small ng-if="invitee.reply === 'noreply'">
+                    No reply yet.
+                  </small>
+                  <div ng-repeat="response in invitee.responses">
+                    <small class="right">{{response.createdAt | readableTimestampFrom: 'now' }}</small>
+                    <small ng-if="!$last">
+                      Change Reply to "{{response.reply}}"
+                    </small>
+                    <small ng-if="$last">
+                      Replied "{{response.reply}}"
+                    </small>
+                    <small ng-if="response.comment">
+                      <br/>
+                      {{response.comment}}
+                    </small>
+                  </div>
+                </h5>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <!--<ul class="pagination right">-->
+          <!--<li class="arrow unavailable"><a href=""><i class="fa fa-caret-left"></i></a></li>-->
+          <!--<li class="current"><a href="">1</a></li>-->
+          <!--<li><a href="">2</a></li>-->
+          <!--<li><a href="">3</a></li>-->
+          <!--<li class="arrow"><a href=""><i class="fa fa-caret-right"></i></a></li>-->
+        <!--</ul>-->
+      </div>
+    </div>
+  </div>
+
+</div>

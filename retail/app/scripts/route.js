@@ -89,8 +89,5 @@ angular.module('miioonApp')
       })
       .when('/:login', {
         templateUrl: 'views/home.html'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
   }]);

@@ -20,5 +20,6 @@ angular.module('miioonApp', [
   'miioon/shopping',
   'miioon/checkout',
   'miioon/handler',
-  'miioon/gift'
+  'miioon/gift',
+  'miioon/party'
 ]);
