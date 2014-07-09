@@ -48,7 +48,7 @@ ul {
 }
 
 .topbar {
-  margin-bottom: $panel-margin-bottom;
+  margin-bottom: $panel-margin-bottom !important;
   h4{
     margin-bottom:0;
     margin-top:0;
