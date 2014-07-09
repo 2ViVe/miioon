@@ -104,7 +104,7 @@
         <li>{{order['shippingAddress']['firstName']}} {{order['shippingAddress']['lastName']}}</li>
         <li>{{order['shippingAddress']['street']}}</li>
         <li>{{order['shippingAddress']['city']}}, {{order['shippingAddress']['state']}},
-          {{payment['shippingAddress']['country']}}, {{order['shippingAddress']['zip']}}
+          {{payment['shippingAddress']['country']['name']}}, {{order['shippingAddress']['zip']}}
         </li>
       </ul>
     </div>
