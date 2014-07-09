@@ -10,6 +10,7 @@
     <div class="row collapse">
       <div class="small-3 columns">
         <input type="text" ng-model='distributorId' class="secondary-item no-margin-bottom" placeholder="Search by Distributor ID...">
+        <a class="text-clear-btn" ng-show="!!distributorId" ng-click="clearDistributorId()">X</a>
       </div>
       <div class="small-1 columns">
         <a ng-click="updateOrder(true)" class='postfix button'><i class="fa fa-search"></i></a>

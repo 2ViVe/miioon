@@ -159,6 +159,13 @@ ul {
 .secondary-item::-webkit-input-placeholder{
   color:#fff !important;
 }
+.text-clear-btn,.text-clear-btn:hover{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 14px;
+  color: #FFF;
+}
 
 // foundation style reset
 

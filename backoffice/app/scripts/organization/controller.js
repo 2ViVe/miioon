@@ -62,5 +62,10 @@ angular.module('2ViVe')
 
     $scope.parseFloat = function(value){
       return parseFloat(value);
-    }
+    };
+
+    $scope.clearDistributorId = function(){
+      $scope.distributorId = null;
+      updateOrder(true);
+    };
   }]);
