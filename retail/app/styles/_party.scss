@@ -4,6 +4,9 @@
       margin-top:4px;
     }
   }
+  h4{
+    margin-bottom:20px;
+  }
 }
 
 
@@ -474,6 +477,9 @@ table.party-list{
         &.party-list-photo{
           text-align: center;
           vertical-align: top;
+          img{
+            width:100px;
+          }
         }
         &.party-list-info{
           p{

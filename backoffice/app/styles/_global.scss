@@ -47,6 +47,14 @@ ul {
   }
 }
 
+.topbar {
+  margin-bottom: $panel-margin-bottom;
+  h4{
+    margin-bottom:0;
+    margin-top:0;
+  }
+}
+
 .separator-vertical-line {
   li {
     &:before {
