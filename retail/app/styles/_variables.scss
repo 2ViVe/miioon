@@ -14,6 +14,7 @@ $rem-base: $base-font-size;
 $small-font-size: rem-calc(10);
 $medium-font-size: rem-calc(14);
 $large-font-size: rem-calc(18);
+$xlarge-font-size: rem-calc(20);
 $base-font-color: #222;
 
 $primary-color: #4AD0FF;
@@ -57,4 +58,6 @@ $tabs-navigation-bg-color: white;
 $block-grid-default-spacing: rem-calc(10);
 
 $panel-padding: rem-calc(20);
+$panel-margin-bottom: rem-calc(20);
+$h4-margin-bottom: rem-calc(15);
 
