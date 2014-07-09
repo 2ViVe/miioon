@@ -20,6 +20,7 @@ $rem-base: $base-font-size;
 $small-font-size: rem-calc(11);
 $medium-font-size: rem-calc(14);
 $large-font-size: rem-calc(18);
+$xlarge-font-size: rem-calc(20);
 $base-font-color: #8C8C8C;
 
 $primary-color: #05BAB1;
@@ -74,6 +75,8 @@ $row-width: rem-calc(1000);
 $panel-bg: #fff;
 $panel-border-size: 0;
 $panel-padding: rem-calc(20);
+$panel-margin-bottom: rem-calc(20);
+$h4-margin-bottom: rem-calc(15);
 
 // table style
 
