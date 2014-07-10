@@ -29,9 +29,6 @@ angular.module('miioonApp')
           }]
         }
       })
-      .when('/account', {
-        templateUrl: 'views/profile.html'
-      })
       .when('/about', {
         templateUrl: 'views/about.html'
       })
