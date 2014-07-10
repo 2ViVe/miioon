@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="columns medium-12">
+    <div class="shopping-option-panel">
+      <div class="content">
+        <button ng-click="shopForMySelf()" class="right">
+          SHOP
+        </button>
+        <div class="title">
+          Non-Paw-ty Purchase
+        </div>
+        <div>
+          &nbsp;
+        </div>
+      </div>
+    </div>
+    <div class="shopping-option-panel">
+      <div class="content">
+        <button ng-click="shopForPawTy()" class="right">
+          SHOP
+        </button>
+        <div class="title">
+          PLACE A PAW-TY ORDER
+        </div>
+        <div class="medium-4">
+          <select class="secondary-item no-margin-bottom"
+                  ng-model="selectedEvent"
+                  ng-options="event as event.title + ' - ' + (event.startTime | date: 'medium') for event in events">
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
