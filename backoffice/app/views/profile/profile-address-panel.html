@@ -1,243 +1,249 @@
 <div class="row panel">
-  <!-- Common Address -->
-  <div class="small-12">
-    <header class="row">
-      <h3 class="small-8 columns primary-color">{{ addressTitle }} Address</h3>
+<!-- Common Address -->
+<div class="small-12">
+<header class="row">
+  <h3 class="small-8 columns primary-color">{{ addressTitle }} Address</h3>
 
-      <div class="small-4 end columns primary-color text-right"><a ng-click="toggle()">Edit</a>
-      </div>
-    </header>
-
-    <div ng-if="!isEditing">
-      <div class="row">
-        <div class="small-3 columns">Name</div>
-        <div class="small-3 end columns">{{ address.firstName }} {{ address.lastName }}</div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">Address Line 1</div>
-        <div class="small-3 end columns">{{ address.street }}</div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">City</div>
-        <div class="small-3 end columns">{{ address.city }}</div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">Zip</div>
-        <div class="small-3 end columns">{{ address.zip }}</div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">Country</div>
-        <div class="small-3 end columns">{{ getCountryName(address.countryId) }}</div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">County</div>
-        <div class="small-3 end columns">{{ getStateName(address.countryId, address.stateId) }}</div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">Home Phone</div>
-        <div class="small-3 end columns">{{ address.phone }}</div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">Mobile Phone</div>
-        <div class="small-3 end columns">{{ address.mobile }}</div>
-      </div>
-    </div>
-
-    <form novalidate ng-if="isEditing" name="form" ng-submit="save(form.$valid, form)">
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="{{addressType}}-firstName" class="inline">First Name:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text"
-                 required
-                 id="{{addressType}}-firstName"
-                 name="firstName"
-                 ng-model="address.firstName"
-                 placeholder="click to edit ... ">
-          <small ng-show="form.firstName.$error.required" class="error">
-            This field is required.
-          </small>
-          <small class="error" ng-show="address.errors.firstName">
-            {{ address.errors.firstName }}
-          </small>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="{{addressType}}-lastName" class="inline">Last Name:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text"
-                 required
-                 id="{{addressType}}-lastName"
-                 name="lastName"
-                 ng-model="address.lastName"
-                 placeholder="click to edit ... ">
-          <small ng-show="form.lastName.$error.required" class="error">
-            This field is required.
-          </small>
-          <small class="error" ng-show="address.errors.lastName">
-            {{ address.errors.lastName }}
-          </small>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="{{addressType}}-AddrLine" class="inline">Address Line 1:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text"
-                 required
-                 id="{{addressType}}-AddrLine"
-                 name="addrLine"
-                 ng-model="address.street"
-                 placeholder="click to edit ... ">
-          <small ng-show="form.addrLine.$error.required" class="error">
-            This field is required.
-          </small>
-          <small class="error" ng-show="address.errors.street">
-            {{ address.errors.street }}
-          </small>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="{{addressType}}-AddrCity" class="inline">City:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text"
-                 required
-                 id="{{addressType}}-AddrCity"
-                 name="addrCity"
-                 ng-model="address.city"
-                 placeholder="click to edit ... ">
-
-          <small ng-show="form.addrCity.$error.required" class="error">
-            This field is required.
-          </small>
-          <small class="error" ng-show="address.errors.city">
-            {{ address.errors.city }}
-          </small>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="{{addressType}}-AddrZip" class="inline">Zip:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text" id="{{addressType}}-AddrZip" name="addrZip" ng-model="address.zip"
-                 placeholder="click to edit ... ">
-          <small ng-show="form.addrZip.$error.required" class="error">
-            This field is required.
-          </small>
-          <small class="error" ng-show="address.errors.zip">
-            {{ address.errors.zip }}
-          </small>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="{{addressType}}-AddrCountry" class="inline">Country:</label>
-        </div>
-        <div class="small-5 end columns">
-          <select required id="{{addressType}}-AddrCountry"
-                  name="addrCountry"
-                  ng-model="address.countryId"
-                  ng-init="getCountryById(address.countryId)"
-                  ng-options="country.id as country.name for country in countries | orderBy:'name'"
-                  ng-change="onCountryChanged(billingAddress.country.id)"></select>
-          <small ng-show="form.addrCountry.$error.required" class="error">
-            This field is required.
-          </small>
-          <small class="error" ng-show="address.errors.country">
-            {{ address.errors.country }}
-          </small>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="{{addressType}}-AddrState" class="inline">County:</label>
-        </div>
-        <div class="small-5 end columns">
-
-          <select id="{{addressType}}-AddrState" name="addrState" ng-model="address.stateId"
-                  ng-required="states.length > 0"
-                  ng-options="state.id as state.name for state in getStates(address.countryId) | orderBy:'name'">
-          </select>
-
-          <small ng-show="form.addrState.$error.required" class="error">
-            This field is required.
-          </small>
-          <small class="error" ng-show="address.errors.state">
-            {{ address.errors.state }}
-          </small>
-
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="{{addressType}}-AddrHomePhone" class="inline">Home Phone:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text"
-                 id="{{addressType}}-AddrHomePhone"
-                 name="addrHomePhone"
-                 ng-model="address.phone"
-                 data-require-with="address.mobile"
-                 placeholder="click to edit ... ">
-          <small ng-show="form.addrHomePhone.$error.requireWith || form.addrMobilePhone.$error.requireWith" class="error">
-            Mobile and Home Phone at least should have one filled.
-          </small>
-          <small class="error" ng-show="address.errors.phone">
-            {{ address.errors.phone }}
-          </small>
-
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="{{addressType}}-AddrMobilePhone" class="inline">Mobile Phone:</label>
-        </div>
-        <div class="small-5 end columns">
-          <input type="text"
-                 id="{{addressType}}-AddrMobilePhone"
-                 name="addrMobilePhone"
-                 ng-model="address.mobile"
-                 data-require-with="address.phone"
-                 placeholder="click to edit ... ">
-          <small class="error" ng-show="address.errors.mobile">
-            {{ address.errors.mobile }}
-          </small>
-          <small ng-show="form.addrMobilePhone.$error.requireWith || form.addrHomePhone.$error.requireWith" class="error">
-            Mobile and Home Phone at least should have one filled.
-          </small>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="small-5 end columns small-offset-3">
-          <button class="btn-block" type="submit">Save</button>
-          <button class="btn-block" ng-click="toggle()">Cancel</button>
-        </div>
-      </div>
-    </form>
+  <div class="small-4 end columns primary-color text-right">
+    <a ng-if="!isEditing" ng-click="toggle()">Edit</a>
+    <a ng-if="isEditing" ng-click="toggle(); restore()">Cancel</a>
   </div>
+</header>
+
+<div ng-if="!isEditing">
+  <div class="row profile-item">
+    <div class="small-3 columns">Name</div>
+    <div class="small-3 end columns">{{ address.firstName }} {{ address.lastName }}</div>
+  </div>
+
+  <div class="row profile-item">
+    <div class="small-3 columns">Address Line 1</div>
+    <div class="small-3 end columns">{{ address.street }}</div>
+  </div>
+
+  <div class="row profile-item">
+    <div class="small-3 columns">City</div>
+    <div class="small-3 end columns">{{ address.city }}</div>
+  </div>
+
+  <div class="row profile-item">
+    <div class="small-3 columns">Zip</div>
+    <div class="small-3 end columns">{{ address.zip }}</div>
+  </div>
+
+  <div class="row profile-item">
+    <div class="small-3 columns">Country</div>
+    <div class="small-3 end columns">{{ address.country.name }}</div>
+  </div>
+
+  <div class="row profile-item">
+    <div class="small-3 columns">State</div>
+    <div class="small-3 end columns">{{ address.state.name }}</div>
+  </div>
+
+  <div class="row profile-item">
+    <div class="small-3 columns">Home Phone</div>
+    <div class="small-3 end columns">{{ address.phone }}</div>
+  </div>
+
+  <div class="row profile-item">
+    <div class="small-3 columns">Mobile Phone</div>
+    <div class="small-3 end columns">{{ address.mobile }}</div>
+  </div>
+
+</div>
+
+<form novalidate ng-if="isEditing" name="form" ng-submit="save(form.$valid, form)">
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="{{addressType}}-firstName">First Name:</label>
+    </div>
+    <div class="small-5 end columns">
+      <input type="text"
+             required
+             id="{{addressType}}-firstName"
+             name="firstName"
+             ng-model="address.firstName"
+             placeholder="click to edit ... ">
+      <small ng-show="form.firstName.$error.required" class="error">
+        This field is required.
+      </small>
+      <small class="error" ng-show="address.errors.firstName">
+        {{ address.errors.firstName }}
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="{{addressType}}-lastName">Last Name:</label>
+    </div>
+    <div class="small-5 end columns">
+      <input type="text"
+             required
+             id="{{addressType}}-lastName"
+             name="lastName"
+             ng-model="address.lastName"
+             placeholder="click to edit ... ">
+      <small ng-show="form.lastName.$error.required" class="error">
+        This field is required.
+      </small>
+      <small class="error" ng-show="address.errors.lastName">
+        {{ address.errors.lastName }}
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="{{addressType}}-AddrLine">Address Line 1:</label>
+    </div>
+    <div class="small-5 end columns">
+      <input type="text"
+             required
+             id="{{addressType}}-AddrLine"
+             name="addrLine"
+             ng-model="address.street"
+             placeholder="click to edit ... ">
+      <small ng-show="form.addrLine.$error.required" class="error">
+        This field is required.
+      </small>
+      <small class="error" ng-show="address.errors.street">
+        {{ address.errors.street }}
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="{{addressType}}-AddrCity">City:</label>
+    </div>
+    <div class="small-5 end columns">
+      <input type="text"
+             required
+             id="{{addressType}}-AddrCity"
+             name="addrCity"
+             ng-model="address.city"
+             placeholder="click to edit ... ">
+
+      <small ng-show="form.addrCity.$error.required" class="error">
+        This field is required.
+      </small>
+      <small class="error" ng-show="address.errors.city">
+        {{ address.errors.city }}
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="{{addressType}}-AddrZip">Zip:</label>
+    </div>
+    <div class="small-5 end columns">
+      <input type="text" id="{{addressType}}-AddrZip" name="addrZip" ng-model="address.zip"
+             placeholder="click to edit ... ">
+      <small ng-show="form.addrZip.$error.required" class="error">
+        This field is required.
+      </small>
+      <small class="error" ng-show="address.errors.zip">
+        {{ address.errors.zip }}
+      </small>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="{{addressType}}-AddrCountry">Country:</label>
+    </div>
+    <div class="small-5 end columns">
+      <select required id="{{addressType}}-AddrCountry"
+              name="addrCountry"
+              ng-model="address.country"
+              ng-options="country as country.name for country in countries | orderBy:'name'"
+        ></select>
+      <small ng-show="form.addrCountry.$error.required" class="error">
+        This field is required.
+      </small>
+      <small class="error" ng-show="address.errors.country">
+        {{ address.errors.country }}
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="{{addressType}}-AddrState">State:</label>
+    </div>
+    <div class="small-5 end columns">
+
+      <select id="{{addressType}}-AddrState"
+              name="addrState"
+              ng-model="address.state"
+              ng-required="states.length > 0"
+              ng-options="state as state.name for state in address.country.states | orderBy:'name'">
+      </select>
+
+      <small ng-show="form.addrState.$error.required" class="error">
+        This field is required.
+      </small>
+      <small class="error" ng-show="address.errors.state">
+        {{ address.errors.state }}
+      </small>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="{{addressType}}-AddrHomePhone">Home Phone:</label>
+    </div>
+    <div class="small-5 end columns">
+      <input type="text"
+             id="{{addressType}}-AddrHomePhone"
+             name="addrHomePhone"
+             ng-model="address.phone"
+             data-require-with="address.mobile"
+             placeholder="click to edit ... ">
+      <small ng-show="form.addrHomePhone.$error.requireWith || form.addrMobilePhone.$error.requireWith" class="error">
+        Mobile and Home Phone at least should have one filled.
+      </small>
+      <small class="error" ng-show="address.errors.phone">
+        {{ address.errors.phone }}
+      </small>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="{{addressType}}-AddrMobilePhone">Mobile Phone:</label>
+    </div>
+    <div class="small-5 end columns">
+      <input type="text"
+             id="{{addressType}}-AddrMobilePhone"
+             name="addrMobilePhone"
+             ng-model="address.mobile"
+             data-require-with="address.phone"
+             placeholder="click to edit ... ">
+      <small ng-show="form.addrMobilePhone.$error.requireWith || form.addrMobilePhone.$error.requireWith" class="error">
+        Mobile and Home Phone at least should have one filled.
+      </small>
+      <small class="error" ng-show="address.errors.mobile">
+        {{ address.errors.phone }}
+      </small>
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="small-5 end columns small-offset-3">
+      <button class="btn-block" type="submit">Save</button>
+      <button class="btn-block" ng-click="toggle(); restore();">Cancel</button>
+    </div>
+  </div>
+</form>
+</div>
 
 </div>
