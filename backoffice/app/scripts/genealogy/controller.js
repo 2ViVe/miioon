@@ -23,20 +23,6 @@ angular
 
       $scope.genealogy = genealogy;
 
-      $scope.distributorExtraInfo = function() {
-        var info = [];
-        if (genealogy.data.active) {
-          info.push('Active: ' + genealogy.data.active);
-        }
-        if (genealogy.data.userName) {
-          info.push('Username: ' + genealogy.data.userName);
-        }
-        if (genealogy.data.renewelDate) {
-          info.push('Renewal Date: ' + genealogy.data.renewelDate);
-        }
-        return info.join('<br>');
-      };
-
       $scope.changeRootDistributor = refresh;
 
       $scope.search = function() {
