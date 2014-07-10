@@ -13,7 +13,7 @@ angular.module('miioon/party')
 
       function handleRemarks(event) {
         var startTime = moment(event.startTime);
-        var content = '<a href="#/party/' + event.id + '">' + event.title + '</a>';
+        var content = '<a href="#/meet/' + event.id + '">' + event.title + '</a>';
         if ($scope.remarks[startTime.year()] === undefined) {
           $scope.remarks[startTime.year()] = {};
         }
@@ -35,7 +35,7 @@ angular.module('miioon/party')
       }
 
       if (events.length === 0) {
-        $location.path('/party/overview');
+        $location.path('/meet/overview');
       }
 
       //change type to upcoming as default
