@@ -1,0 +1,61 @@
+<h2>Delete party</h2>
+<div class="popup-con">
+  <p>You and your guest will no longer be able to view it after delete this party</p>
+
+  <form ng-submit="removeEvent()">
+    <div class="panel">
+      <input type="checkbox" id="sendNotification" ng-model="event.isSendNotification"/>
+      <label for="sendNotification">
+        Send a Notification
+      </label>
+    </div>
+
+    <div class="panel">
+      <div class="row">
+        <label for="is-to-all">To (All Guests)</label>
+        <table>
+          <thead>
+          <th>
+            <input type="checkbox"
+                   id="is-to-all"
+                   class="no-margin-bottom"
+                   ng-model="isToAll"
+                   ng-change="toggleAllEmail(isToAll)"/>
+          </th>
+          <th>Name</th>
+          <th>Email</th>
+          </thead>
+          <tbody>
+          <!--<tr ng-repeat="invitee in event.invitees" ng-click="toggleEmail(invitee)">-->
+          <tr ng-repeat="invitee in event.invitees">
+            <td>
+              <input class="no-margin-bottom" type="checkbox" ng-model="invitee.isNodify"/>
+            </td>
+            <td>{{ invitee.firstName}} {{ invitee.lastName }}</td>
+            <td>{{ invitee.email }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <label for="notificationSubject">Subject</label>
+        <input type="text" ng-model="notification.subject" id="notificationSubject"/>
+      </div>
+
+      <div class="row">
+        <h3><label for="notifyMessage">Message</label></h3>
+        <textarea name="notifyMessage" ng-model="notification.message" id="notifyMessage" cols="30" rows="10"></textarea>
+      </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <hr/>
+        <div class="text-center"><button type="submit" class="button small">Delete this pawty</button> <a ng-click="cancel()" href  class="button secondary small">Close</a></div>
+      </div>
+    </div>
+
+
+  </form>
+
+
+</div>
