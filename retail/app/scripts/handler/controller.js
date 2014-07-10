@@ -7,7 +7,7 @@ angular.module('2ViVe')
         $scope.results = results;
         $scope.errorMessage = '';
         if (results.length === 0){
-          $scope.errorMessage = 'Handler Not Found';
+          $scope.errorMessage = 'Angel Not Found';
         }
       });
 

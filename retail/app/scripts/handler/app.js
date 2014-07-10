@@ -11,7 +11,7 @@ angular
   ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
-      .when('/find-handler', {
+      .when('/find-angel', {
         templateUrl: 'views/handler/handler.html',
         controller: 'handlerController'
       });

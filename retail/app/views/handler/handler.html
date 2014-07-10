@@ -2,12 +2,12 @@
   <form class="" name="" novalidate>
     <div class='row'>
       <div class='medium-12 columns'>
-        <h2>HANDLER SEARCH</h2>
+        <h2>ANGEL SEARCH</h2>
       </div>
     </div>
     <div class="row">
       <p class="register-customer small-12 columns medium-font">
-        Please search for your Handler below.
+        Please search for your Angel below.
       </p>
     </div>
     <div class='row' ng-if="errorMessage">
@@ -19,15 +19,7 @@
     </div>
     <div class='row'>
       <div class='small-4 columns'>
-        <label class="inline">Handler ID</label>
-      </div>
-      <div class='small-8 columns'>
-        <input type="text" ng-model='microchipId' />
-      </div>
-    </div>
-    <div class='row'>
-      <div class='small-4 columns'>
-        <label class="inline">Consultant First Name</label>
+        <label class="inline">First Name</label>
       </div>
       <div class='small-8 columns'>
         <input type="text" ng-model='firstName' />
@@ -35,32 +27,12 @@
     </div>
     <div class='row'>
       <div class='small-4 columns'>
-        <label class="inline">Consultant Last Name</label>
+        <label class="inline">Last Name</label>
       </div>
       <div class='small-8 columns'>
         <input type="text" ng-model='lastName' />
       </div>
     </div>
-    <!--<div class='row'>-->
-      <!--<div class='small-4 columns'>-->
-        <!--<label class="inline">State</label>-->
-      <!--</div>-->
-      <!--<div class='small-8 columns'>-->
-        <!--<select name="addrState"-->
-                <!--ng-change="selectState()"-->
-                <!--ng-model="state"-->
-                <!--ng-options="state as state.name for state in states | orderBy:'name'">-->
-        <!--</select>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<div class='row'>-->
-      <!--<div class='small-4 columns'>-->
-        <!--<label class="inline">Zip Code</label>-->
-      <!--</div>-->
-      <!--<div class='small-8 columns'>-->
-        <!--<input type="text" ng-model='zipCode' />-->
-      <!--</div>-->
-    <!--</div>-->
     <div class="row">
       <div class='small-8 small-offset-4 columns'>
         <button type="submit" ng-click="submit()">Search</button>
@@ -88,9 +60,6 @@
         <tbody>
         <tr ng-repeat='handler in results'>
           <td class="handler-locate-table-radio"><input ng-click="changeHandler(handler)" type="radio" name="radio1" /></td>
-          <!--<td class='prodcuts-checkout-table-img'>-->
-          <!--&lt;!&ndash;<img src="/images/locate-img.png" alt='handler name' />&ndash;&gt;-->
-          <!--</td>-->
           <td>
             <div class='products-checkout-table-item'>
               <div class='product-info'>
@@ -99,9 +68,6 @@
                     {{handler.address.firstName}} {{handler.address.lastName}}
                   </a>
                 </h6>
-                <!--<p class='product-option'><strong>Sponsor ID:</strong> {{handler.distributorId}}</p>-->
-                <!--<p class='product-option'><strong>City:</strong> {{handler.address.city}}</p>-->
-                <!--<p class='product-option'><strong>State:</strong> {{handler.address.state}}</p>-->
               </div>
             </div>
           </td>
@@ -118,28 +84,6 @@
             <p class='product-option'>{{handler.address.zip}}</p>
           </td>
         </tr>
-        <!--<tr ng-repeat='handler in results'>-->
-        <!--<td class="handler-locate-table-radio"><input ng-click="changeHandler(handler)" type="radio" name="radio1" /></td>-->
-        <!--&lt;!&ndash;<td class='prodcuts-checkout-table-img'>&ndash;&gt;-->
-        <!--&lt;!&ndash;&lt;!&ndash;<img src="/images/locate-img.png" alt='handler name' />&ndash;&gt;&ndash;&gt;-->
-        <!--&lt;!&ndash;</td>&ndash;&gt;-->
-        <!--<td>-->
-        <!--<div class='products-checkout-table-item'>-->
-        <!--<div class='product-info'>-->
-        <!--<h6 class='product-name'>-->
-        <!--<a>-->
-        <!--{{handler.address.firstName}} {{handler.address.lastName}}-->
-        <!--</a>-->
-        <!--</h6>-->
-        <!--<p class='product-option'><strong>Sponsor ID:</strong> {{handler.distributorId}}</p>-->
-        <!--<p class='product-option'><strong>City:</strong> {{handler.address.city}}</p>-->
-        <!--<p class='product-option'><strong>State:</strong> {{handler.address.state}}</p>-->
-        <!--&lt;!&ndash;<p class='product-option'><strong>Email:</strong> yesmail@studio.com</p>&ndash;&gt;-->
-        <!--&lt;!&ndash;<p class='product-option'><strong>Phone:</strong> 12345678</p>&ndash;&gt;-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</td>-->
-        <!--</tr>-->
         </tbody>
       </table>
     </div>
