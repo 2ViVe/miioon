@@ -5,7 +5,7 @@
     }
   }
   h4{
-    margin-bottom:20px;
+    margin-bottom:10px;
   }
 }
 
@@ -139,7 +139,11 @@
     border-color: $grey-border;
     padding:2px;
     width:100%;
-
+    .pika-lendar{
+      width:100%;
+      float:none;
+      margin:0;
+    }
     .pika-title{
       font-size: $medium-font-size;
       background:$primary-color;
@@ -169,6 +173,11 @@
       }
     }
     .pika-table{
+      tbody{
+        tr:nth-of-type(even){
+          background:none;
+        }
+      }
       td{
         border-bottom:0;
         text-align: center;
