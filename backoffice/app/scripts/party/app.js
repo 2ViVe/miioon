@@ -105,9 +105,6 @@ angular
                 return event.fetchInvitees();
               })
               .then(function() {
-                return event.fetchOrders();
-              })
-              .then(function() {
                 return event;
               });
           }]

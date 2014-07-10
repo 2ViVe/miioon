@@ -8,6 +8,7 @@ angular.module('miioon/party')
       $scope.party = event.data;
       $scope.invitees = event.invitees;
 
+      event.fetchOrders();
 
       $scope.deleteInvites = function() {
         $modal.open({
