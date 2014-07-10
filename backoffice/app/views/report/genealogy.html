@@ -68,12 +68,9 @@
               <span class="unimportant-text">({{genealogy.data.childrenSize}})</span>
             </div>
             <div>
-              Active: {{genealogy.data.active}}
-            </div>
-            <div>
               Username: {{genealogy.data.userName}}
             </div>
-            <div>
+            <div ng-if="genealogy.data.renewelDate">
               Renewal Date: {{genealogy.data.renewelDate}}
             </div>
           </div>
