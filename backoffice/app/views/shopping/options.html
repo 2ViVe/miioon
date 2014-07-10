@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="columns medium-12">
+    <div class="shopping-option-panel">
+      <div class="content">
+        <button ng-click="shopForMySelf()" class="large right">
+          SHOP
+        </button>
+        <div class="title">
+          SHOP FOR MYSELF
+        </div>
+        <div>
+          Get 20% off your Handler's personal order.
+        </div>
+      </div>
+    </div>
+    <div class="shopping-option-panel">
+      <div class="content">
+        <button ng-click="shopForPawTy()" class="large right">
+          SHOP
+        </button>
+        <div class="title">
+          PLACE A PAW-TY ORDER
+        </div>
+        <div class="medium-4">
+          <select class="secondary-item no-margin-bottom"
+                  ng-model="selectedEvent"
+                  ng-options="event as event.title + ' - ' + (event.startTime | date: 'medium') for event in events">
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
