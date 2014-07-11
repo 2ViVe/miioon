@@ -50,7 +50,7 @@ ul {
 .topbar {
   margin-bottom: $panel-margin-bottom !important;
   h4{
-    margin-bottom:0;
+    margin-bottom:0 !important;
     margin-top:0;
   }
 }
@@ -100,6 +100,13 @@ ul {
 }
 .grey-darker-color{
   color: $grey-darker;
+}
+
+.block-margin-bottom{
+  margin-bottom: $panel-margin-bottom !important;
+}
+.title-margin-bottom{
+  margin-bottom: rem-calc(15) !important;
 }
 
 

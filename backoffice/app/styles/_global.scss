@@ -50,7 +50,7 @@ ul {
 .topbar {
   margin-bottom: $panel-margin-bottom !important;
   h4{
-    margin-bottom:0;
+    margin-bottom:0 !important;
     margin-top:0;
   }
 }
@@ -131,6 +131,13 @@ ul {
 }
 .full-width{
   width: 100% !important;
+}
+
+.block-margin-bottom{
+  margin-bottom: $panel-margin-bottom !important;
+}
+.title-margin-bottom{
+  margin-bottom: rem-calc(15) !important;
 }
 
 .circle{
