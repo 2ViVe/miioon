@@ -4,7 +4,17 @@ angular.module('miioonApp')
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/home.html'
+        templateUrl: 'views/home.html',
+        controller: 'HomeController',
+        resolve: {
+          'news': ['News', function(News) {
+            var news = new News(3);
+            news.fetch().then(function(a){
+              console.log(a);
+            });
+            return news.fetch();
+          }]
+        }
       })
       .when('/party/my-party', {
         templateUrl: 'views/party/my-party.html',

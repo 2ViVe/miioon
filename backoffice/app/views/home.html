@@ -76,51 +76,26 @@
 		<div class='columns medium-6'>
 			<h3 class='primary-color'>MIIOON BLOG FEED</h3>
 			<div class='home-blog block-margin-top'>
-        <div class='row'>
+<!--         <div class='row'>
             <div class='small-8 small-offset-2 columns text-center'>
               <br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br>
               <img src='/images/coming.jpg' alt='Coming Soon' />
               <br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br>
             </div>
-        </div>
-        <!-- todo: blog content
-        <div class='home-blog-item'>
+        </div> -->
+        <!-- todo: blog content -->
+        <div class='home-blog-item' ng-repeat="item in news">
           <div class='row'>
             <div class='small-3 columns'>
               <img src='/images/user-photo-3.jpg' class='radius border' alt='[User Name]' />
             </div>
             <div class='small-9 columns'>
-              <h4>ARTICLE 1<br/><small>25/02/2014</small></h4>
-              <p class='small-font'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at mattis lacus, non feugiat nisl. Phasellus posuere mi vitae libero consequat fermentum...</p>
-              <a href='#' class='button small'>READ MORE</a>
+              <h4>{{item.subject}}<br/><small>{{item.createdAt | readableTimestampFrom}}</small></h4>
+              <p class='small-font'>{{item.summary}}</p>
+              <a ng-href='#/news/{{item.id}}' class='button small'>READ MORE</a>
             </div>
           </div>
         </div>
-        <div class='home-blog-item'>
-  				<div class='row'>
-  					<div class='small-3 columns'>
-  						<img src='/images/user-photo-3.jpg' class='radius border' alt='[User Name]' />
-  					</div>
-  					<div class='small-9 columns'>
-  						<h4>ARTICLE 2<br/><small>25/02/2014</small></h4>
-  						<p class='small-font'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at mattis lacus, non feugiat nisl. Phasellus posuere mi vitae libero consequat fermentum...</p>
-  						<a href='#' class='button small'>READ MORE</a>
-  					</div>
-  				</div>
-        </div>
-        <div class='home-blog-item'>
-  				<div class='row'>
-  					<div class='small-3 columns'>
-  						<img src='/images/user-photo-3.jpg' class='radius border' alt='[User Name]' />
-  					</div>
-  					<div class='small-9 columns'>
-  						<h4>ARTICLE 3<br/><small>25/02/2014</small></h4>
-  						<p class='small-font'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at mattis lacus, non feugiat nisl. Phasellus posuere mi vitae libero consequat fermentum...</p>
-  						<a href='#' class='button small'>READ MORE</a>
-  					</div>
-  				</div>
-        </div>
-        -->
 			</div>
       <!--
 			<ul class="pagination right">

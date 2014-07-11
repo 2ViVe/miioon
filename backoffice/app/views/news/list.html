@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="columns medium-12">
+    <h2>
+      Company News 
+    </h2>
+  </div>
+</div>
+<div class="row">
+  <div class="columns medium-12">
+    <div class="shopping-option-panel" ng-repeat="item in news">
+      <div class="content">
+        <a ng-href="#/news/{{item.id}}" class="large right">
+          VIEW
+        </a>
+        <div class="title">
+          <a href="#/news/{{item.id}}">{{item.subject}}</a> <small>({{item.createdAt | readableTimestampFrom}})</small>
+        </div>
+        <div>
+          {{item.content.substr(0,100)}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="columns small-12">
+    <vive-pagination data-start-page="first"
+                     data-total="count"
+                     data-refresh="refreshPagination"
+                     data-on-next-page="goToPage"
+                     data-on-previous-page="goToPage"
+                     data-on-go-to-page="goToPage"
+                     data-number-per-page="20"></vive-pagination>
+  </div>
+</div>
