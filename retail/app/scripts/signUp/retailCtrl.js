@@ -13,7 +13,9 @@ angular.module('miioon/signup')
         .addType('shipping');
 
       $scope.$watch('account.login', function(login) {
-        $scope.account.login = login ? login.toLowerCase() : login;
+        if ($scope.account) {
+          $scope.account.login = login ? login.toLowerCase() : login;
+        }
       });
 
       $scope.create = function() {
