@@ -28,7 +28,7 @@
         <div class='small-3 columns'>
           <div class="party-orange-circle-s">
             <p class='icons-green-circle'><strong>{{ party.yesCount }}</strong><br/>
-            <span>GOAL: 40</span>
+              <span>GOAL: 40</span>
             </p>
             <h5>ATTENDING</h5>
           </div>
@@ -55,12 +55,20 @@
         </div>
       </div>
       <div class='row'>
-        <div class='columns small-12' ng-if="false">
+        <div class='columns small-12'>
           <div class='party-price block-margin-bottom'>
             <ul class="row">
-              <li class="small-4 columns text-center">$49.95<span>STYLIST</span></li>
-              <li class="small-4 columns text-center">$42.12<span>RETAIL</span></li>
-              <li class="small-4 columns text-center">$36.12<span>PCV</span><small>0 half off item(s)</small></li>
+              <!--<li class="small-6 columns text-center">-->
+                <!--{{rewords | price}}-->
+                <!--<span>Hostess Rewards</span>-->
+                <!--<small ng-if="rewordsPercentage">-->
+                  <!--{{rewordsPercentage}} in Paw Perks-->
+                <!--</small>-->
+              <!--</li>-->
+              <li class="small-12 columns text-center">
+                {{event.data.orderCloseTime | date: 'medium'}}
+                <span>Order Close Date</span>
+              </li>
             </ul>
           </div>
         </div>
@@ -72,7 +80,8 @@
         <div class='small-12 medium-6 columns' ng-if="false">
           <div class='row collapse'>
             <div class='small-10 columns'>
-              <input type='text' placeholder='Type Order ID or Product Name for search...' class='secondary-item no-margin-bottom' dropdown-toggle="#drop-menu-search" />
+              <input type='text' placeholder='Type Order ID or Product Name for search...'
+                     class='secondary-item no-margin-bottom' dropdown-toggle="#drop-menu-search"/>
             </div>
             <div class='small-2 columns'>
               <a href='#' class='postfix button no-margin-bottom'><i class="fa fa-search"></i></a>
@@ -83,31 +92,31 @@
 
       <table class="party-list block-margin-bottom unimportant-text">
         <thead>
-          <tr class="table-title-bg">
-            <th width="120">Order</th>
-            <th width="130">Date</th>
-            <th width="100">Items Total</th>
-            <th>Customer</th>
-            <th width="80">Status</th>
-          </tr>
+        <tr class="table-title-bg">
+          <th width="120">Order</th>
+          <th width="130">Date</th>
+          <th width="100">Items Total</th>
+          <th>Customer</th>
+          <th width="80">Status</th>
+        </tr>
         </thead>
         <tbody>
-          <tr ng-if="event.orders.length === 0">
-            <td colspan="5" class="text-center">
-              No order yet.
-            </td>
-          </tr>
-          <tr ng-repeat="order in event.orders">
-            <td><a ng-click="openDetail(order);">{{ order.number }}</a></td>
-            <td>{{ order.orderDate | date: 'short' }}</td>
-            <td class="text-right">{{ order.itemTotal | price }}</td>
-            <td>
-              {{ order.shippingAddress.firstName }}
-              {{ order.shippingAddress.m }}
-              {{ order.shippingAddress.lastName }}
-            </td>
-            <td>{{ order.state }}</td>
-          </tr>
+        <tr ng-if="event.orders.length === 0">
+          <td colspan="5" class="text-center">
+            No order yet.
+          </td>
+        </tr>
+        <tr ng-repeat="order in event.orders">
+          <td><a ng-click="openDetail(order);">{{ order.number }}</a></td>
+          <td>{{ order.orderDate | date: 'short' }}</td>
+          <td class="text-right">{{ order.itemTotal | price }}</td>
+          <td>
+            {{ order.shippingAddress.firstName }}
+            {{ order.shippingAddress.m }}
+            {{ order.shippingAddress.lastName }}
+          </td>
+          <td>{{ order.state }}</td>
+        </tr>
         </tbody>
       </table>
       <div class='row topbar title-margin-bottom'>
@@ -124,16 +133,19 @@
                   1. Paw-ty How To
                 </a>
               </p>
+
               <p>
                 <a href="/documents/tools/Parwty_Success_Tips/Pawty_Booking_Scripts.pdf" target="_blank">
                   2. Paw-ty Booking Scripts
                 </a>
               </p>
+
               <p>
                 <a href="/documents/tools/Parwty_Success_Tips/Online_Pawty_Handler_Schedule.pdf" target="_blank">
                   3. Online Paw-ty Schedule For Handler
                 </a>
               </p>
+
               <p>
                 <a href="/documents/tools/Parwty_Success_Tips/Online_Pawty_Host_Schedule.pdf" target="_blank">
                   4. Online Paw-ty Schedule For Host(ess)
@@ -146,11 +158,13 @@
                   5. Coaching Host(ess)
                 </a>
               </p>
+
               <p>
                 <a href="/documents/tools/Parwty_Success_Tips/Online_Pawty_Tips.pdf" target="_blank">
                   6. Paw-ty Tips
                 </a>
               </p>
+
               <p>
                 <a href="/documents/tools/Parwty_Success_Tips/Pawty_Games.pdf" target="_blank">
                   7. Paw-ty Games
@@ -160,10 +174,11 @@
           </div>
         </div>
       </div>
-  </div>
+    </div>
     <div class='columns medium-4'>
-      <div class='party-panel block-margin-bottom' >
+      <div class='party-panel block-margin-bottom'>
         <h4>{{ party.title }}</h4>
+
         <div class="party-details-info">
           <dl class="row">
             <dt class="small-4 columns">Date:</dt>
@@ -182,14 +197,6 @@
             <dt class="small-4 columns">Host(ess):</dt>
             <dd class="small-8 columns">{{ party.hostName }}</dd>
           </dl>
-          <!--<dl class="row">-->
-            <!--<dt class="small-12 columns">Invation URL:</dt>-->
-          <!--</dl>-->
-          <!--<dl class="row">-->
-            <!--<dd class="small-12 columns"><a href>http://www.xxxxxx.com/xxxx</a></dd>-->
-          <!--</dl>-->
-          <!--<br/>-->
-          <!--<a href class="button secondary small">Copy</a>-->
         </div>
       </div>
       <h3 class="primary-color">
@@ -202,40 +209,41 @@
            data-event="party"></div>
 
       <h3 class="primary-color">RSVP History</h3>
+
       <div class="party-panel">
         <table width='100%' class='party-user-table'>
           <tbody>
-            <tr ng-repeat="invitee in invitees">
-              <td>
-                <div class='party-user-table-info party-user-table-info-noPho'>
-                  <h5>
-                    <span class="base-font">
-                      {{invitee.firstName}}
-                      {{invitee.middleName}}
-                      {{invitee.lastName}}
-                      ({{invitee.email}})
-                    </span>
-                    <br/>
-                    <small ng-if="invitee.reply === 'noreply'">
-                      Not yet replied.
+          <tr ng-repeat="invitee in invitees">
+            <td>
+              <div class='party-user-table-info party-user-table-info-noPho'>
+                <h5>
+                        <span class="base-font">
+                          {{invitee.firstName}}
+                          {{invitee.middleName}}
+                          {{invitee.lastName}}
+                          ({{invitee.email}})
+                        </span>
+                  <br/>
+                  <small ng-if="invitee.reply === 'noreply'">
+                    Not yet replied.
+                  </small>
+                  <div ng-repeat="response in invitee.responses">
+                    <small class="right">{{response.createdAt | readableTimestampFrom: 'now' }}</small>
+                    <small ng-if="!$last">
+                      Change Reply to "{{response.reply}}"
                     </small>
-                    <div ng-repeat="response in invitee.responses">
-                      <small class="right">{{response.createdAt | readableTimestampFrom: 'now' }}</small>
-                      <small ng-if="!$last">
-                        Change Reply to "{{response.reply}}"
-                      </small>
-                      <small ng-if="$last">
-                        Replied "{{response.reply}}"
-                      </small>
-                      <small ng-if="response.comment">
-                        <br/>
-                        {{response.comment}}
-                      </small>
-                    </div>
-                  </h5>
-                </div>
-              </td>
-            </tr>
+                    <small ng-if="$last">
+                      Replied "{{response.reply}}"
+                    </small>
+                    <small ng-if="response.comment">
+                      <br/>
+                      {{response.comment}}
+                    </small>
+                  </div>
+                </h5>
+              </div>
+            </td>
+          </tr>
           </tbody>
         </table>
       </div>
