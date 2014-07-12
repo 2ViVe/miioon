@@ -13,46 +13,32 @@
 		</div>
 		<div class="columns medium-4">
       <div class='home-message-board radius'>
-				<h3 class='text-center'><img src='/images/home/home-message-board.jpg' alt='Miioon Message Board' /></h3>
-        <div class='row'>
+<!-- 				<h3 class='text-center'><img src='/images/home/home-message-board.jpg' alt='Miioon Message Board' /></h3> -->
+<!--         <div class='row'>
             <div class='small-8 small-offset-2 columns text-center'>
               <br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br>
               <img src='/images/coming.jpg' alt='Coming Soon' />
               <br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br>
             </div>
-        </div>
-        <!-- todo: message board content (Ron)
-        <div class='home-message-item'>
+        </div> -->
+        <div class='home-message-item' ng-repeat="item in news">
           <div class='row'>
             <div class='small-3 columns'>
               <img src='/images/user-photo-1.jpg' class='circle' alt='[User Name]' />
             </div>
             <div class='small-9 columns'>
+              <h5><a href="#/news/{{item.id}}">{{item.subject.substr(0,25) + '...'}}</a></h5>
               <p class='small-font'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae diam id tellus dictum adipiscing. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                {{item.content.substr(0,100)}}
               </p>
-              <p class='smaller-font'>Posted: 23/02/14</p>
+              <p class='smaller-font'>Posted: {{item.createdAt | readableTimestampFrom}}</p>
             </div>
           </div>
         </div>
-        <div class='home-message-item'>
-  				<div class='row'>
-  					<div class='small-3 columns '>
-  						<img src='/images/user-photo-2.jpg' class='circle' alt='[User Name]' />
-  					</div>
-  					<div class='small-9 columns'>
-  						<p class='small-font'>
-  							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  						</p>
-  						<p class='smaller-font'>Posted: 22/02/14</p>
-  					</div>
-  				</div>
-        </div>
-        -->
       </div>
-      <!--
-			<div class='block-margin-top text-center'><a class='button expand'>GIVE US FEEDBACK</a></div>
-      -->
+      
+			<div class='block-margin-top right'><a href="#/news">more news</a></div>
+      
 		</div>
 	</div>
 	<div class='row'><div class='columns small-12'><p class='separator-line'></p></div></div>
@@ -76,15 +62,15 @@
 		<div class='columns medium-6'>
 			<h3 class='primary-color'>MIIOON BLOG FEED</h3>
 			<div class='home-blog block-margin-top'>
-<!--         <div class='row'>
+        <div class='row'>
             <div class='small-8 small-offset-2 columns text-center'>
               <br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br>
               <img src='/images/coming.jpg' alt='Coming Soon' />
               <br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br>
             </div>
-        </div> -->
+        </div>
         <!-- todo: blog content -->
-        <div class='home-blog-item' ng-repeat="item in news">
+<!--         <div class='home-blog-item' ng-repeat="item in news">
           <div class='row'>
             <div class='small-3 columns'>
               <img src='/images/user-photo-3.jpg' class='radius border' alt='[User Name]' />
@@ -96,7 +82,7 @@
             </div>
           </div>
         </div>
-			</div>
+			</div> -->
       <!--
 			<ul class="pagination right">
 				<li class="arrow unavailable"><a href=""><i class="fa fa-caret-left"></i> Previous</a></li>
