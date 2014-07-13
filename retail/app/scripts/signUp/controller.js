@@ -21,6 +21,18 @@ angular.module('miioon/signup')
         country: countries.defaultCountry()
       };
 
+      function dummy() {
+        $scope.account.sponsor = 100001;
+        $scope.account.login = 'kiddzai';
+        $scope.account.password = '!QAZ2w';
+        $scope.confirmPassword = '!QAZ2w';
+        $scope.account.email = 'kiddkaii@gmmmail.com';
+        $scope.account.birthday = '1984-09-12';
+        $scope.account.taxId = '123456789';
+      }
+
+      dummy();
+
       $scope.goToNextStep = function() {
         $window.scrollTo(0, 0);
         $scope.stepNumber++;

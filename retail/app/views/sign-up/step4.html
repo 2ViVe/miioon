@@ -137,65 +137,8 @@
     </div>
   </div>
   <div ng-show="method.payment.isCreditcard">
-    <div class="row title">
-      <h6 class="small-6 columns">
-        PAYMENT INFORMATION
-        <img src="images/cards.png" alt="Cards"/>
-      </h6>
-    </div>
-    <div class="row">
-      <div class="small-3 columns">
-        <label class="right inline required" for="card-number">Card Number</label>
-      </div>
-      <div class="small-5 end columns">
-        <input type="text" ng-model="creditcard.number" name="card-number" ng-required="method.payment.isCreditcard"
-               id="card-number"/>
-        <small ng-show="submitted && step4['card-number'].$error.required" class="error">
-          This field is required.
-        </small>
-      </div>
-    </div>
-    <div class="row" data-credit-card-expiration>
-      <div class="small-3 columns">
-        <label class="right inline required" for="expiration-month">Expiration</label>
-      </div>
-      <div class="columns small-3 end">
-        <div class="row">
-          <div class="small-4 columns">
-            <select id="expiration-month" name="expiration-month" ng-required="method.payment.isCreditcard"
-                    ng-model="creditcard['expirationMonth']"
-                    ng-options="month for month in expirationMonths">
-            </select>
-          </div>
-          <div class="columns small-8">
-            <select id="expiration-year" name="expirationYear" ng-required="method.payment.isCreditcard"
-                    ng-model="creditcard['expirationYear']"
-                    ng-options="year for year in expirationYears">
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="columns small-12">
-            <small ng-show="submitted && (step['expirationYear'].$error.required || step['expirationMonth'].$error.required)" class="error">
-              This field is required.
-            </small>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-    <div class="row">
-      <div class="small-3 columns">
-        <label class="right inline required" for="cvv">Card Code</label>
-      </div>
-      <div class="small-3 columns end">
-        <input type="text" id="cvv" ng-required="method.payment.isCreditcard" name="cvv" ng-model="creditcard.cvv"/>
-        <small ng-show="submitted && step['cvv'].$error.required" class="error">
-          This field is required.
-        </small>
-      </div>
-    </div>
+    <div data-creditcard-panel
+         data-creditcard="creditcard"></div>
   </div>
 
   <!--<div data-is-billing-address-validated="isBillingAddressValidated" data-home-address-source="address.homeAddress"-->
