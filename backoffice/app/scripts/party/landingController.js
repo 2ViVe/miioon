@@ -3,13 +3,7 @@
 angular.module('miioon/party')
   .controller('PartyLandingController', ['$scope', 'events', '$route', '$location',
     function($scope, events, $route, $location) {
-      var recentOutput = [],
-        upcomingOutput = [],
-        type = $route.current.params.type;
-
-      function isRecent(startTime) {
-        return moment(startTime).isBefore(new Date());
-      }
+      var type = $route.current.params.type;
 
       function handleRemarks(event) {
         var startTime = moment(event.startTime);
@@ -45,21 +39,9 @@ angular.module('miioon/party')
 
       $scope.remarks = {};
 
-      angular.forEach(events, function(event) {
-        if (isRecent(event.startTime)) {
-          recentOutput.push(event);
-        } else {
-          upcomingOutput.push(event);
-        }
+      angular.forEach(events, handleRemarks);
 
-        handleRemarks(event);
-      });
-
-      if (type === 'upcoming') {
-        $scope.parties = upcomingOutput;
-      } else {
-        $scope.parties = recentOutput;
-      }
+      $scope.parties = events;
 
       $scope.type = type;
 
