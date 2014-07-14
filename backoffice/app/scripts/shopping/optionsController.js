@@ -3,11 +3,6 @@
 angular.module('miioon/shopping')
   .controller('ShoppingOptionsController', ['$scope', 'events', 'Shopping', '$location',
     function($scope, events, Shopping, $location) {
-      if (!events && events.length === 0) {
-        $location.path('/products/clothing/ruckjack-boys');
-        return;
-      }
-
       $scope.events = events;
       $scope.selectedEvent = events[0];
 
