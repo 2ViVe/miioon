@@ -16,14 +16,23 @@ angular
         templateUrl: 'views/shopping/options.html',
         controller: 'ShoppingOptionsController',
         resolve: {
-          events: ['Events', '$location', function(Events, $location) {
-            return Events.fetchAll().then(function(events) {
-              if (!events || events.length === 0) {
-                $location.path('/products/clothing/ruckjack-boys');
-              }
-              return events;
-            });
-          }]
+          events: ['Events', 'LocalStorage', '$q',
+            function(Events, LocalStorage, $q) {
+              var defer = $q.defer();
+
+              var replicateOwner = LocalStorage.getReplicateOwner();
+              var userId = replicateOwner ? replicateOwner['user-id'] : undefined;
+              Events.fetchByUserId(userId).then(function(events) {
+                if (!events || events.length === 0) {
+                  defer.reject({
+                    goTo: '/products/clothing/ruckjack-boys'
+                  });
+                }
+                defer.resolve(events);
+              });
+
+              return defer.promise;
+            }]
         }
       })
       .when('/shopping', {

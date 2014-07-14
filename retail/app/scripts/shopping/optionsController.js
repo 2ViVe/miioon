@@ -8,11 +8,6 @@ angular.module('miioon/shopping')
         $location.path('/signin');
       });
 
-      if (!events || events.length === 0) {
-        $location.path('/checkout');
-        return;
-      }
-
       $scope.events = events;
       $scope.selectedEvent = events[0];
 

@@ -35,8 +35,13 @@ angular.module('miioonApp')
         });
       });
 
-      $rootScope.$on('$routeChangeError', function() {
-        $location.path('/');
+      $rootScope.$on('$routeChangeError', function(event, current, previous, rejection) {
+        if (rejection.goTo) {
+          $location.path(rejection.goTo);
+        } else {
+          $location.path('/');
+        }
+
         cfpLoadingBar.complete();
       });
 
