@@ -4,7 +4,7 @@ angular.module('2ViVe')
   .factory('News', ['$http', 'Dashlize', 'CamelCaseLize',
     function($http, dashlize, camelCaselize) {
       var News = function(limit) {
-      	this.limit = limit || 20;
+        this.limit = limit || 20;
       };
       News.prototype.fetch = function(offset){
         var news = this;

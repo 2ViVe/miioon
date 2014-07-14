@@ -9,14 +9,14 @@ angular.module('2ViVe')
 
 
     var updatePage = $scope.updatePage = function(reflash){
-    	news.fetch($scope.offset).then(function(reslut){
-    		$scope.news = reslut.news.companyNews;
-    		if (reflash) {
-    			$scope.offset = 0;
-    			$scope.curpage = 1;
-    			$scope.refreshPagination(reslut.news.metaData.count);
-    		}
-    	});
+      news.fetch($scope.offset).then(function(reslut){
+        $scope.news = reslut.news.companyNews;
+        if (reflash) {
+          $scope.offset = 0;
+          $scope.curpage = 1;
+          $scope.refreshPagination(reslut.news.metaData.count);
+        }
+      });
     };
 
     updatePage(true);
