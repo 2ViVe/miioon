@@ -20,9 +20,9 @@ angular
             function(Events, LocalStorage, $q) {
               var defer = $q.defer();
 
-              var replicateOwner = LocalStorage.getReplicateOwner();
-              var userId = replicateOwner ? replicateOwner['user-id'] : undefined;
-              Events.fetchByUserId(userId).then(function(events) {
+              Events.fetchAll({
+                isActive: true
+              }).then(function(events) {
                 if (!events || events.length === 0) {
                   defer.reject({
                     goTo: '/products/clothing/ruckjack-boys'
