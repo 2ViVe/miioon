@@ -8,11 +8,8 @@ angular.module('miioonApp')
         controller: 'HomeController',
         resolve: {
           'news': ['News', function(News) {
-            var news = new News(3);
-            news.fetch().then(function(a){
-              console.log(a);
-            });
-            return news.fetch();
+            var news = new News();
+            return news.fetch('',3);
           }]
         }
       })

@@ -3,16 +3,14 @@
 angular.module('2ViVe')
   .factory('News', ['$http', 'Dashlize', 'CamelCaseLize',
     function($http, dashlize, camelCaselize) {
-      var News = function(limit) {
-        this.limit = limit || 20;
-      };
-      News.prototype.fetch = function(offset){
+      var News = function() {};
+      News.prototype.fetch = function(offset,limit){
         var news = this;
         return $http.get('/api/v1/company-news', {
           transformResponse: camelCaselize,
           params : {
             'offset' : offset || undefined,
-            'limit' : this.limit
+            'limit' : limit || undefined
           }
         }).then(function(response) {
             news.news = response.data.response;
