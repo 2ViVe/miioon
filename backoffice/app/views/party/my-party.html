@@ -43,7 +43,7 @@
       <table class='party-list' width='100%'>
         <tbody>
         <tr ng-repeat="party in parties | filter:search">
-          <td class='party-list-photo'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
+          <td class='party-list-photo'></td>
           <td class='party-list-info'>
             <a ng-href="#/meet/{{party.id}}"><strong>{{party.title}}</strong></a>
             <p>{{party.startTime | date : 'medium'}} | {{party.endTime | date : 'medium'}}</p>
