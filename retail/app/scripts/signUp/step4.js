@@ -4,7 +4,7 @@ angular.module('miioon/signup')
   .directive('signUpStep4', [function() {
     return {
       restrict: 'CA',
-      controller: ['$scope', 'Registration', 'User', 'UrlHandler', '$window', function($scope, Registration, User, UrlHandler, $window) {
+      controller: ['$scope', 'Registration', 'User', '$window', function($scope, Registration, User, $window) {
         var lineItems = $scope.products.selection.map(function(product) {
           return {
             variantId: product.variantId,
@@ -13,7 +13,6 @@ angular.module('miioon/signup')
         });
 
         $scope.address.addType('billing');
-        $scope.retailUrl = UrlHandler.retailUrl();
         $scope.creditcard = {};
         $scope.isProcessing = false;
 

@@ -1,8 +1,9 @@
 'use strict';
 angular.module('miioon/signup')
-  .controller('SignUpController', ['$scope', 'countries', 'Address', '$window', 'Registration',
-    function($scope, countries, Address, $window, Registration) {
+  .controller('SignUpController', ['$scope', 'countries', 'Address', '$window', 'Registration', 'UrlHandler',
+    function($scope, countries, Address, $window, Registration, UrlHandler) {
 
+      $scope.retailUrl = UrlHandler.retailUrl();
       $scope.stepNumber = 1;
       $scope.products = {
         data: {},
