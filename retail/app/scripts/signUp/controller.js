@@ -10,6 +10,7 @@ angular.module('miioon/signup')
         selection: {}
       };
 
+
       $scope.method = {
         shipping: {},
         payment: {}
