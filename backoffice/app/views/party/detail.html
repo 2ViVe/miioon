@@ -9,7 +9,7 @@
     <div class="medium-6 columns">
       <p class="text-right">
         <a ng-href="#/meet/{{party.id}}/invite" class="button tiny">Invite Guests</a>
-        <a ng-href="#/meet/{{party.id}}/edit" class="button tiny">Edit</a>
+        <a ng-hide="event.isStarted()" ng-href="#/meet/{{party.id}}/edit" class="button tiny">Edit</a>
         <a href class="button tiny" ng-click="deleteInvites()">Delete</a>
       </p>
     </div>
