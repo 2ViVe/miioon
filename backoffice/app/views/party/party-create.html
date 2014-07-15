@@ -3,7 +3,8 @@
   <div class="small-12 columns">
     <ul class="breadcrumbs">
       <li><a href="#/meet/overview/upcoming">My Meet</a></li>
-      <li class="current">Create a Meet</li>
+      <li ng-if="!isEditing" class="current">Create a Meet</li>
+      <li ng-if="isEditing" class="current">Edit a Meet</li>
     </ul>
   </div>
 </div>
@@ -29,6 +30,13 @@
   <div class="columns medium-12">
     <div class="alert-box error">
       {{error}}
+    </div>
+  </div>
+</div>
+<div class="row" ng-if="isStarted">
+  <div class="columns medium-12">
+    <div class="alert-box error">
+      Can't be able to edit if the event is already started.
     </div>
   </div>
 </div>
@@ -289,7 +297,7 @@
 </div>
 <div class="row">
   <div class="small-12 columns text-center">
-    <button ng-click="save()" class="small">Save</button>
+    <button ng-disabled="isStarted" ng-click="save()" class="small">Save</button>
     <button ng-click="cancel()" class="secondary small">Cancel</button>
   </div>
 </div>

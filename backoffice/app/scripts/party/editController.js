@@ -11,6 +11,8 @@ angular.module('miioon/party')
       $scope.data.typeId = event.data.type.id;
       $scope.time = event.getTime();
       $scope.types = types;
+      $scope.isEditing = true;
+      $scope.isStarted = event.isStarted();
 
       $scope.times = [];
       for (var hour = 0; hour < 24; hour++) {
