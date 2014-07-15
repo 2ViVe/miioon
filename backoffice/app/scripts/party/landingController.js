@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('miioon/party')
-  .controller('PartyLandingController', ['$scope', 'events', '$route', '$location',
-    function($scope, events, $route, $location) {
+  .controller('PartyLandingController', ['$scope', 'events', '$route', '$location', 'types', 'Events',
+    function($scope, events, $route, $location, types, Events) {
       var type = $route.current.params.type;
 
       function handleRemarks(event) {
@@ -36,6 +36,17 @@ angular.module('miioon/party')
       if (type !== 'upcoming' && type !== 'recent') {
         type = 'upcoming';
       }
+
+      $scope.types = types;
+      $scope.currentType = types[0];
+      $scope.changeType = function(type) {
+        $scope.currentType = type;
+        Events.fetchAll({
+          typeId: type.id
+        }).then(function(events) {
+          $scope.parties = events;
+        });
+      };
 
       $scope.remarks = {};
 

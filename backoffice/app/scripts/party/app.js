@@ -1,4 +1,3 @@
-
 'use strict';
 
 angular
@@ -16,8 +15,17 @@ angular
         templateUrl: 'views/party/my-party.html',
         controller: 'PartyLandingController',
         resolve: {
+          types: ['Events', function(Events) {
+            return Events.fetchTypes();
+          }],
           events: ['Events', function(Events) {
-            return Events.fetchAll();
+            return Events.fetchTypes()
+              .then(function(types) {
+                return Events.fetchAll({
+                  typeId: types[0].id
+
+                });
+              });
           }]
         }
       })
