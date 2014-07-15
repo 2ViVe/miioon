@@ -1,4 +1,3 @@
-
 'use strict';
 
 angular
@@ -16,8 +15,17 @@ angular
         templateUrl: 'views/party/my-party.html',
         controller: 'PartyLandingController',
         resolve: {
+          types: ['Events', function(Events) {
+            return Events.fetchTypes();
+          }],
           events: ['Events', function(Events) {
-            return Events.fetchAll();
+            return Events.fetchTypes()
+              .then(function(types) {
+                return Events.fetchAll({
+                  typeId: types[0].id
+
+                });
+              });
           }]
         }
       })
@@ -35,7 +43,7 @@ angular
         }
       })
       .when('/meet/:eventId/edit', {
-        templateUrl: 'views/party/create.html',
+        templateUrl: 'views/party/party-create.html',
         controller: 'PartyEditController',
         resolve: {
           event: ['Event', '$route', function(Event, $route) {
@@ -45,10 +53,8 @@ angular
           templates: ['Events', function(Events) {
             return Events.fetchTemplates();
           }],
-          type: ['Events', function(Events) {
-            return Events.fetchTypes().then(function(types) {
-              return types[0];
-            });
+          types: ['Events', function(Events) {
+            return Events.fetchTypes();
           }],
           country: ['Countries', 'Address', function(Countries, Address) {
             return Countries.fetch().then(function(countries) {

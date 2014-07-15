@@ -1,6 +1,16 @@
 <div class='party-container'>
   <div class='row topbar'>
-    <div class='small-12 medium-4 columns'>
+    <div class="columns small-12 medium-3">
+      <a class="postfix button party-type dropdown text-left" data-dropdown-toggle="#types">
+        {{currentType.name}}
+      </a>
+      <ul class="f-dropdown" id="types">
+        <li ng-repeat="type in types">
+          <a ng-click="changeType(type)">{{type.name}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class='small-12 medium-5 columns'>
       <div class='row collapse'>
         <div class='small-10 columns'>
           <input type='text' ng-model="search" placeholder='Input meeting title to Search...' class='secondary-item no-margin-bottom' dropdown-toggle="#drop-menu-search" />
@@ -17,7 +27,7 @@
         </ul>
       </div>
     </div>
-    <div class='small-12 medium-8 columns text-right'>
+    <div class='small-12 medium-4 columns text-right'>
       <a href='/#/meet/create' class='button small'>Create a Meeting</a>
     </div>
   </div>
@@ -42,8 +52,8 @@
 
       <table class='party-list' width='100%'>
         <tbody>
-        <tr ng-repeat="party in parties | filter:search">
-          <td class='party-list-photo'><img src='/images/party/pack-1.png' alt='[Pack Name]' /></td>
+        <tr ng-repeat="party in parties | filter:search | typeIs:type">
+          <td class='party-list-photo'></td>
           <td class='party-list-info'>
             <a ng-href="#/meet/{{party.id}}"><strong>{{party.title}}</strong></a>
             <p>{{party.startTime | date : 'medium'}} | {{party.endTime | date : 'medium'}}</p>

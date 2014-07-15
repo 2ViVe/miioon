@@ -3,23 +3,6 @@
 (function() {
 
   angular.module('2ViVe')
-    .directive('datePicker', function() {
-      return {
-        restrict: 'C',
-        link: function(scope, element) {
-          var maxDate = moment().add(-18, 'years');
-          var minDate = moment().add(-150, 'years');
-
-          new Pikaday({
-            field: angular.element(element)[0],
-            yearRange: [minDate.year(), maxDate.year()],
-            defaultDate: moment().add(-30, 'years').toDate(),
-            minDate: minDate.toDate(),
-            maxDate: maxDate.toDate()
-          });
-        }
-      };
-    })
     .controller('profileAddressPanelCtrl', ['$scope', 'Address', 'Registration', 'Registration.Countries', function($scope, Address, Registration, Countries) {
 
       $scope.isEditing = false;

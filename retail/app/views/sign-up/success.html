@@ -13,18 +13,18 @@
 </div>
 <div class="row">
   <p class="columns small-5">
-    Login: {{userInfo.login}}
+    Login: {{account.login}}
   </p>
 
   <p class="columns small-5 end">
-    Sponsor Name: {{successInfo.sponsor.name}}
+    Sponsor Name: {{account.sponsor.name}}
   </p>
 </div>
 <div class="row">
   <p class="columns small-5">
     Web Address:
     <a ng-href="{{retailUrl}}/{{userInfo.login}}">
-      {{retailUrl}}/{{userInfo.login}}
+      {{retailUrl}}/{{account.login}}
     </a>
   </p>
 
@@ -53,20 +53,20 @@
 </div>
 <div class="row">
   <p class="columns small-5">
-    Order Date: {{successInfo.order['order-date']}}
+    Order Date: {{successInfo.order.orderDate}}
   </p>
 
   <p class="columns small-5 end">
-    Payment Date: {{successInfo.order['payment-date']}}
+    Payment Date: {{successInfo.order.paymentDate}}
   </p>
 </div>
 <div class="row">
   <p class="columns small-5">
-    Shipping Method: {{payment['shipping-method']}}
+    Shipping Method: {{ method.shipping.name }}
   </p>
 
   <p class="columns small-5 end">
-    Payment Method: {{payment['paymend-method']}}
+    Payment Method: {{ method.payment.name }}
   </p>
 </div>
 <div class="row title">
@@ -77,14 +77,14 @@
 <div class="row">
   <div class="columns small-12">
     <p>
-      {{payment['shipping-address']['first-name']}} {{payment['shipping-address']['last-name']}}
+      {{ address.shipping.firstName }} {{ address.shipping.lastName }}
     </p>
     <p>
-      {{payment['shipping-address']['street']}}
+      {{ address.shipping.street }}
     </p>
     <p>
-      {{payment['shipping-address']['city']}}, {{payment['shipping-address']['state']}},
-      {{payment['shipping-address']['country']}}, {{payment['shipping-address']['zip']}}
+      {{ address.shipping.city }}, {{ address.shipping.state.name }},
+      {{ address.shipping.country.name }}, {{ address.shipping.zip }}
     </p>
   </div>
 </div>
@@ -96,14 +96,14 @@
 <div class="row">
   <div class="columns small-12">
     <p>
-      {{payment.billingAddress['first-name']}} {{payment.billingAddress['last-name']}}
+      {{ address.billing.firstName }} {{ address.billing.lastName }}
     </p>
     <p>
-      {{payment.billingAddress['street']}}
+      {{ address.billing.street }}
     </p>
     <p>
-      {{payment.billingAddress['city']}}, {{payment.billingAddress.state.name}},
-      {{payment.billingAddress.country.name}}, {{payment.billingAddress['zip']}}
+      {{ address.billing.city }}, {{address.billing.state.name }},
+      {{ address.billing.country.name }}, {{ address.billing.zip }}
     </p>
   </div>
 </div>
@@ -125,11 +125,11 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="lineItem in successInfo.order['line-items']">
-        <td class="text-left">{{lineItem.sku}}</td>
+      <tr ng-repeat="lineItem in successInfo.order.lineItems">
+        <td class="text-left">{{ lineItem.sku }}</td>
         <td class="text-left">
-          <img ng-src="{{lineItem['image-url'] | imageSize:'small' }}" alt="{{lineItem['product-name']}}"/>
-          {{lineItem['product-name']}}
+          <img ng-src="{{lineItem.imageUrl | imageSize:'small' }}" alt="{{lineItem.productName}}"/>
+          {{lineItem.productName}}
         </td>
         <td class="price">{{lineItem.price | price}}</td>
         <td>
@@ -144,15 +144,15 @@
           Item Total
         </td>
         <td class="price">
-          £{{successInfo.order['item-total']}}
+          £{{ successInfo.order.itemTotal }}
         </td>
       </tr>
       <tr ng-repeat="adjustment in successInfo.order.adjustments">
         <td colspan="4" class="text-right">
-          {{adjustment.label}}
+          {{ adjustment.label }}
         </td>
         <td class="price">
-          £{{adjustment.amount}}
+          £{{ adjustment.amount }}
         </td>
       </tr>
       <tr>
@@ -160,7 +160,7 @@
           Order Total
         </td>
         <td class="price">
-          £{{successInfo.order.total}}
+          £{{ successInfo.order.total }}
         </td>
       </tr>
       </tfoot>

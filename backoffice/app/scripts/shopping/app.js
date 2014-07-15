@@ -16,9 +16,23 @@ angular
         templateUrl: 'views/shopping/options.html',
         controller: 'ShoppingOptionsController',
         resolve: {
-          events: ['Events', function(Events) {
-            return Events.fetchAll();
-          }]
+          events: ['Events', 'LocalStorage', '$q',
+            function(Events, LocalStorage, $q) {
+              var defer = $q.defer();
+
+              Events.fetchAll({
+                isActive: true
+              }).then(function(events) {
+                if (!events || events.length === 0) {
+                  defer.reject({
+                    goTo: '/products/clothing/ruckjack-boys'
+                  });
+                }
+                defer.resolve(events);
+              });
+
+              return defer.promise;
+            }]
         }
       })
       .when('/shopping', {
