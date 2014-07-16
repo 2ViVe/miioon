@@ -29,6 +29,10 @@ angular
                   });
                 }
                 defer.resolve(events);
+              }).catch(function() {
+                defer.reject({
+                  goTo: '/products/clothing/ruckjack-boys'
+                });
               });
 
               return defer.promise;
