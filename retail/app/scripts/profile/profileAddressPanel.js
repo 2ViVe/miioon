@@ -39,8 +39,10 @@
             $scope.isEditing = false;
             $scope.initAddress = angular.copy($scope.address);
           })
-          .catch(function() {
+          .catch(function(resp) {
             $scope.isEditing = true;
+            $scope.address.errors = $scope.address.errors || {};
+            $scope.address.errors.country = resp.data.meta.error.message;
           });
       };
 
@@ -56,6 +58,7 @@
           addressTitle: '@'
         },
         link: function() {
+
         }
       };
     });
