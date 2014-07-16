@@ -58,7 +58,16 @@
             <a ng-href="#/meet/{{party.id}}"><strong>{{party.title}}</strong></a>
             <p>{{party.startTime | date : 'medium'}} | {{party.endTime | date : 'medium'}}</p>
             <p>{{party.address.street}}  {{party.address.city}} {{party.address.stateName}} {{party.address.countryName}} {{party.address.zip}}</p>
-            <p>Host: {{party.hostName}} | <a href='/#/meet/{{party.id}}/invite'>Invite Guests</a> | <a href='/#/meet/{{party.id}}/edit'>Edit</a> | <a href='#'>Delete</a></p>
+            <p>
+              Host: {{party.hostName}} |
+              <span ng-hide="type === 'recent'">
+                <a href='/#/party/{{party.id}}/invite'>Invite Guests</a> |
+              </span>
+              <span ng-hide="type === 'recent'">
+                <a href='/#/party/{{party.id}}/edit'>Edit</a> |
+              </span>
+              <a href='#'>Delete</a>
+            </p>
           </td>
           <td>
             <div class='party-list-members'>
