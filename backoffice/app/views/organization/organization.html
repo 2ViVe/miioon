@@ -34,7 +34,7 @@
   </div>
 </div>
 <div class="row"><div class='small-12 columns'><hr/></div></div>
-<div class="row" ng-show="orders.length !==0">
+<div class="row">
   <div class="columns small-12">
     <table width="100%">
       <thead>
@@ -50,7 +50,7 @@
         <th>Country</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody  ng-show="orders.length !==0">
       <!--<tr ng-repeat="order in orders">-->
       <tr ng-repeat='order in orders'>
         <td>{{order.distributorId}}</td>
@@ -81,5 +81,9 @@
                      data-number-per-page="25"></vive-pagination>
   </div>
 </div>
-
+<div class="row" ng-if="!orders.length">
+  <div class="panel giftcode-placeholder-panel columns small-12 text-center">
+    No record found
+  </div>
+</div>
 
