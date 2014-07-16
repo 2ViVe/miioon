@@ -192,6 +192,9 @@
     <small class="error" ng-show="address.errors.phone">
       {{ address.errors.phone }}
     </small>
+    <small ng-show="submitted && addressForm.phone.$error.required" class="error">
+      This field is required.
+    </small>
   </div>
 
 </div>
