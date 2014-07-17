@@ -11,21 +11,39 @@ angular
   ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
-      .when('/meet/overview/:type', {
+      .when('/meet/overview/:period/:typeId?', {
         templateUrl: 'views/party/my-party.html',
         controller: 'PartyLandingController',
         resolve: {
           types: ['Events', function(Events) {
             return Events.fetchTypes();
           }],
-          events: ['Events', function(Events) {
-            return Events.fetchTypes()
-              .then(function(types) {
-                return Events.fetchAll({
-                  typeId: types[0].id
+          events: ['Events', '$route', '$q', function(Events, $route, $q) {
+            var defer = $q.defer();
+            var typeId = $route.current.params.typeId;
 
-                });
+            Events.fetchTypes()
+              .then(function(types) {
+                if (!typeId) {
+                  defer.reject({
+                    goTo: '/meet/overview/' +  $route.current.params.period + '/' + types[0].id
+                  });
+                }
+                return Events.fetchAll();
+              })
+              .then(function(events) {
+                if (events.length > 0) {
+                  defer.resolve(events.filter(function(event) {
+                    return event.typeId === typeId;
+                  }));
+                } else {
+                  defer.reject({
+                    goTo: '/meet/overview'
+                  });
+                }
               });
+
+            return defer.promise;
           }]
         }
       })

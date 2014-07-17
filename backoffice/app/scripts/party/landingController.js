@@ -1,9 +1,15 @@
 'use strict';
 
 angular.module('miioon/party')
-  .controller('PartyLandingController', ['$scope', 'events', '$route', '$location', 'types', 'Events',
-    function($scope, events, $route, $location, types, Events) {
-      var type = $route.current.params.type;
+  .controller('PartyLandingController', ['$scope', 'events', '$route', '$location', 'types',
+    function($scope, events, $route, $location, types) {
+      var period = $route.current.params.period;
+      var currentTypeId = $route.current.params.typeId;
+      angular.forEach(types, function(type) {
+        if (type.id === currentTypeId) {
+          $scope.currentType = type;
+        }
+      });
 
       function handleRemarks(event) {
         var startTime = moment(event.startTime);
@@ -28,24 +34,13 @@ angular.module('miioon/party')
         }
       }
 
-      if (events.length === 0) {
-        $location.path('/meet/overview');
-      }
-
-      //change type to upcoming as default
-      if (type !== 'upcoming' && type !== 'recent') {
-        type = 'upcoming';
-      }
-
       $scope.types = types;
-      $scope.currentType = types[0];
       $scope.changeType = function(type) {
-        $scope.currentType = type;
-        Events.fetchAll({
-          typeId: type.id
-        }).then(function(events) {
-          $scope.parties = events;
-        });
+        $location.path('/meet/overview/' + $scope.period + '/' + type.id);
+      };
+      $scope.switchPeriod = function(period) {
+        var nextPeriod = period === 'recent' ? 'upcoming' : 'recent';
+        $location.path('/meet/overview/' + nextPeriod + '/' + $scope.currentType.id);
       };
 
       $scope.remarks = {};
@@ -54,6 +49,6 @@ angular.module('miioon/party')
 
       $scope.parties = events;
 
-      $scope.type = type;
+      $scope.period = period;
 
     }]);
