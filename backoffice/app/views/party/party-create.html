@@ -8,24 +8,24 @@
     </ul>
   </div>
 </div>
-<!--<div class='row'>-->
-  <!--<div class='small-12 columns'>-->
-    <!--<div class='party-panel block-margin-bottom'>-->
-      <!--<h4>Select a Invitation Theme</h4>-->
-      <!--<div class="theme-selector">-->
-        <!--<div class="slider" data-is-auto-play="false" data-has-dots="false">-->
-          <!--<div class="next-theme" ng-click="nextSlide(); nextTemplate()"></div>-->
-          <!--<div class="previous-theme" ng-click="previousSlide(); previousTemplate()"></div>-->
-          <!--<ul>-->
-            <!--<li ng-repeat="template in templates">-->
-              <!--<img ng-src="{{template.imageUrl}}"/>-->
-            <!--</li>-->
-          <!--</ul>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
+<div class='row'>
+  <div class='small-12 columns'>
+    <div class='party-panel block-margin-bottom'>
+      <h4>Select a Invitation Theme</h4>
+      <div class="theme-selector">
+        <div class="slider" data-is-auto-play="false" data-has-dots="false">
+          <div class="next-theme" ng-click="previousSlide(); previousTemplate()"></div>
+          <div class="previous-theme" ng-click="nextSlide(); nextTemplate()"></div>
+          <ul>
+            <li ng-repeat="template in templates">
+              <img ng-src="{{template.imageUrl}}"/>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="row" ng-if="error">
   <div class="columns medium-12">
     <div class="alert-box error">

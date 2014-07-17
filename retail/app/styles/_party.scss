@@ -369,6 +369,7 @@
     width:100%;
   }
   .party-email-banner-text{
+    text-shadow: 0 0 5px #000;
     position: absolute;
     z-index: 2;
     top:0;
@@ -400,6 +401,7 @@
       margin-top: rem-calc(20);
       margin-bottom: rem-calc(40);
       .button{
+        text-shadow: none;
         color:$primary-color;
         background:#fff;
         border-bottom:3px solid #5ca6af;

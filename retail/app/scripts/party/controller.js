@@ -41,8 +41,6 @@ angular.module('miioon/party')
         openConfirm(response);
       }
 
-      $scope.templateImageUrl = event.getTemplateImageUrlFrom(templates);
-
       $scope.confirm = openConfirm;
 
     }]);
