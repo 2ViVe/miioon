@@ -1,18 +1,19 @@
 'use strict';
 
 angular.module('miioon/party')
-  .controller('PartyEditController', ['$scope', '$modal', 'country', 'Event', 'types', 'templates', '$location', 'event',
-    function($scope, $modal, country, Event, types, templates, $location, event) {
-      $scope.templates = templates;
+  .controller('PartyEditController', ['$scope', 'country', 'event', '$location', 'events', '$timeout',
+    function($scope, country, event, $location, events, $timeout) {
       $scope.country = country;
       $scope.error = '';
       $scope.submitted = false;
       $scope.data = event.data;
       $scope.data.typeId = event.data.type.id;
       $scope.time = event.getTime();
-      $scope.types = types;
+      $scope.types = events.types;
       $scope.isEditing = true;
       $scope.isStarted = event.isStarted();
+
+      $scope.templates = events.getTemplatesByTypeId($scope.data.typeId);
 
       $scope.times = [];
       for (var hour = 0; hour < 24; hour++) {
@@ -23,22 +24,38 @@ angular.module('miioon/party')
         }
       }
 
-      var selectedTemplateIndex = 0;
+      var selectedTemplateIndex = events.getTemplateIndexById($scope.data.template.id);
+      $timeout(function() {
+        $scope.goToSlide(selectedTemplateIndex + 1);
+      }, 1000);
+
+      $scope.selectedTemplate = $scope.templates[selectedTemplateIndex];
+
+      $scope.changeType = function() {
+        $scope.templates = events.getTemplatesByTypeId($scope.data.typeId);
+        selectedTemplateIndex = 0;
+        $scope.selectedTemplate = $scope.templates[selectedTemplateIndex];
+        $scope.refreshSlider();
+      };
 
       $scope.nextTemplate = function() {
-        if (selectedTemplateIndex === templates.length - 1) {
+        if (selectedTemplateIndex === $scope.templates.length - 1) {
           selectedTemplateIndex = 0;
         } else {
           selectedTemplateIndex++;
         }
+        $scope.selectedTemplate = $scope.templates[selectedTemplateIndex];
+        $scope.nextSlide();
       };
 
       $scope.previousTemplate = function() {
         if (selectedTemplateIndex === 0) {
-          selectedTemplateIndex = templates.length - 1;
+          selectedTemplateIndex = $scope.templates.length - 1;
         } else {
           selectedTemplateIndex--;
         }
+        $scope.selectedTemplate = $scope.templates[selectedTemplateIndex];
+        $scope.previousSlide();
       };
 
       $scope.cancel = function() {
@@ -47,7 +64,8 @@ angular.module('miioon/party')
 
       $scope.save = function() {
         $scope.submitted = true;
-        $scope.data.templateId = templates[selectedTemplateIndex].id;
+        $scope.data.templateId = $scope.selectedTemplate.id;
+        $scope.data.template = $scope.selectedTemplate;
         event.edit($scope.data, $scope.time)
           .then(function(event) {
             $location.path('/meet/' + event.data.id);

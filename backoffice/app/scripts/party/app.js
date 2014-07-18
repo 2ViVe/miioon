@@ -68,11 +68,12 @@ angular
             var event = new Event($route.current.params.eventId);
             return event.fetch();
           }],
-          templates: ['Events', function(Events) {
-            return Events.fetchTemplates();
-          }],
-          types: ['Events', function(Events) {
-            return Events.fetchTypes();
+          events: ['newEvents', function(Events) {
+            var events = new Events();
+            return events.fetchTemplates()
+              .then(function(events) {
+                return events.fetchTypes();
+              });
           }],
           country: ['Countries', 'Address', function(Countries, Address) {
             return Countries.fetch().then(function(countries) {
@@ -94,11 +95,12 @@ angular
         templateUrl: 'views/party/party-create.html',
         controller: 'PartyCreateController',
         resolve: {
-          templates: ['Events', function(Events) {
-            return Events.fetchTemplates();
-          }],
-          types: ['Events', function(Events) {
-            return Events.fetchTypes();
+          events: ['newEvents', function(Events) {
+            var events = new Events();
+            return events.fetchTemplates()
+              .then(function(events) {
+                return events.fetchTypes();
+              });
           }],
           country: ['Countries', 'Address', function(Countries, Address) {
             return Countries.fetch().then(function(countries) {
