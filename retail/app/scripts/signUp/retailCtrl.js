@@ -22,10 +22,7 @@ angular.module('miioon/signup')
         $scope.errors = {};
         $scope.submitted = true;
         Registration.createRetail(
-          $scope.account.sponsor,
-          $scope.account.login,
-          $scope.account.password,
-          $scope.account.email,
+          $scope.account,
           $scope.address.shipping
         ).then(function() {
             return User.login($scope.account.login, $scope.account.password, true);
