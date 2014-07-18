@@ -22,7 +22,14 @@
           PLACE A MEET ORDER
         </div>
         <div class="medium-4">
-          <select class="secondary-item no-margin-bottom"
+          <select class="secondary-item"
+                  ng-model="selectedType"
+                  ng-change="changeType()"
+                  ng-options="type as type.name for type in types">
+          </select>
+        </div>
+        <div class="medium-4">
+          <select class="secondary-item"
                   ng-model="selectedEvent"
                   ng-options="event as event.title + ' - ' + (event.startTime | date: 'medium') for event in events | isActive">
           </select>

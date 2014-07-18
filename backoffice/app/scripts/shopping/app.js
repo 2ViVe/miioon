@@ -16,24 +16,34 @@ angular
         templateUrl: 'views/shopping/options.html',
         controller: 'ShoppingOptionsController',
         resolve: {
-          events: ['Events', 'LocalStorage', '$q',
+          events: ['newEvents', 'LocalStorage', '$q',
             function(Events, LocalStorage, $q) {
               var defer = $q.defer();
 
-              Events.fetchAll({
-                isActive: true
-              }).then(function(events) {
-                if (!events || events.length === 0) {
-                  defer.reject({
-                    goTo: '/products/clothing/ruckjack-boys'
+              var replicateOwner = LocalStorage.getReplicateOwner();
+              var userId = replicateOwner ? replicateOwner['user-id'] : undefined;
+              var events = new Events();
+              events.fetchTypes()
+                .then(function(events) {
+                  return events.fetchAll({
+                    userId: userId
                   });
-                }
-                defer.resolve(events);
-              }).catch(function() {
-                defer.reject({
-                  goTo: '/products/clothing/ruckjack-boys'
+                })
+                .then(function(events) {
+                  var activeEvents = events.getByOptions({
+                    isActive: true
+                  });
+                  if (!activeEvents || activeEvents.length === 0) {
+                    defer.reject({
+                      goTo: '/checkout'
+                    });
+                  }
+                  defer.resolve(events);
+                }).catch(function() {
+                  defer.reject({
+                    goTo: '/checkout'
+                  });
                 });
-              });
 
               return defer.promise;
             }]
