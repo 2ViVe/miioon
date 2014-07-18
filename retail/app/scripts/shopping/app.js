@@ -16,22 +16,23 @@ angular
         templateUrl: 'views/shopping/options.html',
         controller: 'ShoppingOptionsController',
         resolve: {
-          events: ['Events', 'LocalStorage', '$q',
+          events: ['newEvents', 'LocalStorage', '$q',
             function(Events, LocalStorage, $q) {
               var defer = $q.defer();
 
               var replicateOwner = LocalStorage.getReplicateOwner();
               var userId = replicateOwner ? replicateOwner['user-id'] : undefined;
-              Events.fetchAll({
-                userId: userId,
-                isActive: true
+              var events = new Events();
+              events.fetchAll({
+                userId: userId
               }).then(function(events) {
-                if (!events || events.length === 0) {
+                var activeEvents = events.getActive();
+                if (!activeEvents || activeEvents.length === 0) {
                   defer.reject({
                     goTo: '/checkout'
                   });
                 }
-                defer.resolve(events);
+                defer.resolve(activeEvents);
               }).catch(function() {
                 defer.reject({
                   goTo: '/checkout'
