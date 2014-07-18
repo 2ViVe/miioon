@@ -8,8 +8,24 @@ angular.module('miioon/shopping')
         $location.path('/signin');
       });
 
-      $scope.events = events;
-      $scope.selectedEvent = events[0];
+      $scope.types = events.getTypesWithActiveEvent();
+      $scope.selectedType = $scope.types[0];
+
+      var activeEvents = events.getByOptions({
+        isActive: true,
+        typeId: $scope.selectedType.id
+      });
+      $scope.events = activeEvents;
+      $scope.selectedEvent = activeEvents[0];
+
+      $scope.changeType = function() {
+        activeEvents = events.getByOptions({
+          isActive: true,
+          typeId: $scope.selectedType.id
+        });
+        $scope.events = activeEvents;
+        $scope.selectedEvent = activeEvents[0];
+      };
 
       $scope.shopForMySelf = function() {
         Shopping.removeOptionalField('eventCode');

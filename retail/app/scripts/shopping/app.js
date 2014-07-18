@@ -23,21 +23,27 @@ angular
               var replicateOwner = LocalStorage.getReplicateOwner();
               var userId = replicateOwner ? replicateOwner['user-id'] : undefined;
               var events = new Events();
-              events.fetchAll({
-                userId: userId
-              }).then(function(events) {
-                var activeEvents = events.getActive();
-                if (!activeEvents || activeEvents.length === 0) {
+              events.fetchTypes()
+                .then(function(events) {
+                  return events.fetchAll({
+                    userId: userId
+                  });
+                })
+                .then(function(events) {
+                  var activeEvents = events.getByOptions({
+                    isActive: true
+                  });
+                  if (!activeEvents || activeEvents.length === 0) {
+                    defer.reject({
+                      goTo: '/checkout'
+                    });
+                  }
+                  defer.resolve(events);
+                }).catch(function() {
                   defer.reject({
                     goTo: '/checkout'
                   });
-                }
-                defer.resolve(activeEvents);
-              }).catch(function() {
-                defer.reject({
-                  goTo: '/checkout'
                 });
-              });
 
               return defer.promise;
             }]
