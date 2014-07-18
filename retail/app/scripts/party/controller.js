@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('miioon/party')
-  .controller('PartyInvitationController', ['$scope', 'event', '$modal', '$route', 'templates',
-    function($scope, event, $modal, $route, templates) {
+  .controller('PartyInvitationController', ['$scope', 'event', '$modal', '$route',
+    function($scope, event, $modal, $route) {
       function openConfirm(response) {
         $modal.open({
           templateUrl: 'views/party/confirm.html',
