@@ -28,17 +28,15 @@ angular.module('2ViVe')
         $scope.curpage = 1;
       }
       return organization.fetch($scope.date, $scope.isShowOrderList, $scope.distributorId, $scope.offset)
-        .then(function(orders){
-          $scope.orders = orders;
+        .then(function(result){
+          $scope.orders = result.rows;
+            if($scope.distributorId){
+              $scope.count = 1;
+            } else {
+              $scope.count = result.meta.count;
+            }
         })
         .then(function(){
-          if ( $scope.distributorId ){
-            return 1;
-          }
-          return organization.getCount($scope.date, $scope.isShowOrderList);
-        })
-        .then(function(count){
-          $scope.count = count;
           if (reflash){
             $scope.refreshPagination($scope.count);
           }
