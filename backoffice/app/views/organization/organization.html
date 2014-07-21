@@ -19,13 +19,13 @@
         <label>&nbsp;&nbsp;<input ng-model='isShowOrderList' ng-change="updateOrder(true)" type="checkbox" />&nbsp;Orders Only</label>
       </div>
       <div class="small-2 small-offset-2 columns">
-        <select ng-model="selectYear" ng-change="getMonth()" class="secondary-item no-margin-bottom">
+        <select ng-model="selectYear" ng-change="getMonth()" class="no-margin-bottom">
           <option disabled ng-selected="true">Select Year</option>
           <option ng-repeat='year in years'>{{year}}</option>
         </select>
       </div>
       <div class="small-2 columns">
-        <select ng-model="selectMonth" ng-change="updateDate()" class="secondary-item no-margin-bottom">
+        <select ng-model="selectMonth" ng-change="updateDate()" class="no-margin-bottom">
           <option disabled ng-selected="true">Select Month</option>
           <option ng-repeat='month in months'>{{month.substr(0,2)}}</option>
         </select>
