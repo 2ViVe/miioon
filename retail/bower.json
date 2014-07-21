@@ -17,7 +17,7 @@
     "angular-mm-foundation": "git@github.com:zation/angular-foundation.git#master",
     "angular-scroll": "~0.4.1",
     "sticky": "*",
-    "angular-loading-bar": "~0.4.0",
+    "angular-loading-bar": "~0.5.0",
     "angular-animate": "~1.2.16",
     "elevatezoom": "git@github.com:zation/elevatezoom.git#7b2ed520979e62fddbb1f483f1c0bf162bf60ff8",
     "angular-cookie": "~4.0.0",
