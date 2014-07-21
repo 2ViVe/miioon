@@ -35,13 +35,13 @@ angular
                   });
                   if (!activeEvents || activeEvents.length === 0) {
                     defer.reject({
-                      goTo: '/checkout'
+                      goTo: '/products/clothing/ruckjack-boys'
                     });
                   }
                   defer.resolve(events);
                 }).catch(function() {
                   defer.reject({
-                    goTo: '/checkout'
+                    goTo: '/products/clothing/ruckjack-boys'
                   });
                 });
 
