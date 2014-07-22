@@ -8,13 +8,14 @@
   <div class="row">
 
     <div class="small-3 columns">
-      <label class="right inline" for="sponsor">Miioon Angel Sponsor ID</label>
+      <label class="right inline" ng-class="{required: required == 'true'}" for="sponsor">Miioon Angel Sponsor ID</label>
     </div>
 
     <div class="small-5 end columns">
       <input type="text"
              id="sponsor" name="sponsor"
              ng-model="account.sponsor"
+             ng-required="{{required}}"
              data-sponsor-validator
              data-sponsor-name="sponsorName"
              data-sponsor-validator-error-msg="$errorMessages['sponsor']"
