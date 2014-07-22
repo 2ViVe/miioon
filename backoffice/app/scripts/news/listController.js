@@ -3,7 +3,6 @@
 angular.module('2ViVe')
   .controller('NewsListController', ['$scope', 'news', function($scope, news) {
     $scope.news = news.news.companyNews;
-    console.log($scope.news);
     $scope.offset = 0;
     $scope.curpage = 1;
 
@@ -14,7 +13,7 @@ angular.module('2ViVe')
         if (reflash) {
           $scope.offset = 0;
           $scope.curpage = 1;
-          $scope.refreshPagination(reslut.news.metaData.count);
+          $scope.refreshPagination(reslut.news.meta.count);
         }
       });
     };
