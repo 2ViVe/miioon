@@ -41,7 +41,7 @@
           <td>
             {{lineItem.quantity}}
           </td>
-          <td class="price">£{{lineItem.price * lineItem.quantity | price}}</td>
+          <td class="price">{{lineItem.price * lineItem.quantity | price}}</td>
         </tr>
         </tbody>
         <tfoot>
@@ -50,7 +50,7 @@
             Item Total
           </td>
           <td class="price">
-            £{{order.itemTotal}}
+            {{order.itemTotal | price}}
           </td>
         </tr>
         <tr ng-repeat="adjustment in order.adjustments">
@@ -58,7 +58,7 @@
             {{adjustment.label}}
           </td>
           <td class="price">
-            £{{adjustment.amount}}
+            {{adjustment.amount | price}}
           </td>
         </tr>
         <tr>
@@ -66,7 +66,7 @@
             Order Total
           </td>
           <td class="price">
-            £{{order.total}}
+            {{order.total | price}}
           </td>
         </tr>
         </tfoot>
@@ -136,8 +136,9 @@
       <input type='radio' ng-model="$parent.method.payment" ng-value="paymentMethod" id="payment-method-{{paymentMethod.id}}"/>
     </div>
   </div>
-  <div ng-show="method.payment.isCreditcard">
+  <div ng-if="method.payment.isCreditcard">
     <div data-creditcard-panel
+         data-submitted="submitted"
          data-creditcard="creditcard"></div>
   </div>
 
