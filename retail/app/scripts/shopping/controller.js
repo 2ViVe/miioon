@@ -6,7 +6,17 @@ angular.module('miioon/shopping')
       $scope.shopping = shopping;
 
       $scope.update = function() {
-        shopping.update();
+        shopping.updateItems();
+      };
+
+      $scope.updateItemQuantity = function(item) {
+        var newQuantity = item.newQuantity;
+        if (isNaN(newQuantity) || newQuantity < 0) {
+          item.newQuantity = item.quantity;
+        } else if (newQuantity > 0) {
+          item.newQuantity = Math.round(newQuantity);
+          item.quantity = item.newQuantity;
+        }
       };
 
       $scope.remove = function(item) {

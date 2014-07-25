@@ -32,8 +32,11 @@
           <a ng-click="remove(item)" class="primary-color small-font remove-item">x Remove</a>
         </td>
         <td class="quantity">
-          <input type="number" ng-model="item.quantity"/> <br/>
-          <a ng-click="update()">Update</a>
+          <input type="number"
+                 ng-init="item.newQuantity = item.quantity"
+                 ng-change="updateItemQuantity(item)"
+                 ng-model="item.newQuantity"/> <br/>
+          <a class="primary-color" ng-click="update(item)">Update</a>
         </td>
         <td>
           {{item.data.price | price}}
