@@ -46,8 +46,15 @@
         <th>Orders</th>
         <th>Qualification Volume</th>
         <th>Commission Volume</th>
+        <th>Personal Sale</th>
+        <th>Personal Volume</th>
+        <th>Group Volume</th>
+        <th>Team Volume</th>
+        <th>Dualteam Volume</th>
+        <th>Fast Track Volume</th>
         <th>Rank</th>
         <th>Country</th>
+        <th>State</th>
       </tr>
       </thead>
       <tbody  ng-show="orders.length !==0">
@@ -60,8 +67,15 @@
         <td>{{order.orderCount}}</td>
         <td>{{parseFloat(order.qualificationVolume).toFixed(2)}}</td>
         <td>{{parseFloat(order.unilevelVolume).toFixed(2)}}</td>
+        <td>{{parseFloat(order.personalSale).toFixed(2)}}</td>
+        <td>{{parseFloat(order.personalVolume).toFixed(2)}}</td>
+        <td>{{parseFloat(order.groupVolume).toFixed(2)}}</td>
+        <td>{{parseFloat(order.teamVolume).toFixed(2)}}</td>
+        <td>{{parseFloat(order.dualteamVolume).toFixed(2)}}</td>
+        <td>{{parseFloat(order.fastTrackVolume).toFixed(2)}}</td>
         <td>{{order.rank}}</td>
         <td>{{order.countryIso}}</td>
+        <td>{{order.state}}</td>
       </tr>
       </tbody>
     </table>
