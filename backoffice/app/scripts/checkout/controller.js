@@ -19,10 +19,23 @@ angular.module('miioon/checkout')
 
       $scope.editShippingAddress = function() {
         $modal.open({
-          templateUrl: 'views/checkout/shipping-address.html',
-          controller: 'ShippingModalController'
+          templateUrl: 'views/checkout/address-modal.html',
+          controller: 'AddressModalController',
+          resolve: {
+            type: function() {
+              return 'shipping';
+            },
+            address: function() {
+              return $scope.order.data.shippingAddress;
+            },
+            title: function() {
+              return 'Shipping';
+            }
+          }
         }).result.then(function(shippingAddress) {
-            $scope.order.data.shippingAddress = shippingAddress;
+            shippingAddress.extendDataTo($scope.order.data.shippingAddress);
+            $scope.order.data.shippingAddress.country = shippingAddress.country.name;
+            $scope.order.data.shippingAddress.state = shippingAddress.state.name;
             if ($scope.orderId) {
               order.updateShippingAddress($scope.orderId, shippingAddress)
                 .success(function() {
@@ -34,10 +47,23 @@ angular.module('miioon/checkout')
 
       $scope.editBillingAddress = function() {
         $modal.open({
-          templateUrl: 'views/checkout/billing-address.html',
-          controller: 'BillingModalController'
+          templateUrl: 'views/checkout/address-modal.html',
+          controller: 'AddressModalController',
+          resolve: {
+            type: function() {
+              return 'shipping';
+            },
+            address: function() {
+              return $scope.order.data.billingAddress;
+            },
+            title: function() {
+              return 'Shipping';
+            }
+          }
         }).result.then(function(billingAddress) {
-            $scope.order.data.billingAddress = billingAddress;
+            billingAddress.extendDataTo($scope.order.data.billingAddress);
+            $scope.order.data.billingAddress.country = billingAddress.country.name;
+            $scope.order.data.billingAddress.state = billingAddress.state.name;
             if ($scope.orderId) {
               order.updateBillingAddress($scope.orderId, billingAddress);
             }
