@@ -23,5 +23,6 @@ angular.module('miioonApp', [
   'miioon.organization',
   'miioon/party',
   'miioon/genealogy',
-  'miioon.news'
+  'miioon.news',
+  'mio/commission'
 ]);

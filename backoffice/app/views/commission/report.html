@@ -1,0 +1,95 @@
+<div class="row">
+    <div class="columns medium-12">
+        <h2>
+            Commission Report
+        </h2>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 columns">
+        <div class="row collapse">
+            <div class="small-2 small-offset-6 columns">
+                <select ng-model="selectYear" ng-change="getMonth()" class="secondary-item no-margin-bottom">
+                    <option disabled ng-selected="true">Select Year</option>
+                    <option ng-repeat='year in years'>{{year}}</option>
+                </select>
+            </div>
+            <div class="small-2 columns">
+                <select ng-model="selectMonth" ng-change="updateDate()" class="secondary-item no-margin-bottom">
+                    <option disabled ng-selected="true">Select Month</option>
+                    <option ng-repeat='month in months'>{{month.substr(0,2)}}</option>
+                </select>
+            </div>
+            <div class="small-2 columns">
+                <select ng-model="selectType" ng-options='commissionType.name for commissionType in commissionTypes' ng-change="updateReportAndRefreshPagination()" class="secondary-item no-margin-bottom">
+                    <option disabled ng-selected="true">Select Type</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row"><div class='small-12 columns'><hr/></div></div>
+<div class="row">
+    <div class="columns medium-12">
+        <h4>
+            Overview
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 columns">
+        <div class="columns small-12">
+            <table width="100%" style="text-align: right">
+                <tbody>
+                    <tr>
+                        <th ng-repeat="item in overview">{{item.name}}</th>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="item in overview">{{item.value}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="columns medium-12">
+        <h4>
+            Report
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <table width="100%">
+            <thead>
+            <tr>
+                <th ng-repeat="name in names track by $index">{{name}}</th>
+            </tr>
+            </thead>
+            <tbody ng-show="orders.length !==0">
+            <tr ng-repeat='value in values track by $index'>
+                <td ng-repeat="item in value track by $index">{{item}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row" ng-show="count > 25">
+    <div class="columns small-12">
+        <vive-pagination data-start-page="first"
+                         data-total="count"
+                         data-refresh="refreshPagination"
+                         data-on-next-page="goToPage"
+                         data-on-previous-page="goToPage"
+                         data-on-go-to-page="goToPage"
+                         data-number-per-page="25"></vive-pagination>
+    </div>
+</div>
+<div class="row" ng-if="value.length === 0">
+    <div class="panel giftcode-placeholder-panel columns small-12 text-center">
+        No report found
+    </div>
+</div>
+
+
