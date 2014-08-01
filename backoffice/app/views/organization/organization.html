@@ -13,10 +13,10 @@
         <a class="text-clear-btn" ng-show="!!distributorId" ng-click="clearDistributorId()">X</a>
       </div>
       <div class="small-1 columns">
-        <a ng-click="updateOrder(true)" class='postfix button'><i class="fa fa-search"></i></a>
+        <a ng-click="updateOrderAndRefreshPagination(true)" class='postfix button'><i class="fa fa-search"></i></a>
       </div>
       <div class="small-2 columns">
-        <label>&nbsp;&nbsp;<input ng-model='isShowOrderList' ng-change="updateOrder(true)" type="checkbox" />&nbsp;Orders Only</label>
+        <label>&nbsp;&nbsp;<input ng-model='isShowOrderList' ng-change="updateOrderAndRefreshPagination(true)" type="checkbox" />&nbsp;Orders Only</label>
       </div>
       <div class="small-2 small-offset-2 columns">
         <select ng-model="selectYear" ng-change="getMonth()" class="no-margin-bottom">
