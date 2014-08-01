@@ -1,5 +1,10 @@
 <form novalidate name="form">
-  <div ng-include="'bower_components/2ViVe/views/miioon/billing-address.html'"></div>
+  <div data-address-panel
+       data-address-type="type"
+       data-title="title"
+       data-address="address"
+       data-submitted="submitted">
+  </div>
   <div class="row">
     <div class="columns medium-12">
       <button ng-click="submit()">Submit</button>
