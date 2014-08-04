@@ -1,6 +1,7 @@
 'use strict';
 
 (function() {
+
   angular.module('2ViVe')
     .directive('profilePasswordPanel', function() {
       return {
@@ -13,6 +14,7 @@
         }
       };
     });
+
 })();
 
 

@@ -57,7 +57,6 @@
           addressTitle: '@'
         },
         link: function() {
-
         }
       };
     });
