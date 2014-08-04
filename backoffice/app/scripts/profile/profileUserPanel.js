@@ -90,6 +90,7 @@
           .then(function() {
             $scope.isLoading = false;
             $scope.isEditing = false;
+            $scope.initProfile = angular.copy($scope.profile);
           })
           .catch(respErrHandler);
       };
