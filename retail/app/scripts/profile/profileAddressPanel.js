@@ -39,10 +39,9 @@
             $scope.isEditing = false;
             $scope.initAddress = angular.copy($scope.address);
           })
-          .catch(function(resp) {
+          .catch(function() {
             $scope.isEditing = true;
             $scope.address.errors = $scope.address.errors || {};
-            $scope.address.errors.country = resp.data.meta.error.message;
           });
       };
 
