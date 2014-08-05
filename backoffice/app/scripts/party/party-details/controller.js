@@ -8,7 +8,20 @@ angular.module('miioon/party')
       $scope.party = event.data;
       $scope.invitees = event.invitees;
 
-      event.fetchOrders();
+      $scope.rewords = 0;
+      $scope.halfPriceItems = 0;
+      $scope.rewordsPercentage = undefined;
+      var ordersItemTotal = event.ordersItemTotal();
+      if (ordersItemTotal >= 300 && ordersItemTotal < 501) {
+        $scope.rewords = 25;
+        $scope.halfPriceItems = 2;
+      } else if (ordersItemTotal >= 501 && ordersItemTotal < 801) {
+        $scope.rewords = 75;
+        $scope.halfPriceItems = 3;
+      } else if (ordersItemTotal >= 801) {
+        $scope.rewords = 150;
+        $scope.halfPriceItems = 4;
+      }
 
       $scope.deleteInvites = function() {
         $modal.open({
