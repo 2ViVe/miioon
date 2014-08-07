@@ -62,15 +62,18 @@ angular.module('miioon/party')
 
       $scope.save = function() {
         $scope.submitted = true;
-        $scope.data.templateId = $scope.selectedTemplate.id;
-        $scope.data.template = $scope.selectedTemplate;
-        var event = new Event();
-        event.create($scope.data, $scope.time)
-          .then(function(event) {
-            $location.path('/meet/' + event.data.id + '/invite');
-          })
-          .catch(function(response) {
-            $scope.error = response.data.meta.error.message;
-          });
+
+        if ($scope.form.$valid) {
+          $scope.data.templateId = $scope.selectedTemplate.id;
+          var event = new Event();
+          event.create($scope.data, $scope.time)
+            .then(function(event) {
+              $location.path('/meet/' + event.data.id + '/invite');
+            })
+            .catch(function(response) {
+              $scope.error = response.data.meta.error.message;
+            });
+        }
+
       };
     }]);

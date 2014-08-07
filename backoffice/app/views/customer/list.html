@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="columns medium-12">
+    <h2>
+      Customers List
+    </h2>
+  </div>
+</div>
+<div class="row">
+  <div class="columns medium-12">
+    <table width="100%">
+      <thead>
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Country
+        </th>
+        <th>
+          State
+        </th>
+        <th>
+          City
+        </th>
+        <th>
+          Enrollment Date
+        </th>
+        <th>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="customer in customers.data">
+        <td>
+          {{customer.distributorId}}
+        </td>
+        <td>
+          <a ng-click="showOrder(customer)">
+            {{customer.firstName}}&nbsp;{{customer.lastName}}
+          </a>
+        </td>
+        <td>
+          {{customer.country}}
+        </td>
+        <td>
+          {{customer.state}}
+        </td>
+        <td>
+          {{customer.city}}
+        </td>
+        <td>
+          {{customer.enrollmentDate | date: 'yyyy-MM-dd'}}
+        </td>
+        <td>
+          <a tooltip-html-unsafe="{{contactInformation(customer)}}"
+             tooltip-placement="bottom">Contact Information</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="columns medium-12">
+    <vive-pagination data-start-page="first"
+                     data-total="customers.data.pagination.count"
+                     data-refresh="refreshPagination"
+                     data-on-next-page="goToPage"
+                     data-on-previous-page="goToPage"
+                     data-on-go-to-page="goToPage"
+                     data-number-per-page="25"
+                     data-available-number-per-page="10,25,100"></vive-pagination>
+  </div>
+</div>

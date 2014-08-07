@@ -58,16 +58,31 @@
         <div class='columns small-12'>
           <div class='party-price block-margin-bottom'>
             <ul class="row">
-              <!--<li class="small-6 columns text-center">-->
-                <!--{{rewords | price}}-->
-                <!--<span>Hostess Rewards</span>-->
-                <!--<small ng-if="rewordsPercentage">-->
-                  <!--{{rewordsPercentage}} in Paw Perks-->
-                <!--</small>-->
-              <!--</li>-->
-              <li class="small-12 columns text-center">
-                {{event.data.orderCloseTime | date: 'medium'}}
+              <li class="small-6 columns text-center" ng-if="event.data.type.id === '53ba6da094258dc41e62ecab'">
+                <span>Hostess Rewards</span>
+                <div class="row">
+                  <div class="small-6 columns medium-font">
+                    Hostess Credits<br/>
+                    {{rewords | price}}
+                  </div>
+                  <div class="small-6 columns medium-font">
+                    40% Price Items<br/>
+                    {{halfPriceItems}}
+                  </div>
+                </div>
+              </li>
+              <li class="small-6 columns text-center" ng-if="event.data.type.id === '53ba6ebc94258dc41e62ecad'">
+                <span>Hostess Rewards</span>
+                <p class="medium-font">
+                  Organization Compensation:
+                  {{event.ordersItemTotal() * 0.2 | price}}<br/>
+                  Miioon Angel Compensation:
+                  {{event.ordersItemTotal() * 0.15 | price}}
+                </p>
+              </li>
+              <li class="small-6 columns text-center">
                 <span>Order Close Date</span>
+                {{event.data.orderCloseTime | date: 'medium'}}
               </li>
             </ul>
           </div>

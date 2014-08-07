@@ -71,15 +71,18 @@
 
   <div class="row">
     <div class="small-3 columns">
-      <label class="text-right inline required" for="first-name">First Name</label>
+      <label class="text-right inline required" for="host-email">Host Email</label>
     </div>
     <div class="small-9 columns">
-      <input type="text"
-             name="firstName"
-             id="first-name"
-             ng-model="data.address.firstName"
+      <input type="email"
+             name="hostEmail"
+             id="host-email"
+             ng-model="data.hostEmail"
              required/>
-      <small class="error" ng-show="submitted && form.firstName.$error.required">
+      <small class="error" ng-show="submitted && form.hostEmail.$error.email">
+        Host Email is invalid.
+      </small>
+      <small class="error" ng-show="submitted && form.hostEmail.$error.required">
         This information is required.
       </small>
     </div>
@@ -87,35 +90,7 @@
 
   <div class="row">
     <div class="small-3 columns">
-      <label class="text-right inline" for="middle-name">Middle Name</label>
-    </div>
-    <div class="small-9 columns">
-      <input type="text"
-             name="middleName"
-             id="middle-name"
-             ng-model="data.address.middleName"/>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="small-3 columns">
-      <label class="text-right inline required" for="last-name">Last Name</label>
-    </div>
-    <div class="small-9 columns">
-      <input type="text"
-             name="lastName"
-             id="last-name"
-             ng-model="data.address.lastName"
-             required/>
-      <small class="error" ng-show="submitted && form.lastName.$error.required">
-        This information is required.
-      </small>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="small-3 columns">
-      <label class="text-right inline required" for="host-name">Host(ess)</label>
+      <label class="text-right inline required" for="host-name">Host Name</label>
     </div>
     <div class="small-9 columns">
       <input type="text"
@@ -127,9 +102,6 @@
         This information is required.
       </small>
     </div>
-    <!--<div class="small-3 columns">-->
-    <!--<a href class="button small" ng-click="partyCreateContact()">Contact</a>-->
-    <!--</div>-->
   </div>
 
   <div class="row">
@@ -169,8 +141,7 @@
       <input type="text"
              id="end-date"
              ng-model="time.endDate"
-             data-date-picker
-             required/>
+             data-date-picker/>
     </div>
     <div class="small-3 columns">
       <label class="text-right inline" for="end-time">End Time</label>
