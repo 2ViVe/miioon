@@ -48,7 +48,7 @@ angular.module('2ViVe')
       return {
         names: names,
         values: newValues
-      }
+      };
     }
 
     $scope.updateReportAndRefreshPagination = function() {
