@@ -3,49 +3,50 @@
 (function() {
 
   angular.module('2ViVe')
-    .controller('profileAddressPanelCtrl', ['$scope', 'Address', 'Registration', 'Registration.Countries', function($scope, Address, Registration, Countries) {
+    .controller('profileAddressPanelCtrl', ['$scope', 'Address', 'Registration', 'Registration.Countries',
+      function($scope, Address, Registration, Countries) {
 
-      $scope.isEditing = false;
-      $scope.isLoading = true;
+        $scope.isEditing = false;
+        $scope.isLoading = true;
 
-      Countries.fetch().then(function(countries) {
-        $scope.countries = countries.data;
-        Address
-          .fetch()
-          .then(function(addr) {
-            if (!addr[$scope.addressType.toLowerCase()]) {
-              addr.addType($scope.addressType.toLowerCase());
-            }
-            $scope.address = addr[$scope.addressType.toLowerCase()];
-            $scope.initAddress = angular.copy($scope.address);
-          });
-      });
+        Countries.fetch().then(function(countries) {
+          $scope.countries = countries.data;
+          Address
+            .fetch()
+            .then(function(addr) {
+              if (!addr[$scope.addressType.toLowerCase()]) {
+                addr.addType($scope.addressType.toLowerCase());
+              }
+              $scope.address = addr[$scope.addressType.toLowerCase()];
+              $scope.initAddress = angular.copy($scope.address);
+            });
+        });
 
 
-      $scope.restore = function() {
-        return angular.extend($scope.address, $scope.initAddress);
-      };
+        $scope.restore = function() {
+          return angular.extend($scope.address, $scope.initAddress);
+        };
 
-      $scope.toggle = function() {
-        $scope.isEditing = !$scope.isEditing;
-      };
+        $scope.toggle = function() {
+          $scope.isEditing = !$scope.isEditing;
+        };
 
-      $scope.save = function(isValid) {
-        if (!isValid) {
-          return;
-        }
-        $scope.address.update()
-          .then(function() {
-            $scope.isEditing = false;
-            $scope.initAddress = angular.copy($scope.address);
-          })
-          .catch(function() {
-            $scope.isEditing = true;
-            $scope.address.errors = $scope.address.errors || {};
-          });
-      };
+        $scope.save = function(isValid) {
+          if (!isValid) {
+            return;
+          }
+          $scope.address.update()
+            .then(function() {
+              $scope.isEditing = false;
+              $scope.initAddress = angular.copy($scope.address);
+            })
+            .catch(function() {
+              $scope.isEditing = true;
+              $scope.address.errors = $scope.address.errors || {};
+            });
+        };
 
-    }])
+      }])
     .directive('profileAddressPanel', function() {
       return {
         restrict: 'A',
