@@ -24,5 +24,6 @@ angular.module('miioonApp', [
   'miioon/party',
   'miioon/genealogy',
   'miioon.news',
-  'mio/commission'
+  'mio/commission',
+  '2ViVe/report'
 ]);
