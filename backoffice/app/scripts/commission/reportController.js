@@ -29,12 +29,27 @@ angular.module('2ViVe')
       }
       return commission.fetch($scope.date, $scope.selectType.code, offset, _numberPerPage)
         .then(function(result){
+          var deletedArr = deleteOrder(result.data.names, result.data.values);
           $scope.names = result.data.names;
           $scope.values = result.data.values;
           $scope.count = result.meta.count;
           $scope.overview = result.overview;
         });
     };
+
+    function deleteOrder(names, values){
+      var index = names.indexOf('Orders');
+      names.splice(index, 1);
+      var newValues = [];
+      values.forEach(function(value){
+        value.splice(index, 1);
+        newValues.push(value);
+      });
+      return {
+        names: names,
+        values: newValues
+      }
+    }
 
     $scope.updateReportAndRefreshPagination = function() {
       updateReport(0)
