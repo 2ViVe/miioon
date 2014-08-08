@@ -57,6 +57,26 @@ $rank-5-border: #F397BD;
       }
     }
 
+    .info {
+      display: inline-block;
+      text-align: left;
+
+      table {
+        background: none;
+        margin-bottom: 0;
+        border: 0;
+
+        tr {
+          background: none;
+        }
+
+        td {
+          border-bottom: 0;
+          padding: 0 5px;
+        }
+      }
+    }
+
     .name {
       cursor: pointer;
       display: inline-block;

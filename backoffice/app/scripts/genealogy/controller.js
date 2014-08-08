@@ -2,8 +2,8 @@
 
 angular
   .module('miioon/genealogy')
-  .controller('GenealogyController', ['$scope', 'genealogy', '$timeout',
-    function($scope, genealogy, $timeout) {
+  .controller('GenealogyController', ['$scope', 'genealogy', '$timeout', '$modal',
+    function($scope, genealogy, $timeout, $modal) {
       function refresh(distributorId) {
         genealogy
           .fetchUniLevels(distributorId)
@@ -24,6 +24,18 @@ angular
       $scope.genealogy = genealogy;
 
       $scope.changeRootDistributor = refresh;
+
+      $scope.showRetails = function() {
+        $modal.open({
+          templateUrl: 'views/report/genealogy-retail.html',
+          controller: 'GenealogyRetailController',
+          resolve: {
+            retails: function() {
+              return genealogy.data.retailChildren;
+            }
+          }
+        });
+      };
 
       $scope.search = function() {
         if (!$scope.searchId) {
