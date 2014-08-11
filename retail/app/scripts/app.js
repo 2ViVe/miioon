@@ -5,7 +5,7 @@ angular.module('miioonApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'chieffancypants.loadingBar',
+  'angular-loading-bar',
   '2ViVe',
   'ui.utils',
   'mm.foundation.tabs',

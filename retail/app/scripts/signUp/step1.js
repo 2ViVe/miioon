@@ -5,6 +5,15 @@ angular.module('miioon/signup')
     return {
       restrict: 'C',
       controller: ['$scope', function($scope) {
+        $scope.debug = function() {
+          $scope.account.sponsor = '100001';
+          $scope.account.login = 'test' + Math.random().toString().substr(15);
+          $scope.account.password = '!QAZ2w';
+          $scope.account.email = $scope.account.login + '@gmail.com';
+        };
+
+//        $scope.debug();
+
         $scope.$watch('account.login', function(login) {
           $scope.account.login = login ? login.toLowerCase() : login;
         });

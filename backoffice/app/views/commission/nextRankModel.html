@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="columns small-12">
+        <table width="100%">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Required</th>
+                <th>Current</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="nextRankDetail in input.nextRankDetails">
+                <td>{{nextRankDetail.name}}</td>
+                <td>{{nextRankDetail.required}}</td>
+                <td>{{nextRankDetail.current}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

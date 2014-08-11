@@ -11,6 +11,19 @@
 
     <div ng-if="!isEditing">
       <div class="row">
+        <div class="small-3 columns">Avatar</div>
+        <div class="small-3 columns">
+          <img ng-src="{{profile.imageUrl}}" />
+        </div>
+        <div class="small-3 end columns">
+          <vive-file-reader data-on-uploaded="refreshImage" data-upload="upload">
+            <button class="small">Select a picture</button>
+            <input type="file" name="avatar" id="file" class="hide" />
+          </vive-file-reader>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="small-3 columns inline">User Name</div>
         <div class="small-9 columns">{{ profile.login }}</div>
       </div>

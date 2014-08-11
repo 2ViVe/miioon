@@ -84,7 +84,15 @@ angular.module('miioonApp')
         templateUrl: 'views/starter-pack.html'
         //controller: 'CheckoutController'
       })
-      .when('/:login', {
-        templateUrl: 'views/home.html'
+      .when('/:owner', {
+        templateUrl: 'views/home.html',
+        controller: 'HomeController',
+        resolve: {
+          'replicateOwner': ['$http', '$route',
+            function($http, $route) {
+              var newOwner = $route.current.params.owner;
+              return $http.get('/' + newOwner);
+            }]
+        }
       });
   }]);

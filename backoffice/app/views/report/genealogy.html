@@ -63,16 +63,33 @@
               {{genealogy.data.firstName}}
               {{genealogy.data.lastName}}
             </div>
-            <div class="sponsor-id">
-              {{genealogy.data.id}}
-              <span class="unimportant-text">({{genealogy.data.childrenSize}})</span>
+            <br/>
+
+            <div class="info">
+              <table>
+                <tr>
+                  <td>ID:</td>
+                  <td>{{genealogy.data.id}}</td>
+                </tr>
+                <tr>
+                  <td>Handlers:</td>
+                  <td>{{genealogy.data.childrenSize}}</td>
+                </tr>
+                <tr>
+                  <td>Customers:</td>
+                  <td>{{genealogy.data.retailChildrenSize}}</td>
+                </tr>
+                <tr>
+                  <td>Username:</td>
+                  <td>{{genealogy.data.userName}}</td>
+                </tr>
+                <tr ng-if="genealogy.data.renewelDate">
+                  <td>Renewal Date:</td>
+                  <td>{{genealogy.data.renewelDate}}</td>
+                </tr>
+              </table>
             </div>
-            <div>
-              Username: {{genealogy.data.userName}}
-            </div>
-            <div ng-if="genealogy.data.renewelDate">
-              Renewal Date: {{genealogy.data.renewelDate}}
-            </div>
+
           </div>
         </div>
       </div>
@@ -90,6 +107,19 @@
                        data-controls="false"
                        data-previous-slide="previousSlide">
             <ul>
+              <li class="distributor"
+                  ng-show="genealogy.data.retailChildrenSize > 0"
+                  ng-click="showRetails()">
+                <div class="rank-icon rank-0">
+                </div>
+                <div class="name">
+                  Customers: {{genealogy.data.retailChildrenSize}}
+                </div>
+                <br/>
+                <a>
+                  Click to show details.
+                </a>
+              </li>
               <li class="distributor"
                   ng-repeat="distributor in genealogy.data.children">
                 <div class="rank-icon rank-{{distributor.displayRank}}"

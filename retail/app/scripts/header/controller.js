@@ -6,7 +6,14 @@ angular.module('2ViVe')
       $scope.user = User;
       $scope.shopping = Shopping;
       $scope.backOfficeUrl = UrlHandler.backOfficeUrl();
-      $scope.replicateOwner = LocalStorage.getReplicateOwner();
+      $scope.$watch(function() {
+        if (LocalStorage.getReplicateOwner()) {
+          return LocalStorage.getReplicateOwner().login;
+        }
+        return null;
+      }, function() {
+        $scope.replicateOwner = LocalStorage.getReplicateOwner();
+      });
 
       $scope.logout = function() {
         User.logout().success(function() {
