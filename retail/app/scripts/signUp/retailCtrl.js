@@ -1,7 +1,7 @@
 'use strict';
 angular.module('miioon/signup')
-  .controller('RetailSignUpController', ['$scope', '$location', 'Address', 'Registration', 'User',
-    function($scope, $location, Address, Registration, User) {
+  .controller('RetailSignUpController', ['$scope', '$location', 'Address', 'Registration', 'User', 'Shopping',
+    function($scope, $location, Address, Registration, User, Shopping) {
       $scope.submitted = false;
       $scope.errors = {};
       $scope.method = {
@@ -39,7 +39,16 @@ angular.module('miioon/signup')
             if (!result) {
               return;
             }
-            $location.path('/');
+            User.fetch().then(function() {
+              if (Shopping.items) {
+                return Shopping.mergeItems();
+              } else {
+                return Shopping.fetch();
+              }
+            }).then(function() {
+              $location.path('/');
+            });
+
           });
       };
 
