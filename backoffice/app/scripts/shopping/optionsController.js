@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('miioon/shopping')
-  .controller('ShoppingOptionsController', ['$scope', 'events', 'Shopping', '$location', 'User', 'LocalStorage',
-    function($scope, events, Shopping, $location, User, LocalStorage) {
+  .controller('ShoppingOptionsController', ['$scope', 'events', 'Shopping', '$location', 'User', 'LocalStorage', 'GiftCard',
+    function($scope, events, Shopping, $location, User, LocalStorage, GiftCard) {
       User.fetch().catch(function() {
         LocalStorage.setPathAfterLogin('/shopping-options');
         $location.path('/signin');
@@ -27,7 +27,10 @@ angular.module('miioon/shopping')
         $scope.selectedEvent = activeEvents[0];
       };
 
+      var giftCard = new GiftCard();
+
       $scope.shopForMySelf = function() {
+        giftCard.unBindEvent();
         Shopping.removeOptionalField('eventCode');
         Shopping.update().then(function() {
           $location.path(Shopping.pathAfterShoppingOptions ?
@@ -36,6 +39,7 @@ angular.module('miioon/shopping')
       };
 
       $scope.shopForPawTy = function() {
+        giftCard.bindEvent($scope.selectedEvent.id);
         Shopping.addOptionalFields({
           eventCode: $scope.selectedEvent.id
         });
