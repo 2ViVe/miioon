@@ -420,11 +420,17 @@
   .party-email-banner-go{
     position: absolute;
     z-index: 2;
-    bottom:5%;
+    bottom:20%;
+    font-size: $large-font-size;
+    text-shadow: black 0 0 5px;
+    text-decoration: none;
     width:100%;
     text-align: center;
     color:#fff;
-    text-decoration: underline;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
