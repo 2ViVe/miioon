@@ -77,7 +77,9 @@
           {{order.firstName}}&nbsp;{{order.lastName}}
         </td>
         <td>
-          {{order.orderNumber}}
+          <a ng-click="showDetail(order.orderNumber)">
+            {{order.orderNumber}}
+          </a>
         </td>
         <td>
           {{order.orderDate | date: 'yyyy-MM-dd'}}
