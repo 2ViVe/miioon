@@ -47,7 +47,7 @@ angular.module('miioon/gift')
           return null;
         }
 
-        giftCard.purchase($scope.selectedGiftCard, $scope.giftCardInfo);
+        giftCard.purchase($scope.selectedGiftCard, $scope.giftCardInfo, '/gift-shopping-options');
       };
 
       $scope.tabs = [

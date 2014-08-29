@@ -2,8 +2,8 @@
 
 angular
   .module('2ViVe/report')
-  .controller('CustomerOrderController', ['$scope', 'customers',
-    function($scope, customers) {
+  .controller('CustomerOrderController', ['$scope', 'customers', '$modal', 'Order',
+    function($scope, customers, $modal, Order) {
       $scope.customers = customers;
       var _limit = 25;
 
@@ -20,6 +20,18 @@ angular
           .then(function() {
             $scope.refreshPagination(customers.orders.pagination.count);
           });
+      };
+
+      $scope.showDetail = function(number) {
+        $modal.open({
+          templateUrl: 'views/report/order-detail.html',
+          controller: 'OrderReportDetailController',
+          resolve: {
+            order: function() {
+              return Order.detail(number);
+            }
+          }
+        });
       };
 
       $scope.goToPage = function(page, offset, limit) {

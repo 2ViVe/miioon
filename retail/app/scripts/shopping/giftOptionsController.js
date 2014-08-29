@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('miioon/shopping')
-  .controller('ShoppingOptionsController', ['$scope', 'events', 'Shopping', '$location', 'User', 'LocalStorage', 'GiftCard',
+  .controller('GiftShoppingOptionsController', ['$scope', 'events', 'Shopping', '$location', 'User', 'LocalStorage', 'GiftCard',
     function($scope, events, Shopping, $location, User, LocalStorage, GiftCard) {
       User.fetch().catch(function() {
-        LocalStorage.setPathAfterLogin('/shopping-options');
+        LocalStorage.setPathAfterLogin('/gift-shopping-options');
         $location.path('/signin');
       });
 
@@ -31,22 +31,12 @@ angular.module('miioon/shopping')
 
       $scope.shopForMySelf = function() {
         giftCard.unBindEvent();
-        Shopping.removeOptionalField('eventCode');
-        Shopping.update().then(function() {
-          $location.path(Shopping.pathAfterShoppingOptions ?
-            Shopping.pathAfterShoppingOptions : '/products/clothing/ruckjack-boys');
-        });
+        $location.path('/gift/checkout');
       };
 
       $scope.shopForPawTy = function() {
         giftCard.bindEvent($scope.selectedEvent.id);
-        Shopping.addOptionalFields({
-          eventCode: $scope.selectedEvent.id
-        });
-        Shopping.update().then(function() {
-          $location.path(Shopping.pathAfterShoppingOptions ?
-            Shopping.pathAfterShoppingOptions : '/products/clothing/ruckjack-boys');
-        });
+        $location.path('/gift/checkout');
       };
     }
   ]);
