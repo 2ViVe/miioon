@@ -31,8 +31,9 @@
           <select required
                   id="amount"
                   name="amount"
-                  ng-options="'￡' + giftCard.price for giftCard in giftCards | orderBy: 'price' "
-                  ng-model="selectedGiftCard">
+                  ng-options="giftCard.id as '￡' + giftCard.price for giftCard in giftCards | orderBy: 'price' "
+                  ng-change="changeCard()"
+                  ng-model="selectedGiftCard['variant-id']">
             <option value=''>Choose an Amount...</option>
           </select>
           <small ng-show="submitted && amountForm.amount.$error.required" class="error">
@@ -101,7 +102,8 @@
     </div>
 
     <div class='info-panel last'>
-      <button ng-click="purchase()" class='small right'>ADD TO CART</button>
+      <button ng-show="!isEditing" ng-click="purchase()" class='small right'>ADD TO CART</button>
+      <button ng-show="isEditing" ng-click="purchase()" class='small right'>SAVE</button>
       <button ng-click="preview()" class='attenuate small right'>PREVIEW</button>
     </div>
 
@@ -126,6 +128,11 @@
 
               <div class="unimportant-text">
                 {{lineItem['email-info']['recipient-email']}}
+              </div>
+
+              <div>
+                <button ng-click="edit(lineItem, $index)" class="tiny">Edit</button>
+                <button class="tiny">Delete</button>
               </div>
             </div>
           </div>

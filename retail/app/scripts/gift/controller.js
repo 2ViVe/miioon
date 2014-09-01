@@ -3,19 +3,32 @@
 angular.module('miioon/gift')
   .controller('GiftController', ['$scope', '$modal', 'giftCard', 'ipCookie', '$location', 'User', 'LocalStorage',
     function($scope, $modal, giftCard, ipCookie, $location, User, LocalStorage) {
+      function initSelectedGiftCard() {
+        $scope.selectedGiftCard = {
+          'email-info': {},
+          quantity: 1,
+          image: $scope.giftCardImages[0]
+        };
+      }
+
       var domain = $location.host().split('.');
       domain = '.' + domain[domain.length - 2] + '.' + domain[domain.length - 1];
 
       $scope.submitted = false;
+      $scope.isEditing = false;
       $scope.lineItems = ipCookie('giftLineItems') ? ipCookie('giftLineItems') : [];
-
       $scope.giftCards = giftCard.data[0].variants;
       $scope.giftCardImages = giftCard.data[0].images;
-      angular.forEach($scope.giftCards, function(giftCard) {
-        giftCard.quantity = 1;
-        giftCard.image = $scope.giftCardImages[0];
-        giftCard['email-info'] = {};
-      });
+
+      initSelectedGiftCard();
+
+      $scope.changeCard = function() {
+        angular.forEach($scope.giftCards, function(giftCard) {
+          if (giftCard.id === $scope.selectedGiftCard['variant-id']) {
+            $scope.selectedGiftCard.price = giftCard.price;
+          }
+        });
+      };
 
       $scope.preview = function() {
         $modal.open({
@@ -32,11 +45,28 @@ angular.module('miioon/gift')
         });
       });
 
+      $scope.edit = function(lineItem, index) {
+        $scope.selectedGiftCard = lineItem;
+        $scope.isEditing = true;
+        $scope.editIndex = index;
+      };
+
+      console.log($scope.lineItems);
+
       $scope.purchase = function() {
         $scope.submitted = true;
 
         if (this.emailForm.$valid && this.amountForm.$valid) {
-          $scope.lineItems.push(angular.copy($scope.selectedGiftCard));
+
+          if ($scope.isEditing) {
+            $scope.isEditing = false;
+            $scope.lineItems[$scope.editIndex] = angular.copy($scope.selectedGiftCard);
+          } else {
+            $scope.lineItems.push(angular.copy($scope.selectedGiftCard));
+          }
+
+          $scope.submitted = false;
+          initSelectedGiftCard();
 
           ipCookie('giftLineItems', $scope.lineItems, {
             domain: domain

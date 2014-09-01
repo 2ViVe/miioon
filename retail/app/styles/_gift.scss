@@ -28,6 +28,14 @@
     .total {
       margin-bottom: 0;
     }
+
+    button.tiny {
+      min-width: 0;
+      width: 100px;
+      margin-right: 10px;
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
   }
 }
 
