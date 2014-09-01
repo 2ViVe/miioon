@@ -16,7 +16,13 @@ angular.module('miioon/gift')
 
       $scope.submitted = false;
       $scope.isEditing = false;
-      $scope.lineItems = ipCookie('giftLineItems') ? ipCookie('giftLineItems') : [];
+      $scope.lineItems = [];
+      if (ipCookie('giftLineItems')) {
+        $scope.lineItems = ipCookie('giftLineItems');
+        angular.forEach($scope.lineItems, function(lineItem) {
+          delete lineItem.$$hashKey;
+        });
+      }
       $scope.giftCards = giftCard.data[0].variants;
       $scope.giftCardImages = giftCard.data[0].images;
 
@@ -27,6 +33,13 @@ angular.module('miioon/gift')
           if (giftCard.id === $scope.selectedGiftCard['variant-id']) {
             $scope.selectedGiftCard.price = giftCard.price;
           }
+        });
+      };
+
+      $scope.deleteItem = function(index) {
+        $scope.lineItems.splice(index, 1);
+        ipCookie('giftLineItems', $scope.lineItems, {
+          domain: domain
         });
       };
 
@@ -46,12 +59,10 @@ angular.module('miioon/gift')
       });
 
       $scope.edit = function(lineItem, index) {
-        $scope.selectedGiftCard = lineItem;
+        $scope.selectedGiftCard = angular.copy(lineItem);
         $scope.isEditing = true;
         $scope.editIndex = index;
       };
-
-      console.log($scope.lineItems);
 
       $scope.purchase = function() {
         $scope.submitted = true;
