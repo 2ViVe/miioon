@@ -1,29 +1,21 @@
 'use strict';
 
 angular.module('miioon/gift')
-  .controller('GiftCardEmailFormController', ['$scope',
-    function($scope) {
-      $scope.$watch('emailForm.$invalid', function(invalid) {
-        $scope.formInvalid.email = invalid;
-      });
-    }])
-  .controller('GiftCardPostFormController', ['$scope',
-    function($scope) {
-      $scope.$watch('postForm.$invalid', function(invalid) {
-        $scope.formInvalid.post = invalid;
-      });
-    }])
-  .controller('GiftController', ['$scope', '$modal', 'giftCard',
-    function($scope, $modal, giftCard) {
+  .controller('GiftController', ['$scope', '$modal', 'giftCard', 'ipCookie', '$location', 'User', 'LocalStorage',
+    function($scope, $modal, giftCard, ipCookie, $location, User, LocalStorage) {
+      var domain = $location.host().split('.');
+      domain = '.' + domain[domain.length - 2] + '.' + domain[domain.length - 1];
+
       $scope.submitted = false;
-      $scope.giftCardInfo = {};
-      $scope.formInvalid = {
-        'email': true,
-        'post': true
-      };
+      $scope.lineItems = ipCookie('giftLineItems') ? ipCookie('giftLineItems') : [];
 
       $scope.giftCards = giftCard.data[0].variants;
       $scope.giftCardImages = giftCard.data[0].images;
+      angular.forEach($scope.giftCards, function(giftCard) {
+        giftCard.quantity = 1;
+        giftCard.image = $scope.giftCardImages[0];
+        giftCard['email-info'] = {};
+      });
 
       $scope.preview = function() {
         $modal.open({
@@ -33,30 +25,32 @@ angular.module('miioon/gift')
         });
       };
 
+      $scope.$watch('lineItems', function(lineItems) {
+        $scope.totalPrice = 0;
+        angular.forEach(lineItems, function(lineItem) {
+          $scope.totalPrice += lineItem.price;
+        });
+      });
+
       $scope.purchase = function() {
         $scope.submitted = true;
-        var tabInValid = false;
 
-        angular.forEach($scope.tabs, function(tab) {
-          if (tab.active && $scope.formInvalid[tab.form]) {
-            tabInValid = true;
-            return null;
-          }
-        });
-        if (tabInValid || this.amountForm.$invalid) {
-          return null;
+        if (this.emailForm.$valid && this.amountForm.$valid) {
+          $scope.lineItems.push(angular.copy($scope.selectedGiftCard));
+
+          ipCookie('giftLineItems', $scope.lineItems, {
+            domain: domain
+          });
+//          if (User.isLogin) {
+//            $location.path('/gift-shopping-options');
+//          } else {
+//            LocalStorage.setPathAfterLogin('/gift-shopping-options');
+//            $location.path('/signin');
+//          }
+
         }
-
-        giftCard.purchase($scope.selectedGiftCard, $scope.giftCardInfo, '/gift-shopping-options');
       };
 
-      $scope.tabs = [
-        {
-          title: 'Email',
-          url: 'views/gift/email.html',
-          form: 'email'
-        }
-      ];
     }]);
 
 
