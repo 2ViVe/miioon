@@ -1,30 +1,47 @@
 'use strict';
 
-angular
-  .module('miioon/gift')
-  .controller('GiftCardEmailFormController', ['$scope',
-    function($scope) {
-      $scope.$watch('emailForm.$invalid', function(invalid) {
-        $scope.formInvalid.email = invalid;
-      });
-    }])
-  .controller('GiftCardPostFormController', ['$scope',
-    function($scope) {
-      $scope.$watch('postForm.$invalid', function(invalid) {
-        $scope.formInvalid.post = invalid;
-      });
-    }])
-  .controller('GiftController', ['$scope', '$modal', 'giftCard',
-    function($scope, $modal, giftCard) {
-      $scope.submitted = false;
-      $scope.giftCardInfo = {};
-      $scope.formInvalid = {
-        'email': true,
-        'post': true
-      };
+angular.module('miioon/gift')
+  .controller('GiftController', ['$scope', '$modal', 'giftCard', 'ipCookie', '$location', 'User', 'LocalStorage',
+    function($scope, $modal, giftCard, ipCookie, $location, User, LocalStorage) {
+      function initSelectedGiftCard() {
+        $scope.selectedGiftCard = {
+          'email-info': {},
+          quantity: 1,
+          image: $scope.giftCardImages[0]
+        };
+      }
 
+      var domain = $location.host().split('.');
+      domain = '.' + domain[domain.length - 2] + '.' + domain[domain.length - 1];
+
+      $scope.submitted = false;
+      $scope.isEditing = false;
+      $scope.lineItems = [];
+      if (ipCookie('giftLineItems')) {
+        $scope.lineItems = ipCookie('giftLineItems');
+        angular.forEach($scope.lineItems, function(lineItem) {
+          delete lineItem.$$hashKey;
+        });
+      }
       $scope.giftCards = giftCard.data[0].variants;
       $scope.giftCardImages = giftCard.data[0].images;
+
+      initSelectedGiftCard();
+
+      $scope.changeCard = function() {
+        angular.forEach($scope.giftCards, function(giftCard) {
+          if (giftCard.id === $scope.selectedGiftCard['variant-id']) {
+            $scope.selectedGiftCard.price = giftCard.price;
+          }
+        });
+      };
+
+      $scope.deleteItem = function(index) {
+        $scope.lineItems.splice(index, 1);
+        ipCookie('giftLineItems', $scope.lineItems, {
+          domain: domain
+        });
+      };
 
       $scope.preview = function() {
         $modal.open({
@@ -34,30 +51,53 @@ angular
         });
       };
 
-      $scope.purchase = function() {
-        $scope.submitted = true;
-        var tabInValid = false;
-
-        angular.forEach($scope.tabs, function(tab) {
-          if (tab.active && $scope.formInvalid[tab.form]) {
-            tabInValid = true;
-            return null;
-          }
+      $scope.$watch('lineItems', function(lineItems) {
+        $scope.totalPrice = 0;
+        angular.forEach(lineItems, function(lineItem) {
+          $scope.totalPrice += lineItem.price;
         });
-        if (tabInValid || this.amountForm.$invalid) {
-          return null;
-        }
+      });
 
-        giftCard.purchase($scope.selectedGiftCard, $scope.giftCardInfo);
+      $scope.edit = function(lineItem, index) {
+        $scope.selectedGiftCard = angular.copy(lineItem);
+        $scope.isEditing = true;
+        $scope.editIndex = index;
       };
 
-      $scope.tabs = [
-        {
-          title: 'Email',
-          url: 'views/gift/email.html',
-          form: 'email'
+      $scope.purchase = function() {
+        $scope.submitted = true;
+
+        if (this.emailForm.$valid && this.amountForm.$valid) {
+
+          if ($scope.isEditing) {
+            $scope.isEditing = false;
+            $scope.lineItems[$scope.editIndex] = angular.copy($scope.selectedGiftCard);
+          } else {
+            $scope.lineItems.push(angular.copy($scope.selectedGiftCard));
+          }
+
+          $scope.submitted = false;
+          initSelectedGiftCard();
+
+          ipCookie('giftLineItems', $scope.lineItems, {
+            domain: domain
+          });
         }
-      ];
+      };
+
+      $scope.checkout = function() {
+        if ($scope.lineItems.length === 0) {
+          return;
+        }
+
+        if (User.isLogin) {
+          $location.path('/gift/checkout');
+        } else {
+          LocalStorage.setPathAfterLogin('/gift/gift-card');
+          $location.path('/signin');
+        }
+      };
+
     }]);
 
 

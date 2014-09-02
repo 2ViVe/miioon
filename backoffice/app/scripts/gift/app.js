@@ -26,3 +26,4 @@ angular
         controller: 'GiftCheckoutController'
       });
   }]);
+
