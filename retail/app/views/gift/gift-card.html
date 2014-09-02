@@ -31,7 +31,7 @@
           <select required
                   id="amount"
                   name="amount"
-                  ng-options="giftCard.id as '￡' + giftCard.price for giftCard in giftCards | orderBy: 'price' "
+                  ng-options="giftCard.id as giftCard.price | price for giftCard in giftCards | orderBy: 'price' "
                   ng-change="changeCard()"
                   ng-model="selectedGiftCard['variant-id']">
             <option value=''>Choose an Amount...</option>
@@ -147,7 +147,7 @@
           <dd class="columns medium-3 text-right">{{totalPrice | price}}</dd>
         </dl>
       </div>
-      <button style="width: 100%;" class="place-order small" ng-disabled="placingOrder" ng-click="placeOrder()">CHECKOUT</button>
+      <button style="width: 100%;" class="place-order small" ng-click="checkout()">CHECKOUT</button>
     </div>
 
   </div>

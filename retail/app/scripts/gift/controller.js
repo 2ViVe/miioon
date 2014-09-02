@@ -82,13 +82,19 @@ angular.module('miioon/gift')
           ipCookie('giftLineItems', $scope.lineItems, {
             domain: domain
           });
-//          if (User.isLogin) {
-//            $location.path('/gift-shopping-options');
-//          } else {
-//            LocalStorage.setPathAfterLogin('/gift-shopping-options');
-//            $location.path('/signin');
-//          }
+        }
+      };
 
+      $scope.checkout = function() {
+        if ($scope.lineItems.length === 0) {
+          return;
+        }
+
+        if (User.isLogin) {
+          $location.path('/gift-shopping-options');
+        } else {
+          LocalStorage.setPathAfterLogin('/gift/gift-card');
+          $location.path('/signin');
         }
       };
 

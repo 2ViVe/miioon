@@ -1,14 +1,19 @@
 'use strict';
 
 angular.module('miioon/gift')
-  .controller('GiftCheckoutController', ['$scope', 'GiftCard',
-    function($scope, GiftCard) {
+  .controller('GiftCheckoutController', ['$scope', 'GiftCard', 'ipCookie',
+    function($scope, GiftCard, ipCookie) {
       $scope.creditCard = {};
       $scope.placingOrder = false;
 
       var giftCard = new GiftCard();
       giftCard.populate();
-      $scope.lineItems = [giftCard.selectedGiftCard];
+      $scope.lineItems = ipCookie('giftLineItems');
+
+      $scope.totalPrice = 0;
+      angular.forEach($scope.lineItems, function(lineItem) {
+        $scope.totalPrice += lineItem.price;
+      });
 
       $scope.placeOrder = function() {
         $scope.submitted = true;
@@ -19,7 +24,7 @@ angular.module('miioon/gift')
           return null;
         }
 
-        giftCard.placeOrder($scope.creditCard).success(function(data) {
+        giftCard.placeOrderWithMultiple($scope.creditCard).success(function(data) {
           $scope.placingOrder = false;
 
           if (data.response['payment-state'] === 'failed') {
@@ -28,6 +33,7 @@ angular.module('miioon/gift')
           }
 
           giftCard.clear();
+          ipCookie.remove('giftLineItems');
           $scope.isSucceed = true;
           $scope.successInfo = data.response;
         });

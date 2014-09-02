@@ -1,4 +1,4 @@
-<div ng-if="!isSucceed">
+<div ng-if="!isSucceed" class="gift-card">
   <div class="row">
     <div class="columns medium-12">
       <h5>
@@ -81,28 +81,35 @@
 
       <div class="shopping-cart-small">
         <ul class="medium-font">
-          <li class="row" ng-repeat="lineItem in lineItems">
-            <div class="columns medium-6">
-              <img class="thumbnail" ng-src="{{lineItem['images'][0]}}" alt="Product"/>
-            </div>
-            <div class="columns medium-6">
-              <a class="primary-color" href="#/gift/gift-card">
-                Gift Certificate
-              </a>
+          <li ng-repeat="lineItem in lineItems">
+            <div class="row">
+              <div class="columns medium-4">
+                <img class="thumbnail" ng-src="{{lineItem.image}}" alt="Product"/>
+              </div>
+              <div class="columns medium-8">
+                <div>
+                  {{lineItem.price | price}}
+                </div>
 
-              <div class="unimportant-text">
-                {{lineItem.sku}}
-              </div>
-              <div>
-                {{lineItem.price | price}}
+                <div class="unimportant-text">
+                  {{lineItem['email-info']['recipient-email']}}
+                </div>
+
+                <div>
+                  <button ng-click="edit(lineItem, $index)" class="tiny">Edit</button>
+                  <vive-confirmation data-on-confirmed="deleteItem($index)" data-confirmation-message="Are you sure to delete this gift card?">
+                    <button class="tiny">Delete</button>
+                  </vive-confirmation>
+                </div>
               </div>
             </div>
+
           </li>
         </ul>
         <div class="summary clearfix">
-          <dl class="total medium-font clearfix">
+          <dl class="total large-font clearfix">
             <dt class="columns medium-9">Total Price</dt>
-            <dd class="columns medium-3 text-right">{{lineItems[0].price | price}}</dd>
+            <dd class="columns medium-3 text-right">{{totalPrice | price}}</dd>
           </dl>
         </div>
         <button class="place-order small" ng-disabled="placingOrder" ng-click="placeOrder()">PLACE ORDER</button>
