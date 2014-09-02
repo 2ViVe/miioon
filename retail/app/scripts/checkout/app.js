@@ -20,8 +20,10 @@ angular
             function(Shopping, Order, $location) {
               return Shopping.fetch().then(function(shopping) {
                 return Order.checkout(shopping)
-                  .catch(function() {
-                    $location.path('/signin');
+                  .then(function(order) {
+                    if (order.error) {
+                      $location.path('/signin');
+                    }
                   });
               });
             }]
