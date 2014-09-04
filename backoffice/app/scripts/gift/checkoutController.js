@@ -1,8 +1,11 @@
 'use strict';
 
 angular.module('miioon/gift')
-  .controller('GiftCheckoutController', ['$scope', 'GiftCard', 'ipCookie',
-    function($scope, GiftCard, ipCookie) {
+  .controller('GiftCheckoutController', ['$scope', 'GiftCard', 'ipCookie', '$location',
+    function($scope, GiftCard, ipCookie, $location) {
+      var domain = $location.host().split('.');
+      domain = '.' + domain[domain.length - 2] + '.' + domain[domain.length - 1];
+
       $scope.creditCard = {};
       $scope.placingOrder = false;
 
@@ -33,7 +36,9 @@ angular.module('miioon/gift')
           }
 
           giftCard.clear();
-          ipCookie.remove('giftLineItems');
+          ipCookie.remove('giftLineItems', {
+            domain: domain
+          });
           $scope.isSucceed = true;
           $scope.successInfo = data.response;
         });
