@@ -76,6 +76,7 @@ angular.module('miioon/gift')
         $scope.submitted = true;
 
         if (this.emailForm.$valid && this.amountForm.$valid) {
+          $scope.selectedGiftCard.quantity = parseInt($scope.selectedGiftCard.quantity);
 
           if ($scope.isEditing) {
             $scope.isEditing = false;
