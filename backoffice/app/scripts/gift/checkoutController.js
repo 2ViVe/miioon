@@ -13,10 +13,14 @@ angular.module('miioon/gift')
       giftCard.populate();
       $scope.lineItems = ipCookie('giftLineItems');
 
-      $scope.totalPrice = 0;
-      angular.forEach($scope.lineItems, function(lineItem) {
-        $scope.totalPrice += lineItem.price;
-      });
+      $scope.totalPrice = function() {
+        var totalPrice = 0;
+        angular.forEach($scope.lineItems, function(lineItem) {
+          totalPrice += lineItem.price * lineItem.quantity;
+        });
+        return totalPrice;
+      };
+
 
       $scope.placeOrder = function() {
         $scope.submitted = true;

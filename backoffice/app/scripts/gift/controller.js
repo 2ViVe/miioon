@@ -51,12 +51,13 @@ angular.module('miioon/gift')
         });
       };
 
-      $scope.$watch('lineItems', function(lineItems) {
-        $scope.totalPrice = 0;
-        angular.forEach(lineItems, function(lineItem) {
-          $scope.totalPrice += lineItem.price;
+      $scope.totalPrice = function() {
+        var totalPrice = 0;
+        angular.forEach($scope.lineItems, function(lineItem) {
+          totalPrice += lineItem.price * lineItem.quantity;
         });
-      });
+        return totalPrice;
+      };
 
       $scope.edit = function(lineItem, index) {
         $scope.selectedGiftCard = angular.copy(lineItem);
