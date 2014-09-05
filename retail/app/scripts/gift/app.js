@@ -11,7 +11,7 @@ angular
   ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
-      .when('/gift/gift-card', {
+      .when('/gift/gift-card/:editIndex?', {
         templateUrl: 'views/gift/gift-card.html',
         controller: 'GiftController',
         resolve: {

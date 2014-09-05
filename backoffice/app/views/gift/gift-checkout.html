@@ -96,7 +96,7 @@
                 </div>
 
                 <div>
-                  <button ng-click="edit(lineItem, $index)" class="tiny">Edit</button>
+                  <a ng-href="#/gift/gift-card/{{$index}}" class="button tiny">Edit</a>
                   <vive-confirmation data-on-confirmed="deleteItem($index)" data-confirmation-message="Are you sure to delete this gift card?">
                     <button class="tiny">Delete</button>
                   </vive-confirmation>

@@ -1,14 +1,20 @@
 'use strict';
 
 angular.module('miioon/gift')
-  .controller('GiftController', ['$scope', '$modal', 'giftCard', 'ipCookie', '$location', 'User', 'LocalStorage',
-    function($scope, $modal, giftCard, ipCookie, $location, User, LocalStorage) {
+  .controller('GiftController', ['$scope', '$modal', 'giftCard', 'ipCookie', '$location', 'User', 'LocalStorage', '$route',
+    function($scope, $modal, giftCard, ipCookie, $location, User, LocalStorage, $route) {
       function initSelectedGiftCard() {
         $scope.selectedGiftCard = {
           'email-info': {},
           quantity: 1,
           image: $scope.giftCardImages[0]
         };
+      }
+
+      function edit(lineItem, index) {
+        $scope.selectedGiftCard = angular.copy(lineItem);
+        $scope.isEditing = true;
+        $scope.editIndex = index;
       }
 
       var domain = $location.host().split('.');
@@ -27,6 +33,11 @@ angular.module('miioon/gift')
       $scope.giftCardImages = giftCard.data[0].images;
 
       initSelectedGiftCard();
+
+      var editIndex = parseInt($route.current.params.editIndex);
+      if (editIndex >= 0 && $scope.lineItems[editIndex]) {
+        edit($scope.lineItems[editIndex], editIndex);
+      }
 
       $scope.changeCard = function() {
         angular.forEach($scope.giftCards, function(giftCard) {
@@ -59,11 +70,7 @@ angular.module('miioon/gift')
         return totalPrice;
       };
 
-      $scope.edit = function(lineItem, index) {
-        $scope.selectedGiftCard = angular.copy(lineItem);
-        $scope.isEditing = true;
-        $scope.editIndex = index;
-      };
+      $scope.edit = edit;
 
       $scope.purchase = function() {
         $scope.submitted = true;
