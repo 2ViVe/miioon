@@ -21,6 +21,12 @@ angular.module('miioon/gift')
         return totalPrice;
       };
 
+      $scope.deleteItem = function(index) {
+        $scope.lineItems.splice(index, 1);
+        ipCookie('giftLineItems', $scope.lineItems, {
+          domain: domain
+        });
+      };
 
       $scope.placeOrder = function() {
         $scope.submitted = true;
