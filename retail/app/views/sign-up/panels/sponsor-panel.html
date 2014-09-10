@@ -11,7 +11,7 @@
       <label class="right inline" ng-class="{required: required == 'true'}" for="sponsor">Miioon Angel Sponsor ID</label>
     </div>
 
-    <div class="small-5 end columns">
+    <div class="small-3 columns">
       <input type="text"
              id="sponsor" name="sponsor"
              ng-model="account.sponsor"
@@ -27,9 +27,14 @@
       <small ng-show="submitted && sponsorForm.sponsor.$error.required" class="error">
         This field is required.
       </small>
-    </div>
-    <div class="small-4 columns input-description unimportant-text" ng-show="sponsorName">
+      <div ng-if="!required" style="margin-top: 10px;" class="unimportant-text">If you know your Angels' ID please enter it here, otherwise you may proceed without it.</div>
+      <div class="input-description unimportant-text" ng-show="sponsorName">
       Sponsor Name: {{sponsorName}}
     </div>
+    </div>
+    <div class="small-3 end columns">
+      <a ng-click="searchHandler()" class="button small">search handler</a>
+    </div>
+    
   </div>
 </div>

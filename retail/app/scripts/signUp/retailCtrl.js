@@ -9,6 +9,8 @@ angular.module('miioon/signup')
         payment: {}
       };
 
+      $scope.account = {};
+
       $scope.address = Address.createContainer()
         .addType('shipping');
 

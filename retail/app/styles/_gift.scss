@@ -1,5 +1,43 @@
 .gift-card {
   margin-top: 40px;
+
+  form .ng-invalid {
+    margin-bottom: 16px;
+  }
+
+  .error {
+    position: relative;
+    bottom: 16px;
+    margin-bottom: 0;
+  }
+
+  .shopping-cart-small {
+    li {
+      padding-top: 20px;
+      border-top: 1px solid $grey-border;
+      padding-bottom: 20px;
+    }
+
+    .summary {
+      background: $grey-lighter;
+      border: 1px solid $grey-border;
+      padding: 15px 5px 0;
+      margin-bottom: 20px;
+    }
+
+    .total {
+      margin-bottom: 0;
+    }
+
+    .button.tiny,
+    button.tiny {
+      min-width: 0;
+      width: 100px;
+      margin-right: 10px;
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+  }
 }
 
 .gift-preview-popup {
