@@ -1,7 +1,7 @@
 <div class="gift-preview-popup">
   <div class="row">
     <div class="small-12 columns">
-      <h2>MIIOON GIFT CARD</h2>
+      <h2>MADE BY MII VOUCHER EXPERIENCE</h2>
     </div>
   </div>
   <div class="row gift-to-from">
@@ -23,21 +23,21 @@
   <div class="row">
     <div class="small-12 columns">
       <div class='gift-preview-imgWrap'>
-        <div class='gift-preview-cert'><strong>￡{{selectedGiftCard ? selectedGiftCard.price : '100'}}</strong><br/><span>Gift Card</span></div>
+        <div class='gift-preview-cert' ng-if="selectedGiftCard.price"><strong>{{selectedGiftCard.price | price}}</strong></div>
         <span class='gift-preview-code'>xxxxxx</span>
         <span class='gift-pin-code'>xxxxx</span>
-        <img width="674" ng-src="{{selectedGiftCard.images[0] ? selectedGiftCard.images[0] : 'images/gift/gift-card-preview.jpg'}}" alt='Gift Card'/>
+        <img width="674" ng-src="{{selectedGiftCard.image ? selectedGiftCard.image : 'images/gift/gift-card-preview.jpg'}}" alt='Gift Card'/>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="small-12 columns">
       <div class="gift-preview-foot panel">
-        <h2>TO USE YOUR E-GIFT CARD ONLINE</h2>
+        <h2>TO USE YOUR E-VOUCHER ONLINE</h2>
         <ul>
           <li>1. Go to miioon.com</li>
           <li>2. Click 'Design your own' or 'kids come with me', and create your garment</li>
-          <li>3. At the checkout, enter your E-Gift card number and pin number.</li>
+          <li>3. At the checkout, enter your E-Voucher number and pin number.</li>
           <li><strong>NOTE - kids gift vouchers have been designed for the Miioon kids co-creation pages and can not be
             used to pay for items in the made by mii shop.</strong></li>
         </ul>
