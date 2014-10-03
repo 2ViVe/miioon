@@ -24,14 +24,14 @@ angular
                     console.log(order);
 
                     if (order.error) {
-                      $location.path('/signin');
+                      $location.path('#/signin');
                       return;
                     }
 
                     if (order.data.lineItems && order.data.lineItems.length > 0) {
                       return order;
                     } else {
-                      $location.path('/signin');
+                      $location.path('#/signin');
                     }
 
                   });
