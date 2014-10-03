@@ -18,6 +18,7 @@ angular
         resolve: {
           order: ['Shopping', 'Order', '$location', 'User',
             function(Shopping, Order, $location, User) {
+                console.log(User);
                 if (!User.isLogin) {
                    $location.path('/signin');
                    return;
