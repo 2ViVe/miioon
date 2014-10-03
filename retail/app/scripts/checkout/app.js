@@ -21,6 +21,7 @@ angular
               return Shopping.fetch().then(function(shopping) {
                 return Order.checkout(shopping)
                   .then(function(order) {
+                    console.log(order);
 
                     if (order.error) {
                       $location.path('/signin');
