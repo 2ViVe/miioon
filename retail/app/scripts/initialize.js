@@ -39,7 +39,7 @@ angular.module('miioonApp')
         if (rejection && rejection.goTo) {
           $location.path(rejection.goTo);
         } else {
-          $location.path('/');
+          $location.path('/signin');
         }
 
         cfpLoadingBar.complete();

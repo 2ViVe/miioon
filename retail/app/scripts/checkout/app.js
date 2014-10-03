@@ -18,10 +18,6 @@ angular
         resolve: {
           order: ['Shopping', 'Order', '$location', 'User',
             function(Shopping, Order, $location, User) {
-                if (!User.isLogin) {
-                   $location.path('/signin');
-                   return;
-                };
               return Shopping.fetch().then(function(shopping) {
                 return Order.checkout(shopping)
                   .then(function(order) {
