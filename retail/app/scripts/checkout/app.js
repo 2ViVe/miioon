@@ -30,7 +30,7 @@ angular
                     if (order.data.lineItems && order.data.lineItems.length > 0) {
                       return order;
                     } else {
-                      $location.path('/');
+                      $location.path('/signin');
                     }
 
                   });
