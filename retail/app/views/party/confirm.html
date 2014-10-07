@@ -1,0 +1,17 @@
+<h2>Comments To</h2>
+<div class="popup-con">
+  <div class="row">
+    <div class="small-12 columns">
+      <p class="primary-color">Your RSVP is: {{data.response}}</p>
+      <textarea rows="10"
+                ng-model="data.message"
+                placeholder="Add comments here..."
+                class="block-margin-bottom"></textarea>
+      <div class="text-center">
+        <a ng-click="submit()" class="button small">Submit</a>
+        <a ng-click="cancel()" class="button secondary small">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="close-reveal-modal" ng-click="cancel()">&#215;</a>

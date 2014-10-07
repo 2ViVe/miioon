@@ -1,0 +1,188 @@
+$rank-0-color: #A2A2A3;
+$rank-0-border: #B8B9B9;
+
+$rank-1-color: #E6DA57;
+$rank-1-border: #F1E2C6;
+
+$rank-2-color: #008a54;
+$rank-2-border: #C4D4C1;
+
+$rank-3-color: #A11F24;
+$rank-3-border: #ECCDCF;
+
+$rank-4-color: #F4DDE3;
+$rank-4-border: #EEE3D6;
+
+$rank-5-color: #D85E90;
+$rank-5-border: #F397BD;
+
+.genealogy-panel {
+
+  .distributor {
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    .rank-icon {
+      margin: 0 auto;
+      height: 77px;
+      width: 80px;
+      cursor: pointer;
+
+      &.disable {
+        cursor: default;
+      }
+
+      &.rank-0 {
+        @include icons-sprite(none-angel);
+      }
+
+      &.rank-1 {
+        @include icons-sprite(miioon-angel);
+      }
+
+      &.rank-2 {
+        @include icons-sprite(emerald-angel);
+      }
+
+      &.rank-3 {
+        @include icons-sprite(ruby-angel);
+      }
+
+      &.rank-4 {
+        @include icons-sprite(diamond-angel);
+      }
+
+      &.rank-5 {
+      }
+    }
+
+    .info {
+      display: inline-block;
+      text-align: left;
+
+      table {
+        background: none;
+        margin-bottom: 0;
+        border: 0;
+
+        tr {
+          background: none;
+        }
+
+        td {
+          border-bottom: 0;
+          padding: 0 5px;
+        }
+      }
+    }
+
+    .name {
+      cursor: pointer;
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 5px;
+      font-weight: bold;
+    }
+  }
+}
+
+.genealogy-tips {
+  background: #F8F8F8;
+  border-bottom: #EFEFF0 4px solid;
+  text-align: center;
+  padding-top: 18px;
+
+  li {
+    font-size: $small-font-size;
+
+    &:before {
+      content: "";
+      display: block;
+      height: 18px;
+      width: 18px;
+      border: 2px solid;
+      border-radius: 9px;
+      margin: 0 auto 10px;
+    }
+
+    &.rank-0:before {
+      background-color: $rank-0-color;
+      border-color: $rank-0-border;
+    }
+
+    &.rank-1:before {
+      background-color: $rank-1-color;
+      border-color: $rank-1-border;
+    }
+
+    &.rank-2:before {
+      background-color: $rank-2-color;
+      border-color: $rank-2-border;
+    }
+
+    &.rank-3:before {
+      background-color: $rank-3-color;
+      border-color: $rank-3-border;
+    }
+
+    &.rank-4:before {
+      background-color: $rank-4-color;
+      border-color: $rank-4-border;
+    }
+
+    &.rank-5:before {
+      background-color: $rank-5-color;
+      border-color: $rank-5-border;
+    }
+  }
+}
+
+.genealogy-path-navigator .pagination {
+  margin-top: 5px;
+
+  a {
+    line-height: 16px;
+    padding: 0 6px 3px;
+  }
+}
+
+.genealogy-path {
+  @include clearfix;
+  margin-bottom: 20px;
+  margin-top: 4px;
+
+  .bx-wrapper {
+    margin-left: 0 !important;
+  }
+
+  li {
+    &.last:after {
+      display: none;
+      content: "";
+    }
+
+    &:after {
+      content: "\003E";
+    }
+
+    &.last {
+      color: $primary-color;
+    }
+
+    a {
+      color: $grey-darker;
+    }
+  }
+}
+
+.genealogy-pagination {
+  text-align: center;
+
+  .pagination {
+    display: inline-block;
+    margin-top: 30px;
+  }
+}

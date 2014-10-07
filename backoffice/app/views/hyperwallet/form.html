@@ -1,0 +1,214 @@
+<form name="hyperwalletForm" ng-submit="HyperWalletCreator.create()">
+
+  <div class="panel">
+    <h4>To create and activate your HyperWallet account, please follow the instructions below.</h4>
+
+    <ol>
+      <li>Check, complete and save all personal information fields below to create your account.</li>
+      <li>You will immediately receive an activation email from Paylution/HyperWallet via <a href="mailto:notifications@paylution.com">notifications@paylution.com.</a></li>
+      <li>Please follow the emailed instructions provided to activate your HyperWallet account.</li>
+    </ol>
+
+  </div>
+
+  <div ng-if="HyperWalletCreator.creteErrorMessage" class="panel">
+    <span class="error">{{ HyperWalletCreator.creteErrorMessage }}</span>
+  </div>
+
+  <div class="row panel">
+
+    <div class="small-12">
+      <!-- notification email -->
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="notificationEmail" class="inline">Notification Email:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text"
+                 id="notificationEmail"
+                 name="notificationEmail"
+                 ng-model="HyperWalletCreator.data.notificationEmail"
+                 >
+
+          <small class="error" ng-show="hyperwalletForm.$error.notificationEmail.required">
+            this field is required
+          </small>
+
+        </div>
+      </div>
+
+      <!-- first-name -->
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="firstName" class="inline">First Name:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text"
+                 id="firstName"
+                 name="firstName"
+                 ng-model="HyperWalletCreator.data.firstName"
+                 >
+
+          <small class="error" ng-show="hyperwalletForm.$error.firstName.required">
+            this field is required
+          </small>
+        </div>
+      </div>
+
+      <!-- last-name -->
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="lastName" class="inline">Last Name:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text"
+                 id="lastName"
+                 name="lastName"
+                 ng-model="HyperWalletCreator.data.lastName"
+                 >
+
+          <small class="error" ng-show="hyperwalletForm.$error.lastName.required">
+            this field is required
+          </small>
+        </div>
+      </div>
+
+      <!-- date of birth -->
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="dateOfBirth" class="inline">Date Of Birth:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text"
+                 readonly
+                 required
+                 id="dateOfBirth"
+                 name="dateOfBirth"
+                 data-date-of-birth
+                 ng-model="HyperWalletCreator.data.dateOfBirth"
+                  >
+
+          <small class="error" ng-show="hyperwalletForm.$error.dateOfBirth.required">
+            this field is required
+          </small>
+        </div>
+      </div>
+
+      <!--"street"  :  "xxxx",-->
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="street" class="inline">Street:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text"
+                 id="street"
+                 name="street"
+                 ng-model="HyperWalletCreator.data.street"
+                  >
+
+          <small class="error" ng-show="hyperwalletForm.$error.street.required">
+            this field is required
+          </small>
+        </div>
+      </div>
+
+      <!--"city"  :  "xxxx",-->
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="city" class="inline">City:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text"
+                 id="city"
+                 name="city"
+                 ng-model="HyperWalletCreator.data.city"
+                  >
+
+          <small class="error" ng-show="hyperwalletForm.$error.city.required">
+            this field is required
+          </small>
+        </div>
+      </div>
+
+      <!--"country-iso"  :  "US",-->
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="countryIso" class="inline">Country:</label>
+        </div>
+        <div class="small-5 end columns">
+          <select required id="countryIso"
+                  name="countryIso"
+                  ng-model="HyperWalletCreator.data.countryIso"
+                  ng-options="country.iso as country.name for country in HyperWalletCreator.countries | orderBy:'name'"
+                  ng-change="HyperWalletCreator.onCountryChanged()"></select>
+
+          <small class="error" ng-show="hyperwalletForm.$error.countryIso.required">
+            this field is required
+          </small>
+        </div>
+      </div>
+
+      <!--"state"  :  "California",-->
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="state" class="inline">State:</label>
+        </div>
+        <div class="small-5 end columns">
+
+          <select id="state" name="state" ng-model="HyperWalletCreator.data.state"
+                  required
+                  ng-options="state.name as state.name for state in HyperWalletCreator.getStates(HyperWalletCreator.data.countryIso) | orderBy:'name'">
+          </select>
+
+          <small class="error" ng-show="hyperwalletForm.$error.state.required">
+            this field is required
+          </small>
+        </div>
+      </div>
+
+      <!--"zip"  :  "xxxx",-->
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="zip" class="inline">Zip:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text"
+                 id="zip"
+                 name="zip"
+                 ng-model="HyperWalletCreator.data.zip"
+                  >
+
+          <small class="error" ng-show="hyperwalletForm.$error.zip.required">
+            this field is required
+          </small>
+        </div>
+      </div>
+
+      <!--"phone"  :  "xxxx"-->
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="phone" class="inline">Phone:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text"
+                 id="phone"
+                 name="phone"
+                 ng-model="HyperWalletCreator.data.phone"
+                  >
+
+          <small class="error" ng-show="hyperwalletForm.$error.phone.required">
+            this field is required
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-5 end columns small-offset-3">
+        <button class="btn-block" ng-disabled="HyperWalletCreator.processing" type="submit">Create</button>
+      </div>
+    </div>
+
+  </div>
+
+</form>

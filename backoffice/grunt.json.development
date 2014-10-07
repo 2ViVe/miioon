@@ -1,0 +1,11 @@
+{
+  "port": 22442,
+  "hostname": "miioon.backoffice.dev.com",
+  "APIServerIP": "127.0.0.1",
+  "APIServerPort": 8090,
+  "protocol": "https",
+  "livereload": "35731",
+  "optimizationLevel": 3,
+  "testPort": "9005",
+  "bowerExclude": ["bower_components/foundation/css/foundation.css", "bower_components/bxslider-4/jquery.bxslider.css"]
+}

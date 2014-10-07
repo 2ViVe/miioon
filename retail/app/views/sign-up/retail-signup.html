@@ -1,0 +1,53 @@
+<form class="sign-up" name="retailSignupForm" novalidate ng-submit="create()">
+  <div class="row">
+    <h2 class="small-9 columns sign-up-h2">
+      CREATE A CUSTOMER ACCOUNT
+      <span class="register-customer medium-font">
+        Or <a class="primary-link" href="#/signup">Register as a Miioon Angel</a>
+      </span>
+    </h2>
+  </div>
+
+  <div class="row">
+    <h6 class="small-12 columns">
+      PERSONAL DETAILS
+    </h6>
+  </div>
+
+  <div class="row">
+    <p class="small-12 columns medium-font">
+      Enter your email address and password to create your account.
+    </p>
+  </div>
+
+  <div data-sponsor-panel
+       data-account="account"
+       data-required="false"
+       data-submitted="submitted"
+       data-no-search-handler="true"
+       data-modal-tpl="views/sign-up/panels/handler-locate.html"
+       data-tpl="views/sign-up/panels/sponsor-panel.html"></div>
+
+
+  <div data-account-panel
+       data-account="account"
+       data-submitted="submitted"
+       data-tpl="views/sign-up/panels/account-panel.html">
+  </div>
+
+  <div data-address-panel
+       data-address-type="shipping"
+       data-title="Shipping"
+       data-address="address.shipping"
+       data-home-address="address.home"
+       data-submitted="submitted"
+       data-tpl="views/sign-up/panels/address-panel.html"
+    >
+  </div>
+
+  <div class="row">
+    <div class="column medium-3 medium-offset-3">
+      <button type="submit">CREATE MY ACCOUNT</button>
+    </div>
+  </div>
+</form>

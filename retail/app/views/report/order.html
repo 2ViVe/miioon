@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="columns medium-12">
+    <h2>
+      Recent Orders
+    </h2>
+  </div>
+</div>
+<div class="row" ng-if="orders.length > 0">
+  <div class="columns small-12">
+    <table width="100%">
+      <thead>
+      <tr>
+        <th>Order Number</th>
+        <th>Item Total</th>
+        <th>Tax & Shipping</th>
+        <th>Total</th>
+        <th>Order Date</th>
+        <th>Status</th>
+        <th>Payment Status</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="order in orders">
+        <td>{{ order.number }}</td>
+        <td class="text-right">{{ order.itemTotal | price }}</td>
+        <td class="text-right">{{ order.adjustmentTotal | price }}</td>
+        <td class="text-right">{{ order.total | price }}</td>
+        <td>{{ order.orderDate | date:'medium' }}</td>
+        <td>{{ order.state }}</td>
+        <td>{{ order.paymentState }}</td>
+        <td>
+          <a ng-click="viewDetail(order.id)">
+            Detail
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row" ng-if="!orders.length">
+  <div class="panel giftcode-placeholder-panel columns small-12 text-center">
+    You haven't placed any order yet.
+  </div>
+</div>

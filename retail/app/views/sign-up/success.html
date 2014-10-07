@@ -1,0 +1,174 @@
+<div class="row">
+  <h2 class="columns small-9">
+    WELCOME TO Miioon! <br/>
+    <small class="medium-font">
+      Your account has been created successfully, and your order has been processed successfully!
+    </small>
+  </h2>
+</div>
+<div class="row title">
+  <h6 class="small-12 columns">
+    Your Account
+  </h6>
+</div>
+<div class="row">
+  <p class="columns small-5">
+    Login: {{account.login}}
+  </p>
+
+  <p class="columns small-5 end">
+    Sponsor Name: {{successInfo.sponsor.name}}
+  </p>
+</div>
+<div class="row">
+  <p class="columns small-5">
+    Web Address:
+    <a ng-href="{{retailUrl}}/{{userInfo.login}}">
+      {{retailUrl}}/{{account.login}}
+    </a>
+  </p>
+
+  <p class="columns small-5 end">
+    Sponsor Email: {{successInfo.sponsor.email}}
+  </p>
+</div>
+<div class="row">
+  <p class="columns small-5 small-offset-5 end">
+    Sponsor Phone: {{successInfo.sponsor.phone}}
+  </p>
+</div>
+<div class="row title">
+  <h6 class="columns small-12">
+    Your Order
+  </h6>
+</div>
+<div class="row">
+  <p class="columns small-5">
+    Order ID: {{successInfo.order.id}}
+  </p>
+
+  <p class="columns small-5 end">
+    Status: <span class="important-text">{{successInfo.order.state}}</span>
+  </p>
+</div>
+<div class="row">
+  <p class="columns small-5">
+    Order Date: {{successInfo.order.orderDate}}
+  </p>
+
+  <p class="columns small-5 end">
+    Payment Date: {{successInfo.order.paymentDate}}
+  </p>
+</div>
+<div class="row">
+  <p class="columns small-5">
+    Shipping Method: {{ method.shipping.name }}
+  </p>
+
+  <p class="columns small-5 end">
+    Payment Method: {{ method.payment.name }}
+  </p>
+</div>
+<div class="row title">
+  <h6 class="small-3 columns">
+    SHIPPING ADDRESS
+  </h6>
+</div>
+<div class="row">
+  <div class="columns small-12">
+    <p>
+      {{ address.shipping.firstName }} {{ address.shipping.lastName }}
+    </p>
+    <p>
+      {{ address.shipping.street }}
+    </p>
+    <p>
+      {{ address.shipping.city }}, {{ address.shipping.state.name }},
+      {{ address.shipping.country.name }}, {{ address.shipping.zip }}
+    </p>
+  </div>
+</div>
+<div class="row title">
+  <h6 class="small-3 columns">
+    BILLING ADDRESS
+  </h6>
+</div>
+<div class="row">
+  <div class="columns small-12">
+    <p>
+      {{ address.billing.firstName }} {{ address.billing.lastName }}
+    </p>
+    <p>
+      {{ address.billing.street }}
+    </p>
+    <p>
+      {{ address.billing.city }}, {{address.billing.state.name }},
+      {{ address.billing.country.name }}, {{ address.billing.zip }}
+    </p>
+  </div>
+</div>
+<div class="row title">
+  <h6 class="small-12 columns">
+    PRODUCTS
+  </h6>
+</div>
+<div class="row">
+  <div class="columns small-12">
+    <table class="product-table">
+      <thead>
+      <tr>
+        <th>SKU</th>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="lineItem in successInfo.order.lineItems">
+        <td class="text-left">{{ lineItem.sku }}</td>
+        <td class="text-left">
+          <img ng-src="{{lineItem.imageUrl | imageSize:'small' }}" alt="{{lineItem.productName}}"/>
+          {{lineItem.productName}}
+        </td>
+        <td class="price">{{lineItem.price | price}}</td>
+        <td>
+          {{lineItem.quantity}}
+        </td>
+        <td class="price">{{lineItem.price * lineItem.quantity | price}}</td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="4" class="text-right">
+          Item Total
+        </td>
+        <td class="price">
+          £{{ successInfo.order.itemTotal }}
+        </td>
+      </tr>
+      <tr ng-repeat="adjustment in successInfo.order.adjustments">
+        <td colspan="4" class="text-right">
+          {{ adjustment.label }}
+        </td>
+        <td class="price">
+          £{{ adjustment.amount }}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class="text-right">
+          Order Total
+        </td>
+        <td class="price">
+          £{{ successInfo.order.total }}
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <a href="#">Back to home</a>
+  </div>
+</div>

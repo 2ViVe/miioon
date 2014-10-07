@@ -1,0 +1,38 @@
+<div ng-if="shopping.items.length > 0">
+  <div class="row">
+    <div class="columns medium-12">
+      <h2 class="shopping-title">
+        Your Shopping Cart
+      </h2>
+    </div>
+  </div>
+  <div ng-include="'views/shopping/shopping-table.html'"></div>
+  <div class="row">
+    <div class="columns medium-12">
+      <button class="attenuate" ng-click="empty()">
+        Empty Cart
+      </button>
+
+      <a href="#/shopping-options" ng-click="cancel()" class="right button">
+        CHECK OUT
+      </a>
+
+      <button ng-click="continueShopping()" class="right attenuate">
+        CONTINUE SHOPPING
+      </button>
+    </div>
+  </div>
+</div>
+<div ng-if="shopping.items.length === 0">
+  <div class="row">
+    <div class="columns medium-12">
+      <p class="large-font text-center">
+        Your Shopping Cart is empty, please
+        <a class="primary-color" href="#/taxon/5/sub-taxon/9">
+          pick up some products
+        </a>
+        first.
+      </p>
+    </div>
+  </div>
+</div>

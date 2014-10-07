@@ -1,0 +1,72 @@
+<div class="row panel">
+
+  <!-- user name/email panel -->
+  <div class="small-12">
+    <header class="row">
+      <h3 class="small-8 columns primary-color">Account Infomation</h3>
+
+      <div class="small-4 end columns primary-color text-right"><a ng-click="toggle()">Edit</a>
+      </div>
+    </header>
+
+    <div ng-if="!isEditing">
+      <div class="row">
+        <div class="small-3 columns">Avatar</div>
+        <div class="small-3 columns">
+          <img ng-src="{{profile.imageUrl}}" />
+        </div>
+        <div class="small-3 end columns">
+          <vive-file-reader data-on-uploaded="refreshImage" data-upload="upload">
+            <button class="small">Select a picture</button>
+            <input type="file" name="avatar" id="file" class="hide" />
+          </vive-file-reader>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns inline">User Name</div>
+        <div class="small-3 end columns">{{ profile.login }}</div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">Email</div>
+        <div class="small-3 end columns">{{ profile.email }}</div>
+      </div>
+    </div>
+
+    <form novalidate ng-if="isEditing" name="form" ng-submit="save()">
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="email" class="inline">Email:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text"
+                 id="email"
+                 name="email"
+                 required
+                 ng-model="profile.email"
+                 data-availabilities-validator="email"
+                 data-init-value="initProfile.email"
+                 placeholder="please input your email">
+          <small class="error" ng-show="form.email.$error.required">
+            Email should not be empty
+          </small>
+          <!--<small class="error" ng-show="form.email.$error.available">-->
+            <!--Email is not available.-->
+          <!--</small>-->
+          <small class="error" ng-show="$errors.InvalidEmail">
+            {{ $errors.InvalidEmail }}
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-5 end columns small-offset-3">
+          <button class="btn-block" type="submit">Save</button>
+          <button class="btn-block" ng-click="toggle(); restore()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

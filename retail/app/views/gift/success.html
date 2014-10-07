@@ -1,0 +1,32 @@
+<div class="row">
+  <h2 class="columns small-12">
+    Your order has been processed successfully!
+    <a ng-href="/api/v2/orders/pdf-invoice?ids={{successInfo['order-id']}}" class="button tiny right" target="_blank">
+      Print
+    </a>
+  </h2>
+</div>
+<div class="row title">
+  <h6 class="columns small-12 primary-color">
+    Order Information
+  </h6>
+</div>
+<div class="row">
+  <p class="columns small-5">
+    Status: <span class="important-text">{{successInfo['payment-state']}}</span>
+  </p>
+
+  <p class="columns small-5 end">
+    Payment Total: {{successInfo['payment-total'] | price}}
+  </p>
+</div>
+<div class="row">
+  <p class="columns small-5 end">
+    Order Number: {{successInfo['order-number']}}
+  </p>
+</div>
+<div class="row">
+  <div class="small-12 columns medium-font">
+    <a href="#">Back to home</a>
+  </div>
+</div>

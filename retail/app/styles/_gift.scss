@@ -1,0 +1,116 @@
+.gift-card {
+  margin-top: 40px;
+
+  form .ng-invalid {
+    margin-bottom: 16px;
+  }
+
+  .error {
+    position: relative;
+    bottom: 16px;
+    margin-bottom: 0;
+  }
+
+  .shopping-cart-small {
+    li {
+      padding-top: 20px;
+      border-top: 1px solid $grey-border;
+      padding-bottom: 20px;
+    }
+
+    .summary {
+      background: $grey-lighter;
+      border: 1px solid $grey-border;
+      padding: 15px 5px 0;
+      margin-bottom: 20px;
+    }
+
+    .total {
+      margin-bottom: 0;
+    }
+
+    .button.tiny,
+    button.tiny {
+      min-width: 0;
+      width: 100px;
+      margin-right: 10px;
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.gift-preview-popup {
+  .columns {
+    padding: 0;
+  }
+  width: 674px;
+  margin: 0 auto;
+  h2 {
+    color: $primary-color;
+    //font-size: $large-font-size;
+    border-bottom: 1px dashed $grey-border;
+  }
+  .gift-to-from {
+    font-size: rem-calc(24);
+    color: $grey-dark;
+    margin: $panel-padding 0;
+    height: 40px;
+    line-height: 40px;
+  }
+  p {
+    color: $grey-darker;
+    font-size: $medium-font-size;
+  }
+  .gift-preview-imgWrap {
+    width: 674px;
+    margin: 0 auto;
+    position: relative;
+    .gift-preview-cert {
+      position: absolute;
+      left: 60px;
+      top: 60px;
+      strong {
+        font-size: rem-calc(60);
+        color: $grey-darker;
+      }
+      span {
+        margin-left: 10px;
+      }
+    }
+    .gift-preview-code {
+      position: absolute;
+      left: 85px;
+      top: 240px;
+      font-size: 22px;
+      color: $grey-darker;
+    }
+    .gift-pin-code {
+      position: absolute;
+      left: 370px;
+      top: 240px;
+      font-size: 22px;
+      color: $grey-darker;
+    }
+  }
+  .gift-preview-foot {
+    margin-top: $panel-padding;
+    border: 0;
+    h2 {
+      border: 0;
+      margin-bottom: $panel-padding;
+    }
+    ul {
+      li {
+        margin-bottom: rem-calc(10);
+      }
+    }
+  }
+}
+
+
+
+
+
+
+

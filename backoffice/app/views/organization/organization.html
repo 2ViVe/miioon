@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="columns medium-12">
+    <h2>
+      Organization
+    </h2>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <div class="row collapse">
+      <div class="small-3 columns">
+        <input type="text" ng-model='distributorId' class="secondary-item no-margin-bottom" placeholder="Search by Distributor ID...">
+        <a class="text-clear-btn" ng-show="!!distributorId" ng-click="clearDistributorId()">X</a>
+      </div>
+      <div class="small-1 columns">
+        <a ng-click="updateOrderAndRefreshPagination(true)" class='postfix button'><i class="fa fa-search"></i></a>
+      </div>
+      <div class="small-2 columns">
+        <label>&nbsp;&nbsp;<input ng-model='isShowOrderList' ng-change="updateOrderAndRefreshPagination(true)" type="checkbox" />&nbsp;Orders Only</label>
+      </div>
+      <div class="small-2 small-offset-2 columns">
+        <select ng-model="selectYear" ng-change="getMonth()" class="no-margin-bottom">
+          <option disabled ng-selected="true">Select Year</option>
+          <option ng-repeat='year in years'>{{year}}</option>
+        </select>
+      </div>
+      <div class="small-2 columns">
+        <select ng-model="selectMonth" ng-change="updateDate()" class="no-margin-bottom">
+          <option disabled ng-selected="true">Select Month</option>
+          <option ng-repeat='month in months'>{{month.substr(0,2)}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row"><div class='small-12 columns'><hr/></div></div>
+<div class="row">
+  <div class="columns small-12">
+    <div class="organizationTableWrap">
+      <table width="100%">
+        <thead>
+        <tr>
+          <th>Distributor ID</th>
+          <th>Name</th>
+          <th>Role Code</th>
+          <th>Level</th>
+          <th>Orders</th>
+          <th>Qualification Volume</th>
+          <th>Commission Volume</th>
+          <th>Personal Sale</th>
+          <th>Personal Volume</th>
+          <th>Group Volume</th>
+          <th>Team Volume</th>
+          <th>Dualteam Volume</th>
+          <th>Fast Track Volume</th>
+          <th>Rank</th>
+          <th>Country</th>
+          <th>State</th>
+        </tr>
+        </thead>
+        <tbody  ng-show="orders.length !==0">
+        <!--<tr ng-repeat="order in orders">-->
+        <tr ng-repeat='order in orders'>
+          <td>{{order.distributorId}}</td>
+          <td>{{order.distributorName}}</td>
+          <td>{{order.roleCode}}</td>
+          <td>{{order.level}}</td>
+          <td>{{order.orderCount}}</td>
+          <td>{{parseFloat(order.qualificationVolume).toFixed(2)}}</td>
+          <td>{{parseFloat(order.unilevelVolume).toFixed(2)}}</td>
+          <td>{{parseFloat(order.personalSale).toFixed(2)}}</td>
+          <td>{{parseFloat(order.personalVolume).toFixed(2)}}</td>
+          <td>{{parseFloat(order.groupVolume).toFixed(2)}}</td>
+          <td>{{parseFloat(order.teamVolume).toFixed(2)}}</td>
+          <td>{{parseFloat(order.dualteamVolume).toFixed(2)}}</td>
+          <td>{{parseFloat(order.fastTrackVolume).toFixed(2)}}</td>
+          <td>{{order.rank}}</td>
+          <td>{{order.countryIso}}</td>
+          <td>{{order.state}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row" ng-show="count > 25">
+  <div class="columns small-12">
+    <vive-pagination data-start-page="first"
+                     data-total="count"
+                     data-refresh="refreshPagination"
+                     data-on-next-page="goToPage"
+                     data-on-previous-page="goToPage"
+                     data-on-go-to-page="goToPage"
+                     data-number-per-page="25"
+                     data-available-number-per-page="10,25,100"></vive-pagination>
+  </div>
+</div>
+<div class="row" ng-if="!orders.length">
+  <div class="panel giftcode-placeholder-panel columns small-12 text-center">
+    No record found
+  </div>
+</div>
+

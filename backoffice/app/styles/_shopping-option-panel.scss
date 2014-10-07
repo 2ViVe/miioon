@@ -1,0 +1,15 @@
+.shopping-option-panel {
+  border: $grey-border 1px solid;
+  padding: 5px;
+  margin-bottom: 20px;
+
+  .content {
+    padding: 15px;
+  }
+
+  .title {
+    color: $primary-color;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+}

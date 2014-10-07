@@ -1,0 +1,282 @@
+<div class='party-container'>
+<div class='row'>
+  <div class="small-12 columns">
+    <ul class="breadcrumbs">
+      <li><a href="#/meet/overview/upcoming">My Meet</a></li>
+      <li ng-if="!isEditing" class="current">Create a Meet</li>
+      <li ng-if="isEditing" class="current">Edit a Meet</li>
+    </ul>
+  </div>
+</div>
+<div class='row'>
+  <div class='small-12 columns'>
+    <div class='party-panel block-margin-bottom'>
+      <h4>Select a Invitation Theme: {{selectedTemplate.name}}</h4>
+      <div class="theme-selector">
+        <vive-slider data-next-slide="nextSlide"
+                     data-go-to-slide="goToSlide"
+                     data-previous-slide="previousSlide"
+                     data-pager="false"
+                     data-controls="false"
+                     data-refresh="refreshSlider">
+          <div class="next-theme" ng-click="previousTemplate()"></div>
+          <div class="previous-theme" ng-click="nextTemplate()"></div>
+          <ul>
+            <li ng-repeat="template in templates">
+              <img ng-src="{{template.imageUrl}}"/>
+            </li>
+          </ul>
+        </vive-slider>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" ng-if="error">
+  <div class="columns medium-12">
+    <div class="alert-box error">
+      {{error}}
+    </div>
+  </div>
+</div>
+<div class="row" ng-if="isStarted">
+  <div class="columns medium-12">
+    <div class="alert-box error">
+      Can't be able to edit if the event is already started.
+    </div>
+  </div>
+</div>
+<div class='row'>
+  <div class='columns medium-12'>
+    <h4 class="primary-color">Meet Details</h4>
+  </div>
+</div>
+<form novalidate class="party-create-form" name="form">
+<div class='row'>
+<div class='columns medium-6'>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="text-right inline required" for="title">Meet Title</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="text"
+             name="title"
+             id="title"
+             ng-model="data.title"
+             required/>
+      <small class="error" ng-show="submitted && form.title.$error.required">
+        This information is required.
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="text-right inline required" for="host-email">Host Email</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="email"
+             name="hostEmail"
+             id="host-email"
+             ng-model="data.hostEmail"
+             required/>
+      <small class="error" ng-show="submitted && form.hostEmail.$error.email">
+        Host Email is invalid.
+      </small>
+      <small class="error" ng-show="submitted && form.hostEmail.$error.required">
+        This information is required.
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="text-right inline required" for="host-name">Host Name</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="text"
+             id="host-name"
+             name="hostName"
+             ng-model="data.hostName"
+             required/>
+      <small class="error" ng-show="submitted && form.hostName.$error.required">
+        This information is required.
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="text-right inline required" for="start-date">Start Date</label>
+    </div>
+    <div class="small-3 columns">
+      <input type="text"
+             id="start-date"
+             name="startDate"
+             ng-model="time.startDate"
+             data-date-picker
+             required/>
+      <small class="error" ng-show="submitted && form.startDate.$error.required">
+        This information is required.
+      </small>
+    </div>
+    <div class="small-3 columns">
+      <label class="text-right inline required">Start Time</label>
+    </div>
+    <div class="small-3 columns">
+      <select id="start-time"
+              name="startTime"
+              ng-model="time.startTime"
+              ng-options="time for time in times">
+      </select>
+      <small class="error" ng-show="submitted && form.startTime.$error.required">
+        This information is required.
+      </small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="text-right inline" for="end-date">End Date</label>
+    </div>
+    <div class="small-3 columns">
+      <input type="text"
+             id="end-date"
+             ng-model="time.endDate"
+             data-date-picker/>
+    </div>
+    <div class="small-3 columns">
+      <label class="text-right inline" for="end-time">End Time</label>
+    </div>
+    <div class="small-3 columns">
+      <select id="end-time"
+              name="endTime"
+              ng-options="time for time in times"
+              ng-model="time.endTime">
+      </select>
+    </div>
+  </div>
+</div>
+<div class='columns medium-6'>
+
+  <div class="row">
+    <div class="columns small-3">
+      <label for="type" class="text-right inline required">Type</label>
+    </div>
+    <div class="columns small-9">
+      <select required
+              id="type"
+              name="type"
+              ng-model="data.typeId"
+              ng-change="changeType()"
+              ng-options="type.id as type.name for type in types ">
+      </select>
+      <small ng-show="submitted && form.type.$error.required" class="error">
+        This information is required.
+      </small>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="text-right inline required" for="location-name">Location Name</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="text"
+             id="location-name"
+             name="locationName"
+             ng-model="data.locationName"
+             required/>
+      <small class="error" ng-show="submitted && form.locationName.$error.required">
+        This information is required.
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="text-right inline required" for="street">Address</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="text"
+             id="street"
+             name="street"
+             ng-model="data.address.street"
+             required/>
+      <small class="error" ng-show="submitted && form.street.$error.required">
+        This information is required.
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="text-right inline required" for="city">City</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="text"
+             id="city"
+             name="city"
+             ng-model="data.address.city"
+             required/>
+      <small class="error" ng-show="submitted && form.city.$error.required">
+        This information is required.
+      </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <label class="text-right inline required" for="state">State</label>
+    </div>
+    <div class="small-3 columns">
+      <select id="state"
+              name="state"
+              ng-model="data.address.stateName"
+              ng-options="state.name as state.name for state in country.states"
+              required>
+      </select>
+      <small class="error" ng-show="submitted && form.state.$error.required">
+        This information is required.
+      </small>
+    </div>
+    <div class="small-3 columns">
+      <label class="text-right inline required" for="zip">Zip Code</label>
+    </div>
+    <div class="small-3 columns">
+      <input type="text"
+             id="zip"
+             name="zip"
+             required
+             ng-model="data.address.zip"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns small-3">
+      <label class="required text-right inline" for="message">Description</label>
+    </div>
+    <div class="columns small-9">
+      <textarea
+        required
+        name="message"
+        id="message"
+        ng-model="data.description"
+        maxlength="250"
+        placeholder="Limit in 250 character"
+        cols="30"
+        rows="8"></textarea>
+    </div>
+  </div>
+
+</div>
+</div>
+<div class="row">
+  <div class="small-12 columns"><hr/></div>
+</div>
+<div class="row">
+  <div class="small-12 columns text-center">
+    <button ng-disabled="isStarted" ng-click="save()" class="small">Save</button>
+    <button ng-click="cancel()" class="secondary small">Cancel</button>
+  </div>
+</div>
+</form>
+</div>

@@ -1,0 +1,48 @@
+<div class="gift-preview-popup">
+  <div class="row">
+    <div class="small-12 columns">
+      <h2>MADE BY MII VOUCHER EXPERIENCE</h2>
+    </div>
+  </div>
+  <div class="row gift-to-from">
+    <div class="small-6 columns">
+      <span>To:</span> <span class="grey-darker-color">{{giftCardInfo['name-to'] ? giftCardInfo['name-to'] : '--'}}</span>
+    </div>
+    <div class="small-6 columns">
+      <span>From:</span> <span class="grey-darker-color">{{giftCardInfo['name-from'] ? giftCardInfo['name-from'] : '--'}}</span>
+    </div>
+    <!--<div class="small-4 columns">-->
+      <!--<button ng-click="cancel();purchase()" class='tiny right'>PURCHASE NOW</button>-->
+    <!--</div>-->
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <p>{{giftCardInfo['email-message'] ? giftCardInfo['email-message'] : 'This is where the message goes...'}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class='gift-preview-imgWrap'>
+        <div class='gift-preview-cert' ng-if="selectedGiftCard.price"><strong>{{selectedGiftCard.price | price}}</strong></div>
+        <span class='gift-preview-code'>xxxxxx</span>
+        <span class='gift-pin-code'>xxxxx</span>
+        <img width="674" ng-src="{{selectedGiftCard.image ? selectedGiftCard.image : 'images/gift/gift-card-preview.jpg'}}" alt='Gift Card'/>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="gift-preview-foot panel">
+        <h2>TO USE YOUR E-VOUCHER ONLINE</h2>
+        <ul>
+          <li>1. Go to miioon.com</li>
+          <li>2. Click 'Design your own' or 'kids come with me', and create your garment</li>
+          <li>3. At the checkout, enter your E-Voucher number and pin number.</li>
+          <li><strong>NOTE - kids gift vouchers have been designed for the Miioon kids co-creation pages and can not be
+            used to pay for items in the made by mii shop.</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="close-reveal-modal" ng-click="cancel()">&#215;</a>

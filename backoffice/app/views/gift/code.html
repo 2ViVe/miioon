@@ -1,0 +1,47 @@
+<div class="row" ng-if="isSuccess">
+  <div class="columns medium-12">
+    <div data-alert class="alert-box success">
+      Email sent to {{reciEmail}}: Successful.
+    </div>
+  </div>
+</div>
+<div class="row" ng-if="!isSuccess && isSuccess!==undefined">
+  <div class="columns medium-12">
+    <div data-alert class="alert-box alert">
+      Email sent to {{reciEmail}}: Failed.
+    </div>
+  </div>
+</div>
+<div class="row" ng-if="giftcodes.length > 0">
+  <div class="columns small-12">
+    <table width="100%">
+      <thead>
+      <tr>
+        <th>Order Date</th>
+        <th>Gift Card Code</th>
+        <th>Pin</th>
+        <th>Recipient Email</th>
+        <th>Gift Card Value</th>
+        <th>Remaining Balance</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="giftcard in giftcodes">
+        <td>{{ giftcard.purchaseDate }}</td>
+        <td>{{ giftcard.code }}</td>
+        <td>{{ giftcard.pin }}</td>
+        <td>{{ giftcard.recipientEmail }}</td>
+        <td>{{ giftcard.amount }}</td>
+        <td>{{ giftcard.balance }}</td>
+        <td><a class="button" ng-click="sendEmail(giftcard)">Resend Email</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row" ng-if="!giftcodes.length">
+  <div class="panel giftcode-placeholder-panel columns small-12 text-center">
+    You have not purchased any gift cards.
+  </div>
+</div>

@@ -1,0 +1,537 @@
+.party-container{
+  h3{
+    .right{
+      margin-top:4px;
+    }
+  }
+  h4{
+    margin-bottom:20px;
+  }
+}
+
+
+.party-panel{
+  border:1px solid $grey-border;
+  padding:rem-calc(3);
+  @include clearfix;
+  .pagination{
+    margin:rem-calc(10);
+  }
+  h4{
+    font-size: $medium-font-size;
+    background:$primary-color;
+    color:#fff;
+    margin:0;
+    padding:15px $panel-padding;
+    .fa.right{
+      font-size: $large-font-size;
+      margin-top: rem-calc(6);
+    }
+    small{
+      color:#fff;
+    }
+  }
+  .party-panel-con-bar{
+    background:#f6f8fa;
+    padding:rem-calc(10) $panel-padding;
+    span.right{
+      font-size: $medium-font-size;
+      margin-top: rem-calc(5);
+    }
+  }
+
+  .party-user-table{
+    margin-bottom:0;
+    border:0;
+    td {
+      word-break: break-all;
+    }
+    tr{
+      &:nth-of-type(2n){
+        background:#f6f8fa;
+      }
+      &:last-child{
+        td{
+          border-bottom:0;
+        }
+      }
+    }
+    th{
+      background:$primary-color;
+      color: $grey-dark;
+    }
+    .party-user-table-img{
+      float: left;
+    }
+    .party-user-table-info{
+      h5{
+        font-size:$small-font-size;
+        vertical-align: top;
+
+        div {
+          border-bottom: 1px dashed $grey-border;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          &:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+          }
+        }
+
+        small{
+          font-size: 80%;
+          color:$grey-dark;
+        }
+        small.right{
+          margin-top: 9px;
+          margin-left: 5px;
+        }
+      }
+    }
+    .party-user-table-info-noPho{
+      margin-left:0;
+    }
+    .party-user-table-num{
+      display: block;
+      width:rem-calc(20);
+      height: rem-calc(20);
+      line-height: rem-calc(20);
+      background:$primary-color;
+      color: #fff;
+      text-align: center;
+      border-radius:50%;
+    }
+  }
+
+  .party-details-info{
+    padding:15px $panel-padding;
+    dl{
+      @include clearfix;
+      font-size:$small-font-size;
+      margin-bottom:0;
+      margin-top:0;
+      &.row{
+        margin-left:0;
+        margin-right:0;
+        .columns{
+          padding-left:0;
+          padding-right:0;
+        }
+      }
+      dt{
+        color:$grey-dark;
+        font-weight:normal;
+        padding:3px;
+        margin-bottom:0;
+      }
+      dd{
+        color:$grey-darker;
+        padding:5px;
+        margin-bottom:0;
+      }
+    }
+  }
+}
+
+.party-calendar{
+  //reset the pickday pluging style
+  .pika-single{
+    border-color: $grey-border;
+    padding:2px;
+    width:100%;
+
+    .pika-title{
+      font-size: $medium-font-size;
+      background:$primary-color;
+      color:#fff;
+      margin:0;
+      padding:10px $panel-padding;
+      .pika-prev, .pika-next{
+        color:#fff;
+      }
+      .pika-label{
+        background:none;
+      }
+    }
+
+    .pika-button{
+      background:#fff;
+      text-align: center;
+      width:30px;
+      height:30px;
+      margin: 0 atuo;
+      color:$grey-dark;
+      &:hover{
+        border:1px solid $primary-color !important;
+        border-radius:50% !important;
+        background:#fff !important;
+        color:$base-font-color !important;
+      }
+    }
+    .pika-table{
+      td{
+        border-bottom:0;
+        text-align: center;
+        &.is-today{
+          .pika-button{
+            color:#fff;
+            background: $primary-color;
+            border-radius:50%;
+          }
+        }
+        &.is-selected{
+          .pika-button{
+            border:1px solid $base-font-color;
+            border-radius:50%;
+            background:#fff;
+            color:$base-font-color;
+            box-shadow: none;
+          }
+        }
+      }
+      thead{
+        tr{
+          background:$grey-lighter;
+          th{
+            text-align: center;
+            line-height:35px;
+            border-bottom:0;
+            abbr, acronym{
+              color:$primary-color;
+              border-bottom:0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.success-tips {
+  border: 1px solid $grey-border;
+  padding-top: 20px;
+  a {
+    color: $grey-darker;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.party-invite-info{
+  border:1px solid $grey-border;
+  .party-pink-circle{
+    display:block;
+    margin:20px auto;
+    width:165px;
+    height: 165px;
+    background: url("/images/party/party-pink-circle.png") no-repeat;
+    text-align: center;
+    background-size: 100%;
+    strong{
+      display:block;
+      font-size:46px;
+      color:#fff;
+      padding: 40px 0 5px 0;
+    }
+    small{
+      display:block;
+      color:#fff;
+    }
+  }
+  h6{
+    text-align: center;
+    color:#F65CA0;
+    font-weight: normal;
+    font-size: $large-font-size;
+  }
+  p{
+    color: $grey-dark;
+    margin-bottom: $panel-margin-bottom;
+  }
+}
+
+.party-blue-circle-s,.party-orange-circle-s,.party-green-circle-s,.party-pink-circle-s{
+  text-align: center;
+  p{
+    width:123px;
+    height:123px;
+    color: #fff;
+    padding-top:30px;
+    margin:0 auto;
+    strong{
+      font-size: $large-font-size;
+    }
+  }
+  h5{
+    font-size:$medium-font-size;
+    margin-top:$h4-margin-bottom;
+  }
+}
+
+.party-blue-circle-s{
+  p{
+    background:url("/images/party/party-blue-circle-s.png") 50% 50% no-repeat;
+  }
+  h5{
+    color:#00c0f0;
+  }
+}
+.party-orange-circle-s{
+  p{
+    background:url("/images/party/party-orange-circle-s.png") 50% 50% no-repeat;
+  }
+  h5{
+    color:#ff9900;
+  }
+}
+.party-green-circle-s{
+  p{
+    background:url("/images/party/party-green-circle-s.png") 50% 50% no-repeat;
+  }
+  h5{
+    color:#98cc3b;
+  }
+}
+.party-pink-circle-s{
+  p{
+    background:url("/images/party/party-pink-circle-s.png") 50% 50% no-repeat;
+  }
+  h5{
+    color:#f35398;
+  }
+}
+
+.party-price{
+  color:$primary-color;
+  padding:$panel-padding;
+  border:1px solid $grey-border;
+  font-weight: bold;
+  ul{
+    font-size: $large-font-size;
+    li{
+      border-left: 1px solid $grey-border;
+      height: rem-calc(90);
+      span{
+        display:block;
+        margin:5px 0;
+      }
+      small{
+        color:$grey-dark;
+        font-weight:normal;
+      }
+    }
+    li:first-child{
+      border-left: 0;
+    }
+  }
+}
+
+
+
+
+.party-none{
+  color:$grey-darker;
+  .party-none-step{
+    li{
+      b{
+        display: inline-block;
+        width:rem-calc(30);
+        height: rem-calc(30);
+        background:$primary-color;
+        text-align: center;
+        color: #fff;
+        font-size: $large-font-size;
+        border-radius: 50%;
+        margin-right: 10px;
+        vertical-align: top;
+      }
+      p{
+        display: inline-block;
+        color: $grey-darker;
+        line-height:1.5;
+        a{
+          text-decoration: underline;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+//party view invitation
+.party-email-banner{
+  margin-bottom: $panel-margin-bottom;
+  position: relative;
+  .party-email-banner-img{
+    width:100%;
+  }
+  .party-email-banner-text{
+    text-shadow: 0 0 5px #000;
+    position: absolute;
+    z-index: 2;
+    top:0;
+    width:100%;
+    text-align: center;
+    color:#fff;
+    padding-top:4%;
+    h2{
+      color:#fff;
+      line-height: 1;
+      font-size:36px;
+      small{
+        display:block;
+        margin-top:34px;
+        color:#fff;
+        font-size: $large-font-size;
+      }
+      margin-bottom: 4%;
+    }
+    p{
+      margin-bottom: 4%;
+    }
+    a{
+      color:#fff;
+      text-decoration: underline;
+    }
+    .party-email-banner-button{
+      text-align: center;
+      margin-top: rem-calc(20);
+      margin-bottom: rem-calc(40);
+      .button{
+        text-shadow: none;
+        color:$primary-color;
+        background:#fff;
+        border-bottom:3px solid #5ca6af;
+        border-radius:rem-calc(5);
+        margin-left:rem-calc(10);
+        margin-right:rem-calc(10);
+      }
+      a.button{
+        text-decoration: none;
+      }
+    }
+    .party-email-banner-anwser{
+      font-size: $large-font-size;
+    }
+  }
+  .party-email-banner-go{
+    position: absolute;
+    z-index: 2;
+    bottom:20%;
+    left: 0;
+    font-size: $large-font-size;
+    text-shadow: black 0 0 5px;
+    text-decoration: none;
+    width:100%;
+    text-align: center;
+
+    a {
+      color:#fff;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+//party create page
+.party-create-form{
+  margin-top:$panel-margin-bottom;
+  hr{
+    padding-bottom:$panel-margin-bottom;
+  }
+  & > row{
+    margin-bottom:$panel-margin-bottom;
+  }
+}
+
+//party table
+table.party-list{
+  border:1px solid $grey-border;
+  tbody{
+    .party-list-textarea{
+      background:#f6f8fa;
+      textarea{
+        height:auto;
+      }
+    }
+    tr{
+      &:nth-of-type(2n){
+        background:#f6f8fa;
+      }
+      &:last-child{
+        td{
+          border-bottom:0;
+        }
+      }
+      td{
+        .party-list-members{
+          width:82px;
+          height:82px;
+          background:url("/images/party/party-list-circle.png") 50% 50% no-repeat;
+          text-align:center;
+          margin:0 auto;
+          strong{
+            display:block;
+            font-size:$xlarge-font-size;
+            color:$primary-color;
+            padding-top:22px;
+          }
+          small{
+            color:$grey-darker;
+            font-size:$small-font-size;
+          }
+        }
+        &.party-list-photo{
+          text-align: center;
+          vertical-align: top;
+          img{
+            width:100px;
+          }
+        }
+        &.party-list-info{
+          p{
+            font-size:$small-font-size;
+            color:$grey-darker;
+          }
+          a{
+            color:$grey-darker;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    input[type="file"], input[type="checkbox"], input[type="radio"], select{
+      margin-bottom:0;
+    }
+  }
+}
+
+.party-switcher-upcoming,
+.party-switcher-recent {
+  height: 24px;
+  width: 252px;
+  color: white;
+  font-size: $small-font-size;
+  font-weight: normal;
+  padding: 6px 10px;
+  margin-top: 7px;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.party-switcher-recent {
+  background: image-url('/images/party/switcher-1.png');
+}
+
+.party-switcher-upcoming {
+  background: image-url('/images/party/switcher-2.png');
+}
+

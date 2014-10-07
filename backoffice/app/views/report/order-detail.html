@@ -1,0 +1,151 @@
+<div class="row title">
+  <h6 class="columns small-12 primary-color">
+    Order Information
+    <a ng-href="/api/v2/orders/pdf-invoice?ids={{order.id}}" class="button tiny right" target="_blank">
+      Print
+    </a>
+  </h6>
+</div>
+<div class="row">
+  <p class="columns small-5">
+    Status: <span class="important-text">{{order.state}}</span>
+  </p>
+
+  <p class="columns small-5 end">
+    Payment Total: {{order.total}}
+  </p>
+</div>
+<div class="row">
+  <p class="columns small-5">
+    Order Number: {{order.number}}
+  </p>
+
+  <p class="columns small-5 end">
+    Payment Date: {{order.paymentDate | date:'medium'}}
+  </p>
+</div>
+<div class="row">
+  <p class="columns small-5 end">
+    Order Date: {{order.orderDate | date:'medium'}}
+  </p>
+
+  <!--<p class="columns small-5 end">-->
+    <!--Payment Method: {{selectedPaymentMethod.name}}-->
+  <!--</p>-->
+</div>
+<div class="row">
+  <p class="columns small-5 end">
+    Shipping Method: {{shippingMethod.name}}
+  </p>
+</div>
+<div class="row title">
+  <h6 class="small-3 columns primary-color">
+    SHIPPING ADDRESS
+  </h6>
+</div>
+<div class="row">
+  <div class="columns small-12">
+    <p class="medium-font">
+      {{order.shippingAddress.firstName}}
+      {{order.shippingAddress.m}}
+      {{order.shippingAddress.lastName}}
+      <br/>
+
+      {{order.shippingAddress.streetCont}}
+      {{order.shippingAddress.street}},
+      {{order.shippingAddress.city}},
+      {{order.shippingAddress.state}},
+      {{order.shippingAddress.country}},
+      {{order.shippingAddress.zip}}
+      <br/>
+
+      Phone: {{order.shippingAddress.phone}}
+    </p>
+  </div>
+</div>
+<div class="row title">
+  <h6 class="small-3 columns primary-color">
+    BILLING ADDRESS
+  </h6>
+</div>
+<div class="row">
+  <div class="columns small-12">
+    <p class="medium-font">
+      {{order.billingAddress.firstName}}
+      {{order.billingAddress.m}}
+      {{order.billingAddress.lastName}}
+      <br/>
+
+      {{order.billingAddress.streetCont}}
+      {{order.billingAddress.street}},
+      {{order.billingAddress.city}},
+      {{order.billingAddress.state}},
+      {{order.billingAddress.country}},
+      {{order.billingAddress.zip}}
+      <br/>
+
+      Phone: {{order.billingAddress.phone}}
+    </p>
+  </div>
+</div>
+<div class="row title">
+  <h6 class="small-12 columns primary-color">
+    PRODUCTS
+  </h6>
+</div>
+<div class="row">
+  <div class="columns small-12">
+    <table class="product-table">
+      <thead>
+      <tr>
+        <th>SKU</th>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="lineItem in order.lineItems">
+        <td class="text-left">{{lineItem.sku}}</td>
+        <td class="text-left">
+          <img ng-src="{{lineItem['image-url']}}" alt="{{lineItem['product-name']}}"/>
+          {{lineItem.productName}}
+        </td>
+        <td class="price">{{lineItem.price | price}}</td>
+        <td>
+          {{lineItem.quantity}}
+        </td>
+        <td class="price">{{lineItem.price * lineItem.quantity | price}}</td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="4" class="text-right" style="color: #666;">
+          Item Total
+        </td>
+        <td class="price">
+          {{order.itemTotal | price}}
+        </td>
+      </tr>
+      <tr ng-repeat="adjustment in order.adjustments">
+        <td colspan="4" class="text-right" style="color: #666;">
+          {{adjustment.label}}
+        </td>
+        <td class="price">
+          {{adjustment.amount | price}}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class="text-right" style="color: #666;">
+          Order Total
+        </td>
+        <td class="price">
+          {{order.total | price}}
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<a class="close-reveal-modal" ng-click="cancel()">&#215;</a>

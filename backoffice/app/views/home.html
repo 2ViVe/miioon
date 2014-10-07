@@ -1,0 +1,97 @@
+<div class='home-container'>
+	<div class='row'>
+		<div class="columns medium-8">
+      <div class='home-video radius'>
+        <iframe class='vimeo-video' src="//player.vimeo.com/video/93490109"  height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <!-- TODO -->
+        <style>
+          .home-container .home-video .vimeo-video{
+            width: 100%;
+          }
+        </style>
+      </div>
+		</div>
+		<div class="columns medium-4">
+      <div class='home-message-board radius'>
+<!-- 				<h3 class='text-center'><img src='/images/home/home-message-board.jpg' alt='Miioon Message Board' /></h3> -->
+<!--         <div class='row'>
+            <div class='small-8 small-offset-2 columns text-center'>
+              <br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br>
+              <img src='/images/coming.jpg' alt='Coming Soon' />
+              <br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br>
+            </div>
+        </div> -->
+        <div class='home-message-item' ng-repeat="item in news">
+          <div class='row'>
+            <div class='small-3 columns'>
+              <img src='/images/user-photo-1.jpg' class='circle' alt='[User Name]' />
+            </div>
+            <div class='small-9 columns'>
+              <h5><a href="#/news/{{item.id}}">{{item.subject.substr(0,25) + '...'}}</a></h5>
+              <p class='small-font'>
+                {{item.content.substr(0,100)}}
+              </p>
+              <p class='smaller-font'>Posted: {{item.createdAt | readableTimestampFrom}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+			<div class='block-margin-top right'><a href="#/news">more</a></div>
+      
+		</div>
+	</div>
+	<div class='row'><div class='columns small-12'><p class='separator-line'></p></div></div>
+	<div class='row'>
+		<div class='columns medium-6'>
+			<h3 class='primary-color'>MIIOON FACEBOOK FEED</h3>
+      <!-- facebook-likebox start -->
+			<div class='home-facebook block-margin-top'>
+				<div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=655504081186151&version=v2.0";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div data-facebook-likebox></div>
+			</div>
+      <!-- facebook-likebox start end -->
+		</div>
+		<div class='columns medium-6'>
+			<h3 class='primary-color'>MIIOON BLOG FEED</h3>
+			<div class='home-blog block-margin-top'>
+        <div class='row'>
+            <div class='small-8 small-offset-2 columns text-center'>
+              <br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br>
+              <img src='/images/coming.jpg' alt='Coming Soon' />
+              <br/><br/><br/></br><br/><br/><br/></br><br/><br/><br/></br>
+            </div>
+        </div>
+        <!-- todo: blog content -->
+<!--         <div class='home-blog-item' ng-repeat="item in news">
+          <div class='row'>
+            <div class='small-3 columns'>
+              <img src='/images/user-photo-3.jpg' class='radius border' alt='[User Name]' />
+            </div>
+            <div class='small-9 columns'>
+              <h4>{{item.subject}}<br/><small>{{item.createdAt | readableTimestampFrom}}</small></h4>
+              <p class='small-font'>{{item.summary}}</p>
+              <a ng-href='#/news/{{item.id}}' class='button small'>READ MORE</a>
+            </div>
+          </div>
+        </div>
+			</div> -->
+      <!--
+			<ul class="pagination right">
+				<li class="arrow unavailable"><a href=""><i class="fa fa-caret-left"></i> Previous</a></li>
+				<li class="current"><a href="">01</a></li>
+				<li><a href="">02</a></li>
+				<li><a href="">03</a></li>
+				<li class="arrow"><a href="">Next <i class="fa fa-caret-right"></i></a></li>
+			</ul>
+      -->
+		</div>
+	</div>
+</div>

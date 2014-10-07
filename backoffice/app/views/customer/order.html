@@ -1,0 +1,126 @@
+<div class="row" ng-show="!isDetail">
+  <div class="columns medium-8">
+    <h2>
+      Customers Orders
+    </h2>
+  </div>
+  <div class="columns medium-4" ng-hide="isDetail">
+    <div class="row collapse">
+      <div class="small-10 columns">
+        <input type="text"
+               ng-model="distributorId"
+               class="secondary-item no-margin-bottom"
+               placeholder="Search by Distributor ID...">
+        <a class="text-clear-btn" ng-show="!!distributorId" ng-click="clearDistributorId()">X</a>
+      </div>
+      <div class="small-2 columns">
+        <a ng-click="updateOrderAndRefreshPagination()" class="postfix button"><i class="fa fa-search"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" ng-show="isDetail">
+  <div class="columns medium-12">
+    <h2>
+      Customer Orders for {{customer.firstName}} {{customer.lastName}}
+    </h2>
+  </div>
+</div>
+<div class="row">
+  <div class="columns medium-12">
+    <table width="100%">
+      <thead>
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Order Number
+        </th>
+        <th>
+          Order Date
+        </th>
+        <th class="text-right">
+          Item Total
+        </th>
+        <th class="text-right">
+          Adjustment Total
+        </th>
+        <th class="text-right">
+          Order Total
+        </th>
+        <th>
+          State
+        </th>
+        <th class="text-right">
+          QV
+        </th>
+        <th class="text-right">
+          CV
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td colspan="10" class="text-center" ng-if="customers.orders.length === 0">
+          No record found.
+        </td>
+      </tr>
+      <tr ng-repeat="order in customers.orders">
+        <td>
+          {{order.distributorId}}
+        </td>
+        <td>
+          {{order.firstName}}&nbsp;{{order.lastName}}
+        </td>
+        <td>
+          <a ng-click="showDetail(order.orderNumber)">
+            {{order.orderNumber}}
+          </a>
+        </td>
+        <td>
+          {{order.orderDate | date: 'yyyy-MM-dd'}}
+        </td>
+        <td class="text-right">
+          {{order.itemTotal | price}}
+        </td>
+        <td class="text-right">
+          {{order.adjustmentTotal | price}}
+        </td>
+        <td class="text-right">
+          {{order.orderTotal | price}}
+        </td>
+        <td>
+          {{order.paymentState}}
+        </td>
+        <td class="text-right">
+          {{order.qv}}
+        </td>
+        <td class="text-right">
+          {{order.cv}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="columns medium-12">
+    <vive-pagination data-start-page="first"
+                     data-total="customers.orders.pagination.count"
+                     data-refresh="refreshPagination"
+                     data-on-next-page="goToPage"
+                     data-on-previous-page="goToPage"
+                     data-on-go-to-page="goToPage"
+                     data-number-per-page="25"
+                     data-available-number-per-page="10,25,100"></vive-pagination>
+  </div>
+</div>
+<div class="row" ng-show="isDetail">
+  <div class="columns medium-12">
+    <button class="right" ng-click="close()">Close</button>
+  </div>
+</div>

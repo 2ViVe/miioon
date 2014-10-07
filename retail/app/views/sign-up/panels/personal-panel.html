@@ -1,0 +1,28 @@
+<div ng-form name="personalForm">
+  <div class='row'>
+    <div class='medium-3 columns text-right'>
+      <h6>Personal Information</h6>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-3 columns">
+      <label class="inline right required" for="birthday">Date of Birth</label>
+    </div>
+    <div class="medium-2 end columns">
+      <input type="text"
+             required
+             ng-model="account.birthday"
+             data-date-of-birth
+             id="birthday"
+             name="birthday">
+
+      <small ng-show="submitted && personalForm.birthday.$error.required" class="error">
+        This field is required.
+      </small>
+    </div>
+    <div class="columns small-7">
+      <span class="unimportant-text input-description">No applicants under 18 years old</span>
+    </div>
+  </div>
+</div>

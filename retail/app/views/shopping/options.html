@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="columns medium-12">
+    <div class="shopping-option-panel">
+      <div class="content">
+        <button ng-click="shopForMySelf()" class="right">
+          PURCHASE
+        </button>
+        <div class="title">
+          Non-Meet Purchase
+        </div>
+        <div>
+          &nbsp;
+        </div>
+      </div>
+    </div>
+    <div class="shopping-option-panel">
+      <div class="content">
+        <button ng-click="shopForPawTy()" class="right">
+          PURCHASE
+        </button>
+        <div class="title">
+          PLACE A Miioon Meet / Fundraiser ORDER
+        </div>
+        <div class="medium-4">
+          <select class="secondary-item no-margin-bottom"
+                  ng-model="selectedType"
+                  ng-change="changeType()"
+                  ng-options="type as type.name for type in types">
+          </select>
+        </div>
+        <div class="medium-4">
+          <select class="secondary-item no-margin-bottom"
+                  ng-model="selectedEvent"
+                  ng-options="event as event.title + ' - ' + (event.startTime | date: 'medium') for event in events | isActive">
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

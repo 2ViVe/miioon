@@ -1,0 +1,187 @@
+<div class="row">
+  <div class="columns medium-12">
+    <div class="row collapse">
+      <div class="columns medium-7">
+        <div class="genealogy-path">
+          <vive-slider data-next-slide="nextPath"
+                       data-infinite-loop="false"
+                       data-go-to-slide="goToPath"
+                       data-refresh="refreshPath"
+                       data-slide-width="55"
+                       data-min-slides="1"
+                       data-max-slides="7"
+                       data-pager="false"
+                       data-controls="false"
+                       data-previous-slide="previousPath">
+            <ul>
+              <li ng-repeat="distributorId in genealogy.path" ng-class="{'last': $last, 'first': $first}">
+                <a ng-if="!$last" ng-click="changeRootDistributor(distributorId)">{{distributorId}}</a>
+                <span ng-if="$last">{{distributorId}}</span>
+              </li>
+            </ul>
+          </vive-slider>
+        </div>
+      </div>
+      <div class="columns medium-1">
+        <div class="genealogy-path-navigator">
+          <vive-pagination ng-show="genealogy.path.length > 7"
+                           data-start-page="last"
+                           data-total="genealogy.path.length"
+                           data-refresh="refreshPathPagination"
+                           data-on-next-page="nextPath"
+                           data-hide-page-number="true"
+                           data-on-previous-page="previousPath"
+                           data-on-go-to-page="goToPath"
+                           data-number-per-page="7"></vive-pagination>
+          &nbsp;
+        </div>
+      </div>
+      <div class="columns medium-3">
+        <input type="text"
+               ng-model="searchId"
+               class="secondary-item no-margin-bottom"
+               placeholder="Search by Distributor ID...">
+      </div>
+      <div class="columns medium-1">
+        <a ng-click="search()" class="postfix button"><i class="fa fa-search"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="columns medium-12">
+
+    <div class="genealogy-panel">
+      <div class="row">
+        <div class="columns medium-12">
+          <div class="distributor">
+            <div class="rank-icon rank-{{genealogy.data.displayRank}}"
+                 ng-click="back()"></div>
+            <div class="name" ng-click="back()">
+              {{genealogy.data.firstName}}
+              {{genealogy.data.lastName}}
+              <span class="small-font cLessImportant" ng-if="genealogy.data.status === 6">
+                (Terminated)
+              </span>
+            </div>
+            <br/>
+
+            <div class="info">
+              <table>
+                <tr>
+                  <td>ID:</td>
+                  <td>{{genealogy.data.id}}</td>
+                </tr>
+                <tr>
+                  <td>Handlers:</td>
+                  <td>{{genealogy.data.childrenSize}}</td>
+                </tr>
+                <tr>
+                  <td>Customers:</td>
+                  <td>{{genealogy.data.retailChildrenSize}}</td>
+                </tr>
+                <tr>
+                  <td>Username:</td>
+                  <td>{{genealogy.data.userName}}</td>
+                </tr>
+                <tr ng-if="genealogy.data.renewelDate">
+                  <td>Renewal Date:</td>
+                  <td>{{genealogy.data.renewelDate}}</td>
+                </tr>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="columns medium-12">
+          <vive-slider data-next-slide="nextSlide"
+                       data-infinite-loop="false"
+                       data-go-to-slide="goToSlide"
+                       data-refresh="refreshSlider"
+                       data-slide-width="193"
+                       data-min-slides="1"
+                       data-max-slides="5"
+                       data-pager="false"
+                       data-controls="false"
+                       data-previous-slide="previousSlide">
+            <ul>
+              <li class="distributor"
+                  ng-show="genealogy.data.retailChildrenSize > 0"
+                  ng-click="showRetails()">
+                <div class="rank-icon rank-0">
+                </div>
+                <div class="name">
+                  Customers: {{genealogy.data.retailChildrenSize}}
+                </div>
+                <br/>
+                <a>
+                  Click to show details.
+                </a>
+              </li>
+              <li class="distributor"
+                  ng-repeat="distributor in genealogy.data.children">
+                <div class="rank-icon rank-{{distributor.displayRank}}"
+                     ng-click="changeRootDistributor(distributor.id)">
+                </div>
+                <div class="name" ng-click="changeRootDistributor(distributor.id)">
+                  {{distributor.firstName}}
+                  {{distributor.lastName}}
+                  <span class="small-font cLessImportant" ng-if="distributor.status === 6">
+                    (Terminated)
+                  </span>
+                </div>
+                <div class="sponsor-id">
+                  {{distributor.id}}
+                  <span class="unimportant-text">({{distributor.childrenSize}})</span>
+                </div>
+              </li>
+            </ul>
+          </vive-slider>
+        </div>
+      </div>
+    </div>
+
+    <div class="genealogy-tips">
+      <div class="row">
+        <div class="columns medium-10 medium-offset-1 end">
+          <ul class="medium-block-grid-5">
+            <li class="rank-0">
+              New
+            </li>
+            <li class="rank-1">
+              Miioon Angel
+            </li>
+            <li class="rank-2">
+              Emerald Angel
+            </li>
+            <li class="rank-3">
+              Ruby Angel
+            </li>
+            <li class="rank-4">
+              Diamond Angel
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columns medium-12 genealogy-pagination">
+        <vive-pagination data-start-page="first"
+                         data-total="genealogy.data.children.length"
+                         data-refresh="refreshPagination"
+                         data-on-next-page="nextSlide"
+                         data-on-previous-page="previousSlide"
+                         data-on-go-to-page="goToSlide"
+                         data-number-per-page="5"></vive-pagination>
+      </div>
+    </div>
+
+  </div>
+
+</div>

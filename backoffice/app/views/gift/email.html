@@ -1,0 +1,41 @@
+<form name="emailForm" novalidate ng-controller="GiftCardEmailFormController">
+  <div class="row">
+    <div class="large-12 columns">
+      <label>
+        Recipients e-mail:
+        <input required type="email" name="recipients-email" ng-model="giftCardInfo['recipient-email']"/>
+        <small ng-show="submitted && emailForm['recipients-email'].$error.required" class="error">
+          This field is required.
+        </small>
+        <small ng-show="submitted && emailForm['recipients-email'].$error.email" class="error">
+          Email is invalid.
+        </small>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <label>
+        To:
+        <input required type="text" name="name-to" ng-model="giftCardInfo['name-to']"/>
+        <small ng-show="submitted && emailForm['name-to'].$error.required" class="error">
+          This field is required.
+        </small>
+      </label>
+    </div>
+    <div class="large-6 columns">
+      <label>
+        From:
+        <input type="text" name="name-from" ng-model="giftCardInfo['name-from']"/>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>
+        Messages
+        <textarea ng-model="giftCardInfo['email-message']"></textarea>
+      </label>
+    </div>
+  </div>
+</form>

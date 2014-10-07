@@ -1,0 +1,40 @@
+<div ng-form name="sponsorForm">
+  <div class='row'>
+    <div class='medium-12 columns'>
+      <h6>MIIOON ANGEL SPONSOR INFORMATION</h6>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="small-3 columns">
+      <label class="right inline" ng-class="{required: required == 'true'}" for="sponsor">Miioon Angel Sponsor ID</label>
+    </div>
+
+    <div class="small-3 columns">
+      <input type="text"
+             id="sponsor" name="sponsor"
+             ng-model="account.sponsor"
+             ng-required="{{required}}"
+             data-sponsor-validator
+             data-sponsor-name="sponsorName"
+             data-sponsor-validator-error-msg="$errorMessages['sponsor']"
+        />
+
+      <small ng-show="sponsorForm.sponsor.$error.sponsorError" class="error">
+        {{ $errorMessages.sponsor }}
+      </small>
+      <small ng-show="submitted && sponsorForm.sponsor.$error.required" class="error">
+        This field is required.
+      </small>
+      <div ng-if="!required" style="margin-top: 10px;" class="unimportant-text">If you know your Angels' ID please enter it here, otherwise you may proceed without it.</div>
+      <div class="input-description unimportant-text" ng-show="sponsorName">
+      Sponsor Name: {{sponsorName}}
+    </div>
+    </div>
+    <div class="small-3 end columns">
+      <a ng-click="searchHandler()" class="button small">search angel</a>
+    </div>
+
+  </div>
+</div>

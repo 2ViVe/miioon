@@ -1,0 +1,96 @@
+<div class='party-container'>
+  <div class='row'>
+    <div class="small-12 columns">
+      <ul class="breadcrumbs">
+        <li><a href="#/meet/overview/upcoming">My Meet</a></li>
+        <li><a ng-href="#/meet/{{event.id}}">{{event.title}}</a></li>
+        <li class="current">Invite</li>
+      </ul>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='columns medium-8'>
+      <h4 class="primary-color">Invite Guests List</h4>
+      <table class="party-list block-margin-bottom">
+        <tbody>
+        <tr>
+          <td  class="party-list-textarea" colspan="4">
+            <textarea ng-model="inviteesToBeAdded"
+                      cols="30"
+                      rows="6"
+                      placeholder="Enter email address here, please use a comma to separate each e-mail address."></textarea>
+            <small class="error" ng-show="hasInvalidEmail">
+              There is invalid email, please correct.
+            </small>
+            <button ng-click="addInvitees()" class="right small">
+              Add Guest
+            </button>
+          </td>
+        </tr>
+        <tr class="table-title-bg">
+          <th width="15%" class="text-left">First Name</th>
+          <th width="15%" class="text-left">Last Name</th>
+          <th class="text-left">Email Address</th>
+          <th width="25%"></th>
+        </tr>
+        <tr ng-if="invitees.length === 0">
+          <td colspan="4" class="text-center">
+            Please add Guest
+          </td>
+        </tr>
+        <tr ng-repeat="invitee in invitees">
+          <td ng-if="!invitee.isEditing">{{invitee.firstName}}</td>
+          <td ng-if="!invitee.isEditing">{{invitee.lastName}}</td>
+          <td ng-if="!invitee.isEditing">{{invitee.email}}</td>
+          <td ng-if="invitee.isEditing">
+            <input class="no-margin-bottom" type="text" ng-model="invitee.firstName"/>
+          </td>
+          <td ng-if="invitee.isEditing">
+            <input class="no-margin-bottom" type="text" ng-model="invitee.lastName"/>
+          </td>
+          <td ng-if="invitee.isEditing">
+            <input class="no-margin-bottom" type="text" ng-model="invitee.email"/>
+          </td>
+          <td>
+            <button ng-click="invitee.isEditing = !invitee.isEditing" class="tiny" ng-if="!invitee.isEditing">
+              Edit
+            </button>
+            <button ng-click="invitee.isEditing = !invitee.isEditing" class="tiny" ng-if="invitee.isEditing">
+              Save
+            </button>
+            <button ng-click="invitees.splice($index, 1)" class="secondary tiny">Remove</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <h4 class="primary-color">Invitation Email Subject</h4>
+      <input type="text"
+             ng-model="subject"
+             class="block-margin-bottom">
+      <h4 class="primary-color block-margin-bottom">Message</h4>
+      <textarea cols="30"
+                rows="6"
+                ng-model="message"
+                class="block-margin-bottom"></textarea>
+
+      <div class="alert-box error" ng-show="error">
+        {{error}}
+      </div>
+
+      <button class="small" ng-disabled="invitees.length === 0" ng-click="submit()">Send</button>
+      <button class="secondary small">Cancel</button>
+    </div>
+    <div class='columns medium-4'>
+      <h4 class="primary-color"></h4>
+      <div class='panel party-invite-info'>
+        <div class="party-pink-circle">
+          <strong>{{totalCount}}</strong>
+          <small>TOTAL INVITED</small>
+        </div>
+        <h6>GOAL: INVITE 40</h6>
+        <p>Invite 40+ Guests to increase the number of meet attendees to maximize your rewards.</p>
+        <a href="#/meet/{{event.id}}" target="_blank">View Guest RSVPs</a>
+      </div>
+    </div>
+  </div>
+</div>

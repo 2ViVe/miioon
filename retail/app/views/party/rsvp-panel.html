@@ -1,0 +1,29 @@
+<div class='party-panel rsvp-panel' ng-repeat="responseType in responseTypes">
+  <h4 ng-click="toggle(responseType)">
+    {{responseType.name}}: {{event[responseType.countName]}}
+    <i ng-class="{'fa-chevron-down': responseType.isShown, 'fa-chevron-right': !responseType.isShown}"
+       class="fa right"></i>
+  </h4>
+  <div ng-show="responseType.isShown" >
+    <div class='party-panel-con-bar' ng-if="event[responseType.countName] === 0">
+      <span><i class="fa fa-caret-right primary-color"></i> Not yet Replied</span>
+    </div>
+    <table width='100%' class='party-user-table'>
+      <tbody>
+      <tr ng-repeat="invitee in invitees | responseIs: responseType.type ">
+        <td>
+          <div class='party-user-table-info'>
+            <h5>
+              {{invitee.firstName}}
+              {{invitee.middleName}}
+              {{invitee.lastName}}
+              <br/>
+              <small>{{invitee.email}}</small>
+            </h5>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

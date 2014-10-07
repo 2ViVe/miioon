@@ -1,0 +1,49 @@
+<form class="sign-up-step-2 sign-up-step" name="step2" novalidate>
+  <div class="row">
+    <h2 class="columns small-9">
+      Create a new account
+    </h2>
+    <div class="columns small-3" ng-include="'views/sign-up/steps-navigation.html'"></div>
+  </div>
+  <div class="row">
+    <div class="columns small-12">
+      <table class="product-table">
+        <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Item</th>
+          <th>Qualification Volume</th>
+          <th>Commission Volume</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="product in products.data">
+          <td class="text-left">{{product.sku}}</td>
+          <td class="text-left">
+            <img ng-src="{{product.images[0] | imageSize:'small' }}" alt="{{product.name}}"/>
+            {{product.name}}
+          </td>
+          <td>{{product.variants[0].commissions[0].volume}}</td>
+          <td>{{product.variants[0].commissions[0].volume}}</td>
+          <td class="price">{{product.price | price}}</td>
+          <td class="quantity">
+            <input type="checkbox" checked disabled />
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns small-3">
+      <button ng-click="nextStep()">CONTINUE</button>
+    </div>
+    <div class="columns small-9">
+      <div>
+          <img ng-src="images/glossy-starter-pack.jpg" alt="Glossi.com - Starter Pack" title="Glossi.com - Starter Pack" />
+      </div>
+    </div>
+  </div>
+</form>

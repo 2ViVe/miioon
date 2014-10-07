@@ -1,0 +1,163 @@
+<form data-sign-up-step-4 class="sign-up-step" name="step4" novalidate ng-submit="create()">
+  <div class="row">
+    <h2 class="columns small-9">
+      Create a new account
+    </h2>
+
+    <div class="columns small-3" ng-include="'views/sign-up/steps-navigation.html'"></div>
+  </div>
+  <div class="row" ng-if="paymentFailed">
+    <div class="columns medium-12">
+      <div data-alert class="alert-box alert">
+        Process order failed, please check your payment information.
+      </div>
+    </div>
+  </div>
+  <div class="row title">
+    <h6 class="small-12 columns">
+      ORDER DETAILS AND PAYMENT
+    </h6>
+  </div>
+  <div class="row">
+    <div class="columns small-12">
+      <table class="product-table">
+        <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="lineItem in order.lineItems">
+          <td class="text-left">{{lineItem.sku}}</td>
+          <td class="text-left">
+            <img ng-src="{{lineItem['image-url'] | imageSize:'small' }}" alt="{{lineItem['product-name']}}"/>
+            {{lineItem['productName']}}
+          </td>
+          <td class="price">{{lineItem.price | price}}</td>
+          <td>
+            {{lineItem.quantity}}
+          </td>
+          <td class="price">{{lineItem.price * lineItem.quantity | price}}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="4" class="text-right">
+            Item Total
+          </td>
+          <td class="price">
+            {{order.itemTotal | price}}
+          </td>
+        </tr>
+        <tr ng-repeat="adjustment in order.adjustments">
+          <td colspan="4" class="text-right">
+            {{adjustment.label}}
+          </td>
+          <td class="price">
+            {{adjustment.amount | price}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-right">
+            Order Total
+          </td>
+          <td class="price">
+            {{order.total | price}}
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <div class="row title">
+    <h6 class="small-3 columns">
+      PERSONAL WEBSITE
+    </h6>
+  </div>
+  <div class="row">
+    <div class="columns small-9">
+      <span>
+        {{retailUrl}}/{{account.login}}
+      </span>
+    </div>
+    <div class="columns small-3 text-right personal-website-info">
+      <ul class="medium-font">
+        <li>First 30 Days</li>
+        <li><b class="important-text">FREE</b></li>
+        <li>£15 / <span class="important-text">3 months</span></li>
+        <li>After 30 Days</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row title">
+    <h6 class="small-3 columns">
+      SHIPPING ADDRESS
+    </h6>
+  </div>
+  <div class="row">
+    <div class="columns small-12">
+      <ul class="medium-font">
+        <li>{{order['shippingAddress']['firstName']}} {{order['shippingAddress']['lastName']}}</li>
+        <li>{{order['shippingAddress']['street']}}</li>
+        <li>{{order['shippingAddress']['city']}}, {{order['shippingAddress']['state']}},
+          {{order['shippingAddress']['country']}}, {{order['shippingAddress']['zip']}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row title">
+    <h6 class="small-3 columns">
+      SHIPPING METHOD
+    </h6>
+  </div>
+  <div class="row">
+    <div class="columns small-12">
+      <ul class="medium-font">
+        <li>{{method.shipping.name}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row title">
+    <h6 class="small-6 columns">
+      PAYMENT METHOD
+    </h6>
+  </div>
+  <div class="row" ng-repeat="paymentMethod in order.availablePaymentMethods">
+    <div class="small-3 columns">
+      <label class="right" for="payment-method-{{paymentMethod.id}}">
+        {{paymentMethod.name}}
+      </label>
+    </div>
+    <div class="small-9 columns">
+      <input type='radio' ng-model="$parent.method.payment" ng-value="paymentMethod" id="payment-method-{{paymentMethod.id}}"/>
+    </div>
+  </div>
+  <div ng-if="method.payment.isCreditcard">
+    <div data-creditcard-panel
+         data-submitted="submitted"
+         data-creditcard="creditcard"></div>
+  </div>
+
+  <!--<div data-is-billing-address-validated="isBillingAddressValidated" data-home-address-source="address.homeAddress"-->
+       <!--data-billing-address="payment.billingAddress" data-form="step"></div>-->
+  <div data-address-panel
+       data-address-type="billing"
+       data-title="Billing"
+       data-address="address.billing"
+       data-home-address="address.home"
+       data-default-use-home-address="true"
+       data-submitted="submitted"
+       data-tpl="views/sign-up/panels/address-panel.html"
+    >
+  </div>
+
+  <div class="row">
+    <div class="columns small-9 small-offset-3">
+      <button type="submit">SUBMIT</button>
+    </div>
+  </div>
+</form>

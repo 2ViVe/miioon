@@ -1,0 +1,53 @@
+.main-header {
+  padding-top: 10px;
+
+   .header-kids-link{
+     display:block;
+     width:160px;
+     height:108px;
+     background:url("/images/oon_wave_arm-1.gif") 0 0 no-repeat;
+     &:hover{
+       background:url("/images/oon_wave_arm-2.gif") 0 0 no-repeat;
+     }
+   }
+
+  .logo {
+    position: relative;
+    bottom: 20px;
+  }
+
+  .owner-avatar {
+    float: left;
+    width: 60px;
+    margin-right: 15px;
+  }
+
+  .header-links {
+    color: $grey;
+    margin-bottom: 20px;
+    font-size: rem-calc(16);
+    @include clearfix;
+
+    li {
+      float: left;
+
+      a {
+        color: $grey;
+
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+
+  .shopping-bag {
+    font-size: $medium-font-size;
+    margin-top:rem-calc(5);
+  }
+}
+.contact-me-popup{
+  textarea{
+    height: auto;
+  }
+}

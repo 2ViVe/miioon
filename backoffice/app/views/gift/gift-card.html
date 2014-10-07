@@ -1,0 +1,154 @@
+<div class="row">
+  <div class="medium-6 columns">
+    <div>
+      <img ng-src="{{giftCardImages[0]}}" alt='Gift Card'/>
+    </div>
+  </div>
+
+  <div class="medium-6 columns">
+    <div>
+      <img ng-src="/images/gift/GiftCard-Journey.png" alt='Gift Card Journey' />
+    </div>
+  </div>
+</div>
+
+<div class='row product-detail gift-card'>
+  <div class='medium-6 columns gift-detail-photo'>
+
+    <div class="info-panel first">
+      <h3 style="margin-top: 20px; margin-bottom: 10px;">
+        MADE BY MII VOUCHER EXPERIENCE
+      </h3>
+      <strong class='price large-font'>
+        {{selectedGiftCard.price ? '￡' + selectedGiftCard.price : '￡12.50 - ￡100.00'}}
+      </strong>
+    </div>
+
+    <div class='info-panel'>
+      <form name="amountForm" class="row">
+        <div class="columns small-6">
+          <label for="amount">Amount:</label>
+          <select required
+                  id="amount"
+                  name="amount"
+                  ng-options="giftCard.id as giftCard.price | price for giftCard in giftCards | orderBy: 'price' "
+                  ng-change="changeCard()"
+                  ng-model="selectedGiftCard['variant-id']">
+            <option value=''>Choose an Amount...</option>
+          </select>
+          <small ng-show="submitted && amountForm.amount.$error.required" class="error">
+            This field is required.
+          </small>
+        </div>
+
+        <div class="columns small-6">
+          <label for="quantity">Quantity:</label>
+          <input type="number"
+                 required
+                 id="quantity"
+                 name="quantity"
+                 min="1"
+                 ng-model="selectedGiftCard.quantity"/>
+          <small ng-show="submitted && amountForm.quantity.$error.required" class="error">
+            This field is required.
+          </small>
+        </div>
+
+        <div class="clearfix"></div>
+      </form>
+
+      <form name="emailForm" novalidate>
+        <div class="row">
+          <div class="large-12 columns">
+            <label>
+              Recipients e-mail:
+              <input required type="email" name="recipients-email" ng-model="selectedGiftCard['email-info']['recipient-email']"/>
+              <small ng-show="submitted && emailForm['recipients-email'].$error.required" class="error">
+                This field is required.
+              </small>
+              <small ng-show="submitted && emailForm['recipients-email'].$error.email" class="error">
+                Email is invalid.
+              </small>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-6 columns">
+            <label>
+              To:
+              <input required type="text" name="name-to" ng-model="selectedGiftCard['email-info']['name-to']"/>
+              <small ng-show="submitted && emailForm['name-to'].$error.required" class="error">
+                This field is required.
+              </small>
+            </label>
+          </div>
+          <div class="large-6 columns">
+            <label>
+              From:
+              <input type="text" name="name-from" ng-model="selectedGiftCard['email-info']['name-from']"/>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <label>
+              Messages
+              <textarea ng-model="selectedGiftCard['email-info']['email-message']"></textarea>
+            </label>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+    <div class='info-panel last'>
+      <button ng-show="!isEditing" ng-click="purchase()" class='small right'>ADD TO CART</button>
+      <button ng-show="isEditing" ng-click="purchase()" class='small right'>SAVE</button>
+      <button ng-click="preview()" class='attenuate small right'>PREVIEW</button>
+    </div>
+
+  </div>
+  <div class='medium-6 columns'>
+
+    <h3 style="margin-top: 20px; margin-bottom: 10px;">
+      CART
+    </h3>
+
+    <div class="shopping-cart-small">
+      <ul class="medium-font">
+        <li ng-repeat="lineItem in lineItems">
+          <div class="row">
+            <div class="columns medium-4">
+              <img class="thumbnail" ng-src="{{lineItem.image}}" alt="Product"/>
+            </div>
+            <div class="columns medium-8">
+              <div>
+                {{lineItem.price | price}}&nbsp;x&nbsp;{{lineItem.quantity}}
+              </div>
+
+              <div class="unimportant-text">
+                {{lineItem['email-info']['recipient-email']}}
+              </div>
+
+              <div>
+                <button ng-click="edit(lineItem, $index)" class="tiny">Edit</button>
+                <vive-confirmation data-on-confirmed="deleteItem($index)" data-confirmation-message="Are you sure to delete this gift card?">
+                  <button class="tiny">Delete</button>
+                </vive-confirmation>
+              </div>
+            </div>
+          </div>
+
+        </li>
+      </ul>
+      <div class="summary clearfix">
+        <dl class="total large-font clearfix">
+          <dt class="columns medium-9">Total Price</dt>
+          <dd class="columns medium-3 text-right">{{totalPrice() | price}}</dd>
+        </dl>
+      </div>
+      <button style="width: 100%;" class="place-order small" ng-click="checkout()">CHECKOUT</button>
+    </div>
+
+  </div>
+</div>

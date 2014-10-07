@@ -1,0 +1,84 @@
+<div class='row'>
+  <div class='small-12 columns'>
+    <ul class="breadcrumbs">
+      <li>
+        <a ng-href="{{taxon | taxonLink}}">&gt; {{taxon.name}}</a>
+      </li>
+      <li ng-if="subTaxon">
+        <a ng-href="#/products/{{taxon.permalink}}/{{subTaxon.permalink}}">{{subTaxon.name}}</a>
+      </li>
+      <!--TODO: fix display problemin safari, need to remove inline style when find a better way-->
+      <li style="width: 50%;">{{product.name}}</li>
+    </ul>
+  </div>
+</div>
+<div class='row product-detail'>
+  <div class='medium-5 columns text-center'>
+    <div class="detail-image">
+      <img class="zoom-image" ng-src="{{currentImage}}" alt="{{product.name}}"/>
+    </div>
+
+    <ul class="small-block-grid-4 thumbnails">
+      <li ng-repeat="image in product.images" ng-click="changeImage(image)">
+        <div class="thumbnail-image" ng-class="{current: currentImage === image}">
+
+          <img data-pre-load-image-url="{{image}}" ng-src="{{image | imageSize:'small' }}"/>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="medium-7 columns">
+    <div class="row">
+      <div class="columns end medium-10">
+        <div class="info-panel first">
+          <h2 class="name">{{product.name}}</h2>
+
+          <div>
+            SKU: {{variant.sku}}
+          </div>
+          <h2 class='price'>
+            {{variant.price | price}}
+          </h2>
+        </div>
+
+        <div class='info-panel'
+             ng-repeat="(optionType, options) in allOptions"
+             ng-hide="options.length < 2">
+          <div class="info-panel-title">
+            {{optionType}}: <span ng-if="currentOptions[optionType].presentationType === 'IMG'">: {{currentOptions[optionType].name}}</span>
+          </div>
+          <ul class="options">
+            <li ng-repeat="option in options"
+                ng-class="{current: currentOptions[optionType] === option}"
+                ng-style="getOptionStyle(option)"
+                ng-click="changeOption(option, optionType)">
+              <img ng-src="{{option.presentationValue}}"
+                   ng-if="option.presentationType === 'IMG'"/>
+              <span ng-if="option.presentationType === 'TXT'">
+                {{option.presentationValue}}
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div class='quantity info-panel'>
+          <div class="info-panel-title">Quantity:</div>
+          <input type="number" min="1" ng-model="quantity" ng-init="quantity=1"/>
+        </div>
+
+        <div class='shopping info-panel last'>
+          <button ng-click="addToCart()" class="shopping-buyBt">BUY PRE-DESIGNED</button>&nbsp;&nbsp;OR&nbsp;&nbsp;<a ng-href="http://kids.miioon.com?SponsorId={{replicateOwnerLogin}}" class="button shopping-designBt">DESIGN YOUR OWN <img src="images/design.gif" alt="Design Your Own" class="design-icon" /></a>
+          <!--<button class='button' ng-click="addToCart()">ADD TO CART</button>-->
+        </div>
+      </div>
+    </div>
+    <div class="tabs" data-tabset>
+      <div data-tab data-heading="Product Description">
+        <div class="detail-description" ng-bind-html="product.description"></div>
+      </div>
+      <div data-tab data-heading="Size Charts">
+        <div class="size-charts" ng-include="'views/product/size-charts.html'"></div>
+      </div>
+    </div>
+  </div>
+</div>

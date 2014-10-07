@@ -1,0 +1,160 @@
+<div class="row">
+  <h2 class="columns small-12">
+    Your order has been processed successfully!
+    <a ng-href="/api/v2/orders/pdf-invoice?ids={{successInfo.orderId}}" class="button tiny right" target="_blank">
+      Print
+    </a>
+  </h2>
+</div>
+<div class="row title">
+  <h6 class="columns small-12 primary-color">
+    Order Information
+  </h6>
+</div>
+<div class="row">
+  <p class="columns small-5">
+    Status: <span class="important-text">{{successInfo.state}}</span>
+  </p>
+
+  <p class="columns small-5 end">
+    Payment Total: {{successInfo.paymentTotal}}
+  </p>
+</div>
+<div class="row">
+  <p class="columns small-5">
+    Order Number: {{successInfo.orderNumber}}
+  </p>
+
+  <p class="columns small-5 end">
+    Payment Date: {{successInfo.paymentDate}}
+  </p>
+</div>
+<div class="row">
+  <p class="columns small-5">
+    Order Date: {{successInfo.orderDate}}
+  </p>
+
+  <p class="columns small-5 end">
+    Payment Method: {{selectedPaymentMethod.name}}
+  </p>
+</div>
+<div class="row">
+  <p class="columns small-5 end">
+    Shipping Method: {{selectedShippingMethod.name}}
+  </p>
+</div>
+<div class="row title">
+  <h6 class="small-3 columns primary-color">
+    SHIPPING ADDRESS
+  </h6>
+</div>
+<div class="row">
+  <div class="columns small-12">
+    <p class="medium-font">
+      {{order.data.shippingAddress.firstName}}
+      {{order.data.shippingAddress.m}}
+      {{order.data.shippingAddress.lastName}}
+      <br/>
+
+      {{order.data.shippingAddress.street}}
+      {{order.data.shippingAddress.streetCont}},
+      {{order.data.shippingAddress.city}},
+      {{order.data.shippingAddress.state}},
+      {{order.data.shippingAddress.country}},
+      {{order.data.shippingAddress.zip}}
+      <br/>
+
+      Phone: {{order.data.shippingAddress.phone}}
+    </p>
+  </div>
+</div>
+<div class="row title">
+  <h6 class="small-3 columns primary-color">
+    BILLING ADDRESS
+  </h6>
+</div>
+<div class="row">
+  <div class="columns small-12">
+    <p class="medium-font">
+      {{order.data.billingAddress.firstName}}
+      {{order.data.billingAddress.m}}
+      {{order.data.billingAddress.lastName}}
+      <br/>
+
+      {{order.data.billingAddress.streetCont}}
+      {{order.data.billingAddress.street}},
+      {{order.data.billingAddress.city}},
+      {{order.data.billingAddress.state}},
+      {{order.data.billingAddress.country}},
+      {{order.data.billingAddress.zip}}
+      <br/>
+
+      Phone: {{order.data.billingAddress.phone}}
+    </p>
+  </div>
+</div>
+<div class="row title">
+  <h6 class="small-12 columns primary-color">
+    PRODUCTS
+  </h6>
+</div>
+<div class="row">
+  <div class="columns small-12">
+    <table class="product-table">
+      <thead>
+      <tr>
+        <th>SKU</th>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="lineItem in order.data.lineItems">
+        <td class="text-left">{{lineItem.sku}}</td>
+        <td class="text-left">
+          <img ng-src="{{lineItem.imageUrl}}" alt="{{lineItem.productName}}"/>
+          {{lineItem.productName}}
+        </td>
+        <td class="price">{{lineItem.price | price}}</td>
+        <td>
+          {{lineItem.quantity}}
+        </td>
+        <td class="price">{{lineItem.price * lineItem.quantity | price}}</td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="4" class="text-right">
+          Item Total
+        </td>
+        <td class="price">
+          {{order.data.itemTotal | price}}
+        </td>
+      </tr>
+      <tr ng-repeat="adjustment in order.data.adjustments">
+        <td colspan="4" class="text-right">
+          {{adjustment.label}}
+        </td>
+        <td class="price">
+          {{adjustment.amount | price}}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class="text-right">
+          Order Total
+        </td>
+        <td class="price">
+          {{totalPrice() | price}}
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns medium-font">
+    <a href="#">Back to home</a>
+  </div>
+</div>

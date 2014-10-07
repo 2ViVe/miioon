@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="columns medium-12">
+        <h2>
+            Commission Rank
+        </h2>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 columns">
+        <div class="row collapse">
+            <div class="small-2 small-offset-8 columns">
+                <select ng-model="selectYear" ng-change="getMonth()" class="secondary-item no-margin-bottom">
+                    <option disabled ng-selected="true">Select Year</option>
+                    <option ng-repeat='year in years'>{{year}}</option>
+                </select>
+            </div>
+            <div class="small-2 columns">
+                <select ng-model="selectMonth" ng-change="updateDate()" class="secondary-item no-margin-bottom">
+                    <option disabled ng-selected="true">Select Month</option>
+                    <option ng-repeat='month in months'>{{month.substr(0,2)}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row"><div class='small-12 columns'><hr/></div></div>
+<div class="row">
+    <div class="columns small-12">
+        <table width="100%">
+            <thead>
+            <tr>
+                <th>Distributor ID</th>
+                <th>Qualified Rank</th>
+                <th>Details</th>
+                <th>Next Rank Details</th>
+            </tr>
+            </thead>
+            <tbody ng-show="rank.length !==0">
+            <tr>
+                <td>{{rank.distributorId}}</td>
+                <td>{{rank.qualifiedRank}}</td>
+                <td><a ng-click="showDetailModel()">{{rank.details.qualificationVolume}}</a></td>
+                <td><a ng-click="showNextRankModel()">{{rank.nextRankDetails.rank}}</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

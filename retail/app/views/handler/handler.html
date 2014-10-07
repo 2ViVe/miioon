@@ -1,0 +1,99 @@
+<div class="sign-up">
+  <form class="" name="" novalidate>
+    <div class='row'>
+      <div class='medium-12 columns'>
+        <h2>ANGEL SEARCH</h2>
+      </div>
+    </div>
+    <div class="row">
+      <p class="register-customer small-12 columns medium-font">
+        Please search for your Angel below.
+      </p>
+    </div>
+    <div class='row' ng-if="errorMessage">
+      <div class='small-12 columns'>
+        <div data-alert class="alert-box error">
+          {{errorMessage}}
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-4 columns'>
+        <label class="inline">First Name</label>
+      </div>
+      <div class='small-8 columns'>
+        <input type="text" ng-model='firstName' />
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-4 columns'>
+        <label class="inline">Last Name</label>
+      </div>
+      <div class='small-8 columns'>
+        <input type="text" ng-model='lastName' />
+      </div>
+    </div>
+    <div class="row">
+      <div class='small-8 small-offset-4 columns'>
+        <button type="submit" ng-click="submit()">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div ng-show="results.length > 0">
+  <div class="row">
+    <div class="medium-12 columns">
+      <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns">
+      <table width='100%' class='products-checkout-table handler-locate-table'>
+        <thead>
+        <th></th>
+        <th>Name</th>
+        <th>Id</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat='handler in results'>
+          <td class="handler-locate-table-radio"><input ng-click="changeHandler(handler)" type="radio" name="radio1" /></td>
+          <td>
+            <div class='products-checkout-table-item'>
+              <div class='product-info'>
+                <h6 class='product-name'>
+                  <a ng-click="direct(handler)">
+                    {{handler.address.firstName}} {{handler.address.lastName}}
+                  </a>
+                </h6>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class='product-option'>{{handler.distributorId}}</p>
+          </td>
+          <td>
+            <p class='product-option'>{{handler.address.city}}</p>
+          </td>
+          <td>
+            <p class='product-option'>{{handler.address.state}}</p>
+          </td>
+          <td>
+            <p class='product-option'>{{handler.address.zip}}</p>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row" ng-if="targetHandler !== ''">
+    <div class="small-12 columns">
+      <p class="text-right no-margin-bottom">
+        <a ng-click="connect()" class="button tiny">Connect</a>
+        <a href="#/" class="button secondary tiny">Cancel</a>
+      </p>
+    </div>
+  </div>
+</div>

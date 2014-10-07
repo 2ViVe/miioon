@@ -1,0 +1,196 @@
+<div class="row">
+    <div class="columns medium-12">
+        <h4>
+            Commission Volumes
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <table width="100%">
+            <thead>
+            <tr>
+                <th>unilevel</th>
+                <th>dualteam</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{input.details.commissionVolumes.unilevel}}</td>
+                <td>{{input.details.commissionVolumes.dualteam}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="columns medium-12">
+        <h4>
+            Orders
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <table width="100%">
+            <tbody>
+            <tr ng-repeat="order in input.details.orderNumbers">
+                <td>{{order}}</td>
+                <td><a ng-click="input.viewDetail(order)">view</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="columns medium-12">
+        <h4>
+            Qualification Volume
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <table width="100%">
+            <thead>
+            <tr>
+                <th>Personal Qualification Volume</th>
+                <th>Team Qualification Volume</th>
+                <th>Group Qualification Volume</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{input.details.personalQualificationVolume}}</td>
+                <td>{{input.details.teamQualificationVolume}}</td>
+                <td>{{input.details.groupQualificationVolume}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="columns medium-12">
+        <h4>
+            Personal Commission Volume
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <table width="100%">
+            <thead>
+            <tr>
+                <th>unilevel</th>
+                <th>dualteam</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{input.details.personalCommissionVolume.unilevel}}</td>
+                <td>{{input.details.personalCommissionVolume.dualteam}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="columns medium-12">
+        <h4>
+            Team Commission Volume
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <table width="100%">
+            <thead>
+            <tr>
+                <th>unilevel</th>
+                <th>dualteam</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{input.details.teamCommissionVolume.unilevel}}</td>
+                <td>{{input.details.teamCommissionVolume.dualteam}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="columns medium-12">
+        <h4>
+            Group Commission Volume
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <table width="100%">
+            <thead>
+            <tr>
+                <th>unilevel</th>
+                <th>dualteam</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{input.details.groupCommissionVolume.unilevel}}</td>
+                <td>{{input.details.groupCommissionVolume.dualteam}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="columns medium-12">
+        <h4>
+            Sponsored Retail Customer Orders
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <table width="100%">
+            <tbody>
+            <tr ng-repeat="order in input.details.personallySponsoredRetailCustomerOrderNumbers">
+                <td>{{order}}</td>
+                <td><a ng-click="input.viewDetail(order)">view</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="columns medium-12">
+        <h4>
+            Sponsored Distributor Orders
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <table width="100%">
+            <tbody>
+            <tr ng-repeat="order in input.details.personallySponsoredDistributorOrderNumbers">
+                <td>{{order}}</td>
+                <td><a ng-click="input.viewDetail(order)">view</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+  <div class="columns medium-12">
+    <button class="right" ng-click="cancel()">Close</button>
+  </div>
+</div>

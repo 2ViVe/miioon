@@ -1,0 +1,52 @@
+.product-list {
+  .price,
+  .name {
+    text-align: center;
+  }
+
+  .price {
+    font-size: rem-calc(16);
+  }
+
+  .name {
+    padding: 10px 0 0;
+    height: 50px;
+  }
+
+  .view {
+    position: relative;
+    height: 196px;
+    border: 1px solid transparent;
+    text-align: center;
+
+    img {
+      max-height: 194px;
+    }
+
+    &:hover {
+      border-color: $grey-border;
+
+      .view-detail {
+        display: block;
+      }
+    }
+
+    .view-detail {
+      top: 50%;
+      margin-top: -17px;
+      position: absolute;
+      right: 0;
+      left: 0;
+      text-align: center;
+      display: none;
+
+      a {
+        background: black;
+        color: white;
+        @include opacity(0.6);
+        padding: 10px 20px;
+      }
+    }
+
+  }
+}

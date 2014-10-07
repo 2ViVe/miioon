@@ -1,0 +1,130 @@
+<div class="row panel">
+  <!-- WebAddress -->
+  <div class="small-12">
+    <header class="row">
+      <h3 class="small-8 columns primary-color">WebAddress</h3>
+
+      <div class="small-4 end columns primary-color text-right"><a ng-click="toggle()">Edit</a>
+      </div>
+    </header>
+
+    <div ng-if="!isEditing">
+      <div class="row">
+        <div class="small-3 columns">Name</div>
+        <div class="small-9 columns">{{ address.firstName }} {{ address.lastName }}</div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">Home Phone</div>
+        <div class="small-9 columns">{{ address.phone }}</div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">Mobile Phone</div>
+        <div class="small-9 columns">{{ address.mobile }}</div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">Email</div>
+        <div class="small-9 columns">{{ address.email }}</div>
+      </div>
+    </div>
+
+    <form novalidate ng-if="isEditing" ng-submit="save(form.$valid)" name="form">
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="websiteAddrFirstName" class="inline">First Name:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text"
+                 id="websiteAddrFirstName"
+                 name="websiteAddrFirstName"
+                 required
+                 ng-model="address.firstName"
+                 placeholder="click to edit ... ">
+          <small ng-show="form.websiteAddrFirstName.$error.required" class="error">
+            This field is required.
+          </small>
+          <small class="error" ng-show="address.errors.firstName">
+            {{ address.errors.firstName }}
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="websiteAddrLastName" class="inline">Last Name:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text"
+                 id="websiteAddrLastName"
+                 name="websiteAddrLastName"
+                 required
+                 ng-model="address.lastName"
+                 placeholder="click to edit ... ">
+          <small ng-show="form.websiteAddrLastName.$error.required" class="error">
+            This field is required.
+          </small>
+          <small class="error" ng-show="address.errors.lastName">
+            {{ address.errors.lastName }}
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="websiteAddrHomePhone" class="inline">Home Phone:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text" id="websiteAddrHomePhone" name="websiteAddrHomePhone"
+                 ng-model="address.phone"
+                 data-require-with="address.mobile"
+                 placeholder="click to edit ... ">
+          <small ng-show="form.websiteAddrMobilePhone.$error.requireWith || form.websiteAddrHomePhone.$error.requireWith" class="error">
+            Mobile and Home Phone at least should have one filled.
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="websiteAddrMobilePhone" class="inline">Mobile Phone:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="text" id="websiteAddrMobilePhone"
+                 name="websiteAddrMobilePhone"
+                 ng-model="address.mobile"
+                 data-require-with="address.phone"
+                 placeholder="click to edit ... ">
+          <small ng-show="form.websiteAddrMobilePhone.$error.requireWith || form.websiteAddrHomePhone.$error.requireWith" class="error">
+            Mobile and Home Phone at least should have one filled.
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          <label for="websiteAddrEmail" class="inline">Email:</label>
+        </div>
+        <div class="small-5 end columns">
+          <input type="email" id="websiteAddrEmail" name="websiteAddrEmail" ng-model="address.email"
+                 placeholder="click to edit ... ">
+          <small ng-show="form.websiteAddrEmail.$error.required" class="error">
+            This field is required.
+          </small>
+          <small class="error" ng-show="address.errors.email">
+            {{ address.errors.email }}
+          </small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-5 end columns small-offset-3">
+          <button class="btn-block" type="submit">Save</button>
+          <button class="btn-block" ng-click="toggle(); restore()">Cancel</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,130 @@
+<div class="row taxon-banner">
+  <div class="columns small-12">
+    <img ng-src="{{currentSubTaxon ? currentSubTaxon.image : taxon.image}}" alt="RuckJack Girls"/>
+  </div>
+</div>
+
+<div class="row">
+  <div class="columns small-2 taxon-navigation">
+    <h5 class="root-taxon">
+      {{taxon.name}}
+    </h5>
+    <ul>
+      <li ng-repeat="subTaxon in taxon.subTaxons | orderBy: 'position' ">
+        <span class="current" ng-if="subTaxon.id === currentSubTaxon.id">
+          {{subTaxon.name}}
+        </span>
+        <a ng-if="subTaxon.id !== currentSubTaxon.id" href="#/products/{{taxon.permalink}}/{{subTaxon.permalink}}">
+          {{subTaxon.name}}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="columns small-10 product-list">
+    <ul class="small-block-grid-4">
+      <li ng-repeat="product in products | orderBy: 'position' ">
+        <div class="view" data-brush-image-url="{{product.images[1] | imageSize:'list_thumb' }}">
+          <img ng-src="{{product.images[0] | imageSize:'list_thumb' }}"alt="{{product.name}}"/>
+
+          <div class="view-detail">
+            <a href="#/product/{{product.id}}">VIEW DETAIL</a>
+          </div>
+        </div>
+        <div class="name">
+          <a ng-href="#/product/{{product.id}}">
+            {{product.name}}
+          </a>
+        </div>
+        <div class="price">
+          {{product.price | price}}
+        </div>
+        <div class="product-list-buy">
+          <a class="button product-list-buyBt" href="#/product/{{product.id}}">BUY / DESIGN YOUR OWN</a>
+        </div>
+      </li>
+    </ul>
+    <!--<ul class="small-block-grid-4">-->
+      <!--<li>-->
+        <!--<div class="view pink-view">-->
+          <!--<img src="http://mio.www.abovegem.com:11442/images/missing-product-300x300.jpg" />-->
+          <!--<span class="view-made">made by mii</span>-->
+          <!--<div class="view-detail">-->
+            <!--<a href="#/">VIEW DETAIL</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="name">-->
+          <!--<a ng-href="#/">-->
+            <!--name name name-->
+          <!--</a>-->
+        <!--</div>-->
+        <!--<div class="price">-->
+          <!--£111.00-->
+        <!--</div>-->
+        <!--<div class="product-list-buy">-->
+          <!--<a class="button product-list-buyBt" href="#">BUY / DESIGN YOUR OWN</a>-->
+        <!--</div>-->
+      <!--</li>-->
+
+      <!--<li>-->
+        <!--<div class="view blue-view">-->
+          <!--<img src="http://mio.www.abovegem.com:11442/images/missing-product-300x300.jpg" />-->
+          <!--<span class="view-made">made by mii</span>-->
+          <!--<div class="view-detail">-->
+            <!--<a href="#/">VIEW DETAIL</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="name">-->
+          <!--<a ng-href="#/">-->
+            <!--name name name-->
+          <!--</a>-->
+        <!--</div>-->
+        <!--<div class="price">-->
+          <!--£111.00-->
+        <!--</div>-->
+        <!--<div class="product-list-buy">-->
+          <!--<a class="button product-list-buyBt" href="#">BUY / DESIGN YOUR OWN</a>-->
+        <!--</div>-->
+      <!--</li>-->
+      <!--<li>-->
+        <!--<div class="view green-view">-->
+          <!--<img src="http://mio.www.abovegem.com:11442/images/missing-product-300x300.jpg" />-->
+          <!--<span class="view-made">made by mii</span>-->
+          <!--<div class="view-detail">-->
+            <!--<a href="#/">VIEW DETAIL</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="name">-->
+          <!--<a ng-href="#/">-->
+            <!--name name name-->
+          <!--</a>-->
+        <!--</div>-->
+        <!--<div class="price">-->
+          <!--£111.00-->
+        <!--</div>-->
+        <!--<div class="product-list-buy">-->
+          <!--<a class="button product-list-buyBt" href="#">BUY / DESIGN YOUR OWN</a>-->
+        <!--</div>-->
+      <!--</li>-->
+      <!--<li>-->
+        <!--<div class="view green-view">-->
+          <!--<img src="http://mio.www.abovegem.com:11442/images/missing-product-300x300.jpg" />-->
+          <!--<span class="view-made">made by mii</span>-->
+          <!--<div class="view-detail">-->
+            <!--<a href="#/">VIEW DETAIL</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="name">-->
+          <!--<a ng-href="#/">-->
+            <!--name name name-->
+          <!--</a>-->
+        <!--</div>-->
+        <!--<div class="price">-->
+          <!--£111.00-->
+        <!--</div>-->
+        <!--<div class="product-list-buy">-->
+          <!--<a class="button product-list-buyBt" href="#">BUY / DESIGN YOUR OWN</a>-->
+        <!--</div>-->
+      <!--</li>-->
+    <!--</ul>-->
+  </div>
+</div>

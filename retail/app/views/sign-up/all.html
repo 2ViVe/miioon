@@ -1,0 +1,17 @@
+<div class="sign-up medium-font">
+  <!--<div ng-include="'views/sign-up/step2.html'" ng-if="currentStepNumber === 2"></div>-->
+  <!--<div ng-include="'views/sign-up/step3.html'" ng-if="currentStepNumber === 3"></div>-->
+  <!--<div ng-include="'views/sign-up/step4.html'" ng-if="currentStepNumber === 4"></div>-->
+  <!--<div ng-include="'views/sign-up/success.html'" ng-if="currentStepNumber === 5"></div>-->
+
+  <div ng-include="'views/sign-up/step1.html'" ng-if="stepNumber == 1"
+       class='small-12 sign-up-form-panel'></div>
+  <div ng-include="'views/sign-up/step2.html'" ng-if="stepNumber == 2"
+       class='small-12 sign-up-form-panel'></div>
+  <div ng-include="'views/sign-up/step3.html'" ng-if="stepNumber == 3"
+       class='small-12 sign-up-form-panel'></div>
+  <div ng-include="'views/sign-up/step4.html'" ng-if="stepNumber == 4"
+       class='small-12 sign-up-form-panel'></div>
+  <div ng-include="'views/sign-up/success.html'" ng-if="stepNumber == 5"
+       class='small-12 sign-up-form-panel'></div>
+</div>

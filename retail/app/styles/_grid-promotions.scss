@@ -1,0 +1,15 @@
+.grid-promotions {
+  &.row{
+    margin-top: 10px;
+    a img{
+      width:100%;
+    }
+  }
+
+  .first-promotion {
+    padding-right: 0;
+  }
+  .second-promotion {
+    padding-left: 10px;
+  }
+}

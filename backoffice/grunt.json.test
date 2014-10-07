@@ -1,0 +1,11 @@
+{
+  "port": 33442,
+  "hostname": "0.0.0.0",
+  "APIServerIP": "199.27.105.132",
+  "APIServerPort": 60442,
+  "protocol": "https",
+  "livereload": "35731",
+  "optimizationLevel": 3,
+  "testPort": "9009",
+  "bowerExclude": ["bower_components/foundation/css/foundation.css", "bower_components/bxslider-4/jquery.bxslider.css"]
+}
