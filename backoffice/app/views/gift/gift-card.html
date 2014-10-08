@@ -20,7 +20,7 @@
         MADE BY MII VOUCHER EXPERIENCE
       </h3>
       <strong class='price large-font'>
-        {{selectedGiftCard.price ? '￡' + selectedGiftCard.price : '￡12.50 - ￡100.00'}}
+        {{selectedGiftCard.price ? '￡' + parsePrice(selectedGiftCard.price) : '￡12.50 - ￡100.00'}}
       </strong>
     </div>
 
