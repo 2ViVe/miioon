@@ -80,7 +80,6 @@ angular.module('miioonApp')
       .when('/shipping-returns', {
         templateUrl: 'views/shipping-returns.html'
       })
-<<<<<<< HEAD:miioon/app/scripts/route.js
       .when('/checkout', {
         templateUrl: 'views/checkout/all.html',
         controller: 'CheckoutController',
@@ -96,8 +95,6 @@ angular.module('miioonApp')
             }]
         }
       })
-=======
->>>>>>> 3e46e1043c9e36ee2e9c61cf1cd7037220a2c215:retail/app/scripts/route.js
       .when('/starter-pack', {
         templateUrl: 'views/starter-pack.html'
         //controller: 'CheckoutController'
