@@ -164,7 +164,6 @@
 	margin-bottom:rem-calc(30);
     padding:0;
 	&.bottom-arrow:before{
-		display: none;
 	}
 	&.bottom-arrow:after{
 		top:-2px;
@@ -179,10 +178,11 @@
 	//min-width:rem-calc(720);
 	margin-bottom:rem-calc(30);
 	color:$grey-dark;
-	border:2px solid $grey-darker;
-	padding-top: rem-calc(30);
+	border:2px solid #4b84a9;
+//	padding-top: rem-calc(30);
 	&.bottom-arrow:before{
 		top:0;
+    border-top:2px solid #4b84a9;
 	}
 	&.bottom-arrow:after{
 		top:-2px;
