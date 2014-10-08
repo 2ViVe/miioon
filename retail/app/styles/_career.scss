@@ -164,6 +164,7 @@
 	margin-bottom:rem-calc(30);
     padding:0;
 	&.bottom-arrow:before{
+    top:0;
 	}
 	&.bottom-arrow:after{
 		top:-2px;
