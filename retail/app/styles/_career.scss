@@ -89,6 +89,7 @@
 	}
 	h2{
 		color:#fff;
+    font-size:30px;
 	}
 	h3{
 		color:#fff;
@@ -96,6 +97,7 @@
 	}
 	.career-2-p1{
 		font-style:italic;
+    line-height: 1.3;
 	}
 	.career-2-p2{
 		background:image-url('career/career-2-1.png') 0 0 no-repeat;
@@ -112,7 +114,6 @@
 		background:image-url('career/career-2-2.png') right 0 no-repeat;
 		padding-right: rem-calc(200);
 		line-height: 1.3;
-		text-align: right;
 		min-height: rem-calc(160);
 		margin-bottom: rem-calc(20);
 		a{
@@ -144,6 +145,7 @@
       top:rem-calc(40);
       color:#fff;
       width:100%;
+      font-size: 30px;
     }
     .career-video{
       position: absolute;
@@ -204,7 +206,7 @@
   .career-5{
   	background:#e7593d;
   	color:#fff;
-  	padding: rem-calc(50) rem-calc(30) rem-calc(10) rem-calc(30);
+  	padding: rem-calc(35) rem-calc(30) rem-calc(10) rem-calc(30);
   	margin-bottom:rem-calc(30);
   	&.bottom-arrow:before{
 		display: none;
@@ -214,11 +216,15 @@
 	}
 	h2{
 		color:#fff;
+    font-size:30px;
 	}
 	h3{
 		color:#fff;
 		font-size: rem-calc(18);
 	}
+    .career-5-p1{
+      font-style: italic;
+    }
 	.career-5-p2{
 		margin-bottom:rem-calc(30);
 		padding-left: rem-calc(43);
@@ -246,6 +252,7 @@
 	margin-bottom:rem-calc(30);
 	h2{
 		color:$primary-color;
+    font-size:30px;
 	}
 	.career-6-p1{
 		position: relative;
@@ -314,11 +321,12 @@
 			position: absolute;
 			top: 120px;
 			right:30px;
-			width:200px;
+			width:170px;
+      font-size:14px;
 		}
 		.career-6-p3-monster{
 			position: absolute;
-			bottom:-63px;
+			bottom:-66px;
 			left:10px;
 		}
 	}
