@@ -20,7 +20,6 @@ angular
             function(Shopping, Order, $location, User) {
               console.log(1);
               return Shopping.fetch().then(function(shopping) {
-                console.log(shopping);
                 return Order.checkout(shopping)
                   .then(function(order) {
 
