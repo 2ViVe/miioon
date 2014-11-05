@@ -18,7 +18,6 @@ angular
         resolve: {
           order: ['Shopping', 'Order', '$location', 'User',
             function(Shopping, Order, $location, User) {
-              console.log(1);
               return Shopping.fetch().then(function(shopping) {
                 return Order.checkout(shopping)
                   .then(function(order) {
