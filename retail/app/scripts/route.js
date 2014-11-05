@@ -80,21 +80,6 @@ angular.module('miioonApp')
       .when('/shipping-returns', {
         templateUrl: 'views/shipping-returns.html'
       })
-      .when('/checkout', {
-        templateUrl: 'views/checkout/all.html',
-        controller: 'CheckoutController',
-        resolve: {
-          order: ['Shopping', 'Order', '$location',
-            function(Shopping, Order, $location) {
-              return Shopping.fetch().then(function(shopping) {
-                return Order.checkout(shopping.items)
-                  .catch(function() {
-                    $location.path('/signin');
-                  });
-              });
-            }]
-        }
-      })
       .when('/starter-pack', {
         templateUrl: 'views/starter-pack.html'
         //controller: 'CheckoutController'
