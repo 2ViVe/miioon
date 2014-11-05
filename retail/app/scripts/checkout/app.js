@@ -19,6 +19,7 @@ angular
           order: ['Shopping', 'Order', '$location', 'User',
             function(Shopping, Order, $location, User) {
               return Shopping.fetch().then(function(shopping) {
+                console.log(shopping);
                 return Order.checkout(shopping)
                   .then(function(order) {
 
