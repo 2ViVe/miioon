@@ -7,7 +7,7 @@
 
   <div class="medium-6 columns">
     <div>
-      <img ng-src="/images/gift/GiftCard-Journey.png" alt='Gift Card Journey' />
+      <img ng-src="/images/gift/gift-card-3.jpg" />
     </div>
   </div>
 </div>
@@ -19,9 +19,16 @@
       <h3 style="margin-top: 20px; margin-bottom: 10px;">
         MADE BY MII VOUCHER EXPERIENCE
       </h3>
-      <strong class='price large-font'>
-        {{selectedGiftCard.price ? '￡' + parsePrice(selectedGiftCard.price) : '￡12.50 - ￡100.00'}}
-      </strong>
+      <div class="row">
+        <div class="small-7 columns">
+          <strong class='price large-font'>
+            {{selectedGiftCard.price ? '￡' + parsePrice(selectedGiftCard.price) : '￡12.50 - ￡100.00'}}
+          </strong>
+        </div>
+        <div class="small-5 columns">
+          <a href class="button">PRODUCT MENU</a>
+        </div>
+      </div>
     </div>
 
     <div class='info-panel'>
@@ -61,7 +68,7 @@
         <div class="row">
           <div class="large-12 columns">
             <label>
-              Recipients e-mail:
+              Recipients e-mail OR your own e-mail if ordering a gift box experience: <i class="fa fa-info-circle primary-color"></i>
               <input required type="email" name="recipients-email" ng-model="selectedGiftCard['email-info']['recipient-email']"/>
               <small ng-show="submitted && emailForm['recipients-email'].$error.required" class="error">
                 This field is required.
@@ -148,7 +155,7 @@
         </dl>
       </div>
       <button style="width: 100%;" class="place-order small" ng-click="checkout()">CHECKOUT</button>
-      <img ng-src="/images/gift/gift-card-2.jpg" />
+      <img ng-src="/images/gift/GiftCard-Journey-2.png" />
     </div>
 
   </div>
