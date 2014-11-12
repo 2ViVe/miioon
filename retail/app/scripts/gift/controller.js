@@ -73,6 +73,7 @@ angular.module('miioon/gift')
         $modal.open({
           templateUrl: 'views/gift/gift-product-menu.html',
           controller: 'GiftModalController',
+          windowClass : 'product-menu',
           scope: $scope
         });
       };
