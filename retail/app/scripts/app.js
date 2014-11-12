@@ -10,6 +10,7 @@ angular.module('miioonApp', [
   'ui.utils',
   'mm.foundation.tabs',
   'mm.foundation.modal',
+  'mm.foundation.tooltip',
   'duScroll',
   'ipCookie',
   'angulartics',

@@ -7,7 +7,7 @@
 
   <div class="medium-6 columns">
     <div>
-      <img ng-src="/images/gift/gift-card-3.jpg" />
+      <img ng-mouseenter="changeImgSrc()" ng-mouseleave = "changeImgSrcBack()" ng-src="{{imgsrc}}" />
     </div>
   </div>
 </div>
@@ -26,7 +26,9 @@
           </strong>
         </div>
         <div class="small-5 columns">
-          <a href class="button">PRODUCT MENU</a>
+          <a href tooltip="tooltip"
+                  ng-click="productMenu()" 
+                  class="button">PRODUCT MENU</a>
         </div>
       </div>
     </div>
