@@ -23,6 +23,13 @@ angular.module('miioon/gift')
       $scope.submitted = false;
       $scope.isEditing = false;
       $scope.lineItems = [];
+      $scope.imgsrc = '/images/gift/gift-card-3.jpg';
+      $scope.changeImgSrc = function(){
+        $scope.imgsrc = '/images/gift/gift-card-4.jpg';
+      }
+      $scope.changeImgSrcBack = function(){
+        $scope.imgsrc = '/images/gift/gift-card-3.jpg';
+      }
       if (ipCookie('giftLineItems')) {
         $scope.lineItems = ipCookie('giftLineItems');
         angular.forEach($scope.lineItems, function(lineItem) {
@@ -61,6 +68,18 @@ angular.module('miioon/gift')
           scope: $scope
         });
       };
+
+      $scope.productMenu = function() {
+        $modal.open({
+          templateUrl: 'views/gift/gift-product-menu.html',
+          controller: 'GiftModalController',
+          windowClass : 'product-menu',
+          scope: $scope
+        });
+      };
+
+      $scope.dynamicPopover = "Hello, World!";
+      $scope.dynamicPopoverTitle = "Title";
 
       $scope.totalPrice = function() {
         var totalPrice = 0;
