@@ -17,8 +17,8 @@ angular.module('miioonApp')
   .config(['$httpProvider', function($httpProvider) {
     $httpProvider.interceptors.push('BackOfficeInterceptor');
   }])
-  .run(['User', 'UrlHandler', 'Shopping',
-    function(User, UrlHandler, Shopping) {
+  .run(['User', 'UrlHandler', 'Shopping', '$location',
+    function(User, UrlHandler, Shopping, $location) {
       User.fetch().then(function() {
         if (User.data.roleCode === 'R') {
           UrlHandler.goToRetailSite();
