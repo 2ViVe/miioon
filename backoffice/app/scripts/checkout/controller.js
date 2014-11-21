@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('miioon/checkout')
-  .controller('CheckoutController', ['$scope', 'order', 'Shopping', '$modal',
-    function($scope, order, Shopping, $modal) {
+  .controller('CheckoutController', ['$scope', 'order', 'Shopping', '$modal','User',
+    function($scope, order, Shopping, $modal, User) {
       if (order === undefined) {
         return;
       }
@@ -12,10 +12,16 @@ angular.module('miioon/checkout')
       $scope.isSucceed = false;
       $scope.isFailed = false;
       $scope.orderId = null;
+      $scope.showShipping = true;
 
       $scope.selectedShippingMethod = order.currentShippingMethod();
       $scope.selectedPaymentMethod = order.data.availablePaymentMethods[0];
       $scope.order = order;
+
+      if (User.shouldRenew) {
+        $scope.showShipping = false;
+        order.data.shippingAddress = undefined;
+      }
 
       $scope.editShippingAddress = function() {
         $modal.open({
@@ -101,7 +107,9 @@ angular.module('miioon/checkout')
           return;
         }
 
-        order.create($scope.selectedPaymentMethod.id, $scope.selectedShippingMethod.id, $scope.creditCard)
+        var selectedShippingMethodId = $scope.selectedShippingMethod ? $scope.selectedShippingMethod.id : null;
+
+        order.create($scope.selectedPaymentMethod.id, selectedShippingMethodId, $scope.creditCard)
           .success(function(data) {
             $scope.placingOrder = false;
             $scope.orderId = data.response.orderId;
