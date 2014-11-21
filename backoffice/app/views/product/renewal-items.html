@@ -1,0 +1,19 @@
+<div class='products'>
+  <div class='row'>
+    <!-- shopping list start -->
+    <div class='medium-10 columns'>
+      <ul class='products-list medium-block-grid-4'>
+        <li ng-repeat="product in products | orderBy: 'position'">
+          <div class="product-img">
+            <img ng-src="{{product.images[0] | imageSize:'list_thumb' }}" />
+          </div>
+          <p class='product-name'>{{product.name}}</p>
+          <p class='product-price'>{{product.price | price}}</p>
+          <button ng-click="addToCart(product)" class='tiny'>ADD TO CART</button>
+        </li>
+      </ul>
+      <!--<ul class="pagination right"> <li class="arrow unavailable"><a href="">&laquo;</a></li> <li class="current"><a href="">1</a></li> <li><a href="">2</a></li> <li><a href="">3</a></li> <li><a href="">4</a></li> <li class="unavailable"><a href="">&hellip;</a></li> <li><a href="">12</a></li> <li><a href="">13</a></li> <li class="arrow"><a href="">&raquo;</a></li> </ul>-->
+    </div>
+    <!-- shopping list end -->
+  </div>
+</div>
