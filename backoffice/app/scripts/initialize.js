@@ -17,20 +17,32 @@ angular.module('miioonApp')
   .config(['$httpProvider', function($httpProvider) {
     $httpProvider.interceptors.push('BackOfficeInterceptor');
   }])
-  .run(['User', 'UrlHandler', 'Shopping',
-    function(User, UrlHandler, Shopping) {
+  .run(['User', 'UrlHandler', 'Shopping', '$location',
+    function(User, UrlHandler, Shopping, $location) {
       User.fetch().then(function() {
         if (User.data.roleCode === 'R') {
           UrlHandler.goToRetailSite();
           return null;
         }
+        if (User.shouldRenew) {
+          Shopping.empty();
+          if (['/checkout', '/shopping', '/products/system'].indexOf($location.path()) < 0) {
+            $location.path('/products/renewal-items');
+          }
+        }
         Shopping.fetch();
+      }).catch(function() {
+        UrlHandler.goToRetailSite('/signin');
       });
     }])
-  .run(['$rootScope', 'cfpLoadingBar', '$location',
-    function($rootScope, cfpLoadingBar, $location) {
+  .run(['$rootScope', 'cfpLoadingBar', '$location','User',
+    function($rootScope, cfpLoadingBar, $location, User) {
       $rootScope.$on('$routeChangeStart', function() {
         cfpLoadingBar.start();
+        if (User.shouldRenew &&
+          ['/checkout', '/shopping', '/products/system'].indexOf($location.path()) < 0) {
+          $location.path('/products/renewal-items');
+        }
       });
 
       $rootScope.$on('$routeChangeError', function(event, current, previous, rejection) {
