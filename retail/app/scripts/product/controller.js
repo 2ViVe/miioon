@@ -24,6 +24,7 @@ angular.module('2ViVe')
         $scope.currentOptions[optionType] = options[0];
       });
       $scope.variant = product.getVariantByOptions($scope.currentOptions);
+      console.log($scope.currentOptions);
 
       $scope.changeOption = function(option, optionType) {
         $scope.currentOptions[optionType] = option;
@@ -68,6 +69,10 @@ angular.module('2ViVe')
       };
 
       $scope.addToCart = function() {
+        console.log($scope.variant);
+        console.log($scope.quantity);
+        console.log(product.catalogCode);
+        console.log($scope.personalizedValues);
         Shopping.add($scope.variant, $scope.quantity, product.catalogCode, $scope.personalizedValues)
           .success(function() {
             $modal.open({
