@@ -3,6 +3,7 @@
 angular.module('2ViVe')
   .controller('ProductController', ['$scope', 'product', 'taxons', 'Shopping', 'LocalStorage', '$modal',
     function($scope, product, taxons, Shopping, LocalStorage, $modal) {
+      console.log(product);
       var replicateOwner = LocalStorage.getReplicateOwner();
       $scope.replicateOwnerLogin = replicateOwner ? replicateOwner.login : '';
 
